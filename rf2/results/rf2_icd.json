@@ -1106,7 +1106,10 @@
   "rectangular CF profiles": "custom sizes: vendor pages only",
   "cam clamp hardware": "custom printed: no datasheet",
   "cell holder": "decided: spot-welded pack (Keystone holder logged as alternative)",
-  "Rd resistor family": "VERIFIED (Vishay PR03, 2 x 806 ohm)"
+  "Rd resistor family": "VERIFIED (Vishay PR03, 2 x 806 ohm)",
+  "MP1 v2 isolation switch (TI TMUX7212)": "VERIFIED (TI SCDS416D)",
+  "MP1 v2 switch / clamp-rail supply (TI TPS65131)": "VERIFIED (TI SLVS493E)",
+  "MP1 v2 clamp-rail shunts (TI TL431)": "VERIFIED (TI TL431 datasheet; stability with the rail capacitor still to check)"
  },
  "p06_all_verified": false,
  "all_parts_verified": false,

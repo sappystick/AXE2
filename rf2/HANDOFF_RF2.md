@@ -945,11 +945,24 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     | Input noise | 2.21 nV/rtHz | reported, not limited (target 1.7 not met) |
 
   - **Boost (12.74 A):** with the switch closing at 14.5 / 15.5 us, settling is 17.04 / 17.19 us, against a boost first gate about 3.4 us later than scan. BAT54 peak 123.5 mA.
-  - **New parts (to choose; Ron 2 ohm and 2 pC injection ASSUMED):**
-    - an analog switch for +-15 V signals;
-    - +-12 V clamp rails in the head (low impedance; charge pump or LDO).
-    - The switch's thermal noise (about 0.18 nV/rtHz at 2 ohm) is not yet in the noise run.
-  - **Switch timing:** comes from CB1D: close 11.5 us after turn-off in scan, about 14.5 us in boost.
+  - **Parts chosen and re-run with their datasheet values** (`parts_closure` in the JSON; DATASHEET_LOG RF2-DS-MP1V2-SWITCH):
+    - **Switch: TI TMUX7212.** 4 x SPST, 2 used. Ron 2 ohm typ / 4 ohm at 125 C. Charge injection **60 pC (92 pC in the other table), not the 2 pC first assumed**. CS(off) 28 pF, CD(off) 45 pF.
+    - **Supplies: TI TPS65131 at +15 V / -10 V** from +5 V. VPOS sits at its 15 V ROC maximum.
+    - **Clamp rails: +14 V / -9 V via TL431 shunts.** The clamp node peaks about 0.5 V above its rail, and the switch pins may only go 0.5 V past the switch supplies (VSS-0.5 to VDD+0.5), so the rails sit 1 V inside the supplies: node 14.5 V < VDD 15 V. Rail span 23 V = 77 % of BAT54 VRRM.
+
+    | Case (scan, close 11.5 us) | Settling | LMH6629 input |
+    |---|---|---|
+    | Ron 2 ohm, 60 / 54 pC | 14.41 us | 0.44 mA |
+    | Ron 4 ohm (125 C) | 14.41 us | 0.29 mA |
+    | 92 / 83 pC | **14.58 us** (margin 1.90 us to 16.48) | 0.26 mA |
+    | Boost 12.74 A, close 14.5 / 15.5 us | 17.51 / 18.35 us | 0.18 / 0.37 mA |
+
+    - Settling now equals the coil's own 1 mV time: the switch does not limit it. The injection mostly cancels in the A-B difference.
+    - **Open:**
+      - TPS65131 switches at 1.25-1.5 MHz in the head next to a nV front end: filter, place it in the digital sector, or stop it during the receive window (EMI study);
+      - TL431 stability with the rail capacitor;
+      - the switch's thermal noise (about 0.18 nV/rtHz at 2 ohm) in the noise run;
+      - switch timing from CB1D (11.5 us scan, 14.5 us boost).
 - **DFM wall metric (`rf2/rf2_print.py`):** the wall thickness per sample is now max(inward ray, inscribed-sphere diameter).
   - The ray under-reads beside obtuse corners; the sphere under-reads at convex edges.
   - A real thin wall or feather edge is thin both ways.
@@ -976,4 +989,4 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     - head printed mass 207.5 -> 252.3 g;
     - head mass without bay potting 684 -> 729 g (full fill 894 -> 939 g);
     - Tx field at the boards about -1 %, e.g. B 379.2 -> 375.5 uT boost (the boards sit 0.9 mm further from the coil plane).
-- **Readiness: 6 / 40** (P0.3, P0.4, P0.5, P3.6, P3.7, P3.9). Critical path: P0.1 (cord vendor, Mill-Max, and now the switch and rail parts) -> P1.1 TXD schematic.
+- **Readiness: 6 / 40** (P0.3, P0.4, P0.5, P3.6, P3.7, P3.9). P0.6 still open on 4 parts: Mill-Max 0906 (official sheet not downloadable), the custom coil cord, the rectangular CF profiles, and the cam clamp hardware. Critical path: P0.1 (I3 cord vendor, I6 Mill-Max) -> P1.1 TXD schematic.

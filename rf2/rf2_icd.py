@@ -73,7 +73,9 @@ def main():
     res["p06_parts"] = {"screen LS013B7DH03": "VERIFIED (Sharp LD-26X06A)", "RS-485 THVD1410": "VERIFIED (TI SLLSEY3E)", "FPC / FFC connectors (Panasonic Y5B)": "VERIFIED (catalog ACCTB1E + product page)", "wire-to-board (JST GH)": "VERIFIED (JST eGH)",
                         "cartridge signal pins (Mill-Max 0906)": "UNVERIFIED (official sheet not obtained)",
                         "coil cord": "custom: no vendor sheet (stock cords 120-500 V)", "rectangular CF profiles": "custom sizes: vendor pages only", "cam clamp hardware": "custom printed: no datasheet",
-                        "cell holder": "decided: spot-welded pack (Keystone holder logged as alternative)", "Rd resistor family": "VERIFIED (Vishay PR03, 2 x 806 ohm)"}
+                        "cell holder": "decided: spot-welded pack (Keystone holder logged as alternative)", "Rd resistor family": "VERIFIED (Vishay PR03, 2 x 806 ohm)",
+                        "MP1 v2 isolation switch (TI TMUX7212)": "VERIFIED (TI SCDS416D)", "MP1 v2 switch / clamp-rail supply (TI TPS65131)": "VERIFIED (TI SLVS493E)",
+                        "MP1 v2 clamp-rail shunts (TI TL431)": "VERIFIED (TI TL431 datasheet; stability with the rail capacitor still to check)"}
     res["p06_all_verified"] = all(v.startswith(("VERIFIED", "decided")) for v in res["p06_parts"].values())
     res["all_parts_verified"] = not tbd; res["ok_except_parts"] = all(v["ok"] for k, v in c.items() if not k.startswith("every connector"))
     json.dump(res, open(os.path.join(OUT, "rf2_icd.json"), "w"), indent=1)

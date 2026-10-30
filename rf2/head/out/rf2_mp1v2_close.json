@@ -58,7 +58,7 @@
   4.0
  ],
  "settling_gap_us": 1.02,
- "open": "parts for the switch and the +-12 V rails; the switch timing from CB1D (close 11.5 us after turn-off in scan, later in boost)",
+ "open": "switch timing from CB1D (close 11.5 us after turn-off in scan, 14.5 us in boost); TPS65131 1.25-1.5 MHz switching next to the front end (filter, place in the digital sector, or stop it during the receive window): EMI study; switch noise in the noise run; clamp-rail shunt regulator part",
  "closed": true,
  "chosen": {
   "rin2": 100.0,
@@ -214,8 +214,129 @@
    "t_close_us": 15.5
   }
  ],
- "new_parts": [
-  "analog switch rated for +-15 V signals, Ron <= ~5 ohm, low charge injection (part to choose; Ron 2 ohm and 2 pC ASSUMED)",
-  "+-12 V clamp rails in the head (charge pump / LDO from +5 V, low impedance; part to choose)"
- ]
+ "parts_closure": {
+  "switch": {
+   "part": "TI TMUX7212",
+   "ron": 2.0,
+   "ron_max_125C": 4.0,
+   "cinj_pC": 60.0,
+   "cs_off_pF": 28.0,
+   "cd_off_pF": 45.0,
+   "c_on_pF": 145.0,
+   "t_on_ns": 100.0
+  },
+  "switch_supplies_V": [
+   -10.0,
+   15.0
+  ],
+  "rails_part": "TI TPS65131 (VPOS 15 V, VNEG -10 V; 2.7-5.5 V in; fsw 1.25-1.5 MHz) data/datasheets/TI_TPS6513x.pdf",
+  "clamp_rails_V": [
+   -9.0,
+   14.0
+  ],
+  "clamp_rail_span_V": 23.0,
+  "bat54_vrrm_frac": 0.767,
+  "runs": [
+   {
+    "cinj_pC": [
+     60.0,
+     54.0
+    ],
+    "coil_1mV_us": 14.41,
+    "min_clamp_node_V": 2.49,
+    "peak_clamp_node_V": 14.5,
+    "peak_lmh_input_mA": 0.44,
+    "peak_per_diode_mA": {
+     "BAT54": 82.7,
+     "BAV199": 4.4
+    },
+    "ron": 2.0,
+    "settle_us": 14.41,
+    "t_close_us": 11.5,
+    "switch_pins_inside_abs_max": true,
+    "switch_pins_inside_supplies": true
+   },
+   {
+    "cinj_pC": [
+     60.0,
+     54.0
+    ],
+    "coil_1mV_us": 14.41,
+    "min_clamp_node_V": 2.49,
+    "peak_clamp_node_V": 14.5,
+    "peak_lmh_input_mA": 0.29,
+    "peak_per_diode_mA": {
+     "BAT54": 82.7,
+     "BAV199": 4.4
+    },
+    "ron": 4.0,
+    "settle_us": 14.41,
+    "t_close_us": 11.5,
+    "switch_pins_inside_abs_max": true,
+    "switch_pins_inside_supplies": true
+   },
+   {
+    "cinj_pC": [
+     92.0,
+     82.8
+    ],
+    "coil_1mV_us": 14.57,
+    "min_clamp_node_V": 2.48,
+    "peak_clamp_node_V": 14.5,
+    "peak_lmh_input_mA": 0.26,
+    "peak_per_diode_mA": {
+     "BAT54": 82.7,
+     "BAV199": 4.4
+    },
+    "ron": 2.0,
+    "settle_us": 14.58,
+    "t_close_us": 11.5,
+    "switch_pins_inside_abs_max": true,
+    "switch_pins_inside_supplies": true
+   }
+  ],
+  "boost_12A74": [
+   {
+    "cinj_pC": [
+     60.0,
+     54.0
+    ],
+    "coil_1mV_us": 17.5,
+    "min_clamp_node_V": 2.49,
+    "peak_clamp_node_V": 14.55,
+    "peak_lmh_input_mA": 0.18,
+    "peak_per_diode_mA": {
+     "BAT54": 122.2,
+     "BAV199": 5.3
+    },
+    "ron": 2.0,
+    "settle_us": 17.51,
+    "t_close_us": 14.5,
+    "switch_pins_inside_abs_max": true,
+    "switch_pins_inside_supplies": true
+   },
+   {
+    "cinj_pC": [
+     60.0,
+     54.0
+    ],
+    "coil_1mV_us": 18.34,
+    "min_clamp_node_V": 2.49,
+    "peak_clamp_node_V": 14.55,
+    "peak_lmh_input_mA": 0.37,
+    "peak_per_diode_mA": {
+     "BAT54": 122.2,
+     "BAV199": 5.3
+    },
+    "ron": 2.0,
+    "settle_us": 18.35,
+    "t_close_us": 15.5,
+    "switch_pins_inside_abs_max": true,
+    "switch_pins_inside_supplies": true
+   }
+  ],
+  "worst_settle_us": 14.58,
+  "margin_us": 1.9,
+  "passes": true
+ }
 }

@@ -913,18 +913,21 @@
    "seconds": 0.1,
    "why": "",
    "tail": "",
-   "fingerprint": "956785afdfa29c47",
+   "fingerprint": "0b752a088361d0b3",
    "inputs": {
     "rf2/rf2_readiness.py": "41b85e29f0",
-    "state/ledger.json": "9cf8c72ea5",
-    "rf2/results/rf2_icd.json": "36d8e80264"
+    "state/ledger.json": "c7acafea20",
+    "rf2/results/rf2_icd.json": "c7274818df"
    },
-   "finished": "2026-10-30T20:47:04",
+   "finished": "2026-10-30T20:51:59",
    "log": "state/logs/readiness.log",
    "history": [
     0.1,
     0.0,
     0.0,
+    0.0,
+    0.1,
+    0.1,
     0.0,
     0.1
    ]
@@ -966,21 +969,22 @@
   "icd": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.6,
+   "seconds": 2.8,
    "why": "",
    "tail": "",
-   "fingerprint": "1da300b8a1ff54ba",
+   "fingerprint": "988e18563ee7c538",
    "inputs": {
-    "rf2/rf2_icd.py": "c393252954",
+    "rf2/rf2_icd.py": "049f69703a",
     "rf2/rf2_system.py": "85665badc7",
-    "docs/DATASHEET_LOG_ARX.md": "1ab7ab0afa"
+    "docs/DATASHEET_LOG_ARX.md": "492d1d54cf"
    },
-   "finished": "2026-10-30T20:45:38",
+   "finished": "2026-10-30T20:51:26",
    "log": "state/logs/icd.log",
    "history": [
     2.6,
     2.5,
-    2.6
+    2.6,
+    2.8
    ]
   },
   "emi-rect": {
@@ -1019,37 +1023,27 @@
     12.6,
     34.6
    ]
+  },
+  "study:mp1v2_close": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "d4e6c52635f8deb0",
+   "inputs": {
+    "rf2/head/rf2_mp1v2_close.py": "9525f77f5a",
+    "rf2/head/rf2_mp1v2_protect.py": "fcae50e17a",
+    "src/simcache.py": "7a842c96b9"
+   },
+   "finished": "2026-10-30T20:51:31",
+   "log": "state/logs/study_mp1v2_close.log",
+   "history": [
+    0.2
+   ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T04:33:35",
-   "seconds": 361.6,
-   "results": {
-    "netlist": "pass",
-    "head": "pass",
-    "shield:SH1": "pass",
-    "sb1r-variant": "pass",
-    "board:TXJ": "pass",
-    "board:MP1": "pass",
-    "board:LR1": "pass",
-    "field-xcheck": "pass",
-    "mp1-spice": "pass",
-    "ref3": "pass",
-    "ledger": "pass",
-    "head-check": "pass",
-    "wiring": "pass",
-    "router-selftest": "pass",
-    "parity": "pass"
-   }
-  },
-  {
-   "finished": "2026-10-30T04:33:50",
-   "seconds": 0.5,
-   "results": {
-    "ref3": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T04:40:24",
    "seconds": 322.3,
@@ -1524,6 +1518,35 @@
   },
   {
    "finished": "2026-10-30T20:47:04",
+   "seconds": 0.1,
+   "results": {
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T20:51:26",
+   "seconds": 2.9,
+   "results": {
+    "icd": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T20:51:31",
+   "seconds": 0.2,
+   "results": {
+    "study:mp1v2_close": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T20:51:32",
+   "seconds": 0.0,
+   "results": {
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T20:51:59",
    "seconds": 0.1,
    "results": {
     "readiness": "pass"

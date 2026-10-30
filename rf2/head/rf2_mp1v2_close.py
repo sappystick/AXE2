@@ -71,8 +71,9 @@ def main_all():
         ch = min(ok, key=lambda r: r["settle_us"]); res["closed"] = True; res["chosen"] = dict(ch, lever="clamp rails +-12 V around VBIAS + series isolation switch (clamp node -> Rin2), closed at t_close")
         res["margin_us"] = round(gate - ch["settle_us"], 2)
         res["chosen_at_boost_12A74"] = [transient_series(100.0, ch["rails"][0], ch["rails"][1], tc, i_coil=12.74) for tc in (14.5, 15.5)]
-        res["new_parts"] = ["analog switch rated for +-15 V signals, Ron <= ~5 ohm, low charge injection (part to choose; Ron 2 ohm and 2 pC ASSUMED)", "+-12 V clamp rails in the head (charge pump / LDO from +5 V, low impedance; part to choose)"]
-        res["open"] = "parts for the switch and the +-12 V rails; the switch timing from CB1D (close 11.5 us after turn-off in scan, later in boost)"
+        res["parts_closure"] = parts_closure(gate)
+        if not res["parts_closure"]["passes"]: res["closed"] = False
+        res["open"] = "switch timing from CB1D (close 11.5 us after turn-off in scan, 14.5 us in boost); TPS65131 1.25-1.5 MHz switching next to the front end (filter, place in the digital sector, or stop it during the receive window): EMI study; switch noise in the noise run; clamp-rail shunt regulator part"
     json.dump(res, open(os.path.join(OUT, "rf2_mp1v2_close.json"), "w"), indent=1); print("closed:", res["closed"], res.get("chosen"), res.get("chosen_at_boost_12A74"))
     return res
 
@@ -119,6 +120,42 @@ def transient_series(rin2, lo, hi, t_close_us, ron=2.0, cinj=(2.0, 1.8), i_coil=
                 settle_us=round(float(t[bad[-1] + 1]) * 1e6, 2) if len(bad) and bad[-1] + 1 < len(t) else None,
                 coil_1mV_us=round(float(t[bad_c[-1] + 1]) * 1e6, 2) if len(bad_c) else 0.0,
                 peak_per_diode_mA=dict(BAV199=round(float(np.abs(col["i(VsuA0)"]).max()) * 1e3 / 2, 1), BAT54=round(float(np.abs(col["i(VsuA1)"]).max()) * 1e3 / 2, 1)))
+
+# ---- lever 4 with the chosen part (2026-10-30): TI TMUX7212 (data/datasheets/TI_TMUX7211_TMUX7212_TMUX7213_SCDS416D.pdf, +-15 V tables):
+# Ron 2 ohm typ / 2.7 max 25 C / 4 max 125 C; charge injection 60 pC (VS 0 V, CL 100 pF); CS(off) 28 pF, CD(off) 45 pF, CS(on)/CD(on) 145 pF;
+# tON 100 ns typ. Charge injection is modeled as the 0 -> 1 V control step through a capacitor of Q / 1 V; legs A / B 10 % mismatched (ASSUMED).
+# CS(off) loads the clamp node, CD(off) the Rin2 side (both to AC ground). Supplies VDD/VSS must enclose the clamp rails.
+TMUX = dict(part="TI TMUX7212", ron=2.0, ron_max_125C=4.0, cinj_pC=60.0, cs_off_pF=28.0, cd_off_pF=45.0, c_on_pF=145.0, t_on_ns=100.0)
+def series_variant_ds(net, t_close_us, ron, cinj, cs, cd):
+    net = series_variant(net, t_close_us, ron, cinj)
+    return f"CsoA clA 0 {cs}p\nCsoB clB 0 {cs}p\nCdoA midA 0 {cd}p\nCdoB midB 0 {cd}p\n" + net
+@memo("spice.mp1v2.close.series_ds", files=lambda *a, **k: [C.LMH, C.OPA], uses=USES + [series_variant, series_variant_ds], tools=["ngspice"])
+def transient_series_ds(rin2, lo, hi, t_close_us, ron=TMUX["ron"], cinj=(TMUX["cinj_pC"], 0.9 * TMUX["cinj_pC"]), cs=TMUX["cs_off_pF"], cd=TMUX["cd_off_pF"], i_coil=8.06):
+    src = C.SRC_TR.replace("Vdr nd vb DC -4.27", f"Vdr nd vb DC {-i_coil * 0.53:.4f}")
+    vec = ["v(clA)", "i(VmA)", "v(o1A)", "v(o1B)", "v(nc)", "i(VsuA0)", "i(VsuA1)", "v(out)"]
+    net = series_variant_ds(variant(PR.netlist(FET, PR.CLAMPS[CLAMP], src), rin2, lo, hi), t_close_us, ron, cinj, cs, cd)
+    A, _ = C.ng(net + ".save " + " ".join(vec) + "\n.options reltol=1e-3 abstol=1e-11 vntol=1e-6 method=gear\n.tran 5n 120u 0 5n\n", "run\nwrdata {OUT} " + " ".join(vec), timeout=3000)
+    t = A[:, 0]; col = {v: A[:, 2 * i + 1] for i, v in enumerate(vec)}; d1 = col["v(o1A)"] - col["v(o1B)"]; rest = float(d1[-1]); bad = np.where(np.abs(d1 - rest) > 10e-3)[0]
+    nc = col["v(nc)"]; bad_c = np.where(np.abs(nc - nc[-1]) > 1e-3)[0]
+    return dict(t_close_us=t_close_us, ron=ron, cinj_pC=list(cinj), peak_lmh_input_mA=round(float(np.abs(col["i(VmA)"]).max()) * 1e3, 2), peak_clamp_node_V=round(float(col["v(clA)"].max()), 2), min_clamp_node_V=round(float(col["v(clA)"].min()), 2),
+                settle_us=round(float(t[bad[-1] + 1]) * 1e6, 2) if len(bad) and bad[-1] + 1 < len(t) else None,
+                coil_1mV_us=round(float(t[bad_c[-1] + 1]) * 1e6, 2) if len(bad_c) else 0.0,
+                peak_per_diode_mA=dict(BAV199=round(float(np.abs(col["i(VsuA0)"]).max()) * 1e3 / 2, 1), BAT54=round(float(np.abs(col["i(VsuA1)"]).max()) * 1e3 / 2, 1)))
+
+SW_VDD, SW_VSS = 15.0, -10.0          # TMUX7212 supplies = TPS65131 VPOS (ROC max 15 V) / VNEG (ROC -15..-2 V)
+CL_LO, CL_HI = -9.0, 14.0             # clamp rails inside the switch supplies (shunt regulators that sink the clamp current; part TBD)
+def parts_closure(gate):
+    """the closure re-run with the chosen parts' datasheet values (TMUX7212 Ron, 60 and 92 pC injection, off capacitances; Ron 4 ohm at 125 C)"""
+    runs = [transient_series_ds(100.0, CL_LO, CL_HI, 11.5), transient_series_ds(100.0, CL_LO, CL_HI, 11.5, ron=TMUX["ron_max_125C"]),
+            transient_series_ds(100.0, CL_LO, CL_HI, 11.5, cinj=(92.0, 82.8))]
+    boost = [transient_series_ds(100.0, CL_LO, CL_HI, tc, i_coil=12.74) for tc in (14.5, 15.5)]
+    for r in runs + boost:
+        r["switch_pins_inside_abs_max"] = bool(SW_VSS - 0.5 <= r["min_clamp_node_V"] and r["peak_clamp_node_V"] <= SW_VDD + 0.5)   # TMUX7212 VS/VD: VSS-0.5 .. VDD+0.5
+        r["switch_pins_inside_supplies"] = bool(SW_VSS <= r["min_clamp_node_V"] and r["peak_clamp_node_V"] <= SW_VDD)
+    ok = all(r["peak_lmh_input_mA"] < 10.0 and (r["settle_us"] or 99) < gate and r["switch_pins_inside_supplies"] and r["peak_per_diode_mA"]["BAT54"] <= 300 for r in runs)
+    return dict(switch=TMUX, switch_supplies_V=[SW_VSS, SW_VDD], rails_part="TI TPS65131 (VPOS 15 V, VNEG -10 V; 2.7-5.5 V in; fsw 1.25-1.5 MHz) data/datasheets/TI_TPS6513x.pdf",
+                clamp_rails_V=[CL_LO, CL_HI], clamp_rail_span_V=CL_HI - CL_LO, bat54_vrrm_frac=round((CL_HI - CL_LO) / 30.0, 3), runs=runs, boost_12A74=boost,
+                worst_settle_us=max(r["settle_us"] for r in runs), margin_us=round(gate - max(r["settle_us"] for r in runs), 2), passes=bool(ok))
 
 if __name__ == "__main__":
     main_all()
