@@ -1,0 +1,7 @@
+.SUBCKT OPAx211 INP INM VCC VEE OUT
+Ren INP ip 73
+Ed d 0 ip INM 1e5
+Rp d p 1k
+Cp p 0 199n
+Bo OUT 0 v = max(v(VEE) + 0.2, min(v(VCC) - 0.2, v(p)))
+.ENDS

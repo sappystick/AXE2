@@ -1,0 +1,153 @@
+{
+ "status": "MODELED: model vs the datasheet's typical column (TI AN-1516 method); not a part measurement",
+ "model": "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib",
+ "measured": {
+  "ac": {
+   "bw_3dB_MHz": 838.0,
+   "gain_dB": 19.98,
+   "peaking_dB": 0.0
+  },
+  "aol": {
+   "aol_dc_dB": 78.6,
+   "f_at_20dB_MHz": 484.0,
+   "phase_at_1GHz_deg": -134.0
+  },
+  "noise": {
+   "en_1MHz_nV": 0.69,
+   "en_200Hz_nV": 1.29,
+   "in_1MHz_pA": 2.6
+  },
+  "step": {
+   "rise_10_90_ns": 0.831,
+   "slew_V_us": 1636.0,
+   "step_V": 1.7
+  },
+  "ovl": {
+   "extra_recovery_ns": 0.43,
+   "sat_output_V": 4.21
+  },
+  "dc": {
+   "cmrr_dc_dB": 82.0,
+   "ib_uA": 14.7,
+   "iq_mA": 16.0,
+   "psrr_dc_dB": 98.0,
+   "vos_uV": -202.0
+  }
+ },
+ "bench_errors": {},
+ "rows": [
+  {
+   "name": "bw_3dB_MHz",
+   "model": 838.0,
+   "datasheet": 900.0,
+   "tol": 0.15,
+   "ok": true,
+   "note": "SSBW AV 10 WSON-8, VO 200 mVpp"
+  },
+  {
+   "name": "peaking_dB",
+   "model": 0.0,
+   "datasheet": 0.0,
+   "tol": 1.0,
+   "ok": true,
+   "note": "peaking 0 dB (absolute +-1 dB: the Rf here is 240 ohm)"
+  },
+  {
+   "name": "aol_dc_dB",
+   "model": 78.6,
+   "datasheet": 78.5,
+   "tol": 0.03,
+   "ok": true,
+   "note": "AVOL (model header 78.5 dB; datasheet min 72 over temperature)"
+  },
+  {
+   "name": "f_at_20dB_MHz",
+   "model": 484.0,
+   "datasheet": 400.0,
+   "tol": 0.25,
+   "ok": true,
+   "note": "open loop gain = 20 dB at about 400 MHz (the model header itself quotes 470 for the model)"
+  },
+  {
+   "name": "phase_at_1GHz_deg",
+   "model": -134.0,
+   "datasheet": -142.0,
+   "tol": 0.1,
+   "ok": true,
+   "note": "open loop phase at 1 GHz, COMP high: -142 deg (model header -140)"
+  },
+  {
+   "name": "en_1MHz_nV",
+   "model": 0.69,
+   "datasheet": 0.69,
+   "tol": 0.1,
+   "ok": true,
+   "note": "input voltage noise 0.69 nV/rtHz"
+  },
+  {
+   "name": "in_1MHz_pA",
+   "model": 2.6,
+   "datasheet": 2.6,
+   "tol": 0.2,
+   "ok": true,
+   "note": "input current noise 2.6 pA/rtHz"
+  },
+  {
+   "name": "slew_V_us",
+   "model": 1636.0,
+   "datasheet": 1600.0,
+   "tol": 0.3,
+   "ok": true,
+   "note": "slew rate AV 10, 2 V step"
+  },
+  {
+   "name": "rise_10_90_ns",
+   "model": 0.831,
+   "datasheet": 0.9,
+   "tol": 0.4,
+   "ok": true,
+   "note": "rise time 0.90 ns (WSON-8)"
+  },
+  {
+   "name": "extra_recovery_ns",
+   "model": 0.43,
+   "datasheet": 2.0,
+   "tol": 0.0,
+   "ok": true,
+   "note": "overload recovery <= 2 ns (VIN 1 Vpp)"
+  },
+  {
+   "name": "ib_uA",
+   "model": 14.7,
+   "datasheet": 15.0,
+   "tol": 0.2,
+   "ok": true,
+   "note": "input bias current 15 uA at 27 C (model header; datasheet typ in its table 6)"
+  },
+  {
+   "name": "vos_uV",
+   "model": -202.0,
+   "datasheet": 780.0,
+   "tol": 0.0,
+   "ok": true,
+   "note": "offset: |Vos| <= the +-780 uV maximum at 25 C (typ +-150)"
+  },
+  {
+   "name": "iq_mA",
+   "model": 16.0,
+   "datasheet": 15.5,
+   "tol": 0.08,
+   "ok": true,
+   "note": "typical supply current 15.5 mA"
+  },
+  {
+   "name": "cmrr_dc_dB",
+   "model": 82.0,
+   "datasheet": 87.0,
+   "tol": 0.1,
+   "ok": true,
+   "note": "CMRR 87 dB (model header; datasheet min 70)"
+  }
+ ],
+ "ok": true
+}

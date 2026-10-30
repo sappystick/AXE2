@@ -11,7 +11,8 @@ Outputs: out/<B>/PF233-RF2-<B>.kicad_pcb, gerber/, <b>_check.json; out/rf2_board
 import os, sys, json, math, subprocess, shutil, tempfile, hashlib
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
-sys.path.insert(0, HERE); import rf2_netlist as NL
+sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(ROOT, "src")); import rf2_netlist as NL
+from simcache import memo
 OUTB = os.path.join(HERE, "out"); CX, CY = 150.0, 150.0
 RULES = "0.2,0.2,0.6,0.3"; EDGE = 0.5; FLOOR = 0.15; STALL_S = 180      # Freerouting stall watchdog (s without a finished pass) before the A* fallback                  # edge: the repo's Gerber edge floor (gerber_edge_check 0.5 mm); floor: FAB_RULES track
 def rot(x, y, deg):
@@ -165,6 +166,7 @@ def dru(B):
         cond = " || ".join(f"A.NetName == '{n}' || B.NetName == '{n}'" for n in hv); r.append(f'(rule "HV rule 6" (constraint clearance (min 1.0mm)) (condition "{cond}"))')
     for n, w in B.get("wide", {}).items(): r.append(f'(rule "wide {n}" (constraint track_width (min {w - 0.5:.1f}mm)) (condition "A.NetName == \'{n}\'"))')
     return "\n".join(r) + "\n"
+@memo("kicad.drc", files=lambda pcb, B: [pcb], uses=[], tools=["kicad"], key_args=lambda pcb, B: [dru(B), B.get("hv_nets")])
 def kicad_drc(pcb, B):
     tmp = tempfile.mkdtemp(); dst = os.path.join(tmp, "b.kicad_pcb"); shutil.copy(pcb, dst)
     open(os.path.join(tmp, "b.kicad_dru"), "w").write(dru(B)); open(os.path.join(tmp, "b.kicad_pro"), "w").write("{}")
@@ -178,6 +180,7 @@ def kicad_drc(pcb, B):
         ctl = sum(1 for v in json.load(open(rep2)).get("violations", []) if v["type"] == "clearance")
     return dict(errors=len(err), error_types=sorted({v["type"] for v in err}), examples=[v["description"][:100] for v in err[:4]],
                 unconnected=len(d.get("unconnected_items", [])), warnings=len([v for v in d.get("violations", []) if v["severity"] == "warning"]), hv_rule_control_violations=ctl)
+@memo("rf2.copper_check", files=lambda pcb, B: [pcb], uses=[], key_args=lambda pcb, B: [B, RULES, EDGE, FLOOR])
 def copper_check(pcb, B):
     """independent: copper per net from the routed board (pads from the netlist geometry, tracks and vias from the board); min clearances"""
     import pcbnew

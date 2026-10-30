@@ -1,0 +1,1 @@
+.model S1 SW(vt=0.3 vh=0.2 ron=50 roff=1e+12)

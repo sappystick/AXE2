@@ -1,0 +1,11 @@
+{
+ "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": {
+  "bench_sha256": "01dcee8188501ae8",
+  "model_sha256": "47a735594ca8d393",
+  "ok": true,
+  "part": "LMH6629",
+  "rows": 14,
+  "rows_passed": 14,
+  "source": "TI AN-1516 benches vs the datasheet's typical column"
+ }
+}

@@ -1,0 +1,1 @@
+{"key": "873735718ebe342ffd8e3e57c42de9cd3977c1df97295dbd86d0781efe017408", "kind": "spice.mp1v2.ac_noise", "seconds": 0.186, "created": "2026-10-30T11:45:21", "value": {"bw_3dB_MHz": 25.12, "gain": 23.32, "gain_dB": 27.35, "noise_diff_nV_100kHz": 2.781, "noise_diff_nV_1MHz": 2.778, "noise_per_leg_equiv_nV_100kHz": 1.967, "rms_10k_1M_uV": 2.766}}

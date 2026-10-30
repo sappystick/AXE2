@@ -43,12 +43,23 @@
   "board:TXJ": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.6,
+   "seconds": 4.1,
    "why": "",
    "tail": "",
-   "fingerprint": "fa5af6efb4aaf578",
-   "finished": "2026-10-30T10:27:48",
-   "log": "state/logs/board_TXJ.log"
+   "fingerprint": "8e2617ad95ca8322",
+   "inputs": {
+    "src/pcb/freeroute.py": "28b4dbed2c",
+    "src/pcb/astar_route.py": "bb89dd3a46",
+    "rf2/head/rf2_boards.py": "9f0a11c013",
+    "rf2/head/rf2_ledgrid.py": "f09894c141",
+    "rf2/head/rf2_ring_template.py": "7c597d3873",
+    "(computed key)": "91bfa2c2dd"
+   },
+   "finished": "2026-10-30T12:05:06",
+   "log": "state/logs/board_TXJ.log",
+   "history": [
+    4.1
+   ]
   },
   "board:MP1": {
    "status": "pass",
@@ -56,19 +67,46 @@
    "seconds": 4.1,
    "why": "",
    "tail": "",
-   "fingerprint": "7a3d7e6288a13c6e",
-   "finished": "2026-10-30T10:27:56",
-   "log": "state/logs/board_MP1.log"
+   "fingerprint": "e5edcdf4fa7ea62b",
+   "inputs": {
+    "src/pcb/freeroute.py": "28b4dbed2c",
+    "src/pcb/astar_route.py": "bb89dd3a46",
+    "rf2/head/rf2_boards.py": "9f0a11c013",
+    "rf2/head/rf2_ledgrid.py": "f09894c141",
+    "rf2/head/rf2_ring_template.py": "7c597d3873",
+    "(computed key)": "48f8037aff"
+   },
+   "finished": "2026-10-30T12:05:14",
+   "log": "state/logs/board_MP1.log",
+   "history": [
+    4.1
+   ]
   },
   "board:LR1": {
    "status": "pass",
    "rc": 0,
-   "seconds": 257.3,
+   "seconds": 56.1,
    "why": "",
    "tail": "",
-   "fingerprint": "2bce21a25d48b56d",
-   "finished": "2026-10-30T10:32:13",
-   "log": "state/logs/board_LR1.log"
+   "fingerprint": "c0dd6f88cea30fb2",
+   "inputs": {
+    "src/pcb/freeroute.py": "28b4dbed2c",
+    "src/pcb/astar_route.py": "bb89dd3a46",
+    "rf2/head/rf2_boards.py": "9f0a11c013",
+    "rf2/head/rf2_ledgrid.py": "f09894c141",
+    "rf2/head/rf2_ring_template.py": "7c597d3873",
+    "(computed key)": "3d55cd2281"
+   },
+   "finished": "2026-10-30T12:26:34",
+   "log": "state/logs/board_LR1.log",
+   "history": [
+    221.2,
+    232.0,
+    224.2,
+    229.3,
+    230.5,
+    56.1
+   ]
   },
   "field-xcheck": {
    "status": "pass",
@@ -133,22 +171,35 @@
   "router-selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 4.7,
+   "seconds": 4.9,
    "why": "",
    "tail": "",
    "fingerprint": "e6a1307bf8e87378",
-   "finished": "2026-10-30T10:33:50",
-   "log": "state/logs/router-selftest.log"
+   "inputs": {
+    "tests/router_selftest.py": "3922b08949",
+    "src/pcb/astar_route.py": "bb89dd3a46"
+   },
+   "finished": "2026-10-30T12:09:13",
+   "log": "state/logs/router-selftest.log",
+   "history": [
+    4.9
+   ]
   },
   "parity": {
    "status": "pass",
    "rc": 0,
-   "seconds": 1.5,
+   "seconds": 1.2,
    "why": "",
    "tail": "",
    "fingerprint": "f817f04f9630baae",
-   "finished": "2026-10-30T10:33:52",
-   "log": "state/logs/parity.log"
+   "inputs": {
+    "rf2/head/rf2_parity.py": "fe39abbbfc"
+   },
+   "finished": "2026-10-30T12:09:14",
+   "log": "state/logs/parity.log",
+   "history": [
+    1.2
+   ]
   },
   "display-hinge": {
    "status": "pass",
@@ -373,12 +424,23 @@
   "board:TXF": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.8,
+   "seconds": 4.0,
    "why": "",
    "tail": "",
-   "fingerprint": "13466d42cfa10837",
-   "finished": "2026-10-30T10:27:52",
-   "log": "state/logs/board_TXF.log"
+   "fingerprint": "62c7e59f4ba5086e",
+   "inputs": {
+    "src/pcb/freeroute.py": "28b4dbed2c",
+    "src/pcb/astar_route.py": "bb89dd3a46",
+    "rf2/head/rf2_boards.py": "9f0a11c013",
+    "rf2/head/rf2_ledgrid.py": "f09894c141",
+    "rf2/head/rf2_ring_template.py": "7c597d3873",
+    "(computed key)": "5542755360"
+   },
+   "finished": "2026-10-30T12:05:10",
+   "log": "state/logs/board_TXF.log",
+   "history": [
+    4.0
+   ]
   },
   "zonerules": {
    "status": "pass",
@@ -387,18 +449,34 @@
    "why": "",
    "tail": "",
    "fingerprint": "84edbd93116012c0",
-   "finished": "2026-10-30T10:49:34",
-   "log": "state/logs/zonerules.log"
+   "inputs": {
+    "rf2/head/rf2_zonerules.py": "438493d46e",
+    "rf2/head/rf2_netlist.py": "14942436dc",
+    "rf2/head/rf2_head.py": "786ab35bb3"
+   },
+   "finished": "2026-10-30T12:09:00",
+   "log": "state/logs/zonerules.log",
+   "history": [
+    4.3
+   ]
   },
   "construct": {
    "status": "pass",
    "rc": 0,
-   "seconds": 4.6,
+   "seconds": 4.7,
    "why": "",
    "tail": "",
    "fingerprint": "c2bea9ebbe606386",
-   "finished": "2026-10-30T10:49:38",
-   "log": "state/logs/construct.log"
+   "inputs": {
+    "rf2/head/rf2_construct.py": "57fcf11cd9",
+    "rf2/head/rf2_head.py": "786ab35bb3",
+    "rf2/head/rf2_netlist.py": "14942436dc"
+   },
+   "finished": "2026-10-30T12:09:04",
+   "log": "state/logs/construct.log",
+   "history": [
+    4.7
+   ]
   },
   "pod": {
    "status": "pass",
@@ -429,6 +507,68 @@
    "fingerprint": "b38bd88f33123733",
    "finished": "2026-10-30T10:49:41",
    "log": "state/logs/lightplate.log"
+  },
+  "opamp-qualify": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "5558fedf9dc5db70",
+   "inputs": {
+    "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
+    "src/simcache.py": "7a842c96b9",
+    "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c"
+   },
+   "finished": "2026-10-30T12:26:57",
+   "log": "state/logs/opamp-qualify.log",
+   "history": [
+    0.1,
+    0.2
+   ]
+  },
+  "selftest": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 3.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "8e67df5d234c2805",
+   "inputs": {
+    "tests/selftest.py": "0f5e416340",
+    "src/simcache.py": "7a842c96b9",
+    "run.py": "f344af3d92",
+    "rf2/head/spice_compat.py": "d04b7efad7",
+    "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
+    "data/spice/SHA256SUMS": "77ca6c7e5a",
+    "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
+    "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
+   },
+   "finished": "2026-10-30T12:27:00",
+   "log": "state/logs/selftest.log",
+   "history": [
+    3.3,
+    3.1
+   ]
+  },
+  "study:mp1v2_chain": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "71c2f375da67e93c",
+   "inputs": {
+    "rf2/head/rf2_mp1v2_chain.py": "cfea11e260",
+    "rf2/head/spice_compat.py": "d04b7efad7",
+    "src/simcache.py": "7a842c96b9",
+    "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c"
+   },
+   "finished": "2026-10-30T12:27:17",
+   "log": "state/logs/study_mp1v2_chain.log",
+   "history": [
+    0.2
+   ]
   }
  },
  "runs": [
@@ -700,6 +840,72 @@
     "pod": "pass",
     "ui": "pass",
     "lightplate": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:09:14",
+   "seconds": 251.9,
+   "results": {
+    "board:TXJ": "pass",
+    "board:TXF": "pass",
+    "board:MP1": "pass",
+    "board:LR1": "pass",
+    "zonerules": "pass",
+    "construct": "pass",
+    "opamp-qualify": "pass",
+    "selftest": "pass",
+    "router-selftest": "pass",
+    "parity": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:13:16",
+   "seconds": 232.0,
+   "results": {
+    "board:LR1": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:17:23",
+   "seconds": 224.2,
+   "results": {
+    "board:LR1": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:21:19",
+   "seconds": 229.4,
+   "results": {
+    "board:LR1": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:25:38",
+   "seconds": 230.5,
+   "results": {
+    "board:LR1": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:26:34",
+   "seconds": 56.1,
+   "results": {
+    "board:LR1": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:27:00",
+   "seconds": 3.3,
+   "results": {
+    "opamp-qualify": "pass",
+    "selftest": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:27:17",
+   "seconds": 0.2,
+   "results": {
+    "study:mp1v2_chain": "pass"
    }
   }
  ]

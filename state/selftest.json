@@ -1,0 +1,103 @@
+{
+ "ok": true,
+ "tests": [
+  {
+   "name": "simcache: second call is a hit, the first a miss",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: different arguments miss",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: hit and miss return the same value (tuple -> list through JSON)",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: a changed `uses` value invalidates",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: file CONTENT (not name, not time) keys the entry",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: a KiCad board is keyed without its uuids, timestamps and item order, but a copper change still changes the key",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: key_args drops an argument that is already covered by a file hash",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: a source edit of the function invalidates",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: a corrupt entry is recomputed and repaired",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "simcache: SIMCACHE=0 bypasses (no read, no write)",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "spice_compat: VSWITCH -> SW (vt, vh)",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "spice_compat: nested IF, | and &, TEMP, noiseless resistors",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "spice models: byte-identical to data/spice/SHA256SUMS (the converter never edits them)",
+   "ok": true,
+   "seconds": 0.0,
+   "detail": ""
+  },
+  {
+   "name": "qualify bench: PASSES the TI LMH6629 model",
+   "ok": true,
+   "seconds": 2.25,
+   "detail": ""
+  },
+  {
+   "name": "qualify bench: FAILS a wrong model (80 MHz behavioral op-amp in the LMH6629's place)",
+   "ok": true,
+   "seconds": 0.62,
+   "detail": "12 rows fail: bw_3dB_MHz, aol_dc_dB, f_at_20dB_MHz, phase_at_1GHz_deg, en_1MHz_nV"
+  },
+  {
+   "name": "runner: skips an unchanged step, names the changed input, sees a missing output and a re-run dependency",
+   "ok": true,
+   "seconds": 0.07,
+   "detail": ""
+  }
+ ],
+ "passed": 16,
+ "total": 16
+}

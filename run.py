@@ -73,6 +73,11 @@ STEPS = [
     dict(id="pod", cmd=[H + "rf2_pod.py"], inputs=[H + "rf2_pod.py", H + "rf2_head.py"], deps=[], check=jcheck(H + "out/pod/rf2_pod_check.json")),
     dict(id="ui", cmd=["rf2/rf2_ui.py"], inputs=["rf2/rf2_ui.py", H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/rf2_ui.json")),
     dict(id="lightplate", cmd=["rf2/rf2_lightplate.py"], inputs=["rf2/rf2_lightplate.py", H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/rf2_lightplate.json")),
+    dict(id="opamp-qualify", cmd=[H + "rf2_opamp_qualify.py"], inputs=[H + "rf2_opamp_qualify.py", "src/simcache.py", "data/spice/LMH6629/*.lib"], deps=[], check=jcheck(H + "out/rf2_opamp_qualify.json")),
+    dict(id="study:mp1v2_chain", group="studies", cmd=[H + "rf2_mp1v2_chain.py"], inputs=[H + "rf2_mp1v2_chain.py", H + "spice_compat.py", "src/simcache.py", "data/spice/LMH6629/*.lib"], deps=["opamp-qualify"],
+         check=jcheck(H + "out/rf2_mp1v2_chain.json", lambda d: "checks" in d), timeout=3600),
+    dict(id="selftest", cmd=["tests/selftest.py"], inputs=["tests/selftest.py", "src/simcache.py", "run.py", H + "spice_compat.py", H + "rf2_opamp_qualify.py", "data/spice/SHA256SUMS", "data/spice/**/*.lib"], deps=["opamp-qualify"],
+         check=jcheck("state/selftest.json")),
     dict(id="router-selftest", cmd=["tests/router_selftest.py"], inputs=["tests/router_selftest.py", "src/pcb/astar_route.py"], deps=["board:MP1"],
          check=jcheck("state/router_selftest.json")),
     dict(id="parity", cmd=[H + "rf2_parity.py"], inputs=[H + "rf2_parity.py"], deps=["netlist", "board:TXJ", "board:MP1", "board:LR1", "shield:SH1", "sb1r-variant"],
@@ -84,12 +89,25 @@ STEPS = [
      for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin", "depth_levers", "taper", "rodin", "wave", "hood", "hood_wide", "hood_size", "zones", "mitigation", "layout", "switch", "qualify", "fluxgate", "decaylib")]
 
 
-def fingerprint(s):
-    h = hashlib.sha256(json.dumps(s["cmd"]).encode())
+def finger(s):
+    """(fingerprint, {input: short hash}): the map lets the runner say WHICH input changed, not just that something did"""
+    h = hashlib.sha256(json.dumps(s["cmd"]).encode()); inputs = {}
     for f in files(*s["inputs"]):
-        h.update(os.path.relpath(f, ROOT).encode()); h.update(open(f, "rb").read())     # relative: a clone elsewhere keeps the same fingerprints
-    if s.get("key"): h.update(s["key"]().encode())
-    return h.hexdigest()[:16]
+        rel = os.path.relpath(f, ROOT); data = open(f, "rb").read(); h.update(rel.encode()); h.update(data); inputs[rel] = hashlib.sha256(data).hexdigest()[:10]   # relative: a clone elsewhere keeps the same fingerprints
+    if s.get("key"):
+        k = s["key"](); h.update(k.encode()); inputs["(computed key)"] = hashlib.sha256(k.encode()).hexdigest()[:10]
+    return h.hexdigest()[:16], inputs
+
+
+def fingerprint(s): return finger(s)[0]
+
+
+def changed_inputs(s, e):
+    """names of the inputs that differ from what the ledger entry recorded (None if the entry predates the map)"""
+    old = e.get("inputs")
+    if old is None: return None
+    new = finger(s)[1]; ch = sorted({k for k in set(old) | set(new) if old.get(k) != new.get(k)})
+    return ch
 
 
 def load():
@@ -108,7 +126,8 @@ def decide(args, L, ran):
         elif args.failed: r = (bool(e) and e["status"] != "pass", "failed last time" if e and e["status"] != "pass" else "passed / never run")
         elif not e: r = (True, "never run")
         elif e["status"] != "pass": r = (True, "failed last time")
-        elif e.get("fingerprint") != fp: r = (True, "inputs changed")
+        elif e.get("fingerprint") != fp:
+            ch = changed_inputs(s, e); r = (True, "inputs changed" + (f": {', '.join(ch[:3])}" + (f" (+{len(ch) - 3} more)" if len(ch) > 3 else "") if ch else ""))
         elif any(not os.path.exists(os.path.join(ROOT, o)) for o in s.get("outputs", [])): r = (True, "outputs missing")
         elif any(d in ran for d in s["deps"]): r = (True, "a dependency re-ran")
         else: r = (False, "up to date")
@@ -127,8 +146,40 @@ def run_step(s):
     if ok and s.get("check"): ok, why = s["check"]()
     if ok and any(not os.path.exists(os.path.join(ROOT, o)) for o in s.get("outputs", [])): ok, why = False, "outputs missing after the run"
     tail = "".join([l for l in open(log, errors="ignore") if "Debug:" not in l][-8:])[-600:]
+    fp, inputs = finger(s)
     return dict(status="pass" if ok else "fail", rc=rc, seconds=round(time.time() - t0, 1), why="" if ok else why, tail="" if ok else tail,
-                fingerprint=fingerprint(s), finished=datetime.datetime.now().isoformat(timespec="seconds"), log=os.path.relpath(log, ROOT))
+                fingerprint=fp, inputs=inputs, finished=datetime.datetime.now().isoformat(timespec="seconds"), log=os.path.relpath(log, ROOT))
+
+
+def median_s(L, sid):
+    h = L["steps"].get(sid, {}).get("history") or ([L["steps"][sid]["seconds"]] if sid in L["steps"] and L["steps"][sid].get("status") == "pass" else [])
+    h = sorted(h); return h[len(h) // 2] if h else None
+
+
+def est(s, L, go):
+    m = median_s(L, s["id"]); return f"~{m:>5.0f} s  " if go and m is not None else ("            " if go else "")
+
+
+def why(sid, L):
+    s = next((x for x in STEPS if x["id"] == sid), None)
+    if not s: sys.exit(f"no step {sid}; python3 run.py --list")
+    e = L["steps"].get(sid); fp, inputs = finger(s)
+    print(f"{sid}: cmd {' '.join(s['cmd'])}; deps {s['deps'] or '-'}; group {s.get('group', 'required')}")
+    print(f"  inputs ({len(inputs)}): " + ", ".join(sorted(inputs)[:8]) + (" ..." if len(inputs) > 8 else ""))
+    if not e: print("  never run"); return
+    print(f"  last: {e['status']} in {e['seconds']} s at {e['finished']}; history {e.get('history', [])} s")
+    ch = changed_inputs(s, e)
+    print("  fingerprint: " + ("unchanged" if e.get("fingerprint") == fp else f"CHANGED: {', '.join(ch) if ch else '(this entry has no per-input record)'}"))
+    miss = [o for o in s.get("outputs", []) if not os.path.exists(os.path.join(ROOT, o))]
+    if miss: print("  outputs missing: " + ", ".join(miss))
+    if e["status"] != "pass": print(f"  failed: {e.get('why')}\n{e.get('tail', '')}")
+
+
+def timing(L):
+    rows = [(s["id"], L["steps"][s["id"]]["seconds"], median_s(L, s["id"])) for s in STEPS if s["id"] in L["steps"] and not s.get("group")]
+    for sid, last, med in sorted(rows, key=lambda r: -r[1]): print(f"{sid:<22} last {last:>7.1f} s   median {med:>7.1f} s")
+    print(f"required steps, sum of last times: {sum(r[1] for r in rows):.0f} s")
+    print("result cache inside the steps: python3 src/simcache.py --stats")
 
 
 def status_md(L):
@@ -145,14 +196,18 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--failed", action="store_true"); ap.add_argument("--plan", action="store_true"); ap.add_argument("--cold", action="store_true")
     ap.add_argument("--list", action="store_true"); ap.add_argument("--step", nargs="+"); ap.add_argument("--with-render", action="store_true"); ap.add_argument("--with-studies", action="store_true")
+    ap.add_argument("--why", metavar="STEP", help="explain one step: its inputs, what changed since it last ran, its time history"); ap.add_argument("--timing", action="store_true", help="time per step (last and median of the history) and the cache")
     args = ap.parse_args(); os.makedirs(STATE, exist_ok=True); L = load()
     if args.list:
         for s in STEPS:
             e = L["steps"].get(s["id"], {}); print(f"{s['id']:<22} {e.get('status', '-'):<5} {e.get('seconds', ''):>7} {e.get('finished', 'never')}  {e.get('why', '')}")
         return
+    if args.why: return why(args.why, L)
+    if args.timing: return timing(L)
     plan = decide(args, L, set()); todo = [(s, why) for s, go, why in plan if go]
-    for s, go, why in plan: print(f"{'RUN ' if go else 'skip'} {s['id']:<22} {why}")
-    if args.plan or not todo: print(f"{len(todo)} step(s) to run" + (" (plan only)" if args.plan else "")); return
+    for s, go, why in plan: print(f"{'RUN ' if go else 'skip'} {s['id']:<22} {est(s, L, go)}{why}")
+    est_total = sum(median_s(L, s["id"]) or 0 for s, _ in todo)
+    if args.plan or not todo: print(f"{len(todo)} step(s) to run" + (f", about {est_total:.0f} s by their history (a cache hit inside a step makes it faster)" if todo else "") + (" (plan only)" if args.plan else "")); return
     if os.path.exists(LOCK):
         pid = int(open(LOCK).read().strip() or 0)
         if pid and os.path.exists(f"/proc/{pid}"): sys.exit(f"run.py: another run is active (pid {pid}); wait for it")
@@ -160,7 +215,8 @@ def main():
     try:
         for i, (s, why) in enumerate(todo, 1):
             print(f"[{i}/{len(todo)}] {s['id']} ({why}) ...", flush=True)
-            e = run_step(s); L["steps"][s["id"]] = e; results[s["id"]] = e["status"]
+            e = run_step(s); e["history"] = (L["steps"].get(s["id"], {}).get("history", []) + ([e["seconds"]] if e["status"] == "pass" else []))[-8:]
+            L["steps"][s["id"]] = e; results[s["id"]] = e["status"]
             json.dump(L, open(LEDGER, "w"), indent=1)                    # saved after every step: an interrupted run keeps what it learned
             print(f"      {e['status'].upper()} {e['seconds']} s {e['why']}", flush=True)
     finally:

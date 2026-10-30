@@ -1,0 +1,158 @@
+{
+ "status": "MODELED: TI macro models (datasheet-qualified); FET and clamp are datasheet-anchored generics; not a measurement",
+ "convention": "noise = output noise / gain with the coil terminals shorted; 'per leg equivalent' divides the differential figure by sqrt(2)",
+ "options": [
+  {
+   "bw_3dB_MHz": 25.12,
+   "gain": 23.45,
+   "gain_dB": 27.4,
+   "noise_diff_nV_100kHz": 2.383,
+   "noise_diff_nV_1MHz": 2.381,
+   "noise_per_leg_equiv_nV_100kHz": 1.685,
+   "rms_10k_1M_uV": 2.37,
+   "Rin2_ohm": 47.0,
+   "Rf_ohm": 240.0,
+   "Rg_ohm": 26.7
+  },
+  {
+   "bw_3dB_MHz": 25.12,
+   "gain": 23.46,
+   "gain_dB": 27.41,
+   "noise_diff_nV_100kHz": 2.262,
+   "noise_diff_nV_1MHz": 2.26,
+   "noise_per_leg_equiv_nV_100kHz": 1.6,
+   "rms_10k_1M_uV": 2.25,
+   "Rin2_ohm": 47.0,
+   "Rf_ohm": 90.0,
+   "Rg_ohm": 10.0
+  },
+  {
+   "bw_3dB_MHz": 25.12,
+   "gain": 23.29,
+   "gain_dB": 27.34,
+   "noise_diff_nV_100kHz": 2.554,
+   "noise_diff_nV_1MHz": 2.551,
+   "noise_per_leg_equiv_nV_100kHz": 1.806,
+   "rms_10k_1M_uV": 2.539,
+   "Rin2_ohm": 68.0,
+   "Rf_ohm": 240.0,
+   "Rg_ohm": 26.7
+  },
+  {
+   "bw_3dB_MHz": 25.12,
+   "gain": 23.38,
+   "gain_dB": 27.38,
+   "noise_diff_nV_100kHz": 2.448,
+   "noise_diff_nV_1MHz": 2.446,
+   "noise_per_leg_equiv_nV_100kHz": 1.731,
+   "rms_10k_1M_uV": 2.435,
+   "Rin2_ohm": 68.0,
+   "Rf_ohm": 90.0,
+   "Rg_ohm": 10.0
+  },
+  {
+   "bw_3dB_MHz": 25.12,
+   "gain": 23.32,
+   "gain_dB": 27.35,
+   "noise_diff_nV_100kHz": 2.781,
+   "noise_diff_nV_1MHz": 2.778,
+   "noise_per_leg_equiv_nV_100kHz": 1.967,
+   "rms_10k_1M_uV": 2.766,
+   "Rin2_ohm": 100.0,
+   "Rf_ohm": 240.0,
+   "Rg_ohm": 26.7
+  },
+  {
+   "bw_3dB_MHz": 25.12,
+   "gain": 23.32,
+   "gain_dB": 27.35,
+   "noise_diff_nV_100kHz": 2.677,
+   "noise_diff_nV_1MHz": 2.674,
+   "noise_per_leg_equiv_nV_100kHz": 1.893,
+   "rms_10k_1M_uV": 2.662,
+   "Rin2_ohm": 100.0,
+   "Rf_ohm": 90.0,
+   "Rg_ohm": 10.0
+  }
+ ],
+ "v1_reference": {
+  "gain_dB": 19.88,
+  "noise_diff_nV_100kHz": 9.455
+ },
+ "chosen": {
+  "Rin2_ohm": 100.0,
+  "Rf_ohm": 240.0,
+  "Rg_ohm": 26.7,
+  "reason": "Rin2 100 ohm with a second BAV199 clamp pair on the LMH6629 input keeps the amplifier input current inside its +-10 mA rating (transient options below); Rf 240 / Rg 26.7 keeps the load on each stage-1 output at 267 ohm"
+ },
+ "transient_options": [
+  {
+   "min_clamp_node_V": 2.5,
+   "min_out_V": 2.5,
+   "peak_clamp_node_V": 6.52,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 24.3,
+   "peak_out_V": 4.78,
+   "recovery_measured_at": "LMH6629 stage outputs (differential / 10)",
+   "recovery_to_1mV_input_referred_us": 19.48,
+   "stage1_diff_rest_V": 0.0,
+   "Rin2_ohm": 100.0,
+   "second_clamp_at_amp_input": false
+  },
+  {
+   "min_clamp_node_V": 2.5,
+   "min_out_V": 2.5,
+   "peak_clamp_node_V": 6.52,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 24.31,
+   "peak_out_V": 4.78,
+   "recovery_measured_at": "LMH6629 stage outputs (differential / 10)",
+   "recovery_to_1mV_input_referred_us": 19.47,
+   "stage1_diff_rest_V": 0.0,
+   "Rin2_ohm": 100.0,
+   "second_clamp_at_amp_input": true
+  },
+  {
+   "min_clamp_node_V": 2.5,
+   "min_out_V": 2.5,
+   "peak_clamp_node_V": 6.5,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 35.25,
+   "peak_out_V": 4.78,
+   "recovery_measured_at": "LMH6629 stage outputs (differential / 10)",
+   "recovery_to_1mV_input_referred_us": 19.7,
+   "stage1_diff_rest_V": 0.0,
+   "Rin2_ohm": 68.0,
+   "second_clamp_at_amp_input": true
+  }
+ ],
+ "transient_chosen": {
+  "min_clamp_node_V": 2.5,
+  "min_out_V": 2.5,
+  "peak_clamp_node_V": 6.52,
+  "peak_coil_V": 463.7,
+  "peak_lmh_input_mA": 24.31,
+  "peak_out_V": 4.78,
+  "recovery_measured_at": "LMH6629 stage outputs (differential / 10)",
+  "recovery_to_1mV_input_referred_us": 19.47,
+  "stage1_diff_rest_V": 0.0,
+  "Rin2_ohm": 100.0,
+  "second_clamp_at_amp_input": true
+ },
+ "checks": {
+  "lmh6629_model_qualified": true,
+  "gain_is_24": true,
+  "bandwidth_over_10MHz": true,
+  "noise_better_than_v1": true,
+  "lmh_input_current_inside_10mA": false,
+  "recovers_inside_first_gate": false,
+  "clamp_node_inside_rails_plus_diode": false
+ },
+ "ok": false,
+ "open_findings": [
+  "lmh_input_current_inside_10mA",
+  "recovers_inside_first_gate",
+  "clamp_node_inside_rails_plus_diode"
+ ],
+ "verdict": "MP1 v2 as chosen (IXTY08N100D2, Rsrc 22, Rin2 100, LMH6629 gain 10) is NOT yet a closed design: lmh_input_current_inside_10mA, recovers_inside_first_gate, clamp_node_inside_rails_plus_diode"
+}

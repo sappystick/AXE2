@@ -1,0 +1,4 @@
+G1 a b VALUE={ternary_fcn(V(x)>1 || V(y)<0,ternary_fcn(V(z)>2,1,2),0)}
+E1 p n VALUE={DC+K*(temper-27)}
+.model R_NOISELESS R()
+R1 a b R_NOISELESS 5 noisy=0

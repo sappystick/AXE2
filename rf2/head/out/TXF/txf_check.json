@@ -27,29 +27,29 @@
   "ok": true
  },
  "kicad_drc": {
-  "errors": 0,
   "error_types": [],
+  "errors": 0,
   "examples": [],
+  "hv_rule_control_violations": 14,
   "unconnected": 0,
   "warnings": 12,
-  "hv_rule_control_violations": 13,
   "ok": true
  },
  "copper": {
   "loops_around_axis": [],
   "min_clearance_mm": 3.25,
-  "worst_pair": [
-   "F",
-   "TX_A",
-   "TX_B"
-  ],
   "min_hv_clearance_mm": 3.25,
+  "ok": true,
   "worst_hv_pair": [
    "F",
    "TX_A",
    "TX_B"
   ],
-  "ok": true
+  "worst_pair": [
+   "F",
+   "TX_A",
+   "TX_B"
+  ]
  },
  "parity": {
   "pads_checked": 6,
