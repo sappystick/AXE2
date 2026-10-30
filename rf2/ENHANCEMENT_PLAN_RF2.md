@@ -133,3 +133,11 @@ Already done with the new tools:
   - Compute the induced volts at the mono and quadrupole channels from the bus and lane loops of the routed board, with the stream confined to the quiet slot.
   - Accept: below noise at the first gate.
 - **Lid transmission:** measure the clear PETG lid's transmission and diffusion on a printed coupon; set the brightness cap from it.
+
+## 11. From the 2026-10-30 ingest (docs/INGEST_2026-10-30.md)
+
+- **Thin head:**
+  - Option B (single electronics tier, 15.7 mm) and option C (flex layers + low-profile parts, 12.1 mm) are modeled with no depth loss: `rf2/rf2_thin.py`.
+  - Before choosing, run study 2 (self-capacitance of the 5 x 6 and 4 x 7 bundles) and study 3 (flex receive copper), and check the coil-to-AB1 coupling.
+- **MP1 v2:** the parts are decided (IXTY08N100D2, Rin2 100 ohm, LMH6629). Next: board layout and routing. The bench must measure the turn-off edge dV/dt, since the clamp-current spike depends on it.
+- **Coil modeling:** add a finite-cross-section / tilt mutual-inductance cross-check (An 2022 Neumann model, or magpylib) for the flatter bundles and for REF3 under shaft tilt.

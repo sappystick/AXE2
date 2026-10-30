@@ -17,5 +17,109 @@
   "ngspice_rc": 0,
   "series_R_ohm": 64.1,
   "thermal_noise_nV_rtHz": 1.03
+ },
+ "v2_real_fets": {
+  "IXTP08N100D2 (Littelfuse/IXYS DS100182C: 1000 V, VGS(off) -2..-4 V, ID(on) >= 0.8 A, RDS(on) <= 21 ohm, Coss 24 pF)": {
+   "breakdown_V": 1000,
+   "margin_over_460V": 2.17,
+   "sweep": [
+    {
+     "Rin2_ohm": 0.0,
+     "series_R_ohm": 43.0,
+     "noise_nV_rtHz": 0.84,
+     "peak_clamp_mA": 451.3,
+     "energy_uJ": 264.36,
+     "recovery_us": 15.83,
+     "peak_opamp_input_mA_bound": null
+    },
+    {
+     "Rin2_ohm": 22.0,
+     "series_R_ohm": 65.0,
+     "noise_nV_rtHz": 1.04,
+     "peak_clamp_mA": 445.9,
+     "energy_uJ": 264.39,
+     "recovery_us": 15.48,
+     "peak_opamp_input_mA_bound": 40.9
+    },
+    {
+     "Rin2_ohm": 47.0,
+     "series_R_ohm": 90.0,
+     "noise_nV_rtHz": 1.22,
+     "peak_clamp_mA": 440.6,
+     "energy_uJ": 264.38,
+     "recovery_us": 15.18,
+     "peak_opamp_input_mA_bound": 19.1
+    },
+    {
+     "Rin2_ohm": 100.0,
+     "series_R_ohm": 143.0,
+     "noise_nV_rtHz": 1.54,
+     "peak_clamp_mA": 430.2,
+     "energy_uJ": 264.29,
+     "recovery_us": 14.72,
+     "peak_opamp_input_mA_bound": 9.0
+    },
+    {
+     "Rin2_ohm": 220.0,
+     "series_R_ohm": 263.0,
+     "noise_nV_rtHz": 2.09,
+     "peak_clamp_mA": 410.9,
+     "energy_uJ": 263.81,
+     "recovery_us": 14.11,
+     "peak_opamp_input_mA_bound": 4.1
+    }
+   ]
+  },
+  "DN2470 (Microchip DS20005410A: 700 V, VGS(off) -1.5..-3.5 V, IDSS 500 mA typ, RDS(on) <= 42 ohm, Coss <= 60 pF)": {
+   "breakdown_V": 700,
+   "margin_over_460V": 1.52,
+   "sweep": [
+    {
+     "Rin2_ohm": 0.0,
+     "series_R_ohm": 64.0,
+     "noise_nV_rtHz": 1.03,
+     "peak_clamp_mA": 1090.2,
+     "energy_uJ": 215.49,
+     "recovery_us": 14.77,
+     "peak_opamp_input_mA_bound": null
+    },
+    {
+     "Rin2_ohm": 22.0,
+     "series_R_ohm": 86.0,
+     "noise_nV_rtHz": 1.19,
+     "peak_clamp_mA": 1067.4,
+     "energy_uJ": 215.89,
+     "recovery_us": 14.58,
+     "peak_opamp_input_mA_bound": 40.9
+    },
+    {
+     "Rin2_ohm": 47.0,
+     "series_R_ohm": 111.0,
+     "noise_nV_rtHz": 1.36,
+     "peak_clamp_mA": 1043.4,
+     "energy_uJ": 216.23,
+     "recovery_us": 14.4,
+     "peak_opamp_input_mA_bound": 19.1
+    },
+    {
+     "Rin2_ohm": 100.0,
+     "series_R_ohm": 164.0,
+     "noise_nV_rtHz": 1.65,
+     "peak_clamp_mA": 998.9,
+     "energy_uJ": 216.64,
+     "recovery_us": 14.12,
+     "peak_opamp_input_mA_bound": 9.0
+    },
+    {
+     "Rin2_ohm": 220.0,
+     "series_R_ohm": 284.0,
+     "noise_nV_rtHz": 2.17,
+     "peak_clamp_mA": 861.2,
+     "energy_uJ": 216.62,
+     "recovery_us": 13.69,
+     "peak_opamp_input_mA_bound": 4.1
+    }
+   ]
+  }
  }
 }

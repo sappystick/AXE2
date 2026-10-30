@@ -82,3 +82,15 @@ Each will get a DATASHEET_LOG entry with the exact values, and MP1 v2 will then 
 ## Display power (new function, 2026-10-30)
 - **TI LMR36520** (own +5V_LED buck, 4.2-65 V in, 70 V transient, 2 A): **VERIFIED**, DATASHEET_LOG RF2-DS-DISPLAY. Chosen over a second LMR36015 (1.5 A), which would leave only 9 % margin at the 1.372 A display load.
 - **TI TPS22918** load switch (1-5.5 V, 2 A, 52 mohm): **VERIFIED**. It powers the display down while silent; the 522 x 1 mA static current would otherwise flow all the time.
+
+## MP1 v2 decision (2026-10-30, owner-supplied datasheets; rf2_mp1_spice.py "v2_real_fets")
+- **Current limiter: Littelfuse IXTY08N100D2** (VERIFIED, DATASHEET_LOG RF2-DS-HVFET). Gate tied to the far end of 22 ohm (self-biased), as modeled. After the turn-off edge it holds the clamp current at 101 mA.
+- **Turn-off edge:** the FET's own capacitance carries C dV/dt into the clamps for about 20 ns at the modeled 16 V/ns edge: 0.41-0.45 A for IXTY08N100D2, 0.86-1.09 A for DN2470.
+  - This is an upper bound, because the model releases the coil current instantly into 500 pF.
+  - The real edge is set by the switch and the damping network; the bench must measure it.
+- **Series resistor Rin2 between the clamp node and the LMH6629 input: 100 ohm.**
+  - Why: the clamp node reaches 6.55 V during the edge, and the LMH6629 limit is +-10 mA (input -0.5 V to VS).
+  - Front-end series resistance 143 ohm = 1.54 nV/rtHz thermal; with the LMH6629 (0.69 nV/rtHz, 2.6 pA/rtHz) about 1.7 nV/rtHz total, against about 5.0 for v1.
+  - Recovery 14.7 us, inside the 16.3 us first gate (v1: 12.9 us).
+  - A low-capacitance Schottky clamp at the op-amp input would allow Rin2 of about 47 ohm (about 1.45 nV/rtHz total). That part is UNVERIFIED: a datasheet is needed first.
+- **Modeled mono depth gain over v1:** (5.0 / 1.7)^(1/5.1) = about +23 % (RF2 depth scaling SNR^(1/5.1); generic op-amp and diode models; MODELED).

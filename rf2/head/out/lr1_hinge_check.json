@@ -1,0 +1,16 @@
+{
+ "bend_zone_x": [
+  28.0,
+  34.0
+ ],
+ "vias_in_zone": 0,
+ "conductors_not_perpendicular": [],
+ "radius_mm": 4.0,
+ "bend_ratio": {
+  "today": 10.0,
+  "pure_flex_2F": 26.7
+ },
+ "ratio_min": 10.0,
+ "surface_finish": "no nickel-containing finish (ENIG, ENEPIG) in the bend zone (Wuerth CBT): immersion tin, immersion silver or OSP on the flap",
+ "ok": true
+}

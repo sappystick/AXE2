@@ -49,7 +49,8 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
 ## 5. Where the last session stopped (2026-10-30)
 - **Passing:** every required step in `run.py` (see STATUS.md). The boards have DRC 0 and 0 unconnected; the housing, wiring, power, LED timing, volume ledger and parity checks pass; the router self-test passes.
 - **Still open, in order:**
-  1. **MP1 v2.** Needs the depletion-mode HV MOSFET datasheet + SPICE model (DN2470 or IXTP08N100D2), then the series resistor sized against the LMH6629 input limits (±10 mA, -0.5 V).
+  1. **MP1 v2 board.** The parts are decided (2026-10-30, docs/INGEST_2026-10-30.md): IXTY08N100D2 limiter (datasheet-verified), Rin2 100 ohm, LMH6629. Put them in `rf2_netlist.py`, then route and check (HV 1.0 mm).
+  1b. **Thin-head option B** (single electronics tier, 15.7 mm, no modeled depth loss) as a SPEC variant, after study 2 (bundle self-capacitance).
   2. **Phase C.** CB1D routing (with the display's LMR36520 + TPS22918, the 12 hinge lands and the 4 LED chains), the AB1A / AB1B rework, and the neck driver (333 uH / 8.06 A, 12.7 A boost) with the cable in the timing model.
   3. **Battery and runtime budget.** Covers the 7S pack, TX average power, the display, and every fuse and wire rating.
   4. **Enhancement studies** (`rf2/ENHANCEMENT_PLAN_RF2.md`). The first two are the winding capacitance → first gate, and the display: pinpoint centre-offset error and LED-to-receiver coupling.

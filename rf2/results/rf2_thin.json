@@ -1,0 +1,153 @@
+{
+ "status": "MODELED: z-stacks from the SPEC and the flex guides (+ ASSUMED part heights); coil at equal energy (10.8 mJ); depth by rf2_coil_search.evaluate",
+ "sources": [
+  "Wuerth Elektronik CBT, Design guide flex solutions, 06/25: polyimide 50 um, coverlay 25 um, Cu 12/18/35 um; PURE.flex / SLIM.flex > 100 um; RIGID.flex >= 0.8 mm; bend radius >= 10 x thickness (1-2 layers), 20 x (4 layers); no ENIG at bends",
+  "FCT Flex Circuit Design Guide 07/25: bend ratio 10:1 single / double, 20:1 multilayer; UHDI 0.05 / 0.05 mm, laser via 0.08 mm; Cu 9-70 um"
+ ],
+ "options": [
+  {
+   "name": "A today (SPEC)",
+   "z_rx_top": 3.2,
+   "z_floor": 3.8,
+   "island_tops": {
+    "AB1A/B": 10.200000000000001,
+    "MP1": 10.600000000000001,
+    "TXJ": 12.0,
+    "CB1D": 19.5
+   },
+   "z_display": 22.85,
+   "height_mm": 25.4,
+   "coil_window_z": [
+    4.4,
+    22.35
+   ],
+   "coil": {
+    "rows": 9,
+    "cols": 3,
+    "r_inner_mm": 110.2,
+    "z_rows": [
+     5.2,
+     18.0
+    ],
+    "L_series_uH": 321.4,
+    "I_for_10p8mJ_A": 8.2,
+    "Bz_uT_per_pulse_100_200mm": [
+     426.72,
+     122.68
+    ],
+    "depth_mm_equal_energy": {
+     "1.0 g": 136,
+     "20.0 g": 190
+    }
+   },
+   "vs_today": {
+    "height_pct": 0.0,
+    "Bz_pct": [
+     0.0,
+     0.0
+    ],
+    "L_pct": 0.0,
+    "depth_pct": {
+     "1.0 g": 0.0,
+     "20.0 g": 0.0
+    }
+   }
+  },
+  {
+   "name": "B single tier (CB1D lowered)",
+   "z_rx_top": 3.2,
+   "z_floor": 3.8,
+   "island_tops": {
+    "AB1A/B": 10.200000000000001,
+    "MP1": 10.600000000000001,
+    "TXJ": 12.0,
+    "CB1D": 12.600000000000001
+   },
+   "z_display": 13.1,
+   "height_mm": 15.65,
+   "coil_window_z": [
+    4.4,
+    12.6
+   ],
+   "coil": {
+    "rows": 5,
+    "cols": 6,
+    "r_inner_mm": 105.4,
+    "z_rows": [
+     5.2,
+     11.6
+    ],
+    "L_series_uH": 323.4,
+    "I_for_10p8mJ_A": 8.17,
+    "Bz_uT_per_pulse_100_200mm": [
+     440.77,
+     123.6
+    ],
+    "depth_mm_equal_energy": {
+     "1.0 g": 136,
+     "20.0 g": 189
+    }
+   },
+   "vs_today": {
+    "height_pct": -38.4,
+    "Bz_pct": [
+     3.3,
+     0.7
+    ],
+    "L_pct": 0.6,
+    "depth_pct": {
+     "1.0 g": 0.0,
+     "20.0 g": -0.5
+    }
+   }
+  },
+  {
+   "name": "C single tier + flex layers + low-profile parts",
+   "z_rx_top": 1.65,
+   "z_floor": 2.25,
+   "island_tops": {
+    "AB1A/B": 8.65,
+    "MP1": 8.65,
+    "TXJ": 8.65,
+    "CB1D": 8.65
+   },
+   "z_display": 9.75,
+   "height_mm": 12.05,
+   "coil_window_z": [
+    2.85,
+    9.25
+   ],
+   "coil": {
+    "rows": 4,
+    "cols": 7,
+    "r_inner_mm": 103.8,
+    "z_rows": [
+     3.65,
+     8.45
+    ],
+    "L_series_uH": 319.3,
+    "I_for_10p8mJ_A": 8.22,
+    "Bz_uT_per_pulse_100_200mm": [
+     454.65,
+     126.14
+    ],
+    "depth_mm_equal_energy": {
+     "1.0 g": 136,
+     "20.0 g": 190
+    }
+   },
+   "vs_today": {
+    "height_pct": -52.6,
+    "Bz_pct": [
+     6.5,
+     2.8
+    ],
+    "L_pct": -0.7,
+    "depth_pct": {
+     "1.0 g": 0.0,
+     "20.0 g": 0.0
+    }
+   }
+  }
+ ]
+}

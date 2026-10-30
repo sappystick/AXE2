@@ -207,3 +207,14 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - The CB1D side of the 12 hinge lands, plus the LED buck and load switch on CB1D (Phase C).
   - The LED-to-receiver coupling check (ENHANCEMENT_PLAN study 7, now more important with about 0.5 m of buses).
   - Measured lid transmission.
+
+## 17. Ingest of owner-supplied documents (2026-10-30; docs/INGEST_2026-10-30.md)
+- **MP1 v2 parts decided from the datasheets:**
+  - **Limiter:** IXTY08N100D2 (1000 V, RDS(on) <= 21 ohm, Coss 24 pF) beat DN2470 (700 V, 42 ohm, Coss <= 60 pF).
+  - **Rin2 = 100 ohm** before the LMH6629.
+  - **Modeled:** front end about 1.7 nV/rtHz against about 5.0 for v1 (about +23 % mono depth); recovery 14.7 us, inside the first gate; turn-off edge spike into the clamps 0.41-0.45 A for about 20 ns (an upper bound, to be measured).
+- **Flex rules** (Wuerth CBT 06/25, FCT 07/25) now checked on the display hinge: no vias in the bend, conductors perpendicular, bend ratio >= 10:1, nickel-free finish.
+- **Thin head** (`rf2/rf2_thin.py`): the 26-turn rim coil reshaped flatter keeps its inductance and modeled depth.
+  - Option B (CB1D lowered to the AB1 tier) gives 15.7 mm.
+  - Option C (B + flex receive / shield / display + low-profile parts) gives 12.1 mm.
+  - Still to model: the bundle self-capacitance (first gate), the flex receive copper, and the coil-to-AB1 coupling.

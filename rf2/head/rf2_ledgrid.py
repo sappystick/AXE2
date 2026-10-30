@@ -218,6 +218,24 @@ def copper():
         sg = 1 if net == "+5V_LED" else -1; eg = (m * math.cos(math.radians(HEEL + sg * a0)), m * math.sin(math.radians(HEEL + sg * a0)))
         _, q = nearest_points(Point(eg), sp_line[sg]); seg(net, "B", [eg, (q.x, q.y)], W_BUS)
     return T, V, covered
+BEND = dict(zone_x=(28.0, 34.0), flex_t_mm=dict(today=0.40, pure_flex_2F=0.15), radius_mm=4.0, ratio_min=10.0, max_angle_deg=10.0)
+def hinge_check():
+    """the hinge flap folds down to CB1D across the band x' 28-34 (bend line along y'). Rules from the owner-supplied flex guides (Wuerth CBT 06/25,
+    FCT 07/25): bend radius >= 10 x flex thickness for 1-2 copper layers; no vias in the bend zone; conductors cross the bend line at right angles
+    (here: within 10 deg of x'); no ENIG at the bend (surface finish note for the fab drawing). Radius 4.0 mm ASSUMED (the fold drops about 8 mm)."""
+    T, V, _ = copper(); x0, x1 = BEND["zone_x"]; h = FLAP["half"]
+    inzone = lambda p: x0 <= p[0] <= x1 and abs(p[1]) <= h
+    vias = [to_l(*p) for _, p in V if inzone(to_l(*p))]; bad = []
+    for net, lay, pts, w in T:
+        for a, b in zip(pts[:-1], pts[1:]):
+            la, lb = to_l(*a), to_l(*b)
+            if inzone(la) or inzone(lb):
+                ang = abs(math.degrees(math.atan2(lb[1] - la[1], lb[0] - la[0]))) % 180; ang = min(ang, 180 - ang)
+                if ang > BEND["max_angle_deg"] and math.hypot(lb[0] - la[0], lb[1] - la[1]) > 0.05: bad.append((net, round(ang, 1)))
+    ratios = {k: round(BEND["radius_mm"] / t, 1) for k, t in BEND["flex_t_mm"].items()}
+    return dict(bend_zone_x=BEND["zone_x"], vias_in_zone=len(vias), conductors_not_perpendicular=bad[:6], radius_mm=BEND["radius_mm"], bend_ratio=ratios,
+                ratio_min=BEND["ratio_min"], surface_finish="no nickel-containing finish (ENIG, ENEPIG) in the bend zone (Wuerth CBT): immersion tin, immersion silver or OSP on the flap",
+                ok=not vias and not bad and all(r >= BEND["ratio_min"] for r in ratios.values()))
 def summary():
     L = layout(); per = {R: len(ring_leds(R)) for R in RINGS}
     ch = [len(s) for s in L["chains"]]
@@ -238,5 +256,6 @@ def figure(path):
                  "F.Cu red, B.Cu blue (open buses + spokes)", loc="left", fontsize=9)
     fig.savefig(path, dpi=130, bbox_inches="tight"); plt.close(fig)
 if __name__ == "__main__":
-    import json, os; print(json.dumps(summary(), indent=1))
+    import json, os; print(json.dumps(summary(), indent=1)); hc = hinge_check(); print("hinge", json.dumps(hc))
+    json.dump(hc, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", "lr1_hinge_check.json"), "w"), indent=1)
     out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out"); os.makedirs(out, exist_ok=True); figure(os.path.join(out, "rf2_display.png"))

@@ -55,10 +55,40 @@ def small_signal_R(body, vbias=0.0):
     d = tempfile.mkdtemp(); f = os.path.join(d, "r.cir"); open(f, "w").write(net); r = subprocess.run(["ngspice", "-b", f], capture_output=True, text=True, timeout=120)
     v = [l for l in r.stdout.splitlines() if "v(inp)" in l.lower() and "=" in l]
     return float(v[-1].split("=")[-1]) / 1e-6 if v else None
+# ---- datasheet-anchored depletion FETs (2026-10-30: owner-supplied PDFs, docs/DATASHEET_LOG_ARX.md section RF2-DS-MP1V2). Level-1 core + drain resistance:
+#      KP from the saturated current at VGS 0 (ID(on) or IDSS), VTO the middle of the VGS(off) range, RD so that the total on-resistance meets RDS(on) max.
+FETS = {
+    "IXTP08N100D2 (Littelfuse/IXYS DS100182C: 1000 V, VGS(off) -2..-4 V, ID(on) >= 0.8 A, RDS(on) <= 21 ohm, Coss 24 pF)":
+        dict(VTO=-3.0, ID0=0.8, RDS=21.0, CGD=6.5e-12, CDS=24e-12, BV=1000),
+    "DN2470 (Microchip DS20005410A: 700 V, VGS(off) -1.5..-3.5 V, IDSS 500 mA typ, RDS(on) <= 42 ohm, Coss <= 60 pF)":
+        dict(VTO=-2.5, ID0=0.5, RDS=42.0, CGD=25e-12, CDS=60e-12, BV=700),
+}
+def fet_body(f, r_series=0.0):
+    KP = 2 * f["ID0"] / f["VTO"] ** 2; r_ch = 1.0 / (KP * abs(f["VTO"])); RD = max(0.0, f["RDS"] - r_ch)
+    return (f"* datasheet-anchored depletion FET: KP {KP:.4f}, channel {r_ch:.2f} ohm + RD {RD:.2f} ohm = RDS(on) {f['RDS']} ohm\n"
+            f"RDd nc dd {RD:.3f}\nM1 dd g s s NDEP L=1u W=1u\nCgd dd g {f['CGD']:.3e}\nCds dd s {f['CDS']:.3e}\nRsrc s g 22\n"
+            f"Rser g p2 0.001\nRin2 p2 inp {max(r_series, 1e-3):.3f}\n"
+            f".model NDEP NMOS(LEVEL=1 VTO={f['VTO']} KP={KP:.5f} LAMBDA=0.002 CGSO=0 CGDO=0)\n")
+def fet_study():
+    """v2 with the two real FETs, and the series resistor Rin2 between the clamp node and the LMH6629 input swept (the op-amp input limits:
+    +-10 mA, -0.5 V to VS, TI SNOSB18I): peak input current through Rin2 (clamp node at the BAV199 forward voltage), noise, energy, recovery"""
+    kT4 = 4 * 1.380649e-23 * 300; out = {}
+    for name, f in FETS.items():
+        rows = []
+        for r2 in (0.0, 22.0, 47.0, 100.0, 220.0):
+            body = fet_body(f, r2).replace("Rin2 p2 inp", "Rin2 p2 inq") + "Rop inq 0 1e7\nVop inq inp2 DC 0\nCop inp2 0 2p\n" if False else fet_body(f, r2)
+            r = run(f"{name[:12]} Rin2 {r2}", body); R = small_signal_R(body)
+            rows.append(dict(Rin2_ohm=r2, series_R_ohm=round(R, 1) if R else None, noise_nV_rtHz=round(math.sqrt(kT4 * R) * 1e9, 2) if R else None,
+                             peak_clamp_mA=r["peak_clamp_mA"], energy_uJ=r["energy_per_pulse_uJ"], recovery_us=r["preamp_input_within_1mV_after_us"],
+                             peak_opamp_input_mA_bound=round(0.9 / max(r2, 1e-3) * 1e3, 1) if r2 > 0 else None))
+            print(name[:14], rows[-1], flush=True)
+        out[name] = dict(breakdown_V=f["BV"], margin_over_460V=round(f["BV"] / 460.0, 2), sweep=rows)
+    return out
 if __name__ == "__main__":
     kT4 = 4 * 1.380649e-23 * 300; res = dict(status="MODELED with generic ngspice models; device parameters ASSUMED (not datasheet-verified)")
     for name, body in (("v1 resistor 3 x 470 ohm", V1), ("v2 depletion MOSFET limiter", V2)):
         r = run(name, body); R = small_signal_R(body); r["series_R_ohm"] = round(R, 1) if R else None
         r["thermal_noise_nV_rtHz"] = round(math.sqrt(kT4 * R) * 1e9, 2) if R else None
         res[name] = r; print(name, r, flush=True)
+    res["v2_real_fets"] = fet_study()
     json.dump(res, open(os.path.join(OUT, "rf2_mp1_spice.json"), "w"), indent=1)

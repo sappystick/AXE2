@@ -52,7 +52,10 @@ STEPS = [
           check=jcheck(H + f"out/{b}/{b.lower()}_check.json")) for b in ("TXJ", "MP1", "LR1")] + [
     dict(id="field-xcheck", cmd=[H + "rf2_field_xcheck.py"], inputs=[H + "rf2_field_xcheck.py", "rf2/rf2_coil_search.py", H + "rf2_head.py"], deps=[],
          check=jcheck(H + "out/rf2_field_xcheck.json")),
-    dict(id="mp1-spice", cmd=[H + "rf2_mp1_spice.py"], inputs=[H + "rf2_mp1_spice.py"], deps=[], outputs=[H + "out/rf2_mp1_spice.json"]),
+    dict(id="mp1-spice", cmd=[H + "rf2_mp1_spice.py"], inputs=[H + "rf2_mp1_spice.py"], deps=[], timeout=3600,     # MP1 v2 (IXTY08N100D2, Rin2 100 ohm) recovers inside the first gate
+         check=jcheck(H + "out/rf2_mp1_spice.json", lambda d: next(r for r in d["v2_real_fets"][next(k for k in d["v2_real_fets"] if k.startswith("IXTP"))]["sweep"]
+                                                                if r["Rin2_ohm"] == 100.0)["recovery_us"] < 16.3)),
+    dict(id="display-hinge", cmd=[H + "rf2_ledgrid.py"], inputs=[H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/lr1_hinge_check.json")),
     dict(id="ref3", cmd=[H + "rf2_ref3.py"], inputs=[H + "rf2_ref3.py"], deps=[], check=jcheck(H + "out/rf2_ref3.json", lambda d: d["chosen"] is not None)),
     dict(id="ledger", cmd=[H + "rf2_ledger.py"], inputs=[H + "rf2_ledger.py"], deps=["head"], check=jcheck(H + "out/rf2_ledger.json")),
     dict(id="head-check", cmd=[H + "rf2_head_check.py"], inputs=[H + "rf2_head_check.py"], deps=["head", "ledger", "shield:SH1"], check=jcheck(H + "out/rf2_head_check.json")),
@@ -65,7 +68,7 @@ STEPS = [
          outputs=[H + "out/rf2_cutaway.png", H + "out/rf2_exploded.png"], timeout=3600),
     dict(id="display-figure", group="render", cmd=[H + "rf2_ledgrid.py"], inputs=[H + "rf2_ledgrid.py"], deps=[], outputs=[H + "out/rf2_display.png"]),
 ] + [dict(id=f"study:{n}", group="studies", cmd=[f"rf2/rf2_{n}.py"], inputs=[f"rf2/rf2_{n}.py"], deps=[], outputs=[f"rf2/results/rf2_{n}.json"], timeout=7200)
-     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi")]
+     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin")]
 
 
 def fingerprint(s):
