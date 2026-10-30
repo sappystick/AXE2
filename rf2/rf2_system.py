@@ -34,7 +34,7 @@ _RZ = np.array([[math.cos(math.radians(HEEL)), -math.sin(math.radians(HEEL)), 0]
 TILT = UPR.SPEC["tilt_deg"]
 def at(s, off=0.0, lat=0.0): return _RZ @ UPR.at(s, off, lat)                                             # mm, head frame (s from the yoke pivot)
 GLAND = at(0.0); D = _RZ @ UPR.D; NRM = _RZ @ UPR.N
-TUBE = dict(od=25.0, id=19.6, material="narrowest bore: the telescoping inner tube 22 / 19.6 (rf2_upper; outer tubes 25 / 22.4); conductive but 0.6-1.2 m from the coil and no loop around the coil axis")
+TUBE = dict(od=21.0, id=18.0, material="narrowest bore: the inner square profile 21 x 21, 18 x 18 bore (rf2_chassis slim set; area taken as an 18 mm circle, conservative); conductive but 0.6-1.2 m from the coil and no loop around the coil axis")
 # ---------------------------------------------------------------- modules (s = distance along the shaft from the gland, mm; off = offset from the axis)
 MODULES = {
     "HEAD": dict(s=(-30, 0), off=0, box=None, power_W=dict(scan=10.6, boost=10.6), note="built in rf2_head / rf2_boards; +5 V and LED loads from rf2_wiring"),
@@ -133,6 +133,8 @@ def main():
     # the longer TX pair adds capacitance at the coil node; the critically damped tail scales with sqrt(C) (first-order; re-run rf2_timing with C_ext + pair)
     C_PAIR = 50e-12; l_tx = (CHS.SPEC["st"]["hinge"][0] + CHS.SPEC["extend_max"]["inner"] + CHS.SPEC["extend_max"]["mid"] + 120.0) / 1000.0; dC = C_PAIR * l_tx; tail = 16.3 - 5.8
     d_gate = tail * (math.sqrt(1 + dC / 500e-12) - 1); d_gate_base = tail * (math.sqrt(1 + C_PAIR * 0.09 / 500e-12) - 1)
+    try: d_gate = max(v["shift_fixed_us"] for v in json.load(open(os.path.join(OUT, "rf2_timing_cord.json")))["cases"].values())      # the nonlinear simulation replaces the estimate
+    except Exception: pass
     res["tx_pair"] = dict(length_m=l_tx, C_pF_ASSUMED_50pF_per_m=round(dC * 1e12, 1), first_gate_shift_us=round(d_gate, 3), vs_baseline_neck_us=round(d_gate - d_gate_base, 3),
                           note="first-order: tail 10.5 us (16.3 - 5.8 us clamp) x (sqrt(1 + dC / 500 pF) - 1); pair capacitance ASSUMED (FEP twisted pair)")
     c["TX pair adds <= 0.6 us to the first gate (first-order)"] = d_gate <= 0.6

@@ -24,25 +24,30 @@ import rf2_upper as U                                                          #
 from rf2_upper import at, shaft_frame, place, rot_about, compose, apply, rbox, trsf, I3, P0, D, N, Y, LID_TOP, phase, TIMINGS, memo, samples
 OUT = os.path.join(HERE, "chassis_out"); os.makedirs(OUT, exist_ok=True)
 REF3 = json.load(open(os.path.join(HERE, "head", "out", "rf2_ref3.json")))["rect_sleeve"]            # rectangular profile layout (owner 2026-10-30)
-SPEC = dict(tubes=dict(outer=(38.0, 32.0), mid=(33.0, 27.0), inner=(28.0, 22.0)), wall=2.0, corner_r=5.0,                       # nested rectangular carbon profiles W x H (keyed telescope)
+SPEC = dict(tubes=dict(outer=(31.0, 31.0), mid=(26.0, 26.0), inner=(21.0, 21.0)), wall=1.5, corner_r=4.0, key=(3.0, 1.5),   # slim set (rf2_slim option A)                       # nested rectangular carbon profiles W x H (keyed telescope)
             st=dict(yoke=(0, 40), inner=(40, 420), C1=(300, 322), mid=(300, 680), C2=(410, 432), outer=(410, 790), REF3=(436, 786), hinge=(790, 816),
                     chassis=(800, 1160), TXD=(812, 902), bay=(905, 1065), rails=(1000, 1165)),
             collapse=dict(inner=255.0, mid=105.0), extend_max=dict(inner=20.0, mid=170.0), overlap_min=100.0,
-            chassis=dict(n=(-22.0, 25.0), w=72.0, fillet=10.0),
-            grip=dict(base_s=884.0, base_n=30.0, rake_deg=18.0, length=112.0, sections=[(0, 27, 21), (8, 22, 18.5), (40, 23.5, 19.5), (75, 23, 19.5), (112, 21, 18)],
+            chassis=dict(n=(-15.0, 16.0), w=62.0, fillet=9.0),                                                          # slim chassis, boards on one level (rf2_slim)
+            grip=dict(base_s=884.0, base_n=21.0, rake_deg=18.0, length=112.0, sections=[(0, 27, 21), (8, 22, 18.5), (40, 23.5, 19.5), (75, 23, 19.5), (112, 21, 18)],
                       grooves=[(20.0, 10.0, 3.0), (44.0, 10.5, 3.2), (68.0, 10.5, 3.2)], head=(44.0, 38.0, 30.0), slide=25.0, ffc_loop=60.0),
             trigger=dict(len=28.0, w=11.0, t=6.0, reach=70.0), button=dict(cap_d=12.0, ring_d=17.0, h=3.0), screen=dict(len=30.0, w=32.0, t=6.0, open_deg=60.0),
             dial=dict(d=15.0, t=6.0), cuff=dict(r_in=42.0, t=4.0, len=62.0, centre_s=1150.0, wing_deg=55.0, slide=70.0), forearm_r=40.0,
-            rails=dict(d=8.0, y=40.0, n=12.0), cells=dict(d=18.6, l=65.2, n_s=7, n_p=2), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
+            rails=dict(d=8.0, y=35.0, n=0.0), cells=dict(d=18.6, l=65.2, n_s=7, n_p=2), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
             ref3_outer=tuple(REF3["outer_mm"]), ref3_len=REF3["length_mm"], C_pair_pF_per_m=50.0, bend_min=10.0, twist_max_deg_per_mm=10.0, cord=dict(od=7.0, coil_od=17.0, stretch_max=4.0),
             eye=dict(above=600.0, behind=250.0), backpack=(520.0, 320.0, 210.0), sdc_folded=(400.0, 216.0), fold_gap=2.0)
 def rrect(W, H, r): return cq.Workplane("XY").rect(H, W).extrude(1.0).edges("|Z").fillet(min(r, W / 2 - 0.1, H / 2 - 0.1)).faces(">Z").wires().toPending()
-def rprof(W, H, s0, s1, wall=None, r=None, n=0.0):
-    """rectangular profile along the shaft: W lateral (Y), H along N; rounded corners; hollow by `wall`"""
+def rprof(W, H, s0, s1, wall=None, r=None, n=0.0, keys=False):
+    """rectangular profile along the shaft: W lateral (Y), H along N; rounded corners; hollow by `wall`; keys=True cuts the keyway track (3 x 1.5 mm) along
+    each side face: it carries the slide pads (keyed telescope, no twist) and seats the cord anchors and the clamp shoes"""
     wall = SPEC["wall"] if wall is None else wall; r = SPEC["corner_r"] if r is None else r; L = s1 - s0
     o = cq.Workplane("XY").rect(H, W).extrude(L).edges("|Z").fillet(min(r, H / 2 - 0.2, W / 2 - 0.2))
     i = cq.Workplane("XY").rect(H - 2 * wall, W - 2 * wall).extrude(L + 2).translate((0, 0, -1)).edges("|Z").fillet(max(0.5, min(r - wall, (H - 2 * wall) / 2 - 0.2, (W - 2 * wall) / 2 - 0.2)))
-    return shaft_frame(o.cut(i).val(), s0, n)
+    o = o.cut(i)
+    if keys:
+        kw, kd = SPEC["key"]
+        for sg in (1, -1): o = o.cut(cq.Workplane("XY").box(kw, 2 * kd, L + 2).translate((0, sg * W / 2, L / 2)))
+    return shaft_frame(o.val(), s0, n)
 def tube(W, H, s0, s1): return rprof(W, H, s0, s1)
 def g_axis():
     rk = math.radians(SPEC["grip"]["rake_deg"]); up = math.cos(rk) * N - math.sin(rk) * D; front = -math.cos(rk) * D - math.sin(rk) * N      # base -> top; finger side (toward the head)
@@ -55,10 +60,10 @@ def build():
     for sg in (1, -1):
         P[f"YOKE_CHEEK_{'L' if sg > 0 else 'R'}"] = ("LOW", shaft_frame(cq.Workplane("XY").box(24, 5, 44).translate((0, sg * 24.5, 12)).edges("|Y").fillet(5).val(), 0.0), "yoke knuckle cheek (pitch pivot + roll swivel)")
     P["YOKE_SWIVEL"] = ("LOW", rprof(ti[0] + 10, ti[1] + 10, 18.0, st["yoke"][1] + 8, wall=5.0), "roll swivel collar (90 deg detents) on the inner profile")
-    P["INNER_TUBE"] = ("LOW", tube(*ti, *st["inner"]), "inner rectangular carbon profile 28 x 22 (coil cord inside the 24 x 18 bore)")
-    P["MID_TUBE"] = ("MID", tube(*tm, *st["mid"]), "middle rectangular profile 33 x 27 (keyed)")
+    P["INNER_TUBE"] = ("LOW", rprof(*ti, *st["inner"], keys=True), "inner square carbon profile 21 x 21, 1.5 mm wall, keyway tracks (coil cord in the 18 x 18 bore)")
+    P["MID_TUBE"] = ("MID", rprof(*tm, *st["mid"], keys=True), "middle profile 26 x 26, keyway tracks")
     P["CAMLOCK_1"] = ("MID", rprof(tm[0] + 7, tm[1] + 7, *st["C1"], wall=3.6), "flat lever clamp 1 (inner in middle)")
-    P["OUTER_TUBE"] = ("UPT", tube(*to, *st["outer"]), "outer rectangular profile 38 x 32 on the hinge")
+    P["OUTER_TUBE"] = ("UPT", tube(*to, *st["outer"]), "outer profile 31 x 31 on the hinge")
     P["CAMLOCK_2"] = ("UPT", rprof(s["ref3_outer"][0] + 4, s["ref3_outer"][1] + 4, *st["C2"], wall=(s["ref3_outer"][0] + 4 - to[0]) / 2), "flat lever clamp 2 (middle in outer)")
     ro = s["ref3_outer"]
     P["REF3_SLEEVE"] = ("UPT", rprof(ro[0], ro[1], *st["REF3"], wall=(ro[0] - to[0]) / 2 + 0.01, r=s["corner_r"] + 2),
@@ -244,8 +249,11 @@ def main():
     run = 30.0; twist = 180.0 / run
     c["hinge_pass_through"] = dict(ok=twist <= s["twist_max_deg_per_mm"] and 12.0 >= s["bend_min"], axial_run_mm=run, twist_deg_per_mm=round(twist, 1), bend_r_mm=12.0,
                                    note="the bundle enters the hollow hinge axis with a 12 mm-radius 90 deg bend, twists 180 deg along a 30 mm axial run, leaves with a second 90 deg bend")
-    L_pair = (Lmax + 120.0) / 1000.0; dC = s["C_pair_pF_per_m"] * L_pair * 1e-12; dg = (16.3 - 5.8) * (math.sqrt(1 + dC / 500e-12) - 1)
-    c["tx_pair_in_cord"] = dict(ok=dg <= 0.6, length_m=round(L_pair, 2), C_pF=round(dC * 1e12, 1), first_gate_shift_us=round(dg, 3), note="TX moved into the chassis: the pair runs the whole shaft (first-order gate cost, 50 pF/m ASSUMED)")
+    L_pair = (Lmax + 120.0) / 1000.0; dC = s["C_pair_pF_per_m"] * L_pair * 1e-12
+    try:
+        tc = json.load(open(os.path.join(HERE, "results", "rf2_timing_cord.json"))); dg = max(v["shift_fixed_us"] for v in tc["cases"].values()); src = "rf2_timing_cord (nonlinear turn-off, Rd kept at the no-cord value)"
+    except Exception: dg = (16.3 - 5.8) * (math.sqrt(1 + dC / 500e-12) - 1); src = "first-order (rf2_timing_cord not run)"
+    c["tx_pair_in_cord"] = dict(ok=dg <= 0.6, length_m=round(L_pair, 2), C_pF=round(dC * 1e12, 1), first_gate_shift_us=round(dg, 3), source=src, note="TX in the chassis: the pair runs the whole shaft (50 pF/m ASSUMED)")
     Lc, Wc, Hc = geo["cart"]; cart = P["BATTERY_CARTRIDGE"][1]; hits = set()
     for dz in np.linspace(10, Lc + 10, 8):
         mv = cart.moved(trsf(np.eye(3), D * dz)); hits |= {k for k, p in P.items() if p[0] == "CH" and k not in ("BATTERY_CARTRIDGE", "BATTERY_BAY", "CHASSIS") and mv.distance(p[1]) < 0.3}

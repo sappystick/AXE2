@@ -550,48 +550,48 @@
  "rect_sleeve": {
   "X": {
    "gain": 3.0,
-   "turns": 399,
-   "layers": 3,
+   "turns": 506,
+   "layers": 5,
    "wire_mm": 0.2,
-   "wire_m": 285.2,
-   "R_ohm": 156.2,
-   "e_ref_nV": 2.34,
-   "depth_penalty_pct": -1.86,
-   "copper_g": 80.3
+   "wire_m": 358.9,
+   "R_ohm": 196.5,
+   "e_ref_nV": 2.48,
+   "depth_penalty_pct": -2.06,
+   "copper_g": 101.0
   },
   "Y": {
    "gain": 3.0,
-   "turns": 478,
-   "layers": 4,
+   "turns": 506,
+   "layers": 5,
    "wire_mm": 0.2,
-   "wire_m": 340.1,
-   "R_ohm": 186.2,
-   "e_ref_nV": 2.44,
-   "depth_penalty_pct": -2.01,
-   "copper_g": 95.7
+   "wire_m": 358.9,
+   "R_ohm": 196.5,
+   "e_ref_nV": 2.48,
+   "depth_penalty_pct": -2.06,
+   "copper_g": 101.0
   },
   "Z": {
    "gain": 4.0,
-   "turns": 3046,
+   "turns": 3710,
    "layers": 2,
    "wire_mm": 0.15,
-   "wire_m": 449.1,
-   "R_ohm": 437.1,
-   "e_ref_nV": 3.18,
-   "depth_penalty_pct": -1.92,
-   "copper_g": 71.1
+   "wire_m": 494.7,
+   "R_ohm": 481.5,
+   "e_ref_nV": 3.3,
+   "depth_penalty_pct": -2.05,
+   "copper_g": 78.3
   },
   "profile_mm": [
-   38.0,
-   32.0
+   31.0,
+   31.0
   ],
   "length_mm": 350.0,
   "outer_mm": [
-   42.4,
-   36.4
+   35.9,
+   35.9
   ],
-  "worst_axis_penalty_pct": -2.01,
-  "copper_g_total": 247.1
+  "worst_axis_penalty_pct": -2.06,
+  "copper_g_total": 280.3
  },
  "sleeve": {
   "X": {

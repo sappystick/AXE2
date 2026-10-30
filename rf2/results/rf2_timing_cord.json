@@ -1,0 +1,53 @@
+{
+ "status": "MODELED; pair capacitance 50 pF/m ASSUMED until the cord datasheet",
+ "pair_pF": 55.0,
+ "cases": {
+  "node 500 pF": {
+   "no_cord": {
+    "node_pF": 500.0,
+    "Rd_ohm": 401,
+    "first_gate_us": 16.29,
+    "last_diode_us": 3.98
+   },
+   "cord_Rd_fixed": {
+    "node_pF": 555.0,
+    "Rd_ohm": 401,
+    "first_gate_us": 16.48,
+    "last_diode_us": 3.98
+   },
+   "cord_Rd_retuned": {
+    "node_pF": 555.0,
+    "Rd_ohm": 381,
+    "first_gate_us": 16.8,
+    "last_diode_us": 3.95
+   },
+   "shift_fixed_us": 0.19,
+   "shift_retuned_us": 0.51
+  },
+  "node 368 pF": {
+   "no_cord": {
+    "node_pF": 368.0,
+    "Rd_ohm": 467,
+    "first_gate_us": 14.9,
+    "last_diode_us": 4.05
+   },
+   "cord_Rd_fixed": {
+    "node_pF": 423.0,
+    "Rd_ohm": 467,
+    "first_gate_us": 14.94,
+    "last_diode_us": 4.06
+   },
+   "cord_Rd_retuned": {
+    "node_pF": 423.0,
+    "Rd_ohm": 436,
+    "first_gate_us": 15.5,
+    "last_diode_us": 4.02
+   },
+   "shift_fixed_us": 0.04,
+   "shift_retuned_us": 0.6
+  }
+ },
+ "first_order_estimate_us": 0.562,
+ "worst_shift_us": 0.6,
+ "recommendation": "keep Rd at the no-cord value"
+}

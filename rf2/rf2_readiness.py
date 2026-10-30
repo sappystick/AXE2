@@ -15,7 +15,7 @@ def files(*pats): return all(glob.glob(os.path.join(ROOT, p)) for p in pats)
 D = [
     # ---- phase 0: interfaces + the simulations that can still move boards
     ("P0.1", 0, "Interface control document: every joint (gland, coil cord, hinge pass-through, grip FFC, cartridge contacts, REF3 termination) with conductors, connector part, pinout, voltage class",
-     [], ("files", ["docs/ICD.md"]), "one table per interface; parts with datasheets on file"),
+     [], ("json", "rf2/results/rf2_icd.json", "all_parts_verified"), "one table per interface (docs/ICD.md, generated); every connector part verified"),
     ("P0.2", 0, "System netlist extended to every RF2 board and harness wire (TXD, PWR, HB2-M, HB2-G, BMS, REF3T, AB1A/B, CB1D, MP1 v2) with parity", ["P0.1"],
      ("files", ["rf2/results/rf2_netlist_coverage.json"]), "coverage report lists every board above with nets; rf2_parity passes against built boards and harness"),
     ("P0.3", 0, "First gate with the 1.1 m TX pair in the coil cord (rf2_timing, node C + pair, damping at the coil)", [], ("files", ["rf2/results/rf2_timing_cord.json"]), "exact gate shift replaces the +0.56 us first-order estimate"),
@@ -23,7 +23,7 @@ D = [
     ("P0.5", 0, "MP1 v2 protection closed: amplifier input < 10 mA and settling < first gate (levers: Rin2 150-220 ohm, 3.3 V clamp rail, gate timing)", ["P0.3"],
      ("step", "study:mp1v2_protect_closed"), "one option passes every limit in SPICE"),
     ("P0.6", 0, "Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total)",
-     [], ("files", ["data/datasheets/*LS013B7DH03*", "data/datasheets/*RS485*"]), "each part VERIFIED in DATASHEET_LOG"),
+     [], ("json", "rf2/results/rf2_icd.json", "p06_all_verified"), "each part VERIFIED in DATASHEET_LOG (status list in rf2_icd.json p06_parts)"),
     # ---- phase 1: schematics + SPICE (each lands in rf2_netlist, ratings checked continuous + rule 6)
     ("P1.1", 1, "TXD schematic: C3M0280090J + UCC5350, flat-top PWM current loop (333 uH, 8.06 / 12.74 A), US3M clamp + film cap, bulk bank, shunt + current sense, TMP117 therm -> TXSTAT",
      ["P0.1", "P0.3"], ("files", ["rf2/results/rf2_txd_spice.json"]), "SPICE: current loop, turn-off, clamp, ratings in continuous boost"),
@@ -70,8 +70,12 @@ D = [
 ]
 DONE_ALREADY = ["head shells / trays / coil channel (head:BF)", "TXJ, TXF, MP1 v1, LR1, SH1, SB1R QA / QB boards (DRC 0)", "light plate", "chassis v2 envelope + electronics envelopes + fold (chassis)",
                 "system budgets / harness / thermal (system)", "audio path (audio)", "display + audio coding v3", "REF3 rect sizing (ref3)", "continuous-boost ratings"]
+def json_flag(path, key):
+    try: return json.load(open(os.path.join(ROOT, path))).get(key) is True
+    except Exception: return False
 def status(d):
     kind = d[4][0]
+    if kind == "json": return "DONE" if json_flag(d[4][1], d[4][2]) else "TODO"
     if kind == "step": return "DONE" if step_ok(d[4][1]) else "TODO"
     if kind == "files": return "DONE" if files(*d[4][1]) else "TODO"
     return "TODO"
@@ -99,7 +103,7 @@ def main():
         L += [f"## {names[ph]}", "", "| ID | Deliverable | Needs | Gate | Done means | Status |", "|---|---|---|---|---|---|"]
         for r in rows:
             if r["phase"] != ph: continue
-            g = r["gate"]; gs = f"step `{g[1]}`" if g[0] == "step" else ("files " + ", ".join(f"`{x}`" for x in g[1]))
+            g = r["gate"]; gs = f"step `{g[1]}`" if g[0] == "step" else (f"`{g[1]}` {g[2]} = true" if g[0] == "json" else "files " + ", ".join(f"`{x}`" for x in g[1]))
             L.append(f"| {r['id']} | {r['item']} | {', '.join(r['deps']) or '-'} | {gs} | {r['done_means']} | {'**' + r['status'] + '**' + (' (start now)' if r['ready_to_start'] else '')} |")
         L.append("")
     open(os.path.join(ROOT, "docs", "PROTOTYPE_ROADMAP.md"), "w").write("\n".join(L) + "\n")

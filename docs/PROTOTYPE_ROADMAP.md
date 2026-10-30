@@ -2,7 +2,7 @@
 
 'Ready to prototype' = every gate below green in this repository. That is MODELED and tool-checked: no fabricator review, no bench test (rule 3).
 
-**Done: 0 of 40. Ready to start now: P0.1, P0.3, P0.4, P0.6, P3.6, P3.7, P3.9.**
+**Done: 1 of 40. Ready to start now: P0.1, P0.4, P0.5, P0.6, P3.6, P3.7, P3.9.**
 
 **Critical path:** P0.1 -> P1.1 -> P1.2 -> P2.2 -> P2.8 -> P3.1 -> P5.1 -> P5.2
 
@@ -12,12 +12,12 @@ Already in place: head shells / trays / coil channel (head:BF); TXJ, TXF, MP1 v1
 
 | ID | Deliverable | Needs | Gate | Done means | Status |
 |---|---|---|---|---|---|
-| P0.1 | Interface control document: every joint (gland, coil cord, hinge pass-through, grip FFC, cartridge contacts, REF3 termination) with conductors, connector part, pinout, voltage class | - | files `docs/ICD.md` | one table per interface; parts with datasheets on file | **TODO** (start now) |
+| P0.1 | Interface control document: every joint (gland, coil cord, hinge pass-through, grip FFC, cartridge contacts, REF3 termination) with conductors, connector part, pinout, voltage class | - | `rf2/results/rf2_icd.json` all_parts_verified = true | one table per interface (docs/ICD.md, generated); every connector part verified | **TODO** (start now) |
 | P0.2 | System netlist extended to every RF2 board and harness wire (TXD, PWR, HB2-M, HB2-G, BMS, REF3T, AB1A/B, CB1D, MP1 v2) with parity | P0.1 | files `rf2/results/rf2_netlist_coverage.json` | coverage report lists every board above with nets; rf2_parity passes against built boards and harness | **TODO** |
-| P0.3 | First gate with the 1.1 m TX pair in the coil cord (rf2_timing, node C + pair, damping at the coil) | - | files `rf2/results/rf2_timing_cord.json` | exact gate shift replaces the +0.56 us first-order estimate | **TODO** (start now) |
+| P0.3 | First gate with the 1.1 m TX pair in the coil cord (rf2_timing, node C + pair, damping at the coil) | - | files `rf2/results/rf2_timing_cord.json` | exact gate shift replaces the +0.56 us first-order estimate | **DONE** |
 | P0.4 | EMI canceller with the rectangular REF3 (e_ref 2.5-3.4 nV/rtHz) (rf2_emi) | - | files `rf2/results/rf2_emi_rect.json` | depth with canceller re-computed | **TODO** (start now) |
-| P0.5 | MP1 v2 protection closed: amplifier input < 10 mA and settling < first gate (levers: Rin2 150-220 ohm, 3.3 V clamp rail, gate timing) | P0.3 | step `study:mp1v2_protect_closed` | one option passes every limit in SPICE | **TODO** |
-| P0.6 | Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total) | - | files `data/datasheets/*LS013B7DH03*`, `data/datasheets/*RS485*` | each part VERIFIED in DATASHEET_LOG | **TODO** (start now) |
+| P0.5 | MP1 v2 protection closed: amplifier input < 10 mA and settling < first gate (levers: Rin2 150-220 ohm, 3.3 V clamp rail, gate timing) | P0.3 | step `study:mp1v2_protect_closed` | one option passes every limit in SPICE | **TODO** (start now) |
+| P0.6 | Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total) | - | `rf2/results/rf2_icd.json` p06_all_verified = true | each part VERIFIED in DATASHEET_LOG (status list in rf2_icd.json p06_parts) | **TODO** (start now) |
 
 ## Phase 1: schematics + SPICE
 

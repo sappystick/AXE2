@@ -135,7 +135,7 @@
    "ref3": "pass",
    "study:emi": "not run"
   },
-  "numbers": "REF3 worst-axis penalty -2.01 % (box -1.39 %), copper 247.1 g; REF3 511.0 mm from the head at the shortest use length",
+  "numbers": "REF3 worst-axis penalty -2.06 % (box -1.39 %), copper 280.3 g; REF3 511.0 mm from the head at the shortest use length",
   "open": "re-run rf2_emi with the rect coils' e_ref; winding jig"
  },
  {
@@ -171,7 +171,7 @@
   "steps": {
    "chassis": "pass"
   },
-  "numbers": "cord stretch 550 mm (ratio 4.44); TX pair 1.1 m: first gate +0.562 us (first-order)",
+  "numbers": "cord stretch 550 mm (ratio 4.44); TX pair 1.1 m: first gate +0.19 us (first-order)",
   "open": "coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair"
  },
  {
@@ -187,7 +187,7 @@
   "steps": {
    "chassis": "pass"
   },
-  "numbers": "[497, 249, 186] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2655 g",
+  "numbers": "[494, 233, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2688 g",
   "open": "lighter REF3 / tubes toward the SDC's 2.3 kg"
  },
  {

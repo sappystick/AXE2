@@ -48,7 +48,7 @@ def sleeve(L=0.35, a0=0.0145, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15, phi=math.r
     out["length_mm"] = L * 1e3; out["winding_outer_r_mm"] = round(a_out * 1e3, 2); out["sleeve_od_mm"] = round(2 * (a_out * 1e3 + 1.0), 1)
     out["worst_axis_penalty_pct"] = min(out[k]["depth_penalty_pct"] for k in ("X", "Y", "Z")); out["copper_g_total"] = round(sum(out[k]["copper_g"] for k in ("X", "Y", "Z")), 1)
     return out
-def rect_sleeve(W=0.038, H=0.032, L=0.35, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15):
+def rect_sleeve(W=0.031, H=0.031, L=0.35, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15):
     """rectangular-profile layout (owner 2026-10-30: rectangular housing along the shaft): X and Y as pairs of flat nested rectangular coils on opposite
     faces of the W x H profile (each turn links its own area), Z as a solenoid around the rectangle; layers build outward"""
     out = {}; pt = wd_t * 1.1e-3

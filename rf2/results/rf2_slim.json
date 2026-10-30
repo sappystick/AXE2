@@ -1,0 +1,663 @@
+{
+ "status": "MODELED; flex rules, E, head load and deflection limit ASSUMED (marked)",
+ "options": {
+  "A": {
+   "tunnel": {
+    "w": 18.0,
+    "h": 18.0
+   },
+   "best": {
+    "option": "A",
+    "wall": 1.5,
+    "E_GPa": 60.0,
+    "inner": [
+     21.0,
+     21.0
+    ],
+    "mid": [
+     26.0,
+     26.0
+    ],
+    "outer": [
+     31.0,
+     31.0
+    ],
+    "ref3_outer": [
+     35.9,
+     35.9
+    ],
+    "ref3_penalty_pct": -2.06,
+    "ref3_cu_g": 280.3,
+    "deflection_mm": 5.88,
+    "profiles_g": 267,
+    "ok": true
+   },
+   "all": [
+    {
+     "option": "A",
+     "wall": 1.5,
+     "E_GPa": 60.0,
+     "inner": [
+      21.0,
+      21.0
+     ],
+     "mid": [
+      26.0,
+      26.0
+     ],
+     "outer": [
+      31.0,
+      31.0
+     ],
+     "ref3_outer": [
+      35.9,
+      35.9
+     ],
+     "ref3_penalty_pct": -2.06,
+     "ref3_cu_g": 280.3,
+     "deflection_mm": 5.88,
+     "profiles_g": 267,
+     "ok": true
+    },
+    {
+     "option": "A",
+     "wall": 1.5,
+     "E_GPa": 100.0,
+     "inner": [
+      21.0,
+      21.0
+     ],
+     "mid": [
+      26.0,
+      26.0
+     ],
+     "outer": [
+      31.0,
+      31.0
+     ],
+     "ref3_outer": [
+      35.9,
+      35.9
+     ],
+     "ref3_penalty_pct": -2.06,
+     "ref3_cu_g": 280.3,
+     "deflection_mm": 3.53,
+     "profiles_g": 267,
+     "ok": true
+    },
+    {
+     "option": "A",
+     "wall": 2.0,
+     "E_GPa": 60.0,
+     "inner": [
+      22.0,
+      22.0
+     ],
+     "mid": [
+      28.0,
+      28.0
+     ],
+     "outer": [
+      34.0,
+      34.0
+     ],
+     "ref3_outer": [
+      38.4,
+      38.4
+     ],
+     "ref3_penalty_pct": -1.96,
+     "ref3_cu_g": 253.8,
+     "deflection_mm": 3.56,
+     "profiles_g": 377,
+     "ok": true
+    },
+    {
+     "option": "A",
+     "wall": 2.0,
+     "E_GPa": 100.0,
+     "inner": [
+      22.0,
+      22.0
+     ],
+     "mid": [
+      28.0,
+      28.0
+     ],
+     "outer": [
+      34.0,
+      34.0
+     ],
+     "ref3_outer": [
+      38.4,
+      38.4
+     ],
+     "ref3_penalty_pct": -1.96,
+     "ref3_cu_g": 253.8,
+     "deflection_mm": 2.14,
+     "profiles_g": 377,
+     "ok": true
+    },
+    {
+     "option": "A",
+     "wall": 2.5,
+     "E_GPa": 60.0,
+     "inner": [
+      23.0,
+      23.0
+     ],
+     "mid": [
+      30.0,
+      30.0
+     ],
+     "outer": [
+      37.0,
+      37.0
+     ],
+     "ref3_outer": [
+      41.0,
+      41.0
+     ],
+     "ref3_penalty_pct": -1.89,
+     "ref3_cu_g": 235.1,
+     "deflection_mm": 2.34,
+     "profiles_g": 499,
+     "ok": true
+    },
+    {
+     "option": "A",
+     "wall": 2.5,
+     "E_GPa": 100.0,
+     "inner": [
+      23.0,
+      23.0
+     ],
+     "mid": [
+      30.0,
+      30.0
+     ],
+     "outer": [
+      37.0,
+      37.0
+     ],
+     "ref3_outer": [
+      41.0,
+      41.0
+     ],
+     "ref3_penalty_pct": -1.89,
+     "ref3_cu_g": 235.1,
+     "deflection_mm": 1.41,
+     "profiles_g": 499,
+     "ok": true
+    }
+   ]
+  },
+  "B": {
+   "tunnel": {
+    "w": 30.0,
+    "h": 15.210000000000003
+   },
+   "best": {
+    "option": "B",
+    "wall": 1.5,
+    "E_GPa": 60.0,
+    "inner": [
+     33.0,
+     18.2
+    ],
+    "mid": [
+     38.0,
+     23.2
+    ],
+    "outer": [
+     43.0,
+     28.2
+    ],
+    "ref3_outer": [
+     47.9,
+     33.1
+    ],
+    "ref3_penalty_pct": -2.15,
+    "ref3_cu_g": 256.6,
+    "deflection_mm": 5.59,
+    "profiles_g": 345,
+    "ok": true
+   },
+   "all": [
+    {
+     "option": "B",
+     "wall": 1.5,
+     "E_GPa": 60.0,
+     "inner": [
+      33.0,
+      18.2
+     ],
+     "mid": [
+      38.0,
+      23.2
+     ],
+     "outer": [
+      43.0,
+      28.2
+     ],
+     "ref3_outer": [
+      47.9,
+      33.1
+     ],
+     "ref3_penalty_pct": -2.15,
+     "ref3_cu_g": 256.6,
+     "deflection_mm": 5.59,
+     "profiles_g": 345,
+     "ok": true
+    },
+    {
+     "option": "B",
+     "wall": 1.5,
+     "E_GPa": 100.0,
+     "inner": [
+      33.0,
+      18.2
+     ],
+     "mid": [
+      38.0,
+      23.2
+     ],
+     "outer": [
+      43.0,
+      28.2
+     ],
+     "ref3_outer": [
+      47.9,
+      33.1
+     ],
+     "ref3_penalty_pct": -2.15,
+     "ref3_cu_g": 256.6,
+     "deflection_mm": 3.36,
+     "profiles_g": 345,
+     "ok": true
+    },
+    {
+     "option": "B",
+     "wall": 2.0,
+     "E_GPa": 60.0,
+     "inner": [
+      34.0,
+      19.2
+     ],
+     "mid": [
+      40.0,
+      25.2
+     ],
+     "outer": [
+      46.0,
+      31.2
+     ],
+     "ref3_outer": [
+      50.9,
+      36.1
+     ],
+     "ref3_penalty_pct": -2.05,
+     "ref3_cu_g": 233.3,
+     "deflection_mm": 3.39,
+     "profiles_g": 473,
+     "ok": true
+    },
+    {
+     "option": "B",
+     "wall": 2.0,
+     "E_GPa": 100.0,
+     "inner": [
+      34.0,
+      19.2
+     ],
+     "mid": [
+      40.0,
+      25.2
+     ],
+     "outer": [
+      46.0,
+      31.2
+     ],
+     "ref3_outer": [
+      50.9,
+      36.1
+     ],
+     "ref3_penalty_pct": -2.05,
+     "ref3_cu_g": 233.3,
+     "deflection_mm": 2.04,
+     "profiles_g": 473,
+     "ok": true
+    },
+    {
+     "option": "B",
+     "wall": 2.5,
+     "E_GPa": 60.0,
+     "inner": [
+      35.0,
+      20.2
+     ],
+     "mid": [
+      42.0,
+      27.2
+     ],
+     "outer": [
+      49.0,
+      34.2
+     ],
+     "ref3_outer": [
+      53.4,
+      38.6
+     ],
+     "ref3_penalty_pct": -1.95,
+     "ref3_cu_g": 212.6,
+     "deflection_mm": 2.23,
+     "profiles_g": 611,
+     "ok": true
+    },
+    {
+     "option": "B",
+     "wall": 2.5,
+     "E_GPa": 100.0,
+     "inner": [
+      35.0,
+      20.2
+     ],
+     "mid": [
+      42.0,
+      27.2
+     ],
+     "outer": [
+      49.0,
+      34.2
+     ],
+     "ref3_outer": [
+      53.4,
+      38.6
+     ],
+     "ref3_penalty_pct": -1.95,
+     "ref3_cu_g": 212.6,
+     "deflection_mm": 1.34,
+     "profiles_g": 611,
+     "ok": true
+    }
+   ]
+  },
+  "C": {
+   "tunnel": {
+    "w": 19.0,
+    "h": 26.21
+   },
+   "best": {
+    "option": "C",
+    "wall": 1.5,
+    "E_GPa": 60.0,
+    "inner": [
+     22.0,
+     29.2
+    ],
+    "mid": [
+     27.0,
+     34.2
+    ],
+    "outer": [
+     32.0,
+     39.2
+    ],
+    "ref3_outer": [
+     36.4,
+     43.6
+    ],
+    "ref3_penalty_pct": -2.01,
+    "ref3_cu_g": 243.9,
+    "deflection_mm": 3.13,
+    "profiles_g": 365,
+    "ok": true
+   },
+   "all": [
+    {
+     "option": "C",
+     "wall": 1.5,
+     "E_GPa": 60.0,
+     "inner": [
+      22.0,
+      29.2
+     ],
+     "mid": [
+      27.0,
+      34.2
+     ],
+     "outer": [
+      32.0,
+      39.2
+     ],
+     "ref3_outer": [
+      36.4,
+      43.6
+     ],
+     "ref3_penalty_pct": -2.01,
+     "ref3_cu_g": 243.9,
+     "deflection_mm": 3.13,
+     "profiles_g": 365,
+     "ok": true
+    },
+    {
+     "option": "C",
+     "wall": 1.5,
+     "E_GPa": 100.0,
+     "inner": [
+      22.0,
+      29.2
+     ],
+     "mid": [
+      27.0,
+      34.2
+     ],
+     "outer": [
+      32.0,
+      39.2
+     ],
+     "ref3_outer": [
+      36.4,
+      43.6
+     ],
+     "ref3_penalty_pct": -2.01,
+     "ref3_cu_g": 243.9,
+     "deflection_mm": 1.88,
+     "profiles_g": 365,
+     "ok": true
+    },
+    {
+     "option": "C",
+     "wall": 2.0,
+     "E_GPa": 60.0,
+     "inner": [
+      23.0,
+      30.2
+     ],
+     "mid": [
+      29.0,
+      36.2
+     ],
+     "outer": [
+      35.0,
+      42.2
+     ],
+     "ref3_outer": [
+      39.4,
+      46.6
+     ],
+     "ref3_penalty_pct": -1.95,
+     "ref3_cu_g": 229.1,
+     "deflection_mm": 1.97,
+     "profiles_g": 493,
+     "ok": true
+    },
+    {
+     "option": "C",
+     "wall": 2.0,
+     "E_GPa": 100.0,
+     "inner": [
+      23.0,
+      30.2
+     ],
+     "mid": [
+      29.0,
+      36.2
+     ],
+     "outer": [
+      35.0,
+      42.2
+     ],
+     "ref3_outer": [
+      39.4,
+      46.6
+     ],
+     "ref3_penalty_pct": -1.95,
+     "ref3_cu_g": 229.1,
+     "deflection_mm": 1.18,
+     "profiles_g": 493,
+     "ok": true
+    },
+    {
+     "option": "C",
+     "wall": 2.5,
+     "E_GPa": 60.0,
+     "inner": [
+      24.0,
+      31.2
+     ],
+     "mid": [
+      31.0,
+      38.2
+     ],
+     "outer": [
+      38.0,
+      45.2
+     ],
+     "ref3_outer": [
+      42.0,
+      49.2
+     ],
+     "ref3_penalty_pct": -1.86,
+     "ref3_cu_g": 211.6,
+     "deflection_mm": 1.33,
+     "profiles_g": 631,
+     "ok": true
+    },
+    {
+     "option": "C",
+     "wall": 2.5,
+     "E_GPa": 100.0,
+     "inner": [
+      24.0,
+      31.2
+     ],
+     "mid": [
+      31.0,
+      38.2
+     ],
+     "outer": [
+      38.0,
+      45.2
+     ],
+     "ref3_outer": [
+      42.0,
+      49.2
+     ],
+     "ref3_penalty_pct": -1.86,
+     "ref3_cu_g": 211.6,
+     "deflection_mm": 0.8,
+     "profiles_g": 631,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "chosen": {
+  "option": "A",
+  "wall": 1.5,
+  "E_GPa": 60.0,
+  "inner": [
+   21.0,
+   21.0
+  ],
+  "mid": [
+   26.0,
+   26.0
+  ],
+  "outer": [
+   31.0,
+   31.0
+  ],
+  "ref3_outer": [
+   35.9,
+   35.9
+  ],
+  "ref3_penalty_pct": -2.06,
+  "ref3_cu_g": 280.3,
+  "deflection_mm": 5.88,
+  "profiles_g": 267,
+  "ok": true
+ },
+ "chosen_reason": "slimmest: largest outer dimension 35.9 mm (tunnelled best 43.6 mm, single cord 35.9 mm); isolation inside the cord: individually shielded REF pairs, twisted TX pair, grounded drain",
+ "baseline": {
+  "inner": [
+   28.0,
+   22.0
+  ],
+  "mid": [
+   33.0,
+   27.0
+  ],
+  "outer": [
+   38.0,
+   32.0
+  ],
+  "ref3_outer": [
+   42.4,
+   36.4
+  ]
+ },
+ "chassis": {
+  "flat": {
+   "width_in": 62.0,
+   "length_in": 286.0,
+   "height_in": 25.2
+  },
+  "two_tier_rigid_flex": {
+   "width_in": 64,
+   "length_in": 154,
+   "height_in": 31.2,
+   "board_w": 58
+  },
+  "area_mm2": 15536,
+  "note": "board widths re-laid at the tier width with 15 % routing overhead (ASSUMED); 6 mm wall allowance; flex hinges between tiers"
+ },
+ "deltas": {
+  "outer_section_mm": [
+   [
+    35.9,
+    35.9
+   ],
+   [
+    42.4,
+    36.4
+   ]
+  ],
+  "inner_section_mm": [
+   [
+    21.0,
+    21.0
+   ],
+   [
+    28.0,
+    22.0
+   ]
+  ],
+  "ref3_penalty_pct": -2.06
+ },
+ "checks": {
+  "chosen layout meets stiffness and REF3 limits": true,
+  "flex loop radius >= 100 x ply thickness (single-sided dynamic)": true,
+  "TX pair kept off the flex (dissipation)": true
+ }
+}

@@ -9,7 +9,7 @@
    "ok": true,
    "wrist_to_cuff_angle_to_shaft_deg": 0.0,
    "forearm_length_mm": 240,
-   "cuff_centre_n_mm": 74.1,
+   "cuff_centre_n_mm": 65.1,
    "trough_bottom_above_chassis_mm": 7.1,
    "note": "the forearm axis runs from the wrist (on the grip) straight back to the cuff centre, parallel to the shaft and above the chassis"
   },
@@ -63,8 +63,9 @@
    "ok": true,
    "length_m": 1.1,
    "C_pF": 55.0,
-   "first_gate_shift_us": 0.562,
-   "note": "TX moved into the chassis: the pair runs the whole shaft (first-order gate cost, 50 pF/m ASSUMED)"
+   "first_gate_shift_us": 0.19,
+   "source": "rf2_timing_cord (nonlinear turn-off, Rd kept at the no-cord value)",
+   "note": "TX in the chassis: the pair runs the whole shaft (50 pF/m ASSUMED)"
   },
   "battery_slide": {
    "ok": true,
@@ -85,18 +86,18 @@
    "ok": true,
    "grip_fixed_mm": [
     497,
-    251,
-    233
+    284,
+    194
    ],
    "grip_forward_mm": [
-    553,
-    233,
-    199
+    550,
+    254,
+    142
    ],
    "grip_side_mm": [
-    497,
-    249,
-    186
+    494,
+    233,
+    160
    ],
    "target_mm": [
     520.0,
@@ -113,201 +114,201 @@
    "min_gaps_mm": {
     "HEAD-UPT": 393.7,
     "HEAD-CH": 779.6,
-    "LOW-CH": 376.2
+    "LOW-CH": 376.0
    }
   }
  },
  "fold": {
   "grip_fixed": {
-   "evaluations": 562,
-   "fits_backpack": false,
-   "head_pitch": 105,
-   "head_roll": 0,
+   "evaluations": 567,
+   "fits_backpack": true,
+   "head_pitch": 90,
+   "head_roll": 90,
    "hinge": {
     "axis": "N",
-    "offset_mm": 34.6,
+    "offset_mm": 31.1,
     "side": -1
    },
    "package_mm": [
     497,
-    251,
-    233
+    284,
+    194
    ],
-   "search_s": 6.0,
+   "search_s": 6.3,
    "top3": [
     {
-     "fits_backpack": false,
-     "head_pitch": 105,
-     "head_roll": 0,
+     "fits_backpack": true,
+     "head_pitch": 90,
+     "head_roll": 90,
      "hinge": {
       "axis": "N",
-      "offset_mm": 34.6,
+      "offset_mm": 31.1,
       "side": -1
      },
      "package_mm": [
       497,
-      251,
-      233
+      284,
+      194
      ]
     },
     {
-     "fits_backpack": false,
+     "fits_backpack": true,
      "head_pitch": 90,
-     "head_roll": 0,
+     "head_roll": -90,
      "hinge": {
       "axis": "N",
-      "offset_mm": 34.6,
+      "offset_mm": 31.1,
       "side": 1
      },
      "package_mm": [
       497,
-      251,
-      233
+      284,
+      194
      ]
     },
     {
-     "fits_backpack": false,
-     "head_pitch": 90,
-     "head_roll": 0,
+     "fits_backpack": true,
+     "head_pitch": 120,
+     "head_roll": 90,
      "hinge": {
       "axis": "N",
-      "offset_mm": 34.6,
-      "side": -1
+      "offset_mm": 31.1,
+      "side": 1
      },
      "package_mm": [
-      497,
-      251,
-      233
+      494,
+      284,
+      204
      ]
     }
    ],
    "grip_mode": null
   },
   "grip_folded_forward": {
-   "evaluations": 555,
+   "evaluations": 562,
    "fits_backpack": false,
-   "head_pitch": 90,
-   "head_roll": 0,
+   "head_pitch": 120,
+   "head_roll": 90,
    "hinge": {
     "axis": "Y",
-    "offset_mm": 61.6,
+    "offset_mm": 49.8,
     "side": 1
    },
    "package_mm": [
-    553,
-    233,
-    199
+    550,
+    254,
+    142
    ],
-   "search_s": 4.7,
+   "search_s": 4.4,
    "top3": [
     {
      "fits_backpack": false,
-     "head_pitch": 90,
-     "head_roll": 0,
-     "hinge": {
-      "axis": "Y",
-      "offset_mm": 61.6,
-      "side": 1
-     },
-     "package_mm": [
-      553,
-      233,
-      199
-     ]
-    },
-    {
-     "fits_backpack": false,
-     "head_pitch": 0,
+     "head_pitch": 120,
      "head_roll": 90,
      "hinge": {
-      "axis": "N",
-      "offset_mm": 34.6,
-      "side": -1
+      "axis": "Y",
+      "offset_mm": 49.8,
+      "side": 1
      },
      "package_mm": [
-      683,
-      233,
-      162
+      550,
+      254,
+      142
      ]
     },
     {
      "fits_backpack": false,
-     "head_pitch": 0,
+     "head_pitch": 120,
      "head_roll": -90,
      "hinge": {
-      "axis": "N",
-      "offset_mm": 34.6,
+      "axis": "Y",
+      "offset_mm": 49.8,
       "side": 1
      },
      "package_mm": [
-      683,
-      233,
-      162
+      550,
+      254,
+      142
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": -15,
+     "head_roll": -90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 49.8,
+      "side": 1
+     },
+     "package_mm": [
+      705,
+      254,
+      120
      ]
     }
    ],
    "grip_mode": "forward"
   },
   "grip_folded_side": {
-   "evaluations": 558,
+   "evaluations": 563,
    "fits_backpack": true,
-   "head_pitch": 105,
+   "head_pitch": 120,
    "head_roll": 90,
    "hinge": {
     "axis": "Y",
-    "offset_mm": 51.0,
+    "offset_mm": 39.3,
     "side": 1
    },
    "package_mm": [
-    497,
-    249,
-    186
+    494,
+    233,
+    160
    ],
-   "search_s": 5.0,
+   "search_s": 4.5,
    "top3": [
     {
      "fits_backpack": true,
-     "head_pitch": 105,
+     "head_pitch": 120,
      "head_roll": 90,
      "hinge": {
       "axis": "Y",
-      "offset_mm": 51.0,
-      "side": 1
-     },
-     "package_mm": [
-      497,
-      249,
-      186
-     ]
-    },
-    {
-     "fits_backpack": true,
-     "head_pitch": 105,
-     "head_roll": 90,
-     "hinge": {
-      "axis": "Y",
-      "offset_mm": 26.4,
-      "side": -1
-     },
-     "package_mm": [
-      497,
-      319,
-      186
-     ]
-    },
-    {
-     "fits_backpack": false,
-     "head_pitch": 75,
-     "head_roll": -90,
-     "hinge": {
-      "axis": "N",
-      "offset_mm": 35.8,
+      "offset_mm": 39.3,
       "side": 1
      },
      "package_mm": [
       494,
       233,
-      218
+      160
+     ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 39.3,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      233,
+      185
+     ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 0,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 39.3,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      233,
+      187
      ]
     }
    ],
@@ -323,65 +324,65 @@
    210.0
   ],
   "chosen": {
-   "evaluations": 558,
+   "evaluations": 563,
    "fits_backpack": true,
-   "head_pitch": 105,
+   "head_pitch": 120,
    "head_roll": 90,
    "hinge": {
     "axis": "Y",
-    "offset_mm": 51.0,
+    "offset_mm": 39.3,
     "side": 1
    },
    "package_mm": [
-    497,
-    249,
-    186
+    494,
+    233,
+    160
    ],
-   "search_s": 5.0,
+   "search_s": 4.5,
    "top3": [
     {
      "fits_backpack": true,
-     "head_pitch": 105,
+     "head_pitch": 120,
      "head_roll": 90,
      "hinge": {
       "axis": "Y",
-      "offset_mm": 51.0,
-      "side": 1
-     },
-     "package_mm": [
-      497,
-      249,
-      186
-     ]
-    },
-    {
-     "fits_backpack": true,
-     "head_pitch": 105,
-     "head_roll": 90,
-     "hinge": {
-      "axis": "Y",
-      "offset_mm": 26.4,
-      "side": -1
-     },
-     "package_mm": [
-      497,
-      319,
-      186
-     ]
-    },
-    {
-     "fits_backpack": false,
-     "head_pitch": 75,
-     "head_roll": -90,
-     "hinge": {
-      "axis": "N",
-      "offset_mm": 35.8,
+      "offset_mm": 39.3,
       "side": 1
      },
      "package_mm": [
       494,
       233,
-      218
+      160
+     ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 39.3,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      233,
+      185
+     ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 0,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 39.3,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      233,
+      187
      ]
     }
    ],
@@ -392,23 +393,23 @@
   "items_g": {
    "head (ASSUMED 650 g)": 650,
    "rect profiles + yoke + clamps (CF, ASSUMED 330 g)": 330,
-   "REF3 rect coils (247.1 g Cu + 30 g)": 277,
+   "REF3 rect coils (280.3 g Cu + 30 g)": 310,
    "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": 420,
    "grip + head + screen (ASSUMED 120 g)": 120,
    "cuff + rails (ASSUMED 110 g)": 110,
    "battery cartridge (14 x 47 g + 90 g)": 748
   },
-  "total_g": 2655,
-  "torque_about_hand_Nm": 3.85,
+  "total_g": 2688,
+  "torque_about_hand_Nm": 4.08,
   "sdc2300_reference_g": 2300
  },
  "ok": true,
  "timings_s": {
-  "build": 1.77,
-  "containment": 0.38,
-  "fold search (cached)": 0.01,
-  "deployed clearance": 0.61,
-  "exports and views": 6.11,
-  "total": 13.8
+  "build": 1.88,
+  "containment": 0.43,
+  "fold search (cached)": 0.02,
+  "deployed clearance": 0.65,
+  "exports and views": 5.99,
+  "total": 13.6
  }
 }

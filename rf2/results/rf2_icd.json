@@ -1,0 +1,1117 @@
+{
+ "status": "MODELED interface definitions; connector parts are TBD where no datasheet is on file",
+ "interfaces": [
+  {
+   "id": "I1",
+   "name": "Coil leads -> TXJ (head)",
+   "a": "coil (26 t FEP litz)",
+   "b": "TXJ",
+   "medium": "litz ends into wire-hole pads, potted",
+   "connector": "solder (wire-hole pads), existing TXJ board",
+   "conds": [
+    {
+     "net": "TX_A",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": "FEP litz"
+    },
+    {
+     "net": "TX_B",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": "FEP litz"
+    }
+   ],
+   "status": "built (board:TXJ)"
+  },
+  {
+   "id": "I2",
+   "name": "Cord head end -> TXJ / CB1D / AB1A (head gland)",
+   "a": "coil cord",
+   "b": "TXJ (TX pair), CB1D (power, link, TX command), AB1A (REF pairs)",
+   "medium": "cord breakout inside the gland, potted strain relief",
+   "connector": "TXJ: solder pads (existing); CB1D: TBD 8-way locking wire-to-board (req. >= 1.5 A / pin, 50 V); AB1A: TBD 6-way + drain (shielded pairs)",
+   "conds": [
+    {
+     "net": "TX_A",
+     "cls": "HV",
+     "awg": 18,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": ""
+    },
+    {
+     "net": "TX_B",
+     "cls": "HV",
+     "awg": 18,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": ""
+    },
+    {
+     "net": "VIN_H",
+     "cls": "power",
+     "awg": 20,
+     "i_rms": 0.45,
+     "v_max": 29.4,
+     "ins_V": 300,
+     "note": ""
+    },
+    {
+     "net": "GND_H",
+     "cls": "power",
+     "awg": 20,
+     "i_rms": 0.45,
+     "v_max": 0,
+     "ins_V": 300,
+     "note": ""
+    },
+    {
+     "net": "TXCMD+",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXCMD-",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT+",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT-",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "DATA+",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "DATA-",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFX+",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFX-",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFY+",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFY-",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFZ+",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFZ-",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REF_DRAIN",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design"
+  },
+  {
+   "id": "I3",
+   "name": "Coil cord through the telescope (head -> outer-section anchor)",
+   "a": "head gland",
+   "b": "cord board in the hinge knuckle",
+   "medium": "custom coil cord in the 18 x 18 mm inner bore: twisted FEP AWG18 1000 V TX pair, AWG20 power pair, 3 twisted AWG26 pairs (TXCMD, TXSTAT, DATA), 3 individually shielded AWG26 REF pairs + drain; PUR jacket; coil OD 17 mm, stretch 4.4 : 1",
+   "connector": "none (continuous); vendor TBD (custom: stock PUR cords are 120-500 V, rule 6 needs the TX pair at >= 630 V)",
+   "conds": [
+    {
+     "net": "TX_A",
+     "cls": "HV",
+     "awg": 18,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": ""
+    },
+    {
+     "net": "TX_B",
+     "cls": "HV",
+     "awg": 18,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": ""
+    },
+    {
+     "net": "VIN_H",
+     "cls": "power",
+     "awg": 20,
+     "i_rms": 0.45,
+     "v_max": 29.4,
+     "ins_V": 300,
+     "note": ""
+    },
+    {
+     "net": "GND_H",
+     "cls": "power",
+     "awg": 20,
+     "i_rms": 0.45,
+     "v_max": 0,
+     "ins_V": 300,
+     "note": ""
+    },
+    {
+     "net": "TXCMD+",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXCMD-",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT+",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT-",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "DATA+",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "DATA-",
+     "cls": "diff",
+     "awg": 26,
+     "i_rms": 0.01,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFX+",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFX-",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFY+",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFY-",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFZ+",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFZ-",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REF_DRAIN",
+     "cls": "analog",
+     "awg": 26,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "spec (COIL_CORD_SPEC, roadmap P4.2)"
+  },
+  {
+   "id": "I4",
+   "name": "REF3 coils -> REF3T board -> cord REF pairs (breakout on the fixed cord run in the outer section)",
+   "a": "REF3 face coils X / Y, solenoid Z",
+   "b": "cord REF pairs",
+   "medium": "coil ends to REF3T pads; REF3T to the cord breakout",
+   "connector": "solder pads on REF3T (board P1.7)",
+   "conds": [
+    {
+     "net": "REFX+",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFX-",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFY+",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFY-",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFZ+",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REFZ-",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "REF_DRAIN",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design"
+  },
+  {
+   "id": "I5",
+   "name": "Hinge pass-through (cord board -> chassis)",
+   "a": "cord board (hinge knuckle)",
+   "b": "TXD (TX pair, TXCMD / TXSTAT) and HB2-M (DATA, VIN_H return)",
+   "medium": "clock-spring flex in the hollow hinge axis: unbonded single-sided plies (air-gap), 2 oz copper; TX traces 3 mm wide, >= 1.0 mm spacing (rule 6); 180 deg fold",
+   "connector": "Panasonic Y5B FPC ends (AYF53 family, datasheet on file; ratings UNVERIFIED) on LV plies; HV ply soldered to TXD and the cord board",
+   "conds": [
+    {
+     "net": "TX_A",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": "flex, 1.0 mm spacing"
+    },
+    {
+     "net": "TX_B",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 3.67,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": "flex, 1.0 mm spacing"
+    },
+    {
+     "net": "VIN_H",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.45,
+     "v_max": 29.4,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "GND_H",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.45,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXCMD+",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXCMD-",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT+",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT-",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "DATA+",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "DATA-",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design (P3.3)"
+  },
+  {
+   "id": "I6",
+   "name": "Battery cartridge -> PWR (bay front blade contacts)",
+   "a": "cartridge (7S2P, BQ76952)",
+   "b": "PWR board",
+   "medium": "sealed blade contacts at the bay front",
+   "connector": "TBD blade contact pair (req. >= 5 A continuous, 30 V) + 4-pin signal contact (I2C, TS2 wake, NTC)",
+   "conds": [
+    {
+     "net": "VBAT+",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.6949999999999998,
+     "v_max": 29.4,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "VBAT-",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.6949999999999998,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SDA",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCL",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "BTN_TS2",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "NTC",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design (P3.8)"
+  },
+  {
+   "id": "I7",
+   "name": "Charge port (cartridge)",
+   "a": "charger",
+   "b": "cartridge",
+   "medium": "Amass MT60 keyed (datasheet on file)",
+   "connector": "Amass MT60",
+   "conds": [
+    {
+     "net": "CHG+",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 3.0,
+     "v_max": 29.4,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "CHG-",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 3.0,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "CHG_SENSE",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.1,
+     "v_max": 29.4,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "part chosen"
+  },
+  {
+   "id": "I8",
+   "name": "PWR <-> TXD (chassis internal)",
+   "a": "PWR",
+   "b": "TXD",
+   "medium": "board-to-board flex (rigid-flex option) or 2 x 6-way header",
+   "connector": "TBD (req. HV pin >= 1.0 mm creepage, 630 V; power pins >= 3 A)",
+   "conds": [
+    {
+     "net": "VBAT_TX",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.13,
+     "v_max": 29.4,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "GND",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.13,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "HV_CLAMP",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 0.03,
+     "v_max": 463,
+     "ins_V": 1000,
+     "note": "460 V clamp -> regenerative buck"
+    },
+    {
+     "net": "GND_CLAMP",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 0.03,
+     "v_max": 0,
+     "ins_V": 1000,
+     "note": ""
+    },
+    {
+     "net": "+5V_AUX",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.05,
+     "v_max": 5,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design"
+  },
+  {
+   "id": "I9",
+   "name": "HB2-M <-> PWR / TXD",
+   "a": "HB2-M",
+   "b": "PWR, TXD",
+   "medium": "short flex or header",
+   "connector": "TBD (req. 8-way, 0.5 A / pin)",
+   "conds": [
+    {
+     "net": "+5V_AUX",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.16,
+     "v_max": 5,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "GND",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.16,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SDA",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCL",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT_THERM",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "BTN_TS2",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXCMD_LOCAL",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "BOOST_EN",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design"
+  },
+  {
+   "id": "I10",
+   "name": "HB2-M -> HB2-G (12-way FFC down the grip core)",
+   "a": "HB2-M",
+   "b": "HB2-G (grip head)",
+   "medium": "12-way 0.5 mm FFC with a 60 mm service loop (25 mm grip slide)",
+   "connector": "Panasonic Y5B AYF531235 class (family datasheet on file; ratings UNVERIFIED)",
+   "conds": [
+    {
+     "net": "+3V3_P",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.06,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "GND",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.06,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "GND2",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SW_PWR",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SW_TRG",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SW_SEL_A",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SW_SEL_B",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "LED_DAT",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "LED_CLK",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "+5V_LED",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.06,
+     "v_max": 5,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_SPI_CLK",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_SPI_MOSI",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "pins": 12,
+   "status": "design"
+  },
+  {
+   "id": "I11",
+   "name": "HB2-G -> screen tray board (dynamic hinge flex)",
+   "a": "HB2-G",
+   "b": "tray board (carries AYF531035 for the panel FPC)",
+   "medium": "single-sided dynamic flex across the screen hinge (the panel's own FPC allows 3 bends only)",
+   "connector": "Panasonic AYF531035 on the tray board (Sharp's recommendation); hinge flex soldered or Y5B",
+   "conds": [
+    {
+     "net": "SCR_SCLK",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_SI",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_SCS",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_EXTCOMIN",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_DISP",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_VDD",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.001,
+     "v_max": 3.3,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCR_VSS",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.001,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design"
+  },
+  {
+   "id": "I12",
+   "name": "Screen panel FPC -> tray board",
+   "a": "Sharp LS013B7DH03",
+   "b": "tray board",
+   "medium": "panel FPC, 10 pins, static (bent once at assembly, R >= 0.45 mm)",
+   "connector": "Panasonic AYF531035",
+   "conds": [
+    {
+     "net": "SCLK",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SI",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "SCS",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "EXTCOMIN",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "DISP",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "VDDA",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.0005,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "VDD",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.0005,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "EXTMODE",
+     "cls": "digital",
+     "awg": null,
+     "i_rms": 0,
+     "v_max": 3.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "VSS",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "VSSA",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "pins": 10,
+   "status": "part chosen (Sharp spec LD-26X06A)"
+  }
+ ],
+ "checks": {
+  "rule 6: every HV conductor insulated >= 630 V": {
+   "ok": true,
+   "offenders": []
+  },
+  "ampacity and pin counts": {
+   "ok": true,
+   "offenders": []
+  },
+  "harness nets in rf2_system all defined at the cord's head end (I2)": {
+   "ok": true,
+   "missing": []
+  },
+  "screen FPC bend limit (3 bends) handled by a dynamic hinge flex (I11) and a static panel FPC (I12)": {
+   "ok": true
+  },
+  "every connector part verified (datasheet on file, ratings read)": {
+   "ok": false,
+   "tbd_or_unverified": [
+    "I2",
+    "I3",
+    "I5",
+    "I6",
+    "I8",
+    "I9",
+    "I10"
+   ]
+  }
+ },
+ "p06_parts": {
+  "screen LS013B7DH03": "VERIFIED (Sharp LD-26X06A)",
+  "RS-485 THVD1410": "VERIFIED (TI SLLSEY3E)",
+  "FPC / FFC connectors (Panasonic Y5B)": "family on file, ratings UNVERIFIED",
+  "coil cord": "custom: no vendor sheet (stock cords 120-500 V)",
+  "rectangular CF profiles": "custom sizes: vendor pages only",
+  "cam clamp hardware": "custom printed: no datasheet",
+  "cell holder": "decided: spot-welded pack (Keystone holder logged as alternative)",
+  "Rd resistor family": "VERIFIED (Vishay PR03, 2 x 806 ohm)"
+ },
+ "p06_all_verified": false,
+ "all_parts_verified": false,
+ "ok_except_parts": true
+}

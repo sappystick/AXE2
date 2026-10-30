@@ -848,3 +848,40 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - coil-cord spec (1000 V pair);
   - seals;
   - the HB2-G / HB2-M / TXD / PWR boards.
+
+## 38. Interface document, cable timing, datasheets, slim-down (2026-10-30; roadmap P0.1 / P0.3 / P0.6; MODELED)
+- **Cable timing (`rf2/rf2_timing_cord.py`, step `timing-cord`; P0.3 DONE).** The nonlinear turn-off simulation reproduces the 16.29 us first gate with no cord.
+  - With the 1.1 m TX pair (+55 pF at 50 pF/m ASSUMED) and Rd kept at 401 ohm: **+0.19 us** (node 500 pF) and +0.04 us (368 pF).
+  - Re-tuning Rd to critical with the cord is worse (+0.51 / +0.60 us), so Rd stays at the no-cord value.
+  - This replaces the +0.56 us first-order estimate (CORRECTIONS).
+- **Datasheets (DATASHEET_LOG RF2-DS-INTERFACES; 9 PDFs and 2 vendor-page snapshots):**
+  - **Screen:** Sharp LS013B7DH03 spec LD-26X06A.
+    - Real module 26.6 x 30.3 x 0.741 mm (was ASSUMED 30 x 24 x 2.6); VDD 2.7-3.3 V; 12-50 uW; -20 to +70 C; 10-pin FPC.
+    - Recommended connector: Panasonic AYF531035.
+    - **Its FPC allows 3 bends only:** a tray board plus a dynamic hinge flex take the flip-up motion.
+  - **RS-485:** TI THVD1410 chosen (3-5.5 V, +-30 kV HBM, 500 kbps, < 1 uA standby, VSSOP-8).
+  - **FPC connectors:** Panasonic Y5B family on file; ratings unreadable in this copy, so UNVERIFIED.
+  - **Battery:** Keystone 18650 holders would grow the cartridge by 10-18 %, so the cartridge stays a spot-welded pack.
+  - **Rd:** high-voltage chip resistors (Bourns CHV, TT HVC, KOA HV73) start at 10-100 kohm and cannot make 408 ohm. Rd is **2 x Vishay PR03 806 ohm in parallel = 403 ohm, 6 W at 70 C, 750 V** (rule 6).
+  - **Coil cords:** stock cords are 120-500 V. The TX pair needs a custom cord with FEP 1000 V conductors.
+  - **Carbon profiles:** the nested sizes are not stock (vendor pages saved).
+  - **Clamps:** no datasheet exists; custom printed clamp.
+- **Interface document (`rf2/rf2_icd.py`, step `icd` -> `docs/ICD.md`).** 12 interfaces, from the coil leads through the cord, REF3 breakout, hinge clock-spring flex, battery blade contacts, charge port, chassis internals and grip FFC to the screen hinge flex and panel FPC.
+  - Passing checks: rule 6 on every HV conductor, ampacity and pin counts, harness nets consistent with rf2_system, the screen bend limit.
+  - P0.1 stays OPEN until the 7 TBD / UNVERIFIED connectors are verified.
+- **Slim-down (`rf2/rf2_slim.py`, step `slim`).** It searches profile sizes, walls (1.5-2.5 mm) and fibre stiffness (60 / 100 GPa) against: interconnect tunnels, 1 mm slide gaps, tip deflection <= 10 mm at 3 g (0.65 kg head) and REF3 penalty >= -2.5 %.
+  - **Flex rules (IPC-2223 guidance, ASSUMED until a flex vendor):** dynamic single-sided R >= 100 x t, double-sided >= 150 x t, multilayer not dynamic. Any rolling flex therefore needs a tunnel about 15 mm tall.
+  - **Shielded multilayer function:** taken by an unbonded "air-gap" stack of single-sided plies.
+  - **TX pair kept off flex:** 2.4 W in 1.1 m of trace.
+  - **Options:**
+    - A, single custom cord: outer 35.9 mm;
+    - B, side-by-side HV + flex tunnels with a grounded carbon web: 47.9 mm;
+    - C, stacked tunnels: 43.6 mm.
+  - **Chosen: A, the slimmest.** Isolation comes inside the cord (individually shielded REF pairs).
+    - Profiles 31 / 26 / 21 mm square, 1.5 mm wall, keyway tracks (3 x 1.5 mm) in the side walls for slide pads, cord anchors and clamp shoes.
+    - REF3 in a 35.9 x 35.9 mm section (-2.06 %, 280 g Cu); was 42.4 x 36.4.
+    - Deflection 5.9 mm.
+  - **Chassis:** 72 x 47 -> 62 x 31 mm with every board on one level (a two-tier rigid-flex does not narrow it, because the tall TXD parts set the height). Electronics re-checked inside.
+  - **Fold:** **494 x 233 x 160 mm** (was 497 x 249 x 186).
+  - Rigid-flex is still used where it pays: the hinge clock-spring, the grip FFC and the screen hinge flex.
+- **Readiness:** 1 / 40 done (P0.3). Ready to start: P0.1 parts, P0.4 (EMI with the rect REF3), P0.5 (MP1 v2 closure), P0.6, P3.6 / P3.7 / P3.9.

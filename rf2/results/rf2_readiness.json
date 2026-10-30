@@ -6,12 +6,11 @@
    "item": "Interface control document: every joint (gland, coil cord, hinge pass-through, grip FFC, cartridge contacts, REF3 termination) with conductors, connector part, pinout, voltage class",
    "deps": [],
    "gate": [
-    "files",
-    [
-     "docs/ICD.md"
-    ]
+    "json",
+    "rf2/results/rf2_icd.json",
+    "all_parts_verified"
    ],
-   "done_means": "one table per interface; parts with datasheets on file",
+   "done_means": "one table per interface (docs/ICD.md, generated); every connector part verified",
    "status": "TODO",
    "ready_to_start": true
   },
@@ -44,8 +43,8 @@
     ]
    ],
    "done_means": "exact gate shift replaces the +0.56 us first-order estimate",
-   "status": "TODO",
-   "ready_to_start": true
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P0.4",
@@ -75,7 +74,7 @@
    ],
    "done_means": "one option passes every limit in SPICE",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P0.6",
@@ -83,13 +82,11 @@
    "item": "Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total)",
    "deps": [],
    "gate": [
-    "files",
-    [
-     "data/datasheets/*LS013B7DH03*",
-     "data/datasheets/*RS485*"
-    ]
+    "json",
+    "rf2/results/rf2_icd.json",
+    "p06_all_verified"
    ],
-   "done_means": "each part VERIFIED in DATASHEET_LOG",
+   "done_means": "each part VERIFIED in DATASHEET_LOG (status list in rf2_icd.json p06_parts)",
    "status": "TODO",
    "ready_to_start": true
   },

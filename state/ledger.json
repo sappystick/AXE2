@@ -131,18 +131,19 @@
   "ref3": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.6,
+   "seconds": 0.5,
    "why": "",
    "tail": "",
-   "fingerprint": "8b33cb5ac6d9fce1",
+   "fingerprint": "fb29b199ce8fdcc6",
    "inputs": {
-    "rf2/head/rf2_ref3.py": "3eeeedd32e"
+    "rf2/head/rf2_ref3.py": "b5277fb9d8"
    },
-   "finished": "2026-10-30T17:41:42",
+   "finished": "2026-10-30T18:05:46",
    "log": "state/logs/ref3.log",
    "history": [
     0.5,
-    0.6
+    0.6,
+    0.5
    ]
   },
   "ledger": {
@@ -566,31 +567,31 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.9,
+   "seconds": 3.1,
    "why": "",
    "tail": "",
-   "fingerprint": "d46348c7ed402b96",
+   "fingerprint": "fea8979952b41909",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "2b30aa988f",
+    "run.py": "b49b5ef6a6",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-30T17:47:49",
+   "finished": "2026-10-30T18:06:36",
    "log": "state/logs/selftest.log",
    "history": [
     3.6,
-    3.6,
     3.2,
     3.3,
     3.3,
     3.3,
     3.2,
-    2.9
+    2.9,
+    3.1
    ]
   },
   "study:mp1v2_chain": {
@@ -743,24 +744,25 @@
   "system": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.1,
+   "seconds": 3.2,
    "why": "",
    "tail": "",
-   "fingerprint": "5f2f06e87878c004",
+   "fingerprint": "52ffd63ae2c1c465",
    "inputs": {
-    "rf2/rf2_system.py": "9545896b90",
+    "rf2/rf2_system.py": "85665badc7",
     "rf2/rf2_continuous.py": "017eef5de7",
     "rf2/rf2_zones.py": "b56fea10f8",
     "rf2/rf2_audio.py": "baa3592a67",
     "rf2/rf2_upper.py": "87a6f99e99",
-    "rf2/rf2_chassis.py": "3c043b04e3"
+    "rf2/rf2_chassis.py": "16e6e6e656"
    },
-   "finished": "2026-10-30T17:42:01",
+   "finished": "2026-10-30T18:06:33",
    "log": "state/logs/system.log",
    "history": [
     1.7,
     3.4,
-    3.1
+    3.1,
+    3.2
    ]
   },
   "upper": {
@@ -786,16 +788,17 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "2e2e512305d4e101",
+   "fingerprint": "9622bbbefad465ce",
    "inputs": {
     "rf2/rf2_topography.py": "4d59cd3b25",
-    "rf2/chassis_out/rf2_chassis_check.json": "b2d555619f",
-    "rf2/results/rf2_system.json": "0966be6e35",
-    "rf2/head/out/rf2_ref3.json": "d5fed26811"
+    "rf2/chassis_out/rf2_chassis_check.json": "c3f750a93a",
+    "rf2/results/rf2_system.json": "1dcebd3b3f",
+    "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T17:42:04",
+   "finished": "2026-10-30T18:06:39",
    "log": "state/logs/topography.log",
    "history": [
+    0.0,
     0.0,
     0.0
    ]
@@ -803,37 +806,92 @@
   "chassis": {
    "status": "pass",
    "rc": 0,
-   "seconds": 15.9,
+   "seconds": 15.8,
    "why": "",
    "tail": "",
-   "fingerprint": "759e80f17e83c04b",
+   "fingerprint": "980145fae5d3bb35",
    "inputs": {
-    "rf2/rf2_chassis.py": "3c043b04e3",
+    "rf2/rf2_chassis.py": "16e6e6e656",
     "rf2/rf2_upper.py": "87a6f99e99",
     "src/simcache.py": "7a842c96b9",
-    "rf2/head/out/rf2_ref3.json": "d5fed26811"
+    "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T17:41:58",
+   "finished": "2026-10-30T18:06:30",
    "log": "state/logs/chassis.log",
    "history": [
-    15.9
+    15.9,
+    15.8
    ]
   },
   "readiness": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.1,
+   "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "492690b4483042f4",
+   "fingerprint": "7ed046903d067bc4",
    "inputs": {
-    "rf2/rf2_readiness.py": "461a248cf8",
-    "state/ledger.json": "5fc37344c2"
+    "rf2/rf2_readiness.py": "7c8c8604ff",
+    "state/ledger.json": "6d3768b783",
+    "rf2/results/rf2_icd.json": "230aadd8b6"
    },
-   "finished": "2026-10-30T17:47:49",
+   "finished": "2026-10-30T18:06:39",
    "log": "state/logs/readiness.log",
    "history": [
-    0.1
+    0.1,
+    0.0
+   ]
+  },
+  "timing-cord": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 28.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "9617076296da7830",
+   "inputs": {
+    "rf2/rf2_timing_cord.py": "81a6993233",
+    "rf2/rf2_timing.py": "afc96b11c2"
+   },
+   "finished": "2026-10-30T18:06:14",
+   "log": "state/logs/timing-cord.log",
+   "history": [
+    28.1
+   ]
+  },
+  "slim": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "f89fca1ab82888a6",
+   "inputs": {
+    "rf2/rf2_slim.py": "abb83e99e4",
+    "rf2/head/rf2_ref3.py": "b5277fb9d8"
+   },
+   "finished": "2026-10-30T18:06:14",
+   "log": "state/logs/slim.log",
+   "history": [
+    0.5
+   ]
+  },
+  "icd": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 2.6,
+   "why": "",
+   "tail": "",
+   "fingerprint": "4c65107262b6a83f",
+   "inputs": {
+    "rf2/rf2_icd.py": "8e3ce45dec",
+    "rf2/rf2_system.py": "85665badc7",
+    "docs/DATASHEET_LOG_ARX.md": "00d4245569"
+   },
+   "finished": "2026-10-30T18:06:39",
+   "log": "state/logs/icd.log",
+   "history": [
+    2.6
    ]
   }
  },
@@ -1280,6 +1338,21 @@
    "seconds": 3.0,
    "results": {
     "selftest": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T18:06:39",
+   "seconds": 54.0,
+   "results": {
+    "ref3": "pass",
+    "timing-cord": "pass",
+    "slim": "pass",
+    "chassis": "pass",
+    "system": "pass",
+    "selftest": "pass",
+    "icd": "pass",
+    "topography": "pass",
     "readiness": "pass"
    }
   }

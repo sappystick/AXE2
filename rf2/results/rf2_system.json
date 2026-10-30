@@ -126,16 +126,16 @@
    ]
   },
   "fill_fraction": {
-   "S1 head - REF3 (coil cord in the inner / middle tubes)": 0.12,
-   "S2 REF3 - hinge (outer tube)": 0.054,
-   "S3 hinge pass-through into the chassis": 0.054
+   "S1 head - REF3 (coil cord in the inner / middle tubes)": 0.142,
+   "S2 REF3 - hinge (outer tube)": 0.064,
+   "S3 hinge pass-through into the chassis": 0.064
   },
   "vin_drop_V_boost": 0.007,
   "vin_loss_W_boost": 0.008,
   "tube": {
-   "od": 25.0,
-   "id": 19.6,
-   "material": "narrowest bore: the telescoping inner tube 22 / 19.6 (rf2_upper; outer tubes 25 / 22.4); conductive but 0.6-1.2 m from the coil and no loop around the coil axis"
+   "od": 21.0,
+   "id": 18.0,
+   "material": "narrowest bore: the inner square profile 21 x 21, 18 x 18 bore (rf2_chassis slim set; area taken as an 18 mm circle, conservative); conductive but 0.6-1.2 m from the coil and no loop around the coil axis"
   },
   "route": "one bundle inside the tube; taps leave through grommeted holes at the TXD (S1), REF3 (its 3 pairs) and the pod (DATA, and the pod-pack pairs); HV pairs in their own FEP jackets, twisted with their return; LV and analog pairs in a separate sleeve"
  },
@@ -187,8 +187,8 @@
  "tx_pair": {
   "length_m": 1.1,
   "C_pF_ASSUMED_50pF_per_m": 55.0,
-  "first_gate_shift_us": 0.562,
-  "vs_baseline_neck_us": 0.515,
+  "first_gate_shift_us": 0.19,
+  "vs_baseline_neck_us": 0.143,
   "note": "first-order: tail 10.5 us (16.3 - 5.8 us clamp) x (sqrt(1 + dC / 500 pF) - 1); pair capacitance ASSUMED (FEP twisted pair)"
  },
  "ref3_coupling": {
