@@ -1,0 +1,13 @@
+{
+ "test": "rip 4 MP1 nets, reroute with astar_route.py",
+ "ripped_items": 30,
+ "unconnected_before": 8,
+ "unconnected_after": 0,
+ "drc_errors": 0,
+ "hv_rule_control_violations": 499,
+ "min_clearance_mm": 0.2,
+ "min_hv_clearance_mm": 1.2,
+ "loops_around_axis": [],
+ "astar": 1.5,
+ "ok": true
+}

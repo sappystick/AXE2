@@ -1,0 +1,12 @@
+{
+ "board": "SB1R-QA-RF2.kicad_pcb",
+ "board_key": "SB1R-QA",
+ "kicad": "9.0.9",
+ "zones_filled": true,
+ "violations": 9,
+ "unconnected": 0,
+ "errors": {},
+ "warnings": {},
+ "lib_footprint_warnings": 9,
+ "examples": []
+}

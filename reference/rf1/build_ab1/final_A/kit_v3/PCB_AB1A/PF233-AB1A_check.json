@@ -1,0 +1,27 @@
+{
+ "clearance_violations_below_0p09": 0,
+ "min_gap_mm": 0.1662,
+ "shorts": 0,
+ "short_list": [],
+ "viol_list": [],
+ "nets_with_opens": 2,
+ "opens": [
+  [
+   "OUT_GY",
+   [
+    [
+     "U1.7"
+    ]
+   ]
+  ],
+  [
+   "VBIAS_O",
+   [
+    [
+     "RISA.1"
+    ]
+   ]
+  ]
+ ],
+ "time_s": 0.0
+}

@@ -1,0 +1,59 @@
+{
+ "status": "MODELED: DC operating points against data-sheet limits",
+ "baseline": {
+  "name": "baseline AD7389-4 build (VCM 1.25 V reference)",
+  "gain_stage": 40.0,
+  "gain_total": 40.0,
+  "opa_input_dc_V": 1.25,
+  "opa_input_range_V": [
+   2.0,
+   3.6
+  ],
+  "opa_out_dc_V": 1.25,
+  "usable_out_swing_V": 1.05,
+  "ain_plus_dc_V": 1.25,
+  "ain_minus_dc_V": 1.25,
+  "adc_cm_V": 1.25,
+  "adc_diff_full_scale_used_pct": 42.0,
+  "divider_noise_input_nV": 0.046,
+  "opa_noise_nV": 1.0999999999999999,
+  "checks": {
+   "opa_input_in_range": false,
+   "adc_cm_in_range": true,
+   "adc_abs_in_range": true,
+   "adc_offset_mV": 0.0,
+   "c_over_ctrack": 122.2,
+   "closed_loop_bw_MHz": 2.0,
+   "fc_kHz": 361.7
+  },
+  "ok": false
+ },
+ "rf1": {
+  "name": "RF1 (VBIAS 2.5 V, matched 1 k / 1 k dividers on AIN+ and AIN-)",
+  "gain_stage": 83.0,
+  "gain_total": 41.5,
+  "opa_input_dc_V": 2.5,
+  "opa_input_range_V": [
+   2.0,
+   3.6
+  ],
+  "opa_out_dc_V": 2.5,
+  "usable_out_swing_V": 1.9,
+  "ain_plus_dc_V": 1.25,
+  "ain_minus_dc_V": 1.25,
+  "adc_cm_V": 1.25,
+  "adc_diff_full_scale_used_pct": 38.0,
+  "divider_noise_input_nV": 0.098,
+  "opa_noise_nV": 1.0999999999999999,
+  "checks": {
+   "opa_input_in_range": true,
+   "adc_cm_in_range": true,
+   "adc_abs_in_range": true,
+   "adc_offset_mV": 0.0,
+   "c_over_ctrack": 55.6,
+   "closed_loop_bw_MHz": 0.96,
+   "fc_kHz": 318.3
+  },
+  "ok": true
+ }
+}

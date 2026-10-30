@@ -1,0 +1,5 @@
+
+# RF2 head generated meshes (regenerated in about 1 s by head/rf2_head.py; the litz mesh alone is 16 MB)
+head/out/*.stl
+head/out/*/*_placed.kicad_*
+head/out/*/*.kicad_prl

@@ -1,0 +1,26 @@
+{
+ "tool": "freerouting",
+ "version": "2.4.1",
+ "jar_sha256": "fb2e91df901fa50cd23a09ab42793af0ece4f3b1f3857d6724dd6f9c0c00be98",
+ "input": "experiments/RF1_rigidflex/build_ab1/final_A/kit_v3/PCB_AB1A/PF233-AB1A.kicad_pcb",
+ "output": "experiments/RF1_rigidflex/build_ab1/final_A/fr/PF233-AB1A.kicad_pcb",
+ "rules_mm": {
+  "track": 0.15,
+  "clearance": 0.16,
+  "via": 0.508,
+  "drill": 0.254
+ },
+ "hv_nets": [],
+ "hv_clear_mm": null,
+ "passes": 30,
+ "threads": 1,
+ "stripped": false,
+ "ripped": [
+  "OUT_GY"
+ ],
+ "unconnected_before": 4,
+ "unconnected_after": 0,
+ "seconds": 150.0,
+ "tracks": 906,
+ "vias": 62
+}

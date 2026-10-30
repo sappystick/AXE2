@@ -1,0 +1,9 @@
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pillow>=10.0
+# CAM-side checks (src/pcb/gerber_plane_check.py reads KiCad-written Gerbers back): REQUIRED, the PB1R plane keep-out check never skips
+gerbonara
+shapely
+# mesh boolean union for the print STLs (src/mech/solid_union.py; v5, hood, baseplate): REQUIRED
+manifold3d

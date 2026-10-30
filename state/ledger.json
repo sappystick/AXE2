@@ -1,0 +1,184 @@
+{
+ "steps": {
+  "netlist": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.4,
+   "why": "",
+   "tail": "",
+   "fingerprint": "1327539026f19cf5",
+   "finished": "2026-10-30T04:27:33",
+   "log": "state/logs/netlist.log"
+  },
+  "head": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 18.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "451e646a4ed0b724",
+   "finished": "2026-10-30T04:27:52",
+   "log": "state/logs/head.log"
+  },
+  "shield:SH1": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 2.0,
+   "why": "",
+   "tail": "",
+   "fingerprint": "e0aa1fabce93827d",
+   "finished": "2026-10-30T04:27:54",
+   "log": "state/logs/shield_SH1.log"
+  },
+  "sb1r-variant": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 9.9,
+   "why": "",
+   "tail": "",
+   "fingerprint": "b2664fd4f15a5714",
+   "finished": "2026-10-30T04:28:03",
+   "log": "state/logs/sb1r-variant.log"
+  },
+  "board:TXJ": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 4.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "209d56f2be402c32",
+   "finished": "2026-10-30T04:28:08",
+   "log": "state/logs/board_TXJ.log"
+  },
+  "board:MP1": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 5.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "d871471da53beadc",
+   "finished": "2026-10-30T04:28:13",
+   "log": "state/logs/board_MP1.log"
+  },
+  "board:LR1": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 292.6,
+   "why": "",
+   "tail": "",
+   "fingerprint": "7d670a7427525ffd",
+   "finished": "2026-10-30T04:33:06",
+   "log": "state/logs/board_LR1.log"
+  },
+  "field-xcheck": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "7decf1d12d47cb38",
+   "finished": "2026-10-30T04:33:07",
+   "log": "state/logs/field-xcheck.log"
+  },
+  "mp1-spice": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.4,
+   "why": "",
+   "tail": "",
+   "fingerprint": "bbe585c420941da0",
+   "finished": "2026-10-30T04:33:08",
+   "log": "state/logs/mp1-spice.log"
+  },
+  "ref3": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "c4128b4ef192dc5f",
+   "finished": "2026-10-30T04:33:50",
+   "log": "state/logs/ref3.log"
+  },
+  "ledger": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 3.3,
+   "why": "",
+   "tail": "",
+   "fingerprint": "3bd6f435624940b7",
+   "finished": "2026-10-30T04:33:13",
+   "log": "state/logs/ledger.log"
+  },
+  "head-check": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 13.8,
+   "why": "",
+   "tail": "",
+   "fingerprint": "7c03848d73f6dc8f",
+   "finished": "2026-10-30T04:33:26",
+   "log": "state/logs/head-check.log"
+  },
+  "wiring": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.4,
+   "why": "",
+   "tail": "",
+   "fingerprint": "b294e2567305e862",
+   "finished": "2026-10-30T04:33:28",
+   "log": "state/logs/wiring.log"
+  },
+  "router-selftest": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 5.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "2dac8b231444ee08",
+   "finished": "2026-10-30T04:33:33",
+   "log": "state/logs/router-selftest.log"
+  },
+  "parity": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.4,
+   "why": "",
+   "tail": "",
+   "fingerprint": "48715b8ac95a4684",
+   "finished": "2026-10-30T04:33:35",
+   "log": "state/logs/parity.log"
+  }
+ },
+ "runs": [
+  {
+   "finished": "2026-10-30T04:33:35",
+   "seconds": 361.6,
+   "results": {
+    "netlist": "pass",
+    "head": "pass",
+    "shield:SH1": "pass",
+    "sb1r-variant": "pass",
+    "board:TXJ": "pass",
+    "board:MP1": "pass",
+    "board:LR1": "pass",
+    "field-xcheck": "pass",
+    "mp1-spice": "pass",
+    "ref3": "pass",
+    "ledger": "pass",
+    "head-check": "pass",
+    "wiring": "pass",
+    "router-selftest": "pass",
+    "parity": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T04:33:50",
+   "seconds": 0.5,
+   "results": {
+    "ref3": "pass"
+   }
+  }
+ ]
+}

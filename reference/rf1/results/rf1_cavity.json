@@ -1,0 +1,145 @@
+{
+ "status": "MODELED (RF1 cavity study, side experiment); envelope estimates, not mesh booleans",
+ "budget": {
+  "cb1d_tallest_top_mm": 2.5,
+  "cb1d_tallest_bottom_mm": 0.0,
+  "ab1_tallest_top_mm": 1.6,
+  "ab1_tallest_bottom_mm": 0.55,
+  "cb1d_top5": [
+   [
+    2.5,
+    "FB2"
+   ],
+   [
+    2.4,
+    "DTV"
+   ],
+   [
+    2.0,
+    "CV1"
+   ],
+   [
+    2.0,
+    "CL1"
+   ],
+   [
+    2.0,
+    "CI2"
+   ]
+  ],
+  "need_mm": {
+   "L1": 2.2,
+   "L2": 6.05,
+   "L5": 5.1
+  },
+  "baseline_mm": {
+   "L1": 5.8,
+   "L2": 10.2,
+   "L5": 11.8
+  },
+  "saving_mm": {
+   "L1": 3.6,
+   "L2": 4.15,
+   "L5": 6.7
+  }
+ },
+ "option_K_top": {
+  "name": "K-top (recommended)",
+  "shrink_mm": 6.7,
+  "head_height_mm": 40.4,
+  "tube_saving_g": 13.7,
+  "l5_pour_cm3": 22.8,
+  "l5_pour_g": {
+   "GEL": [
+    21.7,
+    22.8
+   ],
+   "SYN": [
+    13.7,
+    18.3
+   ]
+  },
+  "net_head_g": [
+   0.0,
+   4.6
+  ],
+  "net_torque_kg_m": [
+   0.0,
+   0.0045
+  ],
+  "moves": "LB1, roof, cap and HTA come down by the L5 saving; nothing below z 27 moves",
+  "rerun": [
+   "head_crosscheck (HTA and LB1 positions)",
+   "the HTA timing antenna coupling (it moves toward the formers)",
+   "head thermal with SYN in L5"
+  ]
+ },
+ "option_S": {
+  "name": "S (full shrink, not recommended before simulation)",
+  "shrink_mm": 14.5,
+  "head_height_mm": 32.6,
+  "tube_saving_g": 29.6,
+  "moves": "AB1 down 3.6 mm, septum + absorber down 7.8 mm toward the receive coils",
+  "rerun": [
+   "sbq_sim leak null with the absorber lower",
+   "check_v22 (47 geometry checks)",
+   "head_crosscheck",
+   "former / bridge clearances"
+  ]
+ },
+ "potting": [
+  {
+   "zone": "L1 gallery",
+   "baseline": "GEL (34.8 cm3)",
+   "rf1": "GEL, full: the flex jumper is fixed, nothing to service",
+   "why": "locks the lead jumper; er 2.7-3.0 next to the receive leads"
+  },
+  {
+   "zone": "L2 analog cell",
+   "baseline": "GEL (52.3 cm3)",
+   "rf1": "GEL, the headroom freed by the headers is filled too",
+   "why": "no connector voids or ribbon fold left; the hinge root is wetted (strain relief)"
+  },
+  {
+   "zone": "L4 absorber",
+   "baseline": "CI",
+   "rf1": "CI unchanged",
+   "why": "magnetic function"
+  },
+  {
+   "zone": "L5 controller (new)",
+   "baseline": "conformal coat only (Pico W antenna, serviceable pads)",
+   "rf1": "SYN (syntactic silicone) up to 1 mm over the tallest part, below the hinge bend",
+   "why": "no radio left, no connector to service: the board can be potted; locks parts (microphonics), seals moisture, conducts better than the still air it replaces"
+  },
+  {
+   "zone": "hinges / folds",
+   "baseline": "-",
+   "rf1": "no rigid epoxy across a fold; the bend region stays outside every pour (duct), the roots are in gel",
+   "why": "a rigid pour on a fold cracks the copper under thermal cycling"
+  },
+  {
+   "zone": "L6 display",
+   "baseline": "conformal coat",
+   "rf1": "conformal coat (LED light path)",
+   "why": "the pixel holes need the LEDs clear"
+  },
+  {
+   "zone": "L8 HTA",
+   "baseline": "conformal coat",
+   "rf1": "conformal coat; flex tail service loop free under the removable roof",
+   "why": "the roof stays removable"
+  }
+ ],
+ "swaps": {
+  "M5": "LMR36015 + SRN4018-6R8M",
+  "U1": "RP2354A chip-down (QFN-60) + crystal",
+  "JA": "hinge",
+  "JB": "hinge",
+  "JHTA": "hinge (HTA tail)",
+  "JLB": "hinge (LB1)"
+ },
+ "unverified": [
+  "RP2354A QFN-60 package height (drawn only): 0.9 mm ASSUMED"
+ ]
+}

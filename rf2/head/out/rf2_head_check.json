@@ -1,0 +1,400 @@
+{
+ "status": "MEASURED on the RF2 head v1 solids (design MODELED, not built)",
+ "checks": {
+  "closed_meshes": {
+   "ok": true,
+   "parts": {
+    "SHELL_LOWER": {
+     "triangles": 3238,
+     "edges_not_2": 0,
+     "volume_cm3": 84.146,
+     "ok": true
+    },
+    "LID": {
+     "triangles": 3072,
+     "edges_not_2": 0,
+     "volume_cm3": 64.075,
+     "ok": true
+    },
+    "COIL_CHANNEL": {
+     "triangles": 4062,
+     "edges_not_2": 0,
+     "volume_cm3": 12.628,
+     "ok": true
+    },
+    "BAY_WALLS": {
+     "triangles": 64,
+     "edges_not_2": 0,
+     "volume_cm3": 3.991,
+     "ok": true
+    },
+    "CRADLE_AB1A": {
+     "triangles": 4748,
+     "edges_not_2": 0,
+     "volume_cm3": 0.96,
+     "ok": true
+    },
+    "CRADLE_AB1B": {
+     "triangles": 4748,
+     "edges_not_2": 0,
+     "volume_cm3": 0.96,
+     "ok": true
+    },
+    "CB1D_TOWER": {
+     "triangles": 4436,
+     "edges_not_2": 0,
+     "volume_cm3": 6.116,
+     "ok": true
+    },
+    "TRAY_MP1": {
+     "triangles": 104,
+     "edges_not_2": 0,
+     "volume_cm3": 0.862,
+     "ok": true
+    },
+    "TRAY_TXJ": {
+     "triangles": 104,
+     "edges_not_2": 0,
+     "volume_cm3": 0.336,
+     "ok": true
+    },
+    "BOARD_SH1": {
+     "triangles": 1416,
+     "edges_not_2": 0,
+     "volume_cm3": 16.319,
+     "ok": true
+    },
+    "BOARD_QA": {
+     "triangles": 1416,
+     "edges_not_2": 0,
+     "volume_cm3": 32.638,
+     "ok": true
+    },
+    "BOARD_QB": {
+     "triangles": 1416,
+     "edges_not_2": 0,
+     "volume_cm3": 32.638,
+     "ok": true
+    },
+    "ENV_AB1A": {
+     "triangles": 1532,
+     "edges_not_2": 0,
+     "volume_cm3": 6.739,
+     "ok": true
+    },
+    "ENV_AB1B": {
+     "triangles": 1532,
+     "edges_not_2": 0,
+     "volume_cm3": 6.739,
+     "ok": true
+    },
+    "ENV_CB1D": {
+     "triangles": 1532,
+     "edges_not_2": 0,
+     "volume_cm3": 37.204,
+     "ok": true
+    },
+    "ENV_MP1": {
+     "triangles": 44,
+     "edges_not_2": 0,
+     "volume_cm3": 5.306,
+     "ok": true
+    },
+    "ENV_TXJ": {
+     "triangles": 44,
+     "edges_not_2": 0,
+     "volume_cm3": 1.255,
+     "ok": true
+    },
+    "ENV_LED": {
+     "triangles": 25934,
+     "edges_not_2": 0,
+     "volume_cm3": 17.799,
+     "ok": true
+    },
+    "LITZ": {
+     "triangles": 319488,
+     "edges_not_2": 0,
+     "volume_cm3": 20.43,
+     "ok": true
+    },
+    "REF3_FORMER": {
+     "triangles": 6240,
+     "edges_not_2": 0,
+     "volume_cm3": 27.434,
+     "ok": true
+    }
+   }
+  },
+  "envelope": {
+   "ok": true,
+   "parts": {
+    "SHELL_LOWER": {
+     "r_max": 116.5,
+     "z": [
+      0.0,
+      23.9
+     ]
+    },
+    "LID": {
+     "r_max": 116.5,
+     "z": [
+      21.6,
+      25.4
+     ]
+    },
+    "COIL_CHANNEL": {
+     "r_max": 114.3,
+     "z": [
+      3.2,
+      18.8
+     ]
+    },
+    "BAY_WALLS": {
+     "r_max": 108.002,
+     "z": [
+      3.8,
+      20.8
+     ]
+    },
+    "CRADLE_AB1A": {
+     "r_max": 103.499,
+     "z": [
+      3.8,
+      8.0
+     ]
+    },
+    "CRADLE_AB1B": {
+     "r_max": 103.499,
+     "z": [
+      3.8,
+      8.0
+     ]
+    },
+    "CB1D_TOWER": {
+     "r_max": 40.5,
+     "z": [
+      3.8,
+      16.0
+     ]
+    },
+    "TRAY_MP1": {
+     "r_max": 92.285,
+     "z": [
+      3.8,
+      8.0
+     ]
+    },
+    "TRAY_TXJ": {
+     "r_max": 107.775,
+     "z": [
+      3.8,
+      8.0
+     ]
+    },
+    "BOARD_SH1": {
+     "r_max": 114.0,
+     "z": [
+      1.2,
+      1.6
+     ]
+    },
+    "BOARD_QA": {
+     "r_max": 114.0,
+     "z": [
+      1.6,
+      2.4
+     ]
+    },
+    "BOARD_QB": {
+     "r_max": 114.0,
+     "z": [
+      2.4,
+      3.2
+     ]
+    },
+    "ENV_AB1A": {
+     "r_max": 101.998,
+     "z": [
+      4.6,
+      10.2
+     ]
+    },
+    "ENV_AB1B": {
+     "r_max": 101.998,
+     "z": [
+      4.6,
+      10.2
+     ]
+    },
+    "ENV_CB1D": {
+     "r_max": 39.0,
+     "z": [
+      11.5,
+      19.5
+     ]
+    },
+    "ENV_MP1": {
+     "r_max": 90.471,
+     "z": [
+      4.6,
+      10.6
+     ]
+    },
+    "ENV_TXJ": {
+     "r_max": 106.114,
+     "z": [
+      4.6,
+      12.0
+     ]
+    },
+    "ENV_LED": {
+     "r_max": 113.0,
+     "z": [
+      22.85,
+      23.9
+     ]
+    },
+    "LITZ": {
+     "r_max": 114.0,
+     "z": [
+      3.8,
+      17.8
+     ]
+    }
+   }
+  },
+  "no_interference": {
+   "ok": true,
+   "pairs_checked": 171,
+   "overlaps": []
+  },
+  "seats": {
+   "ok": true,
+   "seat_to_its_board_mm": {
+    "CRADLE_AB1A": 0.0,
+    "CRADLE_AB1B": 0.0,
+    "TRAY_MP1": 0.0,
+    "TRAY_TXJ": 0.0,
+    "CB1D_TOWER": 0.0
+   },
+   "seats_to_walls_mm": {
+    "CRADLE_AB1A": 1.875,
+    "CRADLE_AB1B": 4.597,
+    "CB1D_TOWER": 1.5,
+    "TRAY_MP1": 2.403,
+    "TRAY_TXJ": 10.0
+   }
+  },
+  "clearances_mm": {
+   "ok": true,
+   "litz": {
+    "shell": 0.5,
+    "channel_inner_wall": 0.2,
+    "top_row_below_channel_top": 1.0
+   },
+   "litz_seat": {
+    "floor_contact_mm": 0.0,
+    "channel_min_gap": 0.0,
+    "note": "the bottom row is seated on the floor (0 by design); nothing else touches"
+   },
+   "islands_to_walls": {
+    "ENV_AB1A": 3.378,
+    "ENV_AB1B": 6.102,
+    "ENV_CB1D": 3.006,
+    "ENV_MP1": 4.293,
+    "ENV_TXJ": 10.0
+   },
+   "islands": {
+    "ENV_AB1A - ENV_AB1B": 3.834,
+    "ENV_AB1A - ENV_CB1D": 10.0,
+    "ENV_AB1A - ENV_MP1": 10.0,
+    "ENV_AB1A - ENV_TXJ": 10.0,
+    "ENV_AB1B - ENV_CB1D": 10.0,
+    "ENV_AB1B - ENV_MP1": 10.0,
+    "ENV_AB1B - ENV_TXJ": 10.0,
+    "ENV_CB1D - ENV_MP1": 10.0,
+    "ENV_CB1D - ENV_TXJ": 10.0,
+    "ENV_MP1 - ENV_TXJ": 5.5
+   },
+   "hv_to_others": {
+    "ENV_TXJ - ENV_AB1A": 20.0,
+    "ENV_TXJ - ENV_AB1B": 20.0,
+    "ENV_TXJ - ENV_CB1D": 20.0,
+    "ENV_MP1 - ENV_AB1A": 20.0,
+    "ENV_MP1 - ENV_AB1B": 14.985,
+    "ENV_MP1 - ENV_CB1D": 20.0
+   }
+  },
+  "led_display": {
+   "ok": true,
+   "leds": 522,
+   "sites_inside_outline": true,
+   "led_top_z": 23.9,
+   "lid_underside_z": 23.9,
+   "flex_to_gland_boss_mm": 1.0,
+   "led_seat_gap_to_lid": 0.0,
+   "lid": "clear / natural PETG, printed solid (diffuser; transmission ASSUMED)"
+  },
+  "potting_cm3_full_fill": {
+   "analog": 97.0,
+   "hv": 62.4,
+   "digital": 422.3
+  },
+  "mass_g": {
+   "items": {
+    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 221.1,
+    "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": 129.2,
+    "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": 37.2,
+    "transmit litz (26 turns, 6 g/m)": 109.6,
+    "electronics islands (ASSUMED: AB1A/B 10 g each, CB1D 40 g, MP1 8 g, TXJ 10 g; LED display flex 40 g ASSUMED: 0.4 mm flex+stiffener D226 about 30 g + 522 LEDs / caps)": 118,
+    "hardware, cable gland, yoke lug (ASSUMED)": 40.0
+   },
+   "without_bay_potting": 694,
+   "bay_full_fill_potting": 441,
+   "islands_only_potting": 67,
+   "potting_source": "rf2_ledger.json stated fill levels",
+   "total_islands_only": 761,
+   "total_full_fill": 1135,
+   "earlier_estimate": 529,
+   "note": "100 % infill PETG is an upper bound for the printed parts; the earlier 529 g estimate assumed a single 0.4 mm receive board, not the two 0.8 mm SB1R boards"
+  }
+ },
+ "ok": true,
+ "vertical_budget_mm": {
+  "total": 25.4,
+  "bay": [
+   3.8,
+   21.6
+  ],
+  "bay_height": 17.8,
+  "stack": {
+   "AB1A": [
+    4.6,
+    10.2
+   ],
+   "AB1B": [
+    4.6,
+    10.2
+   ],
+   "CB1D": [
+    11.5,
+    19.5
+   ],
+   "MP1": [
+    4.6,
+    10.6
+   ],
+   "TXJ": [
+    4.6,
+    12.0
+   ],
+   "LED": [
+    22.85,
+    23.9
+   ]
+  },
+  "baseline_head": 47.1
+ },
+ "model_deviation": "coil rows sit at z 4.4-17.2 mm (a 0.6 mm printed floor on QB) against z 3.2-16.0 in the RF2 models: 1.2 mm higher; re-run rf2_receiver_combo with the built z before any number is quoted for this layout"
+}

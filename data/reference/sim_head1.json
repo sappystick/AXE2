@@ -1,0 +1,491 @@
+{
+ "tx_stage": [
+  {
+   "I0": 20,
+   "CL_nF": 200.0,
+   "derated": false,
+   "f": 400.0,
+   "ton_us": 41.538,
+   "vd_peak": 314.941,
+   "vc_peak": 313.736,
+   "vc_min": 26.871,
+   "Vds_peak": 340.941,
+   "t_zero_us": 5.011,
+   "t_quiet_us": 6.741,
+   "E_half_LI2_mJ": 10.8,
+   "P_damp_W": 0.33,
+   "P_diode_W": 0.028,
+   "P_RCL_W": 3.928,
+   "P_coil_W": 0.117,
+   "peak_i_diode": 19.854,
+   "case": "as built: 2 x 100 nF X7R, nominal"
+  },
+  {
+   "I0": 20,
+   "CL_nF": 200.0,
+   "derated": true,
+   "f": 400.0,
+   "ton_us": 41.538,
+   "vd_peak": 353.452,
+   "vc_peak": 352.247,
+   "vc_min": 29.24,
+   "Vds_peak": 379.452,
+   "t_zero_us": 4.681,
+   "t_quiet_us": 6.441,
+   "E_half_LI2_mJ": 10.8,
+   "P_damp_W": 0.361,
+   "P_diode_W": 0.026,
+   "P_RCL_W": 4.679,
+   "P_coil_W": 0.116,
+   "peak_i_diode": 19.846,
+   "case": "as built: 2 x 100 nF X7R, with DC-bias derating"
+  },
+  {
+   "I0": 20,
+   "CL_nF": 100.0,
+   "derated": false,
+   "f": 400.0,
+   "ton_us": 41.538,
+   "vd_peak": 436.368,
+   "vc_peak": 435.163,
+   "vc_min": 3.209,
+   "Vds_peak": 462.368,
+   "t_zero_us": 3.761,
+   "t_quiet_us": 5.561,
+   "E_half_LI2_mJ": 10.8,
+   "P_damp_W": 0.458,
+   "P_diode_W": 0.021,
+   "P_RCL_W": 3.815,
+   "P_coil_W": 0.113,
+   "peak_i_diode": 19.877,
+   "case": "100 nF C0G/film"
+  },
+  {
+   "I0": 20,
+   "CL_nF": 68.0,
+   "derated": false,
+   "f": 400.0,
+   "ton_us": 41.538,
+   "vd_peak": 522.61,
+   "vc_peak": 521.405,
+   "vc_min": 0.0,
+   "Vds_peak": 548.61,
+   "t_zero_us": 3.141,
+   "t_quiet_us": 5.191,
+   "E_half_LI2_mJ": 10.8,
+   "P_damp_W": 0.551,
+   "P_diode_W": 0.017,
+   "P_RCL_W": 3.73,
+   "P_coil_W": 0.111,
+   "peak_i_diode": 19.838,
+   "case": "68 nF film"
+  },
+  {
+   "I0": 20,
+   "CL_nF": 150.0,
+   "derated": false,
+   "f": 400.0,
+   "ton_us": 41.538,
+   "vd_peak": 360.337,
+   "vc_peak": 359.132,
+   "vc_min": 13.608,
+   "Vds_peak": 386.337,
+   "t_zero_us": 4.491,
+   "t_quiet_us": 6.251,
+   "E_half_LI2_mJ": 10.8,
+   "P_damp_W": 0.377,
+   "P_diode_W": 0.025,
+   "P_RCL_W": 3.887,
+   "P_coil_W": 0.115,
+   "peak_i_diode": 19.879,
+   "case": "150 nF film"
+  },
+  {
+   "I0": 8,
+   "CL_nF": 200.0,
+   "derated": false,
+   "f": 800,
+   "ton_us": 16.615,
+   "vd_peak": 131.158,
+   "vc_peak": 129.956,
+   "vc_min": 37.893,
+   "Vds_peak": 157.158,
+   "t_zero_us": 4.331,
+   "t_quiet_us": 5.901,
+   "E_half_LI2_mJ": 1.728,
+   "P_damp_W": 0.113,
+   "P_diode_W": 0.018,
+   "P_RCL_W": 1.242,
+   "P_coil_W": 0.017,
+   "peak_i_diode": 7.853,
+   "case": "8 A, 200 nF"
+  },
+  {
+   "I0": 8,
+   "CL_nF": 100.0,
+   "derated": false,
+   "f": 800,
+   "ton_us": 16.615,
+   "vd_peak": 175.246,
+   "vc_peak": 174.044,
+   "vc_min": 14.815,
+   "Vds_peak": 201.246,
+   "t_zero_us": 3.581,
+   "t_quiet_us": 5.201,
+   "E_half_LI2_mJ": 1.728,
+   "P_damp_W": 0.148,
+   "P_diode_W": 0.015,
+   "P_RCL_W": 1.212,
+   "P_coil_W": 0.017,
+   "peak_i_diode": 7.906,
+   "case": "8 A, 100 nF"
+  },
+  {
+   "I0": 14,
+   "CL_nF": 200.0,
+   "derated": false,
+   "f": 600,
+   "ton_us": 29.077,
+   "vd_peak": 223.925,
+   "vc_peak": 222.721,
+   "vc_min": 43.472,
+   "Vds_peak": 249.925,
+   "t_zero_us": 4.651,
+   "t_quiet_us": 6.301,
+   "E_half_LI2_mJ": 5.292,
+   "P_damp_W": 0.249,
+   "P_diode_W": 0.026,
+   "P_RCL_W": 2.878,
+   "P_coil_W": 0.062,
+   "peak_i_diode": 13.818,
+   "case": "14 A, 200 nF"
+  },
+  {
+   "I0": 14,
+   "CL_nF": 100.0,
+   "derated": false,
+   "f": 600,
+   "ton_us": 29.077,
+   "vd_peak": 305.719,
+   "vc_peak": 304.515,
+   "vc_min": 11.586,
+   "Vds_peak": 331.719,
+   "t_zero_us": 3.691,
+   "t_quiet_us": 5.421,
+   "E_half_LI2_mJ": 5.292,
+   "P_damp_W": 0.337,
+   "P_diode_W": 0.021,
+   "P_RCL_W": 2.798,
+   "P_coil_W": 0.061,
+   "peak_i_diode": 13.883,
+   "case": "14 A, 100 nF"
+  }
+ ],
+ "tx_moment": {
+  "area_turns_sum_m2": 2.389,
+  "moment_Am2_at_20A": 7.96,
+  "moment_Am2_at_8A": 3.19
+ },
+ "axis_field_uT_per_A": {
+  "50mm": 56.79,
+  "100mm": 24.56,
+  "150mm": 11.56,
+  "200mm": 6.1,
+  "300mm": 2.22,
+  "400mm": 1.02,
+  "500mm": 0.55
+ },
+ "axis_field_uT_at_20A": {
+  "50mm": 1135.8,
+  "100mm": 491.2,
+  "150mm": 231.2,
+  "200mm": 122.0,
+  "300mm": 44.4,
+  "400mm": 20.4,
+  "500mm": 11.0
+ },
+ "dBdt_T_per_s_at_100mm_20A_turnoff": 130.6,
+ "coupling": {
+  "M_TX_to_unnulled_disc_coil_uH": 30.0
+ },
+ "first_clean_gate_us": {
+  "as built: 2 x 100 nF X7R, with DC-bias derating": {
+   "X8": 8.83,
+   "QUAD": 8.15
+  },
+  "100 nF C0G/film": {
+   "X8": 7.94,
+   "QUAD": 7.29
+  }
+ },
+ "gold_nugget_depth_noise_limited": {
+  "as built: 2 x 100 nF X7R, with DC-bias derating | X8 | 0.1 g": {
+   "detect_depth_mm": 97,
+   "snr_at": [
+    36.4,
+    2.6,
+    0.3,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | X8 | 0.5 g": {
+   "detect_depth_mm": 137,
+   "snr_at": [
+    197.4,
+    14.3,
+    1.8,
+    0.3,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | X8 | 1.0 g": {
+   "detect_depth_mm": 152,
+   "snr_at": [
+    355.8,
+    25.7,
+    3.2,
+    0.6,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | X8 | 5.0 g": {
+   "detect_depth_mm": 189,
+   "snr_at": [
+    1238.6,
+    89.5,
+    11.0,
+    2.0,
+    0.2,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | X8 | 20.0 g": {
+   "detect_depth_mm": 225,
+   "snr_at": [
+    3381.5,
+    244.3,
+    30.0,
+    5.6,
+    0.4,
+    0.1,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | QUAD | 0.1 g": {
+   "detect_depth_mm": 89,
+   "snr_at": [
+    27.1,
+    1.6,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | QUAD | 0.5 g": {
+   "detect_depth_mm": 122,
+   "snr_at": [
+    139.8,
+    8.5,
+    0.8,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | QUAD | 1.0 g": {
+   "detect_depth_mm": 135,
+   "snr_at": [
+    250.1,
+    15.2,
+    1.5,
+    0.2,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | QUAD | 5.0 g": {
+   "detect_depth_mm": 164,
+   "snr_at": [
+    863.0,
+    52.4,
+    5.2,
+    0.7,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "as built: 2 x 100 nF X7R, with DC-bias derating | QUAD | 20.0 g": {
+   "detect_depth_mm": 189,
+   "snr_at": [
+    2347.3,
+    142.4,
+    14.1,
+    2.0,
+    0.1,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | X8 | 0.1 g": {
+   "detect_depth_mm": 99,
+   "snr_at": [
+    40.1,
+    2.9,
+    0.4,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | X8 | 0.5 g": {
+   "detect_depth_mm": 138,
+   "snr_at": [
+    204.1,
+    14.7,
+    1.8,
+    0.3,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | X8 | 1.0 g": {
+   "detect_depth_mm": 152,
+   "snr_at": [
+    364.2,
+    26.3,
+    3.2,
+    0.6,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | X8 | 5.0 g": {
+   "detect_depth_mm": 189,
+   "snr_at": [
+    1253.0,
+    90.5,
+    11.1,
+    2.1,
+    0.2,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | X8 | 20.0 g": {
+   "detect_depth_mm": 225,
+   "snr_at": [
+    3404.4,
+    245.9,
+    30.2,
+    5.6,
+    0.4,
+    0.1,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | QUAD | 0.1 g": {
+   "detect_depth_mm": 91,
+   "snr_at": [
+    29.7,
+    1.8,
+    0.2,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | QUAD | 0.5 g": {
+   "detect_depth_mm": 123,
+   "snr_at": [
+    144.5,
+    8.8,
+    0.9,
+    0.1,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | QUAD | 1.0 g": {
+   "detect_depth_mm": 136,
+   "snr_at": [
+    256.0,
+    15.5,
+    1.5,
+    0.2,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | QUAD | 5.0 g": {
+   "detect_depth_mm": 164,
+   "snr_at": [
+    873.0,
+    53.0,
+    5.3,
+    0.7,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "100 nF C0G/film | QUAD | 20.0 g": {
+   "detect_depth_mm": 189,
+   "snr_at": [
+    2363.3,
+    143.4,
+    14.2,
+    2.0,
+    0.1,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "rx_pickup_peak_V": {
+  "unnulled_disc": 290.4,
+  "X8_nominal": 0.0726,
+  "X8_eccentric": 2.323,
+  "QUAD_nominal": 0.00871
+ },
+ "improvement_steps_X8_depth_mm": {
+  "baseline (RS3 = 1 kohm, 100 pulses, no hood)": {
+   "0.1 g": 99,
+   "1.0 g": 152,
+   "5.0 g": 189
+  },
+  "RS3 -> 100 ohm": {
+   "0.1 g": 121,
+   "1.0 g": 179,
+   "5.0 g": 221
+  },
+  "RS3 -> 100 ohm + 400 pulses (1 s)": {
+   "0.1 g": 137,
+   "1.0 g": 200,
+   "5.0 g": 248
+  },
+  "+ ferrite hood (+5%)": {
+   "0.1 g": 139,
+   "1.0 g": 202,
+   "5.0 g": 251
+  }
+ }
+}

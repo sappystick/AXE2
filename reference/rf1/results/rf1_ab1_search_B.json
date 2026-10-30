@@ -1,0 +1,108 @@
+{
+ "board": "B",
+ "best": null,
+ "rows": [
+  {
+   "j2": "3.0,-17.4",
+   "rb": "8.9,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0",
+   "placement": [
+    "clearance 0.14: RB2.2 - CLI.1",
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "3.0,-17.4",
+   "rb": "8.9,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:6.5:9.0;RISB:13.4:11.4;CVB:4.0:16.4",
+   "placement": [
+    "clearance 0.14: RB2.2 - CLI.1",
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "3.0,-17.4",
+   "rb": "8.9,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0;CVB:15.6:-1.0",
+   "placement": [
+    "clearance 0.14: RB2.2 - CLI.1",
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "3.0,-17.4",
+   "rb": "6.6,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0",
+   "placement": [
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "3.0,-17.4",
+   "rb": "6.6,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:6.5:9.0;RISB:13.4:11.4;CVB:4.0:16.4",
+   "placement": [
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "3.0,-17.4",
+   "rb": "6.6,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0;CVB:15.6:-1.0",
+   "placement": [
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "-6.0,-16.8",
+   "rb": "8.9,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0",
+   "placement": [
+    "clearance 0.14: RB2.2 - CLI.1",
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "-6.0,-16.8",
+   "rb": "8.9,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:6.5:9.0;RISB:13.4:11.4;CVB:4.0:16.4",
+   "placement": [
+    "clearance 0.14: RB2.2 - CLI.1",
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "-6.0,-16.8",
+   "rb": "8.9,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0;CVB:15.6:-1.0",
+   "placement": [
+    "clearance 0.14: RB2.2 - CLI.1",
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "-6.0,-16.8",
+   "rb": "6.6,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0",
+   "placement": [
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "-6.0,-16.8",
+   "rb": "6.6,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:6.5:9.0;RISB:13.4:11.4;CVB:4.0:16.4",
+   "placement": [
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  },
+  {
+   "j2": "-6.0,-16.8",
+   "rb": "6.6,1.2",
+   "put": "ULD:11.8:4.0:90;CLO:9.6:2.8:90;CLI:10.6:6.4;RISA:12.6:-3.0;CVB:15.6:-1.0",
+   "placement": [
+    "clearance 0.11: CAAF2.2 - CLI.1"
+   ]
+  }
+ ]
+}

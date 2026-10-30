@@ -1,0 +1,330 @@
+{
+ "status": "MODELED (RF2 step 7: golden-angle petal ring vs rim mono; equal energy per pulse; noise-limited, no ground)",
+ "first_gate_us": 16.3,
+ "rows": [
+  {
+   "name": "REFERENCE rim mono, 26 turns",
+   "turns": 26,
+   "litz_m": 18.3,
+   "L_uH": 333,
+   "I_A": 8.06,
+   "moment_Am2": [
+    0.0,
+    -0.0,
+    8.23
+   ],
+   "depth_mm": {
+    "1.0 g": 342,
+    "5.0 g": 437,
+    "20.0 g": 500
+   }
+  },
+  {
+   "name": "flat petals: N 6, radius 25 mm, 15 turns each, 1 layer(s), golden angle",
+   "turns": 84,
+   "litz_m": 7.7,
+   "L_uH": 26,
+   "I_A": 28.68,
+   "moment_Am2": [
+    0.0,
+    -0.0,
+    1.922
+   ],
+   "depth_mm": {
+    "1.0 g": 132,
+    "5.0 g": 185,
+    "20.0 g": 237
+   }
+  },
+  {
+   "name": "flat petals: N 6, radius 25 mm, 15 turns each, 6 layer(s), golden angle",
+   "turns": 84,
+   "litz_m": 7.7,
+   "L_uH": 27,
+   "I_A": 28.51,
+   "moment_Am2": [
+    -0.0,
+    -0.0,
+    1.911
+   ],
+   "depth_mm": {
+    "1.0 g": 126,
+    "5.0 g": 177,
+    "20.0 g": 229
+   }
+  },
+  {
+   "name": "flat petals: N 13, radius 15 mm, 9 turns each, 1 layer(s), golden angle",
+   "turns": 104,
+   "litz_m": 6.1,
+   "L_uH": 13,
+   "I_A": 41.5,
+   "moment_Am2": [
+    0.0,
+    0.0,
+    1.377
+   ],
+   "depth_mm": {
+    "1.0 g": 84,
+    "5.0 g": 121,
+    "20.0 g": 165
+   }
+  },
+  {
+   "name": "flat petals: N 13, radius 15 mm, 9 turns each, 6 layer(s), golden angle",
+   "turns": 104,
+   "litz_m": 6.1,
+   "L_uH": 13,
+   "I_A": 41.33,
+   "moment_Am2": [
+    -0.0,
+    0.0,
+    1.371
+   ],
+   "depth_mm": {
+    "1.0 g": 81,
+    "5.0 g": 114,
+    "20.0 g": 158
+   }
+  },
+  {
+   "name": "flat petals: N 8, radius 40 mm, 9 turns each, 1 layer(s), golden angle",
+   "turns": 72,
+   "litz_m": 15.2,
+   "L_uH": 60,
+   "I_A": 18.97,
+   "moment_Am2": [
+    0.0,
+    -0.0,
+    4.904
+   ],
+   "depth_mm": {
+    "1.0 g": 242,
+    "5.0 g": 312,
+    "20.0 g": 379
+   }
+  },
+  {
+   "name": "flat petals: N 8, radius 40 mm, 9 turns each, 6 layer(s), golden angle",
+   "turns": 72,
+   "litz_m": 15.2,
+   "L_uH": 65,
+   "I_A": 18.19,
+   "moment_Am2": [
+    0.0,
+    -0.0,
+    4.701
+   ],
+   "depth_mm": {
+    "1.0 g": 233,
+    "5.0 g": 302,
+    "20.0 g": 370
+   }
+  },
+  {
+   "name": "radial petals: N 6, radius 25 mm, 15 turns each, 1 layer(s), golden angle",
+   "turns": 84,
+   "litz_m": 7.7,
+   "L_uH": 26,
+   "I_A": 28.69,
+   "moment_Am2": [
+    0.262,
+    -0.076,
+    0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 106,
+    "5.0 g": 144,
+    "20.0 g": 176
+   }
+  },
+  {
+   "name": "radial petals: N 6, radius 25 mm, 15 turns each, 6 layer(s), golden angle",
+   "turns": 84,
+   "litz_m": 7.7,
+   "L_uH": 26,
+   "I_A": 28.57,
+   "moment_Am2": [
+    0.261,
+    -0.076,
+    0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 125,
+    "5.0 g": 162,
+    "20.0 g": 193
+   }
+  },
+  {
+   "name": "radial petals: N 13, radius 15 mm, 9 turns each, 1 layer(s), golden angle",
+   "turns": 104,
+   "litz_m": 6.1,
+   "L_uH": 13,
+   "I_A": 41.53,
+   "moment_Am2": [
+    -0.003,
+    0.012,
+    0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 82,
+    "5.0 g": 121,
+    "20.0 g": 152
+   }
+  },
+  {
+   "name": "radial petals: N 13, radius 15 mm, 9 turns each, 6 layer(s), golden angle",
+   "turns": 104,
+   "litz_m": 6.1,
+   "L_uH": 13,
+   "I_A": 41.5,
+   "moment_Am2": [
+    -0.003,
+    0.012,
+    0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 89,
+    "5.0 g": 127,
+    "20.0 g": 159
+   }
+  },
+  {
+   "name": "radial petals: N 8, radius 40 mm, 9 turns each, 1 layer(s), golden angle",
+   "turns": 72,
+   "litz_m": 15.2,
+   "L_uH": 57,
+   "I_A": 19.41,
+   "moment_Am2": [
+    0.061,
+    -0.1,
+    -0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 156,
+    "5.0 g": 198,
+    "20.0 g": 238
+   }
+  },
+  {
+   "name": "radial petals: N 8, radius 40 mm, 9 turns each, 6 layer(s), golden angle",
+   "turns": 72,
+   "litz_m": 15.2,
+   "L_uH": 60,
+   "I_A": 19.03,
+   "moment_Am2": [
+    0.06,
+    -0.098,
+    -0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 187,
+    "5.0 g": 230,
+    "20.0 g": 267
+   }
+  },
+  {
+   "name": "tangential petals: N 6, radius 25 mm, 15 turns each, 1 layer(s), golden angle",
+   "turns": 84,
+   "litz_m": 7.7,
+   "L_uH": 28,
+   "I_A": 27.98,
+   "moment_Am2": [
+    -0.074,
+    -0.256,
+    0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 0,
+    "5.0 g": 69,
+    "20.0 g": 86
+   }
+  },
+  {
+   "name": "tangential petals: N 6, radius 25 mm, 15 turns each, 6 layer(s), golden angle",
+   "turns": 84,
+   "litz_m": 7.7,
+   "L_uH": 27,
+   "I_A": 28.07,
+   "moment_Am2": [
+    -0.075,
+    -0.256,
+    0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 83,
+    "5.0 g": 97,
+    "20.0 g": 116
+   }
+  },
+  {
+   "name": "tangential petals: N 13, radius 15 mm, 9 turns each, 1 layer(s), golden angle",
+   "turns": 104,
+   "litz_m": 6.1,
+   "L_uH": 13,
+   "I_A": 40.31,
+   "moment_Am2": [
+    0.012,
+    0.003,
+    -0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 0,
+    "5.0 g": 0,
+    "20.0 g": 0
+   }
+  },
+  {
+   "name": "tangential petals: N 13, radius 15 mm, 9 turns each, 6 layer(s), golden angle",
+   "turns": 104,
+   "litz_m": 6.1,
+   "L_uH": 13,
+   "I_A": 40.34,
+   "moment_Am2": [
+    0.012,
+    0.003,
+    -0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 0,
+    "5.0 g": 51,
+    "20.0 g": 63
+   }
+  },
+  {
+   "name": "tangential petals: N 8, radius 40 mm, 9 turns each, 1 layer(s), golden angle",
+   "turns": 72,
+   "litz_m": 15.2,
+   "L_uH": 80,
+   "I_A": 16.4,
+   "moment_Am2": [
+    -0.085,
+    -0.051,
+    -0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 0,
+    "5.0 g": 60,
+    "20.0 g": 76
+   }
+  },
+  {
+   "name": "tangential petals: N 8, radius 40 mm, 9 turns each, 6 layer(s), golden angle",
+   "turns": 72,
+   "litz_m": 15.2,
+   "L_uH": 76,
+   "I_A": 16.87,
+   "moment_Am2": [
+    -0.087,
+    -0.053,
+    -0.0
+   ],
+   "depth_mm": {
+    "1.0 g": 118,
+    "5.0 g": 136,
+    "20.0 g": 151
+   }
+  }
+ ],
+ "seconds": 47.5
+}

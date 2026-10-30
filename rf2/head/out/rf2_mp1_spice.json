@@ -1,0 +1,21 @@
+{
+ "status": "MODELED with generic ngspice models; device parameters ASSUMED (not datasheet-verified)",
+ "v1 resistor 3 x 470 ohm": {
+  "peak_coil_V": 461.1,
+  "peak_clamp_mA": 322.6,
+  "energy_per_pulse_uJ": 786.1,
+  "preamp_input_within_1mV_after_us": 12.93,
+  "ngspice_rc": 0,
+  "series_R_ohm": 1410.0,
+  "thermal_noise_nV_rtHz": 4.83
+ },
+ "v2 depletion MOSFET limiter": {
+  "peak_coil_V": 461.2,
+  "peak_clamp_mA": 283.8,
+  "energy_per_pulse_uJ": 78.74,
+  "preamp_input_within_1mV_after_us": 12.85,
+  "ngspice_rc": 0,
+  "series_R_ohm": 64.1,
+  "thermal_noise_nV_rtHz": 1.03
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "status": "RF2 sign-off: MODELED / tool-checked (no fabricator DRC, CAM review or bench)",
+ "ok": true,
+ "steps": [
+  {
+   "step": "netlist consistency",
+   "rc": 0,
+   "seconds": 0.2,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "housing + seats (STL, spec)",
+   "rc": 0,
+   "seconds": 15.6,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "SH1 shield board",
+   "rc": 0,
+   "seconds": 1.9,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "SB1R-QA/QB outline variant",
+   "rc": 0,
+   "seconds": 9.0,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "board TXJ: placement, route, KiCad DRC, copper, parity, Gerbers",
+   "ok": true,
+   "rc": 0,
+   "seconds": 0,
+   "tail": ""
+  },
+  {
+   "step": "board MP1: placement, route, KiCad DRC, copper, parity, Gerbers",
+   "ok": true,
+   "rc": 0,
+   "seconds": 0,
+   "tail": ""
+  },
+  {
+   "step": "board LR1: placement, route, KiCad DRC, copper, parity, Gerbers",
+   "ok": true,
+   "rc": 0,
+   "seconds": 0,
+   "tail": ""
+  },
+  {
+   "step": "field code cross-check (magpylib vs loop_B)",
+   "rc": 0,
+   "seconds": 0.7,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "MP1 protection study (ngspice)",
+   "rc": 0,
+   "seconds": 1.1,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "REF3 sizing",
+   "rc": 0,
+   "seconds": 0.6,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "volume ledger",
+   "rc": 0,
+   "seconds": 3.1,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "housing checks (meshes, envelope, interference, seats, clearances)",
+   "rc": 0,
+   "seconds": 13.7,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "wiring / power / timing (slot probes)",
+   "rc": 0,
+   "seconds": 1.4,
+   "ok": true,
+   "tail": ""
+  },
+  {
+   "step": "parity: built boards + harness vs netlist",
+   "rc": 0,
+   "seconds": 1.5,
+   "ok": true,
+   "tail": ""
+  }
+ ],
+ "harness_pending": [
+  "C01a",
+  "C01b",
+  "C02a",
+  "C02b",
+  "C04a",
+  "C04b",
+  "C04c",
+  "C10a",
+  "C10b",
+  "C10c",
+  "C10d",
+  "C10e",
+  "C10f",
+  "C10g",
+  "C10h",
+  "C10i",
+  "C10j",
+  "C10k",
+  "C10l",
+  "C07"
+ ]
+}

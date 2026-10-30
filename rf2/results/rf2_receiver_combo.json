@@ -1,0 +1,248 @@
+{
+ "status": "MODELED (RF2 step 2; same physics as sim_head1 / rf2_coil_search; not the sign-off)",
+ "tx_light_vs_full": {
+  "full": {
+   "turns": 99,
+   "litz_m": 66.6,
+   "depth_mm": {
+    "1.0 g": 137,
+    "5.0 g": 166,
+    "20.0 g": 191
+   }
+  },
+  "light": {
+   "turns": 24,
+   "litz_m": 16.9,
+   "branches": 9.09,
+   "L_uH": 3.37,
+   "t_zero_us": 1.84,
+   "depth_mm": {
+    "1.0 g": 137,
+    "5.0 g": 165,
+    "20.0 g": 190
+   }
+  }
+ },
+ "concentric_design": {
+  "receive_r_mm": [
+   80,
+   95
+  ],
+  "receive_turns": 12,
+  "bucking_r_mm": 65,
+  "bucking_turns": 26.0,
+  "residual_M_nH": -0.0
+ },
+ "receivers": {
+  "QUAD (built quadrupole)": {
+   "first_gate_us": 6.0,
+   "depth_mm": {
+    "1.0 g": 137,
+    "5.0 g": 165,
+    "20.0 g": 190
+   }
+  },
+  "X8 (figure-8)": {
+   "first_gate_us": 6.0,
+   "depth_mm": {
+    "1.0 g": 181,
+    "5.0 g": 223,
+    "20.0 g": 262
+   }
+  },
+  "CN (concentric nulled)": {
+   "first_gate_us": 6.0,
+   "depth_mm": {
+    "1.0 g": 231,
+    "5.0 g": 284,
+    "20.0 g": 337
+   }
+  },
+  "QUAD + CN (two channels)": {
+   "depth_mm": {
+    "1.0 g": 231,
+    "5.0 g": 284,
+    "20.0 g": 337
+   },
+   "note": "detection on the deeper channel; bearing and pinpoint from QUAD where its SNR >= 3"
+  }
+ },
+ "depth_from_ratio": {
+  "depth_mm": [
+   50,
+   100,
+   150,
+   200,
+   300
+  ],
+  "quad_over_cn": [
+   0.1891,
+   0.0899,
+   0.057,
+   0.0367,
+   0.0228
+  ],
+  "monotonic": true,
+  "note": "peak over the sweep grid for each channel; independent of target size for a sphere; real targets add orientation spread"
+ },
+ "ground_coupling_rel": {
+  "QUAD (built quadrupole)": {
+   "h 10 mm": 2.29e-17,
+   "h 30 mm": 7.64e-17
+  },
+  "X8 (figure-8)": {
+   "h 10 mm": 1.97e-18,
+   "h 30 mm": 2.6e-17
+  },
+  "CN (concentric nulled)": {
+   "h 10 mm": 1.0,
+   "h 30 mm": 1.0
+  }
+ },
+ "ground_coupling_note": "|integral of Bt . Br over a uniform half-space below clearance h| divided by the target's peak coupling at 150 mm, relative to CN = 1; QUAD and X8 cancel a uniform half-space by symmetry (their values are numerical residue); uniform ground only (no hot rocks, no layering, no tilt or coil height change while sweeping, which break the symmetry); a large value means ground, not noise, limits depth unless ground balance removes it",
+ "mono": {
+  "SDC 2300-class 8 in mono (ASSUMED internals)": {
+   "turns": 28,
+   "L_uH": 300,
+   "I_A": 8.48,
+   "depth_mm_by_gate": {
+    "8 us": {
+     "1.0 g": 333,
+     "5.0 g": 415,
+     "20.0 g": 495
+    },
+    "10 us": {
+     "1.0 g": 330,
+     "5.0 g": 413,
+     "20.0 g": 494
+    },
+    "12 us": {
+     "1.0 g": 327,
+     "5.0 g": 411,
+     "20.0 g": 493
+    },
+    "15 us": {
+     "1.0 g": 322,
+     "5.0 g": 409,
+     "20.0 g": 491
+    }
+   },
+   "ground_coupling_rel_CN": {
+    "h 10 mm": 1.84,
+    "h 30 mm": 1.4
+   }
+  },
+  "mono, our diameter": {
+   "turns": 26,
+   "L_uH": 321,
+   "I_A": 8.2,
+   "depth_mm_by_gate": {
+    "8 us": {
+     "1.0 g": 356,
+     "5.0 g": 446,
+     "20.0 g": 500
+    },
+    "10 us": {
+     "1.0 g": 353,
+     "5.0 g": 444,
+     "20.0 g": 500
+    },
+    "12 us": {
+     "1.0 g": 350,
+     "5.0 g": 442,
+     "20.0 g": 500
+    },
+    "15 us": {
+     "1.0 g": 345,
+     "5.0 g": 439,
+     "20.0 g": 500
+    }
+   },
+   "ground_coupling_rel_CN": {
+    "h 10 mm": 1.78,
+    "h 30 mm": 1.44
+   }
+  }
+ },
+ "mono_plus_quad": {
+  "mono_turns": 26,
+  "L_uH": 321,
+  "I_A": 8.2,
+  "t_zero_us": 9.16,
+  "quad_first_gate_us": 16.57,
+  "quad_depth_mm": {
+   "1.0 g": 131,
+   "5.0 g": 162,
+   "20.0 g": 189
+  },
+  "mono_depth_mm_by_gate": {
+   "8 us": {
+    "1.0 g": 356,
+    "5.0 g": 446,
+    "20.0 g": 500
+   },
+   "10 us": {
+    "1.0 g": 353,
+    "5.0 g": 444,
+    "20.0 g": 500
+   },
+   "12 us": {
+    "1.0 g": 350,
+    "5.0 g": 442,
+    "20.0 g": 500
+   },
+   "15 us": {
+    "1.0 g": 345,
+    "5.0 g": 439,
+    "20.0 g": 500
+   }
+  },
+  "depth_ratio": {
+   "depth_mm": [
+    50,
+    100,
+    150,
+    200,
+    300
+   ],
+   "quad_over_mono": [
+    0.1175,
+    0.0256,
+    0.0094,
+    0.0043,
+    0.0019
+   ],
+   "monotonic": true
+  }
+ },
+ "head_mass_g": {
+  "parts": {
+   "transmit litz (24 turns, light rim winding)": 101,
+   "rim coil channel + bonding (PETG, 12 x 14 mm hollow ring)": 45,
+   "receive board(s): QUAD + CN as one 4-layer 0.4 mm board, D228 (FR4 1850 kg/m3 + copper)": 42,
+   "compute bay rigid-flex (AB1 + CB1D sections + hinges) incl. parts": 45,
+   "LED ring board + light pipes": 20,
+   "shell: skid + lid (PETG 1.2 mm) + side wall (1.5 mm)": 165,
+   "internal ribs and bay walls (PETG, carbonyl-iron wall where needed)": 45,
+   "potting (gel, compute bay only, 25 cm3)": 25,
+   "yoke / cable gland / hardware": 40
+  },
+  "total": 529,
+  "baseline_head_estimate_g": 2220,
+  "optional_ferrite_sheet_g": 32,
+  "note": "estimates, not weighed; ferrite sheet (0.3 mm polymer-bonded) optional, gain unverified"
+ },
+ "sdc2300_published": {
+  "coil": "8 in round mono, hardwired",
+  "technology": "Multi Period Fast pulse induction",
+  "weight_kg": "2.3-2.4 without batteries (5.7 lb with NiMH)",
+  "batteries": "4 x C cells (alkaline / NiMH), about 7 h",
+  "features": "no discrimination, no depth readout, no pinpoint mode; LED indicator + audio; waterproof 3 m; folds to 400 mm",
+  "not_published": "coil turns, inductance, current, pulse timing, noise, depth",
+  "sources": [
+   "https://www.detectorprospector.com/magazine/steves-reviews/minelab-sdc-2300-waterproof-gold-nugget-detector/",
+   "https://www.metaldetectingworld.com/551-1-minelabsdc2300.html"
+  ]
+ },
+ "seconds": 32.6
+}
