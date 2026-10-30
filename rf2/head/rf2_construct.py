@@ -56,7 +56,7 @@ def main():
     def padpt(ref):
         p = pad[ref]; return np.array([p["x"], p["y"], p["z"]]) + n * (fin["t"] / 2)
     od = dict(coil=wm["coil_wire_od_mm"], cable=2.4, sense=0.9)                                                    # cable / sense OD ASSUMED (FEP hookup wire, vendor to confirm)
-    top_row = co["row0_z"] + (co["rows"] - 1) * co["pitch"]
+    top_row = co["row0_z"] + (co["rows"] - 1) * co.get("row_pitch", co["pitch"])
     he = math.radians(ch["lead_exit_deg"]); ue = np.array([math.cos(he), math.sin(he), 0.0]); te = np.array([-math.sin(he), math.cos(he), 0.0])
     lid_u = sh["lid_z"][0]; gc = np.array([g["c"][0], g["c"][1], 0.0])
     wires = {                                             # name: (pad, r_wire, dest list, kind)

@@ -32,35 +32,23 @@ def cps_c_pf_per_m(w, s, eps_eff):
     k = s / (s + 2 * w); kp = math.sqrt(1 - k * k); return EPS0 * eps_eff * ellipk(kp ** 2) / ellipk(k ** 2) * 1e12
 
 def part_a():
-    tel = CH["checks"]["telescope"]; travel = tel["pivot_to_hinge_mm"]["max"] - tel["collapsed_mm"]          # 550 mm (rf2_chassis)
-    import rf2_chassis as CS
-    st = CS.SPEC["st"]; ext = CS.SPEC["extend_max"]; ref_near = st["REF3"][0]
-    span1_max = ref_near + ext["inner"] + ext["mid"]                                                       # head -> REF3T at full extension
-    seg1 = span1_max + travel / 2 + 60.0                                                                    # rolling loop stores travel / 2; + head breakout and loop (ASSUMED)
-    seg2 = (st["hinge"][0] - ref_near) + 40.0                                                               # REF3T -> hinge cord board (static) + ends
-    oz = 2.0; i_tx, i_pwr = 3.67, 0.45
-    w_tx = ipc2221_width_mm(i_tx, oz); w_pwr = max(ipc2221_width_mm(i_pwr, oz), 0.3)
-    HV_GAP = 1.0                                                                                            # rule 6 (>= 1.0 mm on flyback nets)
-    lanes = [("edge", 0.75), ("TX_A", w_tx), ("TX gap (rule 6)", HV_GAP), ("TX_B", w_tx), ("HV to LV gap (rule 6)", HV_GAP), ("VIN_H", w_pwr), ("gap", 0.3), ("GND_H", w_pwr),
-             ("gap", 0.3), ("RS-485 pair (2 x 0.15 / 0.15)", 0.45), ("guard gap", 0.3)] + [(f"REF{a} pair with ground guards (0.15 / 0.15 + 2 x 0.3 guard)", 1.35) for a in "XYZ"] + [("edge", 0.75)]
-    width = sum(w for _, w in lanes)
-    bore = 18.0; bend_r = 0.1 * 40                                                                          # 0.1 mm stack, dynamic single-layer bend radius 40 x thickness (ASSUMED rule of thumb)
-    rows = []
-    for eps_eff in (1.3, 1.6, 2.2):                                                                         # film in air / against the tube / embedded (ASSUMED range; polyimide eps not in the brochures)
-        c = cps_c_pf_per_m(w_tx, HV_GAP, eps_eff); rows.append(dict(eps_eff=eps_eff, C_pF_per_m=round(c, 1), C_pF_1m1=round(c * 1.1, 1)))
-    tc = CH["checks"]["tx_pair_in_cord"]; c_wire = tc["C_pF"]; shift_wire = tc["first_gate_shift_us"]
-    for r in rows: r["first_gate_shift_us_scaled"] = round(shift_wire * r["C_pF_1m1"] / c_wire, 3)       # first order: shift scales with the added capacitance (rf2_timing_cord at 55 pF)
-    pi_g = width * 0.075 * (seg1 + seg2) * 1.42e-3                                                          # polyimide + adhesive 75 um total dielectric (ASSUMED), 1.42 g/cm3
-    cu_g = (2 * w_tx + 2 * w_pwr + 0.3 + 3 * 1.2) * 0.070 * (seg1 + seg2) * 8.96e-3                        # copper traces (2 oz) incl. guards
-    cord_g = 75.0 * 1.15                                                                                    # coiled cord about 75 g/m x 1.15 m (ASSUMED: about 4 mm2 Cu + PUR)
-    return dict(travel_mm=travel, segments=dict(seg1_dynamic_mm=round(seg1), seg2_static_mm=round(seg2)), te_limit_mm=dict(preferred=round(TE_LEN_PREF), advanced=round(TE_LEN_ADV)),
-                lengths_ok=seg1 <= TE_LEN_PREF and seg2 <= TE_LEN_PREF, one_piece_mm=round(seg1 + seg2 - 40), one_piece_ok_preferred=seg1 + seg2 - 40 <= TE_LEN_PREF,
-                one_piece_ok_advanced=seg1 + seg2 - 40 <= TE_LEN_ADV,
-                copper_oz=oz, tx_trace_mm=round(w_tx, 2), pwr_trace_mm=round(w_pwr, 2), lanes=[dict(lane=n, mm=round(w, 2)) for n, w in lanes], width_mm=round(width, 2),
-                fits_bore=width <= bore - 2.0, bore_mm=bore, rolling_loop_bend_r_mm=bend_r, loop_fits=2 * bend_r <= bore - 4.0, min_line_mm=round(TE_LINE, 3),
-                tx_capacitance=rows, cord_C_pF=c_wire, cord_shift_us=shift_wire, mass_g=dict(flex=round(pi_g + cu_g, 1), coiled_cord=round(cord_g)),
+    import rf2_cordflex as CFX, rf2_chassis as CS                                                          # the adopted cord flex (owner 2026-10-30)
+    tel = CH["checks"]["telescope"]; travel = tel["pivot_to_hinge_mm"]["max"] - tel["collapsed_mm"]
+    sg = CFX.segments(CS.SPEC["st"], CS.SPEC["extend_max"], travel); seg1, seg2 = sg["seg1_dynamic_mm"], sg["seg2_static_mm"]
+    bore = 18.0; rows = []
+    for eps_eff in (1.3, 1.6, 2.2):
+        c = CFX.cps_c_pf_per_m(eps_eff=eps_eff); rows.append(dict(eps_eff=eps_eff, C_pF_per_m=round(c, 1), C_pF_total=round(c * sg["tx_length_m"], 1)))
+    tc = json.load(open(os.path.join(OUT, "rf2_timing_cord.json"))); shift = max(v["shift_fixed_us"] for v in tc["cases"].values())
+    pi_g = CFX.WIDTH * 0.075 * (seg1 + seg2) * 1.42e-3
+    cu_g = (2 * CFX.W_TX + 2 * CFX.W_PWR + 3 * 0.3 + 3 * 1.2) * 0.070 * (seg1 + seg2) * 8.96e-3
+    cord_g = 75.0 * 1.15                                                                                    # the replaced coiled cord, about 75 g/m x 1.15 m (ASSUMED)
+    return dict(travel_mm=travel, segments=dict(seg1_dynamic_mm=seg1, seg2_static_mm=seg2), te_limit_mm=dict(preferred=round(TE_LEN_PREF), advanced=round(TE_LEN_ADV)),
+                lengths_ok=seg1 <= TE_LEN_PREF and seg2 <= TE_LEN_PREF, one_piece_mm=sg["one_piece_mm"], tx_length_m=sg["tx_length_m"],
+                copper_oz=CFX.OZ, tx_trace_mm=round(CFX.W_TX, 2), pwr_trace_mm=round(CFX.W_PWR, 2), lanes=[dict(lane=n, mm=round(w, 2)) for n, w in CFX.LANES], width_mm=round(CFX.WIDTH, 2),
+                fits_bore=CFX.WIDTH <= bore - 2.0, bore_mm=bore, rolling_loop_bend_r_mm=CFX.BEND_R, loop_fits=2 * CFX.BEND_R <= bore - 4.0, min_line_mm=round(TE_LINE, 3),
+                tx_capacitance=rows, first_gate_shift_us=shift, first_gate_shift_wire_us=0.19, mass_g=dict(flex=round(pi_g + cu_g, 1), coiled_cord=round(cord_g)),
                 open=["coverlay / base voltage rating (rule 6): not in the brochures; the vendor must confirm >= 630 V across 1.0 mm and through the coverlay",
-                      "rolling-loop carrier inside the two-stage telescope (mock-up)", "polyimide eps and the flex flex-life at 40 x thickness (vendor)"])
+                      "rolling-loop carrier inside the two-stage telescope (mock-up)", "polyimide eps and the dynamic flex life at 40 x stack"])
 
 def part_b():
     import rf2_zones as Z
@@ -100,7 +88,7 @@ def main():
     res["findings"] = [
         f"A: the cord as a {a['width_mm']} mm single-layer 2 oz flex (TX traces {a['tx_trace_mm']} mm, 1.0 mm rule-6 gaps) fits the {a['bore_mm']} mm bore; split at REF3T the pieces are "
         f"{a['segments']['seg1_dynamic_mm']} mm (rolling loop for {a['travel_mm']} mm travel) and {a['segments']['seg2_static_mm']} mm, inside Tech Etch's {a['te_limit_mm']['preferred']} mm preferred length; "
-        f"TX pair {a['tx_capacitance'][1]['C_pF_per_m']} pF/m (eps_eff 1.6 ASSUMED) vs 50 pF/m wire -> first gate +{a['tx_capacitance'][1]['first_gate_shift_us_scaled']} us vs +{a['cord_shift_us']} us; "
+        f"TX strips {a['tx_capacitance'][1]['C_pF_per_m']} pF/m over {a['tx_length_m']} m (eps_eff 1.6 ASSUMED) -> first gate +{a['first_gate_shift_us']} us (rf2_timing_cord; the wire pair gave +{a['first_gate_shift_wire_us']} us); "
         f"mass {a['mass_g']['flex']} g vs about {a['mass_g']['coiled_cord']} g",
         "B: " + "; ".join(f"{k}: closed can drift {v['closed_can']['drift5K_x_noise']} x noise ({'ok' if v['closed_ok'] else 'FAILS'}), slotted {v['slotted']['drift5K_x_noise']}" for k, v in b.items()),
         f"C: 0.254 mm BeCu fingers 10 x 1.5 mm give {c['force_N']} N at 0.8 mm at {int(100 * c['stress_frac_of_yield'])} % of an ASSUMED 1000 MPa yield; Tech Etch geometry rules met: {c['ok']}"]

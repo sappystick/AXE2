@@ -48,7 +48,7 @@ def main():
     seat_ok = all(v >= -1e-6 for v in seats.values())                       # seats touch their board at the ledge (0) and nowhere intersect (interference check)
     co = S["coil"]; inner_wall_gap = round(min(co["columns_r"]) - co["litz_od"] / 2 - S["channel"]["inner_wall_r"][1], 3)
     seated = round(co["row0_z"] - co["litz_od"] / 2 - co["floor_z"][1], 3)                 # bottom row rests on the printed floor (bonded seat): 0 by design
-    g_litz = dict(shell=gap("LITZ", "SHELL_LOWER"), channel_inner_wall=inner_wall_gap, top_row_below_channel_top=round(S["channel"]["z"][1] - (co["row0_z"] + (co["rows"] - 1) * co["pitch"] + co["litz_od"] / 2), 3))
+    g_litz = dict(shell=gap("LITZ", "SHELL_LOWER"), channel_inner_wall=inner_wall_gap, top_row_below_channel_top=round(S["channel"]["z"][1] - (co["row0_z"] + (min(co["rows"], -(-co["turns"] // len(co["columns_r"]))) - 1) * co.get("row_pitch", co["pitch"]) + co["litz_od"] / 2), 3))
     litz_seat = dict(floor_contact_mm=seated, channel_min_gap=gap("LITZ", "COIL_CHANNEL"), note="the bottom row is seated on the floor (0 by design); nothing else touches")
     g_walls = {k: gap(k, "BAY_WALLS") for k in isl}
     g_seat_walls = {k: gap(k, "BAY_WALLS") for k in head if k.startswith(("CRADLE_", "TRAY_", "CB1D_TOWER", "FIN_RAILS"))}
@@ -100,7 +100,7 @@ def main():
     m = {"printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": sum(vol(k) for k in printed) * PETG,
          "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": (vol("BOARD_QA") + vol("BOARD_QB")) * FR4 + 2 * 16.9e3 * 0.8 * 0.035 / 1000 * 8.96,
          "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": vol("BOARD_SH1") * FR4 + SH1_CU * 0.0035 * 8.96,
-         "transmit litz (26 turns, 6 g/m)": 26 * 2 * math.pi * np.mean(S["coil"]["columns_r"]) / 1000 * 6.0,
+         "transmit litz (26 turns, %.1f g/m)" % S.get("materials", {}).get("litz_g_per_m", 6.0): 26 * 2 * math.pi * np.mean(S["coil"]["columns_r"]) / 1000 * S.get("materials", {}).get("litz_g_per_m", 6.0),
          "electronics islands (ASSUMED: AB1A/B 10 g each, CB1D 40 g, MP1 8 g, TXJ 10 g; LED display flex 40 g ASSUMED: 0.4 mm flex+stiffener D226 about 30 g + 522 LEDs / caps)": 10 + 10 + 40 + 8 + 10 + 40,
          "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": max(0.0, (H.ring(S["channel"]["inner_wall_r"][1], S["shell"]["wall_r"][0], S["coil"]["floor_z"][1], S["coil"]["row0_z"] + S["coil"]["rows"] * S["coil"]["pitch"]).volume() - vol("LITZ") * 1000) / 1000 * 1.15),
          "hardware, cable gland, yoke lug (ASSUMED)": 40.0}

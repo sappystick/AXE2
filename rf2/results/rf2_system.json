@@ -94,7 +94,7 @@
  },
  "harness": {
   "segments": {
-   "S1 head - REF3 (coil cord in the inner / middle tubes)": [
+   "S1 head - REF3T (cord flex segment 1, rolling loop; rf2_cordflex)": [
     "TX_A",
     "TX_B",
     "VIN_H",
@@ -106,7 +106,7 @@
     "REFY+-",
     "REFZ+-"
    ],
-   "S2 REF3 - hinge (outer tube)": [
+   "S2 REF3T - hinge (cord flex segment 2, static)": [
     "TX_A",
     "TX_B",
     "VIN_H",
@@ -126,8 +126,8 @@
    ]
   },
   "fill_fraction": {
-   "S1 head - REF3 (coil cord in the inner / middle tubes)": 0.142,
-   "S2 REF3 - hinge (outer tube)": 0.064,
+   "S1 head - REF3T (cord flex segment 1, rolling loop; rf2_cordflex)": 0.004,
+   "S2 REF3T - hinge (cord flex segment 2, static)": 0.003,
    "S3 hinge pass-through into the chassis": 0.064
   },
   "vin_drop_V_boost": 0.007,
@@ -187,8 +187,8 @@
  "tx_pair": {
   "length_m": 1.1,
   "C_pF_ASSUMED_50pF_per_m": 55.0,
-  "first_gate_shift_us": 0.19,
-  "vs_baseline_neck_us": 0.143,
+  "first_gate_shift_us": 0.14,
+  "vs_baseline_neck_us": 0.093,
   "note": "first-order: tail 10.5 us (16.3 - 5.8 us clamp) x (sqrt(1 + dC / 500 pF) - 1); pair capacitance ASSUMED (FEP twisted pair)"
  },
  "ref3_coupling": {

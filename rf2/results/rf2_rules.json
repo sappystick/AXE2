@@ -1,12 +1,12 @@
 {
  "status": "GENERATED from results files each run",
- "n_rules": 67,
+ "n_rules": 59,
  "counts": {
-  "BLOCKED": 5,
+  "BLOCKED": 2,
   "RELAXED": 2,
-  "EDGE": 3,
-  "FAIL": 5,
-  "PASS": 52
+  "EDGE": 4,
+  "FAIL": 4,
+  "PASS": 47
  },
  "flagged": [
   {
@@ -88,9 +88,9 @@
    "over_pct": 30.1
   },
   {
-   "id": "wire.coil.SXXL66/38FX-2(MWXX)",
+   "id": "wire.coil.SXXL100/38FX-2(MWXX)",
    "kind": "safety",
-   "desc": "coil litz SXXL66/38FX-2(MWXX) (Single FEP, OD 1.168 mm, 0.601 ohm: fits the current comb) insulation rating vs rule 6",
+   "desc": "coil litz SXXL100/38FX-2(MWXX) (Single FEP, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6",
    "value": 600.0,
    "limit": 630.0,
    "sense": ">=",
@@ -101,9 +101,9 @@
    "over_pct": 4.8
   },
   {
-   "id": "wire.coil.SXXL66/38FX-3(MWXX)",
+   "id": "wire.coil.SXXL100/38TX-2(MWXX)",
    "kind": "safety",
-   "desc": "coil litz SXXL66/38FX-3(MWXX) (Single FEP, OD 1.219 mm, 0.601 ohm: fits the current comb) insulation rating vs rule 6",
+   "desc": "coil litz SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6",
    "value": 600.0,
    "limit": 630.0,
    "sense": ">=",
@@ -112,58 +112,6 @@
    "relaxed": null,
    "status": "BLOCKED",
    "over_pct": 4.8
-  },
-  {
-   "id": "wire.tx.Li 6Y 0.5 mm2 FEP (27 x ",
-   "kind": "safety",
-   "desc": "cord TX pair option Li 6Y 0.5 mm2 FEP (27 x 0.15 tinned) (OD 1.5 mm; flyback peak 460 V) insulation rating vs rule 6",
-   "value": 600.0,
-   "limit": 630.0,
-   "sense": ">=",
-   "unit": "V",
-   "source": "FEP hook-up catalog: 600 V operating / 900 V peak, 0.25 mm wall, -100..200 C",
-   "relaxed": null,
-   "status": "BLOCKED",
-   "over_pct": 4.8
-  },
-  {
-   "id": "wire.tx.Radix FQ18AT02A FEP/FEP ",
-   "kind": "safety",
-   "desc": "cord TX pair option Radix FQ18AT02A FEP/FEP 2 x AWG18 jacketed (OD 4.72 mm; flyback peak 460 V) insulation rating vs rule 6",
-   "value": 600.0,
-   "limit": 630.0,
-   "sense": ">=",
-   "unit": "V",
-   "source": "Radix FEP/FEP 200 C / 600 V",
-   "relaxed": null,
-   "status": "BLOCKED",
-   "over_pct": 4.8
-  },
-  {
-   "id": "wire.cord.all conductors (rf2_system S1)",
-   "kind": "target",
-   "desc": "coil cord OD, all conductors (rf2_system S1) (packing 0.65 ASSUMED)",
-   "value": 10.02,
-   "limit": 7.0,
-   "sense": "<=",
-   "unit": "mm",
-   "source": "rf2_wire_options.json",
-   "relaxed": null,
-   "status": "FAIL",
-   "over_pct": 43.1
-  },
-  {
-   "id": "wire.cord.REF3 digitised at REF3T (3 STP",
-   "kind": "target",
-   "desc": "coil cord OD, REF3 digitised at REF3T (3 STP pairs off the cord) (packing 0.65 ASSUMED)",
-   "value": 7.26,
-   "limit": 7.0,
-   "sense": "<=",
-   "unit": "mm",
-   "source": "rf2_wire_options.json",
-   "relaxed": null,
-   "status": "BLOCKED",
-   "over_pct": 3.7
   },
   {
    "id": "flex.one_piece",
@@ -177,6 +125,19 @@
    "relaxed": null,
    "status": "FAIL",
    "over_pct": 29.4
+  },
+  {
+   "id": "flex.width",
+   "kind": "target",
+   "desc": "cord-as-flex width vs the 18 mm bore less 2 mm",
+   "value": 15.7,
+   "limit": 16.0,
+   "sense": "<=",
+   "unit": "mm",
+   "source": "rf2_flex_options.json",
+   "relaxed": null,
+   "status": "EDGE",
+   "over_pct": -1.9
   },
   {
    "id": "shield.slotted.front end near the r",
@@ -484,13 +445,13 @@
    "kind": "target",
    "desc": "MP1 v2 worst settling vs the first gate with the cord",
    "value": 14.58,
-   "limit": 16.48,
+   "limit": 16.43,
    "sense": "<=",
    "unit": "us",
    "source": "rf2_mp1v2_close.json parts_closure",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -11.5
+   "over_pct": -11.3
   },
   {
    "id": "mp1.lmh_in",
@@ -883,9 +844,9 @@
    "over_pct": -95.0
   },
   {
-   "id": "wire.coil.SXXL66/38FX-2(MWXX)",
+   "id": "wire.coil.SXXL100/38FX-2(MWXX)",
    "kind": "safety",
-   "desc": "coil litz SXXL66/38FX-2(MWXX) (Single FEP, OD 1.168 mm, 0.601 ohm: fits the current comb) insulation rating vs rule 6",
+   "desc": "coil litz SXXL100/38FX-2(MWXX) (Single FEP, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6",
    "value": 600.0,
    "limit": 630.0,
    "sense": ">=",
@@ -896,9 +857,9 @@
    "over_pct": 4.8
   },
   {
-   "id": "wire.coil.SXXL66/38FX-3(MWXX)",
+   "id": "wire.coil.SXXL100/38TX-2(MWXX)",
    "kind": "safety",
-   "desc": "coil litz SXXL66/38FX-3(MWXX) (Single FEP, OD 1.219 mm, 0.601 ohm: fits the current comb) insulation rating vs rule 6",
+   "desc": "coil litz SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6",
    "value": 600.0,
    "limit": 630.0,
    "sense": ">=",
@@ -907,110 +868,6 @@
    "relaxed": null,
    "status": "BLOCKED",
    "over_pct": 4.8
-  },
-  {
-   "id": "wire.tx.HE 18 silver-plated FEP ",
-   "kind": "safety",
-   "desc": "cord TX pair option HE 18 silver-plated FEP (AWG18, 7 x 0.40) (OD 3.1 mm; flyback peak 460 V) insulation rating vs rule 6",
-   "value": 2000.0,
-   "limit": 630.0,
-   "sense": ">=",
-   "unit": "V",
-   "source": "FEP hook-up catalog (resistance from 0.93 mm2, silver-plated: ASSUMED)",
-   "relaxed": null,
-   "status": "PASS",
-   "over_pct": -217.5
-  },
-  {
-   "id": "wire.tx.Li 6Y 0.5 mm2 FEP (27 x ",
-   "kind": "safety",
-   "desc": "cord TX pair option Li 6Y 0.5 mm2 FEP (27 x 0.15 tinned) (OD 1.5 mm; flyback peak 460 V) insulation rating vs rule 6",
-   "value": 600.0,
-   "limit": 630.0,
-   "sense": ">=",
-   "unit": "V",
-   "source": "FEP hook-up catalog: 600 V operating / 900 V peak, 0.25 mm wall, -100..200 C",
-   "relaxed": null,
-   "status": "BLOCKED",
-   "over_pct": 4.8
-  },
-  {
-   "id": "wire.tx.Radix FQ18AT02A FEP/FEP ",
-   "kind": "safety",
-   "desc": "cord TX pair option Radix FQ18AT02A FEP/FEP 2 x AWG18 jacketed (OD 4.72 mm; flyback peak 460 V) insulation rating vs rule 6",
-   "value": 600.0,
-   "limit": 630.0,
-   "sense": ">=",
-   "unit": "V",
-   "source": "Radix FEP/FEP 200 C / 600 V",
-   "relaxed": null,
-   "status": "BLOCKED",
-   "over_pct": 4.8
-  },
-  {
-   "id": "wire.tx.model now: FEP AWG18 100",
-   "kind": "safety",
-   "desc": "cord TX pair option model now: FEP AWG18 1000 V (ASSUMED, no vendor) (OD 1.7 mm; flyback peak 460 V) insulation rating vs rule 6",
-   "value": 1000.0,
-   "limit": 630.0,
-   "sense": ">=",
-   "unit": "V",
-   "source": "rf2_system FEP18 (ASSUMED)",
-   "relaxed": null,
-   "status": "PASS",
-   "over_pct": -58.7
-  },
-  {
-   "id": "wire.cord.all conductors (rf2_system S1)",
-   "kind": "target",
-   "desc": "coil cord OD, all conductors (rf2_system S1) (packing 0.65 ASSUMED)",
-   "value": 10.02,
-   "limit": 7.0,
-   "sense": "<=",
-   "unit": "mm",
-   "source": "rf2_wire_options.json",
-   "relaxed": null,
-   "status": "FAIL",
-   "over_pct": 43.1
-  },
-  {
-   "id": "wire.cord.REF3 digitised at REF3T (3 STP",
-   "kind": "target",
-   "desc": "coil cord OD, REF3 digitised at REF3T (3 STP pairs off the cord) (packing 0.65 ASSUMED)",
-   "value": 7.26,
-   "limit": 7.0,
-   "sense": "<=",
-   "unit": "mm",
-   "source": "rf2_wire_options.json",
-   "relaxed": null,
-   "status": "BLOCKED",
-   "over_pct": 3.7
-  },
-  {
-   "id": "wire.cord.REF3 digitised + one RS-485 pa",
-   "kind": "target",
-   "desc": "coil cord OD, REF3 digitised + one RS-485 pair for TXCMD / TXSTAT / DATA (packing 0.65 ASSUMED)",
-   "value": 6.17,
-   "limit": 7.0,
-   "sense": "<=",
-   "unit": "mm",
-   "source": "rf2_wire_options.json",
-   "relaxed": null,
-   "status": "PASS",
-   "over_pct": -11.9
-  },
-  {
-   "id": "wire.cord.REF3 digitised + one RS-485 pa",
-   "kind": "target",
-   "desc": "coil cord OD, REF3 digitised + one RS-485 pair, Li 6Y TX pair (packing 0.65 ASSUMED)",
-   "value": 5.95,
-   "limit": 7.0,
-   "sense": "<=",
-   "unit": "mm",
-   "source": "rf2_wire_options.json",
-   "relaxed": null,
-   "status": "PASS",
-   "over_pct": -15.0
   },
   {
    "id": "flex.seg1_len",
@@ -1042,14 +899,14 @@
    "id": "flex.width",
    "kind": "target",
    "desc": "cord-as-flex width vs the 18 mm bore less 2 mm",
-   "value": 14.2,
+   "value": 15.7,
    "limit": 16.0,
    "sense": "<=",
    "unit": "mm",
    "source": "rf2_flex_options.json",
    "relaxed": null,
-   "status": "PASS",
-   "over_pct": -11.3
+   "status": "EDGE",
+   "over_pct": -1.9
   },
   {
    "id": "shield.slotted.front end near the r",

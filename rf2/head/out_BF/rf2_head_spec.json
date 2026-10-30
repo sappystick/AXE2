@@ -69,24 +69,24 @@
   "turns": 26,
   "columns_r": [
    113.4,
-   111.8,
-   110.2,
-   108.6,
-   107.0,
-   105.4
+   111.63,
+   109.86,
+   108.09,
+   106.32
   ],
-  "litz_od": 1.2,
-  "pitch": 1.6,
+  "litz_od": 1.37,
+  "pitch": 1.77,
   "floor_z": [
    3.2,
    3.8
   ],
-  "row0_z": 4.4,
-  "rows": 5,
+  "row0_z": 4.49,
+  "rows": 6,
   "L_uH": 333,
   "I_A": 8.06,
   "energy_mJ": 10.8,
-  "what": "rim mono, 5 rows x 6 columns (option B), wound column by column down-and-up (owner's progressive order: 166 V max between neighbours)"
+  "what": "rim mono, 6 rows x 5 columns (option B; was 5 x 6 at 1.6 mm), wound column by column down-and-up (owner's progressive order; about 195 V max between neighbours, 1000 V litz)",
+  "row_pitch": 1.44
  },
  "channel": {
   "inner_wall_r": [
@@ -507,10 +507,10 @@
  },
  "netlist_variant_note": "rf2_netlist.BOARDS MP1 / TXJ 'head' positions are option A's; the option-B board builds take MP1 (-72, 3) and TXJ (-94.5, 0) (stage 4)",
  "materials": {
-  "coil_wire": "FEP-insulated litz (rf2_qualify section D; DATASHEET_LOG RF2-DS-FEP): FEP eps 2.1 (Gund note, a supplier technical note, not a grade datasheet), 200 C, no creep; finished OD 1.2 mm is ASSUMED, so the vendor OD, strand count and wall thickness must be confirmed before the combs are printed",
-  "coil_wire_od_mm": 1.2,
-  "litz_g_per_m": 6.0,
-  "sleeves": "FEP on every wire in the head that leaves the coil's 1.2 mm litz: FEP-jacketed hookup wire for the shaft HV pair and the sense wires, FEP tubing over the litz lead pair to the TXJ board (same eps 2.1 and no creep; PTFE rejected: it creeps). Voltage rating of the finished wire is UNVERIFIED: must be >= 630 V (rule 6)",
+  "coil_wire": "Rubadue TXXL66/38F-2 triple-insulated FEP litz (owner 2026-10-30; DATASHEET_LOG RF2-DS-WIRE): 66 x AWG38, 1056 CM, finished OD 1.372 mm nominal, FEP 155 C / 1000 V (catalog rating), 50-100 kHz; 0.601 ohm over 18.3 m (rf2_wire_options). Breakdown and exact OD: request the vendor specification sheet",
+  "coil_wire_od_mm": 1.37,
+  "litz_g_per_m": 6.9,
+  "sleeves": "FEP on every wire in the head that leaves the coil's 1.37 mm litz: FEP-jacketed hookup wire for the shaft HV pair and the sense wires, FEP tubing over the litz lead pair to the TXJ board (same eps 2.1 and no creep; PTFE rejected: it creeps). Voltage rating of the finished wire is UNVERIFIED: must be >= 630 V (rule 6)",
   "coating": "Parylene (SCS ParyFree, falling back to Parylene C) on the analog and near-coil fins: moisture and leakage barrier with no magnetic or eddy effect",
   "coil_potting": "syntactic foam (K1 glass bubbles in silicone, eps about 1.75-1.9): coil capacitance 101 pF with FEP litz (rf2_qualify D)",
   "status": "MODELED / sourced from supplier notes; not bench-tested"
@@ -519,8 +519,8 @@
   "n": 12,
   "deg0": 15.0,
   "t": 0.8,
-  "slot": 1.3,
-  "what": "printed winding combs (resin print): radial plates with one slot per groove column (1.3 mm slots for the 1.2 mm litz, 0.3 mm teeth), the turns laid from the top, column by column"
+  "slot": 1.47,
+  "what": "printed winding combs (resin print): radial plates with one slot per groove column (1.47 mm slots for the 1.37 mm litz, 0.30 mm teeth), the turns laid from the top, column by column"
  },
  "shield_coat": {
   "r": [

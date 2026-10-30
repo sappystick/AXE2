@@ -77,7 +77,7 @@ def scene(explode=False):
     add("COIL_CHANNEL", P["COIL_CHANNEL"], COL["print"], cutB)
     co = S["coil"]; lz = None
     for j in range(co["turns"]):
-        t = m3.CrossSection.circle(co["litz_od"] / 2, 10).translate([co["columns_r"][j % 3], co["row0_z"] + (j // 3) * co["pitch"]]).revolve(120)
+        t = m3.CrossSection.circle(co["litz_od"] / 2, 10).translate([co["columns_r"][j % len(co["columns_r"])], co["row0_z"] + (j // len(co["columns_r"])) * co.get("row_pitch", co["pitch"])]).revolve(120)
         lz = t if lz is None else lz + t
     add("LITZ", lz, COL["litz"], cutB, "rim mono coil, 26 turns litz")
     add("BOARD_SH1", P["BOARD_SH1"], COL["shield"], cutB, "SH1 split-ring shield")

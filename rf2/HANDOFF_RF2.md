@@ -1172,3 +1172,62 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Decisions for the owner:**
   - adopt the long-flex cord (ICD I3, rf2_system S1 / S2, the timing pair capacitance);
   - adopt the BeCu dock fingers in place of the Mill-Max pins (ICD I6, P0.6).
+## 45. Owner decisions applied: cord flex, BeCu dock contacts, rule 6 kept, 1000 V litz in a wider comb (2026-10-30; MODELED)
+- **Decisions:**
+  - (1) adopt the split long-flex cord;
+  - (2) BeCu dock fingers in place of the Mill-Max pins;
+  - (3) keep rule 6 at 630 V;
+  - (4) widen the comb for 1000 V triple-insulated litz.
+- **Cord flex** (`rf2/rf2_cordflex.py`: one definition used by rf2_chassis, rf2_system, rf2_timing_cord, rf2_flex_options):
+  - **Construction:** single-layer 2 oz, **15.7 mm wide** (EDGE: 1.9 % under the 16 mm limit).
+    - TX strips 2.35 mm with 1.0 mm rule-6 gaps.
+    - VIN_H / GND_H.
+    - **3 separate diff pairs (TXCMD, TXSTAT, DATA):** TXCMD is the real-time TX trigger, so the pairs are not multiplexed.
+    - 3 guarded REF pairs.
+  - **Segments:** 961 mm (rolling loop for the 550 mm travel) + 394 mm (static), both inside Tech Etch's 1016 mm preferred length.
+  - **Checks:**
+    - rf2_chassis `cord_flex` replaces `coil_cord`;
+    - rf2_system S1 / S2 now hold flex traces, with fill by flat area (0.4 % / 0.3 %) and ampacity by IPC-2221 width;
+    - the TX strips carry the 630 V requirement, with the coverlay rating UNVERIFIED in ICD I3.
+  - **Timing (rf2_timing_cord, 28.1 pF/m x 1.355 m = 38.1 pF, eps_eff 1.6 ASSUMED):**
+
+    | Case | Shift | Note |
+    |---|---|---|
+    | Node 368 pF, Rd fixed | **+0.14 us** | used: first gate 16.48 -> 16.43 us |
+    | Node 500 pF, Rd fixed | -1.09 us | non-monotonic (a ringing lobe below the clean threshold): treated as a model artifact, OPEN |
+    | Node 500 pF, Rd re-tuned | +0.35 us | worst case: gate 16.64 us |
+    | Node 368 pF, Rd re-tuned | +0.42 us | |
+
+    - **MP1 v2 settling (worst 14.58 us) passes in every case.** The margin to the used gate is 1.85 us (was 1.90).
+  - **ICD:** I3 is now the cord flex. The coil cord drops off the P0.6 list; the cord flex replaces it, with its coverlay rating still UNVERIFIED.
+- **Dock contacts:** ICD I6 signals are 4 photo-etched BeCu C172 fingers (0.254 mm, 2.54 mm pitch, gold-plated, 0.63 N). P0.6 now lists them "decided: custom photo-etched part". The Mill-Max pins are removed.
+- **Coil (rf2_head option B) -> 6 rows x 5 columns of Rubadue TXXL66/38F-2** (triple FEP, 1000 V, OD 1.372 mm, 0.60 ohm):
+  - comb slots 1.47 mm (rule: litz OD + 0.1) at a 1.77 mm radial pitch;
+  - rows stacked at 1.44 mm;
+  - row0 z 4.49 mm on the floor.
+  - Six columns at 1.77 mm would have pushed the inner channel wall 0.94 mm inward into the bay, fins and cradles. **Five columns x six rows keeps the wall where it was.**
+
+  | Quantity | 5 x 6 at 1.6 mm (old) | 6 x 5 (new) | Change |
+  |---|---|---|---|
+  | L (repo loop model) | 323.4 uH | 325.9 uH | +0.8 % |
+  | Bz per A at 100 / 200 / 300 / 500 mm | - | - | -0.45 / -0.07 / +0.14 / +0.36 % |
+  | Clearance: litz to shell | 0.5 mm | 0.415 mm | |
+  | Clearance: litz to inner wall | 0.2 mm | 1.035 mm | |
+  | Clearance: top row to channel top | 1.2 mm | 0.225 mm | |
+  | Litz mass | 107.2 g (6 g/m) | 123.8 g (6.9 g/m) | |
+  | Channel epoxy | 44.4 g | 58.5 g | |
+  | Head without bay potting | 729 g | 759 g | |
+
+  - The depth studies keep the 1.6 mm pitch model: their field is within 0.5 %.
+  - The neighbour voltage rises to about 195 V (11 turns x 17.7 V) against the 1000 V litz.
+- **Fixes in the checks:**
+  - head-check reads the litz g/m from the spec, and the top-row gap uses the rows actually filled and `row_pitch`;
+  - zonerules compares the comb slot with a 1e-9 tolerance (1.37 + 0.1 is not exactly 1.47 in floating point);
+  - field_xcheck, construct, render and head_figure take `row_pitch` and any column count.
+- **Rule near-misses now:**
+  - **BLOCKED 2:** the Rubadue SXXL100/38 single FEP / ETFE (OD 1.417 mm, **0.396 ohm**: it fits the new 1.47 mm comb and would cut coil I2R by a third) is rated 600 V. Rule 6 is kept by the owner.
+  - **FAIL 4:** slotted shield cans x 2, MP1 noise, the one-piece flex.
+  - **RELAXED 2:** runtime 3.5 / 5.8 h.
+  - **EDGE 4:** TPS65131 VPOS, cord-flex width, TMUX7212 pin, BAT54 span.
+  - The replaced round-cord wire rows were removed from the live rules (kept in rf2_wire_options.json).
+- **Readiness:** 6 / 40. P0.6 is open on the cord-flex coverlay rating, the rectangular CF profiles and the cam clamp hardware.

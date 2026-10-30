@@ -1,6 +1,6 @@
 {
- "status": "MODELED; pair capacitance 50 pF/m ASSUMED until the cord datasheet",
- "pair_pF": 55.0,
+ "status": "MODELED; TX strips in the cord flex 28.1 pF/m over 1.355 m (coplanar strips, eps_eff ASSUMED; rf2_cordflex)",
+ "pair_pF": 38.1,
  "cases": {
   "node 500 pF": {
    "no_cord": {
@@ -10,19 +10,19 @@
     "last_diode_us": 3.98
    },
    "cord_Rd_fixed": {
-    "node_pF": 555.0,
+    "node_pF": 538.1,
     "Rd_ohm": 401,
-    "first_gate_us": 16.48,
+    "first_gate_us": 15.2,
     "last_diode_us": 3.98
    },
    "cord_Rd_retuned": {
-    "node_pF": 555.0,
-    "Rd_ohm": 381,
-    "first_gate_us": 16.8,
-    "last_diode_us": 3.95
+    "node_pF": 538.1,
+    "Rd_ohm": 386,
+    "first_gate_us": 16.64,
+    "last_diode_us": 3.96
    },
-   "shift_fixed_us": 0.19,
-   "shift_retuned_us": 0.51
+   "shift_fixed_us": -1.09,
+   "shift_retuned_us": 0.35
   },
   "node 368 pF": {
    "no_cord": {
@@ -32,22 +32,22 @@
     "last_diode_us": 4.05
    },
    "cord_Rd_fixed": {
-    "node_pF": 423.0,
+    "node_pF": 406.1,
     "Rd_ohm": 467,
-    "first_gate_us": 14.94,
+    "first_gate_us": 15.04,
     "last_diode_us": 4.06
    },
    "cord_Rd_retuned": {
-    "node_pF": 423.0,
-    "Rd_ohm": 436,
-    "first_gate_us": 15.5,
-    "last_diode_us": 4.02
+    "node_pF": 406.1,
+    "Rd_ohm": 445,
+    "first_gate_us": 15.32,
+    "last_diode_us": 4.03
    },
-   "shift_fixed_us": 0.04,
-   "shift_retuned_us": 0.6
+   "shift_fixed_us": 0.14,
+   "shift_retuned_us": 0.42
   }
  },
  "first_order_estimate_us": 0.562,
- "worst_shift_us": 0.6,
+ "worst_shift_us": 0.42,
  "recommendation": "keep Rd at the no-cord value"
 }

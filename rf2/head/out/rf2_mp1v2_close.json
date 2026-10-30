@@ -2,7 +2,7 @@
  "status": "MODELED (SPICE); ideal clamp rails",
  "limiter": "IXTY01N100D@Q",
  "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
- "first_gate_us": 16.48,
+ "first_gate_us": 16.43,
  "runs": [
   {
    "rin2": 100.0,
@@ -57,7 +57,7 @@
   1.0,
   4.0
  ],
- "settling_gap_us": 1.02,
+ "settling_gap_us": 1.07,
  "open": "switch timing from CB1D (close 11.5 us after turn-off in scan, 14.5 us in boost); TPS65131 1.25-1.5 MHz switching next to the front end (filter, place in the digital sector, or stop it during the receive window): EMI study; switch noise in the noise run; clamp-rail shunt regulator part",
  "closed": true,
  "chosen": {
@@ -189,7 +189,7 @@
    "passes": true
   }
  ],
- "margin_us": 2.82,
+ "margin_us": 2.77,
  "chosen_at_boost_12A74": [
   {
    "coil_1mV_us": 17.05,
@@ -336,7 +336,7 @@
    }
   ],
   "worst_settle_us": 14.58,
-  "margin_us": 1.9,
+  "margin_us": 1.85,
   "passes": true
  }
 }

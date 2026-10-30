@@ -1,7 +1,7 @@
 {
  "COIL_B": {
   "kind": "coil litz, end (top row)",
-  "od_mm": 1.2,
+  "od_mm": 1.37,
   "lane": {
    "lane_offset_mm": 4.000000000000001,
    "lane_z": 8.399999999999999
@@ -30,10 +30,10 @@
    [
     -102.28,
     2.371,
-    10.8
+    11.69
    ]
   ],
-  "length_mm": 15.7
+  "length_mm": 16.0
  },
  "CABLE_B": {
   "kind": "shaft HV pair, up through the gland",
@@ -78,7 +78,7 @@
  },
  "COIL_A": {
   "kind": "coil litz, start (bottom row, lifted 0.3 mm off the floor after it leaves the winding)",
-  "od_mm": 1.2,
+  "od_mm": 1.37,
   "lane": {
    "lane_offset_mm": 5.600000000000001,
    "lane_z": 6.6
@@ -107,7 +107,7 @@
    [
     -102.196,
     4.769,
-    4.7
+    4.79
    ]
   ],
   "length_mm": 35.0

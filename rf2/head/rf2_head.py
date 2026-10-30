@@ -61,8 +61,8 @@ def apply_option_b(S):
     LID_T = 2.4                                                                           # light plate 2.4 mm (was 1.5): a 0.9 mm straight land under each cone removes the feather edge
     S["envelope"].update(H=round(lid0 + LID_T, 2), note="option B: single board tier; light plate 2.4 mm (2026-10-30, DFM)")   # at each well's bottom rim (rf2_print DFM, HANDOFF 40)
     S["shell"].update(wall_z=(0.0, lid0), lid_z=(lid0, round(lid0 + LID_T, 2)))
-    S["coil"].update(columns_r=tuple(round(113.4 - 1.6 * k, 1) for k in range(6)), rows=5, row0_z=4.4,
-                     what="rim mono, 5 rows x 6 columns (option B), wound column by column down-and-up (owner's progressive order: 166 V max between neighbours)")
+    S["coil"].update(columns_r=tuple(round(113.4 - 1.77 * k, 2) for k in range(5)), rows=6, row0_z=4.49, litz_od=1.37, pitch=1.77, row_pitch=1.44,   # owner 2026-10-30: Rubadue TXXL66/38F-2 triple FEP 1000 V; 5 columns (comb pitch 1.77) x 6 rows (stacked, 1.44) (HANDOFF 45)
+                     what="rim mono, 6 rows x 5 columns (option B; was 5 x 6 at 1.6 mm), wound column by column down-and-up (owner's progressive order; about 195 V max between neighbours, 1000 V litz)")
     S["channel"].update(inner_wall_r=(103.8, 104.6), z=(3.2, 12.6))
     S["bay"].update(r_max=103.6, z=(3.8, zd))
     S["walls"].update(z=(3.8, 12.6), r=(42.0, 103.6))
@@ -73,10 +73,10 @@ def apply_option_b(S):
     S["netlist_variant_note"] = "rf2_netlist.BOARDS MP1 / TXJ 'head' positions are option A's; the option-B board builds take MP1 (-72, 3) and TXJ (-94.5, 0) (stage 4)"
     S["gland"].update(boss_z=(12.6, lid0))
     S["materials"] = dict(
-        coil_wire="FEP-insulated litz (rf2_qualify section D; DATASHEET_LOG RF2-DS-FEP): FEP eps 2.1 (Gund note, a supplier technical note, not a grade datasheet), 200 C, no creep; "
-                  "finished OD 1.2 mm is ASSUMED, so the vendor OD, strand count and wall thickness must be confirmed before the combs are printed",
-        coil_wire_od_mm=1.2, litz_g_per_m=6.0,
-        sleeves="FEP on every wire in the head that leaves the coil's 1.2 mm litz: FEP-jacketed hookup wire for the shaft HV pair and the sense wires, FEP tubing over the litz lead pair "
+        coil_wire="Rubadue TXXL66/38F-2 triple-insulated FEP litz (owner 2026-10-30; DATASHEET_LOG RF2-DS-WIRE): 66 x AWG38, 1056 CM, finished OD 1.372 mm nominal, "
+                  "FEP 155 C / 1000 V (catalog rating), 50-100 kHz; 0.601 ohm over 18.3 m (rf2_wire_options). Breakdown and exact OD: request the vendor specification sheet",
+        coil_wire_od_mm=1.37, litz_g_per_m=6.9,
+        sleeves="FEP on every wire in the head that leaves the coil's 1.37 mm litz: FEP-jacketed hookup wire for the shaft HV pair and the sense wires, FEP tubing over the litz lead pair "
                 "to the TXJ board (same eps 2.1 and no creep; PTFE rejected: it creeps). Voltage rating of the finished wire is UNVERIFIED: must be >= 630 V (rule 6)",
         coating="Parylene (SCS ParyFree, falling back to Parylene C) on the analog and near-coil fins: moisture and leakage barrier with no magnetic or eddy effect",
         coil_potting="syntactic foam (K1 glass bubbles in silicone, eps about 1.75-1.9): coil capacitance 101 pF with FEP litz (rf2_qualify D)",
@@ -85,7 +85,7 @@ def apply_option_b(S):
                           material="opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 against 0.41 for a straight bore, liner reflectance ASSUMED 0.90); "
                                    "wall liner = white diffuse non-metal paint (TiO2); a metallised liner is banned (rule 5: metal near the coil); well filled flush with clear resin (seals the plate)",
                           note="replaces the clear lid of option A")
-    S["coil_combs"] = dict(n=12, deg0=15.0, t=0.8, slot=1.3, what="printed winding combs (resin print): radial plates with one slot per groove column (1.3 mm slots for the 1.2 mm litz, 0.3 mm teeth), the turns laid from the top, column by column")
+    S["coil_combs"] = dict(n=12, deg0=15.0, t=0.8, slot=1.47, what="printed winding combs (resin print): radial plates with one slot per groove column (1.47 mm slots for the 1.37 mm litz, 0.30 mm teeth), the turns laid from the top, column by column")
     S["shield_coat"] = dict(r=(114.45, 114.5), z=(1.2, lid0), slit_deg=HEEL + 6.0, slit_w=2.0, material="MG 841AR nickel coating, 25 um (1.6 ohm/sq): echo tau 1 ns (rf2_zones)",
                             what="electrostatic screen on the shell's inner face, joined to SH1 at the stack-pin ground; one 2 mm slit")
     S["potting"] = dict(coil="syntactic foam (resin + glass bubbles, eps about 1.8 UNVERIFIED): lowest winding capacitance (rf2_zones: gate 15.96 us)",
@@ -235,7 +235,7 @@ def parts():
     # litz (26 turns) for fit and mass
     litz = None; nc = len(co["columns_r"])
     for j in range(co["turns"]):
-        t = m3.CrossSection.circle(co["litz_od"] / 2, 24).translate([co["columns_r"][j % nc], co["row0_z"] + (j // nc) * co["pitch"]]).revolve(SEG)
+        t = m3.CrossSection.circle(co["litz_od"] / 2, 24).translate([co["columns_r"][j % nc], co["row0_z"] + (j // nc) * co.get("row_pitch", co["pitch"])]).revolve(SEG)
         litz = t if litz is None else litz + t
     P["LITZ"] = litz
     if "coil_combs" in S:                                                                   # option B: winding combs in the channel (open-topped slots)

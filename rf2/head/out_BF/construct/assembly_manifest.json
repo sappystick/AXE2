@@ -153,7 +153,7 @@
   "COIL_COMBS": {
    "role": "printed housing",
    "material": "PETG (printed)",
-   "volume_cm3": 0.161,
+   "volume_cm3": 0.199,
    "bbox_min": [
     -110.51,
     -110.51,
@@ -377,17 +377,17 @@
   },
   "LITZ": {
    "role": "transmit / receive coil",
-   "material": "FEP-insulated litz (rf2_qualify section D; DATASHEET_LOG RF2",
-   "volume_cm3": 20.025,
+   "material": "Rubadue TXXL66/38F-2 triple-insulated FEP litz (owner 2026-1",
+   "volume_cm3": 26.185,
    "bbox_min": [
-    -114.0,
-    -114.0,
-    3.8
+    -114.08,
+    -114.08,
+    3.81
    ],
    "bbox_max": [
-    114.0,
-    114.0,
-    11.4
+    114.08,
+    114.08,
+    12.38
    ]
   },
   "SADDLES": {
@@ -408,16 +408,16 @@
   "WIRE_COIL_B": {
    "role": "harness wire",
    "material": "coil litz, end (top row)",
-   "volume_cm3": 0.018,
+   "volume_cm3": 0.024,
    "bbox_min": [
-    -102.88,
-    -10.5,
-    7.6
+    -102.96,
+    -10.59,
+    7.51
    ],
    "bbox_max": [
-    -98.41,
-    2.97,
-    11.4
+    -98.32,
+    3.06,
+    12.38
    ]
   },
   "WIRE_CABLE_B": {
@@ -438,16 +438,16 @@
   "WIRE_COIL_A": {
    "role": "harness wire",
    "material": "coil litz, start (bottom row, lifted 0.3 mm off the floor after it leaves the winding)",
-   "volume_cm3": 0.04,
+   "volume_cm3": 0.052,
    "bbox_min": [
-    -102.93,
-    -8.78,
-    4.1
+    -103.02,
+    -8.86,
+    4.11
    ],
    "bbox_max": [
-    -82.0,
-    5.37,
-    8.8
+    -81.91,
+    5.45,
+    8.89
    ]
   },
   "WIRE_CABLE_A": {
@@ -483,7 +483,7 @@
   "POTTING_hv": {
    "role": "potting cavity (fill volume)",
    "material": "MG 832TC epoxy (48 kV breakdown at 3.2 mm; kept >= 3 mm from the winding: eps 3.7, DF 0.1)",
-   "volume_cm3": 33.163,
+   "volume_cm3": 33.146,
    "bbox_min": [
     -103.6,
     -32.01,

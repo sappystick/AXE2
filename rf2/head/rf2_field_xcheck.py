@@ -10,7 +10,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys
 import magpylib as magpy
 import rf2_head as H, rf2_coil_search as C
 def rim_turns():
-    c = H.SPEC["coil"]; sites = [(r, c["row0_z"] + k * c["pitch"]) for k in range(c["rows"]) for r in c["columns_r"]]
+    c = H.SPEC["coil"]; sites = [(r, c["row0_z"] + k * c.get("row_pitch", c["pitch"])) for k in range(c["rows"]) for r in c["columns_r"]]
     return [(r * 1e-3, z * 1e-3) for r, z in sites[:c["turns"]]]
 if __name__ == "__main__":
     T = rim_turns(); P = np.array([[x, 0.0, -d] for d in (0.02, 0.05, 0.1, 0.2, 0.3, 0.5) for x in (0.0, 0.05, 0.1, 0.15, 0.25)])

@@ -17,7 +17,8 @@ HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE);
 RHO20, ALPHA = 0.017241, 0.00393          # ohm mm2 / m, per K (annealed copper)
 CM_MM2 = 5.067075e-4                      # 1 circular mil in mm2
 LAY = 1.02                                 # litz lay-length factor on resistance (ASSUMED)
-SLOT, FIT_OD = 1.3, 1.25                  # comb slot and the largest finished OD that seats in it (0.05 mm clearance, ASSUMED)
+SLOT = json.load(open(os.path.join(HERE, "head", "out_BF", "rf2_head_spec.json")))["coil_combs"]["slot"]   # the comb slot as built (rf2_head)
+FIT_OD = SLOT - 0.05                       # largest finished OD that seats in it (0.05 mm clearance, ASSUMED)
 RULE6_V = 630.0; F_MIN_KHZ = 50.0
 sys.path.insert(0, HERE); import rf2_continuous as CONT
 R_MODEL = CONT.R_COIL                      # the system model's coil resistance (deltas below are against it)
@@ -40,7 +41,7 @@ def rubadue():
 
 def coil_length_m():
     co = json.load(open(os.path.join(HERE, "head", "out_BF", "rf2_head_spec.json")))["coil"]; rs = co["columns_r"]; n = co["turns"]; rows = co["rows"]
-    return sum(2 * math.pi * rs[min(k // rows, len(rs) - 1)] for k in range(n)) / 1000.0 + 0.30, co        # + 0.30 m leads to TXJ (ASSUMED)
+    return sum(2 * math.pi * rs[k % len(rs)] for k in range(n)) / 1000.0 + 0.30, co        # turn k at column k % nc (rf2_head builder)        # + 0.30 m leads to TXJ (ASSUMED)
 
 def main():
     L_m, co = coil_length_m(); cont = json.load(open(os.path.join(OUT, "rf2_continuous.json")))
@@ -67,7 +68,7 @@ def main():
     pc = wider[0] if wider else None
     if pc:
         pitch = round(pc["od_mm"] + 0.4, 2); slot = round(pc["od_mm"] + 0.08, 2)                     # 0.3 mm teeth + clearance, as the 1.2 mm design (1.6 pitch, 1.3 slot)
-        pc = dict(pc, comb_slot_mm=slot, comb_pitch_mm=pitch, channel_growth_mm=dict(radial=round(6 * (pitch - co["pitch"]), 2), height=round(5 * (pitch - co["pitch"]), 2)))
+        pc = dict(pc, comb_slot_mm=slot, comb_pitch_mm=pitch, channel_growth_mm=dict(radial=round((len(co["columns_r"]) - 1) * (pitch - co["pitch"]), 2), height=round((co["rows"] - 1) * (pitch - co.get("row_pitch", co["pitch"])), 2)))
     # cord TX pair
     i_tx = 3.67; L_pair = 2 * 1.1                                                                       # boost RMS (rf2_system), out and back in the 1.1 m cord
     tx = [dict(name="HE 18 silver-plated FEP (AWG18, 7 x 0.40)", od_mm=3.1, v_rating=2000.0, v_peak=None, ohm_per_km=round(RHO20 / 0.93 * 1000 * 0.95, 1), source="FEP hook-up catalog (resistance from 0.93 mm2, silver-plated: ASSUMED)"),
@@ -81,8 +82,10 @@ def main():
                  s1_fill=round((base_area + a_pair) / tube_a, 3), fill_ok=(base_area + a_pair) / tube_a <= 0.40, R_pair_ohm=round(t["ohm_per_km"] * L_pair / 1000, 3),
                  P_pair_boost_W=round(i_tx ** 2 * t["ohm_per_km"] * L_pair / 1000, 2))
     # coil-cord packing: the S1 conductor set of rf2_system with each TX option; a coiled cord needs coil OD = coil ID + 2 x cable OD <= the bore
-    import rf2_system as SYS
-    s1 = next(v for k, v in SYS.SEGMENTS.items() if k.startswith("S1"))["conds"]
+    # the coiled-cord conductor set as it was in rf2_system S1 before the owner adopted the cord flex (2026-10-30): kept as the packing record
+    def _c(n, cls, od): return dict(name=n, cls=cls, od=od)
+    s1 = [_c("TX_A", "HV", 1.70), _c("TX_B", "HV", 1.70), _c("VIN_H", "power", 1.45), _c("GND_H", "power", 1.45), _c("TXCMD+-", "diff", 1.9), _c("TXSTAT+-", "diff", 1.9),
+          _c("DATA+-", "diff", 1.9), _c("REFX+-", "analog", 2.9), _c("REFY+-", "analog", 2.9), _c("REFZ+-", "analog", 2.9)]
     def cord_od(conds): a = sum(math.pi * (c["od"] / 2) ** 2 for c in conds); return math.sqrt(a / PACK_FILL * 4 / math.pi) + 2 * JACKET
     others = [c for c in s1 if not c["name"].startswith("TX_")]
     for t in tx:

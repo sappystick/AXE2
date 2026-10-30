@@ -8,7 +8,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 - PASS: ampacity and pin counts
 - PASS: harness nets in rf2_system all defined at the cord's head end (I2)
 - PASS: screen FPC bend limit (3 bends) handled by a dynamic hinge flex (I11) and a static panel FPC (I12)
-- OPEN: every connector part verified (datasheet on file, ratings read) ({'tbd_or_unverified': ['I3', 'I6']})
+- OPEN: every connector part verified (datasheet on file, ratings read) ({'tbd_or_unverified': ['I3']})
 
 ## I1. Coil leads -> TXJ (head)
 
@@ -49,12 +49,12 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 | 16 | REFZ- | analog | 26 | 0.00 | 5.0 | - |  |
 | 17 | REF_DRAIN | analog | 26 | 0.00 | 5.0 | - |  |
 
-## I3. Coil cord through the telescope (head -> outer-section anchor)
+## I3. Cord flex through the telescope (head -> REF3T -> hinge cord board; owner 2026-10-30, HANDOFF 45)
 
 - **From / to:** head gland -> cord board in the hinge knuckle
-- **Medium:** custom coil cord in the 18 x 18 mm inner bore: twisted FEP AWG18 1000 V TX pair, AWG20 power pair, 3 twisted AWG26 pairs (TXCMD, TXSTAT, DATA), 3 individually shielded AWG26 REF pairs + drain; PUR jacket; coil OD 17 mm, stretch 4.4 : 1
-- **Connector:** none (continuous); vendor TBD (custom: stock PUR cords are 120-500 V, rule 6 needs the TX pair at >= 630 V)
-- **Status:** spec (COIL_CORD_SPEC, roadmap P4.2)
+- **Medium:** single-layer 2 oz long flex, 15.1 mm wide (rf2_cordflex): TX strips 2.35 mm with 1.0 mm rule-6 gaps, VIN_H / GND_H, 3 diff pairs (TXCMD, TXSTAT, DATA), 3 guarded REF pairs; split at REF3T: segment 1 with a rolling loop for the 550 mm travel, segment 2 static
+- **Connector:** none on the TX strips (soldered at the gland board, REF3T and the cord board); vendor: Tech Etch long flex (capability on file, 40 in preferred); coverlay voltage rating UNVERIFIED (vendor to confirm >= 630 V, rule 6)
+- **Status:** spec (roadmap P4.2: flex drawing + rolling-loop mock-up)
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |
 |---|---|---|---|---|---|---|---|
@@ -117,7 +117,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 
 - **From / to:** cartridge (7S1P P45B, BQ76952) -> PWR board
 - **Medium:** sealed blade contacts at the bay front
-- **Connector:** power: Amass MT60 mated pair (cartridge male, bay female; 30 A, keyed, datasheet on file); signals: 4 x Mill-Max 0906 spring pins (UNVERIFIED: official sheet not obtained)
+- **Connector:** power: Amass MT60 mated pair (cartridge male, bay female; 30 A, keyed, datasheet on file); signals: 4 x photo-etched BeCu C172 contact fingers, 0.254 mm, 2.54 mm pitch, gold-plated (owner 2026-10-30; Tech Etch etch & form capability on file; 0.63 N at 0.8 mm, rf2_flex_options C; contact resistance and cycle life by vendor test)
 - **Status:** design (P3.8)
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |

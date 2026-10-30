@@ -44,13 +44,20 @@
    },
    "REF3_from_pivot_at_min_use_mm": 511.0
   },
-  "coil_cord": {
+  "cord_flex": {
    "ok": true,
-   "stretch_mm": 550,
-   "coil_od_mm": 17.0,
+   "width_mm": 15.7,
    "inner_bore_min_mm": 18.0,
-   "stretch_ratio": 4.44,
-   "note": "coil cord (TX pair, VIN / GND, DATA, TXCMD / TXSTAT, 3 REF pairs; OD 7 mm ASSUMED) coiled 17 mm OD inside the inner bore; 160 mm compressed"
+   "travel_mm": 550,
+   "rolling_loop_bend_r_mm": 4.0,
+   "segments": {
+    "seg1_dynamic_mm": 961,
+    "seg2_static_mm": 394,
+    "tx_length_m": 1.355,
+    "one_piece_mm": 1315
+   },
+   "te_preferred_max_mm": 1016,
+   "note": "single-layer 2 oz flex; segment 1 head -> REF3T with a rolling loop storing half the travel, segment 2 REF3T -> hinge static; coverlay rating UNVERIFIED (vendor >= 630 V)"
   },
   "hinge_pass_through": {
    "ok": true,
@@ -61,11 +68,11 @@
   },
   "tx_pair_in_cord": {
    "ok": true,
-   "length_m": 1.1,
-   "C_pF": 55.0,
-   "first_gate_shift_us": 0.19,
+   "length_m": 1.35,
+   "C_pF": 38.1,
+   "first_gate_shift_us": 0.14,
    "source": "rf2_timing_cord (nonlinear turn-off, Rd kept at the no-cord value)",
-   "note": "TX in the chassis: the pair runs the whole shaft (50 pF/m ASSUMED)"
+   "note": "TX in the chassis: the TX strips run the whole cord flex (28.1 pF/m, coplanar strips, eps_eff 1.6 ASSUMED)"
   },
   "battery_slide": {
    "ok": true,
@@ -134,7 +141,7 @@
     284,
     195
    ],
-   "search_s": 5.9,
+   "search_s": 4.6,
    "top3": [
     {
      "fits_backpack": true,
@@ -199,7 +206,7 @@
     259,
     143
    ],
-   "search_s": 4.4,
+   "search_s": 4.5,
    "top3": [
     {
      "fits_backpack": false,
@@ -264,7 +271,7 @@
     238,
     160
    ],
-   "search_s": 4.2,
+   "search_s": 4.7,
    "top3": [
     {
      "fits_backpack": true,
@@ -338,7 +345,7 @@
     238,
     160
    ],
-   "search_s": 4.2,
+   "search_s": 4.7,
    "top3": [
     {
      "fits_backpack": true,
@@ -414,11 +421,11 @@
  },
  "ok": true,
  "timings_s": {
-  "build": 1.75,
-  "containment": 0.31,
-  "fold search (cached)": 29.85,
-  "deployed clearance": 0.63,
-  "exports and views": 5.04,
-  "total": 41.7
+  "build": 1.69,
+  "containment": 0.29,
+  "fold search (cached)": 0.02,
+  "deployed clearance": 0.62,
+  "exports and views": 5.5,
+  "total": 12.2
  }
 }

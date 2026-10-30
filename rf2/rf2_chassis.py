@@ -34,7 +34,7 @@ SPEC = dict(tubes=dict(outer=(31.0, 31.0), mid=(26.0, 26.0), inner=(21.0, 21.0))
             trigger=dict(len=28.0, w=11.0, t=6.0, reach=70.0), button=dict(cap_d=12.0, ring_d=17.0, h=3.0), screen=dict(len=30.0, w=32.0, t=6.0, open_deg=60.0),
             dial=dict(d=15.0, t=6.0), cuff=dict(r_in=42.0, t=4.0, len=62.0, centre_s=1150.0, wing_deg=55.0, slide=70.0), forearm_r=40.0,
             rails=dict(d=8.0, y=35.0, n=0.0), cells=dict(d=21.55, l=70.15, n_s=7, n_p=1, rows=2, g=70.0, model="Molicel INR-21700-P45B"), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
-            ref3_outer=tuple(REF3["outer_mm"]), ref3_len=REF3["length_mm"], C_pair_pF_per_m=50.0, bend_min=10.0, twist_max_deg_per_mm=10.0, cord=dict(od=7.0, coil_od=17.0, stretch_max=4.0),
+            ref3_outer=tuple(REF3["outer_mm"]), ref3_len=REF3["length_mm"], C_pair_pF_per_m=None, bend_min=10.0, twist_max_deg_per_mm=10.0, cord=dict(od=7.0, coil_od=17.0, stretch_max=4.0),
             eye=dict(above=600.0, behind=250.0), backpack=(520.0, 320.0, 210.0), sdc_folded=(400.0, 216.0), fold_gap=2.0)
 def rrect(W, H, r): return cq.Workplane("XY").rect(H, W).extrude(1.0).edges("|Z").fillet(min(r, W / 2 - 0.1, H / 2 - 0.1)).faces(">Z").wires().toPending()
 def rprof(W, H, s0, s1, wall=None, r=None, n=0.0, keys=False):
@@ -244,18 +244,21 @@ def main():
     over_inner = st["inner"][1] - st["mid"][0] - ext["inner"]; over_mid = st["mid"][1] - st["outer"][0] - ext["mid"]
     c["telescope"] = dict(ok=over_inner >= s["overlap_min"] and over_mid >= s["overlap_min"] and ref_min >= 500.0, pivot_to_hinge_mm=dict(min_use=Lmin, nominal=nominal, max=Lmax),
                           collapsed_mm=nominal - s["collapse"]["inner"] - s["collapse"]["mid"], overlap_at_full_mm=dict(inner=over_inner, mid=over_mid), REF3_from_pivot_at_min_use_mm=ref_min)
-    stretch = (Lmax - (nominal - s["collapse"]["inner"] - s["collapse"]["mid"])); cord = s["cord"]; comp_len = 160.0
+    stretch = (Lmax - (nominal - s["collapse"]["inner"] - s["collapse"]["mid"]))
     bore = min(s["tubes"]["inner"]) - 2 * s["wall"]
-    c["coil_cord"] = dict(ok=cord["coil_od"] <= bore - 1.0 and (comp_len + stretch) / comp_len <= cord["stretch_max"] + 1, stretch_mm=round(stretch), coil_od_mm=cord["coil_od"], inner_bore_min_mm=bore,
-                          stretch_ratio=round((comp_len + stretch) / comp_len, 2), note="coil cord (TX pair, VIN / GND, DATA, TXCMD / TXSTAT, 3 REF pairs; OD 7 mm ASSUMED) coiled 17 mm OD inside the inner bore; 160 mm compressed")
+    import rf2_cordflex as CFX                                                                    # owner 2026-10-30: cord flex split at REF3T (HANDOFF 45)
+    sg = CFX.segments(st, ext, stretch)
+    c["cord_flex"] = dict(ok=CFX.WIDTH <= bore - 2.0 and 2 * CFX.BEND_R <= bore - 4.0 and sg["seg1_dynamic_mm"] <= CFX.TE_LEN_PREF and sg["seg2_static_mm"] <= CFX.TE_LEN_PREF,
+                          width_mm=round(CFX.WIDTH, 2), inner_bore_min_mm=bore, travel_mm=round(stretch), rolling_loop_bend_r_mm=CFX.BEND_R, segments=sg, te_preferred_max_mm=round(CFX.TE_LEN_PREF),
+                          note="single-layer 2 oz flex; segment 1 head -> REF3T with a rolling loop storing half the travel, segment 2 REF3T -> hinge static; coverlay rating UNVERIFIED (vendor >= 630 V)")
     run = 30.0; twist = 180.0 / run
     c["hinge_pass_through"] = dict(ok=twist <= s["twist_max_deg_per_mm"] and 12.0 >= s["bend_min"], axial_run_mm=run, twist_deg_per_mm=round(twist, 1), bend_r_mm=12.0,
                                    note="the bundle enters the hollow hinge axis with a 12 mm-radius 90 deg bend, twists 180 deg along a 30 mm axial run, leaves with a second 90 deg bend")
-    L_pair = (Lmax + 120.0) / 1000.0; dC = s["C_pair_pF_per_m"] * L_pair * 1e-12
+    L_pair = sg["tx_length_m"]; dC = CFX.cps_c_pf_per_m() * L_pair * 1e-12
     try:
         tc = json.load(open(os.path.join(HERE, "results", "rf2_timing_cord.json"))); dg = max(v["shift_fixed_us"] for v in tc["cases"].values()); src = "rf2_timing_cord (nonlinear turn-off, Rd kept at the no-cord value)"
     except Exception: dg = (16.3 - 5.8) * (math.sqrt(1 + dC / 500e-12) - 1); src = "first-order (rf2_timing_cord not run)"
-    c["tx_pair_in_cord"] = dict(ok=dg <= 0.6, length_m=round(L_pair, 2), C_pF=round(dC * 1e12, 1), first_gate_shift_us=round(dg, 3), source=src, note="TX in the chassis: the pair runs the whole shaft (50 pF/m ASSUMED)")
+    c["tx_pair_in_cord"] = dict(ok=dg <= 0.6, length_m=round(L_pair, 2), C_pF=round(dC * 1e12, 1), first_gate_shift_us=round(dg, 3), source=src, note=f"TX in the chassis: the TX strips run the whole cord flex ({CFX.cps_c_pf_per_m():.1f} pF/m, coplanar strips, eps_eff {CFX.EPS_EFF} ASSUMED)")
     Lc, Wc, Hc = geo["cart"]; cart = P["BATTERY_CARTRIDGE"][1]; hits = set()
     for dz in np.linspace(10, Lc + 10, 8):
         mv = cart.moved(trsf(np.eye(3), D * dz)); hits |= {k for k, p in P.items() if p[0] == "CH" and k not in ("BATTERY_CARTRIDGE", "BATTERY_BAY", "CHASSIS") and mv.distance(p[1]) < 0.3}

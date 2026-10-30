@@ -78,14 +78,18 @@ PARTS = [  # module, ref, part, rail, volts min/max operating, I2C address, data
 FEP18, FEP20, FEP24, STP26 = (18, 1.70), (20, 1.45), (24, 1.10), (26, 2.9)
 OHM_PER_M = {18: 0.0210, 20: 0.0333, 24: 0.0842, 26: 0.134}                       # copper at 20 C (standard AWG tables)
 def cond(name, cls, g, i, v=600): return dict(name=name, cls=cls, awg=g[0], od=g[1], i_rms=i, v_ins=v)
+import rf2_cordflex as CFX                                                          # owner 2026-10-30: the coil cord is a long flex split at REF3T (HANDOFF 45)
+_I = {"TX_A": 3.67, "TX_B": 3.67, "VIN_H": 0.45, "GND_H": 0.45}
+def _flex(with_ref):
+    out = [dict(name=t["name"], cls=t["cls"], awg=None, od=None, area=t["area"], i_rms=_I.get(t["name"], 0.01), i_max=t["i_max"], v_ins=t["v_ins"],
+                note="flex trace; TX coverlay rating UNVERIFIED (630 V is the requirement, vendor to confirm)") for t in CFX.traces()]
+    if with_ref: out += [dict(name=f"REF{a}+-", cls="analog", awg=None, od=None, area=1.35 * CFX.STACK_MM, i_rms=0.0, i_max=0.01, v_ins=None) for a in "XYZ"]
+    return out
 P_BOOST = 28.3; I_VIN = P_BOOST / 25.2                                             # rf2_continuous regenerative boost: battery power and current
 _ST = CHS.SPEC["st"]
 SEGMENTS = {   # chassis v2: one coil cord from the head to the hinge, then the hinge pass-through into the chassis (no HV return pair: TXD and PWR share the chassis)
-    "S1 head - REF3 (coil cord in the inner / middle tubes)": dict(len_m=_ST["REF3"][0] / 1000.0, conds=[cond("TX_A", "HV", FEP18, 3.67, 1000), cond("TX_B", "HV", FEP18, 3.67, 1000),
-        cond("VIN_H", "power", FEP20, 0.45), cond("GND_H", "power", FEP20, 0.45), cond("TXCMD+-", "diff", (26, 1.9), 0.01), cond("TXSTAT+-", "diff", (26, 1.9), 0.01),
-        cond("DATA+-", "diff", (26, 1.9), 0.01), cond("REFX+-", "analog", STP26, 0.0), cond("REFY+-", "analog", STP26, 0.0), cond("REFZ+-", "analog", STP26, 0.0)]),
-    "S2 REF3 - hinge (outer tube)": dict(len_m=(_ST["hinge"][0] - _ST["REF3"][0]) / 1000.0, conds=[cond("TX_A", "HV", FEP18, 3.67, 1000), cond("TX_B", "HV", FEP18, 3.67, 1000),
-        cond("VIN_H", "power", FEP20, 0.45), cond("GND_H", "power", FEP20, 0.45), cond("TXCMD+-", "diff", (26, 1.9), 0.01), cond("TXSTAT+-", "diff", (26, 1.9), 0.01), cond("DATA+-", "diff", (26, 1.9), 0.01)]),
+    "S1 head - REF3T (cord flex segment 1, rolling loop; rf2_cordflex)": dict(len_m=_ST["REF3"][0] / 1000.0, conds=_flex(with_ref=True)),
+    "S2 REF3T - hinge (cord flex segment 2, static)": dict(len_m=(_ST["hinge"][0] - _ST["REF3"][0]) / 1000.0, conds=_flex(with_ref=False)),
     "S3 hinge pass-through into the chassis": dict(len_m=0.06, conds=[cond("TX_A", "HV", FEP18, 3.67, 1000), cond("TX_B", "HV", FEP18, 3.67, 1000),
         cond("VIN_H", "power", FEP20, 0.45), cond("GND_H", "power", FEP20, 0.45), cond("TXCMD+-", "diff", (26, 1.9), 0.01), cond("TXSTAT+-", "diff", (26, 1.9), 0.01), cond("DATA+-", "diff", (26, 1.9), 0.01)]),
 }
@@ -150,9 +154,9 @@ def main():
     # ---- harness: ampacity, voltage drop, fill, HV insulation
     tube_area = math.pi * (TUBE["id"] / 2) ** 2; hv_ok = True; amp_ok = True; fill = {}
     for sg, d in SEGMENTS.items():
-        area = sum(math.pi * (x["od"] / 2) ** 2 for x in d["conds"]); fill[sg] = round(area / tube_area, 3)
+        area = sum(x.get("area") or math.pi * (x["od"] / 2) ** 2 for x in d["conds"]); fill[sg] = round(area / tube_area, 3)
         for x in d["conds"]:
-            amp_ok &= x["i_rms"] <= AMPACITY[x["awg"]]
+            amp_ok &= x["i_rms"] <= (x["i_max"] if x.get("i_max") is not None else AMPACITY[x["awg"]])
             if x["cls"] == "HV": hv_ok &= x["v_ins"] >= 630
     drop = 0.15 * OHM_PER_M[18] * 2 * I_VIN                                                                  # pack -> TXD: inside the chassis now (about 0.15 m, AWG18 ASSUMED)
     res["harness"] = dict(segments={k: [x["name"] for x in v["conds"]] for k, v in SEGMENTS.items()}, fill_fraction=fill, vin_drop_V_boost=round(drop, 3),

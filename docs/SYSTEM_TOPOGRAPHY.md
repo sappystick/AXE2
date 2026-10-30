@@ -11,10 +11,10 @@ Maturity is the lowest item at the station: CHECKED (generated + checked by a ru
 | 5. Main hinge (under the chassis front) | s 790-816 mm | **CONCEPT** | chassis pass | twist 6.0 deg/mm, bend r 12.0 mm | hinge detail, seals |
 | 6. Outer rectangular profile + REF3 | s 410-790 mm | **MODELED** | chassis pass, ref3 pass, study:emi not run | REF3 worst-axis penalty -2.06 % (box -1.39 %), copper 280.3 g; REF3 511.0 mm from the head at the shortest use length | re-run rf2_emi with the rect coils' e_ref; winding jig |
 | 7. Middle profile + clamp 1 | s 300-680 mm | **CHECKED** | chassis pass | pivot to hinge {'min_use': 690.0, 'nominal': 790, 'max': 980.0} mm; collapsed 430.0 mm | clamp mechanism detail |
-| 8. Inner profile + coil cord + yoke knuckle | s 0-420 mm | **CONCEPT** | chassis pass | cord stretch 550 mm (ratio 4.44); TX pair 1.1 m: first gate +0.19 us (first-order) | coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair |
+| 8. Inner profile + coil cord + yoke knuckle | s 0-420 mm | **OPEN** | chassis pass | cord stretch n/a mm (ratio n/a); TX pair 1.35 m: first gate +0.14 us (first-order) | coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair |
 | 9. Folded package | whole machine | **CHECKED** | chassis pass | [494, 238, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2500 g | lighter REF3 / tubes toward the SDC's 2.3 kg |
 | 10. Search head (outside) | D233, heel at 178 deg | **CHECKED** | head:BF pass, head-check:BF pass, lightplate pass | light plate, gland and shell checked in rf2_head_check (option BF) | skid clip detail; bumper |
-| 11. Search head (inside) | r 0-116.5 mm | **OPEN** | board:MP1 pass, board:TXJ pass, board:TXF pass, board:LR1 pass, shield:SH1 pass, zonerules pass, construct pass, study:mp1v2_protect pass | MP1 v2 any option passes: False (best 14.1 mA / 17.5 us vs 10 mA / 16.3 us) | MP1 v2 levers; AB1 / CB1D routing (Phase C); Rd part |
+| 11. Search head (inside) | r 0-116.5 mm | **OPEN** | board:MP1 pass, board:TXJ pass, board:TXF pass, board:LR1 pass, shield:SH1 pass, zonerules fail, construct pass, study:mp1v2_protect pass | MP1 v2 any option passes: False (best 14.1 mA / 17.5 us vs 10 mA / 16.3 us) | MP1 v2 levers; AB1 / CB1D routing (Phase C); Rd part |
 
 ## Items per station
 
@@ -25,7 +25,7 @@ Maturity is the lowest item at the station: CHECKED (generated + checked by a ru
 - **5. Main hinge (under the chassis front)**: hollow-axis hinge, bundle pass-through (2 x 90 deg bends + 180 deg twist) (CHECKED); locking tooth + grip slide lock mechanism (CONCEPT)
 - **6. Outer rectangular profile + REF3**: 38 x 32 profile, flat clamp 2; REF3 flat face coils + rectangular solenoid, 42 x 36 outer (MODELED); geometry (CHECKED)
 - **7. Middle profile + clamp 1**: 33 x 27 keyed profile, flat lever clamp (CHECKED)
-- **8. Inner profile + coil cord + yoke knuckle**: 28 x 22 profile, coil cord (TX pair, power, data, 3 REF pairs) in the 24 x 18 bore (CHECKED); dual-axis yoke (pitch + 90 deg roll) (CONCEPT)
+- **8. Inner profile + coil cord + yoke knuckle**: 28 x 22 profile, coil cord (TX pair, power, data, 3 REF pairs) in the 24 x 18 bore (OPEN); dual-axis yoke (pitch + 90 deg roll) (CONCEPT)
 - **9. Folded package**: telescoped + hinged + grip laid sideways + head stowed (CHECKED)
 - **10. Search head (outside)**: shell, lid with 522 conical light wells, gland, skid, yoke ears (CHECKED)
 - **11. Search head (inside)**: rim coil, SH1, SB1R QA / QB, MP1 v1, TXJ / TXF, LR1 (CHECKED); MP1 v2 protection (OPEN); AB1A / AB1B / CB1D (MODELED); Rd 408 ohm >= 4.24 W part (OPEN)

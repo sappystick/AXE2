@@ -36,7 +36,7 @@ for side in (-1, 1):
     rect(side * sh["wall_r"][0], side * sh["wall_r"][1], 0, sh["wall_z"][1], "#e0e0e0")
     ch = S["channel"]; rect(side * ch["inner_wall_r"][0], side * ch["inner_wall_r"][1], *ch["z"], "#cfcfcf")
     for j in range(S["coil"]["turns"]):
-        r = S["coil"]["columns_r"][j % 3]; z = S["coil"]["row0_z"] + (j // 3) * S["coil"]["pitch"]; b.add_patch(Circle((side * r, z), 0.6, fc="#b8620f", ec="none"))
+        nc = len(S["coil"]["columns_r"]); r = S["coil"]["columns_r"][j % nc]; z = S["coil"]["row0_z"] + (j // nc) * S["coil"].get("row_pitch", S["coil"]["pitch"]); b.add_patch(Circle((side * r, z), 0.6, fc="#b8620f", ec="none"))
 for k, c in (("SH1", "#e9c46a"), ("QA", "#8fb8de"), ("QB", "#6a9bc3")):
     bz = S["boards"][k]["z"]; rect(-114, 114, *bz, c, lab=k + (" split-ring shield" if k == "SH1" else " quadrupole board"))
 I = S["boards_inner"]; zz = lambda v: (v["z"][0] - v["below"], v["z"][1] + v["above"])

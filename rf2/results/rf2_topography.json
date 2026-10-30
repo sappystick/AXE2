@@ -157,11 +157,11 @@
  {
   "station": "8. Inner profile + coil cord + yoke knuckle",
   "where": "s 0-420 mm",
-  "maturity": "CONCEPT",
+  "maturity": "OPEN",
   "items": [
    [
     "28 x 22 profile, coil cord (TX pair, power, data, 3 REF pairs) in the 24 x 18 bore",
-    "CHECKED"
+    "OPEN"
    ],
    [
     "dual-axis yoke (pitch + 90 deg roll)",
@@ -171,7 +171,7 @@
   "steps": {
    "chassis": "pass"
   },
-  "numbers": "cord stretch 550 mm (ratio 4.44); TX pair 1.1 m: first gate +0.19 us (first-order)",
+  "numbers": "cord stretch n/a mm (ratio n/a); TX pair 1.35 m: first gate +0.14 us (first-order)",
   "open": "coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair"
  },
  {
@@ -236,7 +236,7 @@
    "board:TXF": "pass",
    "board:LR1": "pass",
    "shield:SH1": "pass",
-   "zonerules": "pass",
+   "zonerules": "fail",
    "construct": "pass",
    "study:mp1v2_protect": "pass"
   },

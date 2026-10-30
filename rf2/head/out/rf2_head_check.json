@@ -346,7 +346,7 @@
     "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 221.1,
     "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": 129.2,
     "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": 37.2,
-    "transmit litz (26 turns, 6 g/m)": 109.6,
+    "transmit litz (26 turns, 6.0 g/m)": 109.6,
     "electronics islands (ASSUMED: AB1A/B 10 g each, CB1D 40 g, MP1 8 g, TXJ 10 g; LED display flex 40 g ASSUMED: 0.4 mm flex+stiffener D226 about 30 g + 522 LEDs / caps)": 118,
     "hardware, cable gland, yoke lug (ASSUMED)": 40.0
    },

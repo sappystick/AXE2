@@ -9,7 +9,9 @@ import os, sys, json, math
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import rf2_timing as T
 OUT = os.path.join(HERE, "results")
-C_PAIR = 50e-12; L_CORD = 1.10
+import rf2_cordflex as CFX, rf2_chassis as _CS                                   # owner 2026-10-30: the cord is a flex (HANDOFF 45)
+_tel = (_CS.SPEC["st"]["hinge"][0] + _CS.SPEC["extend_max"]["inner"] + _CS.SPEC["extend_max"]["mid"]) - (_CS.SPEC["st"]["hinge"][0] - _CS.SPEC["collapse"]["inner"] - _CS.SPEC["collapse"]["mid"])
+C_PAIR = CFX.cps_c_pf_per_m() * 1e-12; L_CORD = CFX.segments(_CS.SPEC["st"], _CS.SPEC["extend_max"], _tel)["tx_length_m"]
 def run(cn, rd_fixed_cn=None):
     T.CN = cn
     orig = T.rd
@@ -18,7 +20,7 @@ def run(cn, rd_fixed_cn=None):
     finally: T.rd = orig
     return dict(node_pF=round(cn * 1e12, 1), Rd_ohm=r["Rd_A_ohm"], first_gate_us=r["mono_clean_us"], last_diode_us=r["last_diode_us"])
 def main():
-    dC = C_PAIR * L_CORD; res = dict(status="MODELED; pair capacitance 50 pF/m ASSUMED until the cord datasheet", pair_pF=round(dC * 1e12, 1), cases={})
+    dC = C_PAIR * L_CORD; res = dict(status=f"MODELED; TX strips in the cord flex {C_PAIR * 1e12:.1f} pF/m over {L_CORD} m (coplanar strips, eps_eff ASSUMED; rf2_cordflex)", pair_pF=round(dC * 1e12, 1), cases={})
     for base in (500e-12, 368e-12):
         b = run(base); fx = run(base + dC, rd_fixed_cn=base); rt = run(base + dC)
         res["cases"][f"node {base*1e12:.0f} pF"] = dict(no_cord=b, cord_Rd_fixed=fx, cord_Rd_retuned=rt, shift_fixed_us=round(fx["first_gate_us"] - b["first_gate_us"], 2), shift_retuned_us=round(rt["first_gate_us"] - b["first_gate_us"], 2))
