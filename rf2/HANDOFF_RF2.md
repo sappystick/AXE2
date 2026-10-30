@@ -517,3 +517,21 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 
   - **FEP chosen** over PTFE: same eps, but PTFE creeps (both sources), and coil geometry must not move.
   - The winding remains a small part of the node (the SiC switch and the leads are about 160 pF).
+
+## 29. Stage 4 zone-rule checks, Stage 4b fin boards, FEP litz and sleeves (2026-10-30; rf2/head/rf2_zonerules.py, TXF in rf2_netlist.py; MODELED / tool-checked)
+- **Stage 4: `rf2/head/rf2_zonerules.py` (runner step `zonerules`).** The zone map's rules (section 24) are now automatic checks that fail the run:
+  - **BOM:** no aluminium electrolytic, metal-can or ferrite part, and no inductor, in any netlist board.
+  - **Copper (read back from the built boards):** no solid copper zone; a hatched zone needs a declared slit border; no closed copper loop above 0.1 cm2 on the analog / HV boards (MP1, TXJ, TXF). KiCad edge keep-outs are rule areas and are skipped (my first version counted them and wrongly failed every board).
+  - **Fins:** board height = slot height (8.4 mm), board thickness = fin thickness (1.0 mm), board inside the fin's radial span, rail tilt < 1 deg.
+  - **Head SPEC (variant BF):** FEP litz, FEP sleeves and the Parylene coating are present; the comb slot (1.3 mm) clears the litz OD (1.2 mm) by 0.1 mm; HV fins are 8 deg from the lead path (178 deg), limit 4 deg.
+  - **Self-test:** a synthetic aluminium can and a 2.6 cm2 copper loop are both caught, so the checks can fail.
+  - **Not covered:** the temperature-drift side of a metal part is still the zone study's job (rf2_zones.py), not a board check. The loop-area check measures closed copper loops in one net; a signal-and-return loop between two nets is not measured yet.
+- **Stage 4b, first fin board: TXF.** TXJ's function (coil litz, shaft cable and sense wire for each leg) as a 32.0 x 8.4 x 1.0 mm fin at 186 deg, fin centre r 86 (rim end r 102, inside the fin's r 40-103 span).
+  - TXJ's two columns become two groups end to end along the radius, 3.5 mm apart; each leg is a straight 2.5 mm bus on both copper layers (a locked pre-route: Freerouting could not route a 2.5 mm class between 3 mm pads and fell back to 0.2 mm tracks, which KiCad DRC rightly rejected).
+  - **Result:** DRC 0, 0 unconnected, HV clearance 3.25 mm (rule 6: 1.0 mm), parity clean, Gerbers written. TXJ is unchanged and stays the option A / B board.
+  - **Added to the board builder:** a `bus` key (locked straight buses) and fin placement in head coordinates (`placement_in_head` for a board with `head.fin`).
+- **Litz and sleeves: FEP (SPEC `materials`, variants B and BF).** FEP-insulated litz for the coil (eps 2.1, no creep); FEP-jacketed hookup wire for the shaft HV pair and sense wires, and FEP tubing over the litz lead pair; Parylene (ParyFree, else C) on the analog and near-coil fins; K1 syntactic foam around the coil. Winding capacitance with FEP litz in K1 foam: 101 pF, first listen 13.62 us (section 28).
+  - **UNVERIFIED, must be confirmed with a vendor before ordering:** the finished litz OD (1.2 mm is carried over from the enamel-served wire), the FEP wall thickness, and the voltage rating of the finished FEP wire (>= 630 V, rule 6). The eps 2.1 is from a supplier technical note, not a grade datasheet.
+- **Still open in Stage 4b:**
+  - **MP1 v2 as a fin (HV1 at 170 deg, r 40-103):** needs a decision on the LMH6629 stage and its footprint. The LMH6629 is a single op-amp, and the WSON-8 (NGQ08A) has pins 1 PD, 2 FB, 3 IN-, 4 IN+, 5 V-, 6 COMP, 7 OUT, 8 V+ (TI SNOSB18I, read). Its minimum stable gain is 4 (COMP low) or 10, so a per-leg gain stage followed by a low-noise difference stage is the likely topology, but no LMH6629 SPICE model is in the repo and the WSON land pattern has not been read, so the noise and stability of the whole chain are not yet modeled. The IXTY08N100D2 pins are read (1 gate, 2 and 4 drain / tab, 3 source); its land pattern shows a 6.40 mm tab pad, which leaves little of the fin's 7.4 mm usable height, so the tab pad orientation along the fin needs checking.
+  - **AB1A / AB1B / CB1D as fins:** Phase C (the RF1 boards are not in the netlist yet); the fin areas (analog 32 cm2, digital 85 cm2) are the budget.

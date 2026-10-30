@@ -1,0 +1,99 @@
+{
+ "status": "MODELED / tool-checked (no fabricator DRC, no bench)",
+ "checks": {
+  "bom": {
+   "ok": true,
+   "banned": [
+    "electrolytic",
+    "aluminium",
+    "aluminum",
+    "alu cap",
+    "elko",
+    "metal can",
+    "ferrite",
+    "inductor"
+   ],
+   "violations": [],
+   "parts": 1092
+  },
+  "fins": {
+   "ok": true,
+   "boards": {
+    "TXF": {
+     "deg": 186.0,
+     "slot_h": 8.4,
+     "board_h": 8.4,
+     "slot_t": 1.0,
+     "board_t": 1.0,
+     "radial_span": [
+      70.0,
+      102.0
+     ],
+     "fin_r": [
+      40.0,
+      103.0
+     ],
+     "rail_len": 58.0,
+     "tilt_deg": 0.099,
+     "ok": true
+    }
+   }
+  },
+  "spec_BF": {
+   "fep_litz": true,
+   "fep_sleeves": true,
+   "coating": true,
+   "comb_slot_clears_litz": true,
+   "litz_od_matches": true,
+   "hv_fin_sep_from_lead_deg": 8.0,
+   "hv_fin_sep_ok": true,
+   "zone_rules_listed": true,
+   "ok": true
+  },
+  "selftest": {
+   "ok": true,
+   "caught_aluminium_can": true,
+   "caught_loop_cm2": 2.56
+  },
+  "copper": {
+   "MP1": {
+    "board": "MP1",
+    "zones": 0,
+    "solid_zones": 0,
+    "hatched_without_slit": 0,
+    "closed_copper_loops_cm2": {
+     "+5VA": 0.0006
+    },
+    "loop_limit_cm2": 0.1,
+    "loops_over_limit": {},
+    "ok": true
+   },
+   "TXJ": {
+    "board": "TXJ",
+    "zones": 0,
+    "solid_zones": 0,
+    "hatched_without_slit": 0,
+    "closed_copper_loops_cm2": {},
+    "loop_limit_cm2": 0.1,
+    "loops_over_limit": {},
+    "ok": true
+   },
+   "TXF": {
+    "board": "TXF",
+    "zones": 0,
+    "solid_zones": 0,
+    "hatched_without_slit": 0,
+    "closed_copper_loops_cm2": {},
+    "loop_limit_cm2": 0.1,
+    "loops_over_limit": {},
+    "ok": true
+   }
+  }
+ },
+ "display_LR1_reported_only": {
+  "solid_zones": 0,
+  "hatched_without_slit": 0,
+  "largest_closed_loop_cm2": 0
+ },
+ "ok": true
+}

@@ -112,6 +112,10 @@ def build(name):
             c, s_ = math.cos(math.radians(a)), math.sin(math.radians(a)); trk(net, (r0 * c, r0 * s_), (r1 * c, r1 * s_), pcbnew.F_Cu)
             for rv in vr:
                 v = pcbnew.PCB_VIA(b); v.SetPosition(P(rv * c, rv * s_)); v.SetWidth(pcbnew.FromMM(0.6)); v.SetDrill(pcbnew.FromMM(0.3)); v.SetNet(nets[net]); v.SetLocked(True); b.Add(v)
+    for net_, pts_, w_ in B.get("bus", []):                               # straight locked buses (net, [(x, y), ...], width): on F.Cu and B.Cu, both layers carry the pulse current
+        for lay_ in (pcbnew.F_Cu, pcbnew.B_Cu):
+            for u, v in zip(pts_[:-1], pts_[1:]):
+                t = pcbnew.PCB_TRACK(b); t.SetStart(P(*u)); t.SetEnd(P(*v)); t.SetWidth(pcbnew.FromMM(w_)); t.SetLayer(lay_); t.SetNet(nets[net_]); t.SetLocked(True); b.Add(t)
     if B.get("template") in ("led_ring", "led_grid"):                    # deterministic routing, locked like the pre-routes
         if B["template"] == "led_grid":
             import rf2_ledgrid as LG; T, Vs, _ = LG.copper(); RT = LG
@@ -334,7 +338,11 @@ def run(name):
     dd = subprocess.run(["kicad-cli", "pcb", "export", "drill", "--format", "excellon", "--excellon-units", "mm", "--excellon-separate-th", "-o", g + "/", pcb], capture_output=True, text=True)
     res["gerbers"] = dict(files=sorted(os.listdir(g)), ok=a.returncode == 0 and dd.returncode == 0)
     hd = B["head"]; t = B["thickness"]
-    res["placement_in_head"] = [dict(ref=p["ref"], type=p["type"], x=round(hd["c"][0] + p["x"], 3), y=round(hd["c"][1] + p["y"], 3), rot=p["rot"],
+    if hd.get("fin"):                                                      # fin board: x along the radius at azimuth deg, y up from z0 + h / 2, thickness across the fin
+        f = hd["fin"]; ca, sa = math.cos(math.radians(f["deg"])), math.sin(math.radians(f["deg"]))
+        res["placement_in_head"] = [dict(ref=p["ref"], type=p["type"], x=round((f["r_center"] + p["x"]) * ca, 3), y=round((f["r_center"] + p["x"]) * sa, 3), rot=p["rot"],
+                                         z=round(f["z0"] + B["h"] / 2 + p["y"], 3), body=NL.LIB[p["type"]]["body"], fin_deg=f["deg"]) for p in B["parts"]]
+    else: res["placement_in_head"] = [dict(ref=p["ref"], type=p["type"], x=round(hd["c"][0] + p["x"], 3), y=round(hd["c"][1] + p["y"], 3), rot=p["rot"],
                                      z=round(hd["z_bottom"] + t, 3), body=NL.LIB[p["type"]]["body"]) for p in B["parts"]]
     res["ok"] = all(res[k]["ok"] for k in ("placement", "route", "kicad_drc", "copper", "parity", "gerbers"))
     os.remove(raw)

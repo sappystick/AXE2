@@ -49,7 +49,7 @@ STEPS = [
     dict(id="sb1r-variant", cmd=[H + "rf2_sb1r_variant.py"], inputs=[H + "rf2_sb1r_variant.py", "src/pcb/sbq_export.py", "src/pcb/models3d.py", "data/reference/sbq_geometry.json"],
          deps=[], check=jcheck(H + "out/SB1R_RF2/sb1r_variant_check.json")),
 ] + [dict(id=f"board:{b}", cmd=[H + "rf2_boards.py", b], inputs=ROUTER, key=lambda b=b: board_key(b), deps=["netlist"], timeout=7200,
-          check=jcheck(H + f"out/{b}/{b.lower()}_check.json")) for b in ("TXJ", "MP1", "LR1")] + [
+          check=jcheck(H + f"out/{b}/{b.lower()}_check.json")) for b in ("TXJ", "TXF", "MP1", "LR1")] + [
     dict(id="field-xcheck", cmd=[H + "rf2_field_xcheck.py"], inputs=[H + "rf2_field_xcheck.py", "rf2/rf2_coil_search.py", H + "rf2_head.py"], deps=[],
          check=jcheck(H + "out/rf2_field_xcheck.json")),
     dict(id="mp1-spice", cmd=[H + "rf2_mp1_spice.py"], inputs=[H + "rf2_mp1_spice.py"], deps=[], timeout=3600,     # MP1 v2 (IXTY08N100D2, Rin2 100 ohm) recovers inside the first gate
@@ -66,6 +66,8 @@ STEPS = [
     dict(id="head-section:BF", cmd=[H + "rf2_head_section.py", "--variant=BF"], inputs=[H + "rf2_head_section.py"], deps=["head:BF"], outputs=[H + "out_BF/rf2_head_section.png"]),
     dict(id="head-check", cmd=[H + "rf2_head_check.py"], inputs=[H + "rf2_head_check.py"], deps=["head", "ledger", "shield:SH1"], check=jcheck(H + "out/rf2_head_check.json")),
     dict(id="wiring", cmd=[H + "rf2_wiring.py"], inputs=[H + "rf2_wiring.py"], deps=["head", "netlist"], check=jcheck(H + "out/rf2_wiring.json", lambda d: d["checks"]["ok"])),
+    dict(id="zonerules", cmd=[H + "rf2_zonerules.py"], inputs=[H + "rf2_zonerules.py", H + "rf2_netlist.py", H + "rf2_head.py"], deps=["board:TXJ", "board:TXF", "board:MP1", "board:LR1", "head:BF"],
+         check=jcheck(H + "out/rf2_zonerules.json")),
     dict(id="router-selftest", cmd=["tests/router_selftest.py"], inputs=["tests/router_selftest.py", "src/pcb/astar_route.py"], deps=["board:MP1"],
          check=jcheck("state/router_selftest.json")),
     dict(id="parity", cmd=[H + "rf2_parity.py"], inputs=[H + "rf2_parity.py"], deps=["netlist", "board:TXJ", "board:MP1", "board:LR1", "shield:SH1", "sb1r-variant"],

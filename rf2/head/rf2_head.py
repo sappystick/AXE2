@@ -71,6 +71,15 @@ def apply_option_b(S):
     S["boards_inner"]["TXJ"].update(c=(-94.5, 0.0), what=S["boards_inner"]["TXJ"]["what"] + "; option B: at (-94.5, 0), between MP1 and the channel wall (r 103.8)")
     S["netlist_variant_note"] = "rf2_netlist.BOARDS MP1 / TXJ 'head' positions are option A's; the option-B board builds take MP1 (-72, 3) and TXJ (-94.5, 0) (stage 4)"
     S["gland"].update(boss_z=(12.6, lid0))
+    S["materials"] = dict(
+        coil_wire="FEP-insulated litz (rf2_qualify section D; DATASHEET_LOG RF2-DS-FEP): FEP eps 2.1 (Gund note, a supplier technical note, not a grade datasheet), 200 C, no creep; "
+                  "finished OD 1.2 mm is ASSUMED, so the vendor OD, strand count and wall thickness must be confirmed before the combs are printed",
+        coil_wire_od_mm=1.2, litz_g_per_m=6.0,
+        sleeves="FEP on every wire in the head that leaves the coil's 1.2 mm litz: FEP-jacketed hookup wire for the shaft HV pair and the sense wires, FEP tubing over the litz lead pair "
+                "to the TXJ board (same eps 2.1 and no creep; PTFE rejected: it creeps). Voltage rating of the finished wire is UNVERIFIED: must be >= 630 V (rule 6)",
+        coating="Parylene (SCS ParyFree, falling back to Parylene C) on the analog and near-coil fins: moisture and leakage barrier with no magnetic or eddy effect",
+        coil_potting="syntactic foam (K1 glass bubbles in silicone, eps about 1.75-1.9): coil capacitance 101 pF with FEP litz (rf2_qualify D)",
+        status="MODELED / sourced from supplier notes; not bench-tested")
     S["coil_combs"] = dict(n=12, deg0=15.0, t=0.8, slot=1.3, what="printed winding combs (resin print): radial plates with one slot per groove column (1.3 mm slots for the 1.2 mm litz, 0.3 mm teeth), the turns laid from the top, column by column")
     S["shield_coat"] = dict(r=(114.45, 114.5), z=(1.2, lid0), slit_deg=HEEL + 6.0, slit_w=2.0, material="MG 841AR nickel coating, 25 um (1.6 ohm/sq): echo tau 1 ns (rf2_zones)",
                             what="electrostatic screen on the shell's inner face, joined to SH1 at the stack-pin ground; one 2 mm slit")

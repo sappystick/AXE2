@@ -14340,5 +14340,165 @@
    }
   ],
   "ok": true
+ },
+ "TXF": {
+  "board": "TXF",
+  "placement": {
+   "overlaps_or_outside": [],
+   "ok": true
+  },
+  "route": {
+   "unconnected_after": 0,
+   "tracks": 4,
+   "vias": 0,
+   "widened_to_floor": 0,
+   "mode": "resume, complete: no autorouter",
+   "resume": {
+    "copied_items": 0,
+    "changed_pads": 0,
+    "changed_nets": [],
+    "deleted_drc_items": 0
+   },
+   "strategies": [
+    {
+     "name": "template / pre-routes / resumed copper",
+     "open": 0,
+     "drc_errors": 0,
+     "used": true
+    }
+   ],
+   "ok": true
+  },
+  "kicad_drc": {
+   "errors": 0,
+   "error_types": [],
+   "examples": [],
+   "unconnected": 0,
+   "warnings": 12,
+   "hv_rule_control_violations": 13,
+   "ok": true
+  },
+  "copper": {
+   "loops_around_axis": [],
+   "min_clearance_mm": 3.25,
+   "worst_pair": [
+    "F",
+    "TX_A",
+    "TX_B"
+   ],
+   "min_hv_clearance_mm": 3.25,
+   "worst_hv_pair": [
+    "F",
+    "TX_A",
+    "TX_B"
+   ],
+   "ok": true
+  },
+  "parity": {
+   "pads_checked": 6,
+   "mismatches": [],
+   "ok": true
+  },
+  "gerbers": {
+   "files": [
+    "PF233-RF2-TXF-B_Cu.gbr",
+    "PF233-RF2-TXF-B_Mask.gbr",
+    "PF233-RF2-TXF-Edge_Cuts.gbr",
+    "PF233-RF2-TXF-F_Cu.gbr",
+    "PF233-RF2-TXF-F_Mask.gbr",
+    "PF233-RF2-TXF-F_Paste.gbr",
+    "PF233-RF2-TXF-NPTH.drl",
+    "PF233-RF2-TXF-PTH.drl",
+    "PF233-RF2-TXF-job.gbrjob"
+   ],
+   "ok": true
+  },
+  "placement_in_head": [
+   {
+    "ref": "JCA",
+    "type": "WIRE_LITZ",
+    "x": -82.545,
+    "y": -8.676,
+    "rot": 0.0,
+    "z": 8.2,
+    "body": [
+     3.0,
+     3.0,
+     0.05
+    ],
+    "fin_deg": 186.0
+   },
+   {
+    "ref": "JKA",
+    "type": "WIRE_AWG18",
+    "x": -77.573,
+    "y": -8.153,
+    "rot": 0.0,
+    "z": 8.2,
+    "body": [
+     2.8,
+     2.8,
+     0.05
+    ],
+    "fin_deg": 186.0
+   },
+   {
+    "ref": "JSA",
+    "type": "WIRE_SENSE",
+    "x": -72.103,
+    "y": -7.578,
+    "rot": 0.0,
+    "z": 8.2,
+    "body": [
+     1.9,
+     1.9,
+     0.05
+    ],
+    "fin_deg": 186.0
+   },
+   {
+    "ref": "JCB",
+    "type": "WIRE_LITZ",
+    "x": -98.955,
+    "y": -10.401,
+    "rot": 0.0,
+    "z": 8.2,
+    "body": [
+     3.0,
+     3.0,
+     0.05
+    ],
+    "fin_deg": 186.0
+   },
+   {
+    "ref": "JKB",
+    "type": "WIRE_AWG18",
+    "x": -93.485,
+    "y": -9.826,
+    "rot": 0.0,
+    "z": 8.2,
+    "body": [
+     2.8,
+     2.8,
+     0.05
+    ],
+    "fin_deg": 186.0
+   },
+   {
+    "ref": "JSB",
+    "type": "WIRE_SENSE",
+    "x": -88.512,
+    "y": -9.303,
+    "rot": 0.0,
+    "z": 8.2,
+    "body": [
+     1.9,
+     1.9,
+     0.05
+    ],
+    "fin_deg": 186.0
+   }
+  ],
+  "ok": true
  }
 }

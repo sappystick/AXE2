@@ -66,6 +66,18 @@ board("TXJ", w=12.0, h=16.0, layers=2, thickness=1.6, kind="rect", hv_nets=["TX_
 for col, nm, x in (("A", "TX_A", -3.2), ("B", "TX_B", 3.2)):
     part("TXJ", f"JC{col}", "WIRE_LITZ", f"coil {col}", x, 5.0); part("TXJ", f"JK{col}", "WIRE_AWG18", f"cable {col}", x, -0.6); part("TXJ", f"JS{col}", "WIRE_SENSE", f"sense {col}", x, -5.0)          # -5.0: the 2.5 mm track's end cap keeps 1.0 mm to the 0.5 mm edge keep-out
     net("TXJ", nm, (f"JC{col}", "1"), (f"JK{col}", "1"), (f"JS{col}", "1"))
+# ---- TXF: TXJ's function as a RADIAL FIN (option B clean sheet, variant BF; Stage 4b). The coil is axisymmetric, so a board standing in a plane through the axis
+#      sees no azimuthal field: its loops get no EMF and its copper no eddy current (rf2_layout.py). The fin slot is 8.4 mm tall (z 4.0-12.4) and 1.0 mm thick, so
+#      TXJ's two columns become two groups end to end along the fin's radial axis (x outward, fin centre at r 86, so the rim end is r 102): each group is
+#      litz / cable / sense in a line on a 2.5 mm track at mid-height (8 A pulses). The groups are 3.5 mm apart (rule 6 asks >= 1.0 mm). Each group has its sense
+#      pad at the gap for B and at the far end for A; the coil (litz) pad is at x = -3.0 for A and +13.5 for B (the lead pair reaches the fin from the rim at 178 deg).
+board("TXF", w=32.0, h=8.4, layers=2, thickness=1.0, kind="rect", hv_nets=["TX_A", "TX_B"], wide={"TX_A": 2.5, "TX_B": 2.5},
+      head=dict(c=(0.0, -1000.0), z_bottom=4.0, fin=dict(deg=186.0, r_center=86.0, z0=4.0)),
+      bus=[("TX_A", [(-3.0, 0.0), (-13.5, 0.0)], 2.5), ("TX_B", [(3.0, 0.0), (13.5, 0.0)], 2.5)],
+      note="fin board, wire-hole pads only (repo rule: no plug-on joints inside the head); replaces TXJ in variant BF")
+for col, nm, xs in (("A", "TX_A", (-3.0, -8.0, -13.5)), ("B", "TX_B", (13.5, 8.0, 3.0))):
+    part("TXF", f"JC{col}", "WIRE_LITZ", f"coil {col}", xs[0], 0.0); part("TXF", f"JK{col}", "WIRE_AWG18", f"cable {col}", xs[1], 0.0); part("TXF", f"JS{col}", "WIRE_SENSE", f"sense {col}", xs[2], 0.0)
+    net("TXF", nm, (f"JC{col}", "1"), (f"JK{col}", "1"), (f"JS{col}", "1"))
 # ---- LR1: dense LED display flex (owner 2026-10-30: rings from the rim to the centre + a centre cluster, about 540 LEDs on an 8 mm grid; built: see
 #      rf2_ledgrid.py, the single source of its layout, nets and copper). 2-layer polyimide flex (0.2 mm with coverlay) on a 0.2 mm FR4 stiffener, vendor
 #      rules 0.10 / 0.10 mm; SK9822-EC20 + 100 nF 0402 per LED; 4 serial chains; open B.Cu buses and spokes (rule 5); hinge flap above CB1D (12 lands);

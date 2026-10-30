@@ -47,14 +47,18 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
 - **Sectors:** HV 156-198 deg, analog 89-156 deg, digital the rest.
 
 ## 5. Where the last session stopped (2026-10-30)
-- **Passing:** every required step in `run.py` (see STATUS.md). The boards have DRC 0 and 0 unconnected; the housing, wiring, power, LED timing, volume ledger and parity checks pass; the router self-test passes.
+- **Passing:** every required step in `run.py` (see STATUS.md). The boards have DRC 0 and 0 unconnected; the housing (variants A, B and BF), wiring, power, LED timing, volume ledger, parity and zone-rule checks pass; the router self-test passes.
+- **Done since the first handoff** (details: `rf2/HANDOFF_RF2.md` sections 19-29):
+  - Rim-coil shape studies (taper, Rodin, wave) and the ferrite hood studies: none beats option B's plain rim coil; sections 19-23.
+  - Option B housing (variant B, 15.65 mm) and the radial-fin clean sheet (variant BF); zone map and mitigation: sections 24-26.
+  - Stage 3 parts, datasheet qualification, the fluxgate and decay-library work, and the **FEP litz** choice: sections 27-28.
+  - **Stage 4:** `rf2_zonerules.py` (runner step `zonerules`) turns the zone rules into checks. **Stage 4b, first fin board:** TXF (TXJ as a fin). FEP litz and sleeves are in the head SPEC: section 29.
 - **Still open, in order:**
-  1. **MP1 v2 board.** The parts are decided (2026-10-30, docs/INGEST_2026-10-30.md): IXTY08N100D2 limiter (datasheet-verified), Rin2 100 ohm, LMH6629. Put them in `rf2_netlist.py`, then route and check (HV 1.0 mm).
-  1b. **Thin-head option B** (single electronics tier, 15.7 mm, no modeled depth loss) as a SPEC variant, after study 2 (bundle self-capacitance).
-  2. **Phase C.** CB1D routing (with the display's LMR36520 + TPS22918, the 12 hinge lands and the 4 LED chains), the AB1A / AB1B rework, and the neck driver (333 uH / 8.06 A, 12.7 A boost) with the cable in the timing model.
-  3. **Battery and runtime budget.** Covers the 7S pack, TX average power, the display, and every fuse and wire rating.
-  4. **Enhancement studies** (`rf2/ENHANCEMENT_PLAN_RF2.md`). The first two are the winding capacitance → first gate, and the display: pinpoint centre-offset error and LED-to-receiver coupling.
-  5. **Fabricator DRC, then the bench.**
+  1. **MP1 v2 as a fin board** (HV1 at 170 deg). Parts decided (docs/INGEST_2026-10-30.md): IXTY08N100D2 limiter, Rin2 100 ohm, LMH6629. Blocked on the LMH6629 stage topology (it is a single op-amp; no SPICE model in the repo), its WSON-8 land pattern, and the TO-252 tab orientation on an 8.4 mm fin (section 29). Put them in `rf2_netlist.py`, then route and check (HV 1.0 mm).
+  2. **Phase C.** AB1A / AB1B / CB1D as fins (area budget: analog 32 cm2, digital 85 cm2), CB1D routing (with the display's LMR36520 + TPS22918, the 12 hinge lands and the 4 LED chains), and the neck driver (333 uH / 8.06 A, 12.7 A boost) with the cable in the timing model.
+  3. **Stage 5 and parts.** SiC switch with the UCC5350 driver, the AD7389-4 receiver, BAT15 pair option, temperature sensors; confirm with a vendor the FEP litz OD, wall and voltage rating.
+  4. **Battery and runtime budget.** Covers the 7S pack, TX average power, the display, and every fuse and wire rating.
+  5. **Fabricator DRC, then the bench** (fluxgate pair, ferrite settling, decay-curve recordings).
 
 ## 6. Working rules
 See CLAUDE.md. In short:
