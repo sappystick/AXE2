@@ -94,6 +94,11 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - MP1 v2 settling closed in SPICE: 13.66 us vs the 16.48 us first gate, using +-12 V clamp rails and a series isolation switch. Parts: TMUX7212, TPS65131, TL431 (worst case 14.58 us).
     - The DFM wall metric is now max(ray, inscribed sphere).
     - Lid light plate 2.4 mm with a 0.9 mm land: the lid passes, head 16.55 mm, optics 0.825.
+  - **Integration matrix** (section 47, `docs/INTEGRATION_MATRIX.md`):
+    - Every owner source mapped to every area.
+    - SDC cam-lever clamp adopted.
+    - Shaft walls 1.2 mm would save 50 g (proposed).
+    - HV notebook rules: aged Kapton 2000 V/mil.
   - **Minco / Gore** (section 46):
     - Cord-flex insulation is based on Minco data (hipot >= 1000 VRMS on the drawing), so P0.1 closes; readiness 7 / 40.
     - Flex-Coil REF3 is feasible but not adopted; Gore coax is rejected.

@@ -1,0 +1,244 @@
+{
+ "status": "GENERATED from the study results (MODELED)",
+ "rows": [
+  {
+   "area": "Head: transmit coil wire",
+   "idea": "Rubadue TXXL66/38FXXX-2(MWXX) triple-insulated FEP litz",
+   "source": "Rubadue litz catalog",
+   "status": "ADOPTED",
+   "numbers": "1000 V, OD 1.372 mm, 0.6 ohm (model was 0.53, unsourced)",
+   "effect": "rule-6-compliant coil wire with a named construction; boost 3.6 -> 3.5 h",
+   "rule": "-",
+   "next": "vendor spec sheet (exact OD, breakdown)"
+  },
+  {
+   "area": "Head: transmit coil wire",
+   "idea": "Rubadue SXXL100/38FX-2(MWXX) single-insulated litz",
+   "source": "Rubadue litz catalog",
+   "status": "BLOCKED (rule 6)",
+   "numbers": "600 V, OD 1.417 mm, 0.396 ohm: fits the 1.47 mm comb",
+   "effect": "coil I2R -34 %",
+   "rule": "BLOCKED coil litz SXXL100/38FX-2(MWXX) (Single FEP, OD 1.417 mm, 0.3 (600.0 vs 630.0); BLOCKED coil litz SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm, 0. (600.0 vs 630.0)",
+   "next": "owner: rule 6 kept at 630 V (2026-10-30)"
+  },
+  {
+   "area": "Head: transmit coil wire",
+   "idea": "Pack RUPALIT bare litz as the core of an FEP extrusion",
+   "source": "Pack RUPALIT",
+   "status": "REJECTED",
+   "numbers": "silk wrapping, no voltage rating",
+   "effect": "-",
+   "rule": "-",
+   "next": "only via a vendor FEP jacket"
+  },
+  {
+   "area": "Head: coil geometry",
+   "idea": "6 rows x 5 columns, comb slot 1.47 mm (1.77 mm radial pitch, rows 1.44 mm)",
+   "source": "Rubadue OD + zone rule",
+   "status": "ADOPTED",
+   "numbers": "L +0.8 %, field at depth within 0.5 %, inner-wall gap 1.035 mm",
+   "effect": "keeps the bay, fins and cradles where they were",
+   "rule": "-",
+   "next": "-"
+  },
+  {
+   "area": "Head: shielding",
+   "idea": "photo-etched shield can (front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12))",
+   "source": "Tech Etch shields, ProtoShield",
+   "status": "REJECTED",
+   "numbers": "closed-can drift 60200.4099 x noise, slotted 20.62866 x (limit 0.5)",
+   "effect": "EMI screening of the front end / TPS65131",
+   "rule": "FAIL slotted etched shield can in the head, front end near the ri (20.62866 vs 0.5)",
+   "next": "head: placement and filtering instead"
+  },
+  {
+   "area": "Head: shielding",
+   "idea": "photo-etched shield can (head centre (r 30 mm, z 12))",
+   "source": "Tech Etch shields, ProtoShield",
+   "status": "REJECTED",
+   "numbers": "closed-can drift 7535.6482 x noise, slotted 2.58221 x (limit 0.5)",
+   "effect": "EMI screening of the front end / TPS65131",
+   "rule": "FAIL slotted etched shield can in the head, head centre (r 30 mm, (2.58221 vs 0.5)",
+   "next": "head: placement and filtering instead"
+  },
+  {
+   "area": "Control chassis: shielding",
+   "idea": "photo-etched shield can (control chassis (about 0.9 m up the shaft behind the heel, 40 deg))",
+   "source": "Tech Etch shields, ProtoShield",
+   "status": "PROPOSED",
+   "numbers": "closed-can drift 0.0127 x noise, slotted 0.0 x (limit 0.5)",
+   "effect": "screening TXD / PWR / HB2",
+   "rule": "-",
+   "next": "ProtoShield prototypes on the chassis boards"
+  },
+  {
+   "area": "Head: HV sector (TXJ, MP1, HV fins)",
+   "idea": "high-voltage layout rules: round all flyback copper (a point arcs at 1/3 the voltage), derate FR4 to its aged 300 V/mil, vacuum-pot the HV sector",
+   "source": "Sierra Proto HV PCB notebook",
+   "status": "PROPOSED",
+   "numbers": "flyback 460 V: 1.5 mil of aged FR4 between layers would already hold it; the 1.0 mm rule-6 spacing stays",
+   "effect": "corona / tracking margin over the life of the head",
+   "rule": "-",
+   "next": "add a rounded-corner check to the board copper check"
+  },
+  {
+   "area": "Head: front-end supply (TPS65131)",
+   "idea": "keep it out of the coil field or filter it (a can is not allowed in the head)",
+   "source": "flex study B",
+   "status": "OPEN",
+   "numbers": "switching 1.25-1.5 MHz",
+   "effect": "EMI at the nV front end",
+   "rule": "EDGE TPS65131 VPOS setting vs its ROC maximum 15 V (15.0 vs 15.0)",
+   "next": "EMI study of placement / LC filter"
+  },
+  {
+   "area": "Head: display flex (522 LEDs)",
+   "idea": "reverse-bared single-layer flex (pads on both sides, 3.7-5.4 mil)",
+   "source": "Tramonto",
+   "status": "PROPOSED",
+   "numbers": "thinnest flex construction; -55 to 150 C",
+   "effect": "thinner display stack under the lid",
+   "rule": "-",
+   "next": "compare with the current LED flex stack in rf2_ledgrid"
+  },
+  {
+   "area": "Cord: head -> REF3T -> hinge",
+   "idea": "split long flex (rolling loop + static piece)",
+   "source": "Tech Etch long flex, Minco guide",
+   "status": "ADOPTED",
+   "numbers": "15.7 mm wide, 961 + 394 mm, 10.6 g vs 86 g; TX 28.1 pF/m",
+   "effect": "fixes the 10 mm cord FAIL; first gate +0.14 us (was +0.19)",
+   "rule": "FAIL cord-as-flex in one piece (no REF3T joint) vs Tech Etch pref (1315 vs 1016); EDGE cord-as-flex width vs the 18 mm bore less 2 mm (15.7 vs 16.0); FAIL cord-flex LV traces vs Minco producibility guideline (width  (0.15 vs 0.356)",
+   "next": "flex drawing with a >= 1000 VRMS net-to-net hipot; rolling-loop mock-up"
+  },
+  {
+   "area": "Cord: flex signal traces",
+   "idea": "thinner signal copper (contoured / selective plating) to meet the 5 x thickness producibility guideline",
+   "source": "Minco guide, Tech Etch contoured circuits",
+   "status": "OPEN",
+   "numbers": "0.15 mm traces on 2 oz vs 0.36 mm guideline; 0.127 mm minimum met",
+   "effect": "producibility / yield",
+   "rule": "FAIL cord-flex LV traces vs Minco producibility guideline (width  (0.15 vs 0.356)",
+   "next": "ask the vendor for selective copper"
+  },
+  {
+   "area": "Cord: strain relief at the gland",
+   "idea": "strain-relief pin through a loop of the flex (SDC 2300 coil-cable pin 4308-0031 pattern)",
+   "source": "Minelab SDC 2300 parts",
+   "status": "PROPOSED",
+   "numbers": "-",
+   "effect": "no pull on the soldered TX strips",
+   "rule": "-",
+   "next": "add the pin to the gland boss"
+  },
+  {
+   "area": "Hinge pass-through (ICD I5)",
+   "idea": "single-layer reverse-bared / Minco dynamic flex plies",
+   "source": "Tramonto, Minco guide",
+   "status": "PROPOSED",
+   "numbers": "single layer required for dynamic flexing; bend >= 10 x thickness",
+   "effect": "longer clock-spring life",
+   "rule": "-",
+   "next": "re-check the I5 bend radius with 0.15 mm plies"
+  },
+  {
+   "area": "REF3 reference coils (X / Y faces)",
+   "idea": "Minco Flex-Coils, 3 FEP segments per face",
+   "source": "Minco FC01",
+   "status": "FEASIBLE-NOT-ADOPTED",
+   "numbers": "R 196.5 -> 245.5 ohm, e_ref 2.48 -> 2.64 nV/rtHz, thickness 1.1 mm",
+   "effect": "repeatable orientation; REF3T on the same flex as the cord joint",
+   "rule": "-",
+   "next": "only if canceller balance needs it"
+  },
+  {
+   "area": "REF3 / cord analog lines",
+   "idea": "Gore ePTFE microwave coax",
+   "source": "Gore spaceflight catalog",
+   "status": "REJECTED",
+   "numbers": "82 pF/m vs 28.1 pF/m flex strips",
+   "effect": "-",
+   "rule": "-",
+   "next": "-"
+  },
+  {
+   "area": "Telescope profiles",
+   "idea": "carbon wall 1.5 -> 1.2 mm",
+   "source": "Garrett two-piece benchmark (155 g/m)",
+   "status": "PROPOSED",
+   "numbers": "tubes 260 -> 210 g (-50 g), tip sag 2.86 -> 3.41 mm (1.0 mm wall: -83 g, 3.96 mm)",
+   "effect": "lighter shaft; ours is 228 g/m vs 155 g/m",
+   "rule": "-",
+   "next": "owner: choose the wall; then a swing-load check"
+  },
+  {
+   "area": "Telescope profiles",
+   "idea": "octagonal stock tubing",
+   "source": "Rock West octagonal",
+   "status": "REJECTED",
+   "numbers": "OD [54.1, 53.3, 48.8, 48.8] mm vs the 21-31 mm profiles",
+   "effect": "-",
+   "rule": "-",
+   "next": "custom rectangular profiles remain (P0.6 open)"
+  },
+  {
+   "area": "Telescope clamps (P3.4)",
+   "idea": "cam lever + elastomer pressure block through a window in the outer profile",
+   "source": "Minelab SDC 2300 parts (8008-0061, 8008-0062); Garrett nylon cam lock",
+   "status": "ADOPTED",
+   "numbers": "P0.6 'cam clamp hardware' decided",
+   "effect": "infinite length adjustment, no spring buttons",
+   "rule": "-",
+   "next": "print the lever / block; clamp-force test"
+  },
+  {
+   "area": "TXD + PWR",
+   "idea": "8-layer rigid-flex second source",
+   "source": "FPCexpress",
+   "status": "PROPOSED",
+   "numbers": "rigid-flex with PTH through rigid and flex",
+   "effect": "removes the board-to-board cable",
+   "rule": "-",
+   "next": "-"
+  },
+  {
+   "area": "Battery dock signal contacts",
+   "idea": "photo-etched BeCu C172 fingers",
+   "source": "Tech Etch etch & form",
+   "status": "ADOPTED",
+   "numbers": "0.63 N at 0.8 mm, 390 MPa",
+   "effect": "replaces the unobtainable Mill-Max sheet",
+   "rule": "-",
+   "next": "contact resistance / cycle test"
+  },
+  {
+   "area": "Battery pack",
+   "idea": "7S1P Molicel P45B, drill-style rail",
+   "source": "Molicel P45B datasheet",
+   "status": "ADOPTED",
+   "numbers": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 3.5 h continuous boost (rated case), 5.8 h scan, 2465 g sy",
+   "effect": "-188 g pack",
+   "rule": "RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (3.5 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.8 vs 6.0)",
+   "next": "rail dock geometry in rf2_chassis"
+  },
+  {
+   "area": "Battery pack",
+   "idea": "7S RC LiPo in a hard shell",
+   "source": "Gens Ace listing",
+   "status": "REJECTED",
+   "numbers": "157 Wh/kg bare, no BMS",
+   "effect": "-",
+   "rule": "-",
+   "next": "-"
+  }
+ ],
+ "counts": {
+  "ADOPTED": 6,
+  "PROPOSED": 7,
+  "FEASIBLE": 1,
+  "REJECTED": 6,
+  "OPEN": 2,
+  "BLOCKED": 1
+ },
+ "ok": true
+}

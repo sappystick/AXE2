@@ -1101,7 +1101,7 @@
   "cartridge signal contacts (photo-etched BeCu fingers)": "decided: custom photo-etched part (Tech Etch capability on file; force modeled, resistance / cycle life by vendor test)",
   "coil cord -> cord flex": "decided: custom long flex, Kapton / acrylic stack (Minco design guide values on file; hipot >= 1000 VRMS on the drawing)",
   "rectangular CF profiles": "custom sizes: vendor pages only",
-  "cam clamp hardware": "custom printed: no datasheet",
+  "cam clamp hardware": "decided: printed cam lever + elastomer pressure block through a window in the outer profile (SDC 2300 pattern: Minelab camlock lever 8008-0061, pressure rubber block 8008-0062; elastomer hardness ASSUMED)",
   "cell holder": "decided: spot-welded pack (Keystone holder logged as alternative)",
   "Rd resistor family": "VERIFIED (Vishay PR03, 2 x 806 ohm)",
   "MP1 v2 isolation switch (TI TMUX7212)": "VERIFIED (TI SCDS416D)",

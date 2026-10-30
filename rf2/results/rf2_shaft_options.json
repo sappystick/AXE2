@@ -1,0 +1,61 @@
+{
+ "status": "MODELED: E 50 GPa and density 1.55 g/cm3 ASSUMED; rectangular sections without corner radii; static sag under the head only (no swing loads)",
+ "head_plus_yoke_g": 811,
+ "current_wall_mm": 1.5,
+ "walls": [
+  {
+   "wall_mm": 1.5,
+   "tubes_g": 260,
+   "tip_sag_mm": 2.86,
+   "delta_g": 0,
+   "sag_ratio": 1.0
+  },
+  {
+   "wall_mm": 1.2,
+   "tubes_g": 210,
+   "tip_sag_mm": 3.41,
+   "delta_g": -50,
+   "sag_ratio": 1.19
+  },
+  {
+   "wall_mm": 1.0,
+   "tubes_g": 177,
+   "tip_sag_mm": 3.96,
+   "delta_g": -83,
+   "sag_ratio": 1.38
+  },
+  {
+   "wall_mm": 0.8,
+   "tubes_g": 142,
+   "tip_sag_mm": 4.79,
+   "delta_g": -118,
+   "sag_ratio": 1.67
+  }
+ ],
+ "benchmark": {
+  "garrett_two_piece_g": 156.0,
+  "garrett_len_mm": 1010,
+  "garrett_g_per_m": 155,
+  "ours_g_per_m": 228,
+  "note": "the Garrett figure includes a nylon cam lock but its tube diameter is not given; ours is three nested keyed profiles (the overlaps double the section)"
+ },
+ "octagonal": {
+  "od_mm": [
+   54.1,
+   53.3,
+   48.8,
+   48.8
+  ],
+  "fits": false,
+  "note": "Rock West octagonal stock is 48.8-54.1 mm OD: larger than the 31 mm outer profile; no stock octagonal in the 21-31 mm range in the listing"
+ },
+ "clamp": {
+  "pattern": "SDC 2300: camlock lever (8008-0061) pressing a rubber pressure block (8008-0062) onto the inner section; coil-cable strain-relief pin (4308-0031)",
+  "adopt": "printed cam lever + elastomer pressure block through a window in the outer profile (P3.4); a strain-relief pin through a loop of the cord flex at the gland"
+ },
+ "findings": [
+  "walls 1.5 -> 1.2 mm: tubes 260 -> 210 g (-50 g), static tip sag 2.86 -> 3.41 mm",
+  "ours 228 g/m of nested profile vs the Garrett two-piece 155 g/m (with its cam lock)"
+ ],
+ "ok": true
+}

@@ -15,7 +15,8 @@ TE_LEN_PREF, TE_LEN_ADV = 40 * 25.4, 60 * 25.4          # Tech Etch long flex (b
 MINCO_LEN_MAX = 60 * 25.4                               # Minco: circuits up to 5 ft (design guide 2019); 1-2 layer panels 24 x 72 in (FC01)
 # insulation (Minco design guide 2019): Kapton / modified acrylic 3500 V/mil, plain Kapton 3500-7000 V/mil; typical dielectric 1000 VRMS 60 Hz 30 s,
 # 1 mA max leakage; withstanding test capability up to 6000 V; -65..105 C (acrylic), 150 C with the special adhesive
-COVER_MIL = 1.0; COVER_V_PER_MIL = 3500.0; WITHSTAND_VRMS = 1000.0                # 1 mil Kapton coverlay (ASSUMED stack choice); Minco values
+COVER_MIL = 1.0; COVER_V_PER_MIL = 2000.0; WITHSTAND_VRMS = 1000.0                # 1 mil Kapton coverlay (ASSUMED stack choice); 2000 V/mil = the AGED Kapton covercoat rating
+# (Sierra Proto HV notebook 2004: 2000-3000 V/mil aged; Minco 3500 V/mil initial); FR4 aged about 300 V/mil (same notebook); sharp copper points arc at 1/3 the voltage of rounded ones
 MIN_W_2OZ = 0.005 * 25.4                                # Minco minimum conductor width / space on 2 oz
 CU_T_MM = {0.5: 0.0007 * 25.4, 1.0: 0.0014 * 25.4, 2.0: 0.0028 * 25.4}   # nomograph copper thicknesses (IPC-2223 reprint)
 BEND_R = 40 * STACK_MM                                  # dynamic bend radius 40 x stack (ASSUMED; Minco: single layer >= 6 x (IPC), >= 10 x for reliability, single layer for dynamic)

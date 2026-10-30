@@ -131,7 +131,7 @@
   "minco": {
    "len_max_mm": 1524,
    "one_piece_ok": true,
-   "cover_breakdown_V": 3500.0,
+   "cover_breakdown_V": 2000.0,
    "withstand_VRMS": 1000.0,
    "rule6_basis": "Kapton / acrylic 3500 V/mil x 1 mil coverlay; 1000 VRMS 30 s typical withstand (Minco); the drawing calls a net-to-net hipot >= 1000 VRMS",
    "lv_trace_mm": 0.15,
@@ -178,6 +178,21 @@
     },
     "closed_ok": false,
     "slotted_ok": false
+   },
+   "control chassis (about 0.9 m up the shaft behind the heel, 40 deg)": {
+    "B_uT_per_A": 0.2,
+    "closed_can": {
+     "echo_x_gate_noise": 0.637,
+     "drift5K_x_noise": 0.0127,
+     "worst_sigma": 58000000.0,
+     "tau_us": 20.422
+    },
+    "slotted": {
+     "echo_x_gate_noise": 0.0002,
+     "drift5K_x_noise": 0.0
+    },
+    "closed_ok": true,
+    "slotted_ok": true
    }
   },
   "note": "cold-rolled steel is excluded (ferromagnetic); slotted = photo-etched comb lid and a wall break so no closed loop (eddy rule 5)"
@@ -225,7 +240,7 @@
  },
  "findings": [
   "A: the cord as a 15.7 mm single-layer 2 oz flex (TX traces 2.35 mm, 1.0 mm rule-6 gaps) fits the 18.0 mm bore; split at REF3T the pieces are 961 mm (rolling loop for 550.0 mm travel) and 394 mm, inside Tech Etch's 1016 mm preferred length; TX strips 28.1 pF/m over 1.355 m (eps_eff 1.6 ASSUMED) -> first gate +0.14 us (rf2_timing_cord; the wire pair gave +0.19 us); mass 10.6 g vs about 86 g",
-  "B: front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12): closed can drift 60200.4099 x noise (FAILS), slotted 20.62866; head centre (r 30 mm, z 12): closed can drift 7535.6482 x noise (FAILS), slotted 2.58221",
+  "B: front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12): closed can drift 60200.4099 x noise (FAILS), slotted 20.62866; head centre (r 30 mm, z 12): closed can drift 7535.6482 x noise (FAILS), slotted 2.58221; control chassis (about 0.9 m up the shaft behind the heel, 40 deg): closed can drift 0.0127 x noise (ok), slotted 0.0",
   "C: 0.254 mm BeCu fingers 10 x 1.5 mm give 0.63 N at 0.8 mm at 39 % of an ASSUMED 1000 MPa yield; Tech Etch geometry rules met: True",
   "D: feasible as 3 FEP-laminated segments per face (polyimide too thin for 5 layers); the end runs add 25 % copper and lift e_ref 2.48 -> 2.64 nV/rtHz: packaging gain (repeatable orientation, REF3T on the same flex), not a weight or noise gain",
   "E: not adopted: 50 ohm microwave coax; as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2"

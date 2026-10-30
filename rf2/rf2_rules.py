@@ -72,6 +72,7 @@ def rules():
         add("flex.width", "target", "cord-as-flex width vs the 18 mm bore less 2 mm", a["width_mm"], a["bore_mm"] - 2.0, "<=", "rf2_flex_options.json", unit="mm")
         mi = a.get("minco")
         if mi:
+            add("flex.cover_aged", "safety", "cord-flex 1 mil Kapton coverlay, AGED breakdown (2000 V/mil, Sierra HV notebook) vs the 460 V flyback x 2 (630 V rule basis)", fo["A_cord_to_flex"]["minco"]["cover_breakdown_V"], 2 * 630.0, ">=", "Sierra Proto HV notebook 2004 / Minco 2019", unit="V")
             add("flex.withstand", "safety", "cord-flex insulation: Minco typical withstand (1000 VRMS 30 s) vs the rule-6 630 V (drawing hipot required)", mi["withstand_VRMS"], 630.0, ">=", "Minco design guide 2019", unit="V")
             add("flex.lv_min_w", "target", "cord-flex LV traces vs Minco minimum width on 2 oz", 0.15, mi["min_w_2oz_mm"], ">=", "Minco design guide 2019", unit="mm")
             add("flex.lv_producibility", "target", "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz)", 0.15, mi["producibility_w_mm"], ">=", "Minco design guide 2019", unit="mm")

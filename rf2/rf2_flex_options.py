@@ -53,7 +53,8 @@ def part_a():
 def part_b():
     import rf2_zones as Z
     pts = {"front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12)": (95 * math.cos(math.radians(170)), 95 * math.sin(math.radians(170)), 12.0),
-           "head centre (r 30 mm, z 12)": (30.0, 0.0, 12.0)}
+           "head centre (r 30 mm, z 12)": (30.0, 0.0, 12.0),
+           "control chassis (about 0.9 m up the shaft behind the heel, 40 deg)": (-900 * math.cos(math.radians(40)), 0.0, 900 * math.sin(math.radians(40)))}
     side, h, t = 12.0, 3.0, 0.254                                                                           # can 12 x 12 x 3 mm, 0.254 mm (ProtoShield / etched shield thickness)
     r_eq = side / math.sqrt(math.pi); out = {}
     for name, P in pts.items():

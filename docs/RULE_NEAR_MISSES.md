@@ -2,7 +2,7 @@
 
 BLOCKED: a part fails a rule by 10 % or less (it fits right under it); the owner decides whether to relax or remove the rule. RELAXED: the owner relaxed it; shown against the old limit every run. EDGE: passes with 5 % headroom or less. FAIL: misses by more than 10 %. Safety rules (HV, eddy, absolute-maximum ratings) are never relaxed automatically.
 
-Rules checked: 63. BLOCKED 2, RELAXED 2, EDGE 4, FAIL 5, PASS 50
+Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 4, FAIL 5, PASS 52
 
 | Status | Kind | Rule | Value | Limit | Over (+) / headroom (-) | Note |
 |---|---|---|---|---|---|---|

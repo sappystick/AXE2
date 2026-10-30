@@ -1258,3 +1258,31 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - **Packaging gain only:** repeatable orientation, and REF3T on the same flex as the cord-flex joint. Not adopted; the Z solenoid stays wound.
 - **Gore coax (E): not adopted.** 82 pF/m against 28.1 pF/m for the flex TX strips; the REF pairs are already guarded in the flex.
 - **Readiness: 7 / 40** (P0.1 added). P0.6 is open on the rectangular CF profiles and the cam clamp hardware only. Next on the critical path: P1.1 TXD schematic.
+## 47. Shaft / clamp / HV-design sources and the integration matrix (2026-10-30; `rf2/rf2_shaft_options.py`, `rf2/rf2_integration.py` -> `docs/INTEGRATION_MATRIX.md`; MODELED)
+- **Received:** 4 new sources (5 of the 9 files were duplicates):
+  - the Minelab SDC 2300 shaft parts list;
+  - Steve's Garrett two-piece carbon shaft;
+  - Rock West octagonal tubing;
+  - the Sierra Proto high-voltage PCB notebook.
+- **Integration matrix (generated, `docs/INTEGRATION_MATRIX.md`):** every owner source from sections 40-47 against every area it touches, with status, deciding numbers, rule near-miss and next action. Counts: ADOPTED 6, PROPOSED 7, FEASIBLE 1, REJECTED 6, OPEN 2, BLOCKED 1.
+- **Telescope walls (rf2_shaft_options):** three keyed profiles at full 980 mm extension as a cantilever under the head (771 g) + yoke; E 50 GPa and 1.55 g/cm3 ASSUMED.
+
+  | Wall | Tubes | Change | Static tip sag |
+  |---|---|---|---|
+  | 1.5 mm (now) | 260 g | - | 2.86 mm |
+  | 1.2 mm | 210 g | -50 g | 3.41 mm |
+  | 1.0 mm | 177 g | -83 g | 3.96 mm |
+
+  - **Benchmark:** ours is 228 g/m of nested profile against 155 g/m for the Garrett two-piece (with its cam lock). PROPOSED; the owner chooses the wall, then a swing-load check.
+- **Octagonal stock:** 48.8-54.1 mm OD, too large: rejected. The rectangular CF profiles stay custom, and are the last open P0.6 item.
+- **Clamps:** the SDC 2300 pattern (camlock lever 8008-0061 pressing pressure rubber block 8008-0062) is adopted for P3.4. **P0.6 "cam clamp hardware" decided:** printed lever + elastomer block through a window in the outer profile, elastomer hardness ASSUMED.
+- **Cord gland:** a strain-relief pin through a loop of the flex (SDC coil-cable pin 4308-0031 pattern) is proposed.
+- **HV notebook applied:**
+  - **Cord-flex coverlay derated to the aged Kapton value, 2000 V/mil** (was Minco's 3500 V/mil initial). New rule row: aged coverlay breakdown 2000 V vs 2 x 630 V, PASS.
+  - Proposed for the HV sector (TXJ, MP1, HV fins):
+    - round all flyback copper (a point arcs at 1/3 the voltage);
+    - derate FR4 to about 300 V/mil aged;
+    - vacuum-pot.
+    The 1.0 mm rule-6 spacing stays.
+- **Shield cans in the control chassis:** closed-can drift 0.0127 x noise (limit 0.5), so ProtoShield / etched shields are fine on TXD / PWR / HB2. Still rejected inside the head.
+- **Readiness: 7 / 40.** P0.6 is open on the rectangular CF profiles only.
