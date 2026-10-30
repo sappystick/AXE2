@@ -83,7 +83,8 @@ def spec():
     c = dict(fep_litz="FEP" in m.get("coil_wire", ""), fep_sleeves="FEP" in m.get("sleeves", ""), coating="Parylene" in m.get("coating", ""),
              comb_slot_clears_litz=cb.get("slot", 0) >= m.get("coil_wire_od_mm", co["litz_od"]) + 0.1, litz_od_matches=abs(m.get("coil_wire_od_mm", 0) - co["litz_od"]) < 1e-9,
              hv_fin_sep_from_lead_deg=sep, hv_fin_sep_ok=sep is not None and sep >= 4.0,
-             zone_rules_listed=len(S.get("zone_rules", [])) >= 6)
+             zone_rules_listed=len(S.get("zone_rules", [])) >= 6,
+             light_plate_nonmetal=S["lid_light"].get("type") == "light_plate" and "non-metal" in S["lid_light"]["material"] and "metallised liner is banned" in S["lid_light"]["material"])
     c["ok"] = all(v for v in c.values() if isinstance(v, bool)) and c["hv_fin_sep_ok"]
     return c
 def selftest():

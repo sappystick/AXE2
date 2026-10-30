@@ -1,0 +1,515 @@
+{
+ "components": {
+  "SHELL_LOWER": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 69.997,
+   "bbox_min": [
+    -116.5,
+    -116.5,
+    0.0
+   ],
+   "bbox_max": [
+    116.5,
+    116.5,
+    14.15
+   ]
+  },
+  "LID": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 51.394,
+   "bbox_min": [
+    -116.5,
+    -116.5,
+    12.6
+   ],
+   "bbox_max": [
+    116.5,
+    116.5,
+    15.65
+   ]
+  },
+  "COIL_CHANNEL": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 8.845,
+   "bbox_min": [
+    -114.3,
+    -114.3,
+    3.2
+   ],
+   "bbox_max": [
+    114.3,
+    114.3,
+    12.6
+   ]
+  },
+  "BAY_WALLS": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 2.569,
+   "bbox_min": [
+    -98.71,
+    -32.58,
+    3.8
+   ],
+   "bbox_max": [
+    2.41,
+    103.59,
+    12.6
+   ]
+  },
+  "BAY_FLOOR": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 20.217,
+   "bbox_min": [
+    -103.6,
+    -103.6,
+    3.2
+   ],
+   "bbox_max": [
+    103.6,
+    103.6,
+    3.8
+   ]
+  },
+  "FIN_RAILS": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 1.371,
+   "bbox_min": [
+    -99.57,
+    -99.57,
+    3.8
+   ],
+   "bbox_max": [
+    98.95,
+    98.68,
+    5.0
+   ]
+  },
+  "HUB": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 8.869,
+   "bbox_min": [
+    -20.0,
+    -20.0,
+    3.8
+   ],
+   "bbox_max": [
+    20.0,
+    20.0,
+    11.0
+   ]
+  },
+  "BOARD_SH1": {
+   "role": "receive / shield board",
+   "material": "PETG (printed)",
+   "volume_cm3": 16.319,
+   "bbox_min": [
+    -114.0,
+    -114.0,
+    1.2
+   ],
+   "bbox_max": [
+    114.0,
+    114.0,
+    1.6
+   ]
+  },
+  "BOARD_QA": {
+   "role": "receive / shield board",
+   "material": "PETG (printed)",
+   "volume_cm3": 32.638,
+   "bbox_min": [
+    -114.0,
+    -114.0,
+    1.6
+   ],
+   "bbox_max": [
+    114.0,
+    114.0,
+    2.4
+   ]
+  },
+  "BOARD_QB": {
+   "role": "receive / shield board",
+   "material": "PETG (printed)",
+   "volume_cm3": 32.638,
+   "bbox_min": [
+    -114.0,
+    -114.0,
+    2.4
+   ],
+   "bbox_max": [
+    114.0,
+    114.0,
+    3.2
+   ]
+  },
+  "COIL_COMBS": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 0.161,
+   "bbox_min": [
+    -110.51,
+    -110.51,
+    3.8
+   ],
+   "bbox_max": [
+    110.51,
+    110.51,
+    12.6
+   ]
+  },
+  "SHIELD_COAT": {
+   "role": "printed housing",
+   "material": "PETG (printed)",
+   "volume_cm3": 0.464,
+   "bbox_min": [
+    -114.5,
+    -114.5,
+    1.2
+   ],
+   "bbox_max": [
+    114.5,
+    114.5,
+    14.15
+   ]
+  },
+  "BOARD_FIN_HV1": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.529,
+   "bbox_min": [
+    -101.52,
+    6.45,
+    4.0
+   ],
+   "bbox_max": [
+    -39.31,
+    18.38,
+    12.4
+   ]
+  },
+  "BOARD_FIN_HV2": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.529,
+   "bbox_min": [
+    -102.49,
+    -11.26,
+    4.0
+   ],
+   "bbox_max": [
+    -39.73,
+    -3.68,
+    12.4
+   ]
+  },
+  "BOARD_FIN_A1": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    -18.38,
+    18.67,
+    4.0
+   ],
+   "bbox_max": [
+    -2.82,
+    101.52,
+    12.4
+   ]
+  },
+  "BOARD_FIN_A2": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    -55.01,
+    15.89,
+    4.0
+   ],
+   "bbox_max": [
+    -9.67,
+    87.61,
+    12.4
+   ]
+  },
+  "BOARD_FIN_A3": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    -83.62,
+    10.79,
+    4.0
+   ],
+   "bbox_max": [
+    -15.12,
+    60.95,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D1": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    -85.67,
+    -58.01,
+    4.0
+   ],
+   "bbox_max": [
+    -15.51,
+    -10.24,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D2": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    -43.98,
+    -93.56,
+    4.0
+   ],
+   "bbox_max": [
+    -7.6,
+    -17.05,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D3": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    1.49,
+    -102.49,
+    4.0
+   ],
+   "bbox_max": [
+    11.26,
+    -18.89,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D4": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    11.07,
+    -82.56,
+    4.0
+   ],
+   "bbox_max": [
+    62.39,
+    -14.91,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D5": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    17.48,
+    -39.05,
+    4.0
+   ],
+   "bbox_max": [
+    95.69,
+    -6.67,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D6": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    18.74,
+    2.49,
+    4.0
+   ],
+   "bbox_max": [
+    101.81,
+    16.61,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D7": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    14.27,
+    11.86,
+    4.0
+   ],
+   "bbox_max": [
+    79.22,
+    66.59,
+    12.4
+   ]
+  },
+  "BOARD_FIN_D8": {
+   "role": "fin board",
+   "material": "FR4 1.0 mm",
+   "volume_cm3": 0.705,
+   "bbox_min": [
+    5.73,
+    17.85,
+    4.0
+   ],
+   "bbox_max": [
+    34.01,
+    97.55,
+    12.4
+   ]
+  },
+  "LITZ": {
+   "role": "transmit / receive coil",
+   "material": "FEP-insulated litz (rf2_qualify section D; DATASHEET_LOG RF2",
+   "volume_cm3": 20.025,
+   "bbox_min": [
+    -114.0,
+    -114.0,
+    3.8
+   ],
+   "bbox_max": [
+    114.0,
+    114.0,
+    11.4
+   ]
+  },
+  "SADDLES": {
+   "role": "molded wire saddles",
+   "material": "PETG (printed with the floor)",
+   "volume_cm3": 0.047,
+   "bbox_min": [
+    -101.05,
+    -6.06,
+    3.79
+   ],
+   "bbox_max": [
+    -79.95,
+    3.13,
+    7.31
+   ]
+  },
+  "WIRE_COIL_B": {
+   "role": "harness wire",
+   "material": "coil litz, end (top row)",
+   "volume_cm3": 0.018,
+   "bbox_min": [
+    -102.88,
+    -10.5,
+    7.6
+   ],
+   "bbox_max": [
+    -98.41,
+    2.97,
+    11.4
+   ]
+  },
+  "WIRE_CABLE_B": {
+   "role": "harness wire",
+   "material": "shaft HV pair, up through the gland",
+   "volume_cm3": 0.088,
+   "bbox_min": [
+    -95.1,
+    -10.53,
+    7.0
+   ],
+   "bbox_max": [
+    -90.73,
+    2.71,
+    18.85
+   ]
+  },
+  "WIRE_COIL_A": {
+   "role": "harness wire",
+   "material": "coil litz, start (bottom row, lifted 0.3 mm off the floor after it leaves the winding)",
+   "volume_cm3": 0.04,
+   "bbox_min": [
+    -102.93,
+    -8.78,
+    4.1
+   ],
+   "bbox_max": [
+    -82.0,
+    5.37,
+    8.8
+   ]
+  },
+  "WIRE_CABLE_A": {
+   "role": "harness wire",
+   "material": "shaft HV pair, up through the gland",
+   "volume_cm3": 0.163,
+   "bbox_min": [
+    -93.8,
+    -8.86,
+    6.6
+   ],
+   "bbox_max": [
+    -76.43,
+    6.11,
+    18.85
+   ]
+  },
+  "POTTING_analog": {
+   "role": "potting cavity (fill volume)",
+   "material": "low-permittivity silicone gel (stress-free, reworkable)",
+   "volume_cm3": 53.42,
+   "bbox_min": [
+    -94.64,
+    0.0,
+    3.8
+   ],
+   "bbox_max": [
+    1.81,
+    103.6,
+    13.1
+   ]
+  },
+  "POTTING_hv": {
+   "role": "potting cavity (fill volume)",
+   "material": "MG 832TC epoxy (48 kV breakdown at 3.2 mm; kept >= 3 mm from the winding: eps 3.7, DF 0.1)",
+   "volume_cm3": 33.163,
+   "bbox_min": [
+    -103.6,
+    -32.01,
+    3.8
+   ],
+   "bbox_max": [
+    0.0,
+    42.14,
+    13.1
+   ]
+  },
+  "POTTING_digital": {
+   "role": "potting cavity (fill volume)",
+   "material": "syntactic silicone",
+   "volume_cm3": 205.045,
+   "bbox_min": [
+    -98.52,
+    -103.6,
+    3.8
+   ],
+   "bbox_max": [
+    103.6,
+    103.58,
+    13.1
+   ]
+  }
+ },
+ "count": 34
+}

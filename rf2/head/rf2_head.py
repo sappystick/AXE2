@@ -80,6 +80,10 @@ def apply_option_b(S):
         coating="Parylene (SCS ParyFree, falling back to Parylene C) on the analog and near-coil fins: moisture and leakage barrier with no magnetic or eddy effect",
         coil_potting="syntactic foam (K1 glass bubbles in silicone, eps about 1.75-1.9): coil capacitance 101 pF with FEP litz (rf2_qualify D)",
         status="MODELED / sourced from supplier notes; not bench-tested")
+    S["lid_light"] = dict(type="light_plate", d_bottom=2.9, d_top=6.0, web_min_mm=0.8,
+                          material="opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 against 0.41 for a straight bore, liner reflectance ASSUMED 0.90); "
+                                   "wall liner = white diffuse non-metal paint (TiO2); a metallised liner is banned (rule 5: metal near the coil); well filled flush with clear resin (seals the plate)",
+                          note="replaces the clear lid of option A")
     S["coil_combs"] = dict(n=12, deg0=15.0, t=0.8, slot=1.3, what="printed winding combs (resin print): radial plates with one slot per groove column (1.3 mm slots for the 1.2 mm litz, 0.3 mm teeth), the turns laid from the top, column by column")
     S["shield_coat"] = dict(r=(114.45, 114.5), z=(1.2, lid0), slit_deg=HEEL + 6.0, slit_w=2.0, material="MG 841AR nickel coating, 25 um (1.6 ohm/sq): echo tau 1 ns (rf2_zones)",
                             what="electrostatic screen on the shell's inner face, joined to SH1 at the stack-pin ground; one 2 mm slit")
@@ -172,6 +176,11 @@ def parts():
     for p in boss_positions():
         lid = lid + at(cyl(lb["boss_d"] / 2, L["z"][1], sh["lid_z"][0] + 0.01, 32), p) + at(cyl(lb["pin_d"] / 2, L["z"][0], L["z"][1] + 0.01, 32), p)
     g = S["gland"]; lid = lid + at(cyl(g["boss_d"] / 2, g["boss_z"][0], sh["lid_z"][0] + 0.01, 64), g["c"]) - at(cyl(g["d"] / 2, g["boss_z"][0] - 1, sh["lid_z"][1] + 1, 64), g["c"])
+    ll = S["lid_light"]
+    if ll.get("type") == "light_plate":                                                         # conical wells through the lid over every LED
+        z0w, z1w = sh["lid_z"]; hw = z1w - z0w; r0w, r1w = ll["d_bottom"] / 2, ll["d_top"] / 2; kw = (r1w - r0w) / hw; e = 0.2
+        cone = m3.Manifold.cylinder(hw + 2 * e, r0w - kw * e, r1w + kw * e, 48).translate([0, 0, z0w - e])
+        lid = lid - m3.Manifold.compose([cone.translate([x, y, 0]) for x, y in led_positions()])
     P["LID"] = lid
     # coil channel: inner wall + floor, lead slot at the heel
     ch = S["channel"]; co = S["coil"]

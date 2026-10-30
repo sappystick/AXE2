@@ -48,6 +48,7 @@
    "hv_fin_sep_from_lead_deg": 8.0,
    "hv_fin_sep_ok": true,
    "zone_rules_listed": true,
+   "light_plate_nonmetal": true,
    "ok": true
   },
   "selftest": {

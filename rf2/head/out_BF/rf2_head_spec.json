@@ -469,8 +469,12 @@
   "hole_d": 2.0
  },
  "lid_light": {
-  "material": "clear / natural PETG, printed solid (diffuser; transmission ASSUMED)",
-  "note": "no holes over the LEDs: 522 windows would weaken the lid and the seal"
+  "type": "light_plate",
+  "d_bottom": 2.9,
+  "d_top": 6.0,
+  "web_min_mm": 0.8,
+  "material": "opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 against 0.41 for a straight bore, liner reflectance ASSUMED 0.90); wall liner = white diffuse non-metal paint (TiO2); a metallised liner is banned (rule 5: metal near the coil); well filled flush with clear resin (seals the plate)",
+  "note": "replaces the clear lid of option A"
  },
  "gland": {
   "c": [

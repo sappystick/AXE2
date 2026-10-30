@@ -1,0 +1,115 @@
+{
+ "status": "MODELED (liner reflectance and printable web ASSUMED; no optical bench)",
+ "leds": 522,
+ "min_led_pitch_mm": 7.999,
+ "plate_t_mm": 1.5,
+ "d_bottom_mm": 2.9,
+ "sweep": [
+  {
+   "d_top_mm": 3.5,
+   "cone_half_angle_deg": 11.3,
+   "web_mm": 4.5,
+   "web_ok": true,
+   "rho_0.9": {
+    "exit_efficiency": 0.863,
+    "median_half_angle_deg": 36.7,
+    "p90_half_angle_deg": 62.8
+   },
+   "rho_0.98": {
+    "exit_efficiency": 0.941,
+    "median_half_angle_deg": 37.4,
+    "p90_half_angle_deg": 63.9
+   }
+  },
+  {
+   "d_top_mm": 4.5,
+   "cone_half_angle_deg": 28.1,
+   "web_mm": 3.5,
+   "web_ok": true,
+   "rho_0.9": {
+    "exit_efficiency": 0.939,
+    "median_half_angle_deg": 37.7,
+    "p90_half_angle_deg": 59.7
+   },
+   "rho_0.98": {
+    "exit_efficiency": 0.985,
+    "median_half_angle_deg": 38.0,
+    "p90_half_angle_deg": 60.5
+   }
+  },
+  {
+   "d_top_mm": 5.5,
+   "cone_half_angle_deg": 40.9,
+   "web_mm": 2.5,
+   "web_ok": true,
+   "rho_0.9": {
+    "exit_efficiency": 0.965,
+    "median_half_angle_deg": 39.1,
+    "p90_half_angle_deg": 59.7
+   },
+   "rho_0.98": {
+    "exit_efficiency": 0.993,
+    "median_half_angle_deg": 39.3,
+    "p90_half_angle_deg": 60.1
+   }
+  },
+  {
+   "d_top_mm": 6.0,
+   "cone_half_angle_deg": 45.9,
+   "web_mm": 2.0,
+   "web_ok": true,
+   "rho_0.9": {
+    "exit_efficiency": 0.971,
+    "median_half_angle_deg": 39.8,
+    "p90_half_angle_deg": 60.1
+   },
+   "rho_0.98": {
+    "exit_efficiency": 0.994,
+    "median_half_angle_deg": 39.9,
+    "p90_half_angle_deg": 60.4
+   }
+  },
+  {
+   "d_top_mm": 6.5,
+   "cone_half_angle_deg": 50.2,
+   "web_mm": 1.5,
+   "web_ok": true,
+   "rho_0.9": {
+    "exit_efficiency": 0.976,
+    "median_half_angle_deg": 40.3,
+    "p90_half_angle_deg": 60.7
+   },
+   "rho_0.98": {
+    "exit_efficiency": 0.995,
+    "median_half_angle_deg": 40.4,
+    "p90_half_angle_deg": 60.9
+   }
+  },
+  {
+   "d_top_mm": 7.0,
+   "cone_half_angle_deg": 53.8,
+   "web_mm": 1.0,
+   "web_ok": true,
+   "rho_0.9": {
+    "exit_efficiency": 0.98,
+    "median_half_angle_deg": 40.8,
+    "p90_half_angle_deg": 61.5
+   },
+   "rho_0.98": {
+    "exit_efficiency": 0.996,
+    "median_half_angle_deg": 40.8,
+    "p90_half_angle_deg": 61.7
+   }
+  }
+ ],
+ "straight_bore_absorbing_wall": {
+  "exit_efficiency": 0.41,
+  "median_half_angle_deg": 28.6,
+  "p90_half_angle_deg": 45.8
+ },
+ "chosen": {
+  "d_top_mm": 6.0,
+  "reason": "a 2.0 mm web between wells (2.5 x the 0.8 mm printable minimum) keeps the plate stiff, and the exit efficiency is within 0.9 points of the widest well swept (d 7.0 mm, web 1.0 mm)"
+ },
+ "ok": true
+}

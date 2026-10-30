@@ -1,0 +1,168 @@
+{
+ "status": "MODELED specification (no human-factors or bench data)",
+ "checks": {
+  "silent_without_detection": true,
+  "audio_mode_has_no_light": true,
+  "led_mode_has_no_sound": true,
+  "both_is_phase_locked": true,
+  "depth_monotonic": true,
+  "size_monotonic": true,
+  "hues_distinct_30deg": true,
+  "hues": {
+   "FERROUS": 0.0,
+   "FOIL": 280.0,
+   "NF_low": 50.0,
+   "NF_mid": 151.5,
+   "NF_high": 200.0
+  },
+  "pitch_rises_with_tau": true,
+  "class_pitch_families_apart": true,
+  "signature_set": true,
+  "pinpoint_faster": true,
+  "dark_when_idle": true,
+  "bullseye_lights_centre_ring": true,
+  "frames_deterministic": true
+ },
+ "coding": {},
+ "ok": true,
+ "cases": {
+  "deep iron nail": {
+   "detected": true,
+   "match": null,
+   "pinpoint": false,
+   "led": {
+    "hue": 0.0,
+    "value": 0.7314543674473353,
+    "speed_rings_s": 2.0852873214053416,
+    "bullseye": false,
+    "centre_mm": [
+     53.62311101832846,
+     44.99513267805775
+    ]
+   },
+   "audio": {
+    "f_hz": 194.85767975718295,
+    "timbre": "buzz (square, 25 Hz tremolo)",
+    "level": 0.7135513252771577,
+    "beeps_per_s": 4.002933558561715,
+    "phase_locked_to_led": true
+   }
+  },
+  "small gold, shallow": {
+   "detected": true,
+   "match": null,
+   "pinpoint": false,
+   "led": {
+    "hue": 64.83913746532315,
+    "value": 0.47782297677121066,
+    "speed_rings_s": 8.043840552427671,
+    "bullseye": false,
+    "centre_mm": [
+     -51.68309414322496,
+     -18.811107882911777
+    ]
+   },
+   "audio": {
+    "f_hz": 445.92358604000896,
+    "timbre": "clear (sine + 2nd harmonic)",
+    "level": 0.44301117522262473,
+    "beeps_per_s": 10.976525438019365,
+    "phase_locked_to_led": true
+   }
+  },
+  "large silver, mid": {
+   "detected": true,
+   "match": null,
+   "pinpoint": false,
+   "led": {
+    "hue": 169.43074293642405,
+    "value": 1.0,
+    "speed_rings_s": 3.438057562322281,
+    "bullseye": false,
+    "centre_mm": [
+     20.000000000000004,
+     -34.64101615137754
+    ]
+   },
+   "audio": {
+    "f_hz": 959.2820045151054,
+    "timbre": "clear (sine + 2nd harmonic)",
+    "level": 1.0000000000000002,
+    "beeps_per_s": 5.490930922882147,
+    "phase_locked_to_led": true
+   }
+  },
+  "big copper, deep": {
+   "detected": true,
+   "match": null,
+   "pinpoint": false,
+   "led": {
+    "hue": 196.95726840822593,
+    "value": 1.0,
+    "speed_rings_s": 1.5,
+    "bullseye": false,
+    "centre_mm": [
+     -29.999999999999986,
+     51.96152422706632
+    ]
+   },
+   "audio": {
+    "f_hz": 1173.5535187262676,
+    "timbre": "clear (sine + 2nd harmonic)",
+    "level": 1.0000000000000002,
+    "beeps_per_s": 3.3576075501016707,
+    "phase_locked_to_led": true
+   }
+  },
+  "foil / thin ring": {
+   "detected": true,
+   "match": null,
+   "pinpoint": false,
+   "led": {
+    "hue": 280.0,
+    "value": 0.5759409922570702,
+    "speed_rings_s": 6.585739633128316,
+    "bullseye": false,
+    "centre_mm": [
+     -10.260604299770057,
+     -28.190778623577252
+    ]
+   },
+   "audio": {
+    "f_hz": 700.0,
+    "timbre": "soft (sine)",
+    "level": 0.5476703917408748,
+    "beeps_per_s": 9.187839666456288,
+    "phase_locked_to_led": true
+   }
+  },
+  "gold, head centred": {
+   "detected": true,
+   "match": null,
+   "pinpoint": false,
+   "led": {
+    "hue": 80.56925706357593,
+    "value": 0.6740590077429298,
+    "speed_rings_s": 7.65153781946128,
+    "bullseye": true,
+    "centre_mm": [
+     6.0,
+     0.0
+    ]
+   },
+   "audio": {
+    "f_hz": 500.37423587720565,
+    "timbre": "clear (sine + 2nd harmonic)",
+    "level": 0.6523296082591252,
+    "beeps_per_s": 10.491429235976868,
+    "phase_locked_to_led": true
+   }
+  }
+ },
+ "controls": {
+  "selector": "3-position detent: AUDIO | LED | BOTH (coupled); BOTH locks the ripple emission to the beep onset",
+  "trigger_hold": "PINPOINT / enhanced projection: 1.5x ripple rate and, in the detector, more pulses averaged (rf2_depth_levers: 400 pulses = about +13 % depth on 1 g)",
+  "trigger_double": "SET SIGNATURE: store the current target's class and tau (+- 0.15 decade); matches get the full light and sound, others 35 % level",
+  "audio_location": "in the handle pod (rf2_pod.py), not in the head: a loudspeaker magnet or a ferrite is a metal target next to the coil; a piezo or a remote sounder is magnet-free"
+ }
+}

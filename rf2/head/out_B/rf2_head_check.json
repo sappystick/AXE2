@@ -11,9 +11,9 @@
      "ok": true
     },
     "LID": {
-     "triangles": 3072,
+     "triangles": 105400,
      "edges_not_2": 0,
-     "volume_cm3": 64.028,
+     "volume_cm3": 51.394,
      "ok": true
     },
     "COIL_CHANNEL": {
@@ -360,7 +360,17 @@
    "lid_underside_z": 14.15,
    "flex_to_gland_boss_mm": 1.0,
    "led_seat_gap_to_lid": 0.0,
-   "lid": "clear / natural PETG, printed solid (diffuser; transmission ASSUMED)"
+   "lid": "opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 against 0.41 for a straight bore, liner reflectance ASSUMED 0.90); wall liner = white diffuse non-metal paint (TiO2); a metallised liner is banned (rule 5: metal near the coil); well filled flush with clear resin (seals the plate)"
+  },
+  "light_plate": {
+   "ok": true,
+   "leds": 522,
+   "wells": 522,
+   "max_centre_offset_mm": 0.0,
+   "min_web_mm": 2.04,
+   "d_bottom": 2.9,
+   "d_top": 6.0,
+   "material": "opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 agains"
   },
   "potting_cm3_full_fill": {
    "analog": 35.1,
@@ -369,7 +379,7 @@
   },
   "mass_g": {
    "items": {
-    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 190.9,
+    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 174.9,
     "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": 129.2,
     "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": 37.4,
     "transmit litz (26 turns, 6 g/m)": 107.2,
@@ -377,12 +387,12 @@
     "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": 44.4,
     "hardware, cable gland, yoke lug (ASSUMED)": 40.0
    },
-   "without_bay_potting": 667,
+   "without_bay_potting": 651,
    "bay_full_fill_potting": 185,
    "islands_only_potting": 26,
    "potting_source": "islands-only estimate",
-   "total_islands_only": 693,
-   "total_full_fill": 852,
+   "total_islands_only": 677,
+   "total_full_fill": 836,
    "earlier_estimate": 529,
    "note": "100 % infill PETG is an upper bound for the printed parts; the earlier 529 g estimate assumed a single 0.4 mm receive board, not the two 0.8 mm SB1R boards"
   }

@@ -1,0 +1,106 @@
+{
+ "status": "MODELED; all dimensions ASSUMED",
+ "checks": {
+  "fits_in_body": {
+   "ok": true,
+   "fraction_of_pocket_inside_body": {
+    "BATTERY_BAY": 1.0,
+    "SWITCH": 1.0
+   },
+   "note": "battery bay and switch pocket lie inside the body cylinder"
+  },
+  "walls": {
+   "ok": true,
+   "min_wall_to_outside_mm": 1.7,
+   "note": "measured on the pockets' extreme vertices (battery bay, sounder, switch pocket) against the body radius; 1.6 mm printable minimum ASSUMED"
+  },
+  "interference": {
+   "ok": true,
+   "trigger_x_body_mm3": 0.0,
+   "collar_x_body_mm3": 0.0
+  },
+  "trigger_travel": {
+   "ok": true,
+   "travel_at_finger_mm": 2.7,
+   "slot_clear_mm": 6.0,
+   "note": "travel at the finger; the tactile switch's real travel is a datasheet item"
+  },
+  "selector": {
+   "ok": true,
+   "positions": 3,
+   "detent_pitch_mm_on_collar": 13.9,
+   "icons": [
+    "speaker",
+    "LED",
+    "both"
+   ],
+   "note": "three detents at least 10 mm apart on the collar so the thumb can find each"
+  },
+  "no_magnet_no_metal": {
+   "ok": true,
+   "note": "all printed PETG; sounder must be a magnet-free piezo or a remote sounder; the pod sits about 0.9 m from the head (not a field zone) but the cable pair runs to it"
+  }
+ },
+ "ok": true,
+ "spec": {
+  "shaft_d": 25.0,
+  "body_r": 23.0,
+  "body_len": 170.0,
+  "wall": 2.0,
+  "shaft_clear": 0.3,
+  "battery": {
+   "x": [
+    60.0,
+    150.0
+   ],
+   "size": [
+    80.0,
+    30.0,
+    24.0
+   ],
+   "note": "ASSUMED 80 x 30 x 24 mm bay; the battery budget (7S pack, START_HERE step 4) sets the real cavity"
+  },
+  "sounder": {
+   "x": [
+    28.0,
+    52.0
+   ],
+   "d": 24.0,
+   "grille_holes": 7,
+   "hole_d": 1.6,
+   "note": "ASSUMED 24 mm piezo disc under a drilled grille on the thumb side"
+  },
+  "selector": {
+   "x": [
+    10.0,
+    26.0
+   ],
+   "collar_r": [
+    23.0,
+    26.5
+   ],
+   "positions_deg": [
+    -30.0,
+    0.0,
+    30.0
+   ],
+   "detent_notch_d": 2.2,
+   "windows": [
+    "speaker",
+    "LED",
+    "both"
+   ],
+   "note": "ASSUMED ball-detent collar around the body, three detents 30 deg apart, three icon windows"
+  },
+  "trigger": {
+   "x": [
+    70.0,
+    96.0
+   ],
+   "lever_t": 4.0,
+   "travel_deg": 12.0,
+   "pivot_x": 96.0,
+   "note": "ASSUMED index-finger lever on the underside with a tactile switch behind it; double-press is read in firmware"
+  }
+ }
+}

@@ -67,6 +67,19 @@ def main():
     res["checks"]["led_display"] = dict(ok=abs(top - S["shell"]["lid_z"][0]) < 1e-9 and inside and gland_gap >= 0.5, leds=len(pos), sites_inside_outline=inside,
                                         led_top_z=top, lid_underside_z=S["shell"]["lid_z"][0], flex_to_gland_boss_mm=round(gland_gap, 3),
                                         led_seat_gap_to_lid=round(gap("ENV_LED", "LID"), 3), lid=S["lid_light"]["material"])
+    ll = S["lid_light"]
+    if ll.get("type") == "light_plate":                                                        # every LED has a conical well, centred, with printable webs between them
+        from shapely.geometry import Polygon
+        from shapely.strtree import STRtree
+        zm = S["shell"]["lid_z"][1] - 0.02; polys = H.parts()["LID"].slice(zm).to_polygons()
+        holes = [Polygon(r) for pg in polys[1:] for r in [pg]] if len(polys) > 1 else []
+        holes = [Polygon(p_) for p_ in polys if Polygon(p_).exterior.is_ccw is False] if not holes else holes
+        rings = [Polygon(p_) for p_ in polys]; areas = sorted(rings, key=lambda g: -g.area); wells = [g for g in rings if g.area < 40.0 and g.area > 5.0]
+        cen = np.array([(g.centroid.x, g.centroid.y) for g in wells]); led = np.array(pos)
+        off = [float(np.min(np.hypot(*(cen - q).T))) if len(cen) else 9e9 for q in led]
+        tree = STRtree(wells); web = min((g.distance(wells[j]) for i, g in enumerate(wells) for j in tree.query(g.buffer(3.0)) if j != i), default=9e9)
+        res["checks"]["light_plate"] = dict(ok=len(wells) == len(pos) and max(off) < 0.05 and web >= ll["web_min_mm"], leds=len(pos), wells=len(wells), max_centre_offset_mm=round(max(off), 4),
+                                            min_web_mm=round(web, 3), d_bottom=ll["d_bottom"], d_top=ll["d_top"], material=ll["material"][:120])
     # 7 potting per sector
     bz = S["bay"]["z"]; bay = H.cyl(S["bay"]["r_max"], *bz)                                   # the whole bay disc
     def sector(d0, d1):

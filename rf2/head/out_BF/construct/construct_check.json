@@ -1,0 +1,126 @@
+{
+ "status": "MODELED / tool-checked (no fabricator, no bench)",
+ "checks": {
+  "wire_clearance": {
+   "ok": true,
+   "to_solids": {
+    "COIL_B": {
+     "min_gap_mm": 0.809,
+     "nearest": "COIL_CHANNEL"
+    },
+    "CABLE_B": {
+     "min_gap_mm": 1.0,
+     "nearest": "SHELL_LOWER",
+     "gland_hole_ok": true
+    },
+    "COIL_A": {
+     "min_gap_mm": 0.3,
+     "nearest": "BAY_FLOOR"
+    },
+    "CABLE_A": {
+     "min_gap_mm": 1.0,
+     "nearest": "SHELL_LOWER",
+     "gland_hole_ok": true
+    }
+   },
+   "wire_to_wire_min_mm": 0.349,
+   "required_mm": 0.3
+  },
+  "ends_on_pads": {
+   "ok": true,
+   "offsets_mm": {
+    "COIL_B": 0.0,
+    "CABLE_B": 0.0,
+    "COIL_A": 0.0,
+    "CABLE_A": 0.0
+   }
+  },
+  "bends_and_rule5": {
+   "ok": true,
+   "turn_angles_deg": {
+    "COIL_B": [
+     21.8,
+     89.9,
+     95.1
+    ],
+    "CABLE_B": [
+     21.8,
+     90.1,
+     85.6,
+     54.2
+    ],
+    "COIL_A": [
+     37.3,
+     90.0,
+     96.7
+    ],
+    "CABLE_A": [
+     3.3,
+     90.0,
+     99.2,
+     36.4
+    ]
+   },
+   "sweep_round_axis_deg": {
+    "COIL_B": 7.04,
+    "CABLE_B": 6.64,
+    "COIL_A": 8.33,
+    "CABLE_A": 8.69
+   },
+   "note": "corner turn <= 100 deg; each corner is filleted by the wire when seated in its saddle notches (bend radius of FEP litz / hookup wire to be set by the vendor)"
+  },
+  "lengths_and_loops": {
+   "ok": true,
+   "length_mm": {
+    "COIL_B": 15.7,
+    "CABLE_B": 18.4,
+    "COIL_A": 35.0,
+    "CABLE_A": 35.2
+   },
+   "coil_lead_pair_loop_cm2": 0.918,
+   "shaft_pair_loop_cm2": 1.221,
+   "note": "the loops lie in planes through the head axis' neighbourhood (the fin gap): twist the pairs where the harness leaves the saddles; loop area is a bound, not a coupling model"
+  },
+  "saddles": {
+   "ok": true,
+   "saddles_per_wire": {
+    "COIL_B": 0,
+    "CABLE_B": 0,
+    "COIL_A": 2,
+    "CABLE_A": 2
+   },
+   "post_d_mm": 2.4,
+   "spacing_mm": 22,
+   "gap_to_other_wires_mm": {
+    "COIL_A": 1.0,
+    "CABLE_A": 1.0
+   },
+   "notch_gap_to_own_wire_mm": {
+    "COIL_A": 0.099,
+    "CABLE_A": 0.099
+   },
+   "wires_without_a_saddle_mm": {
+    "COIL_B": 15.7,
+    "CABLE_B": 18.4
+   },
+   "note": "a wire with a lane under 5 mm has no saddle: held by the pad's strain relief and the potting, and must be <= 25 mm long"
+  },
+  "potting_cavities": {
+   "ok": true,
+   "cm3": {
+    "analog": 53.4,
+    "hv": 33.2,
+    "digital": 205.0
+   },
+   "fill": "from the 4 mm hub bore outwards; the sector walls start at r 21, so each sector fills through the open hub region",
+   "open_item": "vent paths: the display flex covers the lid over the bay, so vents must go through the shell wall's high side"
+  }
+ },
+ "pending": [
+  "MP1 v2 sense wires (TXF JSA / JSB to MP1 v2 J1 / J2): MP1 v2 fin not built",
+  "MP1 LV output flex through the 156 deg wall slot to AB1",
+  "AB1A / AB1B / CB1D fins (Phase C)",
+  "pad-side wire solder cups and the printed strain-relief clips at the pads"
+ ],
+ "ok": true
+}
