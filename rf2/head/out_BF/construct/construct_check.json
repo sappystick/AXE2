@@ -73,12 +73,12 @@
    "ok": true,
    "length_mm": {
     "COIL_B": 15.7,
-    "CABLE_B": 18.4,
+    "CABLE_B": 19.3,
     "COIL_A": 35.0,
-    "CABLE_A": 35.2
+    "CABLE_A": 36.1
    },
    "coil_lead_pair_loop_cm2": 0.918,
-   "shaft_pair_loop_cm2": 1.221,
+   "shaft_pair_loop_cm2": 1.189,
    "note": "the loops lie in planes through the head axis' neighbourhood (the fin gap): twist the pairs where the harness leaves the saddles; loop area is a bound, not a coupling model"
   },
   "saddles": {
@@ -101,7 +101,7 @@
    },
    "wires_without_a_saddle_mm": {
     "COIL_B": 15.7,
-    "CABLE_B": 18.4
+    "CABLE_B": 19.3
    },
    "note": "a wire with a lane under 5 mm has no saddle: held by the pad's strain relief and the potting, and must be <= 25 mm long"
   },

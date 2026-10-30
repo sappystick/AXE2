@@ -34,7 +34,8 @@ SPEC = dict(tilt_deg=50.0, pivot_r=85.0, pivot_above_lid=12.0, head_shell=os.pat
             cells=dict(d=18.6, l=65.2, n_s=7, n_p=2), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
             eye=dict(above=600.0, behind=250.0), backpack=(520.0, 320.0, 210.0), fold_gap=2.0, bend_r_min=15.0)
 TILT = math.radians(SPEC["tilt_deg"])
-LID_TOP = 15.6                                                                  # rf2_head option-B lid top (out_BF RF2_LID.stl bounds)
+try: LID_TOP = float(json.load(open(os.path.join(HERE, "head", "out_BF", "rf2_head_spec.json")))["shell"]["lid_z"][1])   # rf2_head option-B lid top (generated)
+except Exception: LID_TOP = 15.65
 P0 = np.array([SPEC["pivot_r"], 0.0, LID_TOP + SPEC["pivot_above_lid"]])        # sagittal frame
 D = np.array([math.sin(TILT), 0.0, math.cos(TILT)]); Y = np.array([0.0, 1.0, 0.0]); N = np.cross(D, Y) * -1.0         # N: perpendicular to the shaft, 'up' (toward +Z)
 if N[2] < 0: N = -N

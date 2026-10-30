@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """RF2 printable mechanical parts + DFM checker (2026-10-30; roadmap P3.6 yoke knuckle, P3.7 cuff, P3.9 head exterior). MODELED.
-DFM rules (FDM, 0.4 mm nozzle, PETG / TPU; ASSUMED until a printer and material are chosen): minimum wall >= 1.2 mm (3 perimeters; TPU 1.6 mm), measured by
-casting a ray inward from area-weighted surface samples (the 2nd percentile must reach 0.8 x the minimum and <= 3 % of samples may fall below it: edges and
-fillets give short rays); overhang: faces steeper than 45 deg below horizontal, excluding the bed contact, as an area fraction (> 10 % = 'needs supports',
+DFM rules (FDM, 0.4 mm nozzle, PETG / TPU; ASSUMED until a printer and material are chosen): minimum wall >= 1.2 mm (3 perimeters; TPU 1.6 mm), measured as
+the larger of two readings per area-weighted surface sample: the inward ray length and the diameter of the largest inscribed sphere (the ray under-reads
+beside obtuse corners, e.g. the rims of the lid's conical wells; the sphere under-reads at convex edges; a real thin wall or a feather edge is thin by both);
+the 2nd percentile must reach 0.8 x the minimum and <= 3 % of samples may fall below it; overhang: faces steeper than 45 deg below horizontal, excluding the bed contact, as an area fraction (> 10 % = 'needs supports',
 reported, not failed); the print orientation is the one of six axis-aligned options with the least overhang; the part must fit a 256 x 256 x 256 mm bed (ASSUMED printer class);
 the mesh must be watertight. Kinematic sweeps: the head through the yoke's pitch range, the cuff slider along its rails, the wings through their fold.
 Writes rf2/chassis_out/print/*.stl, rf2/head/out_BF/print/*.stl and rf2/results/rf2_print.json.   usage: python3 rf2/rf2_print.py"""
@@ -17,8 +18,16 @@ def mesh_of(shape, tol=0.2):
 def dfm(m, wall_min=1.2, n=1500, seed=0):
     rng = np.random.default_rng(seed); pts, fi = trimesh.sample.sample_surface(m, n, seed=seed); nrm = m.face_normals[fi]
     orig = pts - nrm * 0.02; loc, ri, _ = m.ray.intersects_location(orig, -nrm, multiple_hits=False)
-    th = np.full(n, np.nan); th[ri] = np.linalg.norm(loc - orig[ri], axis=1) + 0.02; th = th[~np.isnan(th)]
-    p2 = float(np.percentile(th, 2)) if len(th) else 0.0; frac_thin = float(np.mean(th < wall_min)) if len(th) else 1.0
+    th = np.full(n, np.nan); th[ri] = np.linalg.norm(loc - orig[ri], axis=1) + 0.02
+    # inscribed-sphere thickness: the largest sphere tangent at the point (centre along the inward normal) that stays inside, by bisection on its radius.
+    # The ray alone under-reads beside obtuse corners (a ray from a face near a widening hole runs into the hole's wall); the sphere does not.
+    ok_i = ~np.isnan(th); P, Nn, hi = pts[ok_i], nrm[ok_i], th[ok_i] / 2; lo = np.zeros_like(hi)
+    pq = trimesh.proximity.ProximityQuery(m)
+    for _ in range(10):
+        mid = (lo + hi) / 2; d = np.abs(pq.signed_distance(P - Nn * mid[:, None])); inside = d >= mid * 0.95
+        lo = np.where(inside, mid, lo); hi = np.where(inside, hi, mid)
+    th_s = np.maximum(2 * lo, th[ok_i]); ray_p2 = float(np.percentile(th[ok_i], 2)) if ok_i.any() else 0.0      # larger of sphere and ray: each method's artefact is cancelled by the other
+    p2 = float(np.percentile(th_s, 2)) if len(th_s) else 0.0; frac_thin = float(np.mean(th_s < wall_min)) if len(th_s) else 1.0
     best = None
     for name, R in (("+Z up", np.eye(3)), ("-Z up", np.diag([1, -1, -1])), ("+X up", np.array([[0, 0, -1], [0, 1, 0], [1, 0, 0]])), ("-X up", np.array([[0, 0, 1], [0, 1, 0], [-1, 0, 0]])),
                     ("+Y up", np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])), ("-Y up", np.array([[1, 0, 0], [0, 0, 1], [0, -1, 0]]))):
@@ -29,6 +38,7 @@ def dfm(m, wall_min=1.2, n=1500, seed=0):
         if best is None or (fits, -over) > (best["fits_bed"], -best["overhang_frac"]): best = dict(orientation=name, overhang_frac=round(over, 3), fits_bed=fits, extents_mm=[round(x, 1) for x in ext])
     ok = m.is_watertight and p2 >= 0.8 * wall_min and frac_thin <= 0.03 and best["fits_bed"]
     return dict(ok=bool(ok), watertight=bool(m.is_watertight), volume_cm3=round(m.volume / 1000, 2), wall_p2_mm=round(p2, 2), thin_fraction=round(frac_thin, 3), wall_min_mm=wall_min,
+                ray_wall_p2_mm=round(ray_p2, 2), method="max(inscribed sphere, inward ray) per sample: the ray under-reads beside obtuse corners, the sphere at convex edges; a real thin wall or feather edge is thin both ways",
                 needs_supports=best["overhang_frac"] > 0.10, **best)
 # ---------------------------------------------------------------- parts (local frames)
 def yoke_parts():

@@ -18,7 +18,7 @@
   "LID": {
    "role": "printed housing",
    "material": "PETG (printed)",
-   "volume_cm3": 51.394,
+   "volume_cm3": 86.625,
    "bbox_min": [
     -116.5,
     -116.5,
@@ -27,7 +27,7 @@
    "bbox_max": [
     116.5,
     116.5,
-    15.65
+    16.55
    ]
   },
   "COIL_CHANNEL": {
@@ -423,7 +423,7 @@
   "WIRE_CABLE_B": {
    "role": "harness wire",
    "material": "shaft HV pair, up through the gland",
-   "volume_cm3": 0.088,
+   "volume_cm3": 0.092,
    "bbox_min": [
     -95.1,
     -10.53,
@@ -432,7 +432,7 @@
    "bbox_max": [
     -90.73,
     2.71,
-    18.85
+    19.75
    ]
   },
   "WIRE_COIL_A": {
@@ -453,7 +453,7 @@
   "WIRE_CABLE_A": {
    "role": "harness wire",
    "material": "shaft HV pair, up through the gland",
-   "volume_cm3": 0.163,
+   "volume_cm3": 0.167,
    "bbox_min": [
     -93.8,
     -8.86,
@@ -462,7 +462,7 @@
    "bbox_max": [
     -76.43,
     6.11,
-    18.85
+    19.75
    ]
   },
   "POTTING_analog": {

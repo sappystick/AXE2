@@ -924,3 +924,56 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - **Head LID: FAILS.** Its light plate is 1.45 mm under the conical wells, so about 18 % of the surface is below the 1.2 mm print minimum. Fix: thicken the light plate (rf2_head + rf2_lightplate optics). OPEN.
 - **Tooling:** pymupdf and rtree added to requirements and the bootstrap self-test.
 - **Readiness:** 4 / 40 done (P0.3, P0.4, P3.6, P3.7). Next: P0.5 limiter recovery; P0.1 / P0.6 cord vendor and Mill-Max sheet; P3.9 lid thickness; then P1.1 TXD schematic on the critical path.
+## 40. MP1 v2 settling closed in SPICE, DFM wall metric, lid light plate 2.4 mm (2026-10-30; roadmap P0.5 / P3.9; MODELED)
+- **P0.5 DONE in SPICE (`rf2/head/rf2_mp1v2_close.py`, study `mp1v2_close`; `rf2/head/out/rf2_mp1v2_close.json`).**
+  - **Root cause of the slow settling: the coil tail, not the amplifier.** During the tail the depletion limiter (about 95 mA current limit) drives current into the clamp diodes, which hold the coil node at 5-9 V and drain its energy slowly.
+    - With the front end disconnected, the coil reaches 1 mV at 11.5 us; with it connected, 18.3 us.
+    - A shunt blanking switch (pin to VBIAS) did not help (17.9-18.5 us); it only cut the input current to 3.4-6.7 mA.
+    - A series switch alone with 0 / 5 V clamp rails did not help either (17.2-17.4 us): the clamps still loaded the coil.
+  - **Fix:**
+    - clamp rails at +-12 V around VBIAS (-9.5 / 14.5 V);
+    - a series isolation analog switch between the clamp node and Rin2 (100 ohm), open during flyback, closed at 11.5 us after turn-off.
+  - **Result (scan):**
+
+    | Quantity | Value | Limit |
+    |---|---|---|
+    | Settling | **13.66 us** | first gate 16.48 us (margin 2.82 us) |
+    | LMH6629 input | 2.2 mA | 10 mA |
+    | BAT54 peak | 82.3 mA | inside IFRM |
+    | BAV199 peak | 7.3 mA | inside IFRM |
+    | Clamp-rail span | 24 V | BAT54 VRRM 30 V (80 %) |
+    | Input noise | 2.21 nV/rtHz | reported, not limited (target 1.7 not met) |
+
+  - **Boost (12.74 A):** with the switch closing at 14.5 / 15.5 us, settling is 17.04 / 17.19 us, against a boost first gate about 3.4 us later than scan. BAT54 peak 123.5 mA.
+  - **New parts (to choose; Ron 2 ohm and 2 pC injection ASSUMED):**
+    - an analog switch for +-15 V signals;
+    - +-12 V clamp rails in the head (low impedance; charge pump or LDO).
+    - The switch's thermal noise (about 0.18 nV/rtHz at 2 ohm) is not yet in the noise run.
+  - **Switch timing:** comes from CB1D: close 11.5 us after turn-off in scan, about 14.5 us in boost.
+- **DFM wall metric (`rf2/rf2_print.py`):** the wall thickness per sample is now max(inward ray, inscribed-sphere diameter).
+  - The ray under-reads beside obtuse corners; the sphere under-reads at convex edges.
+  - A real thin wall or feather edge is thin both ways.
+  - The inscribed sphere is found by bisection on trimesh's signed distance.
+  - Every earlier pass still passes.
+- **P3.9 DONE: head lid.**
+  - The earlier failure was real, not a ray artifact. Conical wells that widen upward left a 44 deg feather edge at each well's bottom rim (CORRECTIONS).
+  - Fix in `rf2_head.py`:
+    - light plate 1.5 -> **2.4 mm**;
+    - each well has a **0.9 mm straight land** at the bottom, with the cone above it.
+    - Head height 15.65 -> **16.55 mm**. `rf2_upper.LID_TOP` now reads the head spec, so the yoke pivot follows.
+  - **Lid DFM:** wall p2 1.18 mm, 2.1 % below 1.2 mm. Pass.
+  - **Optics (`rf2_lightplate.py`, land-aware Monte Carlo):**
+
+    | Plate / land | Exit efficiency (rho 0.9, d_top 6.0 mm) |
+    |---|---|
+    | 1.5 mm, no land (old) | 0.96 |
+    | **2.4 mm / 0.9 mm land (chosen)** | **0.825** |
+    | 2.7 mm / 1.2 mm land | 0.771 |
+    | Straight bore | 0.41 |
+
+  - **Numbers that moved:**
+    - lid volume 51.4 -> 86.6 cm3;
+    - head printed mass 207.5 -> 252.3 g;
+    - head mass without bay potting 684 -> 729 g (full fill 894 -> 939 g);
+    - Tx field at the boards about -1 %, e.g. B 379.2 -> 375.5 uT boost (the boards sit 0.9 mm further from the coil plane).
+- **Readiness: 6 / 40** (P0.3, P0.4, P0.5, P3.6, P3.7, P3.9). Critical path: P0.1 (cord vendor, Mill-Max, and now the switch and rail parts) -> P1.1 TXD schematic.

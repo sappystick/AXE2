@@ -1,0 +1,1 @@
+{"key": "8ed93cb2cdbbc17764de55fcfafabdcee2f810d4413e33c99a33fb400eafce25", "kind": "spice.mp1v2.close.series", "seconds": 2.726, "created": "2026-10-30T20:39:07", "value": {"coil_1mV_us": 14.64, "peak_clamp_node_V": 9.99, "peak_lmh_input_mA": 1.03, "peak_per_diode_mA": {"BAT54": 82.3, "BAV199": 7.1}, "settle_us": 14.63, "t_close_us": 11.5}}

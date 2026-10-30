@@ -58,7 +58,164 @@
   4.0
  ],
  "settling_gap_us": 1.02,
- "open": "settling is set by the limiter's recovery (17.5-18.2 us against the 16.48 us first gate); next levers: a gate speed-up network on the depletion limiter, a lower-Coss limiter, or a later first gate (depth cost)",
- "closed": false,
- "chosen": null
+ "open": "parts for the switch and the +-12 V rails; the switch timing from CB1D (close 11.5 us after turn-off in scan, later in boost)",
+ "closed": true,
+ "chosen": {
+  "rin2": 100.0,
+  "rails": [
+   -9.5,
+   14.5
+  ],
+  "noise_nV": 2.211,
+  "coil_1mV_us": 13.67,
+  "peak_clamp_node_V": 14.99,
+  "peak_lmh_input_mA": 2.2,
+  "peak_per_diode_mA": {
+   "BAT54": 82.3,
+   "BAV199": 7.3
+  },
+  "settle_us": 13.66,
+  "t_close_us": 11.5,
+  "passes": true,
+  "lever": "clamp rails +-12 V around VBIAS + series isolation switch (clamp node -> Rin2), closed at t_close"
+ },
+ "series_switch": [
+  {
+   "rin2": 100.0,
+   "rails": [
+    -9.5,
+    14.5
+   ],
+   "noise_nV": 2.211,
+   "coil_1mV_us": 13.67,
+   "peak_clamp_node_V": 14.99,
+   "peak_lmh_input_mA": 2.2,
+   "peak_per_diode_mA": {
+    "BAT54": 82.3,
+    "BAV199": 7.3
+   },
+   "settle_us": 13.66,
+   "t_close_us": 11.5,
+   "passes": true
+  },
+  {
+   "rin2": 100.0,
+   "rails": [
+    -9.5,
+    14.5
+   ],
+   "noise_nV": 2.211,
+   "coil_1mV_us": 13.78,
+   "peak_clamp_node_V": 14.99,
+   "peak_lmh_input_mA": 2.6,
+   "peak_per_diode_mA": {
+    "BAT54": 82.3,
+    "BAV199": 7.3
+   },
+   "settle_us": 13.77,
+   "t_close_us": 12.0,
+   "passes": true
+  },
+  {
+   "rin2": 100.0,
+   "rails": [
+    -9.5,
+    14.5
+   ],
+   "noise_nV": 2.211,
+   "coil_1mV_us": 14.06,
+   "peak_clamp_node_V": 14.99,
+   "peak_lmh_input_mA": 2.74,
+   "peak_per_diode_mA": {
+    "BAT54": 82.3,
+    "BAV199": 7.3
+   },
+   "settle_us": 14.05,
+   "t_close_us": 12.5,
+   "passes": true
+  },
+  {
+   "rin2": 100.0,
+   "rails": [
+    -4.5,
+    9.5
+   ],
+   "noise_nV": 2.211,
+   "coil_1mV_us": 14.64,
+   "peak_clamp_node_V": 9.99,
+   "peak_lmh_input_mA": 1.03,
+   "peak_per_diode_mA": {
+    "BAT54": 82.3,
+    "BAV199": 7.1
+   },
+   "settle_us": 14.63,
+   "t_close_us": 11.5,
+   "passes": true
+  },
+  {
+   "rin2": 100.0,
+   "rails": [
+    -4.5,
+    9.5
+   ],
+   "noise_nV": 2.211,
+   "coil_1mV_us": 14.53,
+   "peak_clamp_node_V": 9.99,
+   "peak_lmh_input_mA": 1.29,
+   "peak_per_diode_mA": {
+    "BAT54": 82.3,
+    "BAV199": 7.1
+   },
+   "settle_us": 14.52,
+   "t_close_us": 12.0,
+   "passes": true
+  },
+  {
+   "rin2": 100.0,
+   "rails": [
+    -4.5,
+    9.5
+   ],
+   "noise_nV": 2.211,
+   "coil_1mV_us": 14.53,
+   "peak_clamp_node_V": 9.99,
+   "peak_lmh_input_mA": 1.89,
+   "peak_per_diode_mA": {
+    "BAT54": 82.3,
+    "BAV199": 7.1
+   },
+   "settle_us": 14.52,
+   "t_close_us": 12.5,
+   "passes": true
+  }
+ ],
+ "margin_us": 2.82,
+ "chosen_at_boost_12A74": [
+  {
+   "coil_1mV_us": 17.05,
+   "peak_clamp_node_V": 15.05,
+   "peak_lmh_input_mA": 1.48,
+   "peak_per_diode_mA": {
+    "BAT54": 123.5,
+    "BAV199": 9.4
+   },
+   "settle_us": 17.04,
+   "t_close_us": 14.5
+  },
+  {
+   "coil_1mV_us": 17.2,
+   "peak_clamp_node_V": 15.05,
+   "peak_lmh_input_mA": 2.86,
+   "peak_per_diode_mA": {
+    "BAT54": 123.5,
+    "BAV199": 9.4
+   },
+   "settle_us": 17.19,
+   "t_close_us": 15.5
+  }
+ ],
+ "new_parts": [
+  "analog switch rated for +-15 V signals, Ron <= ~5 ohm, low charge injection (part to choose; Ron 2 ohm and 2 pC ASSUMED)",
+  "+-12 V clamp rails in the head (charge pump / LDO from +5 V, low impedance; part to choose)"
+ ]
 }

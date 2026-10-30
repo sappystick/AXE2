@@ -90,10 +90,14 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - MP1 v2: current fixed by 1.0 / 4.0 V clamp rails; settling 1.0 us late.
     - Connectors verified: JST GH, Panasonic Y5B.
     - Printable yoke and cuff pass DFM; the head lid fails on thin light-plate webs.
+  - **Roadmap 6 / 40** (section 40):
+    - MP1 v2 settling closed in SPICE: 13.66 us vs the 16.48 us first gate, using +-12 V clamp rails and a series isolation switch. The switch and rail parts are still to choose.
+    - The DFM wall metric is now max(ray, inscribed sphere).
+    - Lid light plate 2.4 mm with a 0.9 mm land: the lid passes, head 16.55 mm, optics 0.825.
   - **Owner updates 2026-10-30** (section 32): power button on the pod; continuous boost checked part by part (open: switch heat sink, regenerative clamp, 4.2 W 630 V damping resistor, coil thermal model); display and audio coding v2 (size = blob radius, depth = pulse, several targets as separate blobs and voices, status screens); multi-target separation by decay time and by position.
   - **Stage 4:** `rf2_zonerules.py` (runner step `zonerules`) turns the zone rules into checks. **Stage 4b, first fin board:** TXF (TXJ as a fin). FEP litz and sleeves are in the head SPEC: section 29.
 - **Still open, in order:**
-  0. **MP1 v2 protection redesign first** (section 31): limiter candidates, clamp options, a 500 V cascode and the datasheet Coss(V) are all simulated there; none passes yet (best: IXTY01N100D with 2 x BAV199 + 2 x BAT54S per rail, 14.1 mA vs 10 mA and 17.5 us vs 16.3 us; settling is set by the limiter). Next: Rin2 150-220 ohm, a lower clamp rail, the limiter's recovery, or a later first gate, then re-run `study:mp1v2_protect`; also needs the LMH6629 WSON-8 land pattern, and the IXTY / BAV199 vendor models if they can be obtained.
+  0. **MP1 v2 protection: closed in SPICE** (section 40). Next: choose the +-15 V analog switch and the +-12 V clamp-rail parts (P0.1 / P0.6), add the switch's noise to the noise run, take the switch timing from CB1D, and get the LMH6629 WSON-8 land pattern.
   1. **MP1 v2 as a fin board** (HV1 at 170 deg). Parts decided (docs/INGEST_2026-10-30.md): IXTY08N100D2 limiter, Rin2 100 ohm, LMH6629. Blocked on the LMH6629 stage topology (it is a single op-amp; no SPICE model in the repo), its WSON-8 land pattern, and the TO-252 tab orientation on an 8.4 mm fin (section 29). Put them in `rf2_netlist.py`, then route and check (HV 1.0 mm).
   2. **Phase C.** AB1A / AB1B / CB1D as fins (area budget: analog 32 cm2, digital 85 cm2), CB1D routing (with the display's LMR36520 + TPS22918, the 12 hinge lands and the 4 LED chains), and the neck driver (333 uH / 8.06 A, 12.7 A boost) with the cable in the timing model.
   3. **Stage 5 and parts.** SiC switch with the UCC5350 driver, the AD7389-4 receiver, BAT15 pair option, temperature sensors; confirm with a vendor the FEP litz OD, wall and voltage rating.

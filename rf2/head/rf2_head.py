@@ -58,8 +58,9 @@ def apply_option_b(S):
     """option B (owner 2026-10-30; rf2_thin, rf2_zones, HANDOFF sections 17-24): CB1D lowered to the AB1 / MP1 / TXJ tier, the coil re-shaped to 5 rows
     x 6 columns under the display, head 15.65 mm. Materials chosen by the zone and potting studies."""
     zd = 13.1; lid0 = round(zd + 0.4 + 0.65, 2)                                          # display flex 13.1-13.5, LEDs 0.65, lid 1.5
-    S["envelope"].update(H=round(lid0 + 1.5, 2), note="option B: single board tier, 15.65 mm")
-    S["shell"].update(wall_z=(0.0, lid0), lid_z=(lid0, round(lid0 + 1.5, 2)))
+    LID_T = 2.4                                                                           # light plate 2.4 mm (was 1.5): a 0.9 mm straight land under each cone removes the feather edge
+    S["envelope"].update(H=round(lid0 + LID_T, 2), note="option B: single board tier; light plate 2.4 mm (2026-10-30, DFM)")   # at each well's bottom rim (rf2_print DFM, HANDOFF 40)
+    S["shell"].update(wall_z=(0.0, lid0), lid_z=(lid0, round(lid0 + LID_T, 2)))
     S["coil"].update(columns_r=tuple(round(113.4 - 1.6 * k, 1) for k in range(6)), rows=5, row0_z=4.4,
                      what="rim mono, 5 rows x 6 columns (option B), wound column by column down-and-up (owner's progressive order: 166 V max between neighbours)")
     S["channel"].update(inner_wall_r=(103.8, 104.6), z=(3.2, 12.6))
@@ -80,7 +81,7 @@ def apply_option_b(S):
         coating="Parylene (SCS ParyFree, falling back to Parylene C) on the analog and near-coil fins: moisture and leakage barrier with no magnetic or eddy effect",
         coil_potting="syntactic foam (K1 glass bubbles in silicone, eps about 1.75-1.9): coil capacitance 101 pF with FEP litz (rf2_qualify D)",
         status="MODELED / sourced from supplier notes; not bench-tested")
-    S["lid_light"] = dict(type="light_plate", d_bottom=2.9, d_top=6.0, web_min_mm=0.8,
+    S["lid_light"] = dict(type="light_plate", d_bottom=2.9, d_top=6.0, land=0.9, web_min_mm=0.8,
                           material="opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 against 0.41 for a straight bore, liner reflectance ASSUMED 0.90); "
                                    "wall liner = white diffuse non-metal paint (TiO2); a metallised liner is banned (rule 5: metal near the coil); well filled flush with clear resin (seals the plate)",
                           note="replaces the clear lid of option A")
@@ -178,8 +179,9 @@ def parts():
     g = S["gland"]; lid = lid + at(cyl(g["boss_d"] / 2, g["boss_z"][0], sh["lid_z"][0] + 0.01, 64), g["c"]) - at(cyl(g["d"] / 2, g["boss_z"][0] - 1, sh["lid_z"][1] + 1, 64), g["c"])
     ll = S["lid_light"]
     if ll.get("type") == "light_plate":                                                         # conical wells through the lid over every LED
-        z0w, z1w = sh["lid_z"]; hw = z1w - z0w; r0w, r1w = ll["d_bottom"] / 2, ll["d_top"] / 2; kw = (r1w - r0w) / hw; e = 0.2
-        cone = m3.Manifold.cylinder(hw + 2 * e, r0w - kw * e, r1w + kw * e, 48).translate([0, 0, z0w - e])
+        z0w, z1w = sh["lid_z"]; land = ll.get("land", 0.0); hw = z1w - z0w - land; r0w, r1w = ll["d_bottom"] / 2, ll["d_top"] / 2; kw = (r1w - r0w) / hw; e = 0.2
+        cone = m3.Manifold.cylinder(hw + e, r0w, r1w + kw * e, 48).translate([0, 0, z0w + land])                  # cone above the land
+        if land > 0: cone = cone + m3.Manifold.cylinder(land + 2 * e, r0w, r0w, 48).translate([0, 0, z0w - e])     # straight land at the bottom
         lid = lid - m3.Manifold.compose([cone.translate([x, y, 0]) for x, y in led_positions()])
     P["LID"] = lid
     # coil channel: inner wall + floor, lead slot at the heel

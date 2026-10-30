@@ -74,8 +74,8 @@
     "closed"
    ],
    "done_means": "one option passes every limit in SPICE",
-   "status": "TODO",
-   "ready_to_start": true
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P0.6",
@@ -140,7 +140,7 @@
    ],
    "done_means": "netlist entry",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P1.4",
@@ -506,8 +506,8 @@
     "P3.9_ok"
    ],
    "done_means": "DFM pass on skid, bumper, shell and lid",
-   "status": "TODO",
-   "ready_to_start": true
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P4.1",

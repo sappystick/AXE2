@@ -11,9 +11,9 @@
      "ok": true
     },
     "LID": {
-     "triangles": 105400,
+     "triangles": 155512,
      "edges_not_2": 0,
-     "volume_cm3": 51.394,
+     "volume_cm3": 86.625,
      "ok": true
     },
     "COIL_CHANNEL": {
@@ -194,7 +194,7 @@
      "r_max": 116.5,
      "z": [
       12.6,
-      15.65
+      16.55
      ]
     },
     "COIL_CHANNEL": {
@@ -571,7 +571,7 @@
   },
   "mass_g": {
    "items": {
-    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 207.5,
+    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 252.3,
     "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": 129.2,
     "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": 37.4,
     "transmit litz (26 turns, 6 g/m)": 107.2,
@@ -579,19 +579,19 @@
     "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": 44.4,
     "hardware, cable gland, yoke lug (ASSUMED)": 40.0
    },
-   "without_bay_potting": 684,
+   "without_bay_potting": 729,
    "bay_full_fill_potting": 210,
    "islands_only_potting": 12,
    "potting_source": "islands-only estimate",
-   "total_islands_only": 696,
-   "total_full_fill": 894,
+   "total_islands_only": 740,
+   "total_full_fill": 939,
    "earlier_estimate": 529,
    "note": "100 % infill PETG is an upper bound for the printed parts; the earlier 529 g estimate assumed a single 0.4 mm receive board, not the two 0.8 mm SB1R boards"
   }
  },
  "ok": true,
  "vertical_budget_mm": {
-  "total": 15.65,
+  "total": 16.55,
   "bay": [
    3.8,
    13.1

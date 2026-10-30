@@ -2,8 +2,9 @@
  "status": "MODELED (liner reflectance and printable web ASSUMED; no optical bench)",
  "leds": 522,
  "min_led_pitch_mm": 7.999,
- "plate_t_mm": 1.5,
+ "plate_t_mm": 2.4,
  "d_bottom_mm": 2.9,
+ "land_mm": 0.9,
  "sweep": [
   {
    "d_top_mm": 3.5,
@@ -11,14 +12,14 @@
    "web_mm": 4.5,
    "web_ok": true,
    "rho_0.9": {
-    "exit_efficiency": 0.863,
-    "median_half_angle_deg": 36.7,
-    "p90_half_angle_deg": 62.8
+    "exit_efficiency": 0.697,
+    "median_half_angle_deg": 33.9,
+    "p90_half_angle_deg": 62.5
    },
    "rho_0.98": {
-    "exit_efficiency": 0.941,
-    "median_half_angle_deg": 37.4,
-    "p90_half_angle_deg": 63.9
+    "exit_efficiency": 0.801,
+    "median_half_angle_deg": 35.1,
+    "p90_half_angle_deg": 63.6
    }
   },
   {
@@ -27,14 +28,14 @@
    "web_mm": 3.5,
    "web_ok": true,
    "rho_0.9": {
-    "exit_efficiency": 0.939,
-    "median_half_angle_deg": 37.7,
-    "p90_half_angle_deg": 59.7
+    "exit_efficiency": 0.781,
+    "median_half_angle_deg": 34.0,
+    "p90_half_angle_deg": 58.5
    },
    "rho_0.98": {
-    "exit_efficiency": 0.985,
-    "median_half_angle_deg": 38.0,
-    "p90_half_angle_deg": 60.5
+    "exit_efficiency": 0.866,
+    "median_half_angle_deg": 34.7,
+    "p90_half_angle_deg": 59.7
    }
   },
   {
@@ -43,14 +44,14 @@
    "web_mm": 2.5,
    "web_ok": true,
    "rho_0.9": {
-    "exit_efficiency": 0.965,
-    "median_half_angle_deg": 39.1,
-    "p90_half_angle_deg": 59.7
+    "exit_efficiency": 0.816,
+    "median_half_angle_deg": 35.4,
+    "p90_half_angle_deg": 56.0
    },
    "rho_0.98": {
-    "exit_efficiency": 0.993,
-    "median_half_angle_deg": 39.3,
-    "p90_half_angle_deg": 60.1
+    "exit_efficiency": 0.886,
+    "median_half_angle_deg": 36.1,
+    "p90_half_angle_deg": 57.1
    }
   },
   {
@@ -59,14 +60,14 @@
    "web_mm": 2.0,
    "web_ok": true,
    "rho_0.9": {
-    "exit_efficiency": 0.971,
-    "median_half_angle_deg": 39.8,
-    "p90_half_angle_deg": 60.1
+    "exit_efficiency": 0.825,
+    "median_half_angle_deg": 36.1,
+    "p90_half_angle_deg": 56.0
    },
    "rho_0.98": {
-    "exit_efficiency": 0.994,
-    "median_half_angle_deg": 39.9,
-    "p90_half_angle_deg": 60.4
+    "exit_efficiency": 0.892,
+    "median_half_angle_deg": 36.5,
+    "p90_half_angle_deg": 56.8
    }
   },
   {
@@ -75,14 +76,14 @@
    "web_mm": 1.5,
    "web_ok": true,
    "rho_0.9": {
-    "exit_efficiency": 0.976,
-    "median_half_angle_deg": 40.3,
-    "p90_half_angle_deg": 60.7
+    "exit_efficiency": 0.831,
+    "median_half_angle_deg": 36.7,
+    "p90_half_angle_deg": 56.3
    },
    "rho_0.98": {
-    "exit_efficiency": 0.995,
-    "median_half_angle_deg": 40.4,
-    "p90_half_angle_deg": 60.9
+    "exit_efficiency": 0.894,
+    "median_half_angle_deg": 37.1,
+    "p90_half_angle_deg": 57.0
    }
   },
   {
@@ -91,25 +92,25 @@
    "web_mm": 1.0,
    "web_ok": true,
    "rho_0.9": {
-    "exit_efficiency": 0.98,
-    "median_half_angle_deg": 40.8,
-    "p90_half_angle_deg": 61.5
+    "exit_efficiency": 0.836,
+    "median_half_angle_deg": 37.1,
+    "p90_half_angle_deg": 57.0
    },
    "rho_0.98": {
-    "exit_efficiency": 0.996,
-    "median_half_angle_deg": 40.8,
-    "p90_half_angle_deg": 61.7
+    "exit_efficiency": 0.896,
+    "median_half_angle_deg": 37.4,
+    "p90_half_angle_deg": 57.7
    }
   }
  ],
  "straight_bore_absorbing_wall": {
-  "exit_efficiency": 0.41,
-  "median_half_angle_deg": 28.6,
-  "p90_half_angle_deg": 45.8
+  "exit_efficiency": 0.237,
+  "median_half_angle_deg": 22.2,
+  "p90_half_angle_deg": 36.1
  },
  "chosen": {
   "d_top_mm": 6.0,
-  "reason": "a 2.0 mm web between wells (2.5 x the 0.8 mm printable minimum) keeps the plate stiff, and the exit efficiency is within 0.9 points of the widest well swept (d 7.0 mm, web 1.0 mm)"
+  "reason": "a 0.9 mm straight land at the bottom of each well keeps the lid free of feather edges (DFM), a 2.0 mm web between wells (2.5 x the 0.8 mm printable minimum) keeps the plate stiff, and the exit efficiency is within 1.1 points of the widest well swept (d 7.0 mm, web 1.0 mm)"
  },
  "ok": true
 }

@@ -1,8 +1,8 @@
 {
  "envelope": {
   "R": 116.5,
-  "H": 15.65,
-  "note": "option B: single board tier, 15.65 mm"
+  "H": 16.55,
+  "note": "option B: single board tier; light plate 2.4 mm (2026-10-30, DFM)"
  },
  "shell": {
   "skid_t": 1.2,
@@ -16,7 +16,7 @@
   ],
   "lid_z": [
    14.15,
-   15.65
+   16.55
   ],
   "material": "PETG (printed), no metal (rule 5)"
  },
@@ -472,6 +472,7 @@
   "type": "light_plate",
   "d_bottom": 2.9,
   "d_top": 6.0,
+  "land": 0.9,
   "web_min_mm": 0.8,
   "material": "opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 against 0.41 for a straight bore, liner reflectance ASSUMED 0.90); wall liner = white diffuse non-metal paint (TiO2); a metallised liner is banned (rule 5: metal near the coil); well filled flush with clear resin (seals the plate)",
   "note": "replaces the clear lid of option A"
