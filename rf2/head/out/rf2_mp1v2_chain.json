@@ -139,6 +139,86 @@
   "Rin2_ohm": 100.0,
   "second_clamp_at_amp_input": true
  },
+ "limiter_candidates": [
+  {
+   "fet": "IXTY08N100D2",
+   "BV_V": 1000,
+   "rule6_630V_ok": true,
+   "RDS_max_ohm": 21.0,
+   "Coss_pF": 24.0,
+   "Crss_pF": 6.5,
+   "clamp_RS_ohm": 2.0,
+   "noise_per_leg_nV": 1.967,
+   "peak_clamp_node_V": 6.52,
+   "peak_lmh_input_mA": 24.3,
+   "settle_us": 19.48
+  },
+  {
+   "fet": "IXTY01N100D",
+   "BV_V": 1000,
+   "rule6_630V_ok": true,
+   "RDS_max_ohm": 80.0,
+   "Coss_pF": 12.0,
+   "Crss_pF": 2.0,
+   "clamp_RS_ohm": 2.0,
+   "noise_per_leg_nV": 2.425,
+   "peak_clamp_node_V": 6.03,
+   "peak_lmh_input_mA": 19.48,
+   "settle_us": 17.53
+  },
+  {
+   "fet": "IXTY02N50D",
+   "BV_V": 500,
+   "rule6_630V_ok": false,
+   "RDS_max_ohm": 30.0,
+   "Coss_pF": 25.0,
+   "Crss_pF": 5.0,
+   "clamp_RS_ohm": 2.0,
+   "noise_per_leg_nV": 2.007,
+   "peak_clamp_node_V": 6.5,
+   "peak_lmh_input_mA": 24.15,
+   "settle_us": 18.46
+  },
+  {
+   "fet": "IXTY08N50D2",
+   "BV_V": 500,
+   "rule6_630V_ok": false,
+   "RDS_max_ohm": 4.6,
+   "Coss_pF": 35.0,
+   "Crss_pF": 11.0,
+   "clamp_RS_ohm": 2.0,
+   "noise_per_leg_nV": 1.864,
+   "peak_clamp_node_V": 6.95,
+   "peak_lmh_input_mA": 28.54,
+   "settle_us": 20.93
+  },
+  {
+   "fet": "IXTY08N100D2",
+   "BV_V": 1000,
+   "rule6_630V_ok": true,
+   "RDS_max_ohm": 21.0,
+   "Coss_pF": 24.0,
+   "Crss_pF": 6.5,
+   "clamp_RS_ohm": 4.0,
+   "noise_per_leg_nV": 1.949,
+   "peak_clamp_node_V": 7.34,
+   "peak_lmh_input_mA": 32.43,
+   "settle_us": 19.43
+  },
+  {
+   "fet": "IXTY01N100D",
+   "BV_V": 1000,
+   "rule6_630V_ok": true,
+   "RDS_max_ohm": 80.0,
+   "Coss_pF": 12.0,
+   "Crss_pF": 2.0,
+   "clamp_RS_ohm": 4.0,
+   "noise_per_leg_nV": 2.34,
+   "peak_clamp_node_V": 6.4,
+   "peak_lmh_input_mA": 23.15,
+   "settle_us": 17.52
+  }
+ ],
  "checks": {
   "lmh6629_model_qualified": true,
   "gain_is_24": true,

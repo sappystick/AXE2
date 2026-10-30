@@ -557,16 +557,17 @@
    "seconds": 0.2,
    "why": "",
    "tail": "",
-   "fingerprint": "71c2f375da67e93c",
+   "fingerprint": "4c07aef7af4a941c",
    "inputs": {
-    "rf2/head/rf2_mp1v2_chain.py": "cfea11e260",
+    "rf2/head/rf2_mp1v2_chain.py": "49f4bfd798",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "src/simcache.py": "7a842c96b9",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c"
    },
-   "finished": "2026-10-30T12:27:17",
+   "finished": "2026-10-30T12:49:27",
    "log": "state/logs/study_mp1v2_chain.log",
    "history": [
+    0.2,
     0.2
    ]
   }
@@ -903,6 +904,13 @@
   },
   {
    "finished": "2026-10-30T12:27:17",
+   "seconds": 0.2,
+   "results": {
+    "study:mp1v2_chain": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T12:49:27",
    "seconds": 0.2,
    "results": {
     "study:mp1v2_chain": "pass"
