@@ -39,15 +39,19 @@ def main():
     res["checks"]["no_interference"] = dict(ok=not bad, pairs_checked=len(list(itertools.combinations(head, 2))), overlaps=bad)
     # 4
     gap = lambda a, b, s=10.0: round(float(head[a].min_gap(head[b], s)), 3)
-    isl = [k for k in head if k.startswith("ENV_") and k != "ENV_LED"]; hv = ["ENV_TXJ", "ENV_MP1"]
-    seats = {k: gap(k, "ENV_" + k.split("_", 1)[1]) for k in head if k.startswith(("CRADLE_", "TRAY_"))}; seats["CB1D_TOWER"] = gap("CB1D_TOWER", "ENV_CB1D")
+    isl = [k for k in head if k.startswith("ENV_") and k != "ENV_LED"]; hv = [f"ENV_{k}" for k, v in S["boards_inner"].items() if v.get("hv") or k in ("MP1", "TXJ")]
+    seats = {k: gap(k, "ENV_" + k.split("_", 1)[1]) for k in head if k.startswith(("CRADLE_", "TRAY_"))}; 
+    if "CB1D_TOWER" in head: seats["CB1D_TOWER"] = gap("CB1D_TOWER", "ENV_CB1D")
+    fin_env = [k for k in isl if S["boards_inner"][k[4:]].get("kind") == "fin"]
+    for k in ("HUB", "FIN_RAILS"):
+        if k in head: seats[k] = min(gap(k, f) for f in fin_env)
     seat_ok = all(v >= -1e-6 for v in seats.values())                       # seats touch their board at the ledge (0) and nowhere intersect (interference check)
     co = S["coil"]; inner_wall_gap = round(min(co["columns_r"]) - co["litz_od"] / 2 - S["channel"]["inner_wall_r"][1], 3)
     seated = round(co["row0_z"] - co["litz_od"] / 2 - co["floor_z"][1], 3)                 # bottom row rests on the printed floor (bonded seat): 0 by design
     g_litz = dict(shell=gap("LITZ", "SHELL_LOWER"), channel_inner_wall=inner_wall_gap, top_row_below_channel_top=round(S["channel"]["z"][1] - (co["row0_z"] + (co["rows"] - 1) * co["pitch"] + co["litz_od"] / 2), 3))
     litz_seat = dict(floor_contact_mm=seated, channel_min_gap=gap("LITZ", "COIL_CHANNEL"), note="the bottom row is seated on the floor (0 by design); nothing else touches")
     g_walls = {k: gap(k, "BAY_WALLS") for k in isl}
-    g_seat_walls = {k: gap(k, "BAY_WALLS") for k in head if k.startswith(("CRADLE_", "TRAY_", "CB1D_TOWER"))}
+    g_seat_walls = {k: gap(k, "BAY_WALLS") for k in head if k.startswith(("CRADLE_", "TRAY_", "CB1D_TOWER", "FIN_RAILS"))}
     g_isl = {f"{a} - {b}": gap(a, b) for a, b in itertools.combinations(isl, 2)}
     g_hv = {f"{h} - {k}": gap(h, k, 20.0) for h in hv for k in isl if k not in hv}
     res["checks"]["seats"] = dict(ok=seat_ok, seat_to_its_board_mm=seats, seats_to_walls_mm=g_seat_walls)
@@ -69,7 +73,7 @@ def main():
         pts = [(0, 0)] + [(200 * math.cos(math.radians(a)), 200 * math.sin(math.radians(a))) for a in np.linspace(d0, d1, 64)]
         return m3.CrossSection([pts]).extrude(bz[1] - bz[0]).translate([0, 0, bz[0]])
     solids = None
-    for k in isl + ["BAY_WALLS"] + [k for k in head if k.startswith(("CRADLE_", "TRAY_", "CB1D_TOWER"))]: solids = head[k] if solids is None else solids + head[k]
+    for k in isl + ["BAY_WALLS"] + [k for k in head if k.startswith(("CRADLE_", "TRAY_", "CB1D_TOWER", "HUB", "FIN_RAILS", "BAY_FLOOR", "BOARD_HUB"))]: solids = head[k] if solids is None else solids + head[k]
     free = bay - solids
     secs = dict(analog=sector(*S["sectors"]["analog"]), hv=sector(*S["sectors"]["hv"]))
     secs["digital"] = H.cyl(300, bz[0], bz[1]) - secs["analog"] - secs["hv"]
@@ -79,7 +83,7 @@ def main():
     shp = os.path.join(OUT, "SH1", "sh1_check.json"); SH1_CU = json.load(open(shp))["topology"]["copper_area_cm2"] if os.path.exists(shp) else 230.0
     PETG, FR4 = 1.27, 1.85; dens = dict(analog=0.98, hv=1.15, digital=0.65)        # gel / epoxy / syntactic: ASSUMED densities
     vol = lambda k: P[k].volume() / 1000
-    printed = ["SHELL_LOWER", "LID", "COIL_CHANNEL", "BAY_WALLS", "CB1D_TOWER"] + [k for k in ("COIL_COMBS",) if k in P] + [k for k in P if k.startswith(("CRADLE_", "TRAY_"))]
+    printed = ["SHELL_LOWER", "LID", "COIL_CHANNEL", "BAY_WALLS"] + [k for k in ("CB1D_TOWER", "COIL_COMBS", "HUB", "FIN_RAILS", "BAY_FLOOR") if k in P] + [k for k in P if k.startswith(("CRADLE_", "TRAY_"))]
     m = {"printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": sum(vol(k) for k in printed) * PETG,
          "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": (vol("BOARD_QA") + vol("BOARD_QB")) * FR4 + 2 * 16.9e3 * 0.8 * 0.035 / 1000 * 8.96,
          "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": vol("BOARD_SH1") * FR4 + SH1_CU * 0.0035 * 8.96,

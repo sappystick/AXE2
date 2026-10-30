@@ -13,11 +13,11 @@
   "head": {
    "status": "pass",
    "rc": 0,
-   "seconds": 17.7,
+   "seconds": 17.9,
    "why": "",
    "tail": "",
-   "fingerprint": "5ee68eec00201327",
-   "finished": "2026-10-30T08:45:29",
+   "fingerprint": "9243aa15d69b1d6d",
+   "finished": "2026-10-30T08:53:58",
    "log": "state/logs/head.log"
   },
   "shield:SH1": {
@@ -73,11 +73,11 @@
   "field-xcheck": {
    "status": "pass",
    "rc": 0,
-   "seconds": 1.0,
+   "seconds": 0.8,
    "why": "",
    "tail": "",
-   "fingerprint": "e88f27294bbce464",
-   "finished": "2026-10-30T08:45:30",
+   "fingerprint": "46fd695055d0e521",
+   "finished": "2026-10-30T08:53:59",
    "log": "state/logs/field-xcheck.log"
   },
   "mp1-spice": {
@@ -103,21 +103,21 @@
   "ledger": {
    "status": "pass",
    "rc": 0,
-   "seconds": 4.7,
+   "seconds": 4.1,
    "why": "",
    "tail": "",
    "fingerprint": "168cbb0c7a320c6e",
-   "finished": "2026-10-30T08:45:35",
+   "finished": "2026-10-30T08:54:03",
    "log": "state/logs/ledger.log"
   },
   "head-check": {
    "status": "pass",
    "rc": 0,
-   "seconds": 15.0,
+   "seconds": 13.9,
    "why": "",
    "tail": "",
-   "fingerprint": "9c59e132e33ba57a",
-   "finished": "2026-10-30T08:45:50",
+   "fingerprint": "25ab8861cdd6a0ce",
+   "finished": "2026-10-30T08:55:01",
    "log": "state/logs/head-check.log"
   },
   "wiring": {
@@ -127,7 +127,7 @@
    "why": "",
    "tail": "",
    "fingerprint": "50118bd180229be5",
-   "finished": "2026-10-30T08:45:51",
+   "finished": "2026-10-30T08:55:03",
    "log": "state/logs/wiring.log"
   },
   "router-selftest": {
@@ -253,21 +253,21 @@
   "head:B": {
    "status": "pass",
    "rc": 0,
-   "seconds": 18.1,
+   "seconds": 18.6,
    "why": "",
    "tail": "",
-   "fingerprint": "2042b6f787e0e661",
-   "finished": "2026-10-30T08:42:11",
+   "fingerprint": "9a0b061a91ed065e",
+   "finished": "2026-10-30T08:54:21",
    "log": "state/logs/head_B.log"
   },
   "head-check:B": {
    "status": "pass",
    "rc": 0,
-   "seconds": 19.8,
+   "seconds": 19.7,
    "why": "",
    "tail": "",
-   "fingerprint": "d80c488f68eee0bd",
-   "finished": "2026-10-30T08:42:31",
+   "fingerprint": "d1fb35a30c320139",
+   "finished": "2026-10-30T08:54:41",
    "log": "state/logs/head-check_B.log"
   },
   "study:mitigation": {
@@ -283,12 +283,52 @@
   "head-section:B": {
    "status": "pass",
    "rc": 0,
-   "seconds": 5.2,
+   "seconds": 6.0,
    "why": "",
    "tail": "",
-   "fingerprint": "1c4eefab5df34b9e",
-   "finished": "2026-10-30T08:44:23",
+   "fingerprint": "c1f3d674d7f01fca",
+   "finished": "2026-10-30T08:54:47",
    "log": "state/logs/head-section_B.log"
+  },
+  "head:BF": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 18.8,
+   "why": "",
+   "tail": "",
+   "fingerprint": "f3b1c6435e4af620",
+   "finished": "2026-10-30T08:53:12",
+   "log": "state/logs/head_BF.log"
+  },
+  "head-check:BF": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 19.0,
+   "why": "",
+   "tail": "",
+   "fingerprint": "3afe856581764694",
+   "finished": "2026-10-30T08:53:31",
+   "log": "state/logs/head-check_BF.log"
+  },
+  "head-section:BF": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 7.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "a3d91e859857409c",
+   "finished": "2026-10-30T08:53:38",
+   "log": "state/logs/head-section_BF.log"
+  },
+  "study:layout": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "531290fd4323ab6f",
+   "finished": "2026-10-30T08:53:40",
+   "log": "state/logs/study_layout.log"
   }
  },
  "runs": [
@@ -440,6 +480,36 @@
     "head": "pass",
     "field-xcheck": "pass",
     "ledger": "pass",
+    "head-check": "pass",
+    "wiring": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:53:38",
+   "seconds": 45.2,
+   "results": {
+    "head:BF": "pass",
+    "head-check:BF": "pass",
+    "head-section:BF": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:53:40",
+   "seconds": 1.1,
+   "results": {
+    "study:layout": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:55:03",
+   "seconds": 82.6,
+   "results": {
+    "head": "pass",
+    "field-xcheck": "pass",
+    "ledger": "pass",
+    "head:B": "pass",
+    "head-check:B": "pass",
+    "head-section:B": "pass",
     "head-check": "pass",
     "wiring": "pass"
    }

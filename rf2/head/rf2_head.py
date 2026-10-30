@@ -13,7 +13,8 @@ Outputs (out/): RF2_<PART>.stl, rf2_head_spec.json.  usage: python3 rf2/head/rf2
 import os, sys, json, math, struct
 import numpy as np
 import manifold3d as m3
-VARIANT = os.environ.get("RF2_VARIANT") or ("B" if "--variant=B" in sys.argv else "A")          # A = the 25.4 mm SPEC; B = the 15.65 mm single-tier head
+VARIANT = os.environ.get("RF2_VARIANT") or next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--variant=")), "A")
+# A = the 25.4 mm SPEC; B = 15.65 mm, option A's board islands lowered to one tier; BF = 15.65 mm clean-sheet: radial fin boards (rf2_layout.py)
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "out" if VARIANT == "A" else "out_" + VARIANT); os.makedirs(OUT, exist_ok=True)
 SEG = 256; HEEL = 178.0
 def pol(r, deg): return (r * math.cos(math.radians(deg)), r * math.sin(math.radians(deg)))
@@ -80,7 +81,32 @@ def apply_option_b(S):
                        "no aluminium electrolytic or other metal-can parts in the head: MLCC only (can echo 2e4-7.5e4 x noise)",
                        "nothing switches in the receive window; analog / TXJ loops < 0.1 cm2, edge-on where the field is vertical",
                        "IXTY08N100D2 tab edge-on to the field or a tab-less package (tab echo 2700 x noise, tau 19.8 us)"]
+FIN_SEP = 3.0                                                                            # HV fins end this far from the LV hub board (rule 6 envelope margin)
+def apply_option_bf(S):
+    """option B, clean sheet (owner 2026-10-30: design the housing around the new boards): every electronics board is a RADIAL FIN standing in a plane
+    through the head axis. The rim coil is axisymmetric, so its field has no azimuthal part: a fin's loops see no EMF and its copper no eddy current, and
+    its own currents do not couple into the mono (rf2_layout.py: 1 deg of tilt leaves 0.096 mT against 5.5 mT on a flat board, solid-plane echo 3e-4 x).
+    Fins are held in floor guide rails and hub slots (tilt < 1 deg). HV fins sit 8 deg either side of the coil-lead path (178 deg): the lead pair's own
+    field drops to the background 4 deg away. Option B's coil, channel, combs, shield, receive boards, display and lid are kept."""
+    apply_option_b(S)
+    fin = lambda deg, zone, what, hv=False, r0=19.05: dict(kind="fin", deg=deg, r=(r0, 103.0), z=(4.0, 12.4), t=1.0, side=1.2, notch=(21.0, 11.0), zone=zone, hv=hv,
+                                                          below=0.0, above=0.0, what=what)
+    bi = {}
+    bi["FIN_HV1"] = fin(170.0, "hv", "MP1 v2 function: HV limiter (IXTY08N100D2), clamps, LMH6629 preamp; LV output by flex through the 156 deg wall", True, 40.0)
+    bi["FIN_HV2"] = fin(186.0, "hv", "TXJ function: coil-lead and shaft TX-pair termination (wire-hole pads), damping network", True, 40.0)
+    for k, d in enumerate((100.0, 122.0, 144.0)): bi[f"FIN_A{k + 1}"] = fin(d, "analog", "AB1 function: receive channels (mono, QA, QB, REF3), gates / integrators, ADC")
+    for k, d in enumerate((214.0, 245.0, 276.0, 307.0, 338.0, 9.0, 40.0, 71.0)):
+        bi[f"FIN_D{k + 1}"] = fin(d, "digital", "CB1D function: RP2354A, clocks, LMR36520 + TPS22918 LED rail, LED data, power entry" if k < 6 else "CB1D function: sensors, audio / link, spare")
+    bi["HUB_PCB"] = dict(kind="disc", c=(0.0, 0.0), r=20.5, z=(11.6, 12.4), below=0.0, above=0.5, what="LV hub: star (radial) interconnect of the LV fins by soldered flex tails; no ring traces (rule 5); 4 mm fill bore")
+    bi["LED"] = S["boards_inner"]["LED"]; S["boards_inner"] = bi
+    S["hub"] = dict(r=20.0, z=(3.8, 11.0), slot_depth=1.0, slot_w=1.1, bore_d=4.0, what="printed hub: radial slots for the LV fins' inner edges, a 4 mm bore to inject potting from the centre")
+    S["fin_guides"] = dict(t=0.6, h=1.2, r=(24.0, 100.0), gap=1.1, what="paired floor rails either side of every fin (1.1 mm gap for a 1.0 mm board): tilt < 1 deg")
+    S["bay_floor"] = dict(r=103.6, z=(3.2, 3.8), what="printed floor over QB carrying the fin rails")
+    S["walls"].update(r=(21.0, 103.6), note="radial sector walls 89 / 156 / 198 deg (themselves radial planes); the 156 deg wall keeps the LV slot for the HV1 output flex")
+    S["zone_rules"] = S["zone_rules"] + ["every board is a radial fin (field-free orientation); fins located by rails and hub slots to < 1 deg",
+                                         "HV fins at 170 / 186 deg, >= 4 deg from the coil-lead path (178 deg); lead pair twisted / tight"]
 if VARIANT == "B": apply_option_b(SPEC)
+if VARIANT == "BF": apply_option_bf(SPEC)
 # ------------------------------------------------------------------------------------------------ primitives
 def cyl(r, z0, z1, seg=SEG): return m3.Manifold.cylinder(z1 - z0, r, r, seg).translate([0, 0, z0])
 def ring(r0, r1, z0, z1): return cyl(r1, z0, z1) - cyl(r0, z0 - 0.1, z1 + 0.1)
@@ -105,10 +131,18 @@ def boss_positions():
 def envelope(k):
     v = SPEC["boards_inner"][k]; z0, z1 = v["z"]; KB, KA = 1.2, 0.4
     if v["kind"] == "disc":
-        e = at(cyl(v["r"], z0, z1, 128), v["c"]) + at(cyl(v["r"] - KB, z0 - v["below"], z0, 128), v["c"]) + at(cyl(v["r"] - KA, z1, z1 + v["above"], 128), v["c"])
+        e = at(cyl(v["r"], z0, z1, 128), v["c"])
+        if v["below"] > 0: e = e + at(cyl(v["r"] - KB, z0 - v["below"], z0, 128), v["c"])               # zero-height solids are invalid manifolds
+        if v["above"] > 0: e = e + at(cyl(v["r"] - KA, z1, z1 + v["above"], 128), v["c"])
     elif v["kind"] == "box":
         sx, sy = v["size"]; cx, cy = v["c"]
         e = box(cx, cy, sx, sy, z0, z1) + box(cx, cy, sx - 2 * KB, sy - 2 * KB, z0 - v["below"], z0) + box(cx, cy, sx - 2 * KA, sy - 2 * KA, z1, z1 + v["above"])
+    elif v["kind"] == "fin":                                                                    # radial fin: board slab (notched at the top inner corner) + parts on both faces
+        r0, r1 = v["r"]; z0, z1 = v["z"]; t = v["t"]; sd = v["side"]; nr, nz = v["notch"]
+        b = box((r0 + r1) / 2, 0, r1 - r0, t, z0, nz) + box((max(r0, nr) + r1) / 2, 0, r1 - max(r0, nr), t, nz, z1)
+        pr0 = max(r0, nr) + 2.0; pz0, pz1 = z0 + 1.2, z1 - 0.4
+        for sgn in (1, -1): b = b + box((pr0 + r1 - 2.0) / 2, sgn * (t / 2 + sd / 2), r1 - 2.0 - pr0, sd, pz0, pz1)
+        e = b.rotate([0, 0, v["deg"]])
     else:                                                                                       # LED display flex: its real outline (rf2_ledgrid) + part sites on top
         import rf2_ledgrid as LG
         o = LG.outline(); cs = m3.CrossSection([list(o.exterior.coords)[:-1]] + [list(r.coords)[:-1] for r in o.interiors], m3.FillRule.EvenOdd)
@@ -134,25 +168,39 @@ def parts():
     ch = S["channel"]; co = S["coil"]
     chan = ring(ch["inner_wall_r"][0], ch["inner_wall_r"][1], ch["z"][0], ch["z"][1]) + ring(ch["inner_wall_r"][0], sh["wall_r"][0] - 0.2, co["floor_z"][0], co["floor_z"][1])
     P["COIL_CHANNEL"] = chan - m3.Manifold.cube([12, ch["lead_slot_w"], 30], True).translate([109.0, 0, 15]).rotate([0, 0, ch["lead_exit_deg"]])
+    fins = {k: v for k, v in bi.items() if v.get("kind") == "fin"}
     # bay walls with the LV slot in the 156 deg wall (MP1 output flex to AB1A) and a cable slot in the 198 deg wall for the LV cores to CB1D
     w = S["walls"]; walls = None
     for d in w["deg"]:
         x = radial_wall(d, w["r"][0], w["r"][1], w["t"], *w["z"]); walls = x if walls is None else walls + x
     walls = walls - slot_towards(pol(74.0, 156.0), 156.0 + 90, 10.0, 8.0, 12.0, 6) - slot_towards(pol(74.0, 156.0), 156.0 - 90, 10.0, 8.0, 12.0, 6)
     P["BAY_WALLS"] = walls
+    if fins:                                                                                # clean-sheet seats: floor, rails, hub
+        fl = cyl(S["bay_floor"]["r"], *S["bay_floor"]["z"])
+        for d in sp["deg"]: fl = fl - at(cyl(sp["d"] / 2 + 0.2, sp["z"][0] - 1, sp["z"][1] + 1, 32), pol(sp["r"], d))
+        P["BAY_FLOOR"] = fl; g = S["fin_guides"]; hb = S["hub"]; rails = None; hub = cyl(hb["r"], *hb["z"]) - cyl(hb["bore_d"] / 2, hb["z"][0] - 1, hb["z"][1] + 1, 32)
+        for k, v in fins.items():
+            ra = (max(g["r"][0], v["r"][0] + 2.0), g["r"][1])
+            for sgn in (1, -1):
+                x = box((ra[0] + ra[1]) / 2, sgn * (g["gap"] / 2 + g["t"] / 2), ra[1] - ra[0], g["t"], S["bay_floor"]["z"][1], S["bay_floor"]["z"][1] + g["h"]).rotate([0, 0, v["deg"]])
+                rails = x if rails is None else rails + x
+            if v["r"][0] < hb["r"]: hub = hub - box(hb["r"] - hb["slot_depth"] / 2, 0, hb["slot_depth"] + 0.02, hb["slot_w"], hb["z"][0] - 1, hb["z"][1] + 1).rotate([0, 0, v["deg"]])
+        P["FIN_RAILS"] = rails; P["HUB"] = hub
     # AB1 cradles: ledge (under the 1.2 mm edge keep-out), wall, snap lip; hinge slot towards the centre
     for k in ("AB1A", "AB1B"):
+        if k not in bi: continue
         v = bi[k]; z0, z1 = v["z"]; c = v["c"]; r = v["r"]; zb = S["bay"]["z"][0]
         cr = at(ring(r + 0.3, r + 1.5, zb, z1 + 0.8, ), c) + at(ring(r - 1.2, r + 0.3, zb, z0), c) + at(ring(r - 0.4 + 0.05, r + 0.3, z1 + 0.2, z1 + 0.8), c)
         P["CRADLE_" + k] = cr - slot_towards(c, v["hinge_deg"], 10.0, zb - 1, z1 + 2, 30)
     # CB1D tower: ledge, wall, snap lip; slots towards AB1A / AB1B / MP1 (hinges come down) and towards the gland (LV cores)
-    v = bi["CB1D"]; z0, z1 = v["z"]; r = v["r"]; zb = S["bay"]["z"][0]
+    v = bi.get("CB1D", bi.get("HUB_PCB")); z0, z1 = v["z"]; r = v["r"]; zb = S["bay"]["z"][0]
     tw = ring(r + 0.3, r + 1.5, zb, z1 + 0.9) + ring(r - 1.2, r + 0.3, zb, z0) + ring(r - 0.4 + 0.05, r + 0.3, z1 + 0.2, z1 + 0.9)
     for d in (106.0, 137.0, 170.0, HEEL + 8):
         tw = tw - slot_towards((0, 0), d, 10.0, zb - 1, z1 + 2, 60)
-    P["CB1D_TOWER"] = tw
+    if "CB1D" in bi: P["CB1D_TOWER"] = tw
     # MP1 / TXJ trays: ledge under the board edge, rim; HV slot on the coil side, LV slot on the other
     for k, hv_deg, lv_deg in (("MP1", 180.0, 0.0), ("TXJ", 180.0, 0.0)):
+        if k not in bi: continue
         v = bi[k]; sx, sy = v["size"]; cx, cy = v["c"]; z0, z1 = v["z"]; zb = S["bay"]["z"][0]
         rim = box(cx, cy, sx + 3.0, sy + 3.0, zb, z1 + 0.8) - box(cx, cy, sx + 0.6, sy + 0.6, zb - 1, z1 + 1)
         ledge = box(cx, cy, sx + 0.6, sy + 0.6, zb, z0) - box(cx, cy, sx - 2.4, sy - 2.4, zb - 1, z0 + 1)

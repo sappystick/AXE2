@@ -61,6 +61,9 @@ STEPS = [
     dict(id="head:B", cmd=[H + "rf2_head.py", "--variant=B"], inputs=[H + "rf2_head.py", H + "rf2_ledgrid.py", H + "rf2_netlist.py"], deps=[], outputs=[H + "out_B/RF2_LID.stl"]),
     dict(id="head-check:B", cmd=[H + "rf2_head_check.py", "--variant=B"], inputs=[H + "rf2_head_check.py"], deps=["head:B"], check=jcheck(H + "out_B/rf2_head_check.json")),
     dict(id="head-section:B", cmd=[H + "rf2_head_section.py", "--variant=B"], inputs=[H + "rf2_head_section.py"], deps=["head:B"], outputs=[H + "out_B/rf2_head_section.png"]),
+    dict(id="head:BF", cmd=[H + "rf2_head.py", "--variant=BF"], inputs=[H + "rf2_head.py", H + "rf2_ledgrid.py", H + "rf2_netlist.py"], deps=[], outputs=[H + "out_BF/RF2_LID.stl"]),
+    dict(id="head-check:BF", cmd=[H + "rf2_head_check.py", "--variant=BF"], inputs=[H + "rf2_head_check.py"], deps=["head:BF"], check=jcheck(H + "out_BF/rf2_head_check.json")),
+    dict(id="head-section:BF", cmd=[H + "rf2_head_section.py", "--variant=BF"], inputs=[H + "rf2_head_section.py"], deps=["head:BF"], outputs=[H + "out_BF/rf2_head_section.png"]),
     dict(id="head-check", cmd=[H + "rf2_head_check.py"], inputs=[H + "rf2_head_check.py"], deps=["head", "ledger", "shield:SH1"], check=jcheck(H + "out/rf2_head_check.json")),
     dict(id="wiring", cmd=[H + "rf2_wiring.py"], inputs=[H + "rf2_wiring.py"], deps=["head", "netlist"], check=jcheck(H + "out/rf2_wiring.json", lambda d: d["checks"]["ok"])),
     dict(id="router-selftest", cmd=["tests/router_selftest.py"], inputs=["tests/router_selftest.py", "src/pcb/astar_route.py"], deps=["board:MP1"],
@@ -71,7 +74,7 @@ STEPS = [
          outputs=[H + "out/rf2_cutaway.png", H + "out/rf2_exploded.png"], timeout=3600),
     dict(id="display-figure", group="render", cmd=[H + "rf2_ledgrid.py"], inputs=[H + "rf2_ledgrid.py"], deps=[], outputs=[H + "out/rf2_display.png"]),
 ] + [dict(id=f"study:{n}", group="studies", cmd=[f"rf2/rf2_{n}.py"], inputs=[f"rf2/rf2_{n}.py"], deps=[], outputs=[f"rf2/results/rf2_{n}.json"], timeout=7200)
-     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin", "depth_levers", "taper", "rodin", "wave", "hood", "hood_wide", "hood_size", "zones", "mitigation")]
+     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin", "depth_levers", "taper", "rodin", "wave", "hood", "hood_wide", "hood_size", "zones", "mitigation", "layout")]
 
 
 def fingerprint(s):

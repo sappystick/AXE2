@@ -433,3 +433,38 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     - 105 um: 3.5 ohm, +0.32 %.
     - Option B keeps the rigid 0.8 mm SB1R boards at 35 um; flex receive boards (option C) would cost 0.4 %.
 - **System review across every lens:** docs/SYSTEM_REVIEW_OPTIONB.md.
+
+## 26. Option B clean sheet: radial fin boards (variant BF; supersedes variant B's board islands) (2026-10-30; rf2/rf2_layout.py, rf2/head/rf2_head.py --variant=BF; MODELED / measured on the solids)
+- **Why:** variant B kept option A's board outlines (the RF1 discs AB1A / AB1B, D78 CB1D) and moved only what collided (owner: "why are you using any of the old spec?"). BF designs the bay around the physics of the zone map instead.
+- **Principle (rf2_layout.py):** the rim coil is axisymmetric, so its field has no azimuthal component. A board standing in a radial plane (a fin) has every loop normal along phi:
+
+| Orientation | B across the board (peak) | EMF / cm2 | Receive coupling / cm2 | Solid-plane echo vs flat |
+|---|---|---|---|---|
+| flat (variant B) | 5.5 mT | 0.095 V | 67 nH | 1 |
+| radial fin, exact | 0.000 mT | 0 | 0.0002 nH | about 1e-11 |
+| fin, 1 deg tilt | 0.096 mT | 0.0017 V | 1.2 nH | 3e-4 |
+| fin, 3 deg tilt | 0.29 mT | 0.005 V | 3.5 nH | 2.6e-3 |
+| fin, 3 deg twist about the vertical | 0.11 mT | 0.0019 V | 1.3 nH | 1.6e-5 |
+
+  - The coil-lead pair (178 deg) breaks the symmetry only locally: a fin in the lead plane sees 4.4 mT, a fin 4 deg away 0.08 mT. The HV fins sit at 170 / 186 deg.
+  - The field on the axis is 1.2 mT axial, the same as elsewhere: a central hole has no electromagnetic role.
+- **Layout (variant BF, all head checks pass):**
+  - **13 radial fins**, 1.0 mm boards, z 4.0-12.4, r 19-103, parts 1.2 mm on both faces:
+    - HV1 at 170 deg (MP1 v2 function), HV2 at 186 deg (TXJ: coil leads and the shaft TX pair); both start at r 40, >= 15 mm from any LV board;
+    - analog A1-A3 at 100 / 122 / 144 deg;
+    - digital D1-D8 at 214-71 deg.
+  - **Printed central hub** (r 20) with slots for the LV fins' inner edges and a **4 mm central bore** through which the bay is potted from the centre outward.
+  - **LV hub board** (r 20.5, z 11.6-12.4): star interconnect by soldered flex tails, no ring traces.
+  - **Paired floor rails** on a printed floor hold each fin to < 1 deg.
+  - **Radial sector walls** at 89 / 156 / 198 deg (the HV1 output flex passes the 156 deg wall's slot).
+  - Coil, channel, combs, nickel screen coat, SH1 / QA / QB, display and lid as variant B.
+- **Board area** (parts area, both faces) against the boards they replace:
+  - analog 3 fins x 10.6 = 32 cm2 (AB1A + AB1B 25 cm2);
+  - digital 8 x 10.6 = 85 cm2 (CB1D 48 cm2);
+  - HV 2 x 8.0 = 16 cm2 (MP1 + TXJ 11.3 cm2).
+- **head-check:BF:** 28 parts, 378 pairs, no interference; fins >= 0.5 mm to each other, the hub board and the walls; HV >= 15.2 mm to LV; mass 712 g (islands-only potting); potting analog 49, HV 31, digital 194 cm3.
+- **What this changes downstream (stage 4 / Phase C):** the RF1 AB1A / AB1B / CB1D layouts and the MP1 / TXJ boards are re-laid out as fins (long, 8.4 mm tall boards: one row of parts per face, a bus along the fin). The netlist and the board generator need a 'fin' outline type.
+- **Not modeled:**
+  - fins' coupling into the quadrupole (bearing) channel, which is not axisymmetric;
+  - parts' own thickness (3-D pieces such as the IXTY tab still see B_z and B_r over their height);
+  - the display, which stays a horizontal flex (lead-frame drift, section 24).

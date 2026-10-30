@@ -1,0 +1,312 @@
+{
+ "status": "electronics and what the electronics do to the receiver? MODELED.",
+ "cases": [
+  {
+   "zone": "HV (next to the coil leads)",
+   "deg": 178.0,
+   "case": "flat (horizontal) board",
+   "B_perp_max_mT": 5.6979,
+   "EMF_per_cm2_max_V": 0.09916,
+   "M_per_cm2_max_nH": 69.7253,
+   "flux_net_per_A_nWb": 182.8621,
+   "flux_abs_per_A_nWb": 182.8621,
+   "solid_plane_echo_vs_flat": 1.0
+  },
+  {
+   "zone": "HV (next to the coil leads)",
+   "deg": 178.0,
+   "case": "radial fin, exact",
+   "B_perp_max_mT": 4.4994,
+   "EMF_per_cm2_max_V": 0.0783,
+   "M_per_cm2_max_nH": 55.0587,
+   "flux_net_per_A_nWb": -1.0788,
+   "flux_abs_per_A_nWb": 9.1737,
+   "solid_plane_echo_vs_flat": 0.00252
+  },
+  {
+   "zone": "HV (next to the coil leads)",
+   "deg": 178.0,
+   "case": "radial fin, 1 deg tilt about its radial axis",
+   "B_perp_max_mT": 4.4033,
+   "EMF_per_cm2_max_V": 0.07663,
+   "M_per_cm2_max_nH": 53.8827,
+   "flux_net_per_A_nWb": 2.0563,
+   "flux_abs_per_A_nWb": 11.8203,
+   "solid_plane_echo_vs_flat": 0.00418
+  },
+  {
+   "zone": "HV (next to the coil leads)",
+   "deg": 178.0,
+   "case": "radial fin, 3 deg tilt about its radial axis",
+   "B_perp_max_mT": 4.2262,
+   "EMF_per_cm2_max_V": 0.07355,
+   "M_per_cm2_max_nH": 51.7154,
+   "flux_net_per_A_nWb": 8.3236,
+   "flux_abs_per_A_nWb": 17.639,
+   "solid_plane_echo_vs_flat": 0.0093
+  },
+  {
+   "zone": "HV (next to the coil leads)",
+   "deg": 178.0,
+   "case": "radial fin, 3 deg twist about the vertical",
+   "B_perp_max_mT": 4.5163,
+   "EMF_per_cm2_max_V": 0.0786,
+   "M_per_cm2_max_nH": 55.2663,
+   "flux_net_per_A_nWb": -0.9212,
+   "flux_abs_per_A_nWb": 9.5682,
+   "solid_plane_echo_vs_flat": 0.00274
+  },
+  {
+   "zone": "analog",
+   "deg": 122.0,
+   "case": "flat (horizontal) board",
+   "B_perp_max_mT": 5.4596,
+   "EMF_per_cm2_max_V": 0.09501,
+   "M_per_cm2_max_nH": 66.8088,
+   "flux_net_per_A_nWb": 182.8621,
+   "flux_abs_per_A_nWb": 182.8621,
+   "solid_plane_echo_vs_flat": 1.0
+  },
+  {
+   "zone": "analog",
+   "deg": 122.0,
+   "case": "radial fin, exact",
+   "B_perp_max_mT": 0.0,
+   "EMF_per_cm2_max_V": 0.0,
+   "M_per_cm2_max_nH": 0.0002,
+   "flux_net_per_A_nWb": -0.0011,
+   "flux_abs_per_A_nWb": 0.0011,
+   "solid_plane_echo_vs_flat": 3.62e-11
+  },
+  {
+   "zone": "analog",
+   "deg": 122.0,
+   "case": "radial fin, 1 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.0955,
+   "EMF_per_cm2_max_V": 0.00166,
+   "M_per_cm2_max_nH": 1.1685,
+   "flux_net_per_A_nWb": 3.1338,
+   "flux_abs_per_A_nWb": 3.1338,
+   "solid_plane_echo_vs_flat": 0.000294
+  },
+  {
+   "zone": "analog",
+   "deg": 122.0,
+   "case": "radial fin, 3 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.2864,
+   "EMF_per_cm2_max_V": 0.00498,
+   "M_per_cm2_max_nH": 3.5042,
+   "flux_net_per_A_nWb": 9.3999,
+   "flux_abs_per_A_nWb": 9.3999,
+   "solid_plane_echo_vs_flat": 0.00264
+  },
+  {
+   "zone": "analog",
+   "deg": 122.0,
+   "case": "radial fin, 3 deg twist about the vertical",
+   "B_perp_max_mT": 0.1063,
+   "EMF_per_cm2_max_V": 0.00185,
+   "M_per_cm2_max_nH": 1.3003,
+   "flux_net_per_A_nWb": 0.1551,
+   "flux_abs_per_A_nWb": 0.728,
+   "solid_plane_echo_vs_flat": 1.58e-05
+  },
+  {
+   "zone": "digital",
+   "deg": 0.0,
+   "case": "flat (horizontal) board",
+   "B_perp_max_mT": 5.4596,
+   "EMF_per_cm2_max_V": 0.09501,
+   "M_per_cm2_max_nH": 66.8088,
+   "flux_net_per_A_nWb": 182.8621,
+   "flux_abs_per_A_nWb": 182.8621,
+   "solid_plane_echo_vs_flat": 1.0
+  },
+  {
+   "zone": "digital",
+   "deg": 0.0,
+   "case": "radial fin, exact",
+   "B_perp_max_mT": 0.0,
+   "EMF_per_cm2_max_V": 0.0,
+   "M_per_cm2_max_nH": 0.0001,
+   "flux_net_per_A_nWb": 0.0003,
+   "flux_abs_per_A_nWb": 0.0003,
+   "solid_plane_echo_vs_flat": 2.69e-12
+  },
+  {
+   "zone": "digital",
+   "deg": 0.0,
+   "case": "radial fin, 1 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.0955,
+   "EMF_per_cm2_max_V": 0.00166,
+   "M_per_cm2_max_nH": 1.1686,
+   "flux_net_per_A_nWb": 3.1353,
+   "flux_abs_per_A_nWb": 3.1353,
+   "solid_plane_echo_vs_flat": 0.000294
+  },
+  {
+   "zone": "digital",
+   "deg": 0.0,
+   "case": "radial fin, 3 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.2864,
+   "EMF_per_cm2_max_V": 0.00498,
+   "M_per_cm2_max_nH": 3.5044,
+   "flux_net_per_A_nWb": 9.4013,
+   "flux_abs_per_A_nWb": 9.4013,
+   "solid_plane_echo_vs_flat": 0.00264
+  },
+  {
+   "zone": "digital",
+   "deg": 0.0,
+   "case": "radial fin, 3 deg twist about the vertical",
+   "B_perp_max_mT": 0.1063,
+   "EMF_per_cm2_max_V": 0.00185,
+   "M_per_cm2_max_nH": 1.3004,
+   "flux_net_per_A_nWb": 0.1564,
+   "flux_abs_per_A_nWb": 0.7282,
+   "solid_plane_echo_vs_flat": 1.59e-05
+  },
+  {
+   "zone": "digital",
+   "deg": 60.0,
+   "case": "flat (horizontal) board",
+   "B_perp_max_mT": 5.4596,
+   "EMF_per_cm2_max_V": 0.09501,
+   "M_per_cm2_max_nH": 66.8088,
+   "flux_net_per_A_nWb": 182.8621,
+   "flux_abs_per_A_nWb": 182.8621,
+   "solid_plane_echo_vs_flat": 1.0
+  },
+  {
+   "zone": "digital",
+   "deg": 60.0,
+   "case": "radial fin, exact",
+   "B_perp_max_mT": 0.0,
+   "EMF_per_cm2_max_V": 0.0,
+   "M_per_cm2_max_nH": 0.0001,
+   "flux_net_per_A_nWb": 0.0002,
+   "flux_abs_per_A_nWb": 0.0002,
+   "solid_plane_echo_vs_flat": 1.2e-12
+  },
+  {
+   "zone": "digital",
+   "deg": 60.0,
+   "case": "radial fin, 1 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.0955,
+   "EMF_per_cm2_max_V": 0.00166,
+   "M_per_cm2_max_nH": 1.1686,
+   "flux_net_per_A_nWb": 3.1351,
+   "flux_abs_per_A_nWb": 3.1351,
+   "solid_plane_echo_vs_flat": 0.000294
+  },
+  {
+   "zone": "digital",
+   "deg": 60.0,
+   "case": "radial fin, 3 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.2864,
+   "EMF_per_cm2_max_V": 0.00498,
+   "M_per_cm2_max_nH": 3.5044,
+   "flux_net_per_A_nWb": 9.4011,
+   "flux_abs_per_A_nWb": 9.4011,
+   "solid_plane_echo_vs_flat": 0.00264
+  },
+  {
+   "zone": "digital",
+   "deg": 60.0,
+   "case": "radial fin, 3 deg twist about the vertical",
+   "B_perp_max_mT": 0.1063,
+   "EMF_per_cm2_max_V": 0.00185,
+   "M_per_cm2_max_nH": 1.3004,
+   "flux_net_per_A_nWb": 0.1564,
+   "flux_abs_per_A_nWb": 0.7282,
+   "solid_plane_echo_vs_flat": 1.59e-05
+  },
+  {
+   "zone": "digital",
+   "deg": 270.0,
+   "case": "flat (horizontal) board",
+   "B_perp_max_mT": 5.4596,
+   "EMF_per_cm2_max_V": 0.09501,
+   "M_per_cm2_max_nH": 66.8088,
+   "flux_net_per_A_nWb": 182.8621,
+   "flux_abs_per_A_nWb": 182.8621,
+   "solid_plane_echo_vs_flat": 1.0
+  },
+  {
+   "zone": "digital",
+   "deg": 270.0,
+   "case": "radial fin, exact",
+   "B_perp_max_mT": 0.0,
+   "EMF_per_cm2_max_V": 0.0,
+   "M_per_cm2_max_nH": 0.0,
+   "flux_net_per_A_nWb": 0.0,
+   "flux_abs_per_A_nWb": 0.0,
+   "solid_plane_echo_vs_flat": 0.0
+  },
+  {
+   "zone": "digital",
+   "deg": 270.0,
+   "case": "radial fin, 1 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.0955,
+   "EMF_per_cm2_max_V": 0.00166,
+   "M_per_cm2_max_nH": 1.1686,
+   "flux_net_per_A_nWb": 3.1349,
+   "flux_abs_per_A_nWb": 3.1349,
+   "solid_plane_echo_vs_flat": 0.000294
+  },
+  {
+   "zone": "digital",
+   "deg": 270.0,
+   "case": "radial fin, 3 deg tilt about its radial axis",
+   "B_perp_max_mT": 0.2864,
+   "EMF_per_cm2_max_V": 0.00498,
+   "M_per_cm2_max_nH": 3.5043,
+   "flux_net_per_A_nWb": 9.4009,
+   "flux_abs_per_A_nWb": 9.4009,
+   "solid_plane_echo_vs_flat": 0.00264
+  },
+  {
+   "zone": "digital",
+   "deg": 270.0,
+   "case": "radial fin, 3 deg twist about the vertical",
+   "B_perp_max_mT": 0.1063,
+   "EMF_per_cm2_max_V": 0.00185,
+   "M_per_cm2_max_nH": 1.3004,
+   "flux_net_per_A_nWb": 0.1561,
+   "flux_abs_per_A_nWb": 0.7281,
+   "solid_plane_echo_vs_flat": 1.59e-05
+  }
+ ],
+ "axis_field_mT": [
+  {
+   "z": 3.8,
+   "Bz": 1.215,
+   "Br": 0.0
+  },
+  {
+   "z": 5.66,
+   "Bz": 1.217,
+   "Br": 0.0
+  },
+  {
+   "z": 7.52,
+   "Bz": 1.218,
+   "Br": 0.0
+  },
+  {
+   "z": 9.38,
+   "Bz": 1.217,
+   "Br": 0.0
+  },
+  {
+   "z": 11.24,
+   "Bz": 1.216,
+   "Br": 0.0
+  },
+  {
+   "z": 13.1,
+   "Bz": 1.214,
+   "Br": 0.0
+  }
+ ]
+}

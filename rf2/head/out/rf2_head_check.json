@@ -318,12 +318,12 @@
     "ENV_MP1 - ENV_TXJ": 5.5
    },
    "hv_to_others": {
-    "ENV_TXJ - ENV_AB1A": 20.0,
-    "ENV_TXJ - ENV_AB1B": 20.0,
-    "ENV_TXJ - ENV_CB1D": 20.0,
     "ENV_MP1 - ENV_AB1A": 20.0,
     "ENV_MP1 - ENV_AB1B": 14.985,
-    "ENV_MP1 - ENV_CB1D": 20.0
+    "ENV_MP1 - ENV_CB1D": 20.0,
+    "ENV_TXJ - ENV_AB1A": 20.0,
+    "ENV_TXJ - ENV_AB1B": 20.0,
+    "ENV_TXJ - ENV_CB1D": 20.0
    }
   },
   "led_display": {
