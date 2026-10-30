@@ -1,0 +1,349 @@
+{
+ "status": "MODELED; dimensions ASSUMED unless a datasheet is named",
+ "checks": {
+  "electronics inside their housings": {
+   "ok": true,
+   "outside_mm3": {
+    "HB2M_BOARD": 0.0,
+    "SW_PWR": 0.0,
+    "LS1": 0.0,
+    "U20_MCU": 0.0,
+    "U21_LDO": 0.0,
+    "AHCT_x4": 0.0,
+    "J_SCR": 0.0,
+    "SW_SEL_AB": 0.0,
+    "SW_TRG": 0.0,
+    "J1_RS485_ESD": 0.0,
+    "PWR_BOARD": 0.0,
+    "Q30_C3M": 0.0,
+    "U32_UCC5350": 0.0,
+    "D30_US3M": 0.0,
+    "L30_INDUCTOR": 0.0,
+    "C30_FILM_630V": 0.0,
+    "U31_LMR36520": 0.0,
+    "L31_INDUCTOR": 0.0,
+    "TXD_BOARD": 0.0,
+    "HS1_OHMITE_D2": 0.0,
+    "CB_BULK_3x3": 0.0,
+    "C1_CLAMP_FILM": 0.0,
+    "REF3_WINDINGS": 0.0,
+    "CELLS_7S2P": 0.0,
+    "BQ76952_BOARD": 0.0
+   },
+   "note": "every part envelope inside the outer solid of its housing (walls 2-3 mm: the housing is printed in halves around the boards)"
+  },
+  "grip": {
+   "ok": true,
+   "length_mm": 118.0,
+   "groove_pitch_mm": [
+    25.0,
+    24.0
+   ],
+   "circumference_mm": 135.4,
+   "rake_deg": 18.0,
+   "note": "targets ASSUMED: length >= 110 (95th-pct hand breadth about 97 mm), finger pitch 21-26 mm, circumference 120-150 mm"
+  },
+  "trigger_and_thumb": {
+   "ok": true,
+   "trigger_reach_mm": 70.0,
+   "thumb_to_button_mm": 54.4,
+   "note": "trigger face 70 mm from the back strap (index first joint), button 40-70 mm from the web of the hand (ASSUMED targets)"
+  },
+  "screen_view": {
+   "ok": true,
+   "angle_to_eye_deg": 2.7,
+   "open_deg": 60.0,
+   "eye_ASSUMED_mm": {
+    "above": 600.0,
+    "behind": 250.0
+   }
+  },
+  "cuff_height_range": {
+   "ok": true,
+   "min_mm": 784,
+   "max_mm": 1202,
+   "table": [
+    [
+     35,
+     0.0,
+     784
+    ],
+    [
+     35,
+     250.0,
+     928
+    ],
+    [
+     40,
+     0.0,
+     866
+    ],
+    [
+     40,
+     250.0,
+     1027
+    ],
+    [
+     45,
+     0.0,
+     942
+    ],
+    [
+     45,
+     250.0,
+     1119
+    ],
+    [
+     50,
+     0.0,
+     1010
+    ],
+    [
+     50,
+     250.0,
+     1202
+    ]
+   ],
+   "note": "elbow (cuff) height 0.90-1.10 m covered by tilt 35-50 deg and the 0-250 mm telescope (target ASSUMED)"
+  },
+  "telescope_overlap": {
+   "ok": true,
+   "overlap_at_full_mm": 150.0
+  },
+  "battery": {
+   "ok": true,
+   "cartridge_mm": [
+    136.2,
+    71.2,
+    47.2
+   ],
+   "slide_path_hits": [],
+   "cells": "14 x Molicel INR-18650-P30B (18.6 x 65.2 mm max, datasheet)",
+   "note": "the cartridge slides out rearward under the cuff without touching anything"
+  },
+  "deployed_clear": {
+   "ok": true,
+   "min_gaps_mm": {
+    "HEAD-L2": 433.91,
+    "HEAD-UP": 863.7,
+    "L1-UP": 460.0
+   }
+  },
+  "battery_counterweights": {
+   "ok": true,
+   "with_Nm": 6.52,
+   "without_Nm": 7.63
+  }
+ },
+ "parts": {
+  "HEAD_SKID": "replaceable wear skid (PETG / TPU), clips over the shell rim",
+  "HEAD_EAR_L": "yoke ear on the lid (moulded with the lid), pivot hole 6 mm",
+  "HEAD_EAR_R": "yoke ear on the lid (moulded with the lid), pivot hole 6 mm",
+  "HEAD_ENVELOPE": "envelope of the built shells (collision proxy)",
+  "YOKE_CHEEK_L": "yoke cheek with friction washer and pivot knob",
+  "YOKE_CHEEK_R": "yoke cheek with friction washer and pivot knob",
+  "YOKE_SOCKET": "yoke socket bonded to L1",
+  "YOKE_BRIDGE": "bridge joining the cheeks",
+  "L1_TUBE": "carbon-fibre tube 25 / 22.4",
+  "TXD_HOUSING": "TX driver housing beside L1 (+Y), heat-sink vents on its outer face (position from the rf2_system echo search)",
+  "F1_A": "F1 hinge half A with over-centre lever lock",
+  "F1_B": "F1 hinge half B",
+  "F2_A": "F2 hinge half A with over-centre lever lock",
+  "F2_B": "F2 hinge half B",
+  "L2_TUBE": "carbon-fibre outer tube 25 / 22.4",
+  "L2_TELE": "inner telescoping tube 22 / 19.6 (collapsed; slides out 0-250 mm)",
+  "L2_LOCK": "cam-lock collar for the telescope",
+  "REF3_SLEEVE": "REF3 as a sleeve on L2: X / Y saddle coils + Z solenoid under a 1 mm cover (no box; rf2_ref3 'sleeve')",
+  "UP_NECK": "neck from F2 into the grip head",
+  "UP_GRIP_HEAD": "grip head: HB2 main board, button, screen hinge, dial, trigger pivot",
+  "UP_GRIP": "pistol grip: 3 finger wedges (middle, ring, little), palm swell, pinky shelf; overmoulded TPE",
+  "UP_TRIGGER": "fighter-pilot trigger blade (index finger), pivot in the grip-head floor, tail presses SW_TRG",
+  "UP_GUARD": "trigger guard loop",
+  "UP_BUTTON": "thumb power button (KSC2 TE below) with a light-pipe ring (3 x SK9822)",
+  "UP_SCREEN": "flip-up screen (1.28 in memory LCD class) hinged at the grip head's rear top edge; push-push latch",
+  "UP_DIAL": "3-position mode dial (thumb side): two cam lobes on two KSC2 TE",
+  "UP_SPINE": "spine beam: PWR board (LMR36520, regenerative buck), cable to the bay contacts",
+  "UP_CUFF": "elbow cuff: 210 deg trough, r 46 mm, strap slots; folds flat",
+  "UP_CUFF_STEM": "cuff stem rising from the spine (cuff pivot at its base)",
+  "UP_BAY": "battery bay under the spine, open at the rear; blade contacts at its front",
+  "UP_CARTRIDGE": "battery cartridge: 7S2P Molicel P30B + BQ76952 + MT60 charge port; slides out rearward"
+ },
+ "fold": {
+  "best": {
+   "F1": {
+    "axis": "Y",
+    "offset_mm": 18.9,
+    "side": 1
+   },
+   "F2": {
+    "axis": "N",
+    "offset_mm": 31.0,
+    "side": -1
+   },
+   "head_deg": 50
+  },
+  "package_mm": [
+   449,
+   239,
+   233
+  ],
+  "backpack_ASSUMED_mm": [
+   520.0,
+   320.0,
+   210.0
+  ],
+  "exact_gaps_mm": {
+   "HEAD-L1": 30.0,
+   "HEAD-L2": 32.0,
+   "HEAD-UP": 32.0,
+   "L1-L2": 5.3,
+   "L1-UP": 4.06,
+   "L2-UP": 10.74
+  },
+  "evaluations": 1283,
+  "search_s": 10.7,
+  "top5": [
+   {
+    "F1": {
+     "axis": "Y",
+     "offset_mm": 18.9,
+     "side": 1
+    },
+    "F2": {
+     "axis": "N",
+     "offset_mm": 31.0,
+     "side": -1
+    },
+    "head_deg": 50,
+    "package_mm": [
+     449,
+     239,
+     233
+    ]
+   },
+   {
+    "F1": {
+     "axis": "Y",
+     "offset_mm": 18.9,
+     "side": 1
+    },
+    "F2": {
+     "axis": "N",
+     "offset_mm": 31.0,
+     "side": -1
+    },
+    "head_deg": 70,
+    "package_mm": [
+     458,
+     236,
+     233
+    ]
+   },
+   {
+    "F1": {
+     "axis": "N",
+     "offset_mm": 34.5,
+     "side": 1
+    },
+    "F2": {
+     "axis": "N",
+     "offset_mm": 58.2,
+     "side": 1
+    },
+    "head_deg": 120,
+    "package_mm": [
+     459,
+     236,
+     233
+    ]
+   },
+   {
+    "F1": {
+     "axis": "Y",
+     "offset_mm": 18.9,
+     "side": 1
+    },
+    "F2": {
+     "axis": "N",
+     "offset_mm": 31.0,
+     "side": -1
+    },
+    "head_deg": 60,
+    "package_mm": [
+     454,
+     240,
+     233
+    ]
+   },
+   {
+    "F1": {
+     "axis": "Y",
+     "offset_mm": 18.9,
+     "side": 1
+    },
+    "F2": {
+     "axis": "N",
+     "offset_mm": 31.0,
+     "side": -1
+    },
+    "head_deg": 40,
+    "package_mm": [
+     483,
+     233,
+     233
+    ]
+   }
+  ]
+ },
+ "mass": {
+  "items_g": {
+   "head (shells + coil + electronics + potting, ASSUMED 650 g)": 650,
+   "L1 + yoke tube": 97,
+   "TXD (housing + parts, ASSUMED 180 g)": 180,
+   "L2 + telescope": 139,
+   "REF3 sleeve (332 g copper, rf2_ref3, + cover 30 g)": 362,
+   "grip head + grip + trigger (shells, ASSUMED 25 %) + HB2 30 g": 124,
+   "spine + PWR board (ASSUMED 120 g)": 120,
+   "cuff + stem": 44,
+   "battery cartridge (14 x 47 g cells + 90 g)": 748
+  },
+  "total_g": 2464,
+  "com_s_mm": 613,
+  "wrist_torque_Nm": 6.52,
+  "wrist_torque_without_battery_behind_Nm": 7.63,
+  "note": "torque of the whole about the hand (head forward positive): the battery behind the hand is the counterweight; the cuff takes the rest"
+ },
+ "fold_study_retired": {
+  "folds_to_backpack": {
+   "ok": false,
+   "package_mm": [
+    449,
+    239,
+    233
+   ],
+   "target_mm": [
+    520.0,
+    320.0,
+    210.0
+   ],
+   "min_exact_gap_mm": 4.06,
+   "note": "Z-fold at F1 and F2, head turned on the yoke; candidates screened on surface samples, the winner verified with exact OCC distances"
+  },
+  "cable_bend_at_folds": {
+   "ok": true,
+   "min_hinge_offset_mm": 18.9,
+   "bend_r_min_mm": 15.0,
+   "note": "the bundle's 180 deg loop through a hinge has a radius about equal to the hinge offset"
+  },
+  "note": "the owner withdrew shaft folding (telescoping instead); kept as a record, not a pass / fail check"
+ },
+ "ok": true,
+ "timings_s": {
+  "build parts": 0.81,
+  "containment": 0.4,
+  "fold search": 0.0,
+  "fold exact verification": 8.79,
+  "exports and views": 7.87,
+  "total": 33.5
+ }
+}

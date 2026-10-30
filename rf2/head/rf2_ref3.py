@@ -23,6 +23,36 @@ ok = [r for r in rows if r["depth_penalty_pct"] >= -1.5 and r["former_mm"] <= 10
 best = min(ok, key=lambda r: (r["copper_g_3axes"], r["former_mm"])) if ok else None
 res = dict(status="MODELED (RF2 REF3 sizing)", NA_mono_m2=round(NA_MONO, 3), rule="depth penalty <= 1.5 %, former <= 100 mm, then least copper", chosen=best, options=rows,
            emi_study_assumption=dict(gain=3, e_ref_nV=1.9))
+# ---- SLEEVE layout (owner 2026-10-30: no box on the shaft). The same three axes wound ON the tube under a thin cover: X and Y as long saddle-coil pairs
+# (nested turns, two 120 deg saddles per axis, one axis per layer group), Z as a fine-wire solenoid on top. Each saddle turn links L x chord (2 a sin phi).
+def sleeve(L=0.35, a0=0.0130, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15, phi=math.radians(60.0)):
+    out = {}; pitch_t = wd_t * 1.1e-3; a = a0
+    for axis in ("X", "Y"):
+        need = g_t * NA_MONO; NA = 0.0; Lw = 0.0; layers = 0; turns = 0
+        while NA < need:
+            n_side = int((phi * a) / pitch_t)                                           # nested turns per saddle in this layer (one side's arc half-width / pitch)
+            for k in range(n_side):
+                ph = phi - k * pitch_t / a
+                if ph <= 0.05: break
+                for _ in range(2):                                                       # two saddles per axis, in series
+                    NA += L * 2 * a * math.sin(ph); Lw += 2 * L + 2 * (2 * ph * a); turns += 1
+                    if NA >= need: break
+                if NA >= need: break
+            layers += 1; a += pitch_t
+        aw = math.pi * (wd_t * 1e-3 / 2) ** 2; R = RHO * Lw / aw; e = math.sqrt(E_MONO ** 2 + kT4 * R); pen = (1 + (e / g_t / E_MONO) ** 2) ** (-1 / 10.2) - 1
+        out[axis] = dict(gain=g_t, turns=turns, layers=layers, wire_mm=wd_t, wire_m=round(Lw, 1), R_ohm=round(R, 1), e_ref_nV=round(e * 1e9, 2), depth_penalty_pct=round(pen * 100, 2), copper_g=round(Lw * aw * 8960e3, 1))
+    pitch_z = wd_z * 1.1e-3; A = math.pi * a ** 2; Nz = g_z * NA_MONO / A; per_layer = L / pitch_z; lz = math.ceil(Nz / per_layer)
+    Lw = sum(min(per_layer, Nz - i * per_layer) * 2 * math.pi * (a + i * pitch_z) for i in range(lz)); aw = math.pi * (wd_z * 1e-3 / 2) ** 2; R = RHO * Lw / aw
+    e = math.sqrt(E_MONO ** 2 + kT4 * R); pen = (1 + (e / g_z / E_MONO) ** 2) ** (-1 / 10.2) - 1; a_out = a + lz * pitch_z
+    out["Z"] = dict(gain=g_z, turns=round(Nz), layers=lz, wire_mm=wd_z, wire_m=round(Lw, 1), R_ohm=round(R, 1), e_ref_nV=round(e * 1e9, 2), depth_penalty_pct=round(pen * 100, 2), copper_g=round(Lw * aw * 8960e3, 1))
+    out["length_mm"] = L * 1e3; out["winding_outer_r_mm"] = round(a_out * 1e3, 2); out["sleeve_od_mm"] = round(2 * (a_out * 1e3 + 1.0), 1)
+    out["worst_axis_penalty_pct"] = min(out[k]["depth_penalty_pct"] for k in ("X", "Y", "Z")); out["copper_g_total"] = round(sum(out[k]["copper_g"] for k in ("X", "Y", "Z")), 1)
+    return out
+res["sleeve"] = sleeve()
+res["layout"] = dict(chosen="sleeve", why="owner 2026-10-30: the 100 mm cube on the shaft is not acceptable; the sleeve keeps the 3 axes on the tube (OD about "
+                     f"{res['sleeve']['sleeve_od_mm']} mm over {res['sleeve']['length_mm']:.0f} mm); the box (chosen above) is kept only as the reference row",
+                     box_penalty_pct=best["depth_penalty_pct"] if best else None, sleeve_worst_penalty_pct=res["sleeve"]["worst_axis_penalty_pct"])
+print("sleeve", json.dumps(res["sleeve"]))
 json.dump(res, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", "rf2_ref3.json"), "w"), indent=1)
 print("chosen", best)
 for r in rows:

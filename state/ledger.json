@@ -131,12 +131,18 @@
   "ref3": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.6,
+   "seconds": 0.5,
    "why": "",
    "tail": "",
-   "fingerprint": "fd7ed099e2a810c5",
-   "finished": "2026-10-30T04:40:00",
-   "log": "state/logs/ref3.log"
+   "fingerprint": "731df492ed80fd8b",
+   "inputs": {
+    "rf2/head/rf2_ref3.py": "24a5e05e6c"
+   },
+   "finished": "2026-10-30T17:19:55",
+   "log": "state/logs/ref3.log",
+   "history": [
+    0.5
+   ]
   },
   "ledger": {
    "status": "pass",
@@ -562,18 +568,18 @@
    "seconds": 3.3,
    "why": "",
    "tail": "",
-   "fingerprint": "0b84ffee2790c5ea",
+   "fingerprint": "a918a2b55e45cefe",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "4133aa5659",
+    "run.py": "ee7772a0f4",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-30T16:26:36",
+   "finished": "2026-10-30T17:20:37",
    "log": "state/logs/selftest.log",
    "history": [
     3.3,
@@ -581,6 +587,7 @@
     3.6,
     3.6,
     3.2,
+    3.3,
     3.3,
     3.3
    ]
@@ -735,20 +742,58 @@
   "system": {
    "status": "pass",
    "rc": 0,
-   "seconds": 1.7,
+   "seconds": 3.4,
    "why": "",
    "tail": "",
-   "fingerprint": "a56f9514b9a9d7ad",
+   "fingerprint": "cc99266c2abcf538",
    "inputs": {
-    "rf2/rf2_system.py": "770863a0ff",
+    "rf2/rf2_system.py": "10a4fa53a9",
     "rf2/rf2_continuous.py": "017eef5de7",
     "rf2/rf2_zones.py": "b56fea10f8",
-    "rf2/rf2_audio.py": "baa3592a67"
+    "rf2/rf2_audio.py": "baa3592a67",
+    "rf2/rf2_upper.py": "9300cdbab8"
    },
-   "finished": "2026-10-30T16:26:31",
+   "finished": "2026-10-30T17:20:34",
    "log": "state/logs/system.log",
    "history": [
-    1.7
+    1.7,
+    3.4
+   ]
+  },
+  "upper": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 35.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "101cfc39e0fefa27",
+   "inputs": {
+    "rf2/rf2_upper.py": "9300cdbab8",
+    "src/simcache.py": "7a842c96b9"
+   },
+   "finished": "2026-10-30T17:20:30",
+   "log": "state/logs/upper.log",
+   "history": [
+    35.5
+   ]
+  },
+  "topography": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.0,
+   "why": "",
+   "tail": "",
+   "fingerprint": "8569d59f0926b6ff",
+   "inputs": {
+    "rf2/rf2_topography.py": "eb35eabac0",
+    "rf2/upper_out/rf2_upper_check.json": "b582f86531",
+    "rf2/results/rf2_system.json": "8e56cb911d",
+    "rf2/head/out/rf2_ref3.json": "72fc11e160"
+   },
+   "finished": "2026-10-30T17:20:37",
+   "log": "state/logs/topography.log",
+   "history": [
+    0.0
    ]
   }
  },
@@ -1166,6 +1211,17 @@
     "selftest": "pass",
     "display": "pass",
     "display3": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T17:20:37",
+   "seconds": 42.7,
+   "results": {
+    "ref3": "pass",
+    "upper": "pass",
+    "system": "pass",
+    "selftest": "pass",
+    "topography": "pass"
    }
   }
  ]

@@ -546,5 +546,51 @@
  "emi_study_assumption": {
   "gain": 3,
   "e_ref_nV": 1.9
+ },
+ "sleeve": {
+  "X": {
+   "gain": 3.0,
+   "turns": 630,
+   "layers": 6,
+   "wire_mm": 0.2,
+   "wire_m": 460.3,
+   "R_ohm": 252.0,
+   "e_ref_nV": 2.66,
+   "depth_penalty_pct": -2.33,
+   "copper_g": 129.6
+  },
+  "Y": {
+   "gain": 3.0,
+   "turns": 569,
+   "layers": 5,
+   "wire_mm": 0.2,
+   "wire_m": 417.7,
+   "R_ohm": 228.7,
+   "e_ref_nV": 2.58,
+   "depth_penalty_pct": -2.22,
+   "copper_g": 117.6
+  },
+  "Z": {
+   "gain": 4.0,
+   "turns": 5474,
+   "layers": 3,
+   "wire_mm": 0.15,
+   "wire_m": 535.1,
+   "R_ohm": 520.8,
+   "e_ref_nV": 3.39,
+   "depth_penalty_pct": -2.16,
+   "copper_g": 84.7
+  },
+  "length_mm": 350.0,
+  "winding_outer_r_mm": 15.91,
+  "sleeve_od_mm": 33.8,
+  "worst_axis_penalty_pct": -2.33,
+  "copper_g_total": 331.9
+ },
+ "layout": {
+  "chosen": "sleeve",
+  "why": "owner 2026-10-30: the 100 mm cube on the shaft is not acceptable; the sleeve keeps the 3 axes on the tube (OD about 33.8 mm over 350 mm); the box (chosen above) is kept only as the reference row",
+  "box_penalty_pct": -1.39,
+  "sleeve_worst_penalty_pct": -2.33
  }
 }

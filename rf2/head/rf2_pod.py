@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""RF2 handle pod v2 (2026-10-30): the printed grip around the shaft tube, now with its electronics placed. MODELED; every dimension marked ASSUMED is one.
+"""RETIRED 2026-10-30 (owner: new ergonomic handle): superseded by rf2/rf2_upper.py; kept for its history, no longer in run.py.
+RF2 handle pod v2 (2026-10-30): the printed grip around the shaft tube, now with its electronics placed. MODELED; every dimension marked ASSUMED is one.
 v1 fault (CORRECTIONS): the tube runs THROUGH the pod, but v1's battery bay (80 x 30 x 24 mm), sounder pocket and trigger-switch pocket cut into the shaft bore
 (its 'fits_in_body' check only tested the outer cylinder, and its magnet check could not fail). v2 keeps the bore clear and checks it.
 Layout (x along the tube from the head side, y sideways, z up = thumb side; bore r 12.8 = tube 25 mm + 0.3 mm; outer r 23; wall 1.6 mm):

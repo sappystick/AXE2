@@ -760,3 +760,46 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - the KSC2 TE travel against the plunger and cap stack;
   - a pack housing model;
   - the 3-D shaft and armrest.
+
+## 36. Upper assembly v1, REF3 sleeve, faster geometry pipeline, system topography (2026-10-30; owner requests; MODELED)
+- **Upper assembly (`rf2/rf2_upper.py`, step `upper`; `rf2/upper_out/`: STL per part, STEP assembly, `rf2_upper_views.png`).** It replaces the cylindrical pod (head/rf2_pod.py is retired).
+  - **Parts:**
+    - head exterior: wear skid and yoke ears;
+    - yoke with friction pivot (r 85 at the heel);
+    - L1 tube with the TXD housing beside it (s 330-420);
+    - L2 tube with the REF3 sleeve (s 470-820) and a 0-250 mm telescope with cam lock;
+    - upper unit: grip head with thumb button and light ring, flip-up screen (opens 60 deg, 2.7 deg off the eye line), mode dial and pilot trigger with guard;
+    - pistol grip with 3 finger wedges, pinky shelf and 18 deg rake;
+    - spine (PWR board);
+    - cuff and stem;
+    - battery bay and quick-swap cartridge (7S2P, slides out rearward with no contact).
+  - **Electronics placed and contained:** HB2 parts in the grip head, PWR parts in the spine, TXD parts, cells and BQ board in the cartridge, REF3 windings in the sleeve.
+  - **Checks pass:** containment, grip (118 mm, 24-25 mm finger pitch, 135 mm circumference), trigger reach 70 mm, thumb 54 mm, screen view, cuff height 0.78-1.20 m over tilt and telescope, telescope overlap, battery slide, deployed clearance, battery counterweight.
+  - **Mass and torque:** 2.46 kg in total; wrist torque 6.5 N m (7.6 without the battery behind the hand).
+- **Owner review of v1 (OPEN, next):**
+  - no shaft folding: telescope instead;
+  - the cuff does not work: the forearm cannot sit in it and reach the grip, so it needs a straight forearm axis;
+  - the cuff may fold;
+  - model the flex / rigid-flex runs in shaft channels.
+  - The fold search is kept only as a retired record (best package 449 x 239 x 233 mm against the 520 x 320 x 210 target).
+- **REF3 sleeve (owner: the 112 mm box goes).** `head/rf2_ref3.py` now also sizes a sleeve on the tube: X / Y saddle-coil pairs (nested turns, 120 deg saddles) plus a Z solenoid under a 1 mm cover.
+  - Chosen: 350 mm long, OD 33.8 mm, 0.2 mm wire (X / Y, gain 3) and 0.15 mm (Z, gain 4).
+  - Cost: depth penalty -2.33 % worst axis (the box was -1.39 %), with 332 g copper.
+  - Lighter alternative: 31 mm OD, 211 g, -3.25 %.
+  - The head base was rejected for REF3: it would see the targets, and the canceller would subtract them.
+  - OPEN: re-run rf2_emi with the sleeve's e_ref (2.6-3.4 nV/rtHz).
+- **Echo model correction (CORRECTIONS).** `rf2_system` used only Bz.
+  - Now: blocks (the heat sink) at worst-case |B|, closed cans (bulk capacitors, cells) linked by the field along their axis, laid laterally where mirror symmetry keeps it small.
+  - TXD moved to s 330-420: 5 K drift 0.20 x the gate noise; the TX pair 0.33 m adds +0.17 us (first-order).
+- **Geometry pipeline (owner: no long blind runs).** The upper build went from more than 10 minutes, unfinished, to 53 s cold and 18 s with a cache hit:
+  - groups are tessellated once into voxel-deduplicated surface samples (2 mm);
+  - candidate transforms are numpy;
+  - clearance is a KD-tree query after a bounding-box prune;
+  - hinge offsets come by bisection;
+  - exact OCC distances run only on the winner;
+  - per-phase timings print live and are saved;
+  - the search is memoised in state/simcache (`geom.upper.fold`).
+  - Two silent faults were found on the way and fixed:
+    - a mirrored placement frame turned solids inside out (negative volume, zero distances);
+    - an edge-subdividing sampler made millions of points.
+- **System topography (`rf2/rf2_topography.py`, step `topography` -> `docs/SYSTEM_TOPOGRAPHY.md`).** Generated station by station from the handle tip to the head edge: maturity (CHECKED / MODELED / CONCEPT / OPEN), the runner steps and their last results, numbers read from outputs, and open items.
