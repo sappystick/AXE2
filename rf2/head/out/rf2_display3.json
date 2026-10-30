@@ -1,0 +1,45 @@
+{
+ "status": "MODELED specification (no human-factors or bench data)",
+ "checks": {
+  "dark_without_target": true,
+  "every_target_visible": true,
+  "sweep_dot_is_small": true,
+  "bigger_target_bigger_dot_but_capped": true,
+  "lock_fills_only_the_centre": true,
+  "sonar_goes_out_and_back": true,
+  "echo_flash_when_ring_crosses": true,
+  "audio_echo_at_the_flash_instant": true,
+  "ping_at_every_launch": true,
+  "two_targets_echo_in_distance_order": true,
+  "lock_has_steady_tone": true,
+  "profiles_render": true,
+  "night_is_dim": true,
+  "quiet_skips_small_targets": true,
+  "depth_pitch_falls_with_depth": true,
+  "screen_text_fits_and_shows_lock": true
+ },
+ "ok": true,
+ "timing": {
+  "sonar_period_s": 1.2,
+  "out_s": 0.6,
+  "back_s": 0.6,
+  "ring_width_mm": 5.0,
+  "echo_flash_s": 0.15,
+  "lock_radius_mm": 12.0,
+  "lock_disc_mm": 16.0
+ },
+ "profiles": {
+  "led": [
+   "Clean",
+   "Map",
+   "Sonar",
+   "Night"
+  ],
+  "audio": [
+   "Class tones",
+   "Depth pitch",
+   "Quiet",
+   "Stereo"
+  ]
+ }
+}

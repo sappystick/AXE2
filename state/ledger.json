@@ -481,18 +481,19 @@
   "pod": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.6,
+   "seconds": 0.4,
    "why": "",
    "tail": "",
-   "fingerprint": "0e85627cd137a835",
+   "fingerprint": "ea945d44880f48d1",
    "inputs": {
-    "rf2/head/rf2_pod.py": "437684b886",
+    "rf2/head/rf2_pod.py": "cc4332baae",
     "rf2/head/rf2_head.py": "786ab35bb3"
    },
-   "finished": "2026-10-30T14:54:16",
+   "finished": "2026-10-30T15:00:43",
    "log": "state/logs/pod.log",
    "history": [
-    0.6
+    0.6,
+    0.4
    ]
   },
   "ui": {
@@ -537,27 +538,28 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.6,
+   "seconds": 3.2,
    "why": "",
    "tail": "",
-   "fingerprint": "d49c8873fa9cba07",
+   "fingerprint": "8059d233e9081182",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "ac0256e75b",
+    "run.py": "405bb93f29",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-30T14:54:19",
+   "finished": "2026-10-30T15:00:46",
    "log": "state/logs/selftest.log",
    "history": [
     3.3,
     3.1,
     3.6,
-    3.6
+    3.6,
+    3.2
    ]
   },
   "study:mp1v2_chain": {
@@ -648,6 +650,25 @@
    "log": "state/logs/study_separation.log",
    "history": [
     16.5
+   ]
+  },
+  "display3": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "c248b34e7aa10d1a",
+   "inputs": {
+    "rf2/rf2_display3.py": "0e0604b4fa",
+    "rf2/rf2_display.py": "8015e49c7f",
+    "rf2/rf2_ui.py": "5acd5bc21a",
+    "rf2/head/rf2_ledgrid.py": "f09894c141"
+   },
+   "finished": "2026-10-30T15:00:47",
+   "log": "state/logs/display3.log",
+   "history": [
+    1.2
    ]
   }
  },
@@ -1025,6 +1046,15 @@
    "results": {
     "study:continuous": "pass",
     "study:separation": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T15:00:47",
+   "seconds": 4.8,
+   "results": {
+    "pod": "pass",
+    "selftest": "pass",
+    "display3": "pass"
    }
   }
  ]

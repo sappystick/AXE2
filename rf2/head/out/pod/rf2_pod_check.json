@@ -49,6 +49,25 @@
    "hold_to_toggle_s": 2.0,
    "max_interference_mm3": 0.0,
    "note": "far enough from the selector (>= 30 mm) that the thumb cannot confuse them, directly above the trigger (thumb rest), recessed so it cannot be pressed by a knock"
+  },
+  "screen_cassette": {
+   "ok": true,
+   "face_normal_open": [
+    0.94,
+    0.0,
+    0.342
+   ],
+   "face_toward_user": true,
+   "stowed_inside_body_by_mm": 0.59,
+   "wall_to_battery_bay_mm": 2.0,
+   "open_deg": 70.0,
+   "open_top_above_axis_mm": 47.6,
+   "open_tray_to_power_button_mm": 20.0,
+   "latch_to_power_pocket_wall_mm": 4.74,
+   "clash_closed_mm3": 0.0,
+   "clash_open_mm3": 0.0,
+   "open_tray_into_body_mm3": 0.0,
+   "note": "stowed flush below the body surface; opens on its rear hinge so the face tilts toward the user; clear of the power button when open; latch and flex slot inside the pocket"
   }
  },
  "ok": true,
@@ -114,6 +133,43 @@
    ],
    "hold_s": 2.0,
    "note": "recessed momentary push button on TOP above the trigger (thumb position while the index finger is on the trigger); hold 2 s on / off so a knock cannot switch it; a light-pipe ring around it shows green on, amber boost, red low battery. It drives the PM2 power-path controller (soft latch); the PM2 fuse stays in series. Button part ASSUMED (a sealed 12 mm tactile, IP67 class)"
+  },
+  "screen": {
+   "pocket_x": [
+    94.0,
+    135.0
+   ],
+   "tray_x": [
+    98.0,
+    130.0
+   ],
+   "w": 28.0,
+   "tray_z": [
+    13.5,
+    17.5
+   ],
+   "pocket_floor": 13.0,
+   "hinge": [
+    130.0,
+    17.5
+   ],
+   "hinge_d": 2.0,
+   "open_deg": 70.0,
+   "latch_x": [
+    94.5,
+    97.5
+   ],
+   "module": [
+    30.0,
+    24.0,
+    2.6
+   ],
+   "flex_slot": [
+    124.0,
+    128.0,
+    8.0
+   ],
+   "note": "flip-up screen cassette behind the power button: the thumb presses the front edge, a push-push latch (spring + heart-cam, like an SD-card socket) releases it, a torsion spring lifts it, it is pulled up to 70 deg where a detent locks it; it hinges at its REAR edge so the face tilts toward the user. Screen: a 1.28 in 128 x 128 reflective memory LCD (Sharp LS013B7DH03 class: sunlight-readable, microwatts) - part and module size ASSUMED until a datasheet is on file"
   },
   "trigger": {
    "x": [

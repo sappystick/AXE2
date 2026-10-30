@@ -81,6 +81,7 @@ STEPS = [
     dict(id="selftest", cmd=["tests/selftest.py"], inputs=["tests/selftest.py", "src/simcache.py", "run.py", H + "spice_compat.py", H + "rf2_opamp_qualify.py", "data/spice/SHA256SUMS", "data/spice/**/*.lib"], deps=["opamp-qualify"],
          check=jcheck("state/selftest.json")),
     dict(id="display", cmd=["rf2/rf2_display.py"], inputs=["rf2/rf2_display.py", "rf2/rf2_ui.py", H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/rf2_display.json")),
+    dict(id="display3", cmd=["rf2/rf2_display3.py"], inputs=["rf2/rf2_display3.py", "rf2/rf2_display.py", "rf2/rf2_ui.py", H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/rf2_display3.json")),
     dict(id="router-selftest", cmd=["tests/router_selftest.py"], inputs=["tests/router_selftest.py", "src/pcb/astar_route.py"], deps=["board:MP1"],
          check=jcheck("state/router_selftest.json")),
     dict(id="parity", cmd=[H + "rf2_parity.py"], inputs=[H + "rf2_parity.py"], deps=["netlist", "board:TXJ", "board:MP1", "board:LR1", "shield:SH1", "sb1r-variant"],

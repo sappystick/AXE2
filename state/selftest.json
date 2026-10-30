@@ -82,13 +82,13 @@
   {
    "name": "qualify bench: PASSES the TI LMH6629 model",
    "ok": true,
-   "seconds": 2.61,
+   "seconds": 2.36,
    "detail": ""
   },
   {
    "name": "qualify bench: FAILS a wrong model (80 MHz behavioral op-amp in the LMH6629's place)",
    "ok": true,
-   "seconds": 0.52,
+   "seconds": 0.51,
    "detail": "12 rows fail: bw_3dB_MHz, aol_dc_dB, f_at_20dB_MHz, phase_at_1GHz_deg, en_1MHz_nV"
   },
   {
@@ -100,7 +100,7 @@
   {
    "name": "runner: skips an unchanged step, names the changed input, sees a missing output and a re-run dependency",
    "ok": true,
-   "seconds": 0.18,
+   "seconds": 0.08,
    "detail": ""
   }
  ],

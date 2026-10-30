@@ -18,6 +18,11 @@ SPEC = dict(shaft_d=25.0, body_r=23.0, body_len=170.0, wall=2.0, shaft_clear=0.3
                        note="recessed momentary push button on TOP above the trigger (thumb position while the index finger is on the trigger); hold 2 s on / off so a knock "
                             "cannot switch it; a light-pipe ring around it shows green on, amber boost, red low battery. It drives the PM2 power-path controller (soft latch); "
                             "the PM2 fuse stays in series. Button part ASSUMED (a sealed 12 mm tactile, IP67 class)"),
+            screen=dict(pocket_x=(94.0, 135.0), tray_x=(98.0, 130.0), w=28.0, tray_z=(13.5, 17.5), pocket_floor=13.0, hinge=(130.0, 17.5), hinge_d=2.0, open_deg=70.0,
+                        latch_x=(94.5, 97.5), module=(30.0, 24.0, 2.6), flex_slot=(124.0, 128.0, 8.0),
+                        note="flip-up screen cassette behind the power button: the thumb presses the front edge, a push-push latch (spring + heart-cam, like an SD-card socket) "
+                             "releases it, a torsion spring lifts it, it is pulled up to 70 deg where a detent locks it; it hinges at its REAR edge so the face tilts toward the user. "
+                             "Screen: a 1.28 in 128 x 128 reflective memory LCD (Sharp LS013B7DH03 class: sunlight-readable, microwatts) - part and module size ASSUMED until a datasheet is on file"),
             trigger=dict(x=(70.0, 96.0), lever_t=4.0, travel_deg=12.0, pivot_x=96.0, note="ASSUMED index-finger lever on the underside with a tactile switch behind it; double-press is read in firmware"))
 def cylx(r, x0, x1): return m3.Manifold.cylinder(x1 - x0, r, r, 96).rotate([0, 90, 0]).translate([x0, 0, 0])
 def boxc(x0, x1, y, z, cy=0.0, cz=0.0): return m3.Manifold.cube([x1 - x0, y, z], True).translate([(x0 + x1) / 2, cy, cz])
@@ -48,10 +53,25 @@ def build():
     body = body - pocket - ringg                                                          # the button pocket and the groove for the light-pipe ring
     cap = m3.Manifold.cylinder(pw["pocket_depth"] - pw["guard_h"] - 0.5, pw["cap_d"] / 2, pw["cap_d"] / 2, 48).translate([pw["x"], 0, ztop + 0.5])   # cap top sits guard_h below the surface
     lightring = (m3.Manifold.cylinder(1.4, pw["ring_d"][1] / 2 - 0.15, pw["ring_d"][1] / 2 - 0.15, 64) - m3.Manifold.cylinder(1.6, pw["ring_d"][0] / 2 + 0.15, pw["ring_d"][0] / 2 + 0.15, 64).translate([0, 0, -0.1])).translate([pw["x"], 0, R - 1.45])
-    return dict(POD_BODY=body, POD_SELECTOR_COLLAR=collar, POD_TRIGGER=lever, POD_POWER_CAP=cap, POD_POWER_LIGHTRING=lightring), dict(BATTERY_BAY=bay, SOUNDER=sound, SWITCH=sw, TRIGGER_SLOT=slot, POWER_POCKET=pocket)
+    sc = s["screen"]; px0, px1 = sc["pocket_x"]; tx0, tx1 = sc["tray_x"]; hw = sc["w"] / 2
+    spocket = boxc(px0, px1, sc["w"] + 1.0, R + 6 - sc["pocket_floor"], 0, (sc["pocket_floor"] + R + 6) / 2)
+    fslot = boxc(sc["flex_slot"][0], sc["flex_slot"][1], sc["flex_slot"][2], sc["pocket_floor"] - 10.5, 0, (sc["pocket_floor"] + 10.5) / 2)     # flex cable down to the electronics
+    body = body - spocket - fslot
+    tray = boxc(tx0, tx1, sc["w"], sc["tray_z"][1] - sc["tray_z"][0], 0, sum(sc["tray_z"]) / 2)
+    mx, my, mz = sc["module"]; win = boxc((tx0 + tx1) / 2 - mx / 2, (tx0 + tx1) / 2 + mx / 2, my, mz + 0.2, 0, sc["tray_z"][1] - mz / 2)
+    tray = tray - win; module = boxc((tx0 + tx1) / 2 - mx / 2 + 0.2, (tx0 + tx1) / 2 + mx / 2 - 0.2, my - 0.4, mz, 0, sc["tray_z"][1] - mz / 2 - 0.1)
+    hx, hz = sc["hinge"]
+    def opened(m, deg): return m.translate([-hx, 0, -hz]).rotate([0, deg, 0]).translate([hx, 0, hz])
+    sgn = 1.0                                                                             # +deg about +y: the face normal (0, 0, 1) turns toward +x, the user at the grip end
+    latch = boxc(sc["latch_x"][0], sc["latch_x"][1], 10.0, 3.5, 0, sc["pocket_floor"] + 1.75)
+    parts = dict(POD_BODY=body, POD_SELECTOR_COLLAR=collar, POD_TRIGGER=lever, POD_POWER_CAP=cap, POD_POWER_LIGHTRING=lightring, POD_SCREEN_TRAY=tray, POD_SCREEN_MODULE=module)
+    keep = dict(BATTERY_BAY=bay, SOUNDER=sound, SWITCH=sw, TRIGGER_SLOT=slot, POWER_POCKET=pocket, SCREEN_POCKET=spocket, SCREEN_LATCH=latch,
+                SCREEN_TRAY_OPEN=opened(tray, sgn * sc["open_deg"]), SCREEN_MODULE_OPEN=opened(module, sgn * sc["open_deg"]))
+    return parts, keep
 def main():
     P, K = build(); s = SPEC; R = s["body_r"]; res = dict(status="MODELED; all dimensions ASSUMED", checks={})
     for k, v in P.items(): H.write_stl(v, os.path.join(OUT, f"{k}.stl"))
+    H.write_stl(K["SCREEN_TRAY_OPEN"], os.path.join(OUT, "POD_SCREEN_TRAY_OPEN.stl"))
     gap = lambda a, b: round(float(a.min_gap(b, 2.0)), 3)
     body_cyl = cylx(R, 0, s["body_len"]); inside = {k: round(float((K[k] ^ body_cyl).volume() / K[k].volume()), 3) for k in ("BATTERY_BAY", "SWITCH")}
     res["checks"]["fits_in_body"] = dict(ok=all(v > 0.999 for v in inside.values()), fraction_of_pocket_inside_body=inside, note="battery bay and switch pocket lie inside the body cylinder")
@@ -70,6 +90,19 @@ def main():
                                          distance_from_selector_mm=round(abs(pw["x"] - sel_c), 1), above_trigger_offset_mm=round(abs(pw["x"] - tg_c), 1), wall_to_battery_bay_mm=gap_bay,
                                          recess_mm=pw["guard_h"], hold_to_toggle_s=pw["hold_s"], max_interference_mm3=round(clash, 3),
                                          note="far enough from the selector (>= 30 mm) that the thumb cannot confuse them, directly above the trigger (thumb rest), recessed so it cannot be pressed by a knock")
+    sc = s["screen"]; T = P["POD_SCREEN_TRAY"]; V = np.asarray(T.to_mesh().vert_properties)[:, :3]; rad = float(np.max(np.hypot(V[:, 1], V[:, 2])))
+    Vo = np.asarray(K["SCREEN_TRAY_OPEN"].to_mesh().vert_properties)[:, :3]
+    th = math.radians(sc["open_deg"]); normal = (math.sin(th), 0.0, math.cos(th))                                   # the face normal after opening (rotation about +y)
+    face_toward_user = normal[0] > 0.5 and float(Vo[:, 2].max()) > sc["tray_z"][1] + 20
+    clash_closed = max((T ^ P[k]).volume() for k in ("POD_BODY", "POD_POWER_CAP", "POD_POWER_LIGHTRING", "POD_SELECTOR_COLLAR", "POD_TRIGGER"))
+    clash_open = max((K["SCREEN_TRAY_OPEN"] ^ P[k]).volume() for k in ("POD_POWER_CAP", "POD_POWER_LIGHTRING", "POD_SELECTOR_COLLAR", "POD_TRIGGER"))
+    open_body = (K["SCREEN_TRAY_OPEN"] ^ P["POD_BODY"]).volume()
+    gap_power_open = round(float(K["SCREEN_TRAY_OPEN"].min_gap(P["POD_POWER_CAP"], 20.0)), 2); wall_bay = round(sc["pocket_floor"] - 11.0, 2)
+    gap_latch_power = round(float(K["SCREEN_LATCH"].min_gap(K["POWER_POCKET"], 10.0)), 2)
+    res["checks"]["screen_cassette"] = dict(ok=face_toward_user and rad <= s["body_r"] - 0.3 and clash_closed < 0.01 and clash_open < 0.01 and open_body < 1.0 and wall_bay >= 1.6 and gap_power_open >= 3.0 and gap_latch_power >= 1.6,
+        face_normal_open=[round(v, 3) for v in normal], face_toward_user=face_toward_user, stowed_inside_body_by_mm=round(s["body_r"] - rad, 2), wall_to_battery_bay_mm=wall_bay, open_deg=sc["open_deg"], open_top_above_axis_mm=round(float(Vo[:, 2].max()), 1),
+        open_tray_to_power_button_mm=gap_power_open, latch_to_power_pocket_wall_mm=gap_latch_power, clash_closed_mm3=round(clash_closed, 3), clash_open_mm3=round(clash_open, 3), open_tray_into_body_mm3=round(open_body, 3),
+        note="stowed flush below the body surface; opens on its rear hinge so the face tilts toward the user; clear of the power button when open; latch and flex slot inside the pocket")
     res["ok"] = all(v["ok"] for v in res["checks"].values()); res["spec"] = SPEC
     json.dump(res, open(os.path.join(OUT, "rf2_pod_check.json"), "w"), indent=1); print(json.dumps({k: v["ok"] for k, v in res["checks"].items()}, indent=1)); return res
 if __name__ == "__main__":
