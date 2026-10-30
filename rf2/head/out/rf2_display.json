@@ -1,0 +1,38 @@
+{
+ "status": "MODELED specification (no human-factors or bench data)",
+ "checks": {
+  "dark_without_target": true,
+  "radius_grows_with_size": true,
+  "one_ring_for_0p1g_whole_display_for_100g": true,
+  "bigger_target_lights_more_leds": true,
+  "two_targets_two_blobs": true,
+  "deeper_pulses_slower": true,
+  "audio_voices_do_not_overlap": true,
+  "led_mode_is_silent": true,
+  "iron_has_a_cross": true,
+  "match_has_white_halo": true,
+  "status_screens_render": true,
+  "frames_deterministic": true
+ },
+ "ok": true,
+ "coding": {
+  "radius": "8 mm (1 ring) at 0.1 g to 104 mm (13 rings) at >= 100 g, log scale",
+  "pulse": "half the beep rate: 6.3 Hz at 50 mm, 2.3 Hz at 300 mm",
+  "multi": "one blob per target, dark seam where blobs meet, pulses phase-staggered, one audio voice per slot (up to 3)",
+  "status": [
+   "self_test",
+   "ground_learn",
+   "battery",
+   "low_battery",
+   "interference",
+   "sweep_too_fast",
+   "thermal_limit",
+   "heartbeat"
+  ]
+ },
+ "controls": {
+  "power": "recessed push button on top of the handle pod above the trigger (rf2_pod.py): hold 2 s on / off; its light ring shows green on, amber boost, red low battery",
+  "selector": "AUDIO | LED | BOTH",
+  "trigger": "hold: pinpoint boost, continuous (rf2_continuous.py: the limits are thermal); double-press: store signature"
+ }
+}

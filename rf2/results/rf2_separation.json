@@ -1,0 +1,268 @@
+{
+ "status": "MODELED: exponential decays and a single-loop |B|^2 response; no ground, no quadrupole channels; target strength A taken proportional to the mass of the same metal (ASSUMED)",
+ "decay_time": [
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 10,
+   "p_resolved": 0.1
+  },
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 30,
+   "p_resolved": 0.03333333333333333
+  },
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 100,
+   "p_resolved": 0.23333333333333334
+  },
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 300,
+   "p_resolved": 0.36666666666666664
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 10,
+   "p_resolved": 0.3333333333333333
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 30,
+   "p_resolved": 0.6333333333333333
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 100,
+   "p_resolved": 0.9666666666666667
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 10,
+   "p_resolved": 0.6666666666666666
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 30,
+   "p_resolved": 0.9666666666666667
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 100,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 10,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 30,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 100,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 10,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 30,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 100,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  }
+ ],
+ "false_split_single_target": {
+  "10": 0.6,
+  "30": 0.43333333333333335,
+  "100": 0.26666666666666666,
+  "300": 0.0
+ },
+ "decay_time_with_model_selection": [
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 10,
+   "p_resolved": 0.0
+  },
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 30,
+   "p_resolved": 0.0
+  },
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 100,
+   "p_resolved": 0.23333333333333334
+  },
+  {
+   "tau_ratio": 1.3,
+   "snr_weaker": 300,
+   "p_resolved": 0.8666666666666667
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 10,
+   "p_resolved": 0.0
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 30,
+   "p_resolved": 0.4
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 100,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 1.6,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 10,
+   "p_resolved": 0.03333333333333333
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 30,
+   "p_resolved": 0.9333333333333333
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 100,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 2.0,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 10,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 30,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 100,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 3.0,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 10,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 30,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 100,
+   "p_resolved": 1.0
+  },
+  {
+   "tau_ratio": 5.0,
+   "snr_weaker": 300,
+   "p_resolved": 1.0
+  }
+ ],
+ "false_split_single_target_with_model_selection": {
+  "10": 0.0,
+  "30": 0.0,
+  "100": 0.0,
+  "300": 0.0
+ },
+ "position": [
+  {
+   "case": "two 1 g gold, both 100 mm",
+   "min_separation_mm": 225.0
+  },
+  {
+   "case": "1 g at 100 mm + 1 g at 200 mm",
+   "min_separation_mm": 330.0
+  },
+  {
+   "case": "0.5 g at 80 mm + 5 g at 220 mm",
+   "min_separation_mm": 275.0
+  },
+  {
+   "case": "two 5 g, both 250 mm",
+   "min_separation_mm": 275.0
+  },
+  {
+   "case": "1 g at 50 mm + 1 g at 150 mm",
+   "min_separation_mm": 110.0
+  }
+ ],
+ "summary": {
+  "decay_ratio_needed_for_80pct": {
+   "10": 3.0,
+   "30": 2.0,
+   "100": 1.6,
+   "300": 1.6
+  },
+  "with_model_selection": {
+   "10": 3.0,
+   "30": 2.0,
+   "100": 1.6,
+   "300": 1.3
+  },
+  "false_split_nnls": {
+   "10": 0.6,
+   "30": 0.43333333333333335,
+   "100": 0.26666666666666666,
+   "300": 0.0
+  },
+  "false_split_model_selection": {
+   "10": 0.0,
+   "30": 0.0,
+   "100": 0.0,
+   "300": 0.0
+  },
+  "note": "same metal and size give the same decay: those can only be split by position; different sizes / metals differ in decay and can be split in one pulse when the ratio and SNR allow"
+ }
+}

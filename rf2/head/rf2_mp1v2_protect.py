@@ -114,3 +114,18 @@ def main():
     json.dump(res, open(os.path.join(OUT, "rf2_mp1v2_protect.json"), "w"), indent=1); return res
 if __name__ == "__main__":
     main(); sys.exit(0)
+# ---- boost current (owner 2026-10-30: the trigger may be held indefinitely): the same turn-off at the boost peak current. The DC drive of SRC_TR sets the coil current.
+@memo("spice.protect.transient_at_current", files=lambda *a, **k: [C.LMH, C.OPA], uses=USES, tools=["ngspice"])
+def transient_at(fet, clamp, i_coil):
+    src = C.SRC_TR.replace("Vdr nd vb DC -4.27", f"Vdr nd vb DC {-i_coil * 0.53:.4f}")
+    assert src != C.SRC_TR or abs(i_coil - 8.06) < 0.01
+    vec = ["v(clA)", "i(VmA)", "v(o1A)", "v(o1B)", "v(nc)"]
+    A, _ = C.ng(netlist(fet, clamp, src) + ".save " + " ".join(vec) + "\n.options reltol=1e-3 abstol=1e-11 vntol=1e-6 method=gear\n.tran 5n 120u 0 5n\n", "run\nwrdata {OUT} " + " ".join(vec), timeout=3000)
+    t = A[:, 0]; col = {v: A[:, 2 * i + 1] for i, v in enumerate(vec)}; d1 = col["v(o1A)"] - col["v(o1B)"]; rest = float(d1[-1]); bad = np.where(np.abs(d1 - rest) > 10e-3)[0]
+    return dict(i_coil_A=i_coil, peak_coil_V=round(float(col["v(nc)"].max()), 1), peak_clamp_node_V=round(float(col["v(clA)"].max()), 2), peak_lmh_input_mA=round(float(np.abs(col["i(VmA)"]).max()) * 1e3, 2),
+                settle_us=round(float(t[bad[-1] + 1]) * 1e6, 2) if len(bad) and bad[-1] + 1 < len(t) else None)
+def boost_check():
+    rows = []
+    for fet, cl in (("IXTY08N100D2", "1 x BAV199"), ("IXTY01N100D@Q", "2 x BAV199 + 2 x BAT54S (typ)")):
+        for i in (8.06, 12.74): r = transient_at(fet, CLAMPS[cl], i); r.update(limiter=fet, clamp=cl); rows.append(r)
+    return rows

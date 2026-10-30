@@ -80,6 +80,7 @@ STEPS = [
          deps=["study:mp1v2_chain"], check=jcheck(H + "out/rf2_mp1v2_protect.json", lambda d: d["accuracy_check"]["ok"]), timeout=3600),
     dict(id="selftest", cmd=["tests/selftest.py"], inputs=["tests/selftest.py", "src/simcache.py", "run.py", H + "spice_compat.py", H + "rf2_opamp_qualify.py", "data/spice/SHA256SUMS", "data/spice/**/*.lib"], deps=["opamp-qualify"],
          check=jcheck("state/selftest.json")),
+    dict(id="display", cmd=["rf2/rf2_display.py"], inputs=["rf2/rf2_display.py", "rf2/rf2_ui.py", H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/rf2_display.json")),
     dict(id="router-selftest", cmd=["tests/router_selftest.py"], inputs=["tests/router_selftest.py", "src/pcb/astar_route.py"], deps=["board:MP1"],
          check=jcheck("state/router_selftest.json")),
     dict(id="parity", cmd=[H + "rf2_parity.py"], inputs=[H + "rf2_parity.py"], deps=["netlist", "board:TXJ", "board:MP1", "board:LR1", "shield:SH1", "sb1r-variant"],
@@ -88,7 +89,7 @@ STEPS = [
          outputs=[H + "out/rf2_cutaway.png", H + "out/rf2_exploded.png"], timeout=3600),
     dict(id="display-figure", group="render", cmd=[H + "rf2_ledgrid.py"], inputs=[H + "rf2_ledgrid.py"], deps=[], outputs=[H + "out/rf2_display.png"]),
 ] + [dict(id=f"study:{n}", group="studies", cmd=[f"rf2/rf2_{n}.py"], inputs=[f"rf2/rf2_{n}.py"], deps=[], outputs=[f"rf2/results/rf2_{n}.json"], timeout=7200)
-     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin", "depth_levers", "taper", "rodin", "wave", "hood", "hood_wide", "hood_size", "zones", "mitigation", "layout", "switch", "qualify", "fluxgate", "decaylib")]
+     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin", "depth_levers", "taper", "rodin", "wave", "hood", "hood_wide", "hood_size", "zones", "mitigation", "layout", "switch", "qualify", "fluxgate", "decaylib", "continuous", "separation")]
 
 
 def finger(s):

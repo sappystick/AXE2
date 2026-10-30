@@ -295,5 +295,43 @@
   "max_rel_diff": 0.0033,
   "ok": true
  },
- "any_option_passes": false
+ "any_option_passes": false,
+ "boost_current": [
+  {
+   "i_coil_A": 8.06,
+   "peak_clamp_node_V": 6.59,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 24.97,
+   "settle_us": 19.17,
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199"
+  },
+  {
+   "i_coil_A": 12.74,
+   "peak_clamp_node_V": 6.88,
+   "peak_coil_V": 464.1,
+   "peak_lmh_input_mA": 27.88,
+   "settle_us": 22.54,
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199"
+  },
+  {
+   "i_coil_A": 8.06,
+   "peak_clamp_node_V": 5.48,
+   "peak_coil_V": 463.8,
+   "peak_lmh_input_mA": 14.1,
+   "settle_us": 17.5,
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)"
+  },
+  {
+   "i_coil_A": 12.74,
+   "peak_clamp_node_V": 5.54,
+   "peak_coil_V": 464.0,
+   "peak_lmh_input_mA": 14.67,
+   "settle_us": 20.87,
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)"
+  }
+ ]
 }

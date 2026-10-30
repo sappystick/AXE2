@@ -481,12 +481,19 @@
   "pod": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.4,
+   "seconds": 0.6,
    "why": "",
    "tail": "",
-   "fingerprint": "5c990efaca7d9a4d",
-   "finished": "2026-10-30T10:49:39",
-   "log": "state/logs/pod.log"
+   "fingerprint": "0e85627cd137a835",
+   "inputs": {
+    "rf2/head/rf2_pod.py": "437684b886",
+    "rf2/head/rf2_head.py": "786ab35bb3"
+   },
+   "finished": "2026-10-30T14:54:16",
+   "log": "state/logs/pod.log",
+   "history": [
+    0.6
+   ]
   },
   "ui": {
    "status": "pass",
@@ -533,22 +540,23 @@
    "seconds": 3.6,
    "why": "",
    "tail": "",
-   "fingerprint": "768c2ba66d9e63a3",
+   "fingerprint": "d49c8873fa9cba07",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "e56d5e731d",
+    "run.py": "ac0256e75b",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-30T13:58:37",
+   "finished": "2026-10-30T14:54:19",
    "log": "state/logs/selftest.log",
    "history": [
     3.3,
     3.1,
+    3.6,
     3.6
    ]
   },
@@ -590,6 +598,56 @@
    "log": "state/logs/study_mp1v2_protect.log",
    "history": [
     0.2
+   ]
+  },
+  "display": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.9,
+   "why": "",
+   "tail": "",
+   "fingerprint": "9773c6874eccb6cc",
+   "inputs": {
+    "rf2/rf2_display.py": "8015e49c7f",
+    "rf2/rf2_ui.py": "5acd5bc21a",
+    "rf2/head/rf2_ledgrid.py": "f09894c141"
+   },
+   "finished": "2026-10-30T14:54:21",
+   "log": "state/logs/display.log",
+   "history": [
+    1.9
+   ]
+  },
+  "study:continuous": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "cd8725a4fedd87a0",
+   "inputs": {
+    "rf2/rf2_continuous.py": "1a13699daf"
+   },
+   "finished": "2026-10-30T14:54:22",
+   "log": "state/logs/study_continuous.log",
+   "history": [
+    0.1
+   ]
+  },
+  "study:separation": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 16.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "555074d56298ea05",
+   "inputs": {
+    "rf2/rf2_separation.py": "c7cd46de89"
+   },
+   "finished": "2026-10-30T14:54:38",
+   "log": "state/logs/study_separation.log",
+   "history": [
+    16.5
    ]
   }
  },
@@ -950,6 +1008,23 @@
    "seconds": 3.6,
    "results": {
     "selftest": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T14:54:21",
+   "seconds": 6.0,
+   "results": {
+    "pod": "pass",
+    "selftest": "pass",
+    "display": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T14:54:38",
+   "seconds": 16.6,
+   "results": {
+    "study:continuous": "pass",
+    "study:separation": "pass"
    }
   }
  ]

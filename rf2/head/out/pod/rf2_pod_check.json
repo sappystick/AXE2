@@ -39,6 +39,16 @@
   "no_magnet_no_metal": {
    "ok": true,
    "note": "all printed PETG; sounder must be a magnet-free piezo or a remote sounder; the pod sits about 0.9 m from the head (not a field zone) but the cable pair runs to it"
+  },
+  "power_button": {
+   "ok": true,
+   "distance_from_selector_mm": 66.0,
+   "above_trigger_offset_mm": 1.0,
+   "wall_to_battery_bay_mm": 7.5,
+   "recess_mm": 1.0,
+   "hold_to_toggle_s": 2.0,
+   "max_interference_mm3": 0.0,
+   "note": "far enough from the selector (>= 30 mm) that the thumb cannot confuse them, directly above the trigger (thumb rest), recessed so it cannot be pressed by a knock"
   }
  },
  "ok": true,
@@ -91,6 +101,19 @@
     "both"
    ],
    "note": "ASSUMED ball-detent collar around the body, three detents 30 deg apart, three icon windows"
+  },
+  "power": {
+   "x": 84.0,
+   "cap_d": 11.0,
+   "pocket_d": 12.0,
+   "pocket_depth": 5.0,
+   "guard_h": 1.0,
+   "ring_d": [
+    13.0,
+    15.0
+   ],
+   "hold_s": 2.0,
+   "note": "recessed momentary push button on TOP above the trigger (thumb position while the index finger is on the trigger); hold 2 s on / off so a knock cannot switch it; a light-pipe ring around it shows green on, amber boost, red low battery. It drives the PM2 power-path controller (soft latch); the PM2 fuse stays in series. Button part ASSUMED (a sealed 12 mm tactile, IP67 class)"
   },
   "trigger": {
    "x": [
