@@ -55,6 +55,11 @@ class Field:
         k = P.tobytes()
         if k not in self.cache: self.cache[k] = C.B_paths(self.paths, P, chunk=100)
         return self.cache[k]
+def image_L(T, zf, k):
+    """inductance of real turns T below a permeable half-space at zf (image weight k): L0 + k * sum M(real i, image j). Counting the images as extra
+    turns (L_turns(T + images)) double-counts them: that gives (1 + k^2) L0 + 2 k M."""
+    r = np.array([t[0] for t in T]); z = np.array([t[1] for t in T]); i, j = np.meshgrid(range(len(T)), range(len(T)))
+    return C.L_turns(T) + k * float(np.sum(C.M_coax(r[i], z[i], r[j], 2 * zf - z[j])))
 def gate_for(L, R, I, Cn=500e-12):
     TM.A = dict(T=None, L=L, I=I, R=R); TM.CN = Cn; return TM.simulate("A alone", "critical")["mono_clean_us"]
 def evaluate(name, paths, L, extra=None):
@@ -108,19 +113,18 @@ if __name__ == "__main__":
     # focusing: ideal ferrite cap and NdFeB shell, as weighted images of the rect coil in a plane at the window top (z 13.1)
     Iref = math.sqrt(2 * E0 / Lref); gref = res["coils"][0]["first_gate_us"]
     for label, k in (("no cap", 0.0), ("NdFeB shell (mu_r 1.05): image weight 0.024", (1.05 - 1) / (1.05 + 1)), ("ideal soft-ferrite cap (upper bound)", 1.0)):
-        Ti = TR + ([(r, 2 * 13.1e-3 - z, k) for r, z, s in TR] if k else []); L = C.L_turns(Ti); I = math.sqrt(2 * E0 / L)
-        Bt = lambda P, Ti=Ti: C.B_turns(Ti, P); Br = lambda P: C.B_turns(TR, P)          # the receive loop is the coil itself; its images are already in Bt for reception symmetry
+        Ti = TR + ([(r, 2 * 13.1e-3 - z, k) for r, z, s in TR] if k else []); L = image_L(TR, 13.1e-3, k); I = math.sqrt(2 * E0 / L)
         d = {f"{m} g": RC.depth(lambda P, Ti=Ti: C.B_turns(Ti, P), I, gref * 1e-6, m, lambda P, Ti=Ti: C.B_turns(Ti, P)) for m in MASSES}
         row = dict(case=label, image_weight=round(k, 4), L_uH=round(L * 1e6, 1), I_A=round(I, 2), mono_depth_mm=d); res["focusing"].append(row); print(json.dumps(row), flush=True)
     # Halbach shell: static field
     best = None
     for sense in (1, -1):
-        col = halbach(sense); Bc = col.getB(np.array([[0.1086, 0, -0.005]]))[0]
+        col = halbach(sense); Bc = np.reshape(col.getB(np.array([[0.1086, 0, -0.005]])), -1)
         if best is None or Bc[2] < best[1]: best = (sense, Bc[2], col)
     col = best[2]; f = FORMERS["RIM"]
     probes = {"tube centre (coil)": (f["R0"], 8.5), "receive boards under the coil (z 2)": (f["R0"], 2.0), "receive boards mid-face (r 50, z 2)": (50, 2.0),
               "ground 0 mm below the rim (z 0)": (f["R0"], 0.0), "50 mm below the rim": (f["R0"], -50), "100 mm below the rim": (f["R0"], -100), "100 mm below the centre": (0, -100)}
-    res["halbach"]["static_field_mT"] = {k: round(float(np.linalg.norm(col.getB(np.array([[r * 1e-3, 0, z * 1e-3]]))[0])) * 1e3, 4) for k, (r, z) in probes.items()}
+    res["halbach"]["static_field_mT"] = {k: round(float(np.linalg.norm(np.reshape(col.getB(np.array([[r * 1e-3, 0, z * 1e-3]])), -1))) * 1e3, 4) for k, (r, z) in probes.items()}
     res["halbach"]["sense"] = best[0]; res["halbach"]["blocks"] = 900; res["halbach"]["mass_g_NdFeB_7.5"] = round(900 * 27e-3 * 7.5, 0)
     res["halbach"]["eddy_into_mono"] = [magnet_eddy(TR, Iref, gref, c, int(900 * (3 / c))) for c in (3, 5, 10)]
     res["halbach"]["height_needed_mm"] = "shell top at z 8.5 + 6 + 1.5 = 16.0, above option B's display level (13.1): the head grows to about 19-20 mm"
