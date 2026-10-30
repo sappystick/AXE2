@@ -499,7 +499,7 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - **Parylene:** ParyFree on the analog / near-coil fins (eps 2.35, DF 0.0007, WVTR 0.09); N or C on the HV fins (7000 / 5600 V/mil).
   - **Magnetometers:** MMC5983MA (0.4 mG, disturbing field 10 G < the 12 G pulse: SET / RESET each pulse) or LIS2MDL (+-49 G, 3 mG). Both see only large or elongated iron (correction below).
   - **Litz:** fluoropolymer insulation available (Rubadue); permittivity still UNVERIFIED.
-- **Ferrous gradiometer (rf2_fluxgate.py, docs/BENCH_FLUXGATE.md).** Range at 1e-4 / 1e-5 residual mismatch:
+- **Ferrous gradiometer (rf2_fluxgate.py, docs/BENCH_FLUXGATE.md).** SUPERSEDED for a real sensor by section 34 (DRV425 datasheet noise; CORRECTIONS). Generic 10 pT/rtHz sensor, range at 1e-4 / 1e-5 residual mismatch:
   - 3 g lump 70 / 160 mm;
   - nail along the field 250 / 525 mm, across 60 / 135 mm;
   - 100 g lump 250 / 520 mm.
@@ -666,3 +666,32 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - **Screen (ASSUMED until a datasheet is on file):** a 1.28 in, 128 x 128 reflective memory LCD of the Sharp LS013B7DH03 class (readable in sunlight, microwatt power; it sits in the handle, about 0.9 m from the coil). Pages: target (depth, size in g equivalent, decay class and decay time, confidence, LOCK or bearing) and settings (LED and audio profiles). Text is limited to 23 characters per line.
   - Render: `head/out/pod/rf2_pod_view.png` (closed and open).
 - **Not done:** the screen part and its driver (SPI from the handle UI board), the latch / spring parts, the UI board itself, and any human-factors test of the coding.
+
+## 34. Owner-supplied datasheets, batch 3: clamp recovery, HV parts, power, sensing and UI parts (2026-10-30; MODELED; DATASHEET_LOG RF2-DS-OWNER3)
+- **Clamp reverse recovery (new, `rf2_mp1v2_protect.recovery_check`).** The BAV199 fits had no stored charge; the Nexperia 2023 sheet gives trr 0.8 typ / 3 max us (Infineon 0.6 / 1.5).
+  - Method: TT = trr / ln 2 (charge-control model, ASSUMED conversion); 8.06 A turn-off.
+  - Single BAV199 (IXTY08N100D2): settling 19.17 / 18.95 / 18.01 / **21.35 us** for no TT / Nexperia typ / Infineon max / Nexperia max; up to 36 mA reverse-recovery current.
+  - Schottky-assisted (IXTY01N100D, 2 x BAV199 + 2 x BAT54S typ): **17.50 us for every trr**; the BAV199 never conduct.
+  - **Decision:** keep the BAT54S pair in the MP1 v2 clamp. Without it, specify the Infineon BAV199 (1.5 us max), or bench-measure trr per lot.
+- **HV parts (`rf2/rf2_hvparts.py`, study `hvparts`, 8 checks).**
+  - **Clamp diode:** Nexperia US3M is adopted as a second source (full data sheet; 1000 V, 2.17x over the clamp; Cd about 7 pF above 400 V; 23.5 mA average, 0.06 W, TJ about 78 C). The 650 V PNU650200 / 300 pass rule 6 at 1.41x but are oversized D2PAKs: not adopted.
+  - **TX switch:** ARF461A/B and ARF1510 are about 2 ohm, about 48-55 W conduction in boost against 6.1 W for the C3M0280090J, and the peak is over their ID rating. They are enhancement mode, so they cannot be the limiter. The ARF1510 is a BeO package: not adopted.
+  - **Rd:** no Vishay TR or Ohmite Power-Mox combination gives 408 ohm at >= 4.24 W within the TXF fin; Rd stays OPEN. The TR fits as high-value HV dividers and bleeders (the cascode gate divider, the 460 V bleeder).
+  - **Heat sink:** the Ohmite D Series TO-263 is adopted in rf2_continuous (7 C/W READ): **TJ 89 -> 101 C** at 6.08 W, under the 125 C derated limit. Aluminium at the neck is a fixed target: OPEN (echo budget).
+- **Ferrous channel (`rf2_fluxgate.py`).** The DRV425 replaces the 10 pT/rtHz assumption (CORRECTIONS).
+  - Ranges at 1e-4 / 1e-5 mismatch: 3 g lump 45 / 55 mm; nail along 175 / 200 mm, across 40 / 45 mm; 100 g lump 175 / 200 mm.
+  - Its +-2 mT range covers the 1.22 / 1.93 mT TX pulse at the head sensor (boost margin under 5 %).
+- **Power path candidates:**
+  - **BQ76952** for the 7S pack: monitor, protector, coulomb counter, up to 9 thermistors.
+  - **LTC4365** at the handle input: reverse and over-voltage protection, OV about 30.5 V; the 34 V operating limit leaves 4.6 V over a full 29.4 V pack.
+  - **TMP117** for the thermal-limit sensors and the display drift sensor: +-0.1 C, 4 per bus, ALERT.
+  - **UCC28780** (preferred over the UCC28782) for a regenerative clamp in the pod: 460 V DC up the shaft at about 23 mA. It needs a transformer (ferrite, so not in the head), and its loop regulates an output while a clamp must hold its input: OPEN design study.
+- **UI candidates:**
+  - **C&K KSC2 TE** (IP67, 10 M cycles, 6.2 x 6.3 mm) for the trigger, the power button (with a light-pipe ring) and profile keys.
+  - **C&K ITS** (illuminated) only behind a sealed boot: no sealing rating found; 70 C operating limit.
+  - **TPD4E1B06** for connector ESD (0.7 pF, 0.5 nA; not an MP1 rail clamp: it breaks down at 7-9.5 V).
+  - **Murata piezos** (PKM22EPPH4001-B0 22 mm, PKLCS1212E4001-R1 12 mm) fit the pocket and are magnet-free, but:
+    - both are **to be discontinued** (last order 3/31/2027);
+    - both are resonant at 4 kHz; the 200-1400 Hz depth-pitch tones and the 1.8 kHz ping are 15-20 dB down (READ).
+    - OPEN: retune the audio coding to 2-8 kHz, or choose a wider-band magnet-free transducer.
+- Duplicate uploads not re-filed: Diodes US3M rev 5-2 (adds RthJT 26 C/W); MG 832TC Ver. 4.3.

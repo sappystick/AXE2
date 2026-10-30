@@ -6,7 +6,9 @@ mismatch after calibration): that residual moves at the sweep rate, in the same 
 Targets (steel, mu >> 1, chi_eff from the demagnetising factor of an ellipsoid): 3 g compact lump (sphere, chi_eff 3); 50 x 3 mm nail (2.8 g)
 along / across the field; 100 g lump. Earth field 50 uT, inclination 60 deg (ASSUMED mid-latitude). Target directly under the head centre;
 lower sensor at the hub (z 8 mm above the skid underside), upper sensor 600 mm above it.
-Sensor noise 10 pT/rtHz (ASSUMED, typical of a good miniature fluxgate: UNVERIFIED, no datasheet on disk), bandwidth 10 Hz.
+Sensors (bandwidth 10 Hz): "generic" 10 pT/rtHz (ASSUMED, UNVERIFIED: the original assumption, kept for comparison) and the TI DRV425 (SBOS729B, Oct 2025,
+data/datasheets/TI_DRV425_SBOS729B_2025-10.pdf): noise 1.5 nT/rtHz typ, range +-2 mT, offset +-8 uT max, offset drift +-5 nT/C typ, bandwidth 47 / 32 kHz.
+The DRV425 offset drift adds a sensor-to-sensor term of 5 nT per kelvin of temperature difference between the two sensors (0.5 K ASSUMED after warm-up).
 Detection: |gradient field| >= 3 x (sqrt(2) x sensor noise + B_E x residual mismatch). Residual mismatch 1e-3 / 1e-4 / 1e-5 (uncalibrated /
 calibrated / carefully calibrated). Also: the TX field at the head sensor (it must be read in the quiet window).
 usage: python3 rf2/rf2_fluxgate.py -> rf2/results/rf2_fluxgate.json"""
@@ -26,21 +28,27 @@ def dipole_B(m_vec, r_vec):
     r = np.linalg.norm(r_vec); u = r_vec / r; return mu0 / (4 * math.pi) * (3 * u * np.dot(m_vec, u) - m_vec) / r ** 3
 if __name__ == "__main__":
     bdir = np.array([math.cos(INC), 0.0, -math.sin(INC)]); res = dict(status=__doc__.split("\n")[1], targets=[], tx_at_sensor_mT=None)
-    noise = 10e-12 * math.sqrt(10.0) * math.sqrt(2)
-    for kind in ("3 g lump (sphere)", "nail 50 x 3 mm along the field", "nail 50 x 3 mm across the field", "100 g lump (sphere)"):
-        m, V = moment(kind); mv = m * bdir; rows = {}
-        for mis in (1e-3, 1e-4, 1e-5):
-            floor = noise + BE * mis; rng = 0
-            for d in np.arange(0.02, 3.0, 0.005):
-                lo = np.array([0, 0, 0.008 + d]); hi = lo + np.array([0, 0, 0.6]); g = np.linalg.norm(dipole_B(mv, lo) - dipole_B(mv, hi))
-                if g >= 3 * floor: rng = d
-            rows[f"mismatch {mis:g}"] = dict(floor_nT=round(floor * 1e9, 3), range_mm=round(rng * 1000))
-        B100 = np.linalg.norm(dipole_B(mv, np.array([0, 0, 0.108])))
-        row = dict(target=kind, mass_g=round(V * RHO * 1000, 1), moment_Am2=float(f"{m:.3g}"), field_at_100mm_nT=round(B100 * 1e9, 2), detection=rows)
-        res["targets"].append(row); print(json.dumps(row), flush=True)
+    SENSORS = {"generic 10 pT/rtHz (ASSUMED, UNVERIFIED)": dict(noise=10e-12, drift=0.0, range_T=None),
+               "TI DRV425 (datasheet)": dict(noise=1.5e-9, drift=5e-9 * 0.5, range_T=2e-3)}
+    res["sensors"] = {}
+    for sname, sp in SENSORS.items():
+      noise = sp["noise"] * math.sqrt(10.0) * math.sqrt(2) + sp["drift"]; res["sensors"][sname] = []
+      for kind in ("3 g lump (sphere)", "nail 50 x 3 mm along the field", "nail 50 x 3 mm across the field", "100 g lump (sphere)"):
+          m, V = moment(kind); mv = m * bdir; rows = {}
+          for mis in (1e-3, 1e-4, 1e-5):
+              floor = noise + BE * mis; rng = 0
+              for d in np.arange(0.02, 3.0, 0.005):
+                  lo = np.array([0, 0, 0.008 + d]); hi = lo + np.array([0, 0, 0.6]); g = np.linalg.norm(dipole_B(mv, lo) - dipole_B(mv, hi))
+                  if g >= 3 * floor: rng = d
+              rows[f"mismatch {mis:g}"] = dict(floor_nT=round(floor * 1e9, 3), range_mm=round(rng * 1000))
+          B100 = np.linalg.norm(dipole_B(mv, np.array([0, 0, 0.108])))
+          row = dict(target=kind, mass_g=round(V * RHO * 1000, 1), moment_Am2=float(f"{m:.3g}"), field_at_100mm_nT=round(B100 * 1e9, 2), detection=rows)
+          res["sensors"][sname].append(row); print(sname[:16], json.dumps(row), flush=True)
+    res["targets"] = res["sensors"]["TI DRV425 (datasheet)"]                 # the verified sensor is the headline since 2026-10-30
     res["tx_at_sensor_mT"] = round(float(np.linalg.norm(Z.Bc((0, 0, 8.0))[0])) * Z.I0 * 1e3, 3)
-    res["notes"] = ["the head sensor sees about 1.2 mT at each TX pulse: far above a fluxgate's range (typically +-100 uT, UNVERIFIED); it must recover before "
-                    "the quiet-window reading (bench: recovery time)", "its permalloy core is itself a small magnetic and conductive target for the mono (bench: "
+    res["tx_at_sensor_mT_boost"] = round(res["tx_at_sensor_mT"] * 12.74 / 8.06, 3)
+    res["notes"] = ["the head sensor sees about 1.2 mT at each scan TX pulse and about 1.9 mT in boost: inside the DRV425 +-2 mT range (boost margin under 5 %); "
+                    "it must still settle before the quiet-window reading (bench: recovery time)", "its permalloy core is itself a small magnetic and conductive target for the mono (bench: "
                     "mono residual with and without the sensor in place)", "residual mismatch is set by calibration (rotate the head in a clean area; 12-parameter fit "
                     "per sensor: offsets, gains, non-orthogonality) and by temperature"]
     json.dump(res, open(os.path.join(OUT, "rf2_fluxgate.json"), "w"), indent=1); print("TX at sensor mT", res["tx_at_sensor_mT"])

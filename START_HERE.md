@@ -55,6 +55,12 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
   - **Light plate, interface, pod, construct** (section 30): opaque conical-well lid for the 522 LEDs, the signature-to-light-and-sound model with the 3-position selector and trigger, the handle pod, and the assembled model with the harness (`out_BF/construct/assembly.glb`).
   - **SPICE and acceleration** (section 31): TI LMH6629 model qualified against its datasheet (`rf2_opamp_qualify.py`); the MP1 v2 chain study found the 2026-10-30 design is **not closed** (amplifier input current 24 mA vs 10 mA, settling 19.5 us vs 16.3 us, noise 1.97 nV/rtHz per leg vs 1.7; docs/CORRECTIONS.md); the in-step result cache (`src/simcache.py`), runner `--why` / `--timing`, `make test`.
   - **Display v3 and the flip-up screen** (section 33): small dots and a centre lock while sweeping, a sonar ring with echoes when the trigger is held, light and sound on one clock, 4 LED and 4 audio profiles; a push-release flip-up 128 x 128 screen cassette behind the power button.
+  - **Datasheet batch 3** (section 34, DATASHEET_LOG RF2-DS-OWNER3; 21 owner PDFs):
+    - Keep the BAT54S pair in the MP1 v2 clamp. A worst-case BAV199 recovery (trr 3 us) stretches the single-BAV199 settling to 21.4 us.
+    - Nexperia US3M is a second source for the clamp diode; the ARF RF MOSFETs and the 650 V D2PAK rectifiers are not adopted.
+    - Heat sink TJ 101 C. The DRV425 roughly halves the ferrous-channel ranges.
+    - Candidates: BQ76952, LTC4365, TMP117, UCC28780, KSC2 TE.
+    - The Murata piezos are 4 kHz resonant and end-of-life.
   - **Owner updates 2026-10-30** (section 32): power button on the pod; continuous boost checked part by part (open: switch heat sink, regenerative clamp, 4.2 W 630 V damping resistor, coil thermal model); display and audio coding v2 (size = blob radius, depth = pulse, several targets as separate blobs and voices, status screens); multi-target separation by decay time and by position.
   - **Stage 4:** `rf2_zonerules.py` (runner step `zonerules`) turns the zone rules into checks. **Stage 4b, first fin board:** TXF (TXJ as a fin). FEP litz and sleeves are in the head SPEC: section 29.
 - **Still open, in order:**

@@ -1,0 +1,201 @@
+{
+ "status": "MODELED; ratings from the logged datasheets; READ values from graphs",
+ "boost_A": 12.74,
+ "clamp_diode": [
+  {
+   "part": "Nexperia US3M (2025-01-20)",
+   "rule6": true,
+   "margin_over_clamp": 2.17,
+   "avg_current_mA": 23.5,
+   "avg_vs_rating": 0.0078,
+   "loss_W": 0.059,
+   "tj_C": 77.9,
+   "cd_430_pF": 7.0,
+   "area_mm2": 42.7,
+   "note": "product data sheet; Cd READ from Fig. 5 (about 7 pF above 400 V); Rth(j-sp) 15 K/W"
+  },
+  {
+   "part": "Diodes US3M DS37228 rev 5-2 (today)",
+   "rule6": true,
+   "margin_over_clamp": 2.17,
+   "avg_current_mA": 23.5,
+   "avg_vs_rating": 0.0078,
+   "loss_W": 0.059,
+   "tj_C": null,
+   "cd_430_pF": null,
+   "area_mm2": 42.7,
+   "note": "ADVANCED INFORMATION sheet; RthJT 26 C/W; Cd 25 pF at 4 V"
+  },
+  {
+   "part": "Nexperia PNU650200AEJ-Q",
+   "rule6": true,
+   "margin_over_clamp": 1.41,
+   "avg_current_mA": 23.5,
+   "avg_vs_rating": 0.0012,
+   "loss_W": 0.059,
+   "tj_C": 73.6,
+   "cd_430_pF": 12.0,
+   "area_mm2": 157.1,
+   "note": "Cd 10 pF at 400 V (table), about 12 pF at 430 V READ; Qrr 451-1221 nC at 20 A; body size ASSUMED (D2PAK class)"
+  },
+  {
+   "part": "Nexperia PNU650300AEJ",
+   "rule6": true,
+   "margin_over_clamp": 1.41,
+   "avg_current_mA": 23.5,
+   "avg_vs_rating": 0.0008,
+   "loss_W": 0.059,
+   "tj_C": 73.6,
+   "cd_430_pF": 13.0,
+   "area_mm2": 157.1,
+   "note": "Cd 13 pF at 400 V (table); Qrr 690-1788 nC at 30 A; body size ASSUMED (D2PAK class)"
+  }
+ ],
+ "tx_switch": [
+  {
+   "part": "Wolfspeed C3M0280090J (today)",
+   "mode": "enhancement",
+   "vdss": 900,
+   "rule6": true,
+   "rds_ohm": 0.36,
+   "conduction_W_boost": 6.08,
+   "peak_A": 12.74,
+   "peak_within_ID": true,
+   "coss_pF_at_V": [
+    110,
+    25
+   ],
+   "usable_as_limiter": false,
+   "hazard": null
+  },
+  {
+   "part": "Microsemi ARF461A/B",
+   "mode": "enhancement",
+   "vdss": 1000,
+   "rule6": true,
+   "rds_ohm": 2.0,
+   "conduction_W_boost": 47.8,
+   "peak_A": 12.74,
+   "peak_within_ID": false,
+   "coss_pF_at_V": [
+    175,
+    50
+   ],
+   "usable_as_limiter": false,
+   "hazard": null
+  },
+  {
+   "part": "Microsemi ARF1510",
+   "mode": "enhancement",
+   "vdss": 1000,
+   "rule6": true,
+   "rds_ohm": 2.31,
+   "conduction_W_boost": 55.16,
+   "peak_A": 12.74,
+   "peak_within_ID": false,
+   "coss_pF_at_V": [
+    100,
+    200
+   ],
+   "usable_as_limiter": false,
+   "hazard": "BeO ceramic (toxic dust; special disposal); four-switch H-bridge, flangeless 27 x 27 mm, clamped to a heat sink"
+  }
+ ],
+ "tx_switch_note": "ARF RDS(on) from VDS(on) / ID at 3.25 A (typ / max); hot value x1.8 (ASSUMED, typical Si VDMOS at 125 C); no IDM in either ARF sheet: the continuous ID is used",
+ "rd_vishay_TR": {
+  "P_rd_boost_W": 2.12,
+  "derate_at_C": 70.0,
+  "derate": 0.55,
+  "options": [
+   {
+    "model": "TR10F",
+    "n_parallel": 8,
+    "each_ohm": 3264,
+    "P_avail_W": 4.4,
+    "need_W": 4.24,
+    "ok_power": true,
+    "ok_voltage": true,
+    "length_mm": 25.4,
+    "face_mm2": 1806,
+    "fits_TXF_fin": false
+   },
+   {
+    "model": "TR15G",
+    "n_parallel": 6,
+    "each_ohm": 2448,
+    "P_avail_W": 4.95,
+    "need_W": 4.24,
+    "ok_power": true,
+    "ok_voltage": true,
+    "length_mm": 38.1,
+    "face_mm2": 2032,
+    "fits_TXF_fin": false
+   },
+   {
+    "model": "TR15G",
+    "n_parallel": 7,
+    "each_ohm": 2856,
+    "P_avail_W": 5.78,
+    "need_W": 4.24,
+    "ok_power": true,
+    "ok_voltage": true,
+    "length_mm": 38.1,
+    "face_mm2": 2371,
+    "fits_TXF_fin": false
+   },
+   {
+    "model": "TR15G",
+    "n_parallel": 8,
+    "each_ohm": 3264,
+    "P_avail_W": 6.6,
+    "need_W": 4.24,
+    "ok_power": true,
+    "ok_voltage": true,
+    "length_mm": 38.1,
+    "face_mm2": 2710,
+    "fits_TXF_fin": false
+   },
+   {
+    "model": "TR20H",
+    "n_parallel": 5,
+    "each_ohm": 2040,
+    "P_avail_W": 5.5,
+    "need_W": 4.24,
+    "ok_power": true,
+    "ok_voltage": true,
+    "length_mm": 50.8,
+    "face_mm2": 2258,
+    "fits_TXF_fin": false
+   },
+   {
+    "model": "TR20H",
+    "n_parallel": 6,
+    "each_ohm": 2448,
+    "P_avail_W": 6.6,
+    "need_W": 4.24,
+    "ok_power": true,
+    "ok_voltage": true,
+    "length_mm": 50.8,
+    "face_mm2": 2710,
+    "fits_TXF_fin": false
+   }
+  ],
+  "any_fits": false,
+  "fit_elsewhere": "high-value HV dividers / bleeders: cascode gate divider 2 x 10 Mohm (TR03C, 800 V, 230 V each: 5.3 mW), 460 V clamp-capacitor bleeder and sense divider"
+ },
+ "candidates": {
+  "TI TMP117": "thermal-limit sensors for continuous boost (switch heat sink, HV fin / Rd, coil channel, battery) and the display drift sensor: +-0.1 C (-20..50 C), +-0.25 C to 125 C, 3.5 uA at 1 Hz, up to 4 per I2C bus (ADD0 to GND / V+ / SDA / SCL), ALERT with programmable limits; WSON 2 x 2 mm (small metal pad: count it in the echo budget if inside the coil)",
+  "TI UCC28780": "regenerative clamp: an active-clamp flyback 460 V -> battery bus; stored coil energy 10.8 W in boost (the clamp receives it less the Rd share, 8.9 W in rf2_continuous). VDD 12-34 V operating, 38 V abs max (7S pack 29.4 V full: OK); up to 1 MHz; needs a transformer (ferrite: banned in the head, so the converter sits in the pod; 460 V DC up the shaft at about 24 mA) and a >= 800 V primary switch (C3M0280090J); its control loop regulates an output, a clamp must hold its input at 460 V: OPEN design study"
+ },
+ "checks": {
+  "US3M (Nexperia) passes rule 6 with >= 2x margin over the clamp": true,
+  "PNU650 parts pass rule 6 but under 1.5x over the clamp": true,
+  "clamp diode average current under 2 % of the US3M rating": true,
+  "US3M junction rise under 15 K in continuous boost": true,
+  "ARF parts dissipate > 4x the C3M in conduction": true,
+  "ARF parts cannot carry the boost peak within 80 % of their rating": true,
+  "no ARF part can serve as the depletion limiter": true,
+  "no TR combination gives Rd >= 2x power and fits the 32 mm TXF fin": true
+ },
+ "all_pass": true
+}

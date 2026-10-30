@@ -112,8 +112,6 @@ def main():
     res["accuracy_check"]["ok"] = res["accuracy_check"]["max_rel_diff"] is not None and res["accuracy_check"]["max_rel_diff"] < 0.03
     res["any_option_passes"] = any(r["passes"] for r in res["runs"] if not r["question"].startswith("0."))
     json.dump(res, open(os.path.join(OUT, "rf2_mp1v2_protect.json"), "w"), indent=1); return res
-if __name__ == "__main__":
-    main(); sys.exit(0)
 # ---- boost current (owner 2026-10-30: the trigger may be held indefinitely): the same turn-off at the boost peak current. The DC drive of SRC_TR sets the coil current.
 @memo("spice.protect.transient_at_current", files=lambda *a, **k: [C.LMH, C.OPA], uses=USES, tools=["ngspice"])
 def transient_at(fet, clamp, i_coil):
@@ -129,3 +127,33 @@ def boost_check():
     for fet, cl in (("IXTY08N100D2", "1 x BAV199"), ("IXTY01N100D@Q", "2 x BAV199 + 2 x BAT54S (typ)")):
         for i in (8.06, 12.74): r = transient_at(fet, CLAMPS[cl], i); r.update(limiter=fet, clamp=cl); rows.append(r)
     return rows
+# ---- clamp reverse recovery (2026-10-30, Nexperia BAV199 1 April 2023 sheet): the same turn-off with stored charge in the BAV199s (TT variants above); the BAT54S Schottkys
+# store none (trr <= 5 ns). Question: does recovery of the clamp diodes push the settling past the 16.3 us first gate?
+# TT from trr ~ TT ln(1 + IF/IR) with IF = IR = 10 mA (the datasheet test): TT = trr / ln 2 (ASSUMED conversion, charge-control model). The fits in DIODES have no stored charge.
+# Nexperia BAV199 (1 April 2023 and v.3): trr 0.8 typ / 3 max us; Infineon 2007: 0.6 typ / 1.5 max us. TT is added to the BAV199 card only (BAT54 Schottky: trr <= 5 ns).
+TT_US = {"none": 0.0, "Nexperia typ (trr 0.8 us)": 0.8 / math.log(2), "Infineon max (trr 1.5 us)": 1.5 / math.log(2), "Nexperia max (trr 3 us)": 3.0 / math.log(2)}
+@memo("spice.protect.transient_recovery", files=lambda *a, **k: [C.LMH, C.OPA], uses=USES + [TT_US], tools=["ngspice"])
+def transient_rec(fet, clamp, tt_us, i_coil=8.06):
+    net = netlist(fet, clamp, C.SRC_TR.replace("Vdr nd vb DC -4.27", f"Vdr nd vb DC {-i_coil * 0.53:.4f}"))
+    card = f".model BAV199_MAX D({DIODES['BAV199_MAX']})"; assert card in net
+    net = net.replace(card, f".model BAV199_MAX D({DIODES['BAV199_MAX']} TT={tt_us:.4f}u)")
+    vec = ["v(clA)", "i(VmA)", "v(o1A)", "v(o1B)", "v(nc)", "i(VsuA0)"]
+    A, _ = C.ng(net + ".save " + " ".join(vec) + "\n.options reltol=1e-3 abstol=1e-11 vntol=1e-6 method=gear\n.tran 5n 120u 0 5n\n", "run\nwrdata {OUT} " + " ".join(vec), timeout=3000)
+    t = A[:, 0]; col = {v: A[:, 2 * i + 1] for i, v in enumerate(vec)}; d1 = col["v(o1A)"] - col["v(o1B)"]; rest = float(d1[-1]); bad = np.where(np.abs(d1 - rest) > 10e-3)[0]
+    iu = col["i(VsuA0)"]; rev = iu[t > 12e-6]
+    return dict(tt_us=round(tt_us, 3), peak_lmh_input_mA=round(float(np.abs(col["i(VmA)"]).max()) * 1e3, 2), peak_clamp_node_V=round(float(col["v(clA)"].max()), 2),
+                settle_us=round(float(t[bad[-1] + 1]) * 1e6, 2) if len(bad) and bad[-1] + 1 < len(t) else None,
+                peak_reverse_recovery_mA=round(float(max(0.0, -rev.min())) * 1e3, 3) if len(rev) else None)
+def recovery_check():
+    rows = []
+    for fet, cl in (("IXTY08N100D2", "1 x BAV199"), ("IXTY01N100D@Q", "2 x BAV199 + 2 x BAT54S (typ)")):
+        for name, tt in TT_US.items():
+            r = transient_rec(fet, CLAMPS[cl], tt); r.update(limiter=fet, clamp=cl, recovery=name); rows.append(r); print(json.dumps(r), flush=True)
+    return rows
+def main_all():
+    res = main(); res["boost_12A74"] = boost_check(); res["clamp_recovery"] = recovery_check()
+    json.dump(res, open(os.path.join(OUT, "rf2_mp1v2_protect.json"), "w"), indent=1)
+    for r in res["boost_12A74"] + res["clamp_recovery"]: print(json.dumps(r), flush=True)
+    return res
+if __name__ == "__main__":
+    main_all(); sys.exit(0)

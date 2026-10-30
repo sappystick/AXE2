@@ -8,16 +8,16 @@
    "field_at_100mm_nT": 6.53,
    "detection": {
     "mismatch 0.001": {
-     "floor_nT": 50.045,
+     "floor_nT": 59.208,
      "range_mm": 25
     },
     "mismatch 0.0001": {
-     "floor_nT": 5.045,
-     "range_mm": 70
+     "floor_nT": 14.208,
+     "range_mm": 45
     },
     "mismatch 1e-05": {
-     "floor_nT": 0.545,
-     "range_mm": 160
+     "floor_nT": 9.708,
+     "range_mm": 55
     }
    }
   },
@@ -28,16 +28,16 @@
    "field_at_100mm_nT": 221.74,
    "detection": {
     "mismatch 0.001": {
-     "floor_nT": 50.045,
-     "range_mm": 110
+     "floor_nT": 59.208,
+     "range_mm": 105
     },
     "mismatch 0.0001": {
-     "floor_nT": 5.045,
-     "range_mm": 250
+     "floor_nT": 14.208,
+     "range_mm": 175
     },
     "mismatch 1e-05": {
-     "floor_nT": 0.545,
-     "range_mm": 525
+     "floor_nT": 9.708,
+     "range_mm": 200
     }
    }
   },
@@ -48,16 +48,16 @@
    "field_at_100mm_nT": 4.06,
    "detection": {
     "mismatch 0.001": {
-     "floor_nT": 50.045,
+     "floor_nT": 59.208,
      "range_mm": 20
     },
     "mismatch 0.0001": {
-     "floor_nT": 5.045,
-     "range_mm": 60
+     "floor_nT": 14.208,
+     "range_mm": 40
     },
     "mismatch 1e-05": {
-     "floor_nT": 0.545,
-     "range_mm": 135
+     "floor_nT": 9.708,
+     "range_mm": 45
     }
    }
   },
@@ -68,23 +68,190 @@
    "field_at_100mm_nT": 217.61,
    "detection": {
     "mismatch 0.001": {
-     "floor_nT": 50.045,
-     "range_mm": 110
+     "floor_nT": 59.208,
+     "range_mm": 105
     },
     "mismatch 0.0001": {
-     "floor_nT": 5.045,
-     "range_mm": 250
+     "floor_nT": 14.208,
+     "range_mm": 175
     },
     "mismatch 1e-05": {
-     "floor_nT": 0.545,
-     "range_mm": 520
+     "floor_nT": 9.708,
+     "range_mm": 200
     }
    }
   }
  ],
  "tx_at_sensor_mT": 1.218,
+ "sensors": {
+  "generic 10 pT/rtHz (ASSUMED, UNVERIFIED)": [
+   {
+    "target": "3 g lump (sphere)",
+    "mass_g": 3.0,
+    "moment_Am2": 4.56e-05,
+    "field_at_100mm_nT": 6.53,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 50.045,
+      "range_mm": 25
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 5.045,
+      "range_mm": 70
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 0.545,
+      "range_mm": 160
+     }
+    }
+   },
+   {
+    "target": "nail 50 x 3 mm along the field",
+    "mass_g": 2.8,
+    "moment_Am2": 0.00155,
+    "field_at_100mm_nT": 221.74,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 50.045,
+      "range_mm": 110
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 5.045,
+      "range_mm": 250
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 0.545,
+      "range_mm": 525
+     }
+    }
+   },
+   {
+    "target": "nail 50 x 3 mm across the field",
+    "mass_g": 2.8,
+    "moment_Am2": 2.84e-05,
+    "field_at_100mm_nT": 4.06,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 50.045,
+      "range_mm": 20
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 5.045,
+      "range_mm": 60
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 0.545,
+      "range_mm": 135
+     }
+    }
+   },
+   {
+    "target": "100 g lump (sphere)",
+    "mass_g": 100.0,
+    "moment_Am2": 0.00152,
+    "field_at_100mm_nT": 217.61,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 50.045,
+      "range_mm": 110
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 5.045,
+      "range_mm": 250
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 0.545,
+      "range_mm": 520
+     }
+    }
+   }
+  ],
+  "TI DRV425 (datasheet)": [
+   {
+    "target": "3 g lump (sphere)",
+    "mass_g": 3.0,
+    "moment_Am2": 4.56e-05,
+    "field_at_100mm_nT": 6.53,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 59.208,
+      "range_mm": 25
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 14.208,
+      "range_mm": 45
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 9.708,
+      "range_mm": 55
+     }
+    }
+   },
+   {
+    "target": "nail 50 x 3 mm along the field",
+    "mass_g": 2.8,
+    "moment_Am2": 0.00155,
+    "field_at_100mm_nT": 221.74,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 59.208,
+      "range_mm": 105
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 14.208,
+      "range_mm": 175
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 9.708,
+      "range_mm": 200
+     }
+    }
+   },
+   {
+    "target": "nail 50 x 3 mm across the field",
+    "mass_g": 2.8,
+    "moment_Am2": 2.84e-05,
+    "field_at_100mm_nT": 4.06,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 59.208,
+      "range_mm": 20
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 14.208,
+      "range_mm": 40
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 9.708,
+      "range_mm": 45
+     }
+    }
+   },
+   {
+    "target": "100 g lump (sphere)",
+    "mass_g": 100.0,
+    "moment_Am2": 0.00152,
+    "field_at_100mm_nT": 217.61,
+    "detection": {
+     "mismatch 0.001": {
+      "floor_nT": 59.208,
+      "range_mm": 105
+     },
+     "mismatch 0.0001": {
+      "floor_nT": 14.208,
+      "range_mm": 175
+     },
+     "mismatch 1e-05": {
+      "floor_nT": 9.708,
+      "range_mm": 200
+     }
+    }
+   }
+  ]
+ },
+ "tx_at_sensor_mT_boost": 1.925,
  "notes": [
-  "the head sensor sees about 1.2 mT at each TX pulse: far above a fluxgate's range (typically +-100 uT, UNVERIFIED); it must recover before the quiet-window reading (bench: recovery time)",
+  "the head sensor sees about 1.2 mT at each scan TX pulse and about 1.9 mT in boost: inside the DRV425 +-2 mT range (boost margin under 5 %); it must still settle before the quiet-window reading (bench: recovery time)",
   "its permalloy core is itself a small magnetic and conductive target for the mono (bench: mono residual with and without the sensor in place)",
   "residual mismatch is set by calibration (rotate the head in a clean area; 12-parameter fit per sensor: offsets, gains, non-orthogonality) and by temperature"
  ]

@@ -4,12 +4,14 @@ Model: `rf2/rf2_fluxgate.py`. Status: MODELED; nothing below has been measured.
 
 ## What the model says (to be verified)
 
-| Target (steel) | Field at 100 mm | Range at 1e-4 mismatch | Range at 1e-5 mismatch |
+Ranges as "1e-4 / 1e-5 mismatch". The DRV425 column uses its datasheet noise (1.5 nT/rtHz typ) and offset drift (5 nT/C, 0.5 K between the sensors ASSUMED); the generic column is the earlier 10 pT/rtHz assumption (UNVERIFIED), kept for comparison (CORRECTIONS 2026-10-30).
+
+| Target (steel) | Field at 100 mm | TI DRV425 | generic 10 pT/rtHz |
 |---|---|---|---|
-| 3 g compact lump | 6.5 nT | 70 mm | 160 mm |
-| 50 x 3 mm nail along the Earth's field | 222 nT | 250 mm | 525 mm |
-| same nail across the field | 4 nT | 60 mm | 135 mm |
-| 100 g lump | 218 nT | 250 mm | 520 mm |
+| 3 g compact lump | 6.5 nT | 45 / 55 mm | 70 / 160 mm |
+| 50 x 3 mm nail along the Earth's field | 222 nT | 175 / 200 mm | 250 / 525 mm |
+| same nail across the field | 4 nT | 40 / 45 mm | 60 / 135 mm |
+| 100 g lump | 218 nT | 175 / 200 mm | 250 / 520 mm |
 
 - Range is set by how well the two sensors cancel the Earth's field as the head rotates (residual mismatch), not by sensor noise (10 pT/rtHz ASSUMED).
 - Gold has no induced moment: anything this channel sees is ferrous.

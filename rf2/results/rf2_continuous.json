@@ -62,13 +62,13 @@
     },
     {
      "part": "TX switch: junction temperature",
-     "load": 57.552,
+     "load": 61.94,
      "rating": 150.0,
      "unit": "C (TJ max)",
-     "margin": 2.61,
+     "margin": 2.42,
      "ok": true,
      "source": "Rev 04: RthJC 2.5 C/W, RthJA 40 C/W",
-     "note": "2.19 W; with a 5 C/W heatsink (ASSUMED) TJ 58 C; on bare PCB (RthJA 40) TJ 128 C. Derated limit 125 C"
+     "note": "2.19 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 62 C; on bare PCB (RthJA 40) TJ 128 C. Derated limit 125 C"
     },
     {
      "part": "clamp diode Diodes US3M: average current",
@@ -219,13 +219,13 @@
     },
     {
      "part": "TX switch: junction temperature",
-     "load": 88.627,
+     "load": 100.784,
      "rating": 150.0,
      "unit": "C (TJ max)",
-     "margin": 1.69,
+     "margin": 1.49,
      "ok": true,
      "source": "Rev 04: RthJC 2.5 C/W, RthJA 40 C/W",
-     "note": "6.08 W; with a 5 C/W heatsink (ASSUMED) TJ 89 C; on bare PCB (RthJA 40) TJ 283 C. Derated limit 125 C"
+     "note": "6.08 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 101 C; on bare PCB (RthJA 40) TJ 283 C. Derated limit 125 C"
     },
     {
      "part": "clamp diode Diodes US3M: average current",

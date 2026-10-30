@@ -76,6 +76,8 @@ STEPS = [
     dict(id="opamp-qualify", cmd=[H + "rf2_opamp_qualify.py"], inputs=[H + "rf2_opamp_qualify.py", "src/simcache.py", "data/spice/LMH6629/*.lib"], deps=[], check=jcheck(H + "out/rf2_opamp_qualify.json")),
     dict(id="study:mp1v2_chain", group="studies", cmd=[H + "rf2_mp1v2_chain.py"], inputs=[H + "rf2_mp1v2_chain.py", H + "spice_compat.py", "src/simcache.py", "data/spice/LMH6629/*.lib"], deps=["opamp-qualify"],
          check=jcheck(H + "out/rf2_mp1v2_chain.json", lambda d: "checks" in d), timeout=3600),
+    dict(id="study:hvparts", group="studies", cmd=["rf2/rf2_hvparts.py"], inputs=["rf2/rf2_hvparts.py", "rf2/rf2_continuous.py"],
+         check=jcheck("rf2/results/rf2_hvparts.json", lambda d: d["all_pass"]), timeout=120),
     dict(id="study:mp1v2_protect", group="studies", cmd=[H + "rf2_mp1v2_protect.py"], inputs=[H + "rf2_mp1v2_protect.py", H + "rf2_mp1v2_chain.py", "src/simcache.py", "data/spice/LMH6629/*.lib"],
          deps=["study:mp1v2_chain"], check=jcheck(H + "out/rf2_mp1v2_protect.json", lambda d: d["accuracy_check"]["ok"]), timeout=3600),
     dict(id="selftest", cmd=["tests/selftest.py"], inputs=["tests/selftest.py", "src/simcache.py", "run.py", H + "spice_compat.py", H + "rf2_opamp_qualify.py", "data/spice/SHA256SUMS", "data/spice/**/*.lib"], deps=["opamp-qualify"],

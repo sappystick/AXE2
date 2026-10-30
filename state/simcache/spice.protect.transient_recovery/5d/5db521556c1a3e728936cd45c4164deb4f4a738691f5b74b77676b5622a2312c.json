@@ -1,0 +1,1 @@
+{"key": "5db521556c1a3e728936cd45c4164deb4f4a738691f5b74b77676b5622a2312c", "kind": "spice.protect.transient_recovery", "seconds": 160.833, "created": "2026-10-30T15:53:27", "value": {"peak_clamp_node_V": 5.48, "peak_lmh_input_mA": 14.1, "peak_reverse_recovery_mA": 0.003, "settle_us": 17.5, "tt_us": 0.0}}

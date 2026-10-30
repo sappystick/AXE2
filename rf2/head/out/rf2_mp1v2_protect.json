@@ -296,7 +296,7 @@
   "ok": true
  },
  "any_option_passes": false,
- "boost_current": [
+ "boost_12A74": [
   {
    "i_coil_A": 8.06,
    "peak_clamp_node_V": 6.59,
@@ -332,6 +332,88 @@
    "settle_us": 20.87,
    "limiter": "IXTY01N100D@Q",
    "clamp": "2 x BAV199 + 2 x BAT54S (typ)"
+  }
+ ],
+ "clamp_recovery": [
+  {
+   "peak_clamp_node_V": 6.59,
+   "peak_lmh_input_mA": 24.97,
+   "peak_reverse_recovery_mA": 0.002,
+   "settle_us": 19.17,
+   "tt_us": 0.0,
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199",
+   "recovery": "none"
+  },
+  {
+   "peak_clamp_node_V": 6.4,
+   "peak_lmh_input_mA": 23.07,
+   "peak_reverse_recovery_mA": 11.302,
+   "settle_us": 18.95,
+   "tt_us": 1.154,
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199",
+   "recovery": "Nexperia typ (trr 0.8 us)"
+  },
+  {
+   "peak_clamp_node_V": 6.37,
+   "peak_lmh_input_mA": 22.84,
+   "peak_reverse_recovery_mA": 21.315,
+   "settle_us": 18.01,
+   "tt_us": 2.164,
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199",
+   "recovery": "Infineon max (trr 1.5 us)"
+  },
+  {
+   "peak_clamp_node_V": 6.35,
+   "peak_lmh_input_mA": 22.58,
+   "peak_reverse_recovery_mA": 36.187,
+   "settle_us": 21.35,
+   "tt_us": 4.328,
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199",
+   "recovery": "Nexperia max (trr 3 us)"
+  },
+  {
+   "peak_clamp_node_V": 5.48,
+   "peak_lmh_input_mA": 14.1,
+   "peak_reverse_recovery_mA": 0.003,
+   "settle_us": 17.5,
+   "tt_us": 0.0,
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "recovery": "none"
+  },
+  {
+   "peak_clamp_node_V": 5.48,
+   "peak_lmh_input_mA": 14.1,
+   "peak_reverse_recovery_mA": 0.003,
+   "settle_us": 17.5,
+   "tt_us": 1.154,
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "recovery": "Nexperia typ (trr 0.8 us)"
+  },
+  {
+   "peak_clamp_node_V": 5.48,
+   "peak_lmh_input_mA": 14.1,
+   "peak_reverse_recovery_mA": 0.003,
+   "settle_us": 17.5,
+   "tt_us": 2.164,
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "recovery": "Infineon max (trr 1.5 us)"
+  },
+  {
+   "peak_clamp_node_V": 5.48,
+   "peak_lmh_input_mA": 14.1,
+   "peak_reverse_recovery_mA": 0.003,
+   "settle_us": 17.5,
+   "tt_us": 4.328,
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "recovery": "Nexperia max (trr 3 us)"
   }
  ]
 }

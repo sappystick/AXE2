@@ -31,9 +31,11 @@ def analyse(mode, I):
     P_sw = p["I_rms_switch"] ** 2 * rds_hot + F * e_off
     row("TX switch Wolfspeed C3M0280090J: peak current", I, 22.0, "A (IDM)", I <= 22.0 * 0.8, "Rev 04: IDM 22 A", "80 % of the pulsed rating")
     row("TX switch: RMS current", p["I_rms_switch"], 7.0, "A (ID at TC 100 C)", p["I_rms_switch"] <= 7.0, "Rev 04: ID 7 A at TC 100 C")
-    tj_pcb = TA + P_sw * 40.0; tj_hs = TA + P_sw * (2.5 + 0.5 + 5.0)
+    RTH_HS = 7.0                                               # Ohmite D Series TO-263 (D2) extruded heat sink, natural convection at about 6 W: about 43 K case rise (READ from the
+                                                               # heat-dissipation graph, data/datasheets/Ohmite_D_Series_heatsink.pdf); was 5 C/W ASSUMED until 2026-10-30
+    tj_pcb = TA + P_sw * 40.0; tj_hs = TA + P_sw * (2.5 + 0.5 + RTH_HS)
     row("TX switch: junction temperature", tj_hs, 150.0, "C (TJ max)", tj_hs <= 125.0, "Rev 04: RthJC 2.5 C/W, RthJA 40 C/W",
-        "%.2f W; with a 5 C/W heatsink (ASSUMED) TJ %.0f C; on bare PCB (RthJA 40) TJ %.0f C. Derated limit 125 C" % (P_sw, tj_hs, tj_pcb))
+        "%.2f W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ %.0f C; on bare PCB (RthJA 40) TJ %.0f C. Derated limit 125 C" % (P_sw, tj_hs, tj_pcb))
     # clamp diode US3M and the clamp absorber
     q = 0.5 * I * p["fall_us"] * 1e-6; i_avg_d = F * q
     row("clamp diode Diodes US3M: average current", i_avg_d, 3.0, "A (IO at TT 75 C)", i_avg_d <= 3.0 * 0.5, "DS37228 rev 5: IO 3 A, IFSM 120 A, 1000 V")
