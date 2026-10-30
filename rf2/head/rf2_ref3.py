@@ -25,7 +25,7 @@ res = dict(status="MODELED (RF2 REF3 sizing)", NA_mono_m2=round(NA_MONO, 3), rul
            emi_study_assumption=dict(gain=3, e_ref_nV=1.9))
 # ---- SLEEVE layout (owner 2026-10-30: no box on the shaft). The same three axes wound ON the tube under a thin cover: X and Y as long saddle-coil pairs
 # (nested turns, two 120 deg saddles per axis, one axis per layer group), Z as a fine-wire solenoid on top. Each saddle turn links L x chord (2 a sin phi).
-def sleeve(L=0.35, a0=0.0130, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15, phi=math.radians(60.0)):
+def sleeve(L=0.35, a0=0.0145, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15, phi=math.radians(60.0)):
     out = {}; pitch_t = wd_t * 1.1e-3; a = a0
     for axis in ("X", "Y"):
         need = g_t * NA_MONO; NA = 0.0; Lw = 0.0; layers = 0; turns = 0
@@ -48,11 +48,37 @@ def sleeve(L=0.35, a0=0.0130, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15, phi=math.r
     out["length_mm"] = L * 1e3; out["winding_outer_r_mm"] = round(a_out * 1e3, 2); out["sleeve_od_mm"] = round(2 * (a_out * 1e3 + 1.0), 1)
     out["worst_axis_penalty_pct"] = min(out[k]["depth_penalty_pct"] for k in ("X", "Y", "Z")); out["copper_g_total"] = round(sum(out[k]["copper_g"] for k in ("X", "Y", "Z")), 1)
     return out
+def rect_sleeve(W=0.038, H=0.032, L=0.35, g_t=3.0, g_z=4.0, wd_t=0.20, wd_z=0.15):
+    """rectangular-profile layout (owner 2026-10-30: rectangular housing along the shaft): X and Y as pairs of flat nested rectangular coils on opposite
+    faces of the W x H profile (each turn links its own area), Z as a solenoid around the rectangle; layers build outward"""
+    out = {}; pt = wd_t * 1.1e-3
+    for axis, face_w in (("X", W), ("Y", H)):
+        need = g_t * NA_MONO; NA = Lw = 0.0; turns = layers = 0
+        while NA < need and layers < 40:
+            for k in range(int(min(face_w, L) / (2 * pt))):
+                a_, b_ = L - 2 * k * pt, face_w - 2 * k * pt
+                if b_ < 0.004: break
+                for _ in range(2):
+                    NA += a_ * b_; Lw += 2 * (a_ + b_); turns += 1
+                    if NA >= need: break
+                if NA >= need: break
+            layers += 1
+        aw = math.pi * (wd_t * 1e-3 / 2) ** 2; R = RHO * Lw / aw; e = math.sqrt(E_MONO ** 2 + kT4 * R); pen = (1 + (e / g_t / E_MONO) ** 2) ** (-1 / 10.2) - 1
+        out[axis] = dict(gain=g_t, turns=turns, layers=layers, wire_mm=wd_t, wire_m=round(Lw, 1), R_ohm=round(R, 1), e_ref_nV=round(e * 1e9, 2), depth_penalty_pct=round(pen * 100, 2), copper_g=round(Lw * aw * 8960e3, 1))
+    build_t = max(out["X"]["layers"], out["Y"]["layers"]) * pt; Wz, Hz = W + 2 * build_t, H + 2 * build_t; pz = wd_z * 1.1e-3; Nz = g_z * NA_MONO / (Wz * Hz)
+    per = L / pz; lz = math.ceil(Nz / per); Lw = sum(min(per, Nz - i * per) * 2 * (Wz + Hz + 4 * i * pz) for i in range(lz)); aw = math.pi * (wd_z * 1e-3 / 2) ** 2; R = RHO * Lw / aw
+    e = math.sqrt(E_MONO ** 2 + kT4 * R); pen = (1 + (e / g_z / E_MONO) ** 2) ** (-1 / 10.2) - 1
+    out["Z"] = dict(gain=g_z, turns=round(Nz), layers=lz, wire_mm=wd_z, wire_m=round(Lw, 1), R_ohm=round(R, 1), e_ref_nV=round(e * 1e9, 2), depth_penalty_pct=round(pen * 100, 2), copper_g=round(Lw * aw * 8960e3, 1))
+    tot = build_t + lz * pz + 1.0e-3
+    out.update(profile_mm=[W * 1e3, H * 1e3], length_mm=L * 1e3, outer_mm=[round((W + 2 * tot) * 1e3, 1), round((H + 2 * tot) * 1e3, 1)], worst_axis_penalty_pct=min(out[k]["depth_penalty_pct"] for k in ("X", "Y", "Z")),
+               copper_g_total=round(sum(out[k]["copper_g"] for k in ("X", "Y", "Z")), 1))
+    return out
+res["rect_sleeve"] = rect_sleeve()
 res["sleeve"] = sleeve()
-res["layout"] = dict(chosen="sleeve", why="owner 2026-10-30: the 100 mm cube on the shaft is not acceptable; the sleeve keeps the 3 axes on the tube (OD about "
+res["layout"] = dict(chosen="rect_sleeve" if res["rect_sleeve"]["worst_axis_penalty_pct"] >= res["sleeve"]["worst_axis_penalty_pct"] - 0.3 else "sleeve", why="owner 2026-10-30: the 100 mm cube on the shaft is not acceptable; the sleeve keeps the 3 axes on the tube (OD about "
                      f"{res['sleeve']['sleeve_od_mm']} mm over {res['sleeve']['length_mm']:.0f} mm); the box (chosen above) is kept only as the reference row",
                      box_penalty_pct=best["depth_penalty_pct"] if best else None, sleeve_worst_penalty_pct=res["sleeve"]["worst_axis_penalty_pct"])
-print("sleeve", json.dumps(res["sleeve"]))
+print("sleeve", json.dumps(res["sleeve"])); print("rect_sleeve", json.dumps(res["rect_sleeve"])); print("chosen", res["layout"]["chosen"])
 json.dump(res, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", "rf2_ref3.json"), "w"), indent=1)
 print("chosen", best)
 for r in rows:

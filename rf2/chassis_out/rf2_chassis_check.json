@@ -1,0 +1,414 @@
+{
+ "status": "MODELED; dimensions ASSUMED unless a datasheet is named; SDC 2300 used as a mechanism reference only",
+ "checks": {
+  "electronics inside their housings": {
+   "ok": true,
+   "outside_mm3": {}
+  },
+  "forearm_straight_in_cuff": {
+   "ok": true,
+   "wrist_to_cuff_angle_to_shaft_deg": 0.0,
+   "forearm_length_mm": 240,
+   "cuff_centre_n_mm": 74.1,
+   "trough_bottom_above_chassis_mm": 7.1,
+   "note": "the forearm axis runs from the wrist (on the grip) straight back to the cuff centre, parallel to the shaft and above the chassis"
+  },
+  "grip": {
+   "ok": true,
+   "length_mm": 112.0,
+   "groove_pitch_mm": [
+    24.0,
+    24.0
+   ],
+   "rake_deg": 18.0,
+   "trigger_reach_mm": 70.0,
+   "note": "inverted control stick: pinky at the base on the chassis, index on the trigger under the grip head, thumb on top"
+  },
+  "screen_view": {
+   "ok": true,
+   "angle_to_eye_deg": 21.8,
+   "open_deg": 60.0,
+   "opens": "lifting its front edge"
+  },
+  "telescope": {
+   "ok": true,
+   "pivot_to_hinge_mm": {
+    "min_use": 690.0,
+    "nominal": 790,
+    "max": 980.0
+   },
+   "collapsed_mm": 430.0,
+   "overlap_at_full_mm": {
+    "inner": 100.0,
+    "mid": 100.0
+   },
+   "REF3_from_pivot_at_min_use_mm": 511.0
+  },
+  "coil_cord": {
+   "ok": true,
+   "stretch_mm": 550,
+   "coil_od_mm": 17.0,
+   "inner_bore_min_mm": 18.0,
+   "stretch_ratio": 4.44,
+   "note": "coil cord (TX pair, VIN / GND, DATA, TXCMD / TXSTAT, 3 REF pairs; OD 7 mm ASSUMED) coiled 17 mm OD inside the inner bore; 160 mm compressed"
+  },
+  "hinge_pass_through": {
+   "ok": true,
+   "axial_run_mm": 30.0,
+   "twist_deg_per_mm": 6.0,
+   "bend_r_mm": 12.0,
+   "note": "the bundle enters the hollow hinge axis with a 12 mm-radius 90 deg bend, twists 180 deg along a 30 mm axial run, leaves with a second 90 deg bend"
+  },
+  "tx_pair_in_cord": {
+   "ok": true,
+   "length_m": 1.1,
+   "C_pF": 55.0,
+   "first_gate_shift_us": 0.562,
+   "note": "TX moved into the chassis: the pair runs the whole shaft (first-order gate cost, 50 pF/m ASSUMED)"
+  },
+  "battery_slide": {
+   "ok": true,
+   "hits": [],
+   "cartridge_mm": [
+    136.2,
+    71.2,
+    47.2
+   ]
+  },
+  "grip_slide_lock": {
+   "ok": true,
+   "slide_mm": 25.0,
+   "ffc_service_loop_mm": 60.0,
+   "note": "grip slides forward 25 mm to lock the hinge (SDC handle-lock); FFC loop >= 2 x travel"
+  },
+  "folds_to_backpack": {
+   "ok": true,
+   "grip_fixed_mm": [
+    497,
+    251,
+    233
+   ],
+   "grip_forward_mm": [
+    553,
+    233,
+    199
+   ],
+   "grip_side_mm": [
+    497,
+    249,
+    186
+   ],
+   "target_mm": [
+    520.0,
+    320.0,
+    210.0
+   ],
+   "sdc2300_folded_mm": [
+    400.0,
+    216.0
+   ]
+  },
+  "deployed_clear": {
+   "ok": true,
+   "min_gaps_mm": {
+    "HEAD-UPT": 393.7,
+    "HEAD-CH": 779.6,
+    "LOW-CH": 376.2
+   }
+  }
+ },
+ "fold": {
+  "grip_fixed": {
+   "evaluations": 562,
+   "fits_backpack": false,
+   "head_pitch": 105,
+   "head_roll": 0,
+   "hinge": {
+    "axis": "N",
+    "offset_mm": 34.6,
+    "side": -1
+   },
+   "package_mm": [
+    497,
+    251,
+    233
+   ],
+   "search_s": 6.0,
+   "top3": [
+    {
+     "fits_backpack": false,
+     "head_pitch": 105,
+     "head_roll": 0,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 34.6,
+      "side": -1
+     },
+     "package_mm": [
+      497,
+      251,
+      233
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 90,
+     "head_roll": 0,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 34.6,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      251,
+      233
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 90,
+     "head_roll": 0,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 34.6,
+      "side": -1
+     },
+     "package_mm": [
+      497,
+      251,
+      233
+     ]
+    }
+   ],
+   "grip_mode": null
+  },
+  "grip_folded_forward": {
+   "evaluations": 555,
+   "fits_backpack": false,
+   "head_pitch": 90,
+   "head_roll": 0,
+   "hinge": {
+    "axis": "Y",
+    "offset_mm": 61.6,
+    "side": 1
+   },
+   "package_mm": [
+    553,
+    233,
+    199
+   ],
+   "search_s": 4.7,
+   "top3": [
+    {
+     "fits_backpack": false,
+     "head_pitch": 90,
+     "head_roll": 0,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 61.6,
+      "side": 1
+     },
+     "package_mm": [
+      553,
+      233,
+      199
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 0,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 34.6,
+      "side": -1
+     },
+     "package_mm": [
+      683,
+      233,
+      162
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 0,
+     "head_roll": -90,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 34.6,
+      "side": 1
+     },
+     "package_mm": [
+      683,
+      233,
+      162
+     ]
+    }
+   ],
+   "grip_mode": "forward"
+  },
+  "grip_folded_side": {
+   "evaluations": 558,
+   "fits_backpack": true,
+   "head_pitch": 105,
+   "head_roll": 90,
+   "hinge": {
+    "axis": "Y",
+    "offset_mm": 51.0,
+    "side": 1
+   },
+   "package_mm": [
+    497,
+    249,
+    186
+   ],
+   "search_s": 5.0,
+   "top3": [
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 51.0,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      249,
+      186
+     ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 26.4,
+      "side": -1
+     },
+     "package_mm": [
+      497,
+      319,
+      186
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 75,
+     "head_roll": -90,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 35.8,
+      "side": 1
+     },
+     "package_mm": [
+      494,
+      233,
+      218
+     ]
+    }
+   ],
+   "grip_mode": "side"
+  },
+  "sdc2300_reference_mm": [
+   400.0,
+   216.0
+  ],
+  "backpack_ASSUMED_mm": [
+   520.0,
+   320.0,
+   210.0
+  ],
+  "chosen": {
+   "evaluations": 558,
+   "fits_backpack": true,
+   "head_pitch": 105,
+   "head_roll": 90,
+   "hinge": {
+    "axis": "Y",
+    "offset_mm": 51.0,
+    "side": 1
+   },
+   "package_mm": [
+    497,
+    249,
+    186
+   ],
+   "search_s": 5.0,
+   "top3": [
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 51.0,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      249,
+      186
+     ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 26.4,
+      "side": -1
+     },
+     "package_mm": [
+      497,
+      319,
+      186
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 75,
+     "head_roll": -90,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 35.8,
+      "side": 1
+     },
+     "package_mm": [
+      494,
+      233,
+      218
+     ]
+    }
+   ],
+   "grip_mode": "side"
+  }
+ },
+ "mass": {
+  "items_g": {
+   "head (ASSUMED 650 g)": 650,
+   "rect profiles + yoke + clamps (CF, ASSUMED 330 g)": 330,
+   "REF3 rect coils (247.1 g Cu + 30 g)": 277,
+   "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": 420,
+   "grip + head + screen (ASSUMED 120 g)": 120,
+   "cuff + rails (ASSUMED 110 g)": 110,
+   "battery cartridge (14 x 47 g + 90 g)": 748
+  },
+  "total_g": 2655,
+  "torque_about_hand_Nm": 3.85,
+  "sdc2300_reference_g": 2300
+ },
+ "ok": true,
+ "timings_s": {
+  "build": 1.77,
+  "containment": 0.38,
+  "fold search (cached)": 0.01,
+  "deployed clearance": 0.61,
+  "exports and views": 6.11,
+  "total": 13.8
+ }
+}

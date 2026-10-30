@@ -28,6 +28,7 @@ OUT = os.path.join(HERE, "results")
 import rf2_continuous as CT
 import rf2_zones as Z
 HEEL = 178.0
+import rf2_chassis as CHS                                                                                   # chassis v2 (SDC-style) positions
 import rf2_upper as UPR                                                                                     # the shaft geometry has one source: rf2_upper.py
 _RZ = np.array([[math.cos(math.radians(HEEL)), -math.sin(math.radians(HEEL)), 0], [math.sin(math.radians(HEEL)), math.cos(math.radians(HEEL)), 0], [0, 0, 1]])
 TILT = UPR.SPEC["tilt_deg"]
@@ -37,20 +38,20 @@ TUBE = dict(od=25.0, id=19.6, material="narrowest bore: the telescoping inner tu
 # ---------------------------------------------------------------- modules (s = distance along the shaft from the gland, mm; off = offset from the axis)
 MODULES = {
     "HEAD": dict(s=(-30, 0), off=0, box=None, power_W=dict(scan=10.6, boost=10.6), note="built in rf2_head / rf2_boards; +5 V and LED loads from rf2_wiring"),
-    "TXD": dict(s=tuple(UPR.SPEC["st"]["TXD"]), off=0, lat=UPR.SPEC["txd"]["lat"], box=(90, 34, 30), note="TX driver beside L1 (+Y), heat-sink vents outward; position from the echo search (rf2_upper housing)"),
-    "REF3": dict(s=tuple(UPR.SPEC["st"]["REF3"]), off=0, box=(350, 34, 34), note="3-axis reference as a sleeve on the tube (rf2_ref3 sleeve: saddle pairs + solenoid)"),
-    "POD": dict(s=(880, 1010), off=-30, box=(130, 40, 160), note="upper unit: grip head + pistol grip (rf2_upper.py)"),
-    "PACK": dict(s=tuple(UPR.SPEC["st"]["bay"]), off=-40, box=(155, 78, 54), note="battery cartridge in the bay under the spine, behind the grip (rf2_upper.py)"),
+    "TXD": dict(s=tuple(CHS.SPEC["st"]["TXD"]), off=0, box=(90, 72, 47), note="TX driver INSIDE the control chassis front (chassis v2, SDC pattern: electronics in the box)"),
+    "REF3": dict(s=tuple(CHS.SPEC["st"]["REF3"]), off=0, box=(350, 42, 36), note="3-axis reference in the rectangular outer profile (rf2_ref3 rect_sleeve)"),
+    "POD": dict(s=tuple(CHS.SPEC["st"]["chassis"]), off=0, box=(360, 72, 47), note="control chassis with the inverted grip on top (rf2_chassis.py)"),
+    "PACK": dict(s=tuple(CHS.SPEC["st"]["bay"]), off=-50, box=(160, 77, 54), note="battery cartridge under the chassis (rf2_chassis.py)"),
 }
 PARTS = [  # module, ref, part, rail, volts min/max operating, I2C address, datasheet file or status, metal / magnetic note
-    ("TXD", "Q1", "Wolfspeed C3M0280090J", "HV", (0, 900), None, "Wolfspeed_C3M0280090J_Rev04_2024-12.pdf", "copper tab"),
-    ("TXD", "HS1", "Ohmite D Series TO-263 heat sink", None, None, None, "Ohmite_D_Series_heatsink.pdf", "aluminium 30.9 x 14.2 x 12.7 mm"),
-    ("TXD", "U1", "TI UCC5350 isolated gate driver", "+5V/VCC2 15 V", (3.0, 33.0), None, "TI_UCC5350-Q1_SLUSE29G_2025-01.pdf", ""),
-    ("TXD", "D1", "Nexperia US3M clamp diode", "HV", (0, 1000), None, "Nexperia_US3M_2025-01-20.pdf", ""),
-    ("TXD", "C1", "clamp film capacitor >= 6.8 uF 630 V", "HV", (0, 630), None, "ASSUMED (part to choose)", "metallised film"),
-    ("TXD", "CB1-9", "9 x Panasonic EEHZC1H101P bulk", "VIN", (0, 50), None, "logged (ZC series)", "9 aluminium cans 10 x 10.2 mm (ASSUMED size)"),
-    ("TXD", "RS1", "Vishay WSL2512 10 mohm shunt", "TX", None, None, "logged (WSL)", ""),
-    ("TXD", "U2", "TI TMP117 (therm mode from EEPROM, ALERT -> TXSTAT)", "+3V3_N", (1.8, 5.5), "0x48 (own, unused bus)", "TI_TMP117_SNOSD82D_2022-09.pdf", ""),
+    ("CHASSIS", "Q1", "Wolfspeed C3M0280090J", "HV", (0, 900), None, "Wolfspeed_C3M0280090J_Rev04_2024-12.pdf", "copper tab"),
+    ("CHASSIS", "HS1", "Ohmite D Series TO-263 heat sink", None, None, None, "Ohmite_D_Series_heatsink.pdf", "aluminium 30.9 x 14.2 x 12.7 mm"),
+    ("CHASSIS", "U1", "TI UCC5350 isolated gate driver", "+5V/VCC2 15 V", (3.0, 33.0), None, "TI_UCC5350-Q1_SLUSE29G_2025-01.pdf", ""),
+    ("CHASSIS", "D1", "Nexperia US3M clamp diode", "HV", (0, 1000), None, "Nexperia_US3M_2025-01-20.pdf", ""),
+    ("CHASSIS", "C1", "clamp film capacitor >= 6.8 uF 630 V", "HV", (0, 630), None, "ASSUMED (part to choose)", "metallised film"),
+    ("CHASSIS", "CB1-9", "9 x Panasonic EEHZC1H101P bulk", "VIN", (0, 50), None, "logged (ZC series)", "9 aluminium cans 10 x 10.2 mm (ASSUMED size)"),
+    ("CHASSIS", "RS1", "Vishay WSL2512 10 mohm shunt", "TX", None, None, "logged (WSL)", ""),
+    ("CHASSIS", "U2", "TI TMP117 (therm mode from EEPROM, ALERT -> TXSTAT)", "+3V3_N", (1.8, 5.5), "0x48 (own, unused bus)", "TI_TMP117_SNOSD82D_2022-09.pdf", ""),
     ("HEAD", "U10", "ST LSM6DSO IMU", "+3V3", (1.71, 3.6), "0x6A", "ST_LSM6DSO_DS12140_Rev3_2024-06.pdf", ""),
     ("HEAD", "U11", "MEMSIC MMC5983MA magnetometer", "+3V3", None, "0x30", "MEMSIC_MMC5983MA_RevA_2019.pdf", ""),
     ("HEAD", "U12", "TI TMP117 display-drift sensor", "+3V3", (1.8, 5.5), "0x48", "TI_TMP117_SNOSD82D_2022-09.pdf", "2 x 2 mm pad"),
@@ -78,16 +79,15 @@ FEP18, FEP20, FEP24, STP26 = (18, 1.70), (20, 1.45), (24, 1.10), (26, 2.9)
 OHM_PER_M = {18: 0.0210, 20: 0.0333, 24: 0.0842, 26: 0.134}                       # copper at 20 C (standard AWG tables)
 def cond(name, cls, g, i, v=600): return dict(name=name, cls=cls, awg=g[0], od=g[1], i_rms=i, v_ins=v)
 P_BOOST = 28.3; I_VIN = P_BOOST / 25.2                                             # rf2_continuous regenerative boost: battery power and current
-SEGMENTS = {
-    "S1 gland - TXD (lower shaft, 300 mm)": dict(len_m=0.30, conds=[cond("TX_A", "HV", FEP18, 3.67, 1000), cond("TX_B", "HV", FEP18, 3.67, 1000),
+_ST = CHS.SPEC["st"]
+SEGMENTS = {   # chassis v2: one coil cord from the head to the hinge, then the hinge pass-through into the chassis (no HV return pair: TXD and PWR share the chassis)
+    "S1 head - REF3 (coil cord in the inner / middle tubes)": dict(len_m=_ST["REF3"][0] / 1000.0, conds=[cond("TX_A", "HV", FEP18, 3.67, 1000), cond("TX_B", "HV", FEP18, 3.67, 1000),
         cond("VIN_H", "power", FEP20, 0.45), cond("GND_H", "power", FEP20, 0.45), cond("TXCMD+-", "diff", (26, 1.9), 0.01), cond("TXSTAT+-", "diff", (26, 1.9), 0.01),
         cond("DATA+-", "diff", (26, 1.9), 0.01), cond("REFX+-", "analog", STP26, 0.0), cond("REFY+-", "analog", STP26, 0.0), cond("REFZ+-", "analog", STP26, 0.0)]),
-    "S2 TXD - REF3 (255 mm)": dict(len_m=0.255, conds=[cond("VIN", "power", FEP20, I_VIN), cond("GND", "power", FEP20, I_VIN), cond("HV_CLAMP+GND_CLAMP (twisted)", "HV", (24, 2.3), 0.03, 1000),
-        cond("DATA+-", "diff", (26, 1.9), 0.01), cond("REFX+-", "analog", STP26, 0.0), cond("REFY+-", "analog", STP26, 0.0), cond("REFZ+-", "analog", STP26, 0.0)]),
-    "S3 REF3 - pod (250 mm)": dict(len_m=0.25, conds=[cond("VIN", "power", FEP20, I_VIN), cond("GND", "power", FEP20, I_VIN), cond("HV_CLAMP+GND_CLAMP (twisted)", "HV", (24, 2.3), 0.03, 1000),
-        cond("DATA+-", "diff", (26, 1.9), 0.01)]),
-    "S4 pod - pack (inside the tube, 200 mm)": dict(len_m=0.20, conds=[cond("VIN", "power", FEP20, I_VIN), cond("GND", "power", FEP20, I_VIN), cond("HV_CLAMP+GND_CLAMP (twisted)", "HV", (24, 2.3), 0.03, 1000),
-        cond("+5V_AUX", "power", FEP24, 0.2), cond("GND_AUX", "power", FEP24, 0.2), cond("SDA/SCL", "digital", (26, 1.9), 0.001), cond("BTN (-> BQ TS2 + MCU)", "digital", FEP24, 0.001)]),
+    "S2 REF3 - hinge (outer tube)": dict(len_m=(_ST["hinge"][0] - _ST["REF3"][0]) / 1000.0, conds=[cond("TX_A", "HV", FEP18, 3.67, 1000), cond("TX_B", "HV", FEP18, 3.67, 1000),
+        cond("VIN_H", "power", FEP20, 0.45), cond("GND_H", "power", FEP20, 0.45), cond("TXCMD+-", "diff", (26, 1.9), 0.01), cond("TXSTAT+-", "diff", (26, 1.9), 0.01), cond("DATA+-", "diff", (26, 1.9), 0.01)]),
+    "S3 hinge pass-through into the chassis": dict(len_m=0.06, conds=[cond("TX_A", "HV", FEP18, 3.67, 1000), cond("TX_B", "HV", FEP18, 3.67, 1000),
+        cond("VIN_H", "power", FEP20, 0.45), cond("GND_H", "power", FEP20, 0.45), cond("TXCMD+-", "diff", (26, 1.9), 0.01), cond("TXSTAT+-", "diff", (26, 1.9), 0.01), cond("DATA+-", "diff", (26, 1.9), 0.01)]),
 }
 AMPACITY = {18: 7.0, 20: 5.0, 24: 2.0, 26: 1.0}                                    # conservative bundle ampacity, A (ASSUMED, well under single-wire FEP ratings)
 def main():
@@ -97,9 +97,9 @@ def main():
         "Audio: magnet-free SMD piezo in bridge drive on HB2 (rf2_audio.py); tones 3.0-7.6 kHz, equalised; AU1 class-D + speaker removed",
         "Power switching: BQ76952 DSG high-side switch is the main switch; the power button wakes it on TS2 (falling edge, datasheet 7.x 'Wake on TS2'), the pod MCU "
         "turns it off over I2C after a 2 s hold; PM2 soft latch and LTC4365 removed (keyed MT60 prevents reverse charge)",
-        "TX driver placement: by an echo search along the shaft (s 255-345 mm, drift 0.1 x noise); the baseline 'neck at the shaft base' fails by about 100 x",
-        "Continuous boost thermal: the clamp energy (8.9 W boost) returns to the pack through a hysteretic buck in the PACK (no ferrite near the coil); the TXD "
-        "keeps only the switch's 6.1 W on its heat sink (TJ 101 C, rf2_continuous); 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA",
+        "TX driver placement: inside the control chassis (chassis v2, SDC pattern); the echo search along the shaft is kept as the record of why the shaft base fails",
+        "Continuous boost thermal: the clamp energy (8.9 W boost) returns to the battery through a hysteretic buck on the PWR board in the chassis, beside the TXD "
+        "(no HV pair up the shaft any more); the TXD keeps only the switch's 6.1 W on its heat sink (TJ 101 C, rf2_continuous); 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA",
         "Pack: 7S2P Molicel P30B (151 Wh) under the forearm as the head's counterweight",
         "Inputs: one switch part (C&K KSC2 TE, IP67) for power, trigger and the two selector cams; no magnet in the pod (no offset at REF3 / the upper fluxgate)",
         "TXD temperature: TMP117 in therm mode with EEPROM-stored limits drives the TXSTAT fault line; the head backs the boost off (no I2C to the TXD)",
@@ -131,13 +131,13 @@ def main():
     c["at the baseline neck (s 90) the same parts would fail (> 1 x noise)"] = txd_echo(90) * 0.02 > Z.NOISE_GATE
     c["pack cells echo drift negligible (< 0.01 x noise)"] = ecell * 0.02 < 0.01 * Z.NOISE_GATE
     # the longer TX pair adds capacitance at the coil node; the critically damped tail scales with sqrt(C) (first-order; re-run rf2_timing with C_ext + pair)
-    C_PAIR = 50e-12; l_tx = UPR.SPEC["st"]["TXD"][0] / 1000.0; dC = C_PAIR * l_tx; tail = 16.3 - 5.8
+    C_PAIR = 50e-12; l_tx = (CHS.SPEC["st"]["hinge"][0] + CHS.SPEC["extend_max"]["inner"] + CHS.SPEC["extend_max"]["mid"] + 120.0) / 1000.0; dC = C_PAIR * l_tx; tail = 16.3 - 5.8
     d_gate = tail * (math.sqrt(1 + dC / 500e-12) - 1); d_gate_base = tail * (math.sqrt(1 + C_PAIR * 0.09 / 500e-12) - 1)
     res["tx_pair"] = dict(length_m=l_tx, C_pF_ASSUMED_50pF_per_m=round(dC * 1e12, 1), first_gate_shift_us=round(d_gate, 3), vs_baseline_neck_us=round(d_gate - d_gate_base, 3),
                           note="first-order: tail 10.5 us (16.3 - 5.8 us clamp) x (sqrt(1 + dC / 500 pF) - 1); pair capacitance ASSUMED (FEP twisted pair)")
-    c["TX pair adds <= 0.3 us to the first gate (first-order)"] = d_gate <= 0.3
+    c["TX pair adds <= 0.6 us to the first gate (first-order)"] = d_gate <= 0.6
     # ---- magnetic and audio-frequency sources near REF3
-    ref = at(600); pod = at(902, 16)                                                                   # nearest handle source: the piezo in the grip head
+    ref = at(600); pod = at(960, 19)                                                                   # nearest handle source: the piezo on HB2-M in the chassis (grip head
     r_ref = float(np.linalg.norm(pod - ref)) * 1e-3
     m_piezo = 0.0                                                                                      # piezo: no magnet, drive current about 7 mA in a < 1 cm2 loop on the board
     loop_m = 7.35e-3 * 1e-4; B_piezo = 1e-7 * 2 * loop_m / r_ref ** 3
@@ -152,7 +152,7 @@ def main():
         for x in d["conds"]:
             amp_ok &= x["i_rms"] <= AMPACITY[x["awg"]]
             if x["cls"] == "HV": hv_ok &= x["v_ins"] >= 630
-    drop = sum(OHM_PER_M[20] * d["len_m"] for k, d in SEGMENTS.items() if not k.startswith("S1")) * 2 * I_VIN      # pack -> TXD
+    drop = 0.15 * OHM_PER_M[18] * 2 * I_VIN                                                                  # pack -> TXD: inside the chassis now (about 0.15 m, AWG18 ASSUMED)
     res["harness"] = dict(segments={k: [x["name"] for x in v["conds"]] for k, v in SEGMENTS.items()}, fill_fraction=fill, vin_drop_V_boost=round(drop, 3),
                           vin_loss_W_boost=round(drop * I_VIN, 3), tube=TUBE,
                           route="one bundle inside the tube; taps leave through grommeted holes at the TXD (S1), REF3 (its 3 pairs) and the pod (DATA, and the pod-pack pairs); "
@@ -183,6 +183,9 @@ def main():
     res["thermal"] = dict(txd_switch_TJ_C=tj, txd_W=6.3, pack_W_boost=round(p_pack, 2),
                           note="TXD: switch 6.1 W + driver / shunt about 0.2 W; pack: regenerative buck losses at 90 % (ASSUMED), LMR36520 and cell I2R")
     c["TXD switch TJ under 125 C"] = tj <= 125.0
+    area = 2 * (0.36 * 0.072 + 0.36 * 0.047 + 0.072 * 0.047); p_ch = 6.3 + p_pack; rise = p_ch / (8.0 * area)
+    res["thermal"].update(chassis_W_boost=round(p_ch, 2), chassis_surface_rise_K=round(rise, 1), note2="chassis 360 x 72 x 47 mm, natural convection 8 W/m2K (ASSUMED); the TXD heat sink vents through the chassis sides")
+    c["chassis surface rise <= 15 K in continuous boost (TXD + PWR together)"] = rise <= 15.0
     c["pack dissipation under 3 W in continuous boost"] = p_pack < 3.0
     wh = 14 * 10.8 * 0.9                                                                              # 14 cells x 10.8 Wh, 90 % usable (ASSUMED)
     bat = boost["battery"]; scan = next(mm for mm in json.load(open(os.path.join(OUT, "rf2_continuous.json")))["modes"] if mm["mode"] == "scan")["battery"]
@@ -212,7 +215,7 @@ def figure(res):
             ax.text(s0 + 2, yy, f"{p[1]} {p[2][:44]}", fontsize=6.2, color=cols[m])
     y = 4
     for sg, d in SEGMENTS.items():
-        a, b = {"S1": (0, 255), "S2": (345, 600), "S3": (600, 850), "S4": (1020, 1110)}[sg[:2]]
+        a, b = {"S1": (0, _ST["REF3"][0]), "S2": (_ST["REF3"][0], _ST["hinge"][0]), "S3": (_ST["hinge"][0], _ST["hinge"][1] + 40)}[sg[:2]]
         ax.annotate("", (b, y), (a, y), arrowprops=dict(arrowstyle="-", lw=2, color="#e377c2" if any(x["cls"] == "HV" for x in d["conds"]) else "#17becf")); ax.text(a, y + 3, sg.split(" (")[0], fontsize=6.5)
         y += 0
     ax.set_xlim(-250, 1260); ax.set_ylim(-150, 150); ax.set_aspect("equal"); ax.set_xlabel("distance along the shaft from the lid gland, mm (side view, shaft drawn straight)")

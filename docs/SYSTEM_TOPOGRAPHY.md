@@ -4,28 +4,28 @@ Maturity is the lowest item at the station: CHECKED (generated + checked by a ru
 
 | Station | Where | Maturity | Checked by (last result) | Numbers | Open |
 |---|---|---|---|---|---|
-| 1. Battery cartridge (under the cuff, rear) | s 1050-1205 mm, below the spine | **CONCEPT** | upper pass, system pass | runtime 7.8 h scan / 4.8 h boost; cartridge [136.2, 71.2, 47.2] mm; slide hits [] | cell holder and contact design; BQ76952 schematic; charger spec; latch mechanism |
-| 2. Elbow cuff + stem | s 1200-1262 mm, above the spine | **OPEN** | upper pass | cuff height 784-1202 mm over tilt and telescope | REDESIGN: straight forearm axis from the hand on the grip to the cuff; cuff fold; strap, padding |
-| 3. Spine (PWR board) | s 975-1205 mm | **OPEN** | upper pass, system pass, study:continuous pass | pack dissipation 1.44 W in boost (90 % ASSUMED) | buck SPICE and schematic; PWR board layout |
-| 4. Grip head + pistol grip (the hand) | s 880-1010 mm | **OPEN** | upper pass, audio pass, ui pass, display3 pass | trigger reach 70.0 mm; thumb to button 54.4 mm; screen 2.7 deg off the eye line; audio floor 78.7 dB at 10 cm | HB2 schematic + board; screen and RS-485 datasheets; trigger / dial mechanisms; overmould |
-| 5. F2 joint + L2 telescope | s 450-880 mm | **OPEN** | upper pass, system pass | retired fold study: package [449, 239, 233] mm vs [520.0, 320.0, 210.0] | REDESIGN: telescoping sections and collapsed length; cam locks; coil-cord / flex in the tube |
-| 6. REF3 reference coil (sleeve on L2) | s 470-820 mm | **MODELED** | ref3 pass, upper pass, study:emi not run | worst-axis depth penalty -2.33 % (box was -1.39 %); copper 331.9 g; piezo field at REF3 5.315 pT | re-run rf2_emi with the sleeve's e_ref (2.6-3.4 nV/rtHz); winding jig; AB1A input pairs |
-| 7. F1 joint | s 420-450 mm | **OPEN** | upper pass | - | REDESIGN with the telescoping shaft |
-| 8. TXD transmit driver (beside L1) | s 330-420 mm | **OPEN** | system pass, study:continuous pass, study:hvparts pass, upper pass | echo drift 0.204 x noise; switch TJ 100.8 C in boost; TX pair +0.172 us (first-order) | driver schematic and board; rf2_timing with the 0.3 m pair; heat-sink venting |
-| 9. L1 lower segment + yoke | s 0-420 mm; pivot r 85 at the heel | **CHECKED** | upper pass | deployed min gaps {'HEAD-L2': 433.91, 'HEAD-UP': 863.7, 'L1-UP': 460.0} | pivot friction and knob detail |
-| 10. Search head (outside) | D233, heel at 178 deg | **CHECKED** | head:BF pass, head-check:BF pass, lightplate pass, upper pass | light plate, gland and shell checked in rf2_head_check (option BF) | skid clip detail; impact bumper |
-| 11. Search head (inside) | r 0-116.5 mm | **OPEN** | board:MP1 pass, board:TXJ pass, board:TXF pass, board:LR1 pass, shield:SH1 pass, sb1r-variant pass, zonerules pass, construct pass, study:mp1v2_protect pass | MP1 v2 any option passes: False (best 14.1 mA / 17.5 us vs 10 mA / 16.3 us) | MP1 v2 levers; AB1 / CB1D routing in RF2 (Phase C); Rd part; potting trials |
+| 1. Elbow cuff on rails (rear, top) | chassis s 1000-1165 mm, above the chassis | **CONCEPT** | chassis pass | wrist-to-cuff angle to the shaft 0.0 deg; trough 7.1 mm above the chassis | wing spring and rail detent detail; strap |
+| 2. Battery cartridge (under the chassis) | s 905-1065 mm, below the shaft line | **CONCEPT** | chassis pass, system pass | runtime 7.8 h scan / 4.8 h boost; cartridge [136.2, 71.2, 47.2] mm | cell holder, contacts, latch; BQ76952 schematic |
+| 3. Control chassis body (TXD + PWR + HB2-M) | s 800-1160 mm, 360 x 72 x 47 mm | **OPEN** | chassis pass, system pass, study:continuous pass | chassis surface rise 10.5 K in continuous boost; TXD echo drift 0.003 x noise; switch TJ 100.8 C | driver + buck SPICE / schematics; venting; boards |
+| 4. Inverted control-stick grip (on top) | base at s 884 mm on the chassis top | **OPEN** | chassis pass, audio pass, display3 pass | screen 21.8 deg off the eye line; FFC loop 60.0 mm for 25.0 mm slide; audio floor 78.7 dB at 10 cm | HB2-G / FFC detail; trigger and slide-lock mechanisms; overmould |
+| 5. Main hinge (under the chassis front) | s 790-816 mm | **CONCEPT** | chassis pass | twist 6.0 deg/mm, bend r 12.0 mm | hinge detail, seals |
+| 6. Outer rectangular profile + REF3 | s 410-790 mm | **MODELED** | chassis pass, ref3 pass, study:emi not run | REF3 worst-axis penalty -2.01 % (box -1.39 %), copper 247.1 g; REF3 511.0 mm from the head at the shortest use length | re-run rf2_emi with the rect coils' e_ref; winding jig |
+| 7. Middle profile + clamp 1 | s 300-680 mm | **CHECKED** | chassis pass | pivot to hinge {'min_use': 690.0, 'nominal': 790, 'max': 980.0} mm; collapsed 430.0 mm | clamp mechanism detail |
+| 8. Inner profile + coil cord + yoke knuckle | s 0-420 mm | **CONCEPT** | chassis pass | cord stretch 550 mm (ratio 4.44); TX pair 1.1 m: first gate +0.562 us (first-order) | coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair |
+| 9. Folded package | whole machine | **CHECKED** | chassis pass | [497, 249, 186] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2655 g | lighter REF3 / tubes toward the SDC's 2.3 kg |
+| 10. Search head (outside) | D233, heel at 178 deg | **CHECKED** | head:BF pass, head-check:BF pass, lightplate pass | light plate, gland and shell checked in rf2_head_check (option BF) | skid clip detail; bumper |
+| 11. Search head (inside) | r 0-116.5 mm | **OPEN** | board:MP1 pass, board:TXJ pass, board:TXF pass, board:LR1 pass, shield:SH1 pass, zonerules pass, construct pass, study:mp1v2_protect pass | MP1 v2 any option passes: False (best 14.1 mA / 17.5 us vs 10 mA / 16.3 us) | MP1 v2 levers; AB1 / CB1D routing (Phase C); Rd part |
 
 ## Items per station
 
-- **1. Battery cartridge (under the cuff, rear)**: 7S2P Molicel P30B cells, BQ76952 (main switch, TS2 wake), fuse, MT60 charge port (CONCEPT); cartridge + bay geometry, rearward slide path (CHECKED)
-- **2. Elbow cuff + stem**: cuff trough r 46 mm, 210 deg, stem: height range checked (CHECKED); forearm line from the grip to the cuff (owner review 2026-10-30: the arm cannot sit in the cuff and reach the grip) (OPEN)
-- **3. Spine (PWR board)**: LMR36520 +5V_AUX (CONCEPT); regenerative clamp return (hysteretic buck: C3M0280090J, UCC5350, US3M) (OPEN); part envelopes inside the spine (CHECKED)
-- **4. Grip head + pistol grip (the hand)**: grip: 3 finger wedges, pinky shelf, 18 deg rake; pilot trigger + guard; thumb button + light ring; flip-up screen; mode dial (CHECKED); HB2 electronics placed in the grip head (MCU, piezo bridge, 4 x KSC2 TE, J1 / RS-485) (CHECKED); audio: piezo, 3.0-7.6 kHz equalised (MODELED); display / audio coding v3, profiles (MODELED); screen part (CONCEPT); RS-485 part (OPEN)
-- **5. F2 joint + L2 telescope**: L2 outer tube, 0-250 mm telescope with cam lock (CONCEPT); F2 fold hinge: WITHDRAWN by the owner (telescope instead) (OPEN); cable coil and hinge service loops (MODELED)
-- **6. REF3 reference coil (sleeve on L2)**: X / Y saddle pairs + Z solenoid on the tube, OD 33.8 mm (no box) (MODELED); sleeve geometry in the upper assembly (CHECKED); EMI canceller (MODELED)
-- **7. F1 joint**: F1 fold hinge: WITHDRAWN by the owner (becomes a telescoping joint) (OPEN)
-- **8. TXD transmit driver (beside L1)**: placement by echo search (MODELED); C3M0280090J + Ohmite D heat sink, UCC5350, US3M, bulk bank, TMP117 therm (CONCEPT); RF2 driver values (333 uH, 8.06 / 12.74 A, flat-top loop) (OPEN); housing + part envelopes (CHECKED)
-- **9. L1 lower segment + yoke**: tube, yoke cheeks + friction pivot, head ears (CHECKED)
-- **10. Search head (outside)**: shell, lid with 522 conical light wells, gland, skid (new), yoke ears (new) (CHECKED)
-- **11. Search head (inside)**: rim coil 26 t, SH1 shield, SB1R QA / QB boards (CHECKED); MP1 v1 board (CHECKED); MP1 v2 protection (amplifier current / settling) (OPEN); TXJ / TXF boards (CHECKED); LR1 522-LED display board (CHECKED); AB1A / AB1B / CB1D (MODELED); Rd 408 ohm >= 4.24 W part (OPEN); zone rules, harness construct (CHECKED)
+- **1. Elbow cuff on rails (rear, top)**: cuff trough + spring wings, twin side rails, U-slider; forearm on one straight line from the wrist (CHECKED); strap, padding, wing springs (CONCEPT)
+- **2. Battery cartridge (under the chassis)**: 7S2P P30B, BQ76952 (main switch, TS2 wake), fuse, MT60 charge port (CONCEPT); cartridge + bay geometry, rearward slide (CHECKED)
+- **3. Control chassis body (TXD + PWR + HB2-M)**: part envelopes inside the chassis (CHECKED); TX driver values / schematic (OPEN); regenerative clamp buck (OPEN); HB2-M schematic + board (OPEN)
+- **4. Inverted control-stick grip (on top)**: 3 finger wedges, 18 deg rake, pilot trigger, thumb button + light ring, flip-up screen, dial, FFC down the core, 25 mm slide lock (CHECKED); audio piezo (3.0-7.6 kHz), display / audio coding v3 (MODELED); screen part, RS-485 part, HB2-G board (OPEN)
+- **5. Main hinge (under the chassis front)**: hollow-axis hinge, bundle pass-through (2 x 90 deg bends + 180 deg twist) (CHECKED); locking tooth + grip slide lock mechanism (CONCEPT)
+- **6. Outer rectangular profile + REF3**: 38 x 32 profile, flat clamp 2; REF3 flat face coils + rectangular solenoid, 42 x 36 outer (MODELED); geometry (CHECKED)
+- **7. Middle profile + clamp 1**: 33 x 27 keyed profile, flat lever clamp (CHECKED)
+- **8. Inner profile + coil cord + yoke knuckle**: 28 x 22 profile, coil cord (TX pair, power, data, 3 REF pairs) in the 24 x 18 bore (CHECKED); dual-axis yoke (pitch + 90 deg roll) (CONCEPT)
+- **9. Folded package**: telescoped + hinged + grip laid sideways + head stowed (CHECKED)
+- **10. Search head (outside)**: shell, lid with 522 conical light wells, gland, skid, yoke ears (CHECKED)
+- **11. Search head (inside)**: rim coil, SH1, SB1R QA / QB, MP1 v1, TXJ / TXF, LR1 (CHECKED); MP1 v2 protection (OPEN); AB1A / AB1B / CB1D (MODELED); Rd 408 ohm >= 4.24 W part (OPEN)

@@ -74,6 +74,12 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - The REF3 box became a sleeve on the shaft.
     - The TX driver is at s 330-420.
     - NEXT (owner): telescoping instead of folding, a working cuff (straight forearm line), flex in the shaft channels.
+  - **Chassis v2** (section 37, `rf2/rf2_chassis.py`):
+    - SDC 2300-style hinged telescopic chassis with three keyed rectangular profiles.
+    - REF3 coils sit in the outer profile.
+    - The TX driver is in the chassis.
+    - The inverted control-stick grip has the cuff on one straight forearm line.
+    - Folds to 497 x 249 x 186 mm.
   - **Owner updates 2026-10-30** (section 32): power button on the pod; continuous boost checked part by part (open: switch heat sink, regenerative clamp, 4.2 W 630 V damping resistor, coil thermal model); display and audio coding v2 (size = blob radius, depth = pulse, several targets as separate blobs and voices, status screens); multi-target separation by decay time and by position.
   - **Stage 4:** `rf2_zonerules.py` (runner step `zonerules`) turns the zone rules into checks. **Stage 4b, first fin board:** TXF (TXJ as a fin). FEP litz and sleeves are in the head SPEC: section 29.
 - **Still open, in order:**

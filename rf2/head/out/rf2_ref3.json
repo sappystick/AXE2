@@ -547,50 +547,96 @@
   "gain": 3,
   "e_ref_nV": 1.9
  },
- "sleeve": {
+ "rect_sleeve": {
   "X": {
    "gain": 3.0,
-   "turns": 630,
-   "layers": 6,
+   "turns": 399,
+   "layers": 3,
    "wire_mm": 0.2,
-   "wire_m": 460.3,
-   "R_ohm": 252.0,
-   "e_ref_nV": 2.66,
-   "depth_penalty_pct": -2.33,
-   "copper_g": 129.6
+   "wire_m": 285.2,
+   "R_ohm": 156.2,
+   "e_ref_nV": 2.34,
+   "depth_penalty_pct": -1.86,
+   "copper_g": 80.3
   },
   "Y": {
    "gain": 3.0,
-   "turns": 569,
-   "layers": 5,
+   "turns": 478,
+   "layers": 4,
    "wire_mm": 0.2,
-   "wire_m": 417.7,
-   "R_ohm": 228.7,
-   "e_ref_nV": 2.58,
-   "depth_penalty_pct": -2.22,
-   "copper_g": 117.6
+   "wire_m": 340.1,
+   "R_ohm": 186.2,
+   "e_ref_nV": 2.44,
+   "depth_penalty_pct": -2.01,
+   "copper_g": 95.7
   },
   "Z": {
    "gain": 4.0,
-   "turns": 5474,
+   "turns": 3046,
+   "layers": 2,
+   "wire_mm": 0.15,
+   "wire_m": 449.1,
+   "R_ohm": 437.1,
+   "e_ref_nV": 3.18,
+   "depth_penalty_pct": -1.92,
+   "copper_g": 71.1
+  },
+  "profile_mm": [
+   38.0,
+   32.0
+  ],
+  "length_mm": 350.0,
+  "outer_mm": [
+   42.4,
+   36.4
+  ],
+  "worst_axis_penalty_pct": -2.01,
+  "copper_g_total": 247.1
+ },
+ "sleeve": {
+  "X": {
+   "gain": 3.0,
+   "turns": 568,
+   "layers": 5,
+   "wire_mm": 0.2,
+   "wire_m": 417.0,
+   "R_ohm": 228.3,
+   "e_ref_nV": 2.58,
+   "depth_penalty_pct": -2.21,
+   "copper_g": 117.4
+  },
+  "Y": {
+   "gain": 3.0,
+   "turns": 516,
+   "layers": 4,
+   "wire_mm": 0.2,
+   "wire_m": 380.5,
+   "R_ohm": 208.3,
+   "e_ref_nV": 2.52,
+   "depth_penalty_pct": -2.12,
+   "copper_g": 107.1
+  },
+  "Z": {
+   "gain": 4.0,
+   "turns": 4792,
    "layers": 3,
    "wire_mm": 0.15,
-   "wire_m": 535.1,
-   "R_ohm": 520.8,
-   "e_ref_nV": 3.39,
-   "depth_penalty_pct": -2.16,
-   "copper_g": 84.7
+   "wire_m": 499.6,
+   "R_ohm": 486.2,
+   "e_ref_nV": 3.31,
+   "depth_penalty_pct": -2.06,
+   "copper_g": 79.1
   },
   "length_mm": 350.0,
-  "winding_outer_r_mm": 15.91,
-  "sleeve_od_mm": 33.8,
-  "worst_axis_penalty_pct": -2.33,
-  "copper_g_total": 331.9
+  "winding_outer_r_mm": 16.98,
+  "sleeve_od_mm": 36.0,
+  "worst_axis_penalty_pct": -2.21,
+  "copper_g_total": 303.6
  },
  "layout": {
-  "chosen": "sleeve",
-  "why": "owner 2026-10-30: the 100 mm cube on the shaft is not acceptable; the sleeve keeps the 3 axes on the tube (OD about 33.8 mm over 350 mm); the box (chosen above) is kept only as the reference row",
+  "chosen": "rect_sleeve",
+  "why": "owner 2026-10-30: the 100 mm cube on the shaft is not acceptable; the sleeve keeps the 3 axes on the tube (OD about 36.0 mm over 350 mm); the box (chosen above) is kept only as the reference row",
   "box_penalty_pct": -1.39,
-  "sleeve_worst_penalty_pct": -2.33
+  "sleeve_worst_penalty_pct": -2.21
  }
 }

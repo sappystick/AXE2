@@ -4,7 +4,7 @@
   "TXD metal echo drift (5 K) <= 0.5 x gate noise at its placed position": true,
   "at the baseline neck (s 90) the same parts would fail (> 1 x noise)": true,
   "pack cells echo drift negligible (< 0.01 x noise)": true,
-  "TX pair adds <= 0.3 us to the first gate (first-order)": true,
+  "TX pair adds <= 0.6 us to the first gate (first-order)": true,
   "no magnet in the pod; piezo audio field at REF3 < 10 pT (0.1 % of a 10 nT mains field, ASSUMED)": true,
   "every HV conductor insulated >= 630 V (rule 6)": true,
   "every conductor inside its bundle ampacity": true,
@@ -16,14 +16,15 @@
   "I2C addresses unique per bus": true,
   "every HV-rail part >= 630 V (rule 6)": true,
   "TXD switch TJ under 125 C": true,
+  "chassis surface rise <= 15 K in continuous boost (TXD + PWR together)": true,
   "pack dissipation under 3 W in continuous boost": true,
   "scan runtime >= 6 h": true
  },
  "decisions": [
   "Audio: magnet-free SMD piezo in bridge drive on HB2 (rf2_audio.py); tones 3.0-7.6 kHz, equalised; AU1 class-D + speaker removed",
   "Power switching: BQ76952 DSG high-side switch is the main switch; the power button wakes it on TS2 (falling edge, datasheet 7.x 'Wake on TS2'), the pod MCU turns it off over I2C after a 2 s hold; PM2 soft latch and LTC4365 removed (keyed MT60 prevents reverse charge)",
-  "TX driver placement: by an echo search along the shaft (s 255-345 mm, drift 0.1 x noise); the baseline 'neck at the shaft base' fails by about 100 x",
-  "Continuous boost thermal: the clamp energy (8.9 W boost) returns to the pack through a hysteretic buck in the PACK (no ferrite near the coil); the TXD keeps only the switch's 6.1 W on its heat sink (TJ 101 C, rf2_continuous); 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA",
+  "TX driver placement: inside the control chassis (chassis v2, SDC pattern); the echo search along the shaft is kept as the record of why the shaft base fails",
+  "Continuous boost thermal: the clamp energy (8.9 W boost) returns to the battery through a hysteretic buck on the PWR board in the chassis, beside the TXD (no HV pair up the shaft any more); the TXD keeps only the switch's 6.1 W on its heat sink (TJ 101 C, rf2_continuous); 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA",
   "Pack: 7S2P Molicel P30B (151 Wh) under the forearm as the head's counterweight",
   "Inputs: one switch part (C&K KSC2 TE, IP67) for power, trigger and the two selector cams; no magnet in the pod (no offset at REF3 / the upper fluxgate)",
   "TXD temperature: TMP117 in therm mode with EEPROM-stored limits drives the TXSTAT fault line; the head backs the boost off (no I2C to the TXD)",
@@ -32,68 +33,68 @@
  "modules": {
   "TXD": {
    "centre_mm": [
-    -373.1,
-    -16.0,
-    268.6
+    -741.0,
+    25.9,
+    578.5
    ],
-   "B_centre_uT_boost": 19.11,
-   "B_max_uT_boost": 26.04,
+   "B_centre_uT_boost": 2.23,
+   "B_max_uT_boost": 2.59,
    "box_mm": [
     90,
-    34,
-    30
+    72,
+    47
    ],
-   "note": "TX driver beside L1 (+Y), heat-sink vents outward; position from the echo search (rf2_upper housing)"
+   "note": "TX driver INSIDE the control chassis front (chassis v2, SDC pattern: electronics in the box)"
   },
   "REF3": {
    "centre_mm": [
-    -578.7,
-    20.2,
-    442.2
+    -552.7,
+    19.3,
+    420.3
    ],
-   "B_centre_uT_boost": 4.8,
-   "B_max_uT_boost": 10.93,
+   "B_centre_uT_boost": 5.54,
+   "B_max_uT_boost": 13.22,
    "box_mm": [
     350,
-    34,
-    34
+    42,
+    36
    ],
-   "note": "3-axis reference as a sleeve on the tube (rf2_ref3 sleeve: saddle pairs + solenoid)"
+   "note": "3-axis reference in the rectangular outer profile (rf2_ref3 rect_sleeve)"
   },
   "POD": {
    "centre_mm": [
-    -827.7,
-    28.9,
-    612.1
+    -835.2,
+    29.2,
+    657.5
    ],
-   "B_centre_uT_boost": 1.67,
-   "B_max_uT_boost": 2.02,
+   "B_centre_uT_boost": 1.55,
+   "B_max_uT_boost": 2.69,
    "box_mm": [
-    130,
-    40,
-    160
+    360,
+    72,
+    47
    ],
-   "note": "upper unit: grip head + pistol grip (rf2_upper.py)"
+   "note": "control chassis with the inverted grip on top (rf2_chassis.py)"
   },
   "PACK": {
    "centre_mm": [
-    -973.8,
-    34.0,
-    721.7
+    -871.2,
+    30.4,
+    622.4
    ],
-   "B_centre_uT_boost": 1.02,
-   "B_max_uT_boost": 1.24,
+   "B_centre_uT_boost": 1.46,
+   "B_max_uT_boost": 1.84,
    "box_mm": [
-    155,
-    78,
+    160,
+    77,
     54
    ],
-   "note": "battery cartridge in the bay under the spine, behind the grip (rf2_upper.py)"
+   "note": "battery cartridge under the chassis (rf2_chassis.py)"
   }
  },
  "harness": {
   "segments": {
-   "S1 gland - TXD (lower shaft, 300 mm)": [
+   "S1 head - REF3 (coil cord in the inner / middle tubes)": [
     "TX_A",
     "TX_B",
     "VIN_H",
@@ -105,39 +106,32 @@
     "REFY+-",
     "REFZ+-"
    ],
-   "S2 TXD - REF3 (255 mm)": [
-    "VIN",
-    "GND",
-    "HV_CLAMP+GND_CLAMP (twisted)",
-    "DATA+-",
-    "REFX+-",
-    "REFY+-",
-    "REFZ+-"
-   ],
-   "S3 REF3 - pod (250 mm)": [
-    "VIN",
-    "GND",
-    "HV_CLAMP+GND_CLAMP (twisted)",
+   "S2 REF3 - hinge (outer tube)": [
+    "TX_A",
+    "TX_B",
+    "VIN_H",
+    "GND_H",
+    "TXCMD+-",
+    "TXSTAT+-",
     "DATA+-"
    ],
-   "S4 pod - pack (inside the tube, 200 mm)": [
-    "VIN",
-    "GND",
-    "HV_CLAMP+GND_CLAMP (twisted)",
-    "+5V_AUX",
-    "GND_AUX",
-    "SDA/SCL",
-    "BTN (-> BQ TS2 + MCU)"
+   "S3 hinge pass-through into the chassis": [
+    "TX_A",
+    "TX_B",
+    "VIN_H",
+    "GND_H",
+    "TXCMD+-",
+    "TXSTAT+-",
+    "DATA+-"
    ]
   },
   "fill_fraction": {
-   "S1 gland - TXD (lower shaft, 300 mm)": 0.12,
-   "S2 TXD - REF3 (255 mm)": 0.1,
-   "S3 REF3 - pod (250 mm)": 0.034,
-   "S4 pod - pack (inside the tube, 200 mm)": 0.044
+   "S1 head - REF3 (coil cord in the inner / middle tubes)": 0.12,
+   "S2 REF3 - hinge (outer tube)": 0.054,
+   "S3 hinge pass-through into the chassis": 0.054
   },
-  "vin_drop_V_boost": 0.053,
-  "vin_loss_W_boost": 0.059,
+  "vin_drop_V_boost": 0.007,
+  "vin_loss_W_boost": 0.008,
   "tube": {
    "od": 25.0,
    "id": 19.6,
@@ -184,24 +178,24 @@
     "drift5K_x_noise": 0.148
    }
   ],
-  "txd_at_s_mm": 375.0,
-  "txd_echo_x_gate_noise": 10.21,
-  "txd_drift5K_x_noise": 0.204,
+  "txd_at_s_mm": 857.0,
+  "txd_echo_x_gate_noise": 0.13,
+  "txd_drift5K_x_noise": 0.003,
   "pack_cells_x_gate_noise": 0.0,
   "criterion": "drift for a 5 K step <= 0.5 x the gate noise; heat sink at worst-case orientation, cans with lateral axes"
  },
  "tx_pair": {
-  "length_m": 0.33,
-  "C_pF_ASSUMED_50pF_per_m": 16.5,
-  "first_gate_shift_us": 0.172,
-  "vs_baseline_neck_us": 0.125,
+  "length_m": 1.1,
+  "C_pF_ASSUMED_50pF_per_m": 55.0,
+  "first_gate_shift_us": 0.562,
+  "vs_baseline_neck_us": 0.515,
   "note": "first-order: tail 10.5 us (16.3 - 5.8 us clamp) x (sqrt(1 + dC / 500 pF) - 1); pair capacitance ASSUMED (FEP twisted pair)"
  },
  "ref3_coupling": {
-  "distance_pod_to_REF3_mm": 302,
-  "piezo_loop_field_pT": 5.315,
+  "distance_pod_to_REF3_mm": 361,
+  "piezo_loop_field_pT": 3.138,
   "magnets_in_pod": 0,
-  "speaker_alternative_nT": 4.5,
+  "speaker_alternative_nT": 2.66,
   "note": "speaker alternative: a 50-turn, 12 mm voice coil at 0.11 A rms (0.1 W into 8 ohm), unshielded upper bound"
  },
  "rails": {
@@ -261,7 +255,10 @@
   "txd_switch_TJ_C": 100.784,
   "txd_W": 6.3,
   "pack_W_boost": 1.44,
-  "note": "TXD: switch 6.1 W + driver / shunt about 0.2 W; pack: regenerative buck losses at 90 % (ASSUMED), LMR36520 and cell I2R"
+  "note": "TXD: switch 6.1 W + driver / shunt about 0.2 W; pack: regenerative buck losses at 90 % (ASSUMED), LMR36520 and cell I2R",
+  "chassis_W_boost": 7.74,
+  "chassis_surface_rise_K": 10.5,
+  "note2": "chassis 360 x 72 x 47 mm, natural convection 8 W/m2K (ASSUMED); the TXD heat sink vents through the chassis sides"
  },
  "runtime": {
   "pack": "7S2P Molicel P30B",

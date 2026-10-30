@@ -803,3 +803,48 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     - a mirrored placement frame turned solids inside out (negative volume, zero distances);
     - an edge-subdividing sampler made millions of points.
 - **System topography (`rf2/rf2_topography.py`, step `topography` -> `docs/SYSTEM_TOPOGRAPHY.md`).** Generated station by station from the handle tip to the head edge: maturity (CHECKED / MODELED / CONCEPT / OPEN), the runner steps and their last results, numbers read from outputs, and open items.
+
+## 37. Chassis v2: SDC 2300-style hinged telescopic chassis, inverted grip, rectangular shaft (2026-10-30; owner; MODELED)
+- **Reference:** the owner's SDC 2300 description and manual (folds 400 x 216 mm, 1500 mm extended, 2.3 kg). The manual is used for the mechanism only. Its fold sequence:
+  - armrest strap off;
+  - shaft folds out and clicks;
+  - handle slides forward and up, locking the shafts;
+  - armrest slides back, wings open;
+  - coil turns 180 then 90 deg;
+  - camlocks extend.
+- **`rf2/rf2_chassis.py`** (step `chassis`; `rf2/chassis_out/`: STL, STEP, views; 13 checks pass) replaces rf2_upper v1, which is now a helper module and record only. Mapped onto our system:
+  - **TX driver moved into the control chassis**, as the SDC keeps its electronics in the box. This removes the TXD box from the shaft and the 460 V return pair up the shaft, since TXD and the PWR buck now sit side by side.
+    - The TX pair runs about 1.1 m in the coil cord: 55 pF, first gate +0.56 us (first-order; re-run rf2_timing).
+    - TXD echo drift in the chassis: 0.003 x noise.
+    - Chassis surface rise 10.5 K in continuous boost (TXD + PWR, 7.7 W).
+  - **Main hinge** under the chassis front, with a hollow axis: the bundle makes two 12 mm-radius bends and a 180 deg twist over 30 mm (6 deg/mm).
+  - **Telescope:** three nested RECTANGULAR carbon profiles (owner: rectangular housing along the shaft), keyed so nothing twists.
+    - Profiles: outer 38 x 32, middle 33 x 27, inner 28 x 22 mm, 2 mm walls; two flat lever clamps.
+    - Pivot-to-hinge 690-980 mm; collapsed 430 mm; 100 mm minimum overlaps.
+    - Coil cord (17 mm coil) in the 24 x 18 bore: 550 mm stretch, ratio 4.4.
+  - **REF3 in the outer profile (`rf2_ref3` `rect_sleeve`, chosen):** flat face-coil pairs (X, Y) plus a rectangular solenoid (Z).
+    - Outer 42.4 x 36.4 mm.
+    - Depth penalty -2.01 % worst axis, against -2.21 % for the round sleeve and -1.39 % for the old box.
+    - 247 g copper, against 304 g for the round sleeve.
+    - At the shortest use length it sits 511 mm from the pivot.
+  - **Inverted grip (owner):** a control stick standing on the chassis top in front of the cuff.
+    - Pinky at the base, 3 finger wedges toward the head, 18 deg rake.
+    - Pilot trigger under the grip head; thumb button and light ring on top; flip-up screen behind (22 deg off the eye line); dial on the thumb side.
+    - A 12-way FFC runs down the hollow core to HB2-M.
+    - The grip slides 25 mm on a carriage to lock the hinge (SDC handle-lock), with a 60 mm FFC loop.
+    - The forearm lies on ONE straight line from the wrist to the cuff (0 deg to the shaft), and the cuff trough sits 7 mm above the chassis. This fixes the v1 cuff.
+  - **Armrest glide:** the cuff rides twin side rails (U-slider over the chassis top), with spring wings.
+  - **Battery:** the cartridge sits under the chassis on the opposite side of the shaft from the grip, and slides out rearward clear.
+- **Fold search** (memoised, feasibility first; grip fixed / folded forward / laid sideways):
+  - grip fixed: 497 x 251 x 233 mm;
+  - grip forward: 553 x 233 x 199 mm;
+  - **grip laid sideways along the chassis: 497 x 249 x 186 mm**, inside the 520 x 320 x 210 backpack target. The hinge folds the shaft along the chassis side, and the head is stowed by the yoke knuckle.
+  - The SDC is smaller (400 x 216 mm) with a 203 mm coil; ours carries a 233 mm head.
+- **Mass and torque:** 2.66 kg (ASSUMED items; SDC 2.3 kg); torque about the hand 3.9 N m (v1: 6.5).
+- **OPEN:**
+  - rf2_timing with the 1.1 m pair;
+  - rf2_emi with the rect REF3;
+  - hinge, slide-lock, clamp and wing mechanisms;
+  - coil-cord spec (1000 V pair);
+  - seals;
+  - the HB2-G / HB2-M / TXD / PWR boards.

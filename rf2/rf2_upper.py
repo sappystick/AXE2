@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""RF2 upper assembly and shaft (2026-10-30, owner: modern ergonomic grip with finger wedges, a fighter-pilot trigger, a thumb power button, a flip-up screen above
+"""SUPERSEDED 2026-10-30 by rf2/rf2_chassis.py (SDC-style chassis v2); kept as a helper module (frame, placement, sampling, cache) and as the v1 record.
+RF2 upper assembly and shaft (2026-10-30, owner: modern ergonomic grip with finger wedges, a fighter-pilot trigger, a thumb power button, a flip-up screen above
 the thumb, an elbow cuff angled up from the shaft with the quick-swap battery under it, folding / telescoping to backpack size; outside of the head).
 MODELED. Every dimension is ASSUMED unless a datasheet is named; anthropometric targets are typical adult values (ASSUMED, not from a survey on file).
 Replaces the v1 / v2 cylindrical pod (head/rf2_pod.py, retired from the runner).
