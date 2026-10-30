@@ -218,3 +218,26 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - Option B (CB1D lowered to the AB1 tier) gives 15.7 mm.
   - Option C (B + flex receive / shield / display + low-profile parts) gives 12.1 mm.
   - Still to model: the bundle self-capacitance (first gate), the flex receive copper, and the coil-to-AB1 coupling.
+
+## 18. Depth: the detection (mono) channel and the levers (2026-10-30; rf2/rf2_depth_levers.py; docs/CORRECTIONS.md)
+- **Which channel:**
+  - Detection uses the **mono** channel (the rim coil receiving its own signal).
+  - The quadrupole boards give bearing / pinpoint and cancel ground, so they are weak at depth by design.
+  - The thin-study figure of 136 / 190 mm was the quadrupole channel (corrected).
+- **Mono, modeled** (noise-limited, in air, gold spheres, SNR 3, 100 pulses, MP1 v2 1.7 nV/rtHz, 16.3 us gate):
+  - option B (15.7 mm): **340 / 434 / 521 mm** (1 / 5 / 20 g);
+  - today's 25.4 mm head: 341 / 436 / 525 mm;
+  - SDC 2300-class 8 in mono in the same chain: 320 / 408 / 490 mm.
+  - The old petal head (as built, sim_head1) modeled 152 / 225 mm (1 / 20 g) on its best receiver (figure-8): the RF2 mono is the deeper design.
+- **Levers on option B (1 / 5 / 20 g, mm):**
+  - front end MP1 v1 (5.0 nV): 276 / 357 / 431;
+  - MP1 v2 (1.7 nV): 340 / 434 / 521;
+  - Schottky clamp, Rin2 47 ohm (1.2 nV): 363 / 462 / 554;
+  - two LMH6629 per input (0.9 nV): 381 / 485 / 582;
+  - 400 pulses averaged: 385 / 489 / 588;
+  - 27 mJ boost: 370 / 471 / 565;
+  - first gate 10 us: 350 / 439 / 525;
+  - **combined (0.9 nV + 400 pulses + 10 us): 445 / 555 / 662**.
+- **Physics limit:**
+  - A small target's signal falls about as 1 / depth^6. Doubling the depth needs about 64x the SNR, so no single trick doubles it.
+  - The gains come from stacking noise, averaging, energy and gate improvements, and in real ground from ground handling, which this noise-only model does not include.

@@ -11,7 +11,8 @@ Three explicit z-stacks (z up from the skid's underside; mm):
                  about 0.14 mm; 0.15 used), islands with parts <= 3.0 mm above (AB1 class; TXJ lands lowered, ASSUMED) and the bay floor 0.6 mm.
 Coil at equal energy per pulse (10.8 mJ): the 26 turns re-shaped into rows x columns that fit the rim window (columns inward from r 113.4 at
 1.6 mm pitch, down to r 103.8: AB1 ends at r 102). Reported: the series inductance (C.L_turns), the current for 10.8 mJ, the axial field per pulse
-at 100 / 200 mm, and the RF2 depth figure (C.evaluate: equal energy, RX-Q receiver, gold spheres). Not modeled here: the self-capacitance (sets the
+at 100 / 200 mm, and the RF2 depth figure (C.evaluate: equal energy, RX-Q receiver, gold spheres). NOTE (correction 2026-10-30): 'depth_mm_equal_energy' below is rf2_coil_search.evaluate, i.e. the QUADRUPOLE (bearing) channel; the mono
+(detection) depth of these options is in rf2/rf2_depth_levers.py. Not modeled here: the self-capacitance (sets the
 first gate with L; study 2), the flex receive coils' 18 um copper (resistance x2 against 35 um: thermal noise of those channels x sqrt 2 if their
 own resistance dominates; study 3).
 usage: python3 rf2/rf2_thin.py  -> rf2/results/rf2_thin.json, rf2/results/rf2_thin.png"""

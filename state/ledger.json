@@ -163,12 +163,22 @@
   "study:thin": {
    "status": "pass",
    "rc": 0,
-   "seconds": 8.9,
+   "seconds": 9.7,
    "why": "",
    "tail": "",
-   "fingerprint": "0e464d910a4eb455",
-   "finished": "2026-10-30T05:25:14",
+   "fingerprint": "8b450ed9472d906e",
+   "finished": "2026-10-30T05:40:10",
    "log": "state/logs/study_thin.log"
+  },
+  "study:depth_levers": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 16.6,
+   "why": "",
+   "tail": "",
+   "fingerprint": "41f48aed1aaf4593",
+   "finished": "2026-10-30T05:40:27",
+   "log": "state/logs/study_depth_levers.log"
   }
  },
  "runs": [
@@ -238,6 +248,14 @@
     "router-selftest": "pass",
     "parity": "pass",
     "study:thin": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T05:40:27",
+   "seconds": 26.2,
+   "results": {
+    "study:thin": "pass",
+    "study:depth_levers": "pass"
    }
   }
  ]

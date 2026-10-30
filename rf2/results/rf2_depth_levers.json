@@ -1,0 +1,122 @@
+{
+ "status": "MODELED: mono (detection) channel, noise-limited in air, gold spheres, SNR 3; ASSUMED SDC internals; not a field depth",
+ "correction": "the thickness study's 136 / 190 mm were the quadrupole (bearing) channel; see docs/CORRECTIONS.md",
+ "options": {
+  "A today (SPEC)": {
+   "height_mm": 25.4,
+   "coil": "9 x 3",
+   "L_uH": 321.4,
+   "I_A": 8.2,
+   "mono_depth_mm": {
+    "1.0 g": 341,
+    "5.0 g": 436,
+    "20.0 g": 525
+   }
+  },
+  "B single tier (CB1D lowered)": {
+   "height_mm": 15.65,
+   "coil": "5 x 6",
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "mono_depth_mm": {
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   }
+  },
+  "C single tier + flex layers + low-profile parts": {
+   "height_mm": 12.05,
+   "coil": "4 x 7",
+   "L_uH": 319.3,
+   "I_A": 8.22,
+   "mono_depth_mm": {
+    "1.0 g": 341,
+    "5.0 g": 434,
+    "20.0 g": 521
+   }
+  }
+ },
+ "levers": {
+  "MP1 v1 front end (5.0 nV/rtHz)": {
+   "first_gate_us": 16.3,
+   "mono_depth_mm": {
+    "1.0 g": 276,
+    "5.0 g": 357,
+    "20.0 g": 431
+   }
+  },
+  "MP1 v2 (1.7 nV/rtHz): baseline": {
+   "first_gate_us": 16.3,
+   "mono_depth_mm": {
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   }
+  },
+  "v2 + Schottky clamp, Rin2 47 ohm (1.2 nV/rtHz)": {
+   "first_gate_us": 16.3,
+   "mono_depth_mm": {
+    "1.0 g": 363,
+    "5.0 g": 462,
+    "20.0 g": 554
+   }
+  },
+  "2 x LMH6629 per input (0.9 nV/rtHz)": {
+   "first_gate_us": 16.3,
+   "mono_depth_mm": {
+    "1.0 g": 381,
+    "5.0 g": 485,
+    "20.0 g": 582
+   }
+  },
+  "averaging 400 pulses": {
+   "first_gate_us": 16.3,
+   "mono_depth_mm": {
+    "1.0 g": 385,
+    "5.0 g": 489,
+    "20.0 g": 588
+   }
+  },
+  "boost energy 27 mJ": {
+   "first_gate_us": 16.3,
+   "mono_depth_mm": {
+    "1.0 g": 370,
+    "5.0 g": 471,
+    "20.0 g": 565
+   }
+  },
+  "first gate 10 us": {
+   "first_gate_us": 10.0,
+   "mono_depth_mm": {
+    "1.0 g": 350,
+    "5.0 g": 439,
+    "20.0 g": 525
+   }
+  },
+  "first gate 8 us": {
+   "first_gate_us": 8.0,
+   "mono_depth_mm": {
+    "1.0 g": 353,
+    "5.0 g": 441,
+    "20.0 g": 526
+   }
+  },
+  "combined: 0.9 nV + 400 pulses + 10 us": {
+   "first_gate_us": 10.0,
+   "mono_depth_mm": {
+    "1.0 g": 445,
+    "5.0 g": 555,
+    "20.0 g": 662
+   }
+  }
+ },
+ "sdc2300_class_same_chain": {
+  "turns": 28,
+  "L_uH": 300.2,
+  "mono_depth_mm": {
+   "1.0 g": 320,
+   "5.0 g": 408,
+   "20.0 g": 490
+  }
+ }
+}
