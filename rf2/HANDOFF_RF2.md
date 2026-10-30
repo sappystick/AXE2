@@ -990,3 +990,42 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     - head mass without bay potting 684 -> 729 g (full fill 894 -> 939 g);
     - Tx field at the boards about -1 %, e.g. B 379.2 -> 375.5 uT boost (the boards sit 0.9 mm further from the coil plane).
 - **Readiness: 6 / 40** (P0.3, P0.4, P0.5, P3.6, P3.7, P3.9). P0.6 still open on 4 parts: Mill-Max 0906 (official sheet not downloadable), the custom coil cord, the rectangular CF profiles, and the cam clamp hardware. Critical path: P0.1 (I3 cord vendor, I6 Mill-Max) -> P1.1 TXD schematic.
+## 41. Drill-style rail battery pack study (2026-10-30; owner question; `rf2/rf2_pack_options.py`, step `pack-options`; MODELED)
+- **Question (owner):** could a swappable pack that slides onto a rail under the chassis, like a cordless drill, be a lighter option? The owner proposed a 7S RC soft pack in a hard shell, and blade clips or panel XT60 contacts.
+- **Basis:**
+  - Every option stays 7S, so the bus, the BQ76952, TXD and the HV design are unchanged.
+  - Power comes from rf2_system: scan 17.45 W, boost 28.35 W (1.35 A at the 21 V cut-off).
+  - The 6 h scan rule applies, with 90 % of the energy usable.
+  - The pack sits 159 mm behind the hand (rf2_chassis `mass.lever_mm`, now written there).
+  - The bay is 118.3 g, from its STL at 100 % PETG.
+  - Shell, rail, latch, dock, seal and BMS masses are ASSUMED (in the script).
+- **Results:**
+
+  | Key | Option | Wh | Scan h | 6 h | Pack g | System delta g | Torque about hand N m | Pack mm (along x lateral x height) |
+  |---|---|---|---|---|---|---|---|---|
+  | A | baseline: 7S2P P30B cartridge into an enclosed bay, rear slide | 151.2 | 7.8 | yes | 748 | +0 | 4.08 | 136.2 x 71.2 x 47.2 |
+  | B | drill-style rail pack, same 7S2P P30B (bay removed) | 151.2 | 7.8 | yes | 770 | -60 | 4.05 | 136.2 x 71.2 x 47.2 |
+  | C1 | drill-style rail pack, 7S1P Molicel P45B, 1 row(s) | 113.4 | 5.85 | no | 582 | -249 | 4.34 | 156.8 x 76.2 x 31.6 |
+  | C2 | drill-style rail pack, 7S1P Molicel P45B, 2 row(s) | 113.4 | 5.85 | no | 582 | -249 | 4.34 | 92.2 x 76.2 x 53.1 |
+  | D1 | drill-style rail pack, 7S1P LG M50T, 1 row(s) | 127.4 | 6.57 | yes | 582 | -249 | 4.34 | 156.1 x 76.8 x 31.4 |
+  | D2 | drill-style rail pack, 7S1P LG M50T, 2 row(s) | 127.4 | 6.57 | yes | 582 | -249 | 4.34 | 91.8 x 76.8 x 52.9 |
+  | E | drill-style hard shell round a 7S RC LiPo (Gens Ace 5000 mAh 7S 45C) | 129.5 | 6.68 | yes | 901 | +71 | 3.84 | 171.0 x 56.0 x 61.0 |
+  | F | drill-style small 7S1P P30B, carried with a spare | 75.6 | 3.9 | no | 421 | -410 | 4.59 | 136.2 x 71.2 x 28.6 |
+
+- **Findings:**
+  - **The drill-style rail is feasible with any of these cells.**
+    - The current cartridge already slides out rearward with blind MT60 and spring-pin contacts (ICD I6).
+    - A rail dock in place of the enclosed bay saves about 60 g with the same cells (option B).
+    - The BMS stays in the pack, so its DSG FET keeps the exposed contacts dead when the pack is off the dock. TS2 wake comes from the power button through a signal pin.
+  - **The RC LiPo is not lighter.**
+    - Bare, it is 157 Wh/kg, against 230 Wh/kg for the P30B and 260 Wh/kg for the M50T cells.
+    - It has no BMS, needs puncture protection and a swell gap, and its 45C rating goes unused at about 1.4 A.
+    - Option E is +71 g for 15 % less energy.
+  - **The weight saver is the cell, not the rail.** A 7S1P 21700 pack (option D, LG M50T) meets 6 h (6.57 h) at 582 g: **-249 g for the system** (2688 -> 2439 g).
+    - Cost 1: the pack is a counterweight behind the hand, so the torque rises 4.08 -> 4.34 N m. Moving the dock about 45 mm further back restores it (not modeled in geometry).
+    - Cost 2: in the coldest band (-20 to 10 C), boost at the cut-off uses 56 % of the cell's continuous rating.
+    - Cost 3: the M50T spec on file is a 2018 rev 0 draft. Option C (P45B, a full datasheet) misses 6 h by about 9 min.
+  - **Contacts:**
+    - Keep MT60 for power and spring pins for the BMS signals (ICD I6). The current is 1.4 A at most, so the owner's Keystone 3557 / 3558 fuse clips or panel XT60 would also carry it; the 3557 / 3558 are not on file (UNVERIFIED).
+    - **Sealing is new work:** the bay kept spray off; a rail pack needs a face seal round the contacts, ASSUMED at 6 g.
+- **Not done:** the dock and rail geometry in rf2_chassis (the pack would be 156 x 77 x 31 mm in one row); latch strength; seal design; a swap hold-up (a swap restarts the detector).

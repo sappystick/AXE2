@@ -399,17 +399,26 @@
    "cuff + rails (ASSUMED 110 g)": 110,
    "battery cartridge (14 x 47 g + 90 g)": 748
   },
+  "lever_mm": {
+   "head (ASSUMED 650 g)": 706.3,
+   "rect profiles + yoke + clamps (CF, ASSUMED 330 g)": 299.5,
+   "REF3 rect coils (280.3 g Cu + 30 g)": 153.2,
+   "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": -114.1,
+   "grip + head + screen (ASSUMED 120 g)": 8.5,
+   "cuff + rails (ASSUMED 110 g)": -213.4,
+   "battery cartridge (14 x 47 g + 90 g)": -159.4
+  },
   "total_g": 2688,
   "torque_about_hand_Nm": 4.08,
   "sdc2300_reference_g": 2300
  },
  "ok": true,
  "timings_s": {
-  "build": 1.71,
-  "containment": 0.42,
+  "build": 1.86,
+  "containment": 0.4,
   "fold search (cached)": 0.02,
-  "deployed clearance": 0.53,
-  "exports and views": 8.05,
-  "total": 15.2
+  "deployed clearance": 0.65,
+  "exports and views": 8.61,
+  "total": 16.2
  }
 }

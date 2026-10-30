@@ -95,6 +95,8 @@ STEPS = [
          outputs=[H + "out/rf2_mp1v2_close.json"], timeout=7200),
     dict(id="print", cmd=["rf2/rf2_print.py"], inputs=["rf2/rf2_print.py", "rf2/rf2_chassis.py", "rf2/chassis_out/rf2_chassis_check.json"], deps=["chassis", "head:BF"], outputs=["rf2/results/rf2_print.json"], timeout=1800),
     dict(id="icd", cmd=["rf2/rf2_icd.py"], inputs=["rf2/rf2_icd.py", "rf2/rf2_system.py", "docs/DATASHEET_LOG_ARX.md"], deps=["system"], check=jcheck("rf2/results/rf2_icd.json", lambda d: d["ok_except_parts"]), outputs=["docs/ICD.md"]),
+    dict(id="pack-options", cmd=["rf2/rf2_pack_options.py"], inputs=["rf2/rf2_pack_options.py", "rf2/chassis_out/rf2_chassis_check.json", "rf2/results/rf2_system.json"], deps=["chassis", "system"],
+         outputs=["rf2/results/rf2_pack_options.json"]),
     dict(id="topography", cmd=["rf2/rf2_topography.py"], inputs=["rf2/rf2_topography.py", "rf2/chassis_out/rf2_chassis_check.json", "rf2/results/rf2_system.json", "rf2/head/out/rf2_ref3.json"],
          deps=["chassis", "system", "ref3"], outputs=["docs/SYSTEM_TOPOGRAPHY.md"]),
     dict(id="readiness", cmd=["rf2/rf2_readiness.py"], inputs=["rf2/rf2_readiness.py", "state/ledger.json", "rf2/results/rf2_icd.json"], deps=["topography", "icd", "print", "emi-rect"], outputs=["docs/PROTOTYPE_ROADMAP.md"]),

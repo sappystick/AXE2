@@ -281,7 +281,7 @@ def main():
               "battery cartridge (14 x 47 g + 90 g)": (748.0, at(985, geo["n_bay"]))}
     hand = geo["base"] + up * 50.0
     tq = sum(m * 9.81e-3 * (hand[0] - p[0]) * 1e-3 for m, p in masses.values()); tot = sum(m for m, _ in masses.values())
-    res["mass"] = dict(items_g={k: round(m) for k, (m, _) in masses.items()}, total_g=round(tot), torque_about_hand_Nm=round(tq, 2), sdc2300_reference_g=2300)
+    res["mass"] = dict(items_g={k: round(m) for k, (m, _) in masses.items()}, lever_mm={k: round(float(hand[0] - p[0]), 1) for k, (m, p) in masses.items()}, total_g=round(tot), torque_about_hand_Nm=round(tq, 2), sdc2300_reference_g=2300)
     for v in c.values(): v["ok"] = bool(v["ok"])
     res["ok"] = bool(all(v["ok"] for v in c.values()))
     with phase("exports and views"): export(P, E, geo, best)
