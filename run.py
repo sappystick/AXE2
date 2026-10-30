@@ -71,7 +71,7 @@ STEPS = [
 def fingerprint(s):
     h = hashlib.sha256(json.dumps(s["cmd"]).encode())
     for f in files(*s["inputs"]):
-        h.update(f.encode()); h.update(open(f, "rb").read())
+        h.update(os.path.relpath(f, ROOT).encode()); h.update(open(f, "rb").read())     # relative: a clone elsewhere keeps the same fingerprints
     if s.get("key"): h.update(s["key"]().encode())
     return h.hexdigest()[:16]
 

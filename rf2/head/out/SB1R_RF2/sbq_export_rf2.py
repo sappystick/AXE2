@@ -2,7 +2,7 @@
 import json, math, os, numpy as np
 import models3d as M3
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-G=json.load(open('/home/user/AXE2/data/reference/sbq_geometry.json')); W,VD,VR,VDR=0.8,0.8,0.4,0.4;     # VR is the via PAD radius; VDR the finished DRILL diameter (the drill was written as 2*VR = 0.8 = the pad: zero annular ring in the KiCad file and in the fabrication PTH drill file)
+G=json.load(open('/home/user/axe2/data/reference/sbq_geometry.json')); W,VD,VR,VDR=0.8,0.8,0.4,0.4;     # VR is the via PAD radius; VDR the finished DRILL diameter (the drill was written as 2*VR = 0.8 = the pad: zero annular ring in the KiCad file and in the fabrication PTH drill file)
 HA=G["hole_angles"]; RB=114.0
 def rot(a,deg):
     c,s=math.cos(math.radians(deg)),math.sin(math.radians(deg)); a=np.asarray(a,float); return np.c_[a[:,0]*c-a[:,1]*s,a[:,0]*s+a[:,1]*c]
@@ -69,9 +69,9 @@ def gerber(prefix,deg,outdir):
     s=hdr("Profile,NP"); s+=poly(outline(),13); s.append("M02*"); open(f"{outdir}/{prefix}-Edge_Cuts.gbr","w").write("\n".join(s))
     d=["M48","METRIC,TZ",f"T1C{VDR:.3f}",f"T2C0.800","%","T1"]+[f"X{x:.3f}Y{y:.3f}" for x,y in vias]+["T2"]+[f"X{x:.3f}Y{y:.3f}" for x,y in pads+T]+["M30"]; open(f"{outdir}/{prefix}-PTH.drl","w").write("\n".join(d))
     d=["M48","METRIC,TZ","T1C3.400","%","T1"]+[f"X{x:.3f}Y{y:.3f}" for x,y in holes]+["M30"]; open(f"{outdir}/{prefix}-NPTH.drl","w").write("\n".join(d))
-os.makedirs('/home/user/AXE2/rf2/head/out/SB1R_RF2',exist_ok=True)
-kicad("SB1R-QA","QA_COIL",0.0,'/home/user/AXE2/rf2/head/out/SB1R_RF2/SB1R-QA-RF2.kicad_pcb'); kicad("SB1R-QB","QB_COIL",45.0,'/home/user/AXE2/rf2/head/out/SB1R_RF2/SB1R-QB-RF2.kicad_pcb')
-gerber("SB1R-QA",0.0,'/home/user/AXE2/rf2/head/out/SB1R_RF2/GERBER_QA'); gerber("SB1R-QB",45.0,'/home/user/AXE2/rf2/head/out/SB1R_RF2/GERBER_QB'); import sys; sys.exit(0)
+os.makedirs('/home/user/axe2/rf2/head/out/SB1R_RF2',exist_ok=True)
+kicad("SB1R-QA","QA_COIL",0.0,'/home/user/axe2/rf2/head/out/SB1R_RF2/SB1R-QA-RF2.kicad_pcb'); kicad("SB1R-QB","QB_COIL",45.0,'/home/user/axe2/rf2/head/out/SB1R_RF2/SB1R-QB-RF2.kicad_pcb')
+gerber("SB1R-QA",0.0,'/home/user/axe2/rf2/head/out/SB1R_RF2/GERBER_QA'); gerber("SB1R-QB",45.0,'/home/user/axe2/rf2/head/out/SB1R_RF2/GERBER_QB'); import sys; sys.exit(0)
 fig,ax=plt.subplots(1,4,figsize=(26,7),facecolor="#0b2a52"); col=["#7fd4ff","#6fe3a0","#ffb347","#ff8a8a"]
 L,vias,pads,holes=board(0.0)
 for li in range(4):
