@@ -90,6 +90,7 @@ STEPS = [
     dict(id="display3", cmd=["rf2/rf2_display3.py"], inputs=["rf2/rf2_display3.py", "rf2/rf2_display.py", "rf2/rf2_ui.py", "rf2/rf2_audio.py", H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/rf2_display3.json")),
     dict(id="topography", cmd=["rf2/rf2_topography.py"], inputs=["rf2/rf2_topography.py", "rf2/chassis_out/rf2_chassis_check.json", "rf2/results/rf2_system.json", "rf2/head/out/rf2_ref3.json"],
          deps=["chassis", "system", "ref3"], outputs=["docs/SYSTEM_TOPOGRAPHY.md"]),
+    dict(id="readiness", cmd=["rf2/rf2_readiness.py"], inputs=["rf2/rf2_readiness.py", "state/ledger.json"], deps=["topography"], outputs=["docs/PROTOTYPE_ROADMAP.md"]),
     dict(id="router-selftest", cmd=["tests/router_selftest.py"], inputs=["tests/router_selftest.py", "src/pcb/astar_route.py"], deps=["board:MP1"],
          check=jcheck("state/router_selftest.json")),
     dict(id="parity", cmd=[H + "rf2_parity.py"], inputs=[H + "rf2_parity.py"], deps=["netlist", "board:TXJ", "board:MP1", "board:LR1", "shield:SH1", "sb1r-variant"],

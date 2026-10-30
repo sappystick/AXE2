@@ -1,0 +1,682 @@
+{
+ "rows": [
+  {
+   "id": "P0.1",
+   "phase": 0,
+   "item": "Interface control document: every joint (gland, coil cord, hinge pass-through, grip FFC, cartridge contacts, REF3 termination) with conductors, connector part, pinout, voltage class",
+   "deps": [],
+   "gate": [
+    "files",
+    [
+     "docs/ICD.md"
+    ]
+   ],
+   "done_means": "one table per interface; parts with datasheets on file",
+   "status": "TODO",
+   "ready_to_start": true
+  },
+  {
+   "id": "P0.2",
+   "phase": 0,
+   "item": "System netlist extended to every RF2 board and harness wire (TXD, PWR, HB2-M, HB2-G, BMS, REF3T, AB1A/B, CB1D, MP1 v2) with parity",
+   "deps": [
+    "P0.1"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/results/rf2_netlist_coverage.json"
+    ]
+   ],
+   "done_means": "coverage report lists every board above with nets; rf2_parity passes against built boards and harness",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P0.3",
+   "phase": 0,
+   "item": "First gate with the 1.1 m TX pair in the coil cord (rf2_timing, node C + pair, damping at the coil)",
+   "deps": [],
+   "gate": [
+    "files",
+    [
+     "rf2/results/rf2_timing_cord.json"
+    ]
+   ],
+   "done_means": "exact gate shift replaces the +0.56 us first-order estimate",
+   "status": "TODO",
+   "ready_to_start": true
+  },
+  {
+   "id": "P0.4",
+   "phase": 0,
+   "item": "EMI canceller with the rectangular REF3 (e_ref 2.5-3.4 nV/rtHz) (rf2_emi)",
+   "deps": [],
+   "gate": [
+    "files",
+    [
+     "rf2/results/rf2_emi_rect.json"
+    ]
+   ],
+   "done_means": "depth with canceller re-computed",
+   "status": "TODO",
+   "ready_to_start": true
+  },
+  {
+   "id": "P0.5",
+   "phase": 0,
+   "item": "MP1 v2 protection closed: amplifier input < 10 mA and settling < first gate (levers: Rin2 150-220 ohm, 3.3 V clamp rail, gate timing)",
+   "deps": [
+    "P0.3"
+   ],
+   "gate": [
+    "step",
+    "study:mp1v2_protect_closed"
+   ],
+   "done_means": "one option passes every limit in SPICE",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P0.6",
+   "phase": 0,
+   "item": "Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total)",
+   "deps": [],
+   "gate": [
+    "files",
+    [
+     "data/datasheets/*LS013B7DH03*",
+     "data/datasheets/*RS485*"
+    ]
+   ],
+   "done_means": "each part VERIFIED in DATASHEET_LOG",
+   "status": "TODO",
+   "ready_to_start": true
+  },
+  {
+   "id": "P1.1",
+   "phase": 1,
+   "item": "TXD schematic: C3M0280090J + UCC5350, flat-top PWM current loop (333 uH, 8.06 / 12.74 A), US3M clamp + film cap, bulk bank, shunt + current sense, TMP117 therm -> TXSTAT",
+   "deps": [
+    "P0.1",
+    "P0.3"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/results/rf2_txd_spice.json"
+    ]
+   ],
+   "done_means": "SPICE: current loop, turn-off, clamp, ratings in continuous boost",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.2",
+   "phase": 1,
+   "item": "PWR schematic: LMR36520 +5V_AUX, hysteretic regenerative buck 460 V -> VBAT (C3M + UCC5350 + US3M + L), cartridge contacts",
+   "deps": [
+    "P0.1",
+    "P1.1"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/results/rf2_pwr_spice.json"
+    ]
+   ],
+   "done_means": "SPICE: regulation of the clamp at 460 V, efficiency, start-up, fault",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.3",
+   "phase": 1,
+   "item": "MP1 v2 schematic (the closed option)",
+   "deps": [
+    "P0.5"
+   ],
+   "gate": [
+    "step",
+    "board:MP1V2"
+   ],
+   "done_means": "netlist entry",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.4",
+   "phase": 1,
+   "item": "HB2-M schematic: RP2354A, TLV755P, piezo bridge (2 x AHCT + 680 ohm), RS-485 + TPD4E1B06, I2C to BQ76952, FFC + cord connectors",
+   "deps": [
+    "P0.1",
+    "P0.6"
+   ],
+   "gate": [
+    "step",
+    "board:HB2M"
+   ],
+   "done_means": "netlist entry, logic levels checked",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.5",
+   "phase": 1,
+   "item": "HB2-G schematic: 4 x KSC2 TE, 3 x SK9822 + AHCT, screen FPC, FFC",
+   "deps": [
+    "P0.1",
+    "P0.6"
+   ],
+   "gate": [
+    "step",
+    "board:HB2G"
+   ],
+   "done_means": "netlist entry",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.6",
+   "phase": 1,
+   "item": "BMS schematic (cartridge): BQ76952 7S, sense resistor, CHG / DSG FETs, fuse, thermistors, TS2 wake from the power button, MT60",
+   "deps": [
+    "P0.1",
+    "P0.6"
+   ],
+   "gate": [
+    "step",
+    "board:BMS"
+   ],
+   "done_means": "BQ76952 settings table; protections",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.7",
+   "phase": 1,
+   "item": "REF3 termination board: 3 coil pairs -> 3 STP pairs, ESD, cover fixing",
+   "deps": [
+    "P0.1"
+   ],
+   "gate": [
+    "step",
+    "board:REF3T"
+   ],
+   "done_means": "netlist entry",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.8",
+   "phase": 1,
+   "item": "CB1D RF2 schematic update (RS-485 link, TXCMD / TXSTAT to the chassis, TMP117 x2, IMU, magnetometer)",
+   "deps": [
+    "P0.1"
+   ],
+   "gate": [
+    "step",
+    "board:CB1D"
+   ],
+   "done_means": "netlist entry",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P1.9",
+   "phase": 1,
+   "item": "Rd damping network on TXF: 408 ohm from series / parallel 630 V parts, >= 4.24 W at 70 C",
+   "deps": [
+    "P0.6"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/results/rf2_rd_network.json"
+    ]
+   ],
+   "done_means": "part chosen and logged; TXF re-routed",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.1",
+   "phase": 2,
+   "item": "TXD board in the chassis front cavity: outline from rf2_chassis, HV clearance 1.0 mm, heat-sink + vent alignment",
+   "deps": [
+    "P1.1"
+   ],
+   "gate": [
+    "step",
+    "board:TXD"
+   ],
+   "done_means": "KiCad DRC 0; fit check in chassis",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.2",
+   "phase": 2,
+   "item": "PWR board in the chassis spine cavity",
+   "deps": [
+    "P1.2"
+   ],
+   "gate": [
+    "step",
+    "board:PWR"
+   ],
+   "done_means": "KiCad DRC 0; fit check",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.3",
+   "phase": 2,
+   "item": "HB2-M board under the grip base",
+   "deps": [
+    "P1.4"
+   ],
+   "gate": [
+    "step",
+    "board:HB2M"
+   ],
+   "done_means": "KiCad DRC 0; fit check",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.4",
+   "phase": 2,
+   "item": "HB2-G board in the grip head + FFC length from the grip core route",
+   "deps": [
+    "P1.5"
+   ],
+   "gate": [
+    "step",
+    "board:HB2G"
+   ],
+   "done_means": "KiCad DRC 0; fit check",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.5",
+   "phase": 2,
+   "item": "BMS board on the cells in the cartridge",
+   "deps": [
+    "P1.6"
+   ],
+   "gate": [
+    "step",
+    "board:BMS"
+   ],
+   "done_means": "KiCad DRC 0; fit check",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.6",
+   "phase": 2,
+   "item": "MP1 v2 board in the head tray",
+   "deps": [
+    "P1.3"
+   ],
+   "gate": [
+    "step",
+    "board:MP1V2"
+   ],
+   "done_means": "DRC 0; copper / eddy check; fit",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.7",
+   "phase": 2,
+   "item": "AB1A / AB1B / CB1D routed for RF2 (Phase C) and fitted",
+   "deps": [
+    "P1.8"
+   ],
+   "gate": [
+    "step",
+    "board:CB1D"
+   ],
+   "done_means": "DRC 0; eddy rule; fit",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P2.8",
+   "phase": 2,
+   "item": "Board-into-housing fit for every board: STEP of the routed board placed in the assembly; containment, clearance, connector access",
+   "deps": [
+    "P2.1",
+    "P2.2",
+    "P2.3",
+    "P2.4",
+    "P2.5",
+    "P2.6",
+    "P2.7"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/rf2_board_fit.json"
+    ]
+   ],
+   "done_means": "every board inside its cavity with >= 0.5 mm clearance",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P3.1",
+   "phase": 3,
+   "item": "Chassis shell halves: parting line, bosses + heat-set inserts matching board holes, standoffs, cable channels, vents, gasket groove",
+   "deps": [
+    "P2.8"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/CHASSIS_*.stl"
+    ]
+   ],
+   "done_means": "DFM: wall >= 1.6 mm, overhang / draft, fastener access",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P3.2",
+   "phase": 3,
+   "item": "Grip shell halves + overmould, FFC core, trigger pivot + return spring + switch actuator, screen cassette hinge / detent / latch, dial cam, slide-lock carriage",
+   "deps": [
+    "P2.4"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/GRIP_*.stl"
+    ]
+   ],
+   "done_means": "kinematic sweeps clear; switch travel stack-up",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P3.3",
+   "phase": 3,
+   "item": "Main hinge with hollow axis, locking tooth and the slide-lock pawl",
+   "deps": [
+    "P3.1"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/HINGE_*.stl"
+    ]
+   ],
+   "done_means": "180 deg sweep clear; bundle bend / twist in the bore",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P3.4",
+   "phase": 3,
+   "item": "Rectangular profiles (vendor sizes), flat lever clamps, keyed slide pads, end stops",
+   "deps": [
+    "P0.6"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/CLAMP_*.stl"
+    ]
+   ],
+   "done_means": "overlap at full extension, clamp force (ASSUMED until tested)",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P3.5",
+   "phase": 3,
+   "item": "REF3 face-coil formers, solenoid layer, cover",
+   "deps": [
+    "P1.7"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/REF3_*.stl"
+    ]
+   ],
+   "done_means": "winding fits the 42.4 x 36.4 envelope",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P3.6",
+   "phase": 3,
+   "item": "Yoke dual-axis knuckle (pitch friction + roll detents) and head ears for the 28 x 22 profile",
+   "deps": [],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/YOKE_*.stl"
+    ]
+   ],
+   "done_means": "pitch 0-180 / roll 0-90 sweeps clear",
+   "status": "TODO",
+   "ready_to_start": true
+  },
+  {
+   "id": "P3.7",
+   "phase": 3,
+   "item": "Cuff, wings + springs, rails, slider, strap slots",
+   "deps": [],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/CUFF_*.stl"
+    ]
+   ],
+   "done_means": "slide and wing sweeps clear",
+   "status": "TODO",
+   "ready_to_start": true
+  },
+  {
+   "id": "P3.8",
+   "phase": 3,
+   "item": "Battery cartridge shell: cell holder, nickel-strip layout, latch, seal, contacts",
+   "deps": [
+    "P2.5"
+   ],
+   "gate": [
+    "files",
+    [
+     "rf2/chassis_out/print/CART_*.stl"
+    ]
+   ],
+   "done_means": "slide path clear (done for the envelope)",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P3.9",
+   "phase": 3,
+   "item": "Head exterior for print: skid clips, bumper, ears; head interior trays already generated",
+   "deps": [],
+   "gate": [
+    "files",
+    [
+     "rf2/head/out_BF/print/*.stl"
+    ]
+   ],
+   "done_means": "DFM checks on head parts",
+   "status": "TODO",
+   "ready_to_start": true
+  },
+  {
+   "id": "P4.1",
+   "phase": 4,
+   "item": "Harness drawings with lengths from the 3-D routes (cord, hinge pass-through, grip FFC, head harness)",
+   "deps": [
+    "P0.2",
+    "P3.3"
+   ],
+   "gate": [
+    "files",
+    [
+     "docs/HARNESS.md"
+    ]
+   ],
+   "done_means": "every wire end, length, sleeve, voltage class",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P4.2",
+   "phase": 4,
+   "item": "Coil-cord specification (1000 V pair + power + STP pairs, coil OD 17 mm, stretch 4.4:1)",
+   "deps": [
+    "P0.1"
+   ],
+   "gate": [
+    "files",
+    [
+     "docs/COIL_CORD_SPEC.md"
+    ]
+   ],
+   "done_means": "vendor quote-able spec",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P4.3",
+   "phase": 4,
+   "item": "Winding specs: rim coil (exists), REF3 face coils + solenoid",
+   "deps": [
+    "P3.5"
+   ],
+   "gate": [
+    "files",
+    [
+     "docs/REF3_WINDING.md"
+    ]
+   ],
+   "done_means": "turns, layers, wire, terminations",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P4.4",
+   "phase": 4,
+   "item": "Potting and sealing process (syntactic foam / silicone / 832TC zones; O-rings; vents)",
+   "deps": [
+    "P3.1"
+   ],
+   "gate": [
+    "files",
+    [
+     "docs/POTTING_SEALING.md"
+    ]
+   ],
+   "done_means": "materials logged, volumes from the models",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P4.5",
+   "phase": 4,
+   "item": "BOM with sources, EOL flags (Murata piezo) and alternates",
+   "deps": [
+    "P1.1",
+    "P1.2",
+    "P1.4",
+    "P1.5",
+    "P1.6"
+   ],
+   "gate": [
+    "files",
+    [
+     "docs/BOM.csv"
+    ]
+   ],
+   "done_means": "every line VERIFIED or marked",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P4.6",
+   "phase": 4,
+   "item": "Assembly sequence (exploded STEP + order + torque / adhesive notes)",
+   "deps": [
+    "P3.1",
+    "P3.2",
+    "P4.1"
+   ],
+   "gate": [
+    "files",
+    [
+     "docs/ASSEMBLY.md"
+    ]
+   ],
+   "done_means": "each step reachable in the model",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P5.1",
+   "phase": 5,
+   "item": "All runner steps green, every board with vendor-capability DRC rules, print files with orientation",
+   "deps": [
+    "P2.8",
+    "P3.1",
+    "P4.5"
+   ],
+   "gate": [
+    "step",
+    "readiness-review"
+   ],
+   "done_means": "tool-checked, MODELED",
+   "status": "TODO",
+   "ready_to_start": false
+  },
+  {
+   "id": "P5.2",
+   "phase": 5,
+   "item": "Bench plan: bring-up, HV safety, first-gate measurement, EMI + REF3 calibration, ground balance, depth tests",
+   "deps": [
+    "P5.1"
+   ],
+   "gate": [
+    "files",
+    [
+     "docs/BENCH_PLAN.md"
+    ]
+   ],
+   "done_means": "test list with pass criteria",
+   "status": "TODO",
+   "ready_to_start": false
+  }
+ ],
+ "critical_path": [
+  "P0.1",
+  "P1.1",
+  "P1.2",
+  "P2.2",
+  "P2.8",
+  "P3.1",
+  "P5.1",
+  "P5.2"
+ ],
+ "done_already": [
+  "head shells / trays / coil channel (head:BF)",
+  "TXJ, TXF, MP1 v1, LR1, SH1, SB1R QA / QB boards (DRC 0)",
+  "light plate",
+  "chassis v2 envelope + electronics envelopes + fold (chassis)",
+  "system budgets / harness / thermal (system)",
+  "audio path (audio)",
+  "display + audio coding v3",
+  "REF3 rect sizing (ref3)",
+  "continuous-boost ratings"
+ ]
+}
