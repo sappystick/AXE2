@@ -1,0 +1,200 @@
+{
+ "status": "MODELED; response READ from the data-sheet graph; piezo capacitance ASSUMED",
+ "part": "Murata PKLCS1212E4001-R1",
+ "decision": "keep a magnet-free piezo and move the tones into its band, instead of a class-D amplifier and a magnetic speaker (the ARX AU1 board).",
+ "checks": {
+  "every tone inside the transducer band": true,
+  "class families apart (ferrous < foil < non-ferrous, >= 1 semitone)": true,
+  "non-ferrous pitch rises with decay constant": true,
+  "equalised to within 0.5 dB over the band": true,
+  "floor >= 78 dB at 10 cm at the nominal 15 nF": true,
+  "floor >= 75 dB at 10 cm (about 60 dB at the ear) for piezo C 5-30 nF": true,
+  "buffer peak current within SN74AHCT1G125 +-8 mA": true,
+  "drive within the part's +-12.5 V0-p": true,
+  "drive power under 20 mW": true
+ },
+ "band_hz": [
+  3000.0,
+  7600.0
+ ],
+ "floor_dB_10cm": 78.7,
+ "floor_dB_at_ear": 63.2,
+ "floor_vs_piezo_C": {
+  "5 nF": 80.2,
+  "15 nF": 78.7,
+  "30 nF": 75.7
+ },
+ "buffer_peak_mA": 7.35,
+ "drive_mW_max": 11.4,
+ "tones": {
+  "FERROUS": [
+   {
+    "f_hz": 3055.9,
+    "timbre": "buzz (25 Hz gate)",
+    "duty": 0.1244
+   },
+   {
+    "f_hz": 3080.0,
+    "timbre": "buzz (25 Hz gate)",
+    "duty": 0.1167
+   },
+   {
+    "f_hz": 3118.2,
+    "timbre": "buzz (25 Hz gate)",
+    "duty": 0.1057
+   },
+   {
+    "f_hz": 3160.0,
+    "timbre": "buzz (25 Hz gate)",
+    "duty": 0.0951
+   },
+   {
+    "f_hz": 3198.2,
+    "timbre": "buzz (25 Hz gate)",
+    "duty": 0.0864
+   },
+   {
+    "f_hz": 3200.0,
+    "timbre": "buzz (25 Hz gate)",
+    "duty": 0.0861
+   }
+  ],
+  "FOIL": [
+   {
+    "f_hz": 3500.0,
+    "timbre": "soft (10 ms edges)",
+    "duty": 0.0799
+   },
+   {
+    "f_hz": 3500.0,
+    "timbre": "soft (10 ms edges)",
+    "duty": 0.0799
+   },
+   {
+    "f_hz": 3500.0,
+    "timbre": "soft (10 ms edges)",
+    "duty": 0.0799
+   },
+   {
+    "f_hz": 3500.0,
+    "timbre": "soft (10 ms edges)",
+    "duty": 0.0799
+   },
+   {
+    "f_hz": 3500.0,
+    "timbre": "soft (10 ms edges)",
+    "duty": 0.0799
+   },
+   {
+    "f_hz": 3500.0,
+    "timbre": "soft (10 ms edges)",
+    "duty": 0.0799
+   }
+  ],
+  "NONFERROUS": [
+   {
+    "f_hz": 3800.0,
+    "timbre": "clear (steady)",
+    "duty": 0.0753
+   },
+   {
+    "f_hz": 3800.0,
+    "timbre": "clear (steady)",
+    "duty": 0.0753
+   },
+   {
+    "f_hz": 4753.6,
+    "timbre": "clear (steady)",
+    "duty": 0.1708
+   },
+   {
+    "f_hz": 6075.5,
+    "timbre": "clear (steady)",
+    "duty": 0.2924
+   },
+   {
+    "f_hz": 7600.0,
+    "timbre": "clear (steady)",
+    "duty": 0.1333
+   },
+   {
+    "f_hz": 7600.0,
+    "timbre": "clear (steady)",
+    "duty": 0.1333
+   }
+  ]
+ },
+ "ping_hz": 7500.0,
+ "eq_table": [
+  {
+   "f_hz": 3000,
+   "spl_full_dB": 85.9,
+   "duty": 0.1448
+  },
+  {
+   "f_hz": 3265,
+   "spl_full_dB": 91.5,
+   "duty": 0.0735
+  },
+  {
+   "f_hz": 3552,
+   "spl_full_dB": 90.4,
+   "duty": 0.0834
+  },
+  {
+   "f_hz": 3866,
+   "spl_full_dB": 91.7,
+   "duty": 0.0721
+  },
+  {
+   "f_hz": 4206,
+   "spl_full_dB": 94.7,
+   "duty": 0.0505
+  },
+  {
+   "f_hz": 4577,
+   "spl_full_dB": 88.5,
+   "duty": 0.1048
+  },
+  {
+   "f_hz": 4981,
+   "spl_full_dB": 79.4,
+   "duty": 0.3768
+  },
+  {
+   "f_hz": 5420,
+   "spl_full_dB": 78.7,
+   "duty": 0.4729
+  },
+  {
+   "f_hz": 5898,
+   "spl_full_dB": 80.1,
+   "duty": 0.325
+  },
+  {
+   "f_hz": 6418,
+   "spl_full_dB": 81.9,
+   "duty": 0.2439
+  },
+  {
+   "f_hz": 6984,
+   "spl_full_dB": 84.8,
+   "duty": 0.1651
+  },
+  {
+   "f_hz": 7600,
+   "spl_full_dB": 86.5,
+   "duty": 0.1333
+  }
+ ],
+ "bom": [
+  "PKLCS1212E4001-R1 piezo (SMD, on the pod board)",
+  "2 x SN74AHCT1G125 (bridge legs, complementary PWM from one MCU PWM slice)",
+  "2 x 680 ohm 0603"
+ ],
+ "compared": {
+  "class_D_speaker": "ARX AU1: TPA2005D1-class amplifier + magnetic speaker: wider band but about 8-10 more parts, a speaker cone in the sealed pod, and an audio-frequency magnetic dipole 0.3 m from REF3 (couples the tones into the EMI canceller)",
+  "piezo_bridge": "3 parts plus the transducer, magnet-free, 7-12 mW; band 3-8 kHz; the 'Stereo' profile is replaced by 'Field' (one transducer)"
+ },
+ "all_pass": true
+}

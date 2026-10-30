@@ -8,7 +8,8 @@ PINPOINT (trigger held, boost): a SONAR ring leaves the centre, runs out to the 
   distance from the centre: two targets are separated in TIME as well as in place. Centre the head on one and the lock fills the centre as in the sweep.
 PROFILES (chosen on the flip-up screen, rf2_pod.py): LED 'Clean' (default, as above), 'Map' (rf2_display.py v2 blobs: size = rings lit), 'Sonar' (the ring also while sweeping),
   'Night' (Clean at 25 % and no status screens except lock); audio 'Class tones' (pitch = class, rate = depth; default), 'Depth pitch' (pitch falls with depth, class by
-  timbre), 'Quiet' (only lock and strong targets), 'Stereo' (headphones: each target panned by its bearing).
+  timbre), 'Quiet' (only lock and strong targets), 'Field' (every tone on the piezo's 3.3-4.3 kHz resonance at full level, class by rhythm and timbre: wind and
+  machinery). Tones come from rf2_audio.py (magnet-free piezo, 3.0-7.6 kHz, equalised); 'Stereo' was dropped 2026-10-30 (one transducer, no headphone output).
 Writes rf2/head/out/rf2_display3.json, rf2_display3_frames.png, rf2_screen_mockup.png.   usage: python3 rf2/rf2_display3.py"""
 import os, sys, json, math
 import numpy as np
@@ -16,9 +17,10 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 sys.path[:0] = [os.path.join(ROOT, "rf2"), os.path.join(ROOT, "rf2", "head")]
 import rf2_ui as U
 import rf2_display as D
+import rf2_audio as AU
 OUT = os.path.join(ROOT, "rf2", "head", "out")
 R_MAX, RING, LOCK_MM, LOCK_R, PERIOD, RING_W, ECHO_S = 104.0, 8.0, 12.0, 16.0, 1.2, 5.0, 0.15
-LED_PROFILES = ("Clean", "Map", "Sonar", "Night"); AUDIO_PROFILES = ("Class tones", "Depth pitch", "Quiet", "Stereo")
+LED_PROFILES = ("Clean", "Map", "Sonar", "Night"); AUDIO_PROFILES = ("Class tones", "Depth pitch", "Quiet", "Field")
 def dot_radius(mass_g): return RING * min(3, max(1, 1 + int(math.log10(max(mass_g, 0.1)) + 1)))       # 1 ring < 1 g, 2 rings 1-10 g, 3 rings >= 10 g
 def col(tg): return np.array(U.hsv(U.hue_for(tg["cls"], tg["tau_us"]), 1.0, 1.0))
 def strength(tg): return tg["mass_g"] / (1 + tg["depth_mm"] / 100.0) ** 6
@@ -55,15 +57,13 @@ def audio_events(targets, t0, t1, trigger=False, profile="Class tones", led_prof
     """every sound on the same clock as the LEDs: pings at ring launch, echo blips at the ring crossings, beeps at depth rate in the sweep, the lock tone"""
     ev = []; lk = locked(targets)
     def tone(tg):
-        tn = U.tone_for(tg["cls"], tg["tau_us"])
-        if profile == "Depth pitch": tn = dict(tn, f_hz=round(1200.0 * math.exp(-tg["depth_mm"] / 250.0) + 200.0, 1))
-        return tn
+        return AU.tone(tg["cls"], tg["tau_us"], tg["depth_mm"], profile)
     def keep(tg): return profile != "Quiet" or tg is lk or tg["mass_g"] >= 5.0
-    pan = lambda tg: round(math.sin(math.atan2(tg["y_mm"], tg["x_mm"])), 3) if profile == "Stereo" else 0.0
+    pan = lambda tg: 0.0                                                              # one transducer (kept in the event format for a future headphone output)
     if trigger or led_profile == "Sonar":
         k = math.ceil(t0 / PERIOD)
         while k * PERIOD < t1:
-            if profile != "Quiet": ev.append(dict(kind="ping", t=round(k * PERIOD, 4), f_hz=1800.0, dur=0.03, level=0.25, pan=0.0))
+            if profile != "Quiet": ev.append(dict(kind="ping", t=round(k * PERIOD, 4), f_hz=AU.F_PING, dur=0.03, level=0.25, pan=0.0))
             k += 1
         for tg in targets:
             if tg is lk or not keep(tg): continue

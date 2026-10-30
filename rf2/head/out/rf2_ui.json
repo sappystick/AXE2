@@ -17,6 +17,7 @@
   },
   "pitch_rises_with_tau": true,
   "class_pitch_families_apart": true,
+  "tones_inside_transducer_band": true,
   "signature_set": true,
   "pinpoint_faster": true,
   "dark_when_idle": true,
@@ -41,8 +42,8 @@
     ]
    },
    "audio": {
-    "f_hz": 194.85767975718295,
-    "timbre": "buzz (square, 25 Hz tremolo)",
+    "f_hz": 3128.2,
+    "timbre": "buzz (25 Hz gate)",
     "level": 0.7135513252771577,
     "beeps_per_s": 4.002933558561715,
     "phase_locked_to_led": true
@@ -63,8 +64,8 @@
     ]
    },
    "audio": {
-    "f_hz": 445.92358604000896,
-    "timbre": "clear (sine + 2nd harmonic)",
+    "f_hz": 4069.7,
+    "timbre": "clear (steady)",
     "level": 0.44301117522262473,
     "beeps_per_s": 10.976525438019365,
     "phase_locked_to_led": true
@@ -85,8 +86,8 @@
     ]
    },
    "audio": {
-    "f_hz": 959.2820045151054,
-    "timbre": "clear (sine + 2nd harmonic)",
+    "f_hz": 6598.8,
+    "timbre": "clear (steady)",
     "level": 1.0000000000000002,
     "beeps_per_s": 5.490930922882147,
     "phase_locked_to_led": true
@@ -107,8 +108,8 @@
     ]
    },
    "audio": {
-    "f_hz": 1173.5535187262676,
-    "timbre": "clear (sine + 2nd harmonic)",
+    "f_hz": 7493.9,
+    "timbre": "clear (steady)",
     "level": 1.0000000000000002,
     "beeps_per_s": 3.3576075501016707,
     "phase_locked_to_led": true
@@ -129,8 +130,8 @@
     ]
    },
    "audio": {
-    "f_hz": 700.0,
-    "timbre": "soft (sine)",
+    "f_hz": 3500.0,
+    "timbre": "soft (10 ms edges)",
     "level": 0.5476703917408748,
     "beeps_per_s": 9.187839666456288,
     "phase_locked_to_led": true
@@ -151,8 +152,8 @@
     ]
    },
    "audio": {
-    "f_hz": 500.37423587720565,
-    "timbre": "clear (sine + 2nd harmonic)",
+    "f_hz": 4376.6,
+    "timbre": "clear (steady)",
     "level": 0.6523296082591252,
     "beeps_per_s": 10.491429235976868,
     "phase_locked_to_led": true

@@ -8,8 +8,10 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import rf2_head as H
 S = H.SPEC; BI = S["boards_inner"]; HEEL = H.HEEL
-EXTERNAL = {"NECK": "neck module at the shaft base: TX driver (baseline PB1R topology, 630 V parts), clamp about 460 V, flat-top PWM current loop",
-            "HANDLE": "handle: battery 7S, PM2 power switch / fuse, HB2 controls, AU1 audio (speaker)",
+EXTERNAL = {"NECK": "TXD transmit driver on the lower shaft, s 255-345 mm from the gland (placed by the echo search in rf2_system.py; the key 'NECK' is kept for the "
+                    "connection table): C3M0280090J, UCC5350, US3M clamp about 460 V, flat-top PWM current loop, TMP117 therm limit on TXSTAT",
+            "HANDLE": "POD (HB2 rigid-flex: RP2354A, piezo bridge, 4 x KSC2 TE, screen, RS-485 link) and PACK (7S2P P30B, BQ76952 main switch, LMR36520 +5V_AUX, "
+                      "regenerative clamp return): rf2_system.py, head/rf2_pod.py",
             "REF3": "3-axis reference coil on the shaft, 0.6 m from the head (EMI canceller input)"}
 POS = {k: tuple(v["c"]) if "c" in v else (0.0, 0.0) for k, v in BI.items()}
 POS.update(QA_PADS=(0.0, 33.0), QB_PADS=(-16.1, 16.1), SH1_GND=H.pol(28.0, 22.5), COIL_LEADS=H.pol(109.0, HEEL), GLAND=tuple(S["gland"]["c"]), LED=(0.0, 45.0))

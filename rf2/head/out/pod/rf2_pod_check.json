@@ -1,54 +1,103 @@
 {
- "status": "MODELED; all dimensions ASSUMED",
+ "status": "MODELED; dimensions ASSUMED unless a datasheet is named",
  "checks": {
-  "fits_in_body": {
+  "nothing_in_the_bore": {
    "ok": true,
-   "fraction_of_pocket_inside_body": {
-    "BATTERY_BAY": 1.0,
-    "SWITCH": 1.0
+   "intrusion_mm3": {
+    "TRIGGER_SLOT": 0.0,
+    "BOOT": 0.0,
+    "POWER_POCKET": 0.0,
+    "SCREEN_POCKET": 0.0,
+    "FPC_SLOT": 0.0,
+    "SCREEN_LATCH": 0.0,
+    "FLEX": 0.0,
+    "HB2_BOARDS": 0.0,
+    "HB2_PARTS": 0.0,
+    "LEVER": 0.0
    },
-   "note": "battery bay and switch pocket lie inside the body cylinder"
+   "note": "the v1 fault: pockets cut into the tube's bore"
   },
-  "walls": {
+  "electronics_in_the_annulus": {
    "ok": true,
-   "min_wall_to_outside_mm": 1.7,
-   "note": "measured on the pockets' extreme vertices (battery bay, sounder, switch pocket) against the body radius; 1.6 mm printable minimum ASSUMED"
+   "clearance_to_bore_mm": {
+    "HB2_BOARDS": 0.8,
+    "HB2_PARTS": 1.8
+   },
+   "max_radius_mm": {
+    "HB2_BOARDS": 18.28,
+    "HB2_PARTS": 20.56
+   },
+   "inner_wall_r": 21.4,
+   "note": "boards and part envelopes >= 0.5 mm from the bore and inside the 1.6 mm outer wall"
+  },
+  "parts_placed": {
+   "ok": true,
+   "overlaps_under_0p3mm": [],
+   "off_board": [],
+   "n_parts": 18
+  },
+  "flex_route": {
+   "ok": true,
+   "gap_to_voids_mm": {
+    "TRIGGER_SLOT": 5.0,
+    "SCREEN_POCKET": 2.02,
+    "POWER_POCKET": 5.0,
+    "BOOT": 5.0
+   },
+   "note": "side flex arm around the bore, >= 1 mm of printed wall to every void"
   },
   "interference": {
    "ok": true,
-   "trigger_x_body_mm3": 0.0,
-   "collar_x_body_mm3": 0.0
+   "note": "lever, collar, boards and parts against the printed body"
   },
-  "trigger_travel": {
+  "trigger": {
    "ok": true,
    "travel_at_finger_mm": 2.7,
-   "slot_clear_mm": 6.0,
-   "note": "travel at the finger; the tactile switch's real travel is a datasheet item"
+   "wall_slot_to_bore_mm": 2.7
   },
   "selector": {
    "ok": true,
-   "positions": 3,
-   "detent_pitch_mm_on_collar": 13.9,
-   "icons": [
-    "speaker",
-    "LED",
-    "both"
+   "plunger_deg": [
+    16.7,
+    -16.7
    ],
-   "note": "three detents at least 10 mm apart on the collar so the thumb can find each"
-  },
-  "no_magnet_no_metal": {
-   "ok": true,
-   "note": "all printed PETG; sounder must be a magnet-free piezo or a remote sounder; the pod sits about 0.9 m from the head (not a field zone) but the cable pair runs to it"
+   "needed_sep_deg": 14.9,
+   "states": {
+    "-30.0": {
+     "pressed_A_B": [
+      true,
+      false
+     ],
+     "min_sep_free_deg": 33.4
+    },
+    "0.0": {
+     "pressed_A_B": [
+      false,
+      false
+     ],
+     "min_sep_free_deg": 30.0
+    },
+    "30.0": {
+     "pressed_A_B": [
+      false,
+      true
+     ],
+     "min_sep_free_deg": 33.4
+    }
+   },
+   "detent_pitch_mm": 13.9,
+   "note": "one lobe over one plunger at each side detent, both free at the centre; >= one plunger + lobe width apart otherwise"
   },
   "power_button": {
    "ok": true,
-   "distance_from_selector_mm": 66.0,
+   "cap_to_switch_gap_mm": 0.4,
    "above_trigger_offset_mm": 1.0,
-   "wall_to_battery_bay_mm": 7.5,
-   "recess_mm": 1.0,
-   "hold_to_toggle_s": 2.0,
-   "max_interference_mm3": 0.0,
-   "note": "far enough from the selector (>= 30 mm) that the thumb cannot confuse them, directly above the trigger (thumb rest), recessed so it cannot be pressed by a knock"
+   "note": "the cap sits 0-0.8 mm above the KSC2 TE actuator (pre-travel); recessed 1 mm against knocks"
+  },
+  "piezo_window": {
+   "ok": true,
+   "holes": 5,
+   "note": "five 1.6 mm holes over the piezo's port, through the top wall only"
   },
   "screen_cassette": {
    "ok": true,
@@ -57,48 +106,213 @@
     0.0,
     0.342
    ],
-   "face_toward_user": true,
-   "stowed_inside_body_by_mm": 0.59,
-   "wall_to_battery_bay_mm": 2.0,
-   "open_deg": 70.0,
-   "open_top_above_axis_mm": 47.6,
+   "stowed_inside_body_by_mm": 0.39,
+   "wall_over_bore_mm": 1.2,
+   "fpc_gap_under_tray_mm": 0.5,
    "open_tray_to_power_button_mm": 20.0,
-   "latch_to_power_pocket_wall_mm": 4.74,
    "clash_closed_mm3": 0.0,
-   "clash_open_mm3": 0.0,
-   "open_tray_into_body_mm3": 0.0,
-   "note": "stowed flush below the body surface; opens on its rear hinge so the face tilts toward the user; clear of the power button when open; latch and flex slot inside the pocket"
+   "clash_open_mm3": 0.0
+  },
+  "no_magnet": {
+   "ok": true,
+   "note": "selector by cam and switches; piezo magnet-free (rf2_system: REF3 coupling)"
+  },
+  "bundle_tap": {
+   "ok": true,
+   "exit_to_J1_mm": 17.8,
+   "note": "short pigtail from the tube's grommeted hole to J1"
   }
  },
+ "parts": [
+  [
+   "T",
+   "SW_SEL_A",
+   14.85,
+   21.15,
+   3.45,
+   9.75,
+   3.5,
+   "C&K KSC2 TE 6.2 x 6.3 x 3.5 (datasheet)"
+  ],
+  [
+   "T",
+   "SW_SEL_B",
+   14.85,
+   21.15,
+   -9.75,
+   -3.45,
+   3.5,
+   "C&K KSC2 TE"
+  ],
+  [
+   "T",
+   "LS1",
+   34.0,
+   46.0,
+   -6.0,
+   6.0,
+   3.0,
+   "Murata PKLCS1212E4001-R1 12 x 12 x 3 (datasheet)"
+  ],
+  [
+   "T",
+   "U22",
+   47.5,
+   50.5,
+   3.5,
+   6.5,
+   1.45,
+   "SN74AHCT1G125 SOT-23-5 (piezo leg A)"
+  ],
+  [
+   "T",
+   "U23",
+   47.5,
+   50.5,
+   -6.5,
+   -3.5,
+   1.45,
+   "SN74AHCT1G125 (piezo leg B)"
+  ],
+  [
+   "T",
+   "U20",
+   52.5,
+   59.5,
+   -3.5,
+   3.5,
+   0.9,
+   "RP2354A, 7 x 7 QFN (ASSUMED)"
+  ],
+  [
+   "T",
+   "U21",
+   62.0,
+   65.0,
+   -1.5,
+   1.5,
+   1.45,
+   "TLV755P SOT-23-5"
+  ],
+  [
+   "T",
+   "U24",
+   67.5,
+   70.5,
+   3.0,
+   6.0,
+   1.45,
+   "SN74AHCT1G125 (LED data)"
+  ],
+  [
+   "T",
+   "U25",
+   67.5,
+   70.5,
+   -6.0,
+   -3.0,
+   1.45,
+   "SN74AHCT1G125 (LED clock)"
+  ],
+  [
+   "T",
+   "SW_PWR",
+   80.85,
+   87.15,
+   -3.15,
+   3.15,
+   3.5,
+   "C&K KSC2 TE under the cap"
+  ],
+  [
+   "T",
+   "LED1",
+   83.0,
+   85.0,
+   6.0,
+   8.0,
+   0.9,
+   "SK9822-EC20 2 x 2 (light ring)"
+  ],
+  [
+   "T",
+   "LED2",
+   83.0,
+   85.0,
+   -8.0,
+   -6.0,
+   0.9,
+   "SK9822-EC20"
+  ],
+  [
+   "T",
+   "LED3",
+   76.0,
+   78.0,
+   -1.0,
+   1.0,
+   0.9,
+   "SK9822-EC20"
+  ],
+  [
+   "T",
+   "J_SCR",
+   88.5,
+   91.5,
+   -4.5,
+   4.5,
+   2.0,
+   "screen FPC connector (ASSUMED 10-pin 0.5 mm)"
+  ],
+  [
+   "B",
+   "SW_TRG",
+   100.5,
+   106.8,
+   -3.15,
+   3.15,
+   3.5,
+   "C&K KSC2 TE (trigger)"
+  ],
+  [
+   "B",
+   "U26",
+   140.0,
+   143.0,
+   -1.5,
+   1.5,
+   1.1,
+   "RS-485 transceiver MSOP-8 (ASSUMED)"
+  ],
+  [
+   "B",
+   "U27",
+   145.5,
+   147.5,
+   -0.8,
+   0.8,
+   0.6,
+   "TPD4E1B06 (package ASSUMED 2 x 1.6)"
+  ],
+  [
+   "B",
+   "J1",
+   150.0,
+   164.0,
+   -2.25,
+   2.25,
+   3.0,
+   "bundle connector, 10-pin wire-to-board (ASSUMED)"
+  ]
+ ],
  "ok": true,
  "spec": {
   "shaft_d": 25.0,
   "body_r": 23.0,
   "body_len": 170.0,
-  "wall": 2.0,
+  "wall": 1.6,
   "shaft_clear": 0.3,
-  "battery": {
-   "x": [
-    60.0,
-    150.0
-   ],
-   "size": [
-    80.0,
-    30.0,
-    24.0
-   ],
-   "note": "ASSUMED 80 x 30 x 24 mm bay; the battery budget (7S pack, START_HERE step 4) sets the real cavity"
-  },
-  "sounder": {
-   "x": [
-    28.0,
-    52.0
-   ],
-   "d": 24.0,
-   "grille_holes": 7,
-   "hole_d": 1.6,
-   "note": "ASSUMED 24 mm piezo disc under a drilled grille on the thumb side"
-  },
+  "bore_wall_min": 1.2,
   "selector": {
    "x": [
     10.0,
@@ -119,7 +333,13 @@
     "LED",
     "both"
    ],
-   "note": "ASSUMED ball-detent collar around the body, three detents 30 deg apart, three icon windows"
+   "plunger_d": 3.0,
+   "lobe_deg": [
+    46.7,
+    -46.7
+   ],
+   "lobe_w_mm": 3.0,
+   "note": "ball-detent collar, three detents 30 deg apart; two cam lobes press the selector switches"
   },
   "power": {
    "x": 84.0,
@@ -132,7 +352,7 @@
     15.0
    ],
    "hold_s": 2.0,
-   "note": "recessed momentary push button on TOP above the trigger (thumb position while the index finger is on the trigger); hold 2 s on / off so a knock cannot switch it; a light-pipe ring around it shows green on, amber boost, red low battery. It drives the PM2 power-path controller (soft latch); the PM2 fuse stays in series. Button part ASSUMED (a sealed 12 mm tactile, IP67 class)"
+   "note": "recessed button on TOP above the trigger; hold 2 s: the press wakes the BQ76952 (TS2) in the pack, the pod MCU decides on / off; light-pipe ring over three SK9822 (green on, amber boost, red low battery)"
   },
   "screen": {
    "pocket_x": [
@@ -143,15 +363,15 @@
     98.0,
     130.0
    ],
-   "w": 28.0,
+   "w": 26.0,
    "tray_z": [
-    13.5,
-    17.5
+    14.5,
+    18.5
    ],
-   "pocket_floor": 13.0,
+   "pocket_floor": 14.0,
    "hinge": [
     130.0,
-    17.5
+    18.5
    ],
    "hinge_d": 2.0,
    "open_deg": 70.0,
@@ -164,12 +384,14 @@
     24.0,
     2.6
    ],
-   "flex_slot": [
-    124.0,
-    128.0,
-    8.0
+   "fpc_slot": [
+    92.0,
+    94.0,
+    10.0,
+    14.0,
+    14.6
    ],
-   "note": "flip-up screen cassette behind the power button: the thumb presses the front edge, a push-push latch (spring + heart-cam, like an SD-card socket) releases it, a torsion spring lifts it, it is pulled up to 70 deg where a detent locks it; it hinges at its REAR edge so the face tilts toward the user. Screen: a 1.28 in 128 x 128 reflective memory LCD (Sharp LS013B7DH03 class: sunlight-readable, microwatts) - part and module size ASSUMED until a datasheet is on file"
+   "note": "flip-up cassette (push-push latch, torsion spring, 70 deg detent, rear hinge); 1.28 in memory LCD (Sharp LS013B7DH03 class, ASSUMED)"
   },
   "trigger": {
    "x": [
@@ -179,7 +401,61 @@
    "lever_t": 4.0,
    "travel_deg": 12.0,
    "pivot_x": 96.0,
-   "note": "ASSUMED index-finger lever on the underside with a tactile switch behind it; double-press is read in firmware"
+   "slot_z": [
+    -24.0,
+    -15.5
+   ],
+   "lever_z": [
+    -21.5,
+    -17.5
+   ],
+   "note": "index-finger lever recessed in a slot under the bore; its tail behind the pivot presses the trigger switch on HB2-B through a boot"
+  },
+  "boards": {
+   "T": {
+    "x": [
+     6.0,
+     92.0
+    ],
+    "z": [
+     13.6,
+     14.6
+    ],
+    "w": 22.0,
+    "side": 1
+   },
+   "B": {
+    "x": [
+     100.0,
+     165.0
+    ],
+    "z": [
+     -14.6,
+     -13.6
+    ],
+    "w": 22.0,
+    "side": -1
+   },
+   "flex": {
+    "x": [
+     90.0,
+     102.0
+    ],
+    "r": [
+     16.8,
+     17.0
+    ],
+    "deg": [
+     135.0,
+     225.0
+    ]
+   }
+  },
+  "tube_exit": {
+   "x": 157.0,
+   "deg": 200.0,
+   "d": 6.0,
+   "note": "grommeted hole in the tube wall beside HB2-B; the pod tap of the bundle reaches J1 in a short pigtail"
   }
  }
 }

@@ -1,0 +1,281 @@
+{
+ "status": "MODELED: positions, boxes, cable ODs and the shaft geometry ASSUMED; ratings from logged datasheets",
+ "checks": {
+  "TXD metal echo drift (5 K) <= 0.1 x gate noise at its placed position": true,
+  "at the baseline neck (s 90) the same parts would fail (> 1 x noise)": true,
+  "pack cells echo drift negligible (< 0.01 x noise)": true,
+  "TX pair adds <= 0.3 us to the first gate (first-order)": true,
+  "no magnet in the pod; piezo audio field at REF3 < 10 pT (0.1 % of a 10 nT mains field, ASSUMED)": true,
+  "every HV conductor insulated >= 630 V (rule 6)": true,
+  "every conductor inside its bundle ampacity": true,
+  "tube fill <= 40 % per segment": true,
+  "VIN drop under 2 % of 25.2 V in boost": true,
+  "+5V_AUX loaded under 50 %": true,
+  "every VBAT / VIN part rated for 21.0-29.4 V": true,
+  "logic levels compatible (3.3 V MCU -> AHCT VIH 2.0 V; I2C pull-ups 3.3 V within BQ76952 5.5 V)": true,
+  "I2C addresses unique per bus": true,
+  "every HV-rail part >= 630 V (rule 6)": true,
+  "TXD switch TJ under 125 C": true,
+  "pack dissipation under 3 W in continuous boost": true,
+  "scan runtime >= 6 h": true
+ },
+ "decisions": [
+  "Audio: magnet-free SMD piezo in bridge drive on HB2 (rf2_audio.py); tones 3.0-7.6 kHz, equalised; AU1 class-D + speaker removed",
+  "Power switching: BQ76952 DSG high-side switch is the main switch; the power button wakes it on TS2 (falling edge, datasheet 7.x 'Wake on TS2'), the pod MCU turns it off over I2C after a 2 s hold; PM2 soft latch and LTC4365 removed (keyed MT60 prevents reverse charge)",
+  "TX driver placement: by an echo search along the shaft (s 255-345 mm, drift 0.1 x noise); the baseline 'neck at the shaft base' fails by about 100 x",
+  "Continuous boost thermal: the clamp energy (8.9 W boost) returns to the pack through a hysteretic buck in the PACK (no ferrite near the coil); the TXD keeps only the switch's 6.1 W on its heat sink (TJ 101 C, rf2_continuous); 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA",
+  "Pack: 7S2P Molicel P30B (151 Wh) under the forearm as the head's counterweight",
+  "Inputs: one switch part (C&K KSC2 TE, IP67) for power, trigger and the two selector cams; no magnet in the pod (no offset at REF3 / the upper fluxgate)",
+  "TXD temperature: TMP117 in therm mode with EEPROM-stored limits drives the TXSTAT fault line; the head backs the boost off (no I2C to the TXD)",
+  "Link: RS-485 class pair (DATA+-) from CB1D to the pod; the head schedules LED frames and audio events on one clock and both play them a fixed 20 ms later (rf2_display3 coupling holds across the link)"
+ ],
+ "modules": {
+  "TXD": {
+   "centre_mm": [
+    -335.8,
+    11.7,
+    199.9
+   ],
+   "B_centre_uT_boost": 29.94,
+   "B_max_uT_boost": 43.11,
+   "box_mm": [
+    90,
+    34,
+    26
+   ],
+   "note": "TX driver below the tube (the side away from the user), heat-sink fins down; position from the echo search"
+  },
+  "REF3": {
+   "centre_mm": [
+    -551.3,
+    19.3,
+    409.6
+   ],
+   "B_centre_uT_boost": 5.68,
+   "B_max_uT_boost": 7.12,
+   "box_mm": [
+    100,
+    100,
+    100
+   ],
+   "note": "3-axis reference coil on a PETG frame around the tube (rf2_ref3)"
+  },
+  "POD": {
+   "centre_mm": [
+    -807.8,
+    28.2,
+    624.9
+   ],
+   "B_centre_uT_boost": 1.73,
+   "B_max_uT_boost": 2.25,
+   "box_mm": [
+    170,
+    46,
+    46
+   ],
+   "note": "the grip; a collar around the tube (head/rf2_pod.py)"
+  },
+  "PACK": {
+   "centre_mm": [
+    -968.7,
+    33.8,
+    705.2
+   ],
+   "B_centre_uT_boost": 1.05,
+   "B_max_uT_boost": 1.27,
+   "box_mm": [
+    150,
+    76,
+    48
+   ],
+   "note": "under the forearm behind the grip: counterweight to the head"
+  }
+ },
+ "harness": {
+  "segments": {
+   "S1 gland - TXD (lower shaft, 300 mm)": [
+    "TX_A",
+    "TX_B",
+    "VIN_H",
+    "GND_H",
+    "TXCMD+-",
+    "TXSTAT+-",
+    "DATA+-",
+    "REFX+-",
+    "REFY+-",
+    "REFZ+-"
+   ],
+   "S2 TXD - REF3 (255 mm)": [
+    "VIN",
+    "GND",
+    "HV_CLAMP+GND_CLAMP (twisted)",
+    "DATA+-",
+    "REFX+-",
+    "REFY+-",
+    "REFZ+-"
+   ],
+   "S3 REF3 - pod (250 mm)": [
+    "VIN",
+    "GND",
+    "HV_CLAMP+GND_CLAMP (twisted)",
+    "DATA+-"
+   ],
+   "S4 pod - pack (inside the tube, 200 mm)": [
+    "VIN",
+    "GND",
+    "HV_CLAMP+GND_CLAMP (twisted)",
+    "+5V_AUX",
+    "GND_AUX",
+    "SDA/SCL",
+    "BTN (-> BQ TS2 + MCU)"
+   ]
+  },
+  "fill_fraction": {
+   "S1 gland - TXD (lower shaft, 300 mm)": 0.095,
+   "S2 TXD - REF3 (255 mm)": 0.079,
+   "S3 REF3 - pod (250 mm)": 0.027,
+   "S4 pod - pack (inside the tube, 200 mm)": 0.035
+  },
+  "vin_drop_V_boost": 0.053,
+  "vin_loss_W_boost": 0.059,
+  "tube": {
+   "od": 25.0,
+   "id": 22.0,
+   "material": "carbon-fibre tube (ASSUMED 25 / 22 mm); conductive but 0.6-1.2 m from the coil and no loop around the coil axis"
+  },
+  "route": "one bundle inside the tube; taps leave through grommeted holes at the TXD (S1), REF3 (its 3 pairs) and the pod (DATA, and the pod-pack pairs); HV pairs in their own FEP jackets, twisted with their return; LV and analog pairs in a separate sleeve"
+ },
+ "echoes": {
+  "txd_search": [
+   {
+    "s_mm": 90,
+    "B_uT_boost": 326.8,
+    "echo_x_noise": 4868.79,
+    "drift5K_x_noise": 97.376
+   },
+   {
+    "s_mm": 150,
+    "B_uT_boost": 129.2,
+    "echo_x_noise": 399.6,
+    "drift5K_x_noise": 7.992
+   },
+   {
+    "s_mm": 200,
+    "B_uT_boost": 72.5,
+    "echo_x_noise": 76.21,
+    "drift5K_x_noise": 1.524
+   },
+   {
+    "s_mm": 250,
+    "B_uT_boost": 45.0,
+    "echo_x_noise": 18.04,
+    "drift5K_x_noise": 0.361
+   },
+   {
+    "s_mm": 300,
+    "B_uT_boost": 29.9,
+    "echo_x_noise": 4.91,
+    "drift5K_x_noise": 0.098
+   },
+   {
+    "s_mm": 350,
+    "B_uT_boost": 20.9,
+    "echo_x_noise": 1.46,
+    "drift5K_x_noise": 0.029
+   },
+   {
+    "s_mm": 400,
+    "B_uT_boost": 15.2,
+    "echo_x_noise": 0.45,
+    "drift5K_x_noise": 0.009
+   }
+  ],
+  "txd_at_s_mm": 300.0,
+  "txd_echo_x_gate_noise": 4.91,
+  "txd_drift5K_x_noise": 0.098,
+  "pack_cells_x_gate_noise": 0.05575,
+  "criterion": "drift for a 5 K step <= 0.1 x the gate noise (margin 10)"
+ },
+ "tx_pair": {
+  "length_m": 0.3,
+  "C_pF_ASSUMED_50pF_per_m": 15.0,
+  "first_gate_shift_us": 0.156,
+  "vs_baseline_neck_us": 0.109,
+  "note": "first-order: tail 10.5 us (16.3 - 5.8 us clamp) x (sqrt(1 + dC / 500 pF) - 1); pair capacitance ASSUMED (FEP twisted pair)"
+ },
+ "ref3_coupling": {
+  "distance_pod_to_REF3_mm": 290,
+  "piezo_loop_field_pT": 6.027,
+  "magnets_in_pod": 0,
+  "speaker_alternative_nT": 5.1,
+  "note": "speaker alternative: a 50-turn, 12 mm voice coil at 0.11 A rms (0.1 W into 8 ohm), unshielded upper bound"
+ },
+ "rails": {
+  "+5V_AUX (LMR36520, 2 A)": {
+   "rating": 2.0,
+   "loads": {
+    "pod MCU + LDO (ASSUMED 60 mA)": 0.06,
+    "light ring 3 x SK9822 (firmware cap 20 mA each)": 0.06,
+    "piezo bridge": 0.0074,
+    "AHCT x4": 0.004,
+    "screen": 0.0002,
+    "RS-485 (ASSUMED)": 0.01,
+    "UCC5350 regen (ASSUMED)": 0.02
+   },
+   "load": 0.1616,
+   "margin": 12.4
+  }
+ },
+ "vbat_parts": {
+  "9 x Panasonic EEHZC1H101P bulk": [
+   0,
+   50
+  ],
+  "14 x Molicel INR-18650-P30B (7S2P)": [
+   17.5,
+   29.400000000000002
+  ],
+  "TI BQ76952 monitor / protector": [
+   4.7,
+   80
+  ],
+  "Bourns SF-1206S500-2 5 A slow fuse": [
+   0,
+   32
+  ],
+  "TI LMR36520 buck -> +5V_AUX": [
+   4.2,
+   65
+  ],
+  "Amass MT60 keyed charge port": [
+   0,
+   500
+  ]
+ },
+ "i2c": {
+  "head I2C (CB1D)": [
+   "0x6A",
+   "0x30",
+   "0x48",
+   "0x49"
+  ],
+  "pod I2C (HB2 <-> PACK)": [
+   "0x08"
+  ]
+ },
+ "thermal": {
+  "txd_switch_TJ_C": 100.784,
+  "txd_W": 6.3,
+  "pack_W_boost": 1.44,
+  "note": "TXD: switch 6.1 W + driver / shunt about 0.2 W; pack: regenerative buck losses at 90 % (ASSUMED), LMR36520 and cell I2R"
+ },
+ "runtime": {
+  "pack": "7S2P Molicel P30B",
+  "usable_Wh": 136.1,
+  "scan_h": 7.8,
+  "boost_continuous_h": 4.8,
+  "cells_g": 658,
+  "note": "powers from rf2_continuous (regenerative clamp, 75 % recovery ASSUMED)"
+ },
+ "all_pass": true
+}

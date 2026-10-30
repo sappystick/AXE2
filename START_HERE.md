@@ -61,6 +61,14 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - Heat sink TJ 101 C. The DRV425 roughly halves the ferrous-channel ranges.
     - Candidates: BQ76952, LTC4365, TMP117, UCC28780, KSC2 TE.
     - The Murata piezos are 4 kHz resonant and end-of-life.
+  - **Audio, system layout and pod v2** (section 35):
+    - Magnet-free piezo with tones moved to 3.0-7.6 kHz.
+    - Four sealed modules: HEAD, TXD, POD, PACK.
+    - The TX driver moved up the shaft (s 255-345 mm) by an echo search.
+    - BQ76952 is the main power switch; PM2, LTC4365 and AU1 are removed.
+    - 7S2P pack: 7.8 h scan.
+    - The pod's electronics are placed in the annulus around the tube; the v1 bore fault is fixed.
+    - Next: rf2_timing with the TX pair, regenerative buck SPICE, RS-485 part, screen datasheet.
   - **Owner updates 2026-10-30** (section 32): power button on the pod; continuous boost checked part by part (open: switch heat sink, regenerative clamp, 4.2 W 630 V damping resistor, coil thermal model); display and audio coding v2 (size = blob radius, depth = pulse, several targets as separate blobs and voices, status screens); multi-target separation by decay time and by position.
   - **Stage 4:** `rf2_zonerules.py` (runner step `zonerules`) turns the zone rules into checks. **Stage 4b, first fin board:** TXF (TXJ as a fin). FEP litz and sleeves are in the head SPEC: section 29.
 - **Still open, in order:**

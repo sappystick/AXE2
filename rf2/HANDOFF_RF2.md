@@ -695,3 +695,68 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     - both are resonant at 4 kHz; the 200-1400 Hz depth-pitch tones and the 1.8 kHz ping are 15-20 dB down (READ).
     - OPEN: retune the audio coding to 2-8 kHz, or choose a wider-band magnet-free transducer.
 - Duplicate uploads not re-filed: Diodes US3M rev 5-2 (adds RthJT 26 C/W); MG 832TC Ver. 4.3.
+
+## 35. Audio route, system architecture and placement, handle pod v2 (2026-10-30; owner: fewest parts, least modification, clean mapped layout; MODELED)
+- **Audio (`rf2/rf2_audio.py`, step `audio`, 9 checks): magnet-free piezo, tones moved into its band.**
+  - Part and drive: Murata PKLCS1212E4001-R1, SMD on the pod board, driven in bridge from +5 V by 2 x SN74AHCT1G125 (already in the BOM), with 680 ohm per leg.
+  - Band and level: tones at 3.0-7.6 kHz, equalised by PWM duty to within 0.5 dB. Floor 78.7 dB at 10 cm (about 63 dB at the ear); 75.7 dB if the unlisted capacitance is 30 nF. Drive 11 mW.
+  - Tones: ferrous 3.0-3.2 kHz (25 Hz gate), foil 3.5 kHz (soft), non-ferrous 3.8-7.6 kHz with tau, sonar ping 7.5 kHz.
+  - Profiles: Class tones / Depth pitch / Quiet / **Field** (all tones on the 3.3-4.3 kHz resonance, full level). Stereo is dropped: one transducer.
+  - Why this beats a class-D amplifier and speaker (ARX AU1):
+    - 3 parts plus the transducer, against about 10;
+    - no speaker cone in the sealed pod;
+    - no audio-frequency magnetic dipole 0.29 m from REF3: 6 pT for the piezo loop against about 5 nT for a speaker coil.
+  - rf2_ui.tone_for now delegates to rf2_audio (one tone source).
+  - Successor note: the part is to be discontinued; a successor needs only a new response table.
+- **System architecture (`rf2/rf2_system.py`, step `system`, 17 checks; map `rf2/results/rf2_system_map.png`): four sealed modules on one shaft bundle.**
+  - **HEAD:** sensing and display (unchanged).
+  - **TXD:** transmit driver.
+  - **POD:** the hand.
+  - **PACK:** all power. 7S2P Molicel P30B, 136 Wh usable, 7.8 h scan / 4.8 h continuous boost, under the forearm as the counterweight.
+  - **TX driver placement by echo search.** At the baseline "neck at the shaft base" (s 90 mm), the heat sink plus nine aluminium bulk cans echo at about 4900x the gate noise, and a 5 K drift moves that by 97x the noise.
+    - Drift falls to 8.0 / 1.5 / 0.36 / **0.098** / 0.03x the noise at s 150 / 200 / 250 / **300** / 350 mm.
+    - TXD placed at s 255-345 mm, below the tube.
+    - The TX pair grows to 0.3 m: about 15 pF, first gate +0.16 us (first-order, 50 pF/m ASSUMED). Re-run rf2_timing with it.
+  - **Removed parts:**
+    - PM2 soft latch (Si4401FDY, BZT52C15) and LTC4365: the BQ76952 DSG switch is the main switch, the power button wakes it on TS2 (datasheet: falling edge, 0.7-1.1 V), the pod MCU turns it off over I2C, and the MT60 charge port is keyed;
+    - AU1 amplifier and speaker;
+    - UCC28780: the regenerative clamp return is a hysteretic buck in the PACK, built from parts already in the BOM (C3M0280090J, UCC5350, US3M).
+  - **Continuous-boost heat:**
+    - TXD: 6.3 W (switch TJ 101 C on the Ohmite heat sink);
+    - PACK: about 1.4 W (buck at 90 % ASSUMED);
+    - 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA.
+  - **TXD temperature:** a TMP117 in therm mode loads its limits from EEPROM and pulls TXSTAT; there is no bus to the TXD.
+  - **Harness, four segments:** gland-TXD 0.30 m; TXD-REF3 0.255 m; REF3-pod 0.25 m; pod-pack 0.20 m.
+    - Tube fill 3-8 % of a 22 mm bore.
+    - VIN drop 0.053 V in boost.
+    - Every HV conductor insulated >= 630 V (rule 6).
+    - Ampacities hold.
+  - **Rails and buses:**
+    - +5V_AUX load 0.16 A of 2 A;
+    - every VBAT part rated for 21.0-29.4 V;
+    - logic levels compatible;
+    - I2C addresses verified from the data sheets: LSM6DSO 0x6A, MMC5983MA 0x30, TMP117 0x48 / 0x49, BQ76952 0x08 (7-bit).
+  - **Link:** RS-485 class pair from CB1D to the pod. The head time-stamps LED frames and audio events, and both play them 20 ms later, which keeps the display-v3 coupling across the link (part to choose).
+- **Handle pod v2 (`head/rf2_pod.py`, 12 checks; `head/out/pod/rf2_pod_layout.png`).** The tube runs through the pod, so v1 was wrong (CORRECTIONS). v2 places HB2 in the 10 mm annulus:
+  - **HB2-T (x 6-92):**
+    - 2 selector switches;
+    - piezo with 5 sound holes;
+    - RP2354A;
+    - TLV755P;
+    - 4 x AHCT;
+    - power switch, 0.4 mm under the cap;
+    - 3 x SK9822 under the light pipe;
+    - screen FPC connector.
+  - **HB2-B (x 100-165):** trigger switch, RS-485, TPD4E1B06 and J1, 18 mm from the tube's grommeted exit.
+  - **Side flex arm:** x 90-102, r 16.9, >= 1 mm of wall to every void.
+  - **Selector:** two cam lobes at +-46.7 deg press vertical plungers at +-16.7 deg, one per side detent; both are free at the centre with >= 30 deg margin. No magnet.
+  - **Screen pocket:** floor raised to 14.0 mm, leaving 1.2 mm of wall over the bore; tray 26 mm wide; the FPC runs in the 0.5 mm under the tray to a front-wall slot.
+  - **Checks:** they fail on v1's geometry (tested by putting v1's trigger slot and screen floor back in).
+- **OPEN:**
+  - rf2_timing with the TX pair capacitance;
+  - the regenerative buck design (SPICE);
+  - the RS-485 part;
+  - the screen datasheet;
+  - the KSC2 TE travel against the plunger and cap stack;
+  - a pack housing model;
+  - the 3-D shaft and armrest.

@@ -6,15 +6,16 @@ Mode selector (3 positions, left to right): AUDIO | LED | BOTH (coupled). Trigge
 Audio is silent until a signature is detected (a detection above the confidence threshold); with no detection the display is dark too.
 Coding (redundant, so colour is never the only channel):
   class      -> hue (display) and timbre + pitch family (audio);  size (mass-equivalent) -> brightness and loudness;  depth -> ripple speed and beep rate (shallow = fast)
-  FERROUS red 0 deg, low buzz 150-220 Hz;  FOIL / thin ring violet 280 deg, soft 700 Hz;  NONFERROUS hue by decay time tau: 10 us gold-yellow 50 deg -> 100 us green about 150 deg
-  -> 300 us cyan-blue 200 deg, pitch 400 -> 1200 Hz with tau (the decay class, not the metal: conductivity x size^2 is ambiguous, rf2_decaylib / DECAY_LIBRARY.md)
+  FERROUS red 0 deg, buzz 3.0-3.2 kHz (25 Hz gate);  FOIL / thin ring violet 280 deg, soft 3.5 kHz;  NONFERROUS hue by decay time tau: 10 us gold-yellow 50 deg -> 100 us green
+  about 150 deg -> 300 us cyan-blue 200 deg, pitch 3.8 -> 7.6 kHz with tau (tones in the piezo band since 2026-10-30, rf2_audio.py; were 150-1200 Hz) (the decay class, not the metal: conductivity x size^2 is ambiguous, rf2_decaylib / DECAY_LIBRARY.md)
 Reactive wave map: a ripple spreads from the target's position over the 522 LEDs (13 rings); when the head is centred over it the ripple collapses to the centre ring (bullseye).
 LEDs are written only in the quiet slot after the last gate and are dark in receive windows (rf2_timing / HANDOFF); this model gives the frame content, not the timing.
 Writes out/rf2_ui.json, out/rf2_ui_wavemap.png, out/audio_*.wav.   usage: python3 rf2/rf2_ui.py"""
 import os, sys, json, math, wave, struct
 import numpy as np
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-sys.path.insert(0, os.path.join(ROOT, "rf2", "head"))
+sys.path.insert(0, os.path.join(ROOT, "rf2", "head")); sys.path.insert(0, os.path.join(ROOT, "rf2"))
+import rf2_audio as AU
 OUT = os.path.join(ROOT, "rf2", "head", "out"); os.makedirs(OUT, exist_ok=True)
 MODES = ("AUDIO", "LED", "BOTH")
 CONF_MIN = 0.5                      # detections below this confidence stay silent and dark (ASSUMED; set from the bench false-alarm rate)
@@ -28,9 +29,8 @@ def brightness_for(mass_g): return min(max(0.25 + 0.75 * math.log10(max(mass_g, 
 def speed_for(depth_mm): return max(1.5, 12.0 * math.exp(-depth_mm / 200.0))                              # ripple speed, rings per second: 12 at the surface, 1.5 floor
 def beep_rate_for(depth_mm): return 2.0 + 14.0 * math.exp(-depth_mm / 180.0)                              # beeps per second: shallow = fast
 def tone_for(cls, tau_us):
-    if cls == "FERROUS": return dict(f_hz=150.0 + 70.0 * min(max(math.log10(max(tau_us, 1)) / 2.5, 0), 1), timbre="buzz (square, 25 Hz tremolo)")
-    if cls == "FOIL": return dict(f_hz=700.0, timbre="soft (sine)")
-    x = min(max((math.log10(max(tau_us, 1.0)) - 1.0) / (math.log10(300.0) - 1.0), 0.0), 1.0); return dict(f_hz=400.0 * (3.0 ** x), timbre="clear (sine + 2nd harmonic)")
+    """the tones live in the piezo's band (rf2_audio.py, 2026-10-30: magnet-free piezo in bridge drive, 3.0-7.6 kHz, equalised); this delegates to it"""
+    return AU.tone(cls, tau_us)
 def hsv(h, s, v):
     import colorsys; return colorsys.hsv_to_rgb((h % 360) / 360.0, s, v)
 class Det:
@@ -60,19 +60,19 @@ def wave_frame(st, led_xy, ring_r, t):
     base = np.array(hsv(L["hue"], 1.0, 1.0)); rgb = I[:, None] * base[None, :]
     if L["bullseye"]: rgb = rgb + (np.exp(-(rho / 5.0) ** 2) * 0.35 * L["value"])[:, None]
     return np.clip(rgb, 0, 1)
-def synth(st, secs=1.2, sr=16000, seed=0):
+def synth(st, secs=1.2, sr=48000, seed=0):
     a = st["audio"]; n = int(secs * sr); t = np.arange(n) / sr; y = np.zeros(n)
     if a is None: return y
     period = 1.0 / a["beeps_per_s"]; env = np.zeros(n)
     for k in range(int(secs / period) + 1):
         t0 = k * period; m = (t >= t0) & (t < t0 + min(0.07, period * 0.6)); x = (t[m] - t0) / 0.07
         env[m] = np.sin(np.pi * np.clip(x, 0, 1)) ** 0.7
-    f = a["f_hz"]
-    if a["timbre"].startswith("buzz"): s = np.sign(np.sin(2 * np.pi * f * t)) * (0.7 + 0.3 * np.sin(2 * np.pi * 25 * t))
-    elif a["timbre"].startswith("soft"): s = np.sin(2 * np.pi * f * t)
-    else: s = np.sin(2 * np.pi * f * t) + 0.3 * np.sin(4 * np.pi * f * t)
-    return 0.8 * a["level"] * env * s / 1.3
-def write_wav(path, y, sr=16000):
+    f = a["f_hz"]; d = AU.duty_for(f, 1.0)                                           # what the bridge drives: a square wave at f with the equalising duty
+    s = np.where(((t * f) % 1.0) < d, 1.0, 0.0) - np.where((((t * f) + 0.5) % 1.0) < d, 1.0, 0.0)
+    if a["timbre"].startswith("buzz"): s = s * (((t * 25.0) % 1.0) < 0.5)               # 25 Hz gate
+    elif a["timbre"].startswith("soft"): env = np.convolve(env, np.ones(int(0.01 * sr)) / int(0.01 * sr), mode="same")   # 10 ms edges
+    return 0.8 * a["level"] * env * s
+def write_wav(path, y, sr=48000):
     with wave.open(path, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes(b"".join(struct.pack("<h", int(max(-1, min(1, v)) * 32000)) for v in y))
 CASES = {
@@ -98,7 +98,8 @@ def main():
     hv = sorted(hues.values()); gaps = [min(abs(a - b), 360 - abs(a - b)) for i, a in enumerate(hv) for b in hv[i + 1:]]
     c["hues_distinct_30deg"] = min(gaps) >= 30.0; c["hues"] = {k: round(v, 1) for k, v in hues.items()}
     f_nf = [tone_for("NONFERROUS", t)["f_hz"] for t in (10, 30, 100, 300)]; c["pitch_rises_with_tau"] = all(a < b for a, b in zip(f_nf[:-1], f_nf[1:]))
-    c["class_pitch_families_apart"] = tone_for("FERROUS", 40)["f_hz"] < 400.0 <= min(f_nf) and tone_for("FOIL", 30)["f_hz"] > 600.0 and tone_for("FERROUS", 40)["timbre"] != tone_for("FOIL", 30)["timbre"]
+    c["class_pitch_families_apart"] = tone_for("FERROUS", 300)["f_hz"] * 2 ** (1 / 12) <= tone_for("FOIL", 30)["f_hz"] <= min(f_nf) / 2 ** (1 / 12) and tone_for("FERROUS", 40)["timbre"] != tone_for("FOIL", 30)["timbre"]
+    c["tones_inside_transducer_band"] = all(AU.BAND[0] <= tone_for(k, t)["f_hz"] <= AU.BAND[1] for k in ("FERROUS", "FOIL", "NONFERROUS") for t in (3, 10, 30, 100, 300, 3000))
     acc = ("NONFERROUS", 20.0, 0.15); c["signature_set"] = (state(Det("NONFERROUS", 90, 2, 21, 0, 6), "BOTH", accept=acc)["match"] is True and state(Det("NONFERROUS", 90, 2, 150, 0, 6), "BOTH", accept=acc)["match"] is False
                                                                and state(Det("NONFERROUS", 90, 2, 150, 0, 6), "BOTH", accept=acc)["led"]["value"] < state(Det("NONFERROUS", 90, 2, 21, 0, 6), "BOTH", accept=acc)["led"]["value"])
     c["pinpoint_faster"] = state(CASES["small gold, shallow"], "LED", trigger_hold=True)["led"]["speed_rings_s"] > state(CASES["small gold, shallow"], "LED")["led"]["speed_rings_s"]
