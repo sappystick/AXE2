@@ -189,6 +189,16 @@
    "fingerprint": "de38fe736b16d5a9",
    "finished": "2026-10-30T06:21:06",
    "log": "state/logs/study_taper.log"
+  },
+  "study:rodin": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 240.4,
+   "why": "",
+   "tail": "",
+   "fingerprint": "0dd4f76660e818b8",
+   "finished": "2026-10-30T07:13:41",
+   "log": "state/logs/study_rodin.log"
   }
  },
  "runs": [
@@ -273,6 +283,13 @@
    "seconds": 97.9,
    "results": {
     "study:taper": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T07:13:41",
+   "seconds": 240.5,
+   "results": {
+    "study:rodin": "pass"
    }
   }
  ]
