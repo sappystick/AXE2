@@ -1286,3 +1286,21 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     The 1.0 mm rule-6 spacing stays.
 - **Shield cans in the control chassis:** closed-can drift 0.0127 x noise (limit 0.5), so ProtoShield / etched shields are fine on TXD / PWR / HB2. Still rejected inside the head.
 - **Readiness: 7 / 40.** P0.6 is open on the rectangular CF profiles only.
+## 48. LED PCB and ultra-thin flex sources (2026-10-30; rf2_flex_options F-H, rf2_cordflex, docs/INTEGRATION_MATRIX.md; MODELED)
+- **Received:**
+  - MegaPlus LED / lighting PCB;
+  - PICA ultra-thin FPC.
+  The Minco guide and Flex-Coil files were duplicates.
+- **Cord flex: selective copper ADOPTED** (rf2_cordflex `LV_OZ = 0.5`).
+  - 2 oz on the TX / power strips, 1/2 oz on the signal areas (Tech Etch contoured circuits; PICA 18 um adhesiveless).
+  - The 0.15 mm signal traces now meet Minco's 0.076 mm minimum and the 5 x thickness guideline (0.089 mm). **That FAIL is gone.** The width stays 15.7 mm (EDGE).
+- **Two-ply cord flex (2 oz HV ply + 1/2 oz signal ply): rejected.**
+  - Stacked, a guarded pair over a TX strip adds about 542 pF/m (the strip pair is 28.1 pF/m).
+  - Offset side by side, the plies are 15.2 mm wide: no gain over one ply.
+- **Metal-core LED board for the 522-LED display: rejected.** An aluminium disc under the lid is a target inside the coil:
+  - r 40 mm: drift 118485.02 x noise;
+  - r 100 mm: 745751.54 x.
+  Heavy copper (to 17 oz) is noted for the chassis TXD loop only.
+- **Ultra-thin display flex: PROPOSED.** 0.4 -> 0.2 +- 0.08 mm would lower the head 16.55 -> 16.35 mm (the owner decides; LED pads and the light-plate seat to re-check).
+- **Integration matrix counts:** ADOPTED 7, PROPOSED 9, FEASIBLE 1, REJECTED 8, OPEN 1, BLOCKED 1.
+- **Rule near-misses:** BLOCKED 2, RELAXED 2, EDGE 4, FAIL 4 (the flex producibility FAIL is gone).

@@ -5,8 +5,8 @@
   "BLOCKED": 2,
   "RELAXED": 2,
   "EDGE": 4,
-  "FAIL": 5,
-  "PASS": 52
+  "FAIL": 4,
+  "PASS": 53
  },
  "flagged": [
   {
@@ -138,19 +138,6 @@
    "relaxed": null,
    "status": "EDGE",
    "over_pct": -1.9
-  },
-  {
-   "id": "flex.lv_producibility",
-   "kind": "target",
-   "desc": "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz)",
-   "value": 0.15,
-   "limit": 0.356,
-   "sense": ">=",
-   "unit": "mm",
-   "source": "Minco design guide 2019",
-   "relaxed": null,
-   "status": "FAIL",
-   "over_pct": 57.9
   },
   {
    "id": "shield.slotted.front end near the r",
@@ -950,28 +937,28 @@
   {
    "id": "flex.lv_min_w",
    "kind": "target",
-   "desc": "cord-flex LV traces vs Minco minimum width on 2 oz",
+   "desc": "cord-flex LV traces vs Minco minimum width on their copper (1/2 oz, selective)",
    "value": 0.15,
-   "limit": 0.127,
+   "limit": 0.076,
    "sense": ">=",
    "unit": "mm",
    "source": "Minco design guide 2019",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -18.1
+   "over_pct": -97.4
   },
   {
    "id": "flex.lv_producibility",
    "kind": "target",
-   "desc": "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz)",
+   "desc": "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness; 1/2 oz selective copper)",
    "value": 0.15,
-   "limit": 0.356,
+   "limit": 0.089,
    "sense": ">=",
    "unit": "mm",
    "source": "Minco design guide 2019",
    "relaxed": null,
-   "status": "FAIL",
-   "over_pct": 57.9
+   "status": "PASS",
+   "over_pct": -68.5
   },
   {
    "id": "flex.one_piece_minco",

@@ -74,8 +74,8 @@ def rules():
         if mi:
             add("flex.cover_aged", "safety", "cord-flex 1 mil Kapton coverlay, AGED breakdown (2000 V/mil, Sierra HV notebook) vs the 460 V flyback x 2 (630 V rule basis)", fo["A_cord_to_flex"]["minco"]["cover_breakdown_V"], 2 * 630.0, ">=", "Sierra Proto HV notebook 2004 / Minco 2019", unit="V")
             add("flex.withstand", "safety", "cord-flex insulation: Minco typical withstand (1000 VRMS 30 s) vs the rule-6 630 V (drawing hipot required)", mi["withstand_VRMS"], 630.0, ">=", "Minco design guide 2019", unit="V")
-            add("flex.lv_min_w", "target", "cord-flex LV traces vs Minco minimum width on 2 oz", 0.15, mi["min_w_2oz_mm"], ">=", "Minco design guide 2019", unit="mm")
-            add("flex.lv_producibility", "target", "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz)", 0.15, mi["producibility_w_mm"], ">=", "Minco design guide 2019", unit="mm")
+            add("flex.lv_min_w", "target", "cord-flex LV traces vs Minco minimum width on their copper (1/2 oz, selective)", 0.15, mi["min_w_2oz_mm"], ">=", "Minco design guide 2019", unit="mm")
+            add("flex.lv_producibility", "target", "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness; 1/2 oz selective copper)", 0.15, mi["producibility_w_mm"], ">=", "Minco design guide 2019", unit="mm")
             add("flex.one_piece_minco", "target", "cord-flex in one piece vs Minco maximum length (5 ft)", a["one_piece_mm"], mi["len_max_mm"], "<=", "Minco design guide 2019", unit="mm")
         for k, v in fo["B_shield_can"]["places"].items():
             add(f"shield.slotted.{k[:20]}", "target", f"slotted etched shield can in the head, {k}: drift vs 0.5 x gate noise", v["slotted"]["drift5K_x_noise"], 0.5, "<=", "rf2_flex_options.json", unit="x noise")

@@ -856,12 +856,12 @@
   "system": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.6,
+   "seconds": 3.0,
    "why": "",
    "tail": "",
-   "fingerprint": "7a299ff14a098926",
+   "fingerprint": "683aaf86c193b490",
    "inputs": {
-    "rf2/rf2_cordflex.py": "706ae46808",
+    "rf2/rf2_cordflex.py": "6033a33bc4",
     "rf2/rf2_system.py": "d14b048da2",
     "rf2/rf2_continuous.py": "cb2d38ee16",
     "rf2/rf2_zones.py": "b56fea10f8",
@@ -869,17 +869,17 @@
     "rf2/rf2_upper.py": "a4f5f5266b",
     "rf2/rf2_chassis.py": "eb739070c6"
    },
-   "finished": "2026-10-30T23:44:22",
+   "finished": "2026-10-30T23:49:01",
    "log": "state/logs/system.log",
    "history": [
-    3.2,
     4.0,
     3.1,
     3.2,
     3.2,
     3.4,
     3.4,
-    3.6
+    3.6,
+    3.0
    ]
   },
   "upper": {
@@ -902,17 +902,17 @@
   "topography": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.1,
+   "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "f7e71a256b949adc",
+   "fingerprint": "29ffed18dbf2fe4b",
    "inputs": {
     "rf2/rf2_topography.py": "0a302903c4",
-    "rf2/chassis_out/rf2_chassis_check.json": "b4596aebf9",
+    "rf2/chassis_out/rf2_chassis_check.json": "b5e8c112f0",
     "rf2/results/rf2_system.json": "a6c9620d5c",
     "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T23:45:11",
+   "finished": "2026-10-30T23:49:46",
    "log": "state/logs/topography.log",
    "history": [
     0.0,
@@ -921,35 +921,35 @@
     0.0,
     0.0,
     0.0,
-    0.0,
-    0.1
+    0.1,
+    0.0
    ]
   },
   "chassis": {
    "status": "pass",
    "rc": 0,
-   "seconds": 18.4,
+   "seconds": 17.3,
    "why": "",
    "tail": "",
-   "fingerprint": "a3ccdf1b9bfec2ca",
+   "fingerprint": "74a05575ce40f7b3",
    "inputs": {
-    "rf2/rf2_cordflex.py": "706ae46808",
+    "rf2/rf2_cordflex.py": "6033a33bc4",
     "rf2/rf2_chassis.py": "eb739070c6",
     "rf2/rf2_upper.py": "a4f5f5266b",
     "src/simcache.py": "7a842c96b9",
     "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T23:44:18",
+   "finished": "2026-10-30T23:48:58",
    "log": "state/logs/chassis.log",
    "history": [
-    21.8,
     43.9,
     45.4,
     15.0,
     14.2,
     18.6,
     16.7,
-    18.4
+    18.4,
+    17.3
    ]
   },
   "readiness": {
@@ -958,45 +958,46 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "2b8e70cbf4febc22",
+   "fingerprint": "2942564cfe81272d",
    "inputs": {
     "rf2/rf2_readiness.py": "41b85e29f0",
-    "state/ledger.json": "9899b8b53a",
+    "state/ledger.json": "d729a5ff7c",
     "rf2/results/rf2_icd.json": "93dd81c6b8"
    },
-   "finished": "2026-10-30T23:45:57",
+   "finished": "2026-10-30T23:50:11",
    "log": "state/logs/readiness.log",
    "history": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     0.1,
-    0.1,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
     0.0
    ]
   },
   "timing-cord": {
    "status": "pass",
    "rc": 0,
-   "seconds": 29.5,
+   "seconds": 30.5,
    "why": "",
    "tail": "",
-   "fingerprint": "dce460650bf4c716",
+   "fingerprint": "3b335f30d9db81b3",
    "inputs": {
-    "rf2/rf2_cordflex.py": "706ae46808",
+    "rf2/rf2_cordflex.py": "6033a33bc4",
     "rf2/rf2_timing_cord.py": "bd4590546e",
     "rf2/rf2_timing.py": "afc96b11c2"
    },
-   "finished": "2026-10-30T23:44:00",
+   "finished": "2026-10-30T23:48:41",
    "log": "state/logs/timing-cord.log",
    "history": [
     28.1,
     29.8,
     27.9,
     30.1,
-    29.5
+    29.5,
+    30.5
    ]
   },
   "slim": {
@@ -1019,26 +1020,26 @@
   "icd": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.6,
+   "seconds": 2.9,
    "why": "",
    "tail": "",
-   "fingerprint": "7d2891d8e8bb2a8f",
+   "fingerprint": "8bb954fac631b1e9",
    "inputs": {
     "rf2/rf2_icd.py": "37de6cd1e9",
     "rf2/rf2_system.py": "d14b048da2",
-    "docs/DATASHEET_LOG_ARX.md": "f3a5aa41f9"
+    "docs/DATASHEET_LOG_ARX.md": "61ba0055d3"
    },
-   "finished": "2026-10-30T23:45:57",
+   "finished": "2026-10-30T23:50:11",
    "log": "state/logs/icd.log",
    "history": [
-    2.5,
-    3.0,
     2.3,
     3.0,
     2.7,
     3.0,
     2.6,
-    2.6
+    2.6,
+    2.9,
+    2.9
    ]
   },
   "emi-rect": {
@@ -1062,26 +1063,26 @@
   "print": {
    "status": "pass",
    "rc": 0,
-   "seconds": 36.4,
+   "seconds": 35.7,
    "why": "",
    "tail": "",
-   "fingerprint": "06814b52f48a0cbb",
+   "fingerprint": "0df6ff81d1581bb0",
    "inputs": {
     "rf2/rf2_print.py": "e53bffa875",
     "rf2/rf2_chassis.py": "eb739070c6",
-    "rf2/chassis_out/rf2_chassis_check.json": "b4596aebf9"
+    "rf2/chassis_out/rf2_chassis_check.json": "b5e8c112f0"
    },
-   "finished": "2026-10-30T23:45:01",
+   "finished": "2026-10-30T23:49:37",
    "log": "state/logs/print.log",
    "history": [
-    34.3,
     36.3,
     35.0,
     33.7,
     33.3,
     38.9,
     37.7,
-    36.4
+    36.4,
+    35.7
    ]
   },
   "study:mp1v2_close": {
@@ -1106,56 +1107,56 @@
   "pack-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.8,
+   "seconds": 0.7,
    "why": "",
    "tail": "",
-   "fingerprint": "759dfcff20a2a542",
+   "fingerprint": "2a461cec01c6a35f",
    "inputs": {
     "rf2/rf2_pack_options.py": "e0a5eca4e6",
-    "rf2/chassis_out/rf2_chassis_check.json": "b4596aebf9",
+    "rf2/chassis_out/rf2_chassis_check.json": "b5e8c112f0",
     "rf2/results/rf2_system.json": "a6c9620d5c"
    },
-   "finished": "2026-10-30T23:45:05",
+   "finished": "2026-10-30T23:49:40",
    "log": "state/logs/pack-options.log",
    "history": [
-    0.8,
     1.0,
     0.8,
     0.9,
     0.8,
     0.8,
     0.7,
-    0.8
+    0.8,
+    0.7
    ]
   },
   "rules": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.1,
+   "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "a0169fc9d1d8c93e",
+   "fingerprint": "ac1001fb77ff0892",
    "inputs": {
-    "rf2/rf2_rules.py": "bb2f7cffec",
+    "rf2/rf2_rules.py": "2941ebe76f",
     "rf2/results/rf2_system.json": "a6c9620d5c",
     "rf2/results/rf2_continuous.json": "7f2ee67390",
     "rf2/head/out/rf2_mp1v2_close.json": "cba1fcb3d1",
     "rf2/results/rf2_print.json": "e548dedeb6",
     "rf2/results/rf2_pack_options.json": "18a4470e08",
     "rf2/results/rf2_wire_options.json": "c9356af9d8",
-    "rf2/results/rf2_flex_options.json": "eef7be4779"
+    "rf2/results/rf2_flex_options.json": "dd41249fe3"
    },
-   "finished": "2026-10-30T23:45:11",
+   "finished": "2026-10-30T23:49:46",
    "log": "state/logs/rules.log",
    "history": [
-    0.0,
     0.0,
     0.0,
     0.0,
     0.1,
     0.0,
     0.0,
-    0.1
+    0.1,
+    0.0
    ]
   },
   "wire-options": {
@@ -1172,7 +1173,7 @@
     "data/datasheets/Rubadue_insulated_litz_FEP_ETFE_TCA.pdf": "0aa8c4a977",
     "rf2/head/out_BF/rf2_head_spec.json": "b323b326ce"
    },
-   "finished": "2026-10-30T23:45:05",
+   "finished": "2026-10-30T23:49:41",
    "log": "state/logs/wire-options.log",
    "history": [
     3.5,
@@ -1181,26 +1182,27 @@
     0.7,
     0.7,
     0.9,
+    0.8,
     0.8
    ]
   },
   "flex-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.8,
+   "seconds": 2.6,
    "why": "",
    "tail": "",
-   "fingerprint": "ae4f1c77c399332b",
+   "fingerprint": "35b128f3d8e66182",
    "inputs": {
-    "rf2/rf2_cordflex.py": "706ae46808",
-    "rf2/rf2_flex_options.py": "96b9277c5f",
-    "rf2/chassis_out/rf2_chassis_check.json": "b4596aebf9",
+    "rf2/rf2_cordflex.py": "6033a33bc4",
+    "rf2/rf2_flex_options.py": "f2cb0c0634",
+    "rf2/chassis_out/rf2_chassis_check.json": "b5e8c112f0",
     "rf2/rf2_zones.py": "b56fea10f8",
     "rf2/rf2_chassis.py": "eb739070c6",
     "rf2/results/rf2_timing_cord.json": "411eb5b10d",
     "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T23:45:08",
+   "finished": "2026-10-30T23:49:44",
    "log": "state/logs/flex-options.log",
    "history": [
     3.3,
@@ -1209,13 +1211,14 @@
     2.5,
     2.6,
     2.7,
-    2.8
+    2.8,
+    2.6
    ]
   },
   "shaft-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.3,
+   "seconds": 2.1,
    "why": "",
    "tail": "",
    "fingerprint": "3cb462efab898ebe",
@@ -1224,50 +1227,38 @@
     "rf2/rf2_chassis.py": "eb739070c6",
     "rf2/head/out_BF/rf2_head_check.json": "90e46da8a7"
    },
-   "finished": "2026-10-30T23:45:10",
+   "finished": "2026-10-30T23:49:46",
    "log": "state/logs/shaft-options.log",
    "history": [
-    2.3
+    2.3,
+    2.1
    ]
   },
   "integration": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.1,
+   "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "189fa9609b3457aa",
+   "fingerprint": "6bb99133f516b2ac",
    "inputs": {
-    "rf2/rf2_integration.py": "aea2286b70",
+    "rf2/rf2_integration.py": "297d5a7a2e",
     "rf2/results/rf2_wire_options.json": "c9356af9d8",
-    "rf2/results/rf2_flex_options.json": "eef7be4779",
+    "rf2/results/rf2_flex_options.json": "dd41249fe3",
     "rf2/results/rf2_shaft_options.json": "0c3bcbb7e0",
     "rf2/results/rf2_pack_options.json": "18a4470e08",
-    "rf2/results/rf2_rules.json": "0910a519d3"
+    "rf2/results/rf2_rules.json": "2c75399755"
    },
-   "finished": "2026-10-30T23:45:25",
+   "finished": "2026-10-30T23:49:46",
    "log": "state/logs/integration.log",
    "history": [
     0.1,
-    0.1
+    0.1,
+    0.0
    ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T12:25:38",
-   "seconds": 230.5,
-   "results": {
-    "board:LR1": "pass"
-   }
-  },
-  {
-   "finished": "2026-10-30T12:26:34",
-   "seconds": 56.1,
-   "results": {
-    "board:LR1": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T12:27:00",
    "seconds": 3.3,
@@ -1809,6 +1800,33 @@
   {
    "finished": "2026-10-30T23:45:57",
    "seconds": 2.7,
+   "results": {
+    "icd": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T23:49:46",
+   "seconds": 95.8,
+   "results": {
+    "timing-cord": "pass",
+    "chassis": "pass",
+    "system": "pass",
+    "print": "pass",
+    "icd": "pass",
+    "pack-options": "pass",
+    "wire-options": "pass",
+    "flex-options": "pass",
+    "shaft-options": "pass",
+    "rules": "pass",
+    "integration": "pass",
+    "topography": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T23:50:11",
+   "seconds": 2.9,
    "results": {
     "icd": "pass",
     "readiness": "pass"

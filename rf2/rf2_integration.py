@@ -40,8 +40,16 @@ def main():
     row("Cord: head -> REF3T -> hinge", "split long flex (rolling loop + static piece)", "Tech Etch long flex, Minco guide", "ADOPTED",
         f"{a.get('width_mm')} mm wide, {a.get('segments', {}).get('seg1_dynamic_mm')} + {a.get('segments', {}).get('seg2_static_mm')} mm, {a.get('mass_g', {}).get('flex')} g vs {a.get('mass_g', {}).get('coiled_cord')} g; TX {a.get('tx_capacitance', [{}, {}])[1].get('C_pF_per_m')} pF/m",
         f"fixes the 10 mm cord FAIL; first gate +{a.get('first_gate_shift_us')} us (was +0.19)", fl("flex"), "flex drawing with a >= 1000 VRMS net-to-net hipot; rolling-loop mock-up")
-    row("Cord: flex signal traces", "thinner signal copper (contoured / selective plating) to meet the 5 x thickness producibility guideline", "Minco guide, Tech Etch contoured circuits", "OPEN",
-        "0.15 mm traces on 2 oz vs 0.36 mm guideline; 0.127 mm minimum met", "producibility / yield", fl("flex.lv"), "ask the vendor for selective copper")
+    hh = fo.get("H_two_ply_cord", {}); ff = fo.get("F_metal_core_led", {}); gg = fo.get("G_ultra_thin", {})
+    row("Cord: flex signal traces", "selective copper: 2 oz TX / power, 1/2 oz signal areas", "Minco guide, Tech Etch contoured circuits, PICA 18 um adhesiveless", "ADOPTED",
+        "0.15 mm traces on 1/2 oz vs 0.089 mm guideline and 0.076 mm minimum", "producibility guideline met without widening the flex", fl("flex.lv"), "state the selective copper on the flex drawing")
+    row("Cord: flex construction", "two unbonded plies (2 oz HV / power + 1/2 oz ultra-thin signal)", "PICA ultra-thin FPC", "REJECTED",
+        f"stacked: +{hh.get('stacked_extra_tx_pF_per_m')} pF/m on the TX strips (pair {hh.get('flex_tx_pF_per_m')} pF/m); offset: {hh.get('offset_width_mm')} mm wide", "-", "-", "-")
+    row("Head: display board (522 LEDs)", "metal-core (aluminium) LED PCB", "MegaPlus LED / lighting PCB", "REJECTED",
+        "; ".join(f"{k}: drift {v['drift5K_x_noise']} x noise" for k, v in ff.get("head_display", {}).items()), "-", "-", "keep the flex on a non-metal light plate")
+    row("Control chassis: TXD current loop", "heavy copper (to 17 oz)", "MegaPlus PCB", "PROPOSED", "outside the coil field", "lower I2R in the TX loop if needed", "-", "only if the TXD thermal budget asks")
+    row("Head: display flex (522 LEDs)", "PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm)", "PICA ultra-thin FPC", "PROPOSED",
+        f"flex {gg.get('display_flex_now_mm')} -> {gg.get('ultra_thin_mm')} mm; head {gg.get('head_H_now_mm')} -> {gg.get('head_H_if_adopted_mm')} mm", "thinner head", "-", "owner: adopt, then re-check the LED pads and light-plate seat")
     row("Cord: strain relief at the gland", "strain-relief pin through a loop of the flex (SDC 2300 coil-cable pin 4308-0031 pattern)", "Minelab SDC 2300 parts", "PROPOSED", "-", "no pull on the soldered TX strips", "-", "add the pin to the gland boss")
     row("Hinge pass-through (ICD I5)", "single-layer reverse-bared / Minco dynamic flex plies", "Tramonto, Minco guide", "PROPOSED", "single layer required for dynamic flexing; bend >= 10 x thickness", "longer clock-spring life", "-", "re-check the I5 bend radius with 0.15 mm plies")
     # ---- REF3

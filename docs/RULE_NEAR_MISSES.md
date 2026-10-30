@@ -2,7 +2,7 @@
 
 BLOCKED: a part fails a rule by 10 % or less (it fits right under it); the owner decides whether to relax or remove the rule. RELAXED: the owner relaxed it; shown against the old limit every run. EDGE: passes with 5 % headroom or less. FAIL: misses by more than 10 %. Safety rules (HV, eddy, absolute-maximum ratings) are never relaxed automatically.
 
-Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 4, FAIL 5, PASS 52
+Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 4, FAIL 4, PASS 53
 
 | Status | Kind | Rule | Value | Limit | Over (+) / headroom (-) | Note |
 |---|---|---|---|---|---|---|
@@ -10,7 +10,6 @@ Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 4, FAIL 5, PASS 52
 | **BLOCKED** | safety | coil litz SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Rubadue catalog (rf2_wire_options) |
 | **FAIL** | target | slotted etched shield can in the head, front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12): drift vs 0.5 x gate noise | 20.62866 x noise | <= 0.5 x noise | +4025.7 % | rf2_flex_options.json |
 | **FAIL** | target | slotted etched shield can in the head, head centre (r 30 mm, z 12): drift vs 0.5 x gate noise | 2.58221 x noise | <= 0.5 x noise | +416.4 % | rf2_flex_options.json |
-| **FAIL** | target | cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz) | 0.15 mm | >= 0.356 mm | +57.9 % | Minco design guide 2019 |
 | **FAIL** | target | MP1 v2 input noise per leg vs the 1.7 nV/rtHz target | 2.211 nV/rtHz | <= 1.7 nV/rtHz | +30.1 % | rf2_mp1v2_close.json chosen |
 | **FAIL** | target | cord-as-flex in one piece (no REF3T joint) vs Tech Etch preferred length (advanced 1524 mm) | 1315 mm | <= 1016 mm | +29.4 % | Tech Etch long flex brochure |
 | **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 3.5 h | >= 6.0 h | +41.7 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |

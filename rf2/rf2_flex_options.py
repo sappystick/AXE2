@@ -103,8 +103,40 @@ def part_e():
     return dict(coax_pF_per_m=82.0, flex_tx_pF_per_m=round(CFX.cps_c_pf_per_m(), 1), smallest="5U: 1.2 mm, 5.6 g/m, bend radius 6.4 mm", verdict="not adopted: 50 ohm microwave coax; "
                 "as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2")
 
+def part_f():
+    """MegaPlus LED / lighting PCB: metal-core (aluminium) boards for thermal LED designs, 0.1-8 mm, copper to 17 oz. In the head the 522-LED display
+    would sit on a metal disc inside the coil: its echo against the gate noise, as the shield-can study (aluminium 3.5e7 S/m, 1.0 mm core ASSUMED)"""
+    import rf2_zones as Z
+    P = np.array([0.0, 0.0, 13.3]); b = float(np.linalg.norm(Z.Bc(P)[0])); out = {}
+    for r_mm in (40.0, 100.0):
+        phi = b * math.pi * (r_mm * 1e-3) ** 2; e, tau = Z.loop_echo(phi, r_mm * 1e-3 * 0.7, r_mm * 0.5e-3, 0, 3.5e7, 1.0e-3)
+        out[f"disc r {r_mm:.0f} mm"] = dict(echo_x_gate_noise=round(e / Z.NOISE_GATE, 1), drift5K_x_noise=round(e * 0.02 / Z.NOISE_GATE, 2))
+    return dict(head_display=out, verdict="rejected in the head (a metal core inside the coil is a target); not needed in the pod (LED ring and screen dissipate well under 1 W)",
+                heavy_copper="17 oz copper is available: an option for the TXD current loop in the chassis (outside the coil field) if its I2R matters")
+
+def part_g():
+    """PICA ultra-thin FPC: 18 um Cu on 12.5 um PI (or 3 um on 25 um), adhesiveless / TPI, finished down to 0.20 +- 0.08 mm; dynamic and extra-long flex"""
+    hs = json.load(open(os.path.join(HERE, "head", "out_BF", "rf2_head_spec.json")))
+    led = hs["boards_inner"]["LED"]["z"]; t_now = round(led[1] - led[0], 2); H = hs["envelope"]["H"]
+    t_new = 0.20
+    return dict(display_flex_now_mm=t_now, ultra_thin_mm=t_new, tol_mm=0.08, head_H_now_mm=H, head_H_if_adopted_mm=round(H - (t_now - t_new), 2),
+                verdict=f"PROPOSED: the 522-LED flex at 0.20 mm instead of {t_now} mm lowers the head {t_now - t_new:.2f} mm (LED pad / stiffener and the light-plate seat to be re-checked); "
+                        "adhesiveless thin plies also suit the hinge clock-spring (I5) and the cord flex's signal copper")
+
+def part_h():
+    """two-ply cord flex (2 oz HV / power ply + 1/2 oz ultra-thin signal ply, unbonded): stacking puts the signal ply's guards over the TX strips"""
+    import rf2_cordflex as CFX
+    eps_pi, d = 3.4, 0.05e-3                                                                        # polyimide eps (ASSUMED) and two coverlays between the plies
+    guard_w = 0.3e-3 * 2 + 0.15e-3 * 2                                                              # copper of one guarded pair over a TX strip
+    c_stack = EPS0 * eps_pi * guard_w / d * 1e12                                                    # pF/m, parallel plate
+    w_hv = 0.75 + 2 * CFX.W_TX + 2 * CFX.HV_GAP + 3 * 0.3 + 2 * CFX.W_PWR - 0.3 + 0.75; w_lv = 0.5 + 3 * 0.45 + 2 * 0.3 + 0.3 + 3 * 1.35 + 0.5
+    return dict(hv_ply_mm=round(w_hv, 2), lv_ply_mm=round(w_lv, 2), stacked_extra_tx_pF_per_m=round(c_stack), flex_tx_pF_per_m=round(CFX.cps_c_pf_per_m(), 1),
+                offset_width_mm=round(w_hv + w_lv - 1.5, 2),
+                verdict="rejected: stacked, a guarded pair over a TX strip adds about %d pF/m (the whole strip pair is %.1f pF/m); offset side by side the plies are %.1f mm wide, no gain over one ply. "
+                        "Keep one ply with selective copper (2 oz TX / power, 1/2 oz signal): the 0.15 mm traces then meet the 5 x thickness guideline" % (round(c_stack), CFX.cps_c_pf_per_m(), w_hv + w_lv - 1.5))
+
 def main():
-    res = dict(status="MODELED: vendor capability brochures; voltage ratings, dielectric constants, conductivities, spring constants ASSUMED where marked", A_cord_to_flex=part_a(), B_shield_can=part_b(), C_becu_fingers=part_c(), D_ref3_flexcoils=part_d(), E_gore_coax=part_e())
+    res = dict(status="MODELED: vendor capability brochures; voltage ratings, dielectric constants, conductivities, spring constants ASSUMED where marked", A_cord_to_flex=part_a(), B_shield_can=part_b(), C_becu_fingers=part_c(), D_ref3_flexcoils=part_d(), E_gore_coax=part_e(), F_metal_core_led=part_f(), G_ultra_thin=part_g(), H_two_ply_cord=part_h())
     a = res["A_cord_to_flex"]; b = res["B_shield_can"]["places"]; c = res["C_becu_fingers"]
     res["findings"] = [
         f"A: the cord as a {a['width_mm']} mm single-layer 2 oz flex (TX traces {a['tx_trace_mm']} mm, 1.0 mm rule-6 gaps) fits the {a['bore_mm']} mm bore; split at REF3T the pieces are "
@@ -116,9 +148,10 @@ def main():
     import rf2_cordflex as CFX
     res["A_cord_to_flex"]["minco"] = dict(len_max_mm=round(CFX.MINCO_LEN_MAX), one_piece_ok=a["one_piece_mm"] <= CFX.MINCO_LEN_MAX, cover_breakdown_V=CFX.COVER_MIL * CFX.COVER_V_PER_MIL,
                                       withstand_VRMS=CFX.WITHSTAND_VRMS, rule6_basis="Kapton / acrylic 3500 V/mil x 1 mil coverlay; 1000 VRMS 30 s typical withstand (Minco); the drawing calls a net-to-net hipot >= 1000 VRMS",
-                                      lv_trace_mm=0.15, min_w_2oz_mm=round(CFX.MIN_W_2OZ, 3), producibility_w_mm=round(5 * CFX.CU_T_MM[2.0], 3),
-                                      note="LV traces 0.15 mm meet Minco's 0.13 mm minimum on 2 oz but not the 5 x thickness producibility guideline (0.36 mm): thinner signal copper (contoured / selective plating) or wider traces (width over the bore limit)")
-    res["findings"] += [f"D: {res['D_ref3_flexcoils']['verdict']}", f"E: {res['E_gore_coax']['verdict']}"]
+                                      lv_trace_mm=0.15, lv_copper_oz=CFX.LV_OZ, min_w_2oz_mm=round(CFX.MIN_W_HALF_OZ, 3), producibility_w_mm=round(5 * CFX.CU_T_MM[CFX.LV_OZ], 3),
+                                      note="selective copper: LV traces 0.15 mm on 1/2 oz meet Minco's 0.076 mm minimum and the 5 x thickness producibility guideline (0.089 mm); on 2 oz they would miss it (0.36 mm)")
+    res["findings"] += [f"D: {res['D_ref3_flexcoils']['verdict']}", f"E: {res['E_gore_coax']['verdict']}", f"F: {res['F_metal_core_led']['verdict']} {res['F_metal_core_led']['head_display']}",
+                        f"G: {res['G_ultra_thin']['verdict']}", f"H: {res['H_two_ply_cord']['verdict']}"]
     res["ok"] = bool(a["fits_bore"] and a["lengths_ok"])
     json.dump(res, open(os.path.join(OUT, "rf2_flex_options.json"), "w"), indent=1, default=float)
     for f in res["findings"]: print("-", f)

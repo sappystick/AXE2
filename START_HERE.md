@@ -94,6 +94,10 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - MP1 v2 settling closed in SPICE: 13.66 us vs the 16.48 us first gate, using +-12 V clamp rails and a series isolation switch. Parts: TMUX7212, TPS65131, TL431 (worst case 14.58 us).
     - The DFM wall metric is now max(ray, inscribed sphere).
     - Lid light plate 2.4 mm with a 0.9 mm land: the lid passes, head 16.55 mm, optics 0.825.
+  - **LED PCB / ultra-thin flex** (section 48):
+    - Cord-flex selective copper adopted (producibility FAIL cleared).
+    - Two-ply cord and metal-core LED board rejected.
+    - 0.20 mm display flex proposed.
   - **Integration matrix** (section 47, `docs/INTEGRATION_MATRIX.md`):
     - Every owner source mapped to every area.
     - SDC cam-lever clamp adopted.

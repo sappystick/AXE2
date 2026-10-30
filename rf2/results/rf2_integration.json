@@ -108,18 +108,58 @@
    "status": "ADOPTED",
    "numbers": "15.7 mm wide, 961 + 394 mm, 10.6 g vs 86 g; TX 28.1 pF/m",
    "effect": "fixes the 10 mm cord FAIL; first gate +0.14 us (was +0.19)",
-   "rule": "FAIL cord-as-flex in one piece (no REF3T joint) vs Tech Etch pref (1315 vs 1016); EDGE cord-as-flex width vs the 18 mm bore less 2 mm (15.7 vs 16.0); FAIL cord-flex LV traces vs Minco producibility guideline (width  (0.15 vs 0.356)",
+   "rule": "FAIL cord-as-flex in one piece (no REF3T joint) vs Tech Etch pref (1315 vs 1016); EDGE cord-as-flex width vs the 18 mm bore less 2 mm (15.7 vs 16.0)",
    "next": "flex drawing with a >= 1000 VRMS net-to-net hipot; rolling-loop mock-up"
   },
   {
    "area": "Cord: flex signal traces",
-   "idea": "thinner signal copper (contoured / selective plating) to meet the 5 x thickness producibility guideline",
-   "source": "Minco guide, Tech Etch contoured circuits",
-   "status": "OPEN",
-   "numbers": "0.15 mm traces on 2 oz vs 0.36 mm guideline; 0.127 mm minimum met",
-   "effect": "producibility / yield",
-   "rule": "FAIL cord-flex LV traces vs Minco producibility guideline (width  (0.15 vs 0.356)",
-   "next": "ask the vendor for selective copper"
+   "idea": "selective copper: 2 oz TX / power, 1/2 oz signal areas",
+   "source": "Minco guide, Tech Etch contoured circuits, PICA 18 um adhesiveless",
+   "status": "ADOPTED",
+   "numbers": "0.15 mm traces on 1/2 oz vs 0.089 mm guideline and 0.076 mm minimum",
+   "effect": "producibility guideline met without widening the flex",
+   "rule": "-",
+   "next": "state the selective copper on the flex drawing"
+  },
+  {
+   "area": "Cord: flex construction",
+   "idea": "two unbonded plies (2 oz HV / power + 1/2 oz ultra-thin signal)",
+   "source": "PICA ultra-thin FPC",
+   "status": "REJECTED",
+   "numbers": "stacked: +542 pF/m on the TX strips (pair 28.1 pF/m); offset: 15.2 mm wide",
+   "effect": "-",
+   "rule": "-",
+   "next": "-"
+  },
+  {
+   "area": "Head: display board (522 LEDs)",
+   "idea": "metal-core (aluminium) LED PCB",
+   "source": "MegaPlus LED / lighting PCB",
+   "status": "REJECTED",
+   "numbers": "disc r 40 mm: drift 118485.02 x noise; disc r 100 mm: drift 745751.54 x noise",
+   "effect": "-",
+   "rule": "-",
+   "next": "keep the flex on a non-metal light plate"
+  },
+  {
+   "area": "Control chassis: TXD current loop",
+   "idea": "heavy copper (to 17 oz)",
+   "source": "MegaPlus PCB",
+   "status": "PROPOSED",
+   "numbers": "outside the coil field",
+   "effect": "lower I2R in the TX loop if needed",
+   "rule": "-",
+   "next": "only if the TXD thermal budget asks"
+  },
+  {
+   "area": "Head: display flex (522 LEDs)",
+   "idea": "PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm)",
+   "source": "PICA ultra-thin FPC",
+   "status": "PROPOSED",
+   "numbers": "flex 0.4 -> 0.2 mm; head 16.55 -> 16.35 mm",
+   "effect": "thinner head",
+   "rule": "-",
+   "next": "owner: adopt, then re-check the LED pads and light-plate seat"
   },
   {
    "area": "Cord: strain relief at the gland",
@@ -233,11 +273,11 @@
   }
  ],
  "counts": {
-  "ADOPTED": 6,
-  "PROPOSED": 7,
+  "ADOPTED": 7,
+  "PROPOSED": 9,
   "FEASIBLE": 1,
-  "REJECTED": 6,
-  "OPEN": 2,
+  "REJECTED": 8,
+  "OPEN": 1,
   "BLOCKED": 1
  },
  "ok": true

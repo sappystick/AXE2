@@ -18,6 +18,8 @@ MINCO_LEN_MAX = 60 * 25.4                               # Minco: circuits up to 
 COVER_MIL = 1.0; COVER_V_PER_MIL = 2000.0; WITHSTAND_VRMS = 1000.0                # 1 mil Kapton coverlay (ASSUMED stack choice); 2000 V/mil = the AGED Kapton covercoat rating
 # (Sierra Proto HV notebook 2004: 2000-3000 V/mil aged; Minco 3500 V/mil initial); FR4 aged about 300 V/mil (same notebook); sharp copper points arc at 1/3 the voltage of rounded ones
 MIN_W_2OZ = 0.005 * 25.4                                # Minco minimum conductor width / space on 2 oz
+LV_OZ = 0.5                                             # selective copper (owner sources 2026-10-30): 2 oz TX / power, 1/2 oz signal areas (Tech Etch contoured circuits; PICA 18 um adhesiveless)
+MIN_W_HALF_OZ = 0.003 * 25.4                            # Minco artwork checklist: 0.003 in minimum on unplated 1/2 oz
 CU_T_MM = {0.5: 0.0007 * 25.4, 1.0: 0.0014 * 25.4, 2.0: 0.0028 * 25.4}   # nomograph copper thicknesses (IPC-2223 reprint)
 BEND_R = 40 * STACK_MM                                  # dynamic bend radius 40 x stack (ASSUMED; Minco: single layer >= 6 x (IPC), >= 10 x for reliability, single layer for dynamic)
 
