@@ -1,0 +1,155 @@
+{
+ "status": "MODELED (RF2 step 9: EMI; ASSUMED interference levels)",
+ "NA_mono_m2": 1.022,
+ "NA_quad_imbalance_m2": 1.89e-05,
+ "depth_1g_mm": {
+  "none": {
+   "matched, fixed rate": {
+    "mono": 360,
+    "quad": 138
+   },
+   "matched, jittered rate": {
+    "mono": 360,
+    "quad": 138
+   },
+   "learned, fixed rate": {
+    "mono": 364,
+    "quad": 139
+   },
+   "learned, jittered rate": {
+    "mono": 364,
+    "quad": 139
+   },
+   "learned, jittered + REF canceller": {
+    "mono": 357,
+    "quad": 139
+   }
+  },
+  "power line rural 0.05 uT": {
+   "matched, fixed rate": {
+    "mono": 164,
+    "quad": 138
+   },
+   "matched, jittered rate": {
+    "mono": 193,
+    "quad": 138
+   },
+   "learned, fixed rate": {
+    "mono": 273,
+    "quad": 139
+   },
+   "learned, jittered rate": {
+    "mono": 288,
+    "quad": 139
+   },
+   "learned, jittered + REF canceller": {
+    "mono": 347,
+    "quad": 139
+   }
+  },
+  "power line under a line 1 uT": {
+   "matched, fixed rate": {
+    "mono": 51,
+    "quad": 138
+   },
+   "matched, jittered rate": {
+    "mono": 74,
+    "quad": 138
+   },
+   "learned, fixed rate": {
+    "mono": 222,
+    "quad": 139
+   },
+   "learned, jittered rate": {
+    "mono": 230,
+    "quad": 139
+   },
+   "learned, jittered + REF canceller": {
+    "mono": 294,
+    "quad": 139
+   }
+  },
+  "VLF 1 nT at 20.000 kHz (coherent)": {
+   "matched, fixed rate": {
+    "mono": 130,
+    "quad": 138
+   },
+   "matched, jittered rate": {
+    "mono": 225,
+    "quad": 138
+   },
+   "learned, fixed rate": {
+    "mono": 354,
+    "quad": 139
+   },
+   "learned, jittered rate": {
+    "mono": 354,
+    "quad": 139
+   },
+   "learned, jittered + REF canceller": {
+    "mono": 357,
+    "quad": 139
+   }
+  },
+  "VLF 10 nT at 19.8 kHz": {
+   "matched, fixed rate": {
+    "mono": 360,
+    "quad": 138
+   },
+   "matched, jittered rate": {
+    "mono": 130,
+    "quad": 138
+   },
+   "learned, fixed rate": {
+    "mono": 364,
+    "quad": 139
+   },
+   "learned, jittered rate": {
+    "mono": 353,
+    "quad": 139
+   },
+   "learned, jittered + REF canceller": {
+    "mono": 356,
+    "quad": 139
+   }
+  },
+  "electric fence 50 nT at 20 m": {
+   "matched, fixed rate": {
+    "mono": 173,
+    "quad": 138
+   },
+   "matched, jittered rate": {
+    "mono": 176,
+    "quad": 138
+   },
+   "learned, fixed rate": {
+    "mono": 327,
+    "quad": 139
+   },
+   "learned, jittered rate": {
+    "mono": 205,
+    "quad": 139
+   },
+   "learned, jittered + REF canceller": {
+    "mono": 357,
+    "quad": 139
+   }
+  }
+ },
+ "shield": {
+  "split_trace_eddy_tau_us": 0.775,
+  "split_1mm_trace_eddy_tau_us": 0.258,
+  "closed_ring_tau_us": 6.06,
+  "closed_ring_R_ohm": 0.103,
+  "closed_ring_L_uH": 0.625,
+  "decay_by_first_gate_3mm": 7.4e-10,
+  "note": "a closed ring decays in the receive window (6 us) and couples strongly to the coils; a split 3 mm trace's own eddies decay with about 0.8 us (a 1 mm trace 0.26 us), down by e^-21 at the 16.3 us first gate (estimate: tau = mu0 sigma t w / pi^2)"
+ },
+ "seconds": 9.4,
+ "ref3_layout": {
+  "source": "rf2_ref3 rect_sleeve",
+  "worst_axis": "X",
+  "e_ref_nV": 2.48,
+  "gain": 3.0
+ }
+}

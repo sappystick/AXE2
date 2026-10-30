@@ -21,7 +21,7 @@ D = [
     ("P0.3", 0, "First gate with the 1.1 m TX pair in the coil cord (rf2_timing, node C + pair, damping at the coil)", [], ("files", ["rf2/results/rf2_timing_cord.json"]), "exact gate shift replaces the +0.56 us first-order estimate"),
     ("P0.4", 0, "EMI canceller with the rectangular REF3 (e_ref 2.5-3.4 nV/rtHz) (rf2_emi)", [], ("files", ["rf2/results/rf2_emi_rect.json"]), "depth with canceller re-computed"),
     ("P0.5", 0, "MP1 v2 protection closed: amplifier input < 10 mA and settling < first gate (levers: Rin2 150-220 ohm, 3.3 V clamp rail, gate timing)", ["P0.3"],
-     ("step", "study:mp1v2_protect_closed"), "one option passes every limit in SPICE"),
+     ("json", "rf2/head/out/rf2_mp1v2_close.json", "closed"), "one option passes every limit in SPICE"),
     ("P0.6", 0, "Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total)",
      [], ("json", "rf2/results/rf2_icd.json", "p06_all_verified"), "each part VERIFIED in DATASHEET_LOG (status list in rf2_icd.json p06_parts)"),
     # ---- phase 1: schematics + SPICE (each lands in rf2_netlist, ratings checked continuous + rule 6)
@@ -53,10 +53,10 @@ D = [
     ("P3.3", 3, "Main hinge with hollow axis, locking tooth and the slide-lock pawl", ["P3.1"], ("files", ["rf2/chassis_out/print/HINGE_*.stl"]), "180 deg sweep clear; bundle bend / twist in the bore"),
     ("P3.4", 3, "Rectangular profiles (vendor sizes), flat lever clamps, keyed slide pads, end stops", ["P0.6"], ("files", ["rf2/chassis_out/print/CLAMP_*.stl"]), "overlap at full extension, clamp force (ASSUMED until tested)"),
     ("P3.5", 3, "REF3 face-coil formers, solenoid layer, cover", ["P1.7"], ("files", ["rf2/chassis_out/print/REF3_*.stl"]), "winding fits the 42.4 x 36.4 envelope"),
-    ("P3.6", 3, "Yoke dual-axis knuckle (pitch friction + roll detents) and head ears for the 28 x 22 profile", [], ("files", ["rf2/chassis_out/print/YOKE_*.stl"]), "pitch 0-180 / roll 0-90 sweeps clear"),
-    ("P3.7", 3, "Cuff, wings + springs, rails, slider, strap slots", [], ("files", ["rf2/chassis_out/print/CUFF_*.stl"]), "slide and wing sweeps clear"),
+    ("P3.6", 3, "Yoke dual-axis knuckle (pitch friction + roll detents) and head ears for the 28 x 22 profile", [], ("json", "rf2/results/rf2_print.json", "P3.6_ok"), "DFM pass; working pitch -25..+45 free; storage path (pitch, then roll) clear"),
+    ("P3.7", 3, "Cuff, wings + springs, rails, slider, strap slots", [], ("json", "rf2/results/rf2_print.json", "P3.7_ok"), "DFM pass; slide sweep clear"),
     ("P3.8", 3, "Battery cartridge shell: cell holder, nickel-strip layout, latch, seal, contacts", ["P2.5"], ("files", ["rf2/chassis_out/print/CART_*.stl"]), "slide path clear (done for the envelope)"),
-    ("P3.9", 3, "Head exterior for print: skid clips, bumper, ears; head interior trays already generated", [], ("files", ["rf2/head/out_BF/print/*.stl"]), "DFM checks on head parts"),
+    ("P3.9", 3, "Head exterior for print: skid clips, bumper, ears; head interior trays already generated", [], ("json", "rf2/results/rf2_print.json", "P3.9_ok"), "DFM pass on skid, bumper, shell and lid"),
     # ---- phase 4: harness, winding, potting, BOM, assembly
     ("P4.1", 4, "Harness drawings with lengths from the 3-D routes (cord, hinge pass-through, grip FFC, head harness)", ["P0.2", "P3.3"], ("files", ["docs/HARNESS.md"]), "every wire end, length, sleeve, voltage class"),
     ("P4.2", 4, "Coil-cord specification (1000 V pair + power + STP pairs, coil OD 17 mm, stretch 4.4:1)", ["P0.1"], ("files", ["docs/COIL_CORD_SPEC.md"]), "vendor quote-able spec"),

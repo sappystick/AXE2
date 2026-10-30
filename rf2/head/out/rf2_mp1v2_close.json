@@ -1,0 +1,64 @@
+{
+ "status": "MODELED (SPICE); ideal clamp rails",
+ "limiter": "IXTY01N100D@Q",
+ "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+ "first_gate_us": 16.48,
+ "runs": [
+  {
+   "rin2": 100.0,
+   "rails": [
+    0.0,
+    5.0
+   ],
+   "noise_nV": 2.211,
+   "peak_clamp_node_V": 5.48,
+   "peak_lmh_input_mA": 14.1,
+   "peak_per_diode_mA": {
+    "BAT54": 75.6,
+    "BAV199": 5.4
+   },
+   "settle_us": 17.5,
+   "passes": false
+  },
+  {
+   "rin2": 100.0,
+   "rails": [
+    0.5,
+    4.5
+   ],
+   "noise_nV": 2.211,
+   "peak_clamp_node_V": 4.99,
+   "peak_lmh_input_mA": 9.25,
+   "peak_per_diode_mA": {
+    "BAT54": 77.9,
+    "BAV199": 5.2
+   },
+   "settle_us": 17.78,
+   "passes": false
+  },
+  {
+   "rin2": 100.0,
+   "rails": [
+    1.0,
+    4.0
+   ],
+   "noise_nV": 2.211,
+   "peak_clamp_node_V": 4.49,
+   "peak_lmh_input_mA": 4.48,
+   "peak_per_diode_mA": {
+    "BAT54": 80.1,
+    "BAV199": 5.0
+   },
+   "settle_us": 18.22,
+   "passes": false
+  }
+ ],
+ "current_closed_by": [
+  1.0,
+  4.0
+ ],
+ "settling_gap_us": 1.02,
+ "open": "settling is set by the limiter's recovery (17.5-18.2 us against the 16.48 us first gate); next levers: a gate speed-up network on the depletion limiter, a lower-Coss limiter, or a later first gate (depth cost)",
+ "closed": false,
+ "chosen": null
+}

@@ -8,7 +8,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 - PASS: ampacity and pin counts
 - PASS: harness nets in rf2_system all defined at the cord's head end (I2)
 - PASS: screen FPC bend limit (3 bends) handled by a dynamic hinge flex (I11) and a static panel FPC (I12)
-- OPEN: every connector part verified (datasheet on file, ratings read) ({'tbd_or_unverified': ['I2', 'I3', 'I5', 'I6', 'I8', 'I9', 'I10']})
+- OPEN: every connector part verified (datasheet on file, ratings read) ({'tbd_or_unverified': ['I3', 'I6']})
 
 ## I1. Coil leads -> TXJ (head)
 
@@ -26,7 +26,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 
 - **From / to:** coil cord -> TXJ (TX pair), CB1D (power, link, TX command), AB1A (REF pairs)
 - **Medium:** cord breakout inside the gland, potted strain relief
-- **Connector:** TXJ: solder pads (existing); CB1D: TBD 8-way locking wire-to-board (req. >= 1.5 A / pin, 50 V); AB1A: TBD 6-way + drain (shielded pairs)
+- **Connector:** TXJ: solder pads (existing); CB1D: JST GH 8-way (1.0 A / pin, 50 V, datasheet on file); AB1A: JST GH 7-way (3 REF pairs + drain)
 - **Status:** design
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |
@@ -97,7 +97,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 
 - **From / to:** cord board (hinge knuckle) -> TXD (TX pair, TXCMD / TXSTAT) and HB2-M (DATA, VIN_H return)
 - **Medium:** clock-spring flex in the hollow hinge axis: unbonded single-sided plies (air-gap), 2 oz copper; TX traces 3 mm wide, >= 1.0 mm spacing (rule 6); 180 deg fold
-- **Connector:** Panasonic Y5B FPC ends (AYF53 family, datasheet on file; ratings UNVERIFIED) on LV plies; HV ply soldered to TXD and the cord board
+- **Connector:** Panasonic Y5B FPC ends (50 V, 0.5 A / pin, datasheet on file) on the LV plies; the HV ply soldered to TXD and the cord board
 - **Status:** design (P3.3)
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |
@@ -117,7 +117,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 
 - **From / to:** cartridge (7S2P, BQ76952) -> PWR board
 - **Medium:** sealed blade contacts at the bay front
-- **Connector:** TBD blade contact pair (req. >= 5 A continuous, 30 V) + 4-pin signal contact (I2C, TS2 wake, NTC)
+- **Connector:** power: Amass MT60 mated pair (cartridge male, bay female; 30 A, keyed, datasheet on file); signals: 4 x Mill-Max 0906 spring pins (UNVERIFIED: official sheet not obtained)
 - **Status:** design (P3.8)
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |
@@ -145,8 +145,8 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 ## I8. PWR <-> TXD (chassis internal)
 
 - **From / to:** PWR -> TXD
-- **Medium:** board-to-board flex (rigid-flex option) or 2 x 6-way header
-- **Connector:** TBD (req. HV pin >= 1.0 mm creepage, 630 V; power pins >= 3 A)
+- **Medium:** TXD and PWR built as ONE rigid-flex: the flex joint carries HV_CLAMP with >= 1.0 mm spacing (rule 6) - no HV connector
+- **Connector:** none (rigid-flex integral)
 - **Status:** design
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |
@@ -160,8 +160,8 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 ## I9. HB2-M <-> PWR / TXD
 
 - **From / to:** HB2-M -> PWR, TXD
-- **Medium:** short flex or header
-- **Connector:** TBD (req. 8-way, 0.5 A / pin)
+- **Medium:** short harness
+- **Connector:** JST GH 8-way (datasheet on file)
 - **Status:** design
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |
@@ -179,7 +179,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 
 - **From / to:** HB2-M -> HB2-G (grip head)
 - **Medium:** 12-way 0.5 mm FFC with a 60 mm service loop (25 mm grip slide)
-- **Connector:** Panasonic Y5B AYF531235 class (family datasheet on file; ratings UNVERIFIED)
+- **Connector:** Panasonic AYF531235 (Y5B, 0.5 A / pin, 50 V, datasheet on file)
 - **Status:** design
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |

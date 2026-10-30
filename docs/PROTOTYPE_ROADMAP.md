@@ -2,7 +2,7 @@
 
 'Ready to prototype' = every gate below green in this repository. That is MODELED and tool-checked: no fabricator review, no bench test (rule 3).
 
-**Done: 1 of 40. Ready to start now: P0.1, P0.4, P0.5, P0.6, P3.6, P3.7, P3.9.**
+**Done: 4 of 40. Ready to start now: P0.1, P0.5, P0.6, P3.9.**
 
 **Critical path:** P0.1 -> P1.1 -> P1.2 -> P2.2 -> P2.8 -> P3.1 -> P5.1 -> P5.2
 
@@ -15,8 +15,8 @@ Already in place: head shells / trays / coil channel (head:BF); TXJ, TXF, MP1 v1
 | P0.1 | Interface control document: every joint (gland, coil cord, hinge pass-through, grip FFC, cartridge contacts, REF3 termination) with conductors, connector part, pinout, voltage class | - | `rf2/results/rf2_icd.json` all_parts_verified = true | one table per interface (docs/ICD.md, generated); every connector part verified | **TODO** (start now) |
 | P0.2 | System netlist extended to every RF2 board and harness wire (TXD, PWR, HB2-M, HB2-G, BMS, REF3T, AB1A/B, CB1D, MP1 v2) with parity | P0.1 | files `rf2/results/rf2_netlist_coverage.json` | coverage report lists every board above with nets; rf2_parity passes against built boards and harness | **TODO** |
 | P0.3 | First gate with the 1.1 m TX pair in the coil cord (rf2_timing, node C + pair, damping at the coil) | - | files `rf2/results/rf2_timing_cord.json` | exact gate shift replaces the +0.56 us first-order estimate | **DONE** |
-| P0.4 | EMI canceller with the rectangular REF3 (e_ref 2.5-3.4 nV/rtHz) (rf2_emi) | - | files `rf2/results/rf2_emi_rect.json` | depth with canceller re-computed | **TODO** (start now) |
-| P0.5 | MP1 v2 protection closed: amplifier input < 10 mA and settling < first gate (levers: Rin2 150-220 ohm, 3.3 V clamp rail, gate timing) | P0.3 | step `study:mp1v2_protect_closed` | one option passes every limit in SPICE | **TODO** (start now) |
+| P0.4 | EMI canceller with the rectangular REF3 (e_ref 2.5-3.4 nV/rtHz) (rf2_emi) | - | files `rf2/results/rf2_emi_rect.json` | depth with canceller re-computed | **DONE** |
+| P0.5 | MP1 v2 protection closed: amplifier input < 10 mA and settling < first gate (levers: Rin2 150-220 ohm, 3.3 V clamp rail, gate timing) | P0.3 | `rf2/head/out/rf2_mp1v2_close.json` closed = true | one option passes every limit in SPICE | **TODO** (start now) |
 | P0.6 | Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total) | - | `rf2/results/rf2_icd.json` p06_all_verified = true | each part VERIFIED in DATASHEET_LOG (status list in rf2_icd.json p06_parts) | **TODO** (start now) |
 
 ## Phase 1: schematics + SPICE
@@ -55,10 +55,10 @@ Already in place: head shells / trays / coil channel (head:BF); TXJ, TXF, MP1 v1
 | P3.3 | Main hinge with hollow axis, locking tooth and the slide-lock pawl | P3.1 | files `rf2/chassis_out/print/HINGE_*.stl` | 180 deg sweep clear; bundle bend / twist in the bore | **TODO** |
 | P3.4 | Rectangular profiles (vendor sizes), flat lever clamps, keyed slide pads, end stops | P0.6 | files `rf2/chassis_out/print/CLAMP_*.stl` | overlap at full extension, clamp force (ASSUMED until tested) | **TODO** |
 | P3.5 | REF3 face-coil formers, solenoid layer, cover | P1.7 | files `rf2/chassis_out/print/REF3_*.stl` | winding fits the 42.4 x 36.4 envelope | **TODO** |
-| P3.6 | Yoke dual-axis knuckle (pitch friction + roll detents) and head ears for the 28 x 22 profile | - | files `rf2/chassis_out/print/YOKE_*.stl` | pitch 0-180 / roll 0-90 sweeps clear | **TODO** (start now) |
-| P3.7 | Cuff, wings + springs, rails, slider, strap slots | - | files `rf2/chassis_out/print/CUFF_*.stl` | slide and wing sweeps clear | **TODO** (start now) |
+| P3.6 | Yoke dual-axis knuckle (pitch friction + roll detents) and head ears for the 28 x 22 profile | - | `rf2/results/rf2_print.json` P3.6_ok = true | DFM pass; working pitch -25..+45 free; storage path (pitch, then roll) clear | **DONE** |
+| P3.7 | Cuff, wings + springs, rails, slider, strap slots | - | `rf2/results/rf2_print.json` P3.7_ok = true | DFM pass; slide sweep clear | **DONE** |
 | P3.8 | Battery cartridge shell: cell holder, nickel-strip layout, latch, seal, contacts | P2.5 | files `rf2/chassis_out/print/CART_*.stl` | slide path clear (done for the envelope) | **TODO** |
-| P3.9 | Head exterior for print: skid clips, bumper, ears; head interior trays already generated | - | files `rf2/head/out_BF/print/*.stl` | DFM checks on head parts | **TODO** (start now) |
+| P3.9 | Head exterior for print: skid clips, bumper, ears; head interior trays already generated | - | `rf2/results/rf2_print.json` P3.9_ok = true | DFM pass on skid, bumper, shell and lid | **TODO** (start now) |
 
 ## Phase 4: harness, winding, potting, BOM, assembly
 

@@ -46,7 +46,7 @@ scripts/fetch_freerouting.sh >/dev/null 2>&1 || say "WARNING: Freerouting jar no
 fail=0
 chk() { if "$@" >/dev/null 2>&1; then :; else echo "[bootstrap] SELF-TEST FAILED: $*"; fail=1; fi; }
 chk python3 -c "import numpy, scipy, matplotlib, PIL, gerbonara, shapely, manifold3d"
-chk python3 -c "import kiutils, magpylib, trimesh, pyvista, cadquery, spicelib, meshio, skfem, optuna"
+chk python3 -c "import kiutils, magpylib, trimesh, pyvista, cadquery, spicelib, meshio, skfem, optuna, pymupdf, rtree"
 chk kicad-cli version
 chk /usr/bin/python3 -c "import pcbnew"
 chk ngspice --version

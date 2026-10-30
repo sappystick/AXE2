@@ -85,6 +85,11 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - First gate +0.19 us with the cord.
     - Screen and RS-485 chosen; Rd = 2 x PR03 806 ohm.
     - Shaft profiles 31 / 26 / 21 mm; chassis 62 x 31 mm; folds 494 x 233 x 160 mm.
+  - **Roadmap 4 / 40** (section 39):
+    - EMI re-run done.
+    - MP1 v2: current fixed by 1.0 / 4.0 V clamp rails; settling 1.0 us late.
+    - Connectors verified: JST GH, Panasonic Y5B.
+    - Printable yoke and cuff pass DFM; the head lid fails on thin light-plate webs.
   - **Owner updates 2026-10-30** (section 32): power button on the pod; continuous boost checked part by part (open: switch heat sink, regenerative clamp, 4.2 W 630 V damping resistor, coil thermal model); display and audio coding v2 (size = blob radius, depth = pulse, several targets as separate blobs and voices, status screens); multi-target separation by decay time and by position.
   - **Stage 4:** `rf2_zonerules.py` (runner step `zonerules`) turns the zone rules into checks. **Stage 4b, first fin board:** TXF (TXJ as a fin). FEP litz and sleeves are in the head SPEC: section 29.
 - **Still open, in order:**

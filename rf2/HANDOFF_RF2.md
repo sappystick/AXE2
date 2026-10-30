@@ -885,3 +885,42 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - **Fold:** **494 x 233 x 160 mm** (was 497 x 249 x 186).
   - Rigid-flex is still used where it pays: the hinge clock-spring, the grip FFC and the screen hinge flex.
 - **Readiness:** 1 / 40 done (P0.3). Ready to start: P0.1 parts, P0.4 (EMI with the rect REF3), P0.5 (MP1 v2 closure), P0.6, P3.6 / P3.7 / P3.9.
+
+## 39. Roadmap progress: EMI re-run, MP1 v2 clamp rails, connectors, printable yoke / cuff / head parts (2026-10-30; MODELED)
+- **P0.4 DONE: EMI with the rectangular REF3 (`rf2/rf2_emi_rect.py`, step `emi-rect`).** rf2_emi runs with the rect coils' worst axis (X: 2.48 nV/rtHz at gain 3).
+  - Depth with the canceller moves 1-3 mm, e.g. 360 -> 357 mm with no interference and 295 -> 294 mm under a 1 uT power line.
+- **P0.5 OPEN, half closed (`rf2/head/rf2_mp1v2_close.py`, study `mp1v2_close`, cached).** The clamp diodes now return to rails inside the amplifier's supply (IXTY01N100D, 2 x BAV199 + 2 x BAT54S, Rin2 100 ohm):
+
+  | Rails | LMH6629 input | Settling |
+  |---|---|---|
+  | 0 / 5 V | 14.1 mA | 17.5 us |
+  | 0.5 / 4.5 V | 9.25 mA | 17.8 us |
+  | **1.0 / 4.0 V** | **4.48 mA** | 18.2 us |
+
+  - **The input-current limit is met.** Settling still misses the 16.48 us first gate (with the cord) by 1.02 us, and is set by the limiter's recovery.
+  - Next levers: a gate speed-up network on the depletion limiter, a lower-Coss limiter, or a later first gate.
+  - Rin2 150 ohm was dropped: it lowers only the current, which is now met.
+  - The real rails need a stiff source: a divider or LDO with a large capacitor.
+- **Connectors (DATASHEET_LOG RF2-DS-INTERFACES, added rows; PyMuPDF now reads font-mangled and encrypted PDFs).**
+  - **Panasonic Y5B (VERIFIED):** 0.5 A per pin, **50 V**, 250 V AC dielectric strength, 20 mating cycles. LV FPC ends only, never the TX pair.
+  - **JST GH (VERIFIED):** 1.0 A AWG26, 50 V, -40 to +105 C. Chosen for CB1D, AB1A and HB2-M.
+  - **Cartridge:** MT60 mated pair for power; Mill-Max 0906 pins for signals (UNVERIFIED: official sheet not obtained).
+  - **TXD + PWR:** built as one rigid-flex, so no HV connector.
+  - **ICD:** only I3 (custom coil cord) and I6 (Mill-Max) remain unverified.
+- **P3.6 / P3.7 DONE, P3.9 OPEN: printable parts and a DFM checker (`rf2/rf2_print.py`, step `print`; STLs in `rf2/chassis_out/print`, `rf2/head/out_BF/print`).**
+  - **Rules (ASSUMED, FDM PETG / TPU on a 256 mm-class bed):**
+    - walls by inward ray casting (2nd percentile >= 0.96 mm, <= 3 % below 1.2 mm);
+    - overhang > 45 deg area fraction;
+    - best of 6 orientations;
+    - bed fit;
+    - watertight mesh.
+  - **Sweeps:** KD-tree based.
+  - **Yoke fork and swivel socket (21 x 21 profile; 4 ball-detent seats; e-clip groove): pass.**
+    - The links now end in an r 9 mm round about the pivot. The earlier cheek boxes cut into the lid, and the chassis clearance check had excluded them (CORRECTIONS).
+    - Head pitch is free from -25 to +125 deg. The working range -25..+45 deg covers the +-22.5 deg need (shaft 35-50 deg plus +-15 deg terrain).
+    - Storage path is clear: pitch to 120 deg, then roll 90 deg with the links on the swivel.
+  - **Cuff trough (radial-cut sector, wing knuckles, radial strap slots), wing and slider (rail bosses): pass.** The first version's planar cuts left feather edges, and a rail bore broke through its plate.
+  - **Head skid with 6 snap clips, TPU bumper and lower shell: pass.**
+  - **Head LID: FAILS.** Its light plate is 1.45 mm under the conical wells, so about 18 % of the surface is below the 1.2 mm print minimum. Fix: thicken the light plate (rf2_head + rf2_lightplate optics). OPEN.
+- **Tooling:** pymupdf and rtree added to requirements and the bootstrap self-test.
+- **Readiness:** 4 / 40 done (P0.3, P0.4, P3.6, P3.7). Next: P0.5 limiter recovery; P0.1 / P0.6 cord vendor and Mill-Max sheet; P3.9 lid thickness; then P1.1 TXD schematic on the critical path.

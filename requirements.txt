@@ -18,3 +18,5 @@ meshio==5.3.5           # mesh format conversion (gmsh <-> STL / VTK)
 InteractiveHtmlBom==2.12.0   # assembly BOM / placement pages from KiCad boards
 scikit-fem==12.0.2      # finite elements (with gmsh meshes): axisymmetric eddy-current, winding-capacitance and shield-decay studies (ENHANCEMENT_PLAN_RF2.md)
 optuna==5.0.0           # parameter search for coil / receiver geometry at fixed energy per pulse
+pymupdf>=1.24      # reads datasheets whose text poppler cannot (Japanese font packs, AES-encrypted PDFs): RF2-DS-INTERFACES
+rtree              # trimesh ray casting in the DFM checker (rf2_print.py)

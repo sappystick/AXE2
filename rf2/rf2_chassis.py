@@ -58,7 +58,8 @@ def build():
     for k in ("HEAD_SKID", "HEAD_EAR_L", "HEAD_EAR_R", "HEAD_ENVELOPE"): P[k] = ("HEAD", up_parts[k][1], up_parts[k][2])
     to, tm, ti = s["tubes"]["outer"], s["tubes"]["mid"], s["tubes"]["inner"]
     for sg in (1, -1):
-        P[f"YOKE_CHEEK_{'L' if sg > 0 else 'R'}"] = ("LOW", shaft_frame(cq.Workplane("XY").box(24, 5, 44).translate((0, sg * 24.5, 12)).edges("|Y").fillet(5).val(), 0.0), "yoke knuckle cheek (pitch pivot + roll swivel)")
+        link = cq.Workplane("XY").box(18, 5, 30).translate((0, sg * 24.5, 15)).union(cq.Workplane("XZ").circle(9.0).extrude(2.5, both=True).translate((0, sg * 24.5, 0)))
+        P[f"YOKE_CHEEK_{'L' if sg > 0 else 'R'}"] = ("LOW", shaft_frame(link.val(), 0.0), "yoke link: rounded r 9 end on the pivot (clears the lid 12 mm below at every pitch), up to the swivel")
     P["YOKE_SWIVEL"] = ("LOW", rprof(ti[0] + 10, ti[1] + 10, 18.0, st["yoke"][1] + 8, wall=5.0), "roll swivel collar (90 deg detents) on the inner profile")
     P["INNER_TUBE"] = ("LOW", rprof(*ti, *st["inner"], keys=True), "inner square carbon profile 21 x 21, 1.5 mm wall, keyway tracks (coil cord in the 18 x 18 bore)")
     P["MID_TUBE"] = ("MID", rprof(*tm, *st["mid"], keys=True), "middle profile 26 x 26, keyway tracks")

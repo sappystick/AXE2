@@ -1,0 +1,213 @@
+{
+ "status": "MODELED; DFM rules ASSUMED (FDM PETG / TPU)",
+ "parts": {
+  "YOKE_FORK": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 20.61,
+   "wall_p2_mm": 3.03,
+   "thin_fraction": 0.0,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "+X up",
+   "overhang_frac": 0.089,
+   "fits_bed": true,
+   "extents_mm": [
+    24.0,
+    54.0,
+    63.0
+   ],
+   "group": "P3.6"
+  },
+  "YOKE_SWIVEL_SOCKET": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 15.37,
+   "wall_p2_mm": 2.44,
+   "thin_fraction": 0.014,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "+Z up",
+   "overhang_frac": 0.002,
+   "fits_bed": true,
+   "extents_mm": [
+    27.2,
+    27.2,
+    46.0
+   ],
+   "group": "P3.6"
+  },
+  "CUFF_TROUGH": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 29.96,
+   "wall_p2_mm": 2.1,
+   "thin_fraction": 0.001,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "-Z up",
+   "overhang_frac": 0.004,
+   "fits_bed": true,
+   "extents_mm": [
+    37.8,
+    62.0,
+    91.4
+   ],
+   "group": "P3.7"
+  },
+  "CUFF_WING": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 10.18,
+   "wall_p2_mm": 4.0,
+   "thin_fraction": 0.0,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "+Z up",
+   "overhang_frac": 0.0,
+   "fits_bed": true,
+   "extents_mm": [
+    13.8,
+    40.3,
+    62.0
+   ],
+   "group": "P3.7"
+  },
+  "CUFF_SLIDER": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 22.97,
+   "wall_p2_mm": 2.0,
+   "thin_fraction": 0.0,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "+Z up",
+   "overhang_frac": 0.0,
+   "fits_bed": true,
+   "extents_mm": [
+    30.2,
+    40.0,
+    83.4
+   ],
+   "group": "P3.7"
+  },
+  "HEAD_SKID_CLIP": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 68.02,
+   "wall_p2_mm": 1.6,
+   "thin_fraction": 0.001,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "+Z up",
+   "overhang_frac": 0.001,
+   "fits_bed": true,
+   "extents_mm": [
+    8.6,
+    232.0,
+    238.4
+   ],
+   "group": "P3.9"
+  },
+  "HEAD_BUMPER_TPU": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 15.55,
+   "wall_p2_mm": 2.7,
+   "thin_fraction": 0.0,
+   "wall_min_mm": 1.6,
+   "needs_supports": false,
+   "orientation": "-Z up",
+   "overhang_frac": 0.008,
+   "fits_bed": true,
+   "extents_mm": [
+    8.0,
+    237.9,
+    238.0
+   ],
+   "group": "P3.9"
+  },
+  "HEAD_SHELL_LOWER (rf2_head)": {
+   "ok": true,
+   "watertight": true,
+   "volume_cm3": 70.0,
+   "wall_p2_mm": 1.2,
+   "thin_fraction": 0.0,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "+Z up",
+   "overhang_frac": 0.0,
+   "fits_bed": true,
+   "extents_mm": [
+    14.1,
+    233.0,
+    233.0
+   ],
+   "group": "P3.9"
+  },
+  "HEAD_LID (rf2_head)": {
+   "ok": false,
+   "watertight": true,
+   "volume_cm3": 51.39,
+   "wall_p2_mm": 0.18,
+   "thin_fraction": 0.176,
+   "wall_min_mm": 1.2,
+   "needs_supports": false,
+   "orientation": "-Y up",
+   "overhang_frac": 0.004,
+   "fits_bed": true,
+   "extents_mm": [
+    3.0,
+    233.0,
+    233.0
+   ],
+   "group": "P3.9"
+  }
+ },
+ "sweeps": {
+  "yoke_pitch": {
+   "ok": true,
+   "free_deg": [
+    -25,
+    125
+   ],
+   "blocked_deg": [
+    -60,
+    -55,
+    -50,
+    -45,
+    -40,
+    -35,
+    -30,
+    130,
+    135,
+    140,
+    145,
+    150,
+    155,
+    160,
+    165,
+    170,
+    175,
+    180
+   ],
+   "note": "head (skid + envelope) about the pivot vs the yoke links, swivel and inner profile; the working range -25..+45 deg must be free (need +-22.5 deg: shaft 35-50 deg and +-15 deg terrain)"
+  },
+  "yoke_storage_path": {
+   "ok": true,
+   "roll_deg": 90,
+   "pitch_to_deg": 120,
+   "blocked_deg": [],
+   "note": "pitch first (head vs the fixed links), then roll on the swivel (head + links vs the inner profile)"
+  },
+  "cuff_slide": {
+   "ok": true,
+   "travel_mm": 70.0,
+   "positions_hit": 0,
+   "note": "cuff trough + wings along the rails toward the grip vs the chassis, grip and battery"
+  }
+ },
+ "P3.6_ok": true,
+ "P3.7_ok": true,
+ "P3.9_ok": false
+}

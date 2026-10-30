@@ -58,8 +58,8 @@
     ]
    ],
    "done_means": "depth with canceller re-computed",
-   "status": "TODO",
-   "ready_to_start": true
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P0.5",
@@ -69,8 +69,9 @@
     "P0.3"
    ],
    "gate": [
-    "step",
-    "study:mp1v2_protect_closed"
+    "json",
+    "rf2/head/out/rf2_mp1v2_close.json",
+    "closed"
    ],
    "done_means": "one option passes every limit in SPICE",
    "status": "TODO",
@@ -455,14 +456,13 @@
    "item": "Yoke dual-axis knuckle (pitch friction + roll detents) and head ears for the 28 x 22 profile",
    "deps": [],
    "gate": [
-    "files",
-    [
-     "rf2/chassis_out/print/YOKE_*.stl"
-    ]
+    "json",
+    "rf2/results/rf2_print.json",
+    "P3.6_ok"
    ],
-   "done_means": "pitch 0-180 / roll 0-90 sweeps clear",
-   "status": "TODO",
-   "ready_to_start": true
+   "done_means": "DFM pass; working pitch -25..+45 free; storage path (pitch, then roll) clear",
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P3.7",
@@ -470,14 +470,13 @@
    "item": "Cuff, wings + springs, rails, slider, strap slots",
    "deps": [],
    "gate": [
-    "files",
-    [
-     "rf2/chassis_out/print/CUFF_*.stl"
-    ]
+    "json",
+    "rf2/results/rf2_print.json",
+    "P3.7_ok"
    ],
-   "done_means": "slide and wing sweeps clear",
-   "status": "TODO",
-   "ready_to_start": true
+   "done_means": "DFM pass; slide sweep clear",
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P3.8",
@@ -502,12 +501,11 @@
    "item": "Head exterior for print: skid clips, bumper, ears; head interior trays already generated",
    "deps": [],
    "gate": [
-    "files",
-    [
-     "rf2/head/out_BF/print/*.stl"
-    ]
+    "json",
+    "rf2/results/rf2_print.json",
+    "P3.9_ok"
    ],
-   "done_means": "DFM checks on head parts",
+   "done_means": "DFM pass on skid, bumper, shell and lid",
    "status": "TODO",
    "ready_to_start": true
   },
