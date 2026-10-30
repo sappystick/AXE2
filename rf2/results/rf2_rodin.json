@@ -1,0 +1,232 @@
+{
+ "status": "ASSUMED values are marked. The owner's upload rodin_core_HIGH.stl was not a mesh (279-byte gzip of a 515-byte STL-viewer settings JSON), so the former is",
+ "upload": "rodin_core_HIGH.stl: gzip of an STL-viewer settings JSON (515 bytes), no geometry",
+ "coils": [
+  {
+   "name": "rim mono, rect 5 x 6 (option B)",
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "wire_m": 17.91,
+   "R_ohm": 0.541,
+   "first_gate_us": 16.33,
+   "B_uT": {
+    "head_centre": 1217.7,
+    "axis_100mm": 440.78,
+    "axis_300mm": 45.976,
+    "inside_tube": 3899.0,
+    "under_rim_100mm": 299.58
+   },
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   }
+  },
+  {
+   "name": "Rodin RIM, toroidal-aiding",
+   "L_uH": 332.8,
+   "I_A": 8.06,
+   "wire_m": 22.15,
+   "R_ohm": 0.668,
+   "first_gate_us": 16.53,
+   "B_uT": {
+    "head_centre": 1211.7,
+    "axis_100mm": 429.1,
+    "axis_300mm": 44.382,
+    "inside_tube": 1002.0,
+    "under_rim_100mm": 289.02
+   },
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 336,
+    "5.0 g": 429,
+    "20.0 g": 515
+   },
+   "former": {
+    "R0": 108.6,
+    "ar": 4.0,
+    "az": 4.0,
+    "z0": 8.5,
+    "P": 350
+   },
+   "P": 350,
+   "Q": 13,
+   "segments": 14788
+  },
+  {
+   "name": "Rodin RIM, poloidal-aiding",
+   "L_uH": 26.1,
+   "I_A": 28.76,
+   "wire_m": 22.15,
+   "R_ohm": 0.668,
+   "first_gate_us": 6.01,
+   "B_uT": {
+    "head_centre": 0.3,
+    "axis_100mm": 0.04,
+    "axis_300mm": 0.017,
+    "inside_tube": 37355.0,
+    "under_rim_100mm": 0.1
+   },
+   "mono_depth_mm": {
+    "0.1 g": 0,
+    "1.0 g": 0,
+    "5.0 g": 0,
+    "20.0 g": 0
+   },
+   "former": {
+    "R0": 108.6,
+    "ar": 4.0,
+    "az": 4.0,
+    "z0": 8.5,
+    "P": 350
+   },
+   "P": 350,
+   "Q": 13,
+   "segments": 14788
+  },
+  {
+   "name": "Rodin FLAT, toroidal-aiding",
+   "L_uH": 81.2,
+   "I_A": 16.31,
+   "wire_m": 13.79,
+   "R_ohm": 0.416,
+   "first_gate_us": 9.16,
+   "B_uT": {
+    "head_centre": 4747.4,
+    "axis_100mm": 539.49,
+    "axis_300mm": 41.068,
+    "inside_tube": 4013.0,
+    "under_rim_100mm": 271.02
+   },
+   "mono_depth_mm": {
+    "0.1 g": 188,
+    "1.0 g": 294,
+    "5.0 g": 370,
+    "20.0 g": 442
+   },
+   "former": {
+    "R0": 66.5,
+    "ar": 46.5,
+    "az": 4.0,
+    "z0": 8.5,
+    "P": 27
+   },
+   "P": 27,
+   "Q": 13,
+   "segments": 9185
+  },
+  {
+   "name": "Rodin FLAT, poloidal-aiding",
+   "L_uH": 11.0,
+   "I_A": 44.25,
+   "wire_m": 13.79,
+   "R_ohm": 0.416,
+   "first_gate_us": 4.62,
+   "B_uT": {
+    "head_centre": 813.1,
+    "axis_100mm": 23.64,
+    "axis_300mm": 3.139,
+    "inside_tube": 6858.0,
+    "under_rim_100mm": 25.25
+   },
+   "mono_depth_mm": {
+    "0.1 g": 0,
+    "1.0 g": 74,
+    "5.0 g": 90,
+    "20.0 g": 106
+   },
+   "former": {
+    "R0": 66.5,
+    "ar": 46.5,
+    "az": 4.0,
+    "z0": 8.5,
+    "P": 27
+   },
+   "P": 27,
+   "Q": 13,
+   "segments": 9185
+  }
+ ],
+ "focusing": [
+  {
+   "case": "no cap",
+   "image_weight": 0.0,
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   }
+  },
+  {
+   "case": "NdFeB shell (mu_r 1.05): image weight 0.024",
+   "image_weight": 0.0244,
+   "L_uH": 328.9,
+   "I_A": 8.1,
+   "mono_depth_mm": {
+    "0.1 g": 184,
+    "1.0 g": 342,
+    "5.0 g": 437,
+    "20.0 g": 524
+   }
+  },
+  {
+   "case": "ideal soft-ferrite cap (upper bound)",
+   "image_weight": 1.0,
+   "L_uH": 548.2,
+   "I_A": 6.28,
+   "mono_depth_mm": {
+    "0.1 g": 231,
+    "1.0 g": 410,
+    "5.0 g": 523,
+    "20.0 g": 629
+   }
+  }
+ ],
+ "halbach": {
+  "static_field_mT": {
+   "tube centre (coil)": 204.8381,
+   "receive boards under the coil (z 2)": 21.5914,
+   "receive boards mid-face (r 50, z 2)": 0.6543,
+   "ground 0 mm below the rim (z 0)": 7.823,
+   "50 mm below the rim": 0.4204,
+   "100 mm below the rim": 0.1513,
+   "100 mm below the centre": 0.0891
+  },
+  "sense": 1,
+  "blocks": 900,
+  "mass_g_NdFeB_7.5": 182.0,
+  "eddy_into_mono": [
+   {
+    "cube_mm": 3,
+    "blocks": 900,
+    "tau_us": 0.294,
+    "V_at_first_gate": 1.41e-17,
+    "noise_V": 4.21e-08,
+    "ratio_to_noise": 3.34e-10
+   },
+   {
+    "cube_mm": 5,
+    "blocks": 540,
+    "tau_us": 0.817,
+    "V_at_first_gate": 1.2e-05,
+    "noise_V": 4.21e-08,
+    "ratio_to_noise": 286.0
+   },
+   {
+    "cube_mm": 10,
+    "blocks": 270,
+    "tau_us": 3.267,
+    "V_at_first_gate": 3.1,
+    "noise_V": 4.21e-08,
+    "ratio_to_noise": 73700000.0
+   }
+  ],
+  "height_needed_mm": "shell top at z 8.5 + 6 + 1.5 = 16.0, above option B's display level (13.1): the head grows to about 19-20 mm"
+ },
+ "neumann_eps_mm": 0.465,
+ "seconds": 256
+}

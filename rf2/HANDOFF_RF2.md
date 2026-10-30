@@ -254,3 +254,27 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Reading:** the shape alone is neutral to -0.6 % (it lifts the copper centroid 1.1 mm away from the ground). The progressive order cuts the worst turn-to-turn voltage 18 % (insulation / rule 6 margin), but the winding is only about a quarter of the 500 pF node, so the gate moves by under 0.7 us.
 - **Ceiling:** a perfect winding (C_w = 0) gives a 14.9 us gate: 0.1 g 183 -> 189 mm, 1 g unchanged. Cutting the outside capacitance (switch Coss, leads, damping network) to 100-150 pF gives 12.9-13.6 us and 0.1 g 196-199 mm. That, not the former, is the timing lever, and it mainly sharpens small / fast targets (signature clarity), not depth on 1-20 g.
 - **Not modeled:** distributed (transmission-line) winding effects, litz strand capacitance, the real former material eps_r, proximity loss.
+
+## 20. Rodin former, Halbach shell and ferrite cap (2026-10-30; rf2/rf2_rodin.py; MODELED)
+- **Upload:** `rodin_core_HIGH.stl` was not a mesh (a 279-byte gzip of a 515-byte STL-viewer settings JSON). The former is parametric; a real export can be checked against it.
+- **Formers:** RIM torus in option B's window (major 108.6, tube 4.0) and FLAT pancake torus over the face (r 20-113, 8 mm thick; collides with the islands). Two helices of opposite hand, A shallow (tube radius x 0.875), B deep (x 0.625), 13 toroidal circuits each, 10.8 mJ, mono channel, 500 pF node (ASSUMED for all; crossovers would add C).
+- **Results (0.1 / 1 / 5 / 20 g mono depth, mm; head-centre field):**
+  - option B rim mono: 183 / 340 / 434 / 521; 1218 uT at the centre.
+  - Rodin RIM, toroidal-aiding (helices' poloidal parts cancel): 180 / 336 / 429 / 515; 1212 uT; 22.2 m of wire (+24 %). It is a 26-turn loop with extra wire.
+  - Rodin RIM, poloidal-aiding (classic closed toroid): 0 / 0 / 0 / 0; 37 mT inside the tube, 0.3 uT at the centre, 0.04 uT at 100 mm.
+  - Rodin FLAT, toroidal-aiding: 188 / 294 / 370 / 442; 4747 uT at the centre (3.9x), +22 % at 100 mm on axis, -11 % at 300 mm; L 81 uH, gate 9.2 us.
+  - Rodin FLAT, poloidal-aiding: 0 / 74 / 90 / 106.
+- **Focusing (option B coil, permeable half-space at z 13.1, image method, inductance L0 + k M):**
+  - NdFeB shell, mu_r 1.05 (k 0.024): 184 / 342 / 437 / 524 (+0.6 %).
+  - Ideal soft-ferrite cap, upper bound: 231 / 410 / 523 / 629 (+21 %); L 548 uH, 6.28 A.
+- **Halbach shell static field** (900 N42 bars 3 mm, 182 g): 205 mT at the coil, 21.6 mT on the receive boards under it, 7.8 mT at the ground surface below the rim, 0.42 mT at 50 mm, 0.15 mT at 100 mm (Earth's field is about 0.05 mT).
+- **Eddy currents in the magnets, into the mono at the 16.3 us gate:** 3 mm bars 3e-10 x noise (invisible); 5 mm bars 286 x noise; 10 mm bars 7e7 x noise (blinding).
+- **Reading:**
+  - A static magnet field cannot steer or bend the pulsed transmit field: the fields add linearly, and NdFeB is almost non-magnetic to the pulse (mu_r 1.05).
+  - What focuses the pulse downward is a high-permeability, non-conducting material above the coil (soft ferrite): up to +21 % depth as an ideal bound; the ARX hood v3 reached about half of the ideal gain.
+  - The magnets' 205 mT would saturate any ferrite placed near them, which removes that gain.
+- **Not modeled:**
+  - the Rodin crossovers' self-capacitance;
+  - finite ferrite size, ferrite loss and magnetic viscosity;
+  - ground signal induced by the static field when sweeping over magnetic soil;
+  - the fixed field's offset on the receive electronics.
