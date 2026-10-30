@@ -28,7 +28,8 @@ import rf2_coil_search as C, rf2_receiver_combo as RC, rf2_rodin as RD, rf2_tape
 mu0 = C.mu0; OUT = os.path.join(HERE, "results"); E0 = 10.8e-3; MASSES = (0.1, 1.0, 5.0, 20.0); FILL = 0.95; Z_DISP = 13.1; H_B = 15.65
 C.DEPTHS = np.array([0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.0])
 MAT = {"3C90 MnZn": dict(mu=2300, Bsat_25=0.47, Bsat_100=0.38), "4A11 NiZn": dict(mu=850, Bsat_25=0.34, Bsat_100=0.23),
-       "4C65 NiZn": dict(mu=125, Bsat_25=0.38, Bsat_100=0.34), "flex sheet (UNVERIFIED mu 150)": dict(mu=150, Bsat_25=None, Bsat_100=None),
+       "4C65 NiZn": dict(mu=125, Bsat_25=0.38, Bsat_100=0.34),
+       "Fair-Rite 77 MnZn": dict(mu=2000, Bsat_25=0.51, Bsat_100=None), "Fair-Rite 61 NiZn": dict(mu=125, Bsat_25=0.25, Bsat_100=None), "flex sheet (UNVERIFIED mu 150)": dict(mu=150, Bsat_25=None, Bsat_100=None),
        "ideal (mu 1e5)": dict(mu=1e5, Bsat_25=None, Bsat_100=None)}
 def axis(fine_lo, fine_hi, h, lo, hi, ratio=1.05):
     x = list(np.arange(fine_lo, fine_hi + h / 2, h)); d = h
@@ -36,7 +37,8 @@ def axis(fine_lo, fine_hi, h, lo, hi, ratio=1.05):
     d = h; y = [x[0]]
     while y[-1] > lo: d *= ratio; y.append(y[-1] - d)
     return np.unique(np.r_[y[1:], x])
-R = axis(0.090, 0.125, 0.2e-3, 0.0, 4.0); R = np.unique(np.r_[0.0, R[R > 1e-6]]); Z = axis(0.0, 0.026, 0.2e-3, -4.0, 4.0)
+FINE_R = [float(v) for v in os.environ.get("HOOD_FINE_R", "0.090,0.125").split(",")]          # fine-grid radial band (m); move it for larger coils
+R = axis(FINE_R[0], FINE_R[1], 0.2e-3, 0.0, 4.0); R = np.unique(np.r_[0.0, R[R > 1e-6]]); Z = axis(0.0, 0.026, 0.2e-3, -4.0, 4.0)
 NR, NZ = len(R), len(Z); dr, dz = np.diff(R), np.diff(Z); rc, zcen = (R[1:] + R[:-1]) / 2, (Z[1:] + Z[:-1]) / 2
 II, JJ = np.meshgrid(np.arange(1, NR - 1), np.arange(1, NZ - 1), indexing="ij"); IDX = -np.ones((NR, NZ), int); IDX[1:-1, 1:-1] = np.arange(II.size).reshape(II.shape)
 def solve(mu_cell, turns, I):

@@ -229,6 +229,16 @@
    "fingerprint": "ceb2f5d40fc81dae",
    "finished": "2026-10-30T07:49:45",
    "log": "state/logs/study_hood_wide.log"
+  },
+  "study:hood_size": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 145.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "296bada3d9faeae2",
+   "finished": "2026-10-30T08:10:21",
+   "log": "state/logs/study_hood_size.log"
   }
  },
  "runs": [
@@ -335,6 +345,13 @@
    "results": {
     "study:hood": "pass",
     "study:hood_wide": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:10:21",
+   "seconds": 145.5,
+   "results": {
+    "study:hood_size": "pass"
    }
   }
  ]

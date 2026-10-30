@@ -1,0 +1,432 @@
+{
+ "status": "  A. Fair-Rite 77 (MnZn, mu_i 2000, 510 mT at 5 Oe, 1 ohm m) and 61 (NiZn, mu_i 125, 250 mT at 15 Oe, 1e6 ohm m) (owner-supplied web datasheets,",
+ "materials": [
+  {
+   "case": "Fair-Rite 77 MnZn: disc r 0-114, 0.5 mm (fits option B)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 77 MnZn",
+   "L_uH": 391.6,
+   "I_A": 7.43,
+   "first_gate_us": 17.78,
+   "axis_uT_100_300": [
+    476.2,
+    45.56
+   ],
+   "B_max_ferrite_mT": 258.6,
+   "mass_g": 93.1,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 342,
+    "5.0 g": 435,
+    "20.0 g": 521
+   },
+   "head_D_mm": 233,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -0.5,
+    "1.0 g": 0.6,
+    "5.0 g": 0.2,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "case": "Fair-Rite 77 MnZn: disc r 0-114, 2.0 mm",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 77 MnZn",
+   "L_uH": 402.0,
+   "I_A": 7.33,
+   "first_gate_us": 17.98,
+   "axis_uT_100_300": [
+    483.37,
+    45.94
+   ],
+   "B_max_ferrite_mT": 57.2,
+   "mass_g": 372.4,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 343,
+    "5.0 g": 437,
+    "20.0 g": 524
+   },
+   "head_D_mm": 233,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -0.5,
+    "1.0 g": 0.9,
+    "5.0 g": 0.7,
+    "20.0 g": 0.6
+   }
+  },
+  {
+   "case": "Fair-Rite 77 MnZn: plate r 0-300, 2.0 mm (outside the head)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 77 MnZn",
+   "L_uH": 547.8,
+   "I_A": 6.28,
+   "first_gate_us": 20.66,
+   "axis_uT_100_300": [
+    609.79,
+    58.82
+   ],
+   "B_max_ferrite_mT": 99.8,
+   "mass_g": 2578.6,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 378,
+    "5.0 g": 477,
+    "20.0 g": 568
+   },
+   "head_D_mm": 600,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": 6.6,
+    "1.0 g": 11.2,
+    "5.0 g": 9.9,
+    "20.0 g": 9.0
+   }
+  },
+  {
+   "case": "Fair-Rite 61 NiZn: disc r 0-114, 0.5 mm (fits option B)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 61 NiZn",
+   "L_uH": 369.5,
+   "I_A": 7.65,
+   "first_gate_us": 17.31,
+   "axis_uT_100_300": [
+    451.46,
+    45.18
+   ],
+   "B_max_ferrite_mT": 185.2,
+   "mass_g": 93.1,
+   "mono_depth_mm": {
+    "0.1 g": 181,
+    "1.0 g": 340,
+    "5.0 g": 433,
+    "20.0 g": 520
+   },
+   "head_D_mm": 233,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -1.1,
+    "1.0 g": 0.0,
+    "5.0 g": -0.2,
+    "20.0 g": -0.2
+   }
+  },
+  {
+   "case": "Fair-Rite 61 NiZn: disc r 0-114, 2.0 mm",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 61 NiZn",
+   "L_uH": 393.6,
+   "I_A": 7.41,
+   "first_gate_us": 17.82,
+   "axis_uT_100_300": [
+    472.25,
+    45.72
+   ],
+   "B_max_ferrite_mT": 52.2,
+   "mass_g": 372.4,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 342,
+    "5.0 g": 436,
+    "20.0 g": 523
+   },
+   "head_D_mm": 233,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -0.5,
+    "1.0 g": 0.6,
+    "5.0 g": 0.5,
+    "20.0 g": 0.4
+   }
+  },
+  {
+   "case": "Fair-Rite 61 NiZn: plate r 0-300, 2.0 mm (outside the head)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 61 NiZn",
+   "L_uH": 491.0,
+   "I_A": 6.63,
+   "first_gate_us": 19.67,
+   "axis_uT_100_300": [
+    543.47,
+    52.17
+   ],
+   "B_max_ferrite_mT": 81.9,
+   "mass_g": 2578.6,
+   "mono_depth_mm": {
+    "0.1 g": 189,
+    "1.0 g": 362,
+    "5.0 g": 458,
+    "20.0 g": 546
+   },
+   "head_D_mm": 600,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": 3.3,
+    "1.0 g": 6.5,
+    "5.0 g": 5.5,
+    "20.0 g": 4.8
+   }
+  }
+ ],
+ "brim": [
+  {
+   "case": "D233 coil + 2 mm Fair-Rite 77 brim r 100-170 (head D340)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 77 MnZn",
+   "L_uH": 442.9,
+   "I_A": 6.98,
+   "first_gate_us": 18.78,
+   "axis_uT_100_300": [
+    460.57,
+    46.23
+   ],
+   "B_max_ferrite_mT": 73.0,
+   "mass_g": 541.5,
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 346,
+    "5.0 g": 440,
+    "20.0 g": 526
+   },
+   "head_D_mm": 340,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -1.6,
+    "1.0 g": 1.8,
+    "5.0 g": 1.4,
+    "20.0 g": 1.0
+   }
+  },
+  {
+   "case": "D233 coil + 2 mm Fair-Rite 77 brim r 100-230 (head D460)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 77 MnZn",
+   "L_uH": 447.9,
+   "I_A": 6.94,
+   "first_gate_us": 18.87,
+   "axis_uT_100_300": [
+    478.21,
+    49.37
+   ],
+   "B_max_ferrite_mT": 74.7,
+   "mass_g": 1229.1,
+   "mono_depth_mm": {
+    "0.1 g": 184,
+    "1.0 g": 354,
+    "5.0 g": 449,
+    "20.0 g": 536
+   },
+   "head_D_mm": 460,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": 0.5,
+    "1.0 g": 4.1,
+    "5.0 g": 3.5,
+    "20.0 g": 2.9
+   }
+  }
+ ],
+ "head_size": [
+  {
+   "case": "D233 head, rim coil r_out 113.4 mm, 26 turns",
+   "head_D_mm": 233,
+   "turns": 26,
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "first_gate_us": 16.33,
+   "wire_m": 17.91,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "depth_vs_optionB_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "case": "D260 head, rim coil r_out 126.9 mm, 24 turns",
+   "head_D_mm": 260,
+   "turns": 24,
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "first_gate_us": 16.32,
+   "wire_m": 18.53,
+   "mono_depth_mm": {
+    "0.1 g": 188,
+    "1.0 g": 355,
+    "5.0 g": 454,
+    "20.0 g": 547
+   },
+   "depth_vs_optionB_pct": {
+    "0.1 g": 2.7,
+    "1.0 g": 4.4,
+    "5.0 g": 4.6,
+    "20.0 g": 5.0
+   }
+  },
+  {
+   "case": "D290 head, rim coil r_out 141.9 mm, 22 turns",
+   "head_D_mm": 290,
+   "turns": 22,
+   "L_uH": 318.6,
+   "I_A": 8.23,
+   "first_gate_us": 16.21,
+   "wire_m": 19.1,
+   "mono_depth_mm": {
+    "0.1 g": 193,
+    "1.0 g": 370,
+    "5.0 g": 475,
+    "20.0 g": 573
+   },
+   "depth_vs_optionB_pct": {
+    "0.1 g": 5.5,
+    "1.0 g": 8.8,
+    "5.0 g": 9.4,
+    "20.0 g": 10.0
+   }
+  },
+  {
+   "case": "D340 head, rim coil r_out 166.9 mm, 20 turns",
+   "head_D_mm": 340,
+   "turns": 20,
+   "L_uH": 325.8,
+   "I_A": 8.14,
+   "first_gate_us": 16.37,
+   "wire_m": 20.51,
+   "mono_depth_mm": {
+    "0.1 g": 198,
+    "1.0 g": 393,
+    "5.0 g": 509,
+    "20.0 g": 616
+   },
+   "depth_vs_optionB_pct": {
+    "0.1 g": 8.2,
+    "1.0 g": 15.6,
+    "5.0 g": 17.3,
+    "20.0 g": 18.2
+   }
+  },
+  {
+   "case": "D400 head, rim coil r_out 196.9 mm, 18 turns",
+   "head_D_mm": 400,
+   "turns": 18,
+   "L_uH": 329.6,
+   "I_A": 8.09,
+   "first_gate_us": 16.46,
+   "wire_m": 21.82,
+   "mono_depth_mm": {
+    "0.1 g": 199,
+    "1.0 g": 418,
+    "5.0 g": 545,
+    "20.0 g": 660
+   },
+   "depth_vs_optionB_pct": {
+    "0.1 g": 8.7,
+    "1.0 g": 22.9,
+    "5.0 g": 25.6,
+    "20.0 g": 26.7
+   }
+  }
+ ],
+ "combined": [
+  {
+   "case": "D340 head, rim coil 20 turns, no ferrite (fine grid at the coil)",
+   "former": "D340",
+   "hood": "none",
+   "t_mm": 0,
+   "walls": null,
+   "material": null,
+   "L_uH": 325.8,
+   "I_A": 8.14,
+   "first_gate_us": 16.37,
+   "axis_uT_100_300": [
+    366.27,
+    64.79
+   ],
+   "B_max_ferrite_mT": 0.0,
+   "mass_g": 0.0,
+   "mono_depth_mm": {
+    "0.1 g": 198,
+    "1.0 g": 393,
+    "5.0 g": 509,
+    "20.0 g": 616
+   },
+   "head_mm": 15.65,
+   "fits_option_B": true,
+   "head_D_mm": 340,
+   "turns": 20,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": 8.2,
+    "1.0 g": 15.6,
+    "5.0 g": 17.3,
+    "20.0 g": 18.2
+   }
+  },
+  {
+   "case": "D340 head, rim coil 20 turns + 2 mm Fair-Rite 77 disc r 0-170",
+   "former": "D340",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "Fair-Rite 77 MnZn",
+   "L_uH": 409.0,
+   "I_A": 7.27,
+   "first_gate_us": 18.11,
+   "axis_uT_100_300": [
+    415.19,
+    66.67
+   ],
+   "B_max_ferrite_mT": 48.7,
+   "mass_g": 828.0,
+   "mono_depth_mm": {
+    "0.1 g": 199,
+    "1.0 g": 399,
+    "5.0 g": 515,
+    "20.0 g": 621
+   },
+   "head_D_mm": 340,
+   "turns": 20,
+   "head_mm": 17.15,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": 8.7,
+    "1.0 g": 17.4,
+    "5.0 g": 18.7,
+    "20.0 g": 19.2
+   }
+  }
+ ],
+ "seconds": 145
+}

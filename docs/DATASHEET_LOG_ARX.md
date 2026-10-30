@@ -255,3 +255,15 @@ These rows serve the RF2 side experiment (experiments/RF2_cleansheet/PARTS_RF2.m
 Not on any of these sheets, and needed before a hood is built:
 - **Magnetic viscosity / after-effect** (the slow decay a PI receiver sees from ferrite after the pulse): bench measurement.
 - **Flexible sintered ferrite sheets:** permeability, thickness and saturation. The Wuerth WE-FSFS and TDK IFL downloads were refused by the vendor sites.
+
+## RF2-DS-FERRITE-FR: VERIFIED material values (owner-supplied printouts of the Fair-Rite material web pages, read 2026-10-30)
+
+| Material | Source | Numbers used | Design effect |
+|---|---|---|---|
+| Fair-Rite 77 MnZn ("frequencies up to 100 kHz") | fair-rite.com 77 Material Data Sheet page, data/datasheets/FairRite_77_material_webpage.pdf (sha256 f6c7fd5c6ef344e2) | mu_i 2000 (B < 10 G); B 5100 G (510 mT) at H 5 Oe; Br 1800 G; Hc 0.25 Oe; tan d / mu_i 15e-6 at 0.1 MHz; temperature coefficient of mu_i 1.2 %/C (20-70 C); Tc > 200 C; resistivity 100 ohm cm (1 ohm m); toroid 18/10/6 mm, 25 C, 10 kHz | rf2_hood_size.py material "Fair-Rite 77 MnZn" (mu 2000, 510 mT) |
+| Fair-Rite 61 NiZn ("up to 25 MHz") | fair-rite.com 61 Material Data Sheet page, data/datasheets/FairRite_61_material_webpage.pdf (sha256 68fbfdbbe09363e1) | mu_i 125; B 2500 G (250 mT) at H 15 Oe; Br 1000 G; Hc 1.2 Oe; tan d / mu_i 90e-6 at 10 MHz; temperature coefficient 0.10 %/C; Tc > 300 C; resistivity 1e8 ohm cm (1e6 ohm m); "strong magnetic fields or excessive mechanical stresses may result in irreversible changes in permeability" | rf2_hood_size.py material "Fair-Rite 61 NiZn" (mu 125, 250 mT) |
+
+Caveats:
+- The 510 / 250 mT values are B at a stated H, not saturation at 100 C.
+- The 77 sheet gives no 100 C value.
+- The complex-permeability and power-loss curves are linked CSVs that are not in the printouts.

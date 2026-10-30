@@ -333,3 +333,25 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - ferrite loss and magnetic viscosity;
   - non-linear B-H (the saturating cases are optimistic);
   - the quadrupole boards under a ferrite layer.
+
+## 23. Fair-Rite 77 / 61, and what beats the option-B rim coil if the footprint grows (2026-10-30; rf2/rf2_hood_size.py; MODELED)
+- **Fair-Rite materials (owner datasheets):** 77 (MnZn, mu 2000) behaves like 3C90 and 61 (NiZn, mu 125) like 4C65. Same conclusions as section 22:
+  - disc r 0-114: 77 gives 342-343 mm (1 g), 61 gives 340-342 mm;
+  - plate to r 300 (outside the head): 77 378 mm, 61 362 mm.
+- **Ferrite brim beyond a D233 coil** (2 mm 77, r 100-170 = D340 head, 0.54 kg): 180 / 346 / 440 / 526 (+1.8 % at 1 g). To D460 (1.23 kg): +4.1 %.
+- **Larger head, same rim coil moved out, turns cut to hold L at about 323 uH (same driver and gate), no ferrite (0.1 / 1 / 5 / 20 g):**
+  - D233 (option B, 26 turns): 183 / 340 / 434 / 521.
+  - D260 (24 turns): 188 / 355 / 454 / 547 (+4 to +5 %).
+  - D290 (22 turns): 193 / 370 / 475 / 573 (+9 to +10 %).
+  - D340 (20 turns): 198 / 393 / 509 / 616 (+16 to +18 %).
+  - D400 (18 turns): 199 / 418 / 545 / 660 (+23 to +27 %).
+- **D340 coil + 2 mm 77 disc over its face (0.83 kg):** 199 / 399 / 515 / 621 (+1.5 % over the bare D340). The solver run of the bare D340 reproduces the direct calculation exactly (393 / 509 / 616).
+- **Reading:**
+  - Per millimetre of growth, the coil diameter is the dominant depth lever, worth about 10x a ferrite brim of the same size.
+  - Inside any head the ferrite adds 0-2 %.
+  - Signature clarity: the gate stays at 16.2-16.5 us in the size sweep (L held), so small-target timing is unchanged; 0.1 g gains +3 to +9 %.
+- **Not modeled (these cut the larger head's advantage in the field):**
+  - ground and EMI pick-up grow with the loop area;
+  - the heavier, wider head's swing and coverage of small targets in trash;
+  - pinpoint precision (wider coil, wider response);
+  - the mechanical and display changes.
