@@ -79,13 +79,13 @@ def main():
     shp = os.path.join(OUT, "SH1", "sh1_check.json"); SH1_CU = json.load(open(shp))["topology"]["copper_area_cm2"] if os.path.exists(shp) else 230.0
     PETG, FR4 = 1.27, 1.85; dens = dict(analog=0.98, hv=1.15, digital=0.65)        # gel / epoxy / syntactic: ASSUMED densities
     vol = lambda k: P[k].volume() / 1000
-    printed = ["SHELL_LOWER", "LID", "COIL_CHANNEL", "BAY_WALLS", "CB1D_TOWER"] + [k for k in P if k.startswith(("CRADLE_", "TRAY_"))]
+    printed = ["SHELL_LOWER", "LID", "COIL_CHANNEL", "BAY_WALLS", "CB1D_TOWER"] + [k for k in ("COIL_COMBS",) if k in P] + [k for k in P if k.startswith(("CRADLE_", "TRAY_"))]
     m = {"printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": sum(vol(k) for k in printed) * PETG,
          "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": (vol("BOARD_QA") + vol("BOARD_QB")) * FR4 + 2 * 16.9e3 * 0.8 * 0.035 / 1000 * 8.96,
          "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": vol("BOARD_SH1") * FR4 + SH1_CU * 0.0035 * 8.96,
          "transmit litz (26 turns, 6 g/m)": 26 * 2 * math.pi * np.mean(S["coil"]["columns_r"]) / 1000 * 6.0,
          "electronics islands (ASSUMED: AB1A/B 10 g each, CB1D 40 g, MP1 8 g, TXJ 10 g; LED display flex 40 g ASSUMED: 0.4 mm flex+stiffener D226 about 30 g + 522 LEDs / caps)": 10 + 10 + 40 + 8 + 10 + 40,
-         "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": max(0.0, (H.ring(S["channel"]["inner_wall_r"][1], S["shell"]["wall_r"][0], S["coil"]["floor_z"][1], S["coil"]["row0_z"] + 9 * S["coil"]["pitch"]).volume() - vol("LITZ") * 1000) / 1000 * 1.15),
+         "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": max(0.0, (H.ring(S["channel"]["inner_wall_r"][1], S["shell"]["wall_r"][0], S["coil"]["floor_z"][1], S["coil"]["row0_z"] + S["coil"]["rows"] * S["coil"]["pitch"]).volume() - vol("LITZ") * 1000) / 1000 * 1.15),
          "hardware, cable gland, yoke lug (ASSUMED)": 40.0}
     base = sum(m.values()); pot_full = sum(pv[k] * dens[k] for k in pv); pot_isl = 0.5 * sum(vol(k) for k in isl) * 0.9
     lp = os.path.join(OUT, "rf2_ledger.json")

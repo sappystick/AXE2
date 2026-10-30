@@ -10,10 +10,11 @@ slot facing the centre); a CB1D tower (ledge, wall, snap lip, hinge slots); MP1 
 LED display flex hangs on 6 lid bosses at r 110.8 (pins Ø1.8 through Ø2.0 board holes); clear PETG lid over the display (no windows); a cable gland boss in the lid at the heel.
 Envelopes are board + parts-below + parts-above with edge keep-outs where ledges and lips grip (1.2 mm below, 0.4 mm above; component rule for layout).
 Outputs (out/): RF2_<PART>.stl, rf2_head_spec.json.  usage: python3 rf2/head/rf2_head.py"""
-import os, json, math, struct
+import os, sys, json, math, struct
 import numpy as np
 import manifold3d as m3
-HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "out"); os.makedirs(OUT, exist_ok=True)
+VARIANT = os.environ.get("RF2_VARIANT") or ("B" if "--variant=B" in sys.argv else "A")          # A = the 25.4 mm SPEC; B = the 15.65 mm single-tier head
+HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "out" if VARIANT == "A" else "out_" + VARIANT); os.makedirs(OUT, exist_ok=True)
 SEG = 256; HEEL = 178.0
 def pol(r, deg): return (r * math.cos(math.radians(deg)), r * math.sin(math.radians(deg)))
 SPEC = dict(
@@ -52,6 +53,34 @@ SPEC = dict(
 import rf2_netlist as _NL
 for _k in ("MP1", "TXJ"):
     _b = _NL.BOARDS[_k]; SPEC["boards_inner"][_k]["c"] = tuple(_b["head"]["c"]); SPEC["boards_inner"][_k]["size"] = (_b["w"], _b["h"])
+def apply_option_b(S):
+    """option B (owner 2026-10-30; rf2_thin, rf2_zones, HANDOFF sections 17-24): CB1D lowered to the AB1 / MP1 / TXJ tier, the coil re-shaped to 5 rows
+    x 6 columns under the display, head 15.65 mm. Materials chosen by the zone and potting studies."""
+    zd = 13.1; lid0 = round(zd + 0.4 + 0.65, 2)                                          # display flex 13.1-13.5, LEDs 0.65, lid 1.5
+    S["envelope"].update(H=round(lid0 + 1.5, 2), note="option B: single board tier, 15.65 mm")
+    S["shell"].update(wall_z=(0.0, lid0), lid_z=(lid0, round(lid0 + 1.5, 2)))
+    S["coil"].update(columns_r=tuple(round(113.4 - 1.6 * k, 1) for k in range(6)), rows=5, row0_z=4.4,
+                     what="rim mono, 5 rows x 6 columns (option B), wound column by column down-and-up (owner's progressive order: 166 V max between neighbours)")
+    S["channel"].update(inner_wall_r=(103.8, 104.6), z=(3.2, 12.6))
+    S["bay"].update(r_max=103.6, z=(3.8, zd))
+    S["walls"].update(z=(3.8, 12.6), r=(42.0, 103.6))
+    S["boards_inner"]["CB1D"].update(z=(6.6, 8.2), what=S["boards_inner"]["CB1D"]["what"] + "; option B: on the AB1 tier, parts below 2.0 / above 4.4")
+    S["boards_inner"]["LED"].update(z=(zd, zd + 0.4))
+    S["boards_inner"]["MP1"].update(c=(-72.0, 3.0), what=S["boards_inner"]["MP1"]["what"] + "; option B: 3 mm inward (the 6-column channel wall is at r 103.8)")
+    S["boards_inner"]["TXJ"].update(c=(-94.5, 0.0), what=S["boards_inner"]["TXJ"]["what"] + "; option B: at (-94.5, 0), between MP1 and the channel wall (r 103.8)")
+    S["netlist_variant_note"] = "rf2_netlist.BOARDS MP1 / TXJ 'head' positions are option A's; the option-B board builds take MP1 (-72, 3) and TXJ (-94.5, 0) (stage 4)"
+    S["gland"].update(boss_z=(12.6, lid0))
+    S["coil_combs"] = dict(n=12, deg0=15.0, t=0.8, slot=1.3, what="printed winding combs (resin print): radial plates with one slot per groove column (1.3 mm slots for the 1.2 mm litz, 0.3 mm teeth), the turns laid from the top, column by column")
+    S["shield_coat"] = dict(r=(114.45, 114.5), z=(1.2, lid0), slit_deg=HEEL + 6.0, slit_w=2.0, material="MG 841AR nickel coating, 25 um (1.6 ohm/sq): echo tau 1 ns (rf2_zones)",
+                            what="electrostatic screen on the shell's inner face, joined to SH1 at the stack-pin ground; one 2 mm slit")
+    S["potting"] = dict(coil="syntactic foam (resin + glass bubbles, eps about 1.8 UNVERIFIED): lowest winding capacitance (rf2_zones: gate 15.96 us)",
+                        analog="low-permittivity silicone gel (stress-free, reworkable)", hv="MG 832TC epoxy (48 kV breakdown at 3.2 mm; kept >= 3 mm from the winding: eps 3.7, DF 0.1)",
+                        digital="syntactic silicone", display="conformal coat only")
+    S["zone_rules"] = ["no solid copper planes; hatched 1.0 / 0.25 mm with every border slit (rf2_zones: closed border up to 3300 x noise)",
+                       "no aluminium electrolytic or other metal-can parts in the head: MLCC only (can echo 2e4-7.5e4 x noise)",
+                       "nothing switches in the receive window; analog / TXJ loops < 0.1 cm2, edge-on where the field is vertical",
+                       "IXTY08N100D2 tab edge-on to the field or a tab-less package (tab echo 2700 x noise, tau 19.8 us)"]
+if VARIANT == "B": apply_option_b(SPEC)
 # ------------------------------------------------------------------------------------------------ primitives
 def cyl(r, z0, z1, seg=SEG): return m3.Manifold.cylinder(z1 - z0, r, r, seg).translate([0, 0, z0])
 def ring(r0, r1, z0, z1): return cyl(r1, z0, z1) - cyl(r0, z0 - 0.1, z1 + 0.1)
@@ -136,11 +165,23 @@ def parts():
         P["BOARD_" + k] = s
     for k in bi: P["ENV_" + k] = envelope(k)
     # litz (26 turns) for fit and mass
-    litz = None
+    litz = None; nc = len(co["columns_r"])
     for j in range(co["turns"]):
-        t = m3.CrossSection.circle(co["litz_od"] / 2, 24).translate([co["columns_r"][j % 3], co["row0_z"] + (j // 3) * co["pitch"]]).revolve(SEG)
+        t = m3.CrossSection.circle(co["litz_od"] / 2, 24).translate([co["columns_r"][j % nc], co["row0_z"] + (j // nc) * co["pitch"]]).revolve(SEG)
         litz = t if litz is None else litz + t
     P["LITZ"] = litz
+    if "coil_combs" in S:                                                                   # option B: winding combs in the channel (open-topped slots)
+        cb = S["coil_combs"]; r0, r1 = S["channel"]["inner_wall_r"][1], S["shell"]["wall_r"][0] - 0.2; z0, z1 = co["floor_z"][1], S["channel"]["z"][1]
+        plate = m3.Manifold.cube([r1 - r0, cb["t"], z1 - z0], True).translate([(r0 + r1) / 2, 0, (z0 + z1) / 2])
+        for rc in co["columns_r"]: plate = plate - m3.Manifold.cube([cb["slot"], cb["t"] + 1, z1 - z0 + 1], True).translate([rc, 0, (z0 + z1) / 2])
+        combs = None
+        for k in range(cb["n"]):
+            d = cb["deg0"] + 360.0 * k / cb["n"]
+            if abs(((d - S["channel"]["lead_exit_deg"]) + 180) % 360 - 180) < 8: continue          # keep the lead slot free
+            x = plate.rotate([0, 0, d]); combs = x if combs is None else combs + x
+        P["COIL_COMBS"] = combs
+    if "shield_coat" in S:
+        sc = S["shield_coat"]; P["SHIELD_COAT"] = ring(sc["r"][0], sc["r"][1], *sc["z"]) - m3.Manifold.cube([6, sc["slit_w"], 40], True).translate([115.0, 0, 10]).rotate([0, 0, sc["slit_deg"]])
     f = None
     for rot in ([0, 0, 0], [90, 0, 0], [0, 90, 0]):
         x = ring(46, 50, -4, 4).rotate(rot); f = x if f is None else f + x          # 100 mm windings (rf2_ref3.py)

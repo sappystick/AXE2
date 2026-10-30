@@ -1,0 +1,130 @@
+{
+ "status": "pulse, and at what cost? MODELED; ASSUMED values are marked. Field and coil as rf2_zones (5 x 6 rim coil, 8.17 A, dI/dt 460 V / L).",
+ "coatings": [
+  {
+   "coating": "ferrite-loaded paint mu' 10, 0.1 mm (UNVERIFIED)",
+   "shielding_factor_100kHz": 1.3333,
+   "field_reduction_pct": 25.0,
+   "echo": null
+  },
+  {
+   "coating": "MG 841AR nickel paint, 25 um (1.6 ohm/sq)",
+   "shielding_factor_100kHz": 1.0,
+   "field_reduction_pct": 0.0,
+   "echo": {
+    "tau_us": 0.0003,
+    "x_gate_noise": 0.0,
+    "drift_x_noise_per_K": 0.0
+   }
+  },
+  {
+   "coating": "copper can 35 um, 4 x 4 x 1 mm",
+   "shielding_factor_100kHz": 1.4635,
+   "field_reduction_pct": 31.67,
+   "echo": {
+    "tau_us": 0.908,
+    "x_gate_noise": 0.43,
+    "drift_x_noise_per_K": 0.0285
+   }
+  },
+  {
+   "coating": "mu-metal foil 0.1 mm (mu_r 2e4, UNVERIFIED)",
+   "shielding_factor_100kHz": 667.6667,
+   "field_reduction_pct": 99.85,
+   "echo": {
+    "tau_us": 43.3,
+    "note": "permeable AND conductive: diffusion time through the foil about 43 us (longer than the 16.3 us gate): a slow, strong target"
+   }
+  }
+ ],
+ "sacrificial_loop": [
+  {
+   "loop": "copper loop, shorted",
+   "tau_us": 0.915,
+   "field_reduction_at_centre_pct_100kHz": 17.4,
+   "echo_x_gate_noise": 29.4,
+   "drift_x_noise_per_K": 1.93
+  },
+  {
+   "loop": "same loop + series resistor (tau 0.1 us)",
+   "tau_us": 0.1,
+   "field_reduction_at_centre_pct_100kHz": 2.2,
+   "echo_x_gate_noise": 2.12e-46,
+   "drift_x_noise_per_K": 1.34e-46
+  }
+ ],
+ "bucking": [
+  {
+   "bucking_turns_per_board": 0,
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "first_gate_us": 16.33,
+   "B_mT_AB1A_centre": 2.326,
+   "Bz_mT_AB1A_centre": 2.324,
+   "B_mT_AB1A_edge_nearest_coil": 5.451,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "20.0 g": 521
+   }
+  },
+  {
+   "bucking_turns_per_board": 3,
+   "L_uH": 321.9,
+   "I_A": 8.19,
+   "first_gate_us": 16.29,
+   "B_mT_AB1A_centre": 1.426,
+   "Bz_mT_AB1A_centre": 1.423,
+   "B_mT_AB1A_edge_nearest_coil": 6.258,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 339,
+    "20.0 g": 520
+   }
+  },
+  {
+   "bucking_turns_per_board": 7,
+   "L_uH": 323.8,
+   "I_A": 8.17,
+   "first_gate_us": 16.33,
+   "B_mT_AB1A_centre": 0.231,
+   "Bz_mT_AB1A_centre": 0.213,
+   "B_mT_AB1A_edge_nearest_coil": 7.482,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 338,
+    "20.0 g": 518
+   }
+  }
+ ],
+ "receive_copper": [
+  {
+   "copper_um": 18,
+   "R_ohm": 20.29,
+   "thermal_nV": 0.58,
+   "channel_total_nV": 1.796,
+   "depth_change_pct_vs_35um": -0.43
+  },
+  {
+   "copper_um": 35,
+   "R_ohm": 10.44,
+   "thermal_nV": 0.416,
+   "channel_total_nV": 1.75,
+   "depth_change_pct_vs_35um": 0.0
+  },
+  {
+   "copper_um": 70,
+   "R_ohm": 5.22,
+   "thermal_nV": 0.294,
+   "channel_total_nV": 1.725,
+   "depth_change_pct_vs_35um": 0.24
+  },
+  {
+   "copper_um": 105,
+   "R_ohm": 3.48,
+   "thermal_nV": 0.24,
+   "channel_total_nV": 1.717,
+   "depth_change_pct_vs_35um": 0.32
+  }
+ ]
+}

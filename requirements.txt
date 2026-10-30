@@ -11,6 +11,7 @@ kiutils==1.4.8          # read / write KiCad schematics, boards, footprints
 cadquery==2.8.0         # B-rep CAD (OpenCascade): STEP export of the housing for real CAD / machining
 pyvista==0.49.2         # VTK rendering (cut-aways, exploded views) off-screen
 trimesh==5.2.0          # mesh tools (loading KiCad STEP/VRML-converted parts, checks)
+networkx==3.7             # trimesh sections (rf2_head_section.py)
 magpylib==6.0.1         # analytic magnetic fields of coils / magnets (independent cross-check of the Biot-Savart code)
 spicelib==1.6.4         # drive ngspice from Python (front-end and driver simulation)
 meshio==5.3.5           # mesh format conversion (gmsh <-> STL / VTK)

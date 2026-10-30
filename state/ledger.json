@@ -13,11 +13,11 @@
   "head": {
    "status": "pass",
    "rc": 0,
-   "seconds": 16.3,
+   "seconds": 17.7,
    "why": "",
    "tail": "",
-   "fingerprint": "ff70dc6661c0a203",
-   "finished": "2026-10-30T05:19:43",
+   "fingerprint": "5ee68eec00201327",
+   "finished": "2026-10-30T08:45:29",
    "log": "state/logs/head.log"
   },
   "shield:SH1": {
@@ -73,11 +73,11 @@
   "field-xcheck": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.8,
+   "seconds": 1.0,
    "why": "",
    "tail": "",
-   "fingerprint": "2784211aa8af9772",
-   "finished": "2026-10-30T04:39:58",
+   "fingerprint": "e88f27294bbce464",
+   "finished": "2026-10-30T08:45:30",
    "log": "state/logs/field-xcheck.log"
   },
   "mp1-spice": {
@@ -103,31 +103,31 @@
   "ledger": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.7,
+   "seconds": 4.7,
    "why": "",
    "tail": "",
    "fingerprint": "168cbb0c7a320c6e",
-   "finished": "2026-10-30T05:24:43",
+   "finished": "2026-10-30T08:45:35",
    "log": "state/logs/ledger.log"
   },
   "head-check": {
    "status": "pass",
    "rc": 0,
-   "seconds": 13.7,
+   "seconds": 15.0,
    "why": "",
    "tail": "",
-   "fingerprint": "cce0e540f8404b70",
-   "finished": "2026-10-30T05:24:57",
+   "fingerprint": "9c59e132e33ba57a",
+   "finished": "2026-10-30T08:45:50",
    "log": "state/logs/head-check.log"
   },
   "wiring": {
    "status": "pass",
    "rc": 0,
-   "seconds": 1.4,
+   "seconds": 1.5,
    "why": "",
    "tail": "",
    "fingerprint": "50118bd180229be5",
-   "finished": "2026-10-30T05:24:58",
+   "finished": "2026-10-30T08:45:51",
    "log": "state/logs/wiring.log"
   },
   "router-selftest": {
@@ -249,6 +249,46 @@
    "fingerprint": "3374c9045c040b5f",
    "finished": "2026-10-30T08:25:30",
    "log": "state/logs/study_zones.log"
+  },
+  "head:B": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 18.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "2042b6f787e0e661",
+   "finished": "2026-10-30T08:42:11",
+   "log": "state/logs/head_B.log"
+  },
+  "head-check:B": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 19.8,
+   "why": "",
+   "tail": "",
+   "fingerprint": "d80c488f68eee0bd",
+   "finished": "2026-10-30T08:42:31",
+   "log": "state/logs/head-check_B.log"
+  },
+  "study:mitigation": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 50.6,
+   "why": "",
+   "tail": "",
+   "fingerprint": "cbab2b535a4cc60b",
+   "finished": "2026-10-30T08:43:22",
+   "log": "state/logs/study_mitigation.log"
+  },
+  "head-section:B": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 5.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "1c4eefab5df34b9e",
+   "finished": "2026-10-30T08:44:23",
+   "log": "state/logs/head-section_B.log"
   }
  },
  "runs": [
@@ -369,6 +409,39 @@
    "seconds": 39.1,
    "results": {
     "study:zones": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:42:31",
+   "seconds": 37.9,
+   "results": {
+    "head:B": "pass",
+    "head-check:B": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:43:22",
+   "seconds": 50.6,
+   "results": {
+    "study:mitigation": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:44:23",
+   "seconds": 5.2,
+   "results": {
+    "head-section:B": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:45:51",
+   "seconds": 39.8,
+   "results": {
+    "head": "pass",
+    "field-xcheck": "pass",
+    "ledger": "pass",
+    "head-check": "pass",
+    "wiring": "pass"
    }
   }
  ]

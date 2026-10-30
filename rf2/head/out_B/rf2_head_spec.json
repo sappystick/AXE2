@@ -1,0 +1,300 @@
+{
+ "envelope": {
+  "R": 116.5,
+  "H": 15.65,
+  "note": "option B: single board tier, 15.65 mm"
+ },
+ "shell": {
+  "skid_t": 1.2,
+  "wall_r": [
+   114.5,
+   116.5
+  ],
+  "wall_z": [
+   0.0,
+   14.15
+  ],
+  "lid_z": [
+   14.15,
+   15.65
+  ],
+  "material": "PETG (printed), no metal (rule 5)"
+ },
+ "boards": {
+  "SH1": {
+   "z": [
+    1.2,
+    1.6
+   ],
+   "r": 114.0,
+   "what": "split-ring electrostatic shield (rf2_shield_pcb.py): open rings + one radial spine, single-point ground"
+  },
+  "QA": {
+   "z": [
+    1.6,
+    2.4
+   ],
+   "r": 114.0,
+   "what": "SB1R-QA quadrupole receive board, copper unchanged; outline variant without the r 116 tab (does not fit a 2 mm wall)"
+  },
+  "QB": {
+   "z": [
+    2.4,
+    3.2
+   ],
+   "r": 114.0,
+   "what": "SB1R-QB (QA turned 45 deg), copper unchanged; same outline variant"
+  }
+ },
+ "stack_pins": {
+  "r": 28.0,
+  "deg": [
+   157.5,
+   247.5
+  ],
+  "holes_deg": [
+   22.5,
+   157.5,
+   247.5
+  ],
+  "d": 3.2,
+  "hole_d": 3.4,
+  "z": [
+   1.2,
+   3.8
+  ],
+  "what": "2 PETG pins from the skid through SH1 / QA / QB (the SB1R NPTH holes); the 22.5 deg hole carries the shield's ground wire up (SH1 plated pad there)"
+ },
+ "coil": {
+  "turns": 26,
+  "columns_r": [
+   113.4,
+   111.8,
+   110.2,
+   108.6,
+   107.0,
+   105.4
+  ],
+  "litz_od": 1.2,
+  "pitch": 1.6,
+  "floor_z": [
+   3.2,
+   3.8
+  ],
+  "row0_z": 4.4,
+  "rows": 5,
+  "L_uH": 333,
+  "I_A": 8.06,
+  "energy_mJ": 10.8,
+  "what": "rim mono, 5 rows x 6 columns (option B), wound column by column down-and-up (owner's progressive order: 166 V max between neighbours)"
+ },
+ "channel": {
+  "inner_wall_r": [
+   103.8,
+   104.6
+  ],
+  "z": [
+   3.2,
+   12.6
+  ],
+  "lead_exit_deg": 178.0,
+  "lead_slot_w": 6.0
+ },
+ "bay": {
+  "r_max": 103.6,
+  "z": [
+   3.8,
+   13.1
+  ]
+ },
+ "walls": {
+  "t": 1.2,
+  "z": [
+   3.8,
+   12.6
+  ],
+  "r": [
+   42.0,
+   103.6
+  ],
+  "deg": [
+   89.0,
+   156.0,
+   198.0
+  ],
+  "note": "89: analog | digital, PETG loaded with carbonyl iron; 156: analog | HV; 198: HV | digital; 156 has an LV slot for MP1's output flex"
+ },
+ "sectors": {
+  "hv": [
+   156.0,
+   198.0
+  ],
+  "analog": [
+   89.0,
+   156.0
+  ]
+ },
+ "boards_inner": {
+  "AB1A": {
+   "kind": "disc",
+   "c": [
+    -22.602263176993922,
+    78.82345906694215
+   ],
+   "r": 20.0,
+   "z": [
+    5.6,
+    7.2
+   ],
+   "below": 1.0,
+   "above": 3.0,
+   "hinge_deg": 286.0,
+   "what": "RF1 AB1A analog section (D40, 6-layer rigid with the 2-layer flex core), routed in RF1: 0 open, KiCad DRC clean; mounted COMPONENT SIDE UP (its parts are on one side, 2.15 mm tall, measured on the RF1 mesh: they would hit the bay floor facing down)"
+  },
+  "AB1B": {
+   "kind": "disc",
+   "c": [
+    -59.97100353277198,
+    55.92386552512488
+   ],
+   "r": 20.0,
+   "z": [
+    5.6,
+    7.2
+   ],
+   "below": 1.0,
+   "above": 3.0,
+   "hinge_deg": 317.0,
+   "what": "RF1 AB1B analog section, routed in RF1"
+  },
+  "CB1D": {
+   "kind": "disc",
+   "c": [
+    0.0,
+    0.0
+   ],
+   "r": 39.0,
+   "z": [
+    6.6,
+    8.2
+   ],
+   "below": 2.0,
+   "above": 4.4,
+   "what": "RF1 CB1D section: RP2354A, LMR36015 buck, TLV755P (placed in RF1; route next); option B: on the AB1 tier, parts below 2.0 / above 4.4"
+  },
+  "MP1": {
+   "kind": "box",
+   "c": [
+    -72.0,
+    3.0
+   ],
+   "size": [
+    26.0,
+    36.0
+   ],
+   "z": [
+    5.6,
+    7.2
+   ],
+   "below": 1.0,
+   "above": 3.4,
+   "what": "NEW mono preamp: HV-tolerant input (630 V parts, >= 1.0 mm), output to AB1A; option B: 3 mm inward (the 6-column channel wall is at r 103.8)"
+  },
+  "TXJ": {
+   "kind": "box",
+   "c": [
+    -94.5,
+    0.0
+   ],
+   "size": [
+    12.0,
+    16.0
+   ],
+   "z": [
+    5.6,
+    7.2
+   ],
+   "below": 1.0,
+   "above": 4.8,
+   "what": "NEW coil-lead terminal board: wire-hole pads (Wire_pads) for the coil leads and the shaft TX pair; option B: at (-94.5, 0), between MP1 and the channel wall (r 103.8)"
+  },
+  "LED": {
+   "kind": "flex",
+   "z": [
+    13.1,
+    13.5
+   ],
+   "below": 0.0,
+   "above": 0.65,
+   "what": "LED display: FLEX section of the rigid-flex panel (0.2 mm polyimide on a 0.2 mm FR4 stiffener), 522 SK9822-EC20 in 13 rings from r 104 to the centre (rf2_ledgrid.py), clocked, dark during receive windows and power-gated when silent"
+  }
+ },
+ "led_bosses": {
+  "n": 6,
+  "r": 110.8,
+  "deg0": 30.0,
+  "boss_d": 4.0,
+  "pin_d": 1.8,
+  "hole_d": 2.0
+ },
+ "lid_light": {
+  "material": "clear / natural PETG, printed solid (diffuser; transmission ASSUMED)",
+  "note": "no holes over the LEDs: 522 windows would weaken the lid and the seal"
+ },
+ "gland": {
+  "c": [
+   -91.94395608575681,
+   3.210753696630105
+  ],
+  "d": 8.0,
+  "boss_d": 12.0,
+  "boss_z": [
+   12.6,
+   14.15
+  ],
+  "what": "shaft cable enters DOWN through the lid at the heel into the HV sector"
+ },
+ "potting": {
+  "coil": "syntactic foam (resin + glass bubbles, eps about 1.8 UNVERIFIED): lowest winding capacitance (rf2_zones: gate 15.96 us)",
+  "analog": "low-permittivity silicone gel (stress-free, reworkable)",
+  "hv": "MG 832TC epoxy (48 kV breakdown at 3.2 mm; kept >= 3 mm from the winding: eps 3.7, DF 0.1)",
+  "digital": "syntactic silicone",
+  "display": "conformal coat only"
+ },
+ "ref_coil": {
+  "place": "on the shaft, 0.6 m from the head",
+  "former": "3 orthogonal windings, 100 mm, on a PETG frame",
+  "turns_per_axis": 390,
+  "wire": "0.20 mm enamelled copper",
+  "requirement": "area-turns = 3 x the mono per axis (rf2_emi.py)",
+  "noise": "2.0 nV/rtHz, depth cost 1.4 %, copper 104 g (rf2_ref3.py; the earlier 620 x 0.15 mm on 80 mm gave 2.32 nV/rtHz and 1.8 %)"
+ },
+ "netlist_variant_note": "rf2_netlist.BOARDS MP1 / TXJ 'head' positions are option A's; the option-B board builds take MP1 (-72, 3) and TXJ (-94.5, 0) (stage 4)",
+ "coil_combs": {
+  "n": 12,
+  "deg0": 15.0,
+  "t": 0.8,
+  "slot": 1.3,
+  "what": "printed winding combs (resin print): radial plates with one slot per groove column (1.3 mm slots for the 1.2 mm litz, 0.3 mm teeth), the turns laid from the top, column by column"
+ },
+ "shield_coat": {
+  "r": [
+   114.45,
+   114.5
+  ],
+  "z": [
+   1.2,
+   14.15
+  ],
+  "slit_deg": 184.0,
+  "slit_w": 2.0,
+  "material": "MG 841AR nickel coating, 25 um (1.6 ohm/sq): echo tau 1 ns (rf2_zones)",
+  "what": "electrostatic screen on the shell's inner face, joined to SH1 at the stack-pin ground; one 2 mm slit"
+ },
+ "zone_rules": [
+  "no solid copper planes; hatched 1.0 / 0.25 mm with every border slit (rf2_zones: closed border up to 3300 x noise)",
+  "no aluminium electrolytic or other metal-can parts in the head: MLCC only (can echo 2e4-7.5e4 x noise)",
+  "nothing switches in the receive window; analog / TXJ loops < 0.1 cm2, edge-on where the field is vertical",
+  "IXTY08N100D2 tab edge-on to the field or a tab-less package (tab echo 2700 x noise, tau 19.8 us)"
+ ]
+}

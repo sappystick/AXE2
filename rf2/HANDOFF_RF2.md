@@ -400,3 +400,36 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - the turn-off ramp (a step is used, conservative for fast objects);
   - mechanical motion of boards relative to the coil (a second drift source: needs potting stiffness);
   - the real lead-frame and tab geometry.
+
+## 25. Option B housing (variant B) and the mitigation study (2026-10-30; rf2/head/rf2_head.py --variant=B, rf2/rf2_mitigation.py; MODELED / measured on the solids)
+- **Variant B** (`RF2_VARIANT=B` or `--variant=B`; outputs in `rf2/head/out_B/`; option A is unchanged in `out/`). Runner steps: `head:B`, `head-check:B`, `head-section:B`. Geometry:
+  - **Heights:** H 15.65 mm; shell wall to 14.15, lid 14.15-15.65; display flex 13.1-13.5 with the LEDs to the lid.
+  - **Coil:** 5 rows x 6 columns (r 113.4-105.4, rows from z 4.4) in a channel with its inner wall at r 103.8-104.6.
+  - **12 printed winding combs** (1.3 mm slots, 0.3 mm teeth, resin print) set the columns for the owner's column-by-column, down-and-up winding.
+  - **Boards:** CB1D on the AB1 tier (board z 6.6-8.2). MP1 moves to (-72, 3) and TXJ to (-94.5, 0); the netlist positions are still option A's (stage 4).
+  - **Shield:** MG 841AR nickel coat on the shell's inner face, joined to SH1, one 2 mm slit.
+  - **Potting:** syntactic foam around the coil, silicone gel analog, 832TC epoxy HV (kept >= 3 mm from the winding), syntactic silicone digital.
+- **head-check:B, all passing:**
+  - 22 closed meshes; 210 part pairs, no interference;
+  - litz to shell 0.5 mm, to the channel wall 0.2;
+  - islands >= 3.4 mm to the walls, >= 3.5 mm to each other; HV envelopes >= 14.9 mm from every LV island;
+  - LED tops at the lid underside; flex 1.0 mm from the gland boss.
+  - Mass 693 g (islands-only potting; option A 761 g), 852 g full fill. Potting volumes: analog 35 cm3, HV 24 cm3, digital 190 cm3.
+- **Mitigation study (rf2_mitigation.py):**
+  - **Coatings on a chip (field cut at 100 kHz / echo):**
+    - ferrite-loaded paint mu' 10 (UNVERIFIED): 25 %, no echo;
+    - 841AR nickel paint: 0 %, no echo (electrostatic screen only);
+    - copper can 35 um: 32 %, echo 0.43 x noise;
+    - mu-metal 0.1 mm: 99.85 %, but a slow strong target (diffusion time 43 us).
+    - None of them is a practical shield for a millitesla-range, 100 kHz pulse inside the coil. Layout, timing and distance are the protection.
+  - **Passive 'sacrificial' shorted loop (r 10 mm at the AB1A edge):** removes 17 % at its centre and adds an echo of 29 x noise (1.9 / K). With a resistor (tau 0.1 us): 2 %, no echo. Not worth it.
+  - **Active bucking loops** in series with the transmit coil under AB1A / AB1B, opposite sense:
+    - 7 turns of r 16 mm cut B at the board centre from 2.33 to 0.23 mT for -0.6 % depth (338 / 518 mm);
+    - but the field at the board edge nearest the coil RISES from 5.45 to 7.48 mT. It moves the field, it does not remove it: only for a part that must sit at a board centre.
+  - **Receive-board copper** (QA / QB, 16.99 m x 0.8 mm), R and depth change against 35 um with an ASSUMED 1.7 nV amplifier:
+    - 18 um: 20.3 ohm, -0.43 %;
+    - 35 um: 10.4 ohm;
+    - 70 um: 5.2 ohm, +0.24 %;
+    - 105 um: 3.5 ohm, +0.32 %.
+    - Option B keeps the rigid 0.8 mm SB1R boards at 35 um; flex receive boards (option C) would cost 0.4 %.
+- **System review across every lens:** docs/SYSTEM_REVIEW_OPTIONB.md.
