@@ -2,7 +2,7 @@
 
 BLOCKED: a part fails a rule by 10 % or less (it fits right under it); the owner decides whether to relax or remove the rule. RELAXED: the owner relaxed it; shown against the old limit every run. EDGE: passes with 5 % headroom or less. FAIL: misses by more than 10 %. Safety rules (HV, eddy, absolute-maximum ratings) are never relaxed automatically.
 
-Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 4, FAIL 4, PASS 53
+Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 3, FAIL 4, PASS 54
 
 | Status | Kind | Rule | Value | Limit | Over (+) / headroom (-) | Note |
 |---|---|---|---|---|---|---|
@@ -15,6 +15,5 @@ Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 4, FAIL 4, PASS 53
 | **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 3.5 h | >= 6.0 h | +41.7 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |
 | **RELAXED** | target | scan runtime, 7S1P Molicel P45B | 5.8 h | >= 6.0 h | +3.3 % | owner 2026-10-30: 6 h target relaxed |
 | **EDGE** | target | TPS65131 VPOS setting vs its ROC maximum 15 V | 15.0 V | <= 15.0 V | +0.0 % | DATASHEET_LOG RF2-DS-MP1V2-SWITCH |
-| **EDGE** | target | cord-as-flex width vs the 18 mm bore less 2 mm | 15.7 mm | <= 16.0 mm | -1.9 % | rf2_flex_options.json |
 | **EDGE** | safety | TMUX7212 pin voltage vs VDD (keep inside the supply; abs max VDD + 0.5 V) | 14.5 V | <= 15.0 V | -3.3 % | rf2_mp1v2_close.json |
 | **EDGE** | target | BAT54 reverse voltage (clamp-rail span) vs 80 % of VRRM 30 V | 23.0 V | <= 24.0 V | -4.2 % | rf2_mp1v2_close.json |

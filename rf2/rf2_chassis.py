@@ -24,7 +24,8 @@ import rf2_upper as U                                                          #
 from rf2_upper import at, shaft_frame, place, rot_about, compose, apply, rbox, trsf, I3, P0, D, N, Y, LID_TOP, phase, TIMINGS, memo, samples
 OUT = os.path.join(HERE, "chassis_out"); os.makedirs(OUT, exist_ok=True)
 REF3 = json.load(open(os.path.join(HERE, "head", "out", "rf2_ref3.json")))["rect_sleeve"]            # rectangular profile layout (owner 2026-10-30)
-SPEC = dict(tubes=dict(outer=(31.0, 31.0), mid=(26.0, 26.0), inner=(21.0, 21.0)), wall=1.5, corner_r=4.0, key=(3.0, 1.5),   # slim set (rf2_slim option A)                       # nested rectangular carbon profiles W x H (keyed telescope)
+SPEC = dict(tubes=dict(outer=(31.0, 31.0), mid=(26.0, 26.0), inner=(21.0, 21.0)), wall=1.2,   # owner 2026-10-30: 1.2 mm carbon walls (was 1.5; rf2_shaft_options)
+            corner_r=4.0, key=(3.0, 1.5),   # slim set (rf2_slim option A)                       # nested rectangular carbon profiles W x H (keyed telescope)
             st=dict(yoke=(0, 40), inner=(40, 420), C1=(300, 322), mid=(300, 680), C2=(410, 432), outer=(410, 790), REF3=(436, 786), hinge=(790, 816),
                     chassis=(800, 1160), TXD=(812, 902), bay=(905, 1065), rails=(1000, 1165)),
             collapse=dict(inner=255.0, mid=105.0), extend_max=dict(inner=20.0, mid=170.0), overlap_min=100.0,
@@ -280,8 +281,9 @@ def main():
     c["deployed_clear"] = dict(ok=min(dep.values()) >= 2.0, min_gaps_mm=dep)
     # mass and torque about the hand
     ref_cu = REF3["copper_g_total"]
+    tubes_g = sum(1.55e-3 * (w * w - (w - 2 * s["wall"]) ** 2) * 380.0 for w in (s["tubes"]["outer"][0], s["tubes"]["mid"][0], s["tubes"]["inner"][0]))   # three 380 mm profiles
     n_cell = s["cells"]["n_s"] * s["cells"]["n_p"]; cart_oh = 90.0 * (0.55 + 0.45 * n_cell / 14.0)       # 90 g for 14 cells (ASSUMED); shell + strip scale with cell count
-    masses = {"head (ASSUMED 650 g)": (650.0, np.array([0, 0, 8.0])), "rect profiles + yoke + clamps (CF, ASSUMED 330 g)": (330.0, at(420)), f"REF3 rect coils ({ref_cu} g Cu + 30 g)": (ref_cu + 30.0, at(ref_c)),
+    masses = {"head (ASSUMED 650 g)": (650.0, np.array([0, 0, 8.0])), f"rect profiles ({tubes_g:.0f} g at {s['wall']} mm wall, CF 1.55 g/cm3 ASSUMED) + yoke + clamps (70 g ASSUMED)": (tubes_g + 70.0, at(420)), f"REF3 rect coils ({ref_cu} g Cu + 30 g)": (ref_cu + 30.0, at(ref_c)),
               "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": (420.0, at(960)), "grip + head + screen (ASSUMED 120 g)": (120.0, geo["base"] + up * 60), "cuff + rails (ASSUMED 110 g)": (110.0, at(1140, 60)),
               f"battery cartridge ({n_cell} x {s['cells']['g']:.0f} g + {cart_oh:.0f} g shell / BMS / MT60, ASSUMED)": (n_cell * s["cells"]["g"] + cart_oh, at(985, geo["n_bay"]))}
     hand = geo["base"] + up * 50.0

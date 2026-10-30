@@ -144,7 +144,7 @@
   "HEAD_SHELL_LOWER (rf2_head)": {
    "ok": true,
    "watertight": true,
-   "volume_cm3": 70.0,
+   "volume_cm3": 69.71,
    "wall_p2_mm": 1.2,
    "thin_fraction": 0.0,
    "wall_min_mm": 1.2,
@@ -155,7 +155,7 @@
    "overhang_frac": 0.0,
    "fits_bed": true,
    "extents_mm": [
-    14.1,
+    13.9,
     233.0,
     233.0
    ],
@@ -164,18 +164,18 @@
   "HEAD_LID (rf2_head)": {
    "ok": true,
    "watertight": true,
-   "volume_cm3": 86.63,
-   "wall_p2_mm": 1.18,
-   "thin_fraction": 0.021,
+   "volume_cm3": 86.61,
+   "wall_p2_mm": 1.17,
+   "thin_fraction": 0.022,
    "wall_min_mm": 1.2,
-   "ray_wall_p2_mm": 1.18,
+   "ray_wall_p2_mm": 1.17,
    "method": "max(inscribed sphere, inward ray) per sample: the ray under-reads beside obtuse corners, the sphere at convex edges; a real thin wall or feather edge is thin both ways",
    "needs_supports": false,
    "orientation": "+X up",
    "overhang_frac": 0.017,
    "fits_bed": true,
    "extents_mm": [
-    3.9,
+    3.8,
     233.0,
     233.0
    ],

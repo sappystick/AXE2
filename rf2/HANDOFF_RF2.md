@@ -1304,3 +1304,24 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Ultra-thin display flex: PROPOSED.** 0.4 -> 0.2 +- 0.08 mm would lower the head 16.55 -> 16.35 mm (the owner decides; LED pads and the light-plate seat to re-check).
 - **Integration matrix counts:** ADOPTED 7, PROPOSED 9, FEASIBLE 1, REJECTED 8, OPEN 1, BLOCKED 1.
 - **Rule near-misses:** BLOCKED 2, RELAXED 2, EDGE 4, FAIL 4 (the flex producibility FAIL is gone).
+## 49. Owner decisions: 1.2 mm shaft walls, 0.20 mm display flex (2026-10-30; MODELED)
+- **Shaft walls 1.5 -> 1.2 mm** (rf2_chassis `wall`). The profile mass is now computed from the wall: three 380 mm profiles at 1.55 g/cm3 ASSUMED, + 70 g yoke / clamps ASSUMED.
+  - **Numbers that moved:**
+    - profiles + yoke + clamps 330 -> 280 g;
+    - system 2500 -> 2450 g;
+    - torque about the hand 4.36 -> 4.22 N m;
+    - inner bore 18.0 -> 18.6 mm, so the cord-flex width EDGE clears (15.7 vs 16.6 mm limit);
+    - static tip sag 2.86 -> 3.41 mm at full extension (E 50 GPa ASSUMED).
+  - **Not modeled:**
+    - swing and impact loads;
+    - crush at the cam-clamp window;
+    - the 1.5 mm key against a 1.2 mm wall.
+- **Display flex 0.4 -> 0.20 mm** (rf2_head `DFLEX`, PICA ultra-thin).
+  - Head height 16.55 -> 16.35 mm; lid 13.95-16.35 mm.
+  - Lid DFM still passes (wall p2 1.17 mm); light plate unchanged.
+  - **Open:**
+    - the +-0.08 mm flex tolerance moves the LEDs in the wells;
+    - thin copper needs wider LED power traces;
+    - stiffeners under the LED pads add local thickness.
+- **Display responsiveness (owner question):** set by the LED data stream, not the substrate. The 4 chains (48 / 101 / 158 / 215 LEDs) send the longest frame in 877.5 us at 8 MHz, inside a 1162 us quiet slot per pulse. A rigid, flex or metal-core board carries the same LEDs and the same data. **Balancing the chains to about 131 each (about 536 us) is the real gain (PROPOSED).**
+- **Rule near-misses:** BLOCKED 2, RELAXED 2, EDGE 3 (the flex width cleared), FAIL 4.

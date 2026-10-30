@@ -108,7 +108,7 @@
    "status": "ADOPTED",
    "numbers": "15.7 mm wide, 961 + 394 mm, 10.6 g vs 86 g; TX 28.1 pF/m",
    "effect": "fixes the 10 mm cord FAIL; first gate +0.14 us (was +0.19)",
-   "rule": "FAIL cord-as-flex in one piece (no REF3T joint) vs Tech Etch pref (1315 vs 1016); EDGE cord-as-flex width vs the 18 mm bore less 2 mm (15.7 vs 16.0)",
+   "rule": "FAIL cord-as-flex in one piece (no REF3T joint) vs Tech Etch pref (1315 vs 1016)",
    "next": "flex drawing with a >= 1000 VRMS net-to-net hipot; rolling-loop mock-up"
   },
   {
@@ -155,11 +155,21 @@
    "area": "Head: display flex (522 LEDs)",
    "idea": "PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm)",
    "source": "PICA ultra-thin FPC",
-   "status": "PROPOSED",
+   "status": "ADOPTED",
    "numbers": "flex 0.4 -> 0.2 mm; head 16.55 -> 16.35 mm",
-   "effect": "thinner head",
+   "effect": "thinner head; same LEDs, same refresh",
    "rule": "-",
-   "next": "owner: adopt, then re-check the LED pads and light-plate seat"
+   "next": "LED power-trace width on thin copper; LED height tolerance in the wells"
+  },
+  {
+   "area": "Head: display data",
+   "idea": "balance the 4 LED chains (48 / 101 / 158 / 215 -> about 131 each)",
+   "source": "rf2_wiring LED stream",
+   "status": "PROPOSED",
+   "numbers": "frame 877.5 us -> about 536 us at 8 MHz (quiet slot 1162 us)",
+   "effect": "more margin per pulse; the display substrate does not change the refresh",
+   "rule": "-",
+   "next": "re-route the chains in rf2_ledgrid"
   },
   {
    "area": "Cord: strain relief at the gland",
@@ -205,11 +215,11 @@
    "area": "Telescope profiles",
    "idea": "carbon wall 1.5 -> 1.2 mm",
    "source": "Garrett two-piece benchmark (155 g/m)",
-   "status": "PROPOSED",
-   "numbers": "tubes 260 -> 210 g (-50 g), tip sag 2.86 -> 3.41 mm (1.0 mm wall: -83 g, 3.96 mm)",
-   "effect": "lighter shaft; ours is 228 g/m vs 155 g/m",
+   "status": "ADOPTED",
+   "numbers": "tubes 260 -> 210 g, static tip sag 2.86 -> 3.41 mm; bore 18.0 -> 18.6 mm",
+   "effect": "-50 g, torque about the hand down; swing / impact loads NOT modeled",
    "rule": "-",
-   "next": "owner: choose the wall; then a swing-load check"
+   "next": "swing-load and clamp-window crush check"
   },
   {
    "area": "Telescope profiles",
@@ -256,7 +266,7 @@
    "idea": "7S1P Molicel P45B, drill-style rail",
    "source": "Molicel P45B datasheet",
    "status": "ADOPTED",
-   "numbers": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 3.5 h continuous boost (rated case), 5.8 h scan, 2465 g sy",
+   "numbers": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 3.5 h continuous boost (rated case), 5.8 h scan, 2415 g sy",
    "effect": "-188 g pack",
    "rule": "RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (3.5 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.8 vs 6.0)",
    "next": "rail dock geometry in rf2_chassis"
@@ -273,8 +283,8 @@
   }
  ],
  "counts": {
-  "ADOPTED": 7,
-  "PROPOSED": 9,
+  "ADOPTED": 9,
+  "PROPOSED": 8,
   "FEASIBLE": 1,
   "REJECTED": 8,
   "OPEN": 1,

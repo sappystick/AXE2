@@ -4,9 +4,9 @@
  "counts": {
   "BLOCKED": 2,
   "RELAXED": 2,
-  "EDGE": 4,
+  "EDGE": 3,
   "FAIL": 4,
-  "PASS": 53
+  "PASS": 54
  },
  "flagged": [
   {
@@ -125,19 +125,6 @@
    "relaxed": null,
    "status": "FAIL",
    "over_pct": 29.4
-  },
-  {
-   "id": "flex.width",
-   "kind": "target",
-   "desc": "cord-as-flex width vs the 18 mm bore less 2 mm",
-   "value": 15.7,
-   "limit": 16.0,
-   "sense": "<=",
-   "unit": "mm",
-   "source": "rf2_flex_options.json",
-   "relaxed": null,
-   "status": "EDGE",
-   "over_pct": -1.9
   },
   {
    "id": "shield.slotted.front end near the r",
@@ -730,27 +717,27 @@
    "id": "dfm.wall.HEAD_LID (rf2_head)",
    "kind": "target",
    "desc": "HEAD_LID (rf2_head): wall 2nd percentile vs 0.96 mm (FDM ASSUMED)",
-   "value": 1.18,
+   "value": 1.17,
    "limit": 0.96,
    "sense": ">=",
    "unit": "mm",
    "source": "rf2_print.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -22.9
+   "over_pct": -21.9
   },
   {
    "id": "dfm.thin.HEAD_LID (rf2_head)",
    "kind": "target",
    "desc": "HEAD_LID (rf2_head): area below 1.2 mm vs 3 %",
-   "value": 2.1,
+   "value": 2.2,
    "limit": 3.0,
    "sense": "<=",
    "unit": "%",
    "source": "rf2_print.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -30.0
+   "over_pct": -26.7
   },
   {
    "id": "pack.cell_i.A",
@@ -900,13 +887,13 @@
    "kind": "target",
    "desc": "cord-as-flex width vs the 18 mm bore less 2 mm",
    "value": 15.7,
-   "limit": 16.0,
+   "limit": 16.6,
    "sense": "<=",
    "unit": "mm",
    "source": "rf2_flex_options.json",
    "relaxed": null,
-   "status": "EDGE",
-   "over_pct": -1.9
+   "status": "PASS",
+   "over_pct": -5.4
   },
   {
    "id": "flex.cover_aged",

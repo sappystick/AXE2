@@ -5,8 +5,8 @@
  "boost_current_at_21V_A": 1.39,
  "pack_lever_mm": -161.3,
  "bay_g_from_stl": 92.6,
- "baseline_total_g": 2688.0,
- "baseline_torque_Nm": 4.062517636,
+ "baseline_total_g": 2638.0,
+ "baseline_torque_Nm": 3.922517636,
  "options": [
   {
    "key": "A",
@@ -19,8 +19,8 @@
    "boost_vs_6h_frac": 0.777,
    "pack_g": 748,
    "system_delta_g": 0,
-   "system_total_g": 2688,
-   "torque_about_hand_Nm": 4.06,
+   "system_total_g": 2638,
+   "torque_about_hand_Nm": 3.92,
    "pack_mm": [
     92.2,
     76.2,
@@ -45,8 +45,8 @@
    "boost_vs_6h_frac": 0.777,
    "pack_g": 770,
    "system_delta_g": -35,
-   "system_total_g": 2653,
-   "torque_about_hand_Nm": 4.03,
+   "system_total_g": 2603,
+   "torque_about_hand_Nm": 3.89,
    "pack_mm": [
     136.2,
     71.2,
@@ -71,8 +71,8 @@
    "boost_vs_6h_frac": 0.583,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2465,
-   "torque_about_hand_Nm": 4.33,
+   "system_total_g": 2415,
+   "torque_about_hand_Nm": 4.19,
    "pack_mm": [
     156.8,
     76.2,
@@ -97,8 +97,8 @@
    "boost_vs_6h_frac": 0.583,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2465,
-   "torque_about_hand_Nm": 4.33,
+   "system_total_g": 2415,
+   "torque_about_hand_Nm": 4.19,
    "pack_mm": [
     92.2,
     76.2,
@@ -123,8 +123,8 @@
    "boost_vs_6h_frac": 0.655,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2465,
-   "torque_about_hand_Nm": 4.33,
+   "system_total_g": 2415,
+   "torque_about_hand_Nm": 4.19,
    "pack_mm": [
     156.1,
     76.8,
@@ -151,8 +151,8 @@
    "boost_vs_6h_frac": 0.655,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2465,
-   "torque_about_hand_Nm": 4.33,
+   "system_total_g": 2415,
+   "torque_about_hand_Nm": 4.19,
    "pack_mm": [
     91.8,
     76.8,
@@ -179,8 +179,8 @@
    "boost_vs_6h_frac": 0.666,
    "pack_g": 901,
    "system_delta_g": 96,
-   "system_total_g": 2784,
-   "torque_about_hand_Nm": 3.82,
+   "system_total_g": 2734,
+   "torque_about_hand_Nm": 3.68,
    "pack_mm": [
     171.0,
     56.0,
@@ -204,8 +204,8 @@
    "boost_vs_6h_frac": 0.389,
    "pack_g": 421,
    "system_delta_g": -384,
-   "system_total_g": 2304,
-   "torque_about_hand_Nm": 4.58,
+   "system_total_g": 2254,
+   "torque_about_hand_Nm": 4.44,
    "pack_mm": [
     136.2,
     71.2,
@@ -222,7 +222,7 @@
  ],
  "lightest_meeting_6h": "D1",
  "chosen": "C2",
- "chosen_summary": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 3.5 h continuous boost (rated case), 5.8 h scan, 2465 g system (-223 g vs the P30B reference)",
+ "chosen_summary": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 3.5 h continuous boost (rated case), 5.8 h scan, 2415 g system (-223 g vs the P30B reference)",
  "blocked_by_relaxed_6h_rule_within_10pct": [
   {
    "key": "C1",
@@ -238,7 +238,7 @@
  "conclusion": {
   "drill_rail_feasible": true,
   "rc_lipo_lighter": false,
-  "lightest": "D1: drill-style rail pack, 7S1P LG M50T, 1 row(s), 2465 g system (-223 g), 6.51 h scan"
+  "lightest": "D1: drill-style rail pack, 7S1P LG M50T, 1 row(s), 2415 g system (-223 g), 6.51 h scan"
  },
  "ok": true
 }

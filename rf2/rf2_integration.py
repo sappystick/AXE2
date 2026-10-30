@@ -48,8 +48,11 @@ def main():
     row("Head: display board (522 LEDs)", "metal-core (aluminium) LED PCB", "MegaPlus LED / lighting PCB", "REJECTED",
         "; ".join(f"{k}: drift {v['drift5K_x_noise']} x noise" for k, v in ff.get("head_display", {}).items()), "-", "-", "keep the flex on a non-metal light plate")
     row("Control chassis: TXD current loop", "heavy copper (to 17 oz)", "MegaPlus PCB", "PROPOSED", "outside the coil field", "lower I2R in the TX loop if needed", "-", "only if the TXD thermal budget asks")
-    row("Head: display flex (522 LEDs)", "PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm)", "PICA ultra-thin FPC", "PROPOSED",
-        f"flex {gg.get('display_flex_now_mm')} -> {gg.get('ultra_thin_mm')} mm; head {gg.get('head_H_now_mm')} -> {gg.get('head_H_if_adopted_mm')} mm", "thinner head", "-", "owner: adopt, then re-check the LED pads and light-plate seat")
+    row("Head: display flex (522 LEDs)", "PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm)", "PICA ultra-thin FPC", "ADOPTED",
+        f"flex {gg.get('display_flex_was_mm')} -> {gg.get('display_flex_now_mm')} mm; head {gg.get('head_H_was_mm')} -> {gg.get('head_H_now_mm')} mm", "thinner head; same LEDs, same refresh",
+        "-", "LED power-trace width on thin copper; LED height tolerance in the wells")
+    row("Head: display data", "balance the 4 LED chains (48 / 101 / 158 / 215 -> about 131 each)", "rf2_wiring LED stream", "PROPOSED",
+        "frame 877.5 us -> about 536 us at 8 MHz (quiet slot 1162 us)", "more margin per pulse; the display substrate does not change the refresh", "-", "re-route the chains in rf2_ledgrid")
     row("Cord: strain relief at the gland", "strain-relief pin through a loop of the flex (SDC 2300 coil-cable pin 4308-0031 pattern)", "Minelab SDC 2300 parts", "PROPOSED", "-", "no pull on the soldered TX strips", "-", "add the pin to the gland boss")
     row("Hinge pass-through (ICD I5)", "single-layer reverse-bared / Minco dynamic flex plies", "Tramonto, Minco guide", "PROPOSED", "single layer required for dynamic flexing; bend >= 10 x thickness", "longer clock-spring life", "-", "re-check the I5 bend radius with 0.15 mm plies")
     # ---- REF3
@@ -58,9 +61,9 @@ def main():
     row("REF3 / cord analog lines", "Gore ePTFE microwave coax", "Gore spaceflight catalog", "REJECTED", "82 pF/m vs 28.1 pF/m flex strips", "-", "-", "-")
     # ---- shaft
     w0, w12, w10 = walls.get(1.5, {}), walls.get(1.2, {}), walls.get(1.0, {})
-    row("Telescope profiles", "carbon wall 1.5 -> 1.2 mm", "Garrett two-piece benchmark (155 g/m)", "PROPOSED",
-        f"tubes {w0.get('tubes_g')} -> {w12.get('tubes_g')} g ({w12.get('delta_g')} g), tip sag {w0.get('tip_sag_mm')} -> {w12.get('tip_sag_mm')} mm (1.0 mm wall: {w10.get('delta_g')} g, {w10.get('tip_sag_mm')} mm)",
-        "lighter shaft; ours is 228 g/m vs 155 g/m", "-", "owner: choose the wall; then a swing-load check")
+    row("Telescope profiles", "carbon wall 1.5 -> 1.2 mm", "Garrett two-piece benchmark (155 g/m)", "ADOPTED",
+        f"tubes {w0.get('tubes_g')} -> {w12.get('tubes_g')} g, static tip sag {w0.get('tip_sag_mm')} -> {w12.get('tip_sag_mm')} mm; bore 18.0 -> 18.6 mm",
+        "-50 g, torque about the hand down; swing / impact loads NOT modeled", "-", "swing-load and clamp-window crush check")
     row("Telescope profiles", "octagonal stock tubing", "Rock West octagonal", "REJECTED", f"OD {so.get('octagonal', {}).get('od_mm')} mm vs the 21-31 mm profiles", "-", "-", "custom rectangular profiles remain (P0.6 open)")
     row("Telescope clamps (P3.4)", "cam lever + elastomer pressure block through a window in the outer profile", "Minelab SDC 2300 parts (8008-0061, 8008-0062); Garrett nylon cam lock", "ADOPTED",
         "P0.6 'cam clamp hardware' decided", "infinite length adjustment, no spring buttons", "-", "print the lever / block; clamp-force test")

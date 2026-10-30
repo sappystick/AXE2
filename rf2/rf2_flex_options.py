@@ -35,7 +35,7 @@ def part_a():
     import rf2_cordflex as CFX, rf2_chassis as CS                                                          # the adopted cord flex (owner 2026-10-30)
     tel = CH["checks"]["telescope"]; travel = tel["pivot_to_hinge_mm"]["max"] - tel["collapsed_mm"]
     sg = CFX.segments(CS.SPEC["st"], CS.SPEC["extend_max"], travel); seg1, seg2 = sg["seg1_dynamic_mm"], sg["seg2_static_mm"]
-    bore = 18.0; rows = []
+    bore = min(CS.SPEC["tubes"]["inner"]) - 2 * CS.SPEC["wall"]; rows = []
     for eps_eff in (1.3, 1.6, 2.2):
         c = CFX.cps_c_pf_per_m(eps_eff=eps_eff); rows.append(dict(eps_eff=eps_eff, C_pF_per_m=round(c, 1), C_pF_total=round(c * sg["tx_length_m"], 1)))
     tc = json.load(open(os.path.join(OUT, "rf2_timing_cord.json"))); shift = max(v["shift_fixed_us"] for v in tc["cases"].values())
@@ -118,10 +118,10 @@ def part_g():
     """PICA ultra-thin FPC: 18 um Cu on 12.5 um PI (or 3 um on 25 um), adhesiveless / TPI, finished down to 0.20 +- 0.08 mm; dynamic and extra-long flex"""
     hs = json.load(open(os.path.join(HERE, "head", "out_BF", "rf2_head_spec.json")))
     led = hs["boards_inner"]["LED"]["z"]; t_now = round(led[1] - led[0], 2); H = hs["envelope"]["H"]
-    t_new = 0.20
-    return dict(display_flex_now_mm=t_now, ultra_thin_mm=t_new, tol_mm=0.08, head_H_now_mm=H, head_H_if_adopted_mm=round(H - (t_now - t_new), 2),
-                verdict=f"PROPOSED: the 522-LED flex at 0.20 mm instead of {t_now} mm lowers the head {t_now - t_new:.2f} mm (LED pad / stiffener and the light-plate seat to be re-checked); "
-                        "adhesiveless thin plies also suit the hinge clock-spring (I5) and the cord flex's signal copper")
+    t_was = 0.40                                                                                  # the display flex before the owner adopted 0.20 mm (2026-10-30)
+    return dict(display_flex_was_mm=t_was, display_flex_now_mm=t_now, tol_mm=0.08, head_H_was_mm=round(H + (t_was - t_now), 2), head_H_now_mm=H,
+                verdict=f"ADOPTED: the 522-LED flex at {t_now} mm (was {t_was} mm) lowers the head {t_was - t_now:.2f} mm to {H} mm; open: the +-0.08 mm tolerance moves the LEDs in the light-plate wells, "
+                        "thin copper needs wider LED power traces, stiffeners under the LED pads add local thickness")
 
 def part_h():
     """two-ply cord flex (2 oz HV / power ply + 1/2 oz ultra-thin signal ply, unbonded): stacking puts the signal ply's guards over the TX strips"""
