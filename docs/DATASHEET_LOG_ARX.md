@@ -238,3 +238,20 @@ These rows serve the RF2 side experiment (experiments/RF2_cleansheet/PARTS_RF2.m
 |---|---|---|---|
 | Littelfuse / IXYS IXTY08N100D2 (TO-252), IXTA (TO-263), IXTP (TO-220), N-channel depletion mode | IXYS DS100182C (9/17), data/datasheets/Littelfuse_IXTY-IXTA-IXTP08N100D2_DS100182C_2017-09.pdf (sha256 4b54754922f701f3) | VDSX 1000 V (TJ 25-150 C); VGSX +-20 V continuous, +-30 V transient; PD 60 W (TC 25 C); BVDSX >= 1000 V at VGS -5 V, ID 25 uA; VGS(off) -2.0 to -4.0 V at VDS 25 V, ID 25 uA; IDSX(off) <= 1 uA (15 uA at 125 C); RDS(on) <= 21 ohm at VGS 0 V, ID 400 mA; ID(on) >= 800 mA at VGS 0 V, VDS 50 V; gfs 330 min / 560 typ mS; Ciss 325, Coss 24, Crss 6.5 pF typ (VGS -10 V, VDS 25 V); Qg 14.6 nC; body diode VSD 0.8 typ / 1.3 max V, trr 1.03 us; RthJC 2.08 C/W; weight TO-252 0.35 g | **chosen** for the MP1 v2 current limiter: 1000 V against the 460 V flyback (2.2x, rule 6), and the low Coss keeps the turn-off edge current into the clamps at 0.41-0.45 A (inside BAV199 IFRM 0.5 A). Package IXTY (TO-252) |
 | Microchip DN2470 (TO-252), N-channel depletion-mode vertical DMOS | Microchip DS20005410A (2015), data/datasheets/Microchip_DN2470_DS20005410A_2015.pdf (sha256 429a901749dd8fb3) | BVDSX >= 700 V at VGS -5 V, ID 100 uA; VGS(off) -1.5 to -3.5 V at VDS 25 V, ID 10 uA; dVGS(off)/dT <= -4.5 mV/C; IGSS <= 100 nA; IDSS 500 mA typ at VGS 0 V, VDS 25 V; RDS(on) <= 42 ohm at VGS 0 V, ID 100 mA (+1.1 %/C); GFS >= 100 mmho; Ciss <= 540, Coss <= 60, Crss <= 25 pF; TO-252: ID 170 mA continuous, 500 mA pulsed, 2.52 W (FR4 25 x 25 x 1.57 mm), theta-ja 132 C/W; pins 1 gate, 3 source, 2 / 4 drain; body diode trr 800 ns | not chosen: 700 V (1.5x), twice the on-resistance (noise) and 2.5x the output capacitance: the modeled turn-off edge current reaches 0.86-1.09 A, above BAV199 IFRM 0.5 A and its own 500 mA pulsed rating. This also resolves the earlier distributor conflict (170 mA is the continuous, 500 mA the pulsed rating) |
+
+
+## RF2-DS-FERRITE: VERIFIED material values (Ferroxcube material sheets downloaded 2026-10-30 from ferroxcube.com/upload/media/product/file/MDS/<grade>.pdf)
+
+| Material | Source | Numbers used | Design effect |
+|---|---|---|---|
+| Ferroxcube 3C90 MnZn | data/datasheets/Ferroxcube_3C90_material.pdf (sha256 803f0da1bbc44a82) | mu_i 2300 +-20 % (25 C, <= 10 kHz, 0.25 mT); B 470 mT (25 C, 10 kHz) / 380 mT (100 C); rho about 5 ohm m (DC, 25 C); TC >= 220 C; density 4800 kg/m3 | hood material in rf2_hood.py (mu_i, saturation at 100 C, mass) |
+| Ferroxcube 3C94 MnZn | data/datasheets/Ferroxcube_3C94_material.pdf (sha256 85baa0ebc78e351b) | mu_i 2300; B 470 / 380 mT; rho about 5 ohm m; density 4800 | alternative to 3C90 (same DC values) |
+| Ferroxcube 3C95 MnZn | data/datasheets/Ferroxcube_3C95_material.pdf (sha256 21dd5bfbd5408100) | mu_i 3000 +-20 %; B 530 / 410 mT; rho about 5 ohm m; density 4800 | higher-mu, flatter-with-temperature alternative |
+| Ferroxcube 3F3 MnZn | data/datasheets/Ferroxcube_3F3_material.pdf (sha256 2dd2931be058931f) | mu_i 2000; B 440 / 370 mT; rho about 2 ohm m; density 4750 | alternative |
+| Ferroxcube 3E6 MnZn | data/datasheets/Ferroxcube_3E6_material.pdf (sha256 7154d57bc4f59643) | mu_i 10000 +-30 %; B 460 mT; rho about 0.1 ohm m; Tc >= 130 C | not used: low resistivity, Tc close to a hot-car / sun-loaded head |
+| Ferroxcube 4A11 NiZn | data/datasheets/Ferroxcube_4A11_material.pdf (sha256 f28120bdbb943705) | mu_i 850 +-20 %; B 340 / 230 mT; rho about 1e5 ohm m; TC >= 150 C; density 5100; tan d / mu_i <= 100e-6 at 1 MHz | NiZn option: no conduction at all, flat to several MHz |
+| Ferroxcube 4C65 NiZn | data/datasheets/Ferroxcube_4C65_material.pdf (sha256 5017f684c0f55135) | mu_i 125 +-20 %; B 380 / 340 mT; rho about 1e5 ohm m; density 4500 | low-mu bound (close to flexible-sheet values) |
+
+Not on any of these sheets, and needed before a hood is built:
+- **Magnetic viscosity / after-effect** (the slow decay a PI receiver sees from ferrite after the pulse): bench measurement.
+- **Flexible sintered ferrite sheets:** permeability, thickness and saturation. The Wuerth WE-FSFS and TDK IFL downloads were refused by the vendor sites.
