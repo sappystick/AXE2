@@ -1,0 +1,194 @@
+{
+ "status": "  A. Syntactic potting around the coil. Bubble permittivity 1.2-2.0 (3M, by density; linear in density between K1 0.125 and iM30K 0.60 g/cc is",
+ "potting": [
+  {
+   "bubbles": "K1",
+   "eps_bubble": 1.2,
+   "matrix": "832TC epoxy",
+   "phi": 0.4,
+   "eps_composite": 2.36,
+   "C_winding_pF": 124.4,
+   "first_gate_us": 13.93,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 343
+   }
+  },
+  {
+   "bubbles": "K1",
+   "eps_bubble": 1.2,
+   "matrix": "832TC epoxy",
+   "phi": 0.6,
+   "eps_composite": 1.88,
+   "C_winding_pF": 99.3,
+   "first_gate_us": 13.6,
+   "mono_depth_mm": {
+    "0.1 g": 197,
+    "1.0 g": 344
+   }
+  },
+  {
+   "bubbles": "K1",
+   "eps_bubble": 1.2,
+   "matrix": "silicone",
+   "phi": 0.4,
+   "eps_composite": 2.12,
+   "C_winding_pF": 111.9,
+   "first_gate_us": 13.77,
+   "mono_depth_mm": {
+    "0.1 g": 196,
+    "1.0 g": 344
+   }
+  },
+  {
+   "bubbles": "K1",
+   "eps_bubble": 1.2,
+   "matrix": "silicone",
+   "phi": 0.6,
+   "eps_composite": 1.75,
+   "C_winding_pF": 92.5,
+   "first_gate_us": 13.5,
+   "mono_depth_mm": {
+    "0.1 g": 198,
+    "1.0 g": 344
+   }
+  },
+  {
+   "bubbles": "S22",
+   "eps_bubble": 1.36,
+   "matrix": "832TC epoxy",
+   "phi": 0.4,
+   "eps_composite": 2.48,
+   "C_winding_pF": 130.8,
+   "first_gate_us": 14.02,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 343
+   }
+  },
+  {
+   "bubbles": "S22",
+   "eps_bubble": 1.36,
+   "matrix": "832TC epoxy",
+   "phi": 0.6,
+   "eps_composite": 2.03,
+   "C_winding_pF": 107.1,
+   "first_gate_us": 13.71,
+   "mono_depth_mm": {
+    "0.1 g": 197,
+    "1.0 g": 344
+   }
+  },
+  {
+   "bubbles": "S22",
+   "eps_bubble": 1.36,
+   "matrix": "silicone",
+   "phi": 0.4,
+   "eps_composite": 2.23,
+   "C_winding_pF": 117.6,
+   "first_gate_us": 13.84,
+   "mono_depth_mm": {
+    "0.1 g": 196,
+    "1.0 g": 344
+   }
+  },
+  {
+   "bubbles": "S22",
+   "eps_bubble": 1.36,
+   "matrix": "silicone",
+   "phi": 0.6,
+   "eps_composite": 1.89,
+   "C_winding_pF": 99.8,
+   "first_gate_us": 13.61,
+   "mono_depth_mm": {
+    "0.1 g": 197,
+    "1.0 g": 344
+   }
+  },
+  {
+   "bubbles": "iM30K",
+   "eps_bubble": 2.0,
+   "matrix": "832TC epoxy",
+   "phi": 0.4,
+   "eps_composite": 2.89,
+   "C_winding_pF": 152.6,
+   "first_gate_us": 14.29,
+   "mono_depth_mm": {
+    "0.1 g": 194,
+    "1.0 g": 343
+   }
+  },
+  {
+   "bubbles": "iM30K",
+   "eps_bubble": 2.0,
+   "matrix": "832TC epoxy",
+   "phi": 0.6,
+   "eps_composite": 2.56,
+   "C_winding_pF": 134.9,
+   "first_gate_us": 14.06,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 343
+   }
+  },
+  {
+   "bubbles": "iM30K",
+   "eps_bubble": 2.0,
+   "matrix": "silicone",
+   "phi": 0.4,
+   "eps_composite": 2.6,
+   "C_winding_pF": 137.2,
+   "first_gate_us": 14.1,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 343
+   }
+  },
+  {
+   "bubbles": "iM30K",
+   "eps_bubble": 2.0,
+   "matrix": "silicone",
+   "phi": 0.6,
+   "eps_composite": 2.38,
+   "C_winding_pF": 125.7,
+   "first_gate_us": 13.95,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 343
+   }
+  }
+ ],
+ "quad": [
+  {
+   "case": "1.7 nV/rtHz (used so far)",
+   "noise_nV": 1.7,
+   "quad_depth_mm": {
+    "1.0 g": 136,
+    "20.0 g": 189
+   }
+  },
+  {
+   "case": "INA849: 1.08 nV/rtHz",
+   "noise_nV": 1.083,
+   "quad_depth_mm": {
+    "1.0 g": 145,
+    "20.0 g": 201
+   }
+  }
+ ],
+ "clamp": {
+  "Rin2_min_ohm": 56.6,
+  "Rin2_chosen_ohm": 68.0,
+  "peak_clamp_current_mA": 91.6,
+  "IF_max_mA": 110,
+  "mono_noise_nV": 1.54,
+  "leakage_shot_noise_bound_nV": 0.115,
+  "input_capacitance_pF": 0.56,
+  "mono_depth_mm_at_16p3us": {
+   "1.0 g": 346,
+   "5.0 g": 442,
+   "20.0 g": 530
+  },
+  "note": "anti-parallel pair across the LMH6629 inputs; the BAV199 rail clamps stay (BAT15 VR max 4 V)"
+ }
+}

@@ -333,12 +333,42 @@
   "study:switch": {
    "status": "pass",
    "rc": 0,
-   "seconds": 46.9,
+   "seconds": 50.1,
    "why": "",
    "tail": "",
-   "fingerprint": "46c5157a731fe7d0",
-   "finished": "2026-10-30T09:03:43",
+   "fingerprint": "729091505dcb89d7",
+   "finished": "2026-10-30T09:35:08",
    "log": "state/logs/study_switch.log"
+  },
+  "study:qualify": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 103.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "41e914ee83cb4caf",
+   "finished": "2026-10-30T09:36:51",
+   "log": "state/logs/study_qualify.log"
+  },
+  "study:fluxgate": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.9,
+   "why": "",
+   "tail": "",
+   "fingerprint": "0d1344fdc97ead2d",
+   "finished": "2026-10-30T09:36:52",
+   "log": "state/logs/study_fluxgate.log"
+  },
+  "study:decaylib": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 8.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "f59d7b71f8c2b836",
+   "finished": "2026-10-30T09:37:00",
+   "log": "state/logs/study_decaylib.log"
   }
  },
  "runs": [
@@ -530,6 +560,16 @@
    "results": {
     "study:zones": "pass",
     "study:switch": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T09:37:00",
+   "seconds": 162.4,
+   "results": {
+    "study:switch": "pass",
+    "study:qualify": "pass",
+    "study:fluxgate": "pass",
+    "study:decaylib": "pass"
    }
   }
  ]

@@ -42,6 +42,16 @@
    }
   },
   {
+   "case": "GS-065-011-1-L GaN (Coss 125 pF at 26 V, READ) + syntactic 95 + 50",
+   "node_pF": 270,
+   "first_gate_us": 13.74,
+   "mono_depth_mm": {
+    "0.1 g": 196,
+    "1.0 g": 344,
+    "20.0 g": 522
+   }
+  },
+  {
    "case": "bound: 60 pF switch (a GaN / low-Coss part, UNVERIFIED) + 95 + 30",
    "node_pF": 185,
    "first_gate_us": 12.51,

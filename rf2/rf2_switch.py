@@ -6,6 +6,7 @@ coil is quiet (rf2_timing.simulate, critical damping, 100 nV + 2 us preamp recov
       Diagram 14: Coss about 400 pF at 26 V (READ; the curve falls from about 8 nF below 20 V to about 60 pF at 50 V).
   Wolfspeed C3M0280090J (900 V SiC, D2PAK-7; Rev. 04 12/2024, data/datasheets): Coss 26 pF at 600 V, Eoss 5.5 uJ; Fig. 17: Coss about 110 pF at 25 V (READ);
       RDS(on) 320 mohm typ (VGS 15 V, 7.5 A); ID 11 A (TC 25 C), 22 A pulsed; VGS -4 / +15 V.
+  GaN Systems GS-065-011-1-L (650 V GaN; Rev 220708, data/datasheets): Co(tr) 47 pF (0-400 V); Fig. 7: Coss about 125 pF at 26 V (READ).
   onsemi NTBG080N120SC1 (1200 V SiC, D2PAK-7L): 'typ. Coss 79 pF' (front page; curve not read).
 Node = winding (132 pF, rf2_zones / rf2_taper, eps 2.5) + switch Coss(26 V) + leads, damping and preamp (50 pF, ASSUMED) [+ syntactic potting: winding 95 pF].
 Reported per case: node pF, first gate, mono depth 0.1 / 1 / 20 g (option-B coil, 10.8 mJ, MP1 v2 noise, in air), and the earlier 500 pF assumption.
@@ -18,6 +19,7 @@ CASES = [("earlier assumption: 500 pF node", 500e-12),
          ("IPB65R095C7 (Coss 400 pF at 26 V, READ) + winding 132 + 50", 582e-12),
          ("C3M0280090J SiC (Coss 110 pF at 25 V, READ) + winding 132 + 50", 292e-12),
          ("C3M0280090J + syntactic potting (winding 95 pF) + 50", 255e-12),
+         ("GS-065-011-1-L GaN (Coss 125 pF at 26 V, READ) + syntactic 95 + 50", 270e-12),
          ("bound: 60 pF switch (a GaN / low-Coss part, UNVERIFIED) + 95 + 30", 185e-12)]
 if __name__ == "__main__":
     res = dict(status=__doc__.split("\n")[1], cases=[])

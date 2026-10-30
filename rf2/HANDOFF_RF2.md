@@ -488,3 +488,21 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - PTFE / FEP litz and syntactic foam (low eps);
   - glass-filled resin for the coil supports (low CTE).
 - **Datasheets still to fetch:** docs/STAGE3_PARTS.md section 6.
+
+## 28. Datasheet qualification, ferrous gradiometer, decay library (2026-10-30; rf2/rf2_qualify.py, rf2_fluxgate.py, rf2_decaylib.py; DATASHEET_LOG RF2-DS-OWNER2)
+- **Owner datasheets (9):** BAT15-03W, MMC5983MA, LIS2MDL, UCC5350-Q1, SCS Parylene, GS-065-011-1-L, Rubadue litz, 3M glass bubbles, INA849. Values in the DATASHEET_LOG. Qualification:
+  - **UCC5350-Q1 (SB, split outputs, +15 / -4 V):** qualifies as the SiC gate driver.
+  - **GaN GS-065-011-1-L:** Coss about 125 pF at 26 V (READ), gate 13.74 us, against the SiC's 13.54 us. No gain, less voltage margin: SiC kept.
+  - **BAT15-03W:** VR max 4 V, so ONLY as an anti-parallel pair across the LMH6629 input (BAV199 rail clamps stay). IF 110 mA sets Rin2 >= 57 ohm: 68 ohm. Mono noise 1.54 nV/rtHz; mono depth 346 / 442 / 530 mm (1 / 5 / 20 g) at the 16.3 us gate, against 340 / 434 / 521.
+  - **INA849 on QA / QB:** 1.08 nV/rtHz; quadrupole (bearing) range 136 / 189 -> 145 / 201 mm (1 / 20 g).
+  - **Syntactic potting** (3M bubble eps 1.2-2.0, Lichtenecker mixing ASSUMED): K1 at 60 % in silicone eps 1.75 (winding 92 pF, gate 13.5 us with SiC); in epoxy 1.88. iM30K (dense, crush-proof) 2.4-2.9: use K1 / K15.
+  - **Parylene:** ParyFree on the analog / near-coil fins (eps 2.35, DF 0.0007, WVTR 0.09); N or C on the HV fins (7000 / 5600 V/mil).
+  - **Magnetometers:** MMC5983MA (0.4 mG, disturbing field 10 G < the 12 G pulse: SET / RESET each pulse) or LIS2MDL (+-49 G, 3 mG). Both see only large or elongated iron (correction below).
+  - **Litz:** fluoropolymer insulation available (Rubadue); permittivity still UNVERIFIED.
+- **Ferrous gradiometer (rf2_fluxgate.py, docs/BENCH_FLUXGATE.md).** Range at 1e-4 / 1e-5 residual mismatch:
+  - 3 g lump 70 / 160 mm;
+  - nail along the field 250 / 525 mm, across 60 / 135 mm;
+  - 100 g lump 250 / 520 mm.
+  - The head sensor sees 1.22 mT per TX pulse.
+  - **Correction:** the earlier "0.9 mG at 100 mm" for a 3 g nail was 10x too high (CORRECTIONS).
+- **Decay library v0 (data/decaylib, docs/DECAY_LIBRARY.md):** 2878 SIMULATED entries with ground balance in the features; baseline 85 % on simulated data. Compact non-ferrous and rings overlap by physics.

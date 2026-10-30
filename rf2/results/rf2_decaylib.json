@@ -1,0 +1,60 @@
+{
+ "status": "SIMULATED library v0 + baseline softmax classifier; NOT field performance",
+ "entries": 2878,
+ "per_class": {
+  "compact_nonferrous": 519,
+  "ring_foil": 596,
+  "ferrous": 563,
+  "ground_viscous": 600,
+  "ground_conductive": 600
+ },
+ "test_accuracy": 0.851,
+ "accuracy_by_snr": {
+  "targets, SNR 3-10": 0.757,
+  "targets, SNR 10-100": 0.716,
+  "targets, SNR 100-1e+09": 0.781
+ },
+ "confusion_rows_true_cols_pred": {
+  "compact_nonferrous": {
+   "compact_nonferrous": 89,
+   "ring_foil": 16,
+   "ferrous": 10,
+   "ground_viscous": 22,
+   "ground_conductive": 3
+  },
+  "ring_foil": {
+   "compact_nonferrous": 29,
+   "ring_foil": 117,
+   "ferrous": 5,
+   "ground_viscous": 4,
+   "ground_conductive": 12
+  },
+  "ferrous": {
+   "compact_nonferrous": 2,
+   "ring_foil": 3,
+   "ferrous": 161,
+   "ground_viscous": 7,
+   "ground_conductive": 0
+  },
+  "ground_viscous": {
+   "compact_nonferrous": 11,
+   "ring_foil": 1,
+   "ferrous": 2,
+   "ground_viscous": 179,
+   "ground_conductive": 0
+  },
+  "ground_conductive": {
+   "compact_nonferrous": 0,
+   "ring_foil": 2,
+   "ferrous": 0,
+   "ground_viscous": 0,
+   "ground_conductive": 189
+  }
+ },
+ "receiver": {
+  "first_sample_us": 13.5,
+  "dt_us": 0.5,
+  "samples": 1000,
+  "sigma_per_sample_uV": 0.154
+ }
+}

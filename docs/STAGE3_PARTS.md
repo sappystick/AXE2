@@ -59,7 +59,7 @@ Depth per switch (0.1 / 1 / 20 g):
 - **Size of the signal (MODELED, order of magnitude).**
   - A 3 g steel nail is about a sphere of 0.38 cm3 with an apparent susceptibility near 3 (shape-limited).
   - In 50 uT it carries m = 3 V B / mu0, about 4.6e-5 A m2.
-  - Its field is about 0.9 mG at 100 mm and 0.11 mG at 200 mm. Against the MMC5983MA's 0.4 mG rms (vendor, UNVERIFIED): useful to about 100-150 mm, more for long iron lying along the field.
+  - CORRECTED (docs/CORRECTIONS.md, rf2_fluxgate.py): a compact 3 g lump gives about 6.5 nT at 100 mm (not 0.9 mG); a nail along the field 222 nT. The MMC5983MA (0.4 mG = 40 nT rms, now verified) sees only elongated or large iron; the fluxgate gradiometer is the real candidate.
 - **The catch.** Swinging the head rotates the sensor in the 500 mG Earth field: the orientation from the BMI270 (its aux I2C hub is made for this) must be removed at better than 0.1 % to see a 0.5 mG nail.
 - **The TX pulse.** 1.2 mT = 12 G at the centre, above the MMC5983MA's +-8 G range. Its SET / RESET pulse restores the sensor after each TX pulse, and readings are taken in the quiet window. The LIS2MDL's +-50 G range tolerates the pulse but is noisier.
 - **Status:** worth a bench test; datasheets to fetch.

@@ -1,0 +1,91 @@
+{
+ "status": "ASSUMED values are marked. Iron in the Earth's field carries an induced moment m = V chi_eff B_E / mu0; gold has none. What limits it in a",
+ "targets": [
+  {
+   "target": "3 g lump (sphere)",
+   "mass_g": 3.0,
+   "moment_Am2": 4.56e-05,
+   "field_at_100mm_nT": 6.53,
+   "detection": {
+    "mismatch 0.001": {
+     "floor_nT": 50.045,
+     "range_mm": 25
+    },
+    "mismatch 0.0001": {
+     "floor_nT": 5.045,
+     "range_mm": 70
+    },
+    "mismatch 1e-05": {
+     "floor_nT": 0.545,
+     "range_mm": 160
+    }
+   }
+  },
+  {
+   "target": "nail 50 x 3 mm along the field",
+   "mass_g": 2.8,
+   "moment_Am2": 0.00155,
+   "field_at_100mm_nT": 221.74,
+   "detection": {
+    "mismatch 0.001": {
+     "floor_nT": 50.045,
+     "range_mm": 110
+    },
+    "mismatch 0.0001": {
+     "floor_nT": 5.045,
+     "range_mm": 250
+    },
+    "mismatch 1e-05": {
+     "floor_nT": 0.545,
+     "range_mm": 525
+    }
+   }
+  },
+  {
+   "target": "nail 50 x 3 mm across the field",
+   "mass_g": 2.8,
+   "moment_Am2": 2.84e-05,
+   "field_at_100mm_nT": 4.06,
+   "detection": {
+    "mismatch 0.001": {
+     "floor_nT": 50.045,
+     "range_mm": 20
+    },
+    "mismatch 0.0001": {
+     "floor_nT": 5.045,
+     "range_mm": 60
+    },
+    "mismatch 1e-05": {
+     "floor_nT": 0.545,
+     "range_mm": 135
+    }
+   }
+  },
+  {
+   "target": "100 g lump (sphere)",
+   "mass_g": 100.0,
+   "moment_Am2": 0.00152,
+   "field_at_100mm_nT": 217.61,
+   "detection": {
+    "mismatch 0.001": {
+     "floor_nT": 50.045,
+     "range_mm": 110
+    },
+    "mismatch 0.0001": {
+     "floor_nT": 5.045,
+     "range_mm": 250
+    },
+    "mismatch 1e-05": {
+     "floor_nT": 0.545,
+     "range_mm": 520
+    }
+   }
+  }
+ ],
+ "tx_at_sensor_mT": 1.218,
+ "notes": [
+  "the head sensor sees about 1.2 mT at each TX pulse: far above a fluxgate's range (typically +-100 uT, UNVERIFIED); it must recover before the quiet-window reading (bench: recovery time)",
+  "its permalloy core is itself a small magnetic and conductive target for the mono (bench: mono residual with and without the sensor in place)",
+  "residual mismatch is set by calibration (rotate the head in a clean area; 12-parameter fit per sensor: offsets, gains, non-orthogonality) and by temperature"
+ ]
+}
