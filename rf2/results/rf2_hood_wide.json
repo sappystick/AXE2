@@ -1,0 +1,412 @@
+{
+ "status": "Here the ferrite is a WIDE layer over the head (the image-plane mechanism that the 'ideal plate' check confirmed): a full-face disc or an annulus,",
+ "cases": [
+  {
+   "case": "disc r 0-114, 0.5 mm (fits option B), 26 turns",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 392.0,
+   "I_A": 7.42,
+   "first_gate_us": 17.78,
+   "axis_uT_100_300": [
+    476.7,
+    45.57
+   ],
+   "B_max_ferrite_mT": 259.7,
+   "mass_g": 93.1,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 342,
+    "5.0 g": 435,
+    "20.0 g": 521
+   },
+   "head_mm": 15.65,
+   "fits_option_B": true,
+   "turns": 26,
+   "saturation_margin_100C": 1.46
+  },
+  {
+   "case": "disc r 0-114, 0.5 mm (fits option B), 23 turns (L back to about 323 uH)",
+   "former": "rect 5 x 6 first 23",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 310.4,
+   "I_A": 8.34,
+   "first_gate_us": 16.04,
+   "axis_uT_100_300": [
+    476.55,
+    45.41
+   ],
+   "B_max_ferrite_mT": 257.8,
+   "mass_g": 93.1,
+   "mono_depth_mm": {
+    "0.1 g": 186,
+    "1.0 g": 336,
+    "5.0 g": 427,
+    "20.0 g": 510
+   },
+   "head_mm": 15.65,
+   "fits_option_B": true,
+   "turns": 23,
+   "saturation_margin_100C": 1.47
+  },
+  {
+   "case": "disc r 0-114, 1.0 mm, 26 turns",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 397.0,
+   "I_A": 7.38,
+   "first_gate_us": 17.88,
+   "axis_uT_100_300": [
+    480.35,
+    45.72
+   ],
+   "B_max_ferrite_mT": 108.8,
+   "mass_g": 186.2,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 342,
+    "5.0 g": 436,
+    "20.0 g": 522
+   },
+   "head_mm": 16.15,
+   "fits_option_B": false,
+   "turns": 26,
+   "saturation_margin_100C": 3.49
+  },
+  {
+   "case": "disc r 0-114, 1.0 mm, 23 turns (L back to about 323 uH)",
+   "former": "rect 5 x 6 first 23",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 314.1,
+   "I_A": 8.29,
+   "first_gate_us": 16.12,
+   "axis_uT_100_300": [
+    480.27,
+    45.57
+   ],
+   "B_max_ferrite_mT": 108.0,
+   "mass_g": 186.2,
+   "mono_depth_mm": {
+    "0.1 g": 186,
+    "1.0 g": 337,
+    "5.0 g": 427,
+    "20.0 g": 511
+   },
+   "head_mm": 16.15,
+   "fits_option_B": false,
+   "turns": 23,
+   "saturation_margin_100C": 3.52
+  },
+  {
+   "case": "disc r 0-114, 2.0 mm, 26 turns",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 402.1,
+   "I_A": 7.33,
+   "first_gate_us": 17.98,
+   "axis_uT_100_300": [
+    483.5,
+    45.94
+   ],
+   "B_max_ferrite_mT": 57.2,
+   "mass_g": 372.4,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 343,
+    "5.0 g": 437,
+    "20.0 g": 524
+   },
+   "head_mm": 17.15,
+   "fits_option_B": false,
+   "turns": 26,
+   "saturation_margin_100C": 6.64
+  },
+  {
+   "case": "disc r 0-114, 2.0 mm, 23 turns (L back to about 323 uH)",
+   "former": "rect 5 x 6 first 23",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 317.9,
+   "I_A": 8.24,
+   "first_gate_us": 16.21,
+   "axis_uT_100_300": [
+    483.45,
+    45.8
+   ],
+   "B_max_ferrite_mT": 56.9,
+   "mass_g": 372.4,
+   "mono_depth_mm": {
+    "0.1 g": 186,
+    "1.0 g": 338,
+    "5.0 g": 429,
+    "20.0 g": 513
+   },
+   "head_mm": 17.15,
+   "fits_option_B": false,
+   "turns": 23,
+   "saturation_margin_100C": 6.68
+  },
+  {
+   "case": "annulus r 60-114, 1.0 mm, 26 turns",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 394.9,
+   "I_A": 7.4,
+   "first_gate_us": 17.84,
+   "axis_uT_100_300": [
+    464.05,
+    45.27
+   ],
+   "B_max_ferrite_mT": 107.2,
+   "mass_g": 134.6,
+   "mono_depth_mm": {
+    "0.1 g": 181,
+    "1.0 g": 341,
+    "5.0 g": 435,
+    "20.0 g": 521
+   },
+   "head_mm": 16.15,
+   "fits_option_B": false,
+   "turns": 26,
+   "saturation_margin_100C": 3.54
+  },
+  {
+   "case": "annulus r 60-114, 1.0 mm, 23 turns (L back to about 323 uH)",
+   "former": "rect 5 x 6 first 23",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 312.4,
+   "I_A": 8.32,
+   "first_gate_us": 16.09,
+   "axis_uT_100_300": [
+    463.76,
+    45.11
+   ],
+   "B_max_ferrite_mT": 106.4,
+   "mass_g": 134.6,
+   "mono_depth_mm": {
+    "0.1 g": 185,
+    "1.0 g": 336,
+    "5.0 g": 426,
+    "20.0 g": 510
+   },
+   "head_mm": 16.15,
+   "fits_option_B": false,
+   "turns": 23,
+   "saturation_margin_100C": 3.57
+  },
+  {
+   "case": "annulus r 85-114, 1.0 mm, 26 turns",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 387.6,
+   "I_A": 7.47,
+   "first_gate_us": 17.69,
+   "axis_uT_100_300": [
+    443.75,
+    44.58
+   ],
+   "B_max_ferrite_mT": 101.2,
+   "mass_g": 82.7,
+   "mono_depth_mm": {
+    "0.1 g": 179,
+    "1.0 g": 339,
+    "5.0 g": 433,
+    "20.0 g": 519
+   },
+   "head_mm": 16.15,
+   "fits_option_B": false,
+   "turns": 26,
+   "saturation_margin_100C": 3.75
+  },
+  {
+   "case": "annulus r 85-114, 1.0 mm, 23 turns (L back to about 323 uH)",
+   "former": "rect 5 x 6 first 23",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 306.5,
+   "I_A": 8.39,
+   "first_gate_us": 15.96,
+   "axis_uT_100_300": [
+    443.24,
+    44.42
+   ],
+   "B_max_ferrite_mT": 100.4,
+   "mass_g": 82.7,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 334,
+    "5.0 g": 424,
+    "20.0 g": 508
+   },
+   "head_mm": 16.15,
+   "fits_option_B": false,
+   "turns": 23,
+   "saturation_margin_100C": 3.79
+  }
+ ],
+ "plate_width_sweep": [
+  {
+   "case": "plate 2 mm 3C90 r 0-114 (26 turns)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 402.1,
+   "I_A": 7.33,
+   "first_gate_us": 17.98,
+   "axis_uT_100_300": [
+    483.5,
+    45.94
+   ],
+   "B_max_ferrite_mT": 57.2,
+   "mass_g": 372.4,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 343,
+    "5.0 g": 437,
+    "20.0 g": 524
+   },
+   "plate_r_mm": 114,
+   "head_mm": null,
+   "fits_option_B": true,
+   "saturation_margin_100C": 6.64
+  },
+  {
+   "case": "plate 2 mm 3C90 r 0-170 (26 turns)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 530.7,
+   "I_A": 6.38,
+   "first_gate_us": 20.37,
+   "axis_uT_100_300": [
+    563.02,
+    50.12
+   ],
+   "B_max_ferrite_mT": 95.2,
+   "mass_g": 828.0,
+   "mono_depth_mm": {
+    "0.1 g": 186,
+    "1.0 g": 357,
+    "5.0 g": 452,
+    "20.0 g": 539
+   },
+   "plate_r_mm": 170,
+   "head_mm": null,
+   "fits_option_B": false,
+   "saturation_margin_100C": 3.99
+  },
+  {
+   "case": "plate 2 mm 3C90 r 0-300 (26 turns)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 548.5,
+   "I_A": 6.28,
+   "first_gate_us": 20.68,
+   "axis_uT_100_300": [
+    610.69,
+    58.92
+   ],
+   "B_max_ferrite_mT": 100.0,
+   "mass_g": 2578.6,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 378,
+    "5.0 g": 478,
+    "20.0 g": 568
+   },
+   "plate_r_mm": 300,
+   "head_mm": null,
+   "fits_option_B": false,
+   "saturation_margin_100C": 3.8
+  },
+  {
+   "case": "plate 2 mm 3C90 r 0-600 (26 turns)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 550.9,
+   "I_A": 6.26,
+   "first_gate_us": 20.72,
+   "axis_uT_100_300": [
+    621.98,
+    64.23
+   ],
+   "B_max_ferrite_mT": 100.6,
+   "mass_g": 10314.5,
+   "mono_depth_mm": {
+    "0.1 g": 199,
+    "1.0 g": 392,
+    "5.0 g": 499,
+    "20.0 g": 596
+   },
+   "plate_r_mm": 600,
+   "head_mm": null,
+   "fits_option_B": false,
+   "saturation_margin_100C": 3.78
+  },
+  {
+   "case": "plate 2 mm 3C90 r 0-1500 (26 turns)",
+   "former": "rect 5 x 6",
+   "hood": "wide",
+   "t_mm": 0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 551.2,
+   "I_A": 6.26,
+   "first_gate_us": 20.72,
+   "axis_uT_100_300": [
+    623.44,
+    65.48
+   ],
+   "B_max_ferrite_mT": 100.7,
+   "mass_g": 64465.5,
+   "mono_depth_mm": {
+    "0.1 g": 200,
+    "1.0 g": 396,
+    "5.0 g": 509,
+    "20.0 g": 611
+   },
+   "plate_r_mm": 1500,
+   "head_mm": null,
+   "fits_option_B": false,
+   "saturation_margin_100C": 3.77
+  }
+ ]
+}

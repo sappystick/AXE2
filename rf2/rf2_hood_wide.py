@@ -6,6 +6,7 @@ clearance; thicker layers raise the head by the excess). Each layer is also run 
 value (323 uH), so the first gate stays early (fewer turns: the last turns of the 5 x 6 fill, top row first, are removed).
 Same solver, checks and depth chain as rf2_hood.py. MODELED; the ferrite is DC and lossless (no viscosity), and the effect on the quadrupole receive
 boards under the ferrite is not modeled.
+Plate-width sweep: the same 2 mm plate out to r 114 / 170 / 300 / 600 / 1500 mm shows the gain needs the ferrite to extend well beyond the coil.
 usage: python3 rf2/rf2_hood_wide.py -> rf2/results/rf2_hood_wide.json"""
 import os, sys, json, math, time
 import numpy as np
@@ -33,4 +34,9 @@ if __name__ == "__main__":
         H.coil = lambda nm, n=n, C_=C_: coil_n(n) if nm == name else C_(nm)
         res["cases"].append(H.run(f"{lab}, {n} turns (L back to about 323 uH)", name, "wide", 0, "3C90 MnZn", boxes=boxes, extra=dict(extra, turns=n)))
         H.coil = C_; print("t", round(time.time() - t0), flush=True)
+    # why a head-sized layer gains little: the same 2 mm 3C90 plate widened past the head (the image needs the plate well beyond the coil radius)
+    res["plate_width_sweep"] = []
+    for rmax in (114, 170, 300, 600, 1500):
+        res["plate_width_sweep"].append(H.run(f"plate 2 mm 3C90 r 0-{rmax} (26 turns)", "rect 5 x 6", "wide", 0, "3C90 MnZn", boxes=[(0.0, rmax, 12.6, 14.6)],
+                                              extra=dict(plate_r_mm=rmax, head_mm=None, fits_option_B=rmax <= 114)))
     json.dump(res, open(os.path.join(OUT, "rf2_hood_wide.json"), "w"), indent=1, default=float); print("done", round(time.time() - t0))

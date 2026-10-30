@@ -290,3 +290,46 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Field ripple around the ring:** 20 mm below the coil 0.4-1.2 % for 0.8 mm waves (the twist cuts it 3x), 5 % for a 3 mm wave without a twist; 100 mm down it is 0.0 % in every case.
 - **Reading:** the field at depth comes from the turns' enclosed area and current (the coil's dipole moment). A wave of n >= 6 per circuit is a high-order ripple, gone within about 1/n of the radius. At equal energy the wave only re-shuffles the turns: no depth gain; a small loss for large waves, which pull copper inward.
 - **Not modeled:** the wave's extra crossover capacitance and the winding labour.
+
+## 22. Ferrite hood and focusing coil formers (2026-10-30; rf2/rf2_hood.py, rf2/rf2_hood_wide.py; MODELED)
+- **Method:**
+  - axisymmetric flux-function solver (the ARX hood_axi scheme, vectorised; 380 x 413 graded grid out to 4 m);
+  - only the ferrite's reaction field is taken from the grid and added to the exact Biot-Savart field;
+  - L = exact air L + reaction flux;
+  - gate recomputed for each L;
+  - mono channel, 10.8 mJ, gold in air.
+- **Checks:**
+  - air grid vs Biot-Savart: within 0.25 % at 50-600 mm;
+  - ideal plate (mu 1e5): L 546.4 uH vs image method 548.2.
+- **Materials** (Ferroxcube sheets, DATASHEET_LOG RF2-DS-FERRITE): 3C90, 4A11, 4C65; a flexible sheet at mu 150 (UNVERIFIED); tile fill 0.95 (ASSUMED).
+- **Results (0.1 / 1 / 5 / 20 g mono depth, mm):**
+
+| Case | L uH | Gate us | Depth | Peak B in ferrite | Ferrite mass | Head |
+|---|---|---|---|---|---|---|
+| option B, no hood | 323 | 16.3 | 183 / 340 / 434 / 521 | - | - | 15.65 |
+| cap 0.5-2.0 mm (3C90 or flex sheet) over the bundle | 349-356 | 16.9-17.0 | 179-180 / 338 / 432 / 518-519 | 43-163 mT | 14-58 g | 15.65-16.95 |
+| L 1.0 mm (cap + outer wall) | 445 | 18.8 | 165 / 323 / 414 / 497 | 281 mT | 62 g | 15.95 |
+| U 0.5-2.0 mm, full walls (3C90 / 4A11 / 4C65) | 579-667 | 21.2-22.6 | 146-153 / 319-322 / 412-415 / 496-499 | 239-667 mT (0.5 mm and 4A11 saturate) | 43-208 g | 15.65-16.95 |
+| U 1.0 mm, half walls | 456 | 19.0 | 167 / 331 / 424 / 509 | 251 mT | 68 g | 15.95 |
+| owner taper (wide top), no hood / + U 1.0 | 322 / 666 | 16.3 / 22.6 | 182 / 338 / 431 / 518; 145 / 317 / 409 / 494 | - / 363 mT | - / 96 g | |
+| focus former low 4 x 7, no hood / + cap 2.0 (fits) | 319 / 370 | 16.2 / 17.3 | 184 / 339 / 433 / 520; 178 / 336 / 430 / 516 | - / 49 mT | - / 67 g | 15.65 |
+| full-face disc r 0-114, 0.5 / 1.0 / 2.0 mm, 26 turns | 392-402 | 17.8-18.0 | 182 / 342-343 / 435-437 / 521-524 | 57-260 mT | 93-372 g | 15.65-17.15 |
+| same discs, 23 turns (L back to 310-318 uH) | 310-318 | 16.0-16.2 | 186 / 336-338 / 427-429 / 510-513 | | | |
+| annulus r 60-114 or r 85-114, 1.0 mm | 388-395 | 17.7-17.8 | 179-181 / 339-341 / 433-435 / 519-521 | 101-107 mT | 83-135 g | 16.15 |
+| 2 mm plate widened to r 170 / 300 / 600 / 1500 (outside the head) | 531-551 | 20.4-20.7 | 186-200 / 357-396 / 452-509 / 539-611 | | 0.8-64 kg | |
+
+- **Reading:**
+  - Ferrite wrapped round the winding (cap, L, U, the Rodin principle) stores more energy next to the wires: L up to 2x, the gate 4-6 us later. It adds no field at depth: -1 to -7 %.
+  - A ferrite layer acts as a mirror only where it reaches well beyond the coil. The coil sits at the head's rim, so a layer inside the head gives at most +0.9 % (2 mm full disc, 372 g).
+  - The width sweep shows the gain only appears with the plate at r 300-1500 mm, converging on the ideal-plate bound.
+  - Formers: the taper and the low focus former are neutral bare (within 0.6 %) and lose under any wrapped hood.
+- **Decision:** no ferrite hood for depth in option B. A thin ferrite layer may still be worth it for something else, to be studied separately:
+  - shielding the coil from the display and CB1D electronics above it;
+  - stability against the hand and shaft.
+  Both would need the magnetic-viscosity measurement first.
+- **Correction:** the earlier ideal-cap figure (231 / 410 / 523 / 629 mm, section 20) kept the 16.3 us gate. With the gate recomputed it is 202 / 402 / 518 / 623 mm, and it needs a plate far wider than the head (docs/CORRECTIONS.md).
+- **Not modeled:**
+  - frequency roll-off of mu;
+  - ferrite loss and magnetic viscosity;
+  - non-linear B-H (the saturating cases are optimistic);
+  - the quadrupole boards under a ferrite layer.

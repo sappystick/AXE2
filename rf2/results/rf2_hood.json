@@ -1,0 +1,714 @@
+{
+ "status": "with it, for option B (head 15.65 mm, display at z 13.1). MODELED; ASSUMED values are marked.",
+ "grid": [
+  380,
+  413
+ ],
+ "validation": {
+  "air_grid_vs_biot_savart_pct": {
+   "50 mm": -0.03,
+   "100 mm": 0.23,
+   "300 mm": 0.24,
+   "600 mm": -0.11
+  },
+  "ideal_plate": {
+   "case": "CHECK: ideal plate mu 1e5, 20 mm thick, r 0-1500 at z 13.1 (image method: 548.2 uH, 231 / 410 / 523 / 629 mm)",
+   "former": "rect 5 x 6",
+   "hood": "plate",
+   "t_mm": 20,
+   "walls": null,
+   "material": "ideal (mu 1e5)",
+   "L_uH": 546.4,
+   "I_A": 6.29,
+   "first_gate_us": 20.65,
+   "axis_uT_100_300": [
+    633.09,
+    67.64
+   ],
+   "B_max_ferrite_mT": 15.7,
+   "mass_g": 644654.8,
+   "mono_depth_mm": {
+    "0.1 g": 202,
+    "1.0 g": 402,
+    "5.0 g": 518,
+    "20.0 g": 623
+   },
+   "saturation_margin_100C": null
+  }
+ },
+ "cases": [
+  {
+   "case": "option B coil, no hood",
+   "former": "rect 5 x 6",
+   "hood": "none",
+   "t_mm": 0,
+   "walls": null,
+   "material": null,
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "first_gate_us": 16.33,
+   "axis_uT_100_300": [
+    440.77,
+    45.98
+   ],
+   "B_max_ferrite_mT": 0.0,
+   "mass_g": 0.0,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "head_mm": 15.65,
+   "fits_option_B": true,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "case": "cap 0.5 mm 3C90",
+   "former": "rect 5 x 6",
+   "hood": "cap",
+   "t_mm": 0.5,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 351.9,
+   "I_A": 7.83,
+   "first_gate_us": 16.95,
+   "axis_uT_100_300": [
+    432.8,
+    44.77
+   ],
+   "B_max_ferrite_mT": 162.8,
+   "mass_g": 14.4,
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 338,
+    "5.0 g": 432,
+    "20.0 g": 518
+   },
+   "cap_top_mm": 12.9,
+   "head_mm": 15.65,
+   "inner_wall_r_mm": null,
+   "outer_wall_r_mm": null,
+   "fits_option_B": true,
+   "fits_if_shell_wall_thinned": true,
+   "saturation_margin_100C": 2.33,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -1.6,
+    "1.0 g": -0.6,
+    "5.0 g": -0.5,
+    "20.0 g": -0.6
+   }
+  },
+  {
+   "case": "cap 0.5 mm flex sheet",
+   "former": "rect 5 x 6",
+   "hood": "cap",
+   "t_mm": 0.5,
+   "walls": null,
+   "material": "flex sheet (UNVERIFIED mu 150)",
+   "L_uH": 348.5,
+   "I_A": 7.87,
+   "first_gate_us": 16.87,
+   "axis_uT_100_300": [
+    433.68,
+    44.91
+   ],
+   "B_max_ferrite_mT": 143.5,
+   "mass_g": 14.4,
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 338,
+    "5.0 g": 432,
+    "20.0 g": 519
+   },
+   "cap_top_mm": 12.9,
+   "head_mm": 15.65,
+   "inner_wall_r_mm": null,
+   "outer_wall_r_mm": null,
+   "fits_option_B": true,
+   "fits_if_shell_wall_thinned": true,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -1.6,
+    "1.0 g": -0.6,
+    "5.0 g": -0.5,
+    "20.0 g": -0.4
+   }
+  },
+  {
+   "case": "cap 1.0 mm 3C90",
+   "former": "rect 5 x 6",
+   "hood": "cap",
+   "t_mm": 1.0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 354.0,
+   "I_A": 7.81,
+   "first_gate_us": 17.0,
+   "axis_uT_100_300": [
+    432.59,
+    44.73
+   ],
+   "B_max_ferrite_mT": 69.9,
+   "mass_g": 28.8,
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 338,
+    "5.0 g": 432,
+    "20.0 g": 518
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": null,
+   "outer_wall_r_mm": null,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 5.43,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -1.6,
+    "1.0 g": -0.6,
+    "5.0 g": -0.5,
+    "20.0 g": -0.6
+   }
+  },
+  {
+   "case": "cap 2.0 mm 3C90",
+   "former": "rect 5 x 6",
+   "hood": "cap",
+   "t_mm": 2.0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 356.0,
+   "I_A": 7.79,
+   "first_gate_us": 17.04,
+   "axis_uT_100_300": [
+    432.55,
+    44.71
+   ],
+   "B_max_ferrite_mT": 42.8,
+   "mass_g": 57.7,
+   "mono_depth_mm": {
+    "0.1 g": 179,
+    "1.0 g": 338,
+    "5.0 g": 432,
+    "20.0 g": 518
+   },
+   "cap_top_mm": 14.4,
+   "head_mm": 16.95,
+   "inner_wall_r_mm": null,
+   "outer_wall_r_mm": null,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 8.88,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -2.2,
+    "1.0 g": -0.6,
+    "5.0 g": -0.5,
+    "20.0 g": -0.6
+   }
+  },
+  {
+   "case": "L 1.0 mm 3C90 (cap + outer wall)",
+   "former": "rect 5 x 6",
+   "hood": "L",
+   "t_mm": 1.0,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 444.5,
+   "I_A": 6.97,
+   "first_gate_us": 18.8,
+   "axis_uT_100_300": [
+    392.53,
+    38.54
+   ],
+   "B_max_ferrite_mT": 280.7,
+   "mass_g": 61.7,
+   "mono_depth_mm": {
+    "0.1 g": 165,
+    "1.0 g": 323,
+    "5.0 g": 414,
+    "20.0 g": 497
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": null,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.35,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -9.8,
+    "1.0 g": -5.0,
+    "5.0 g": -4.6,
+    "20.0 g": -4.6
+   }
+  },
+  {
+   "case": "U 0.5 mm 3C90, full walls",
+   "former": "rect 5 x 6",
+   "hood": "U",
+   "t_mm": 0.5,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 627.4,
+   "I_A": 5.87,
+   "first_gate_us": 21.98,
+   "axis_uT_100_300": [
+    356.2,
+    35.68
+   ],
+   "B_max_ferrite_mT": 667.1,
+   "mass_g": 42.6,
+   "mono_depth_mm": {
+    "0.1 g": 149,
+    "1.0 g": 320,
+    "5.0 g": 412,
+    "20.0 g": 497
+   },
+   "cap_top_mm": 12.9,
+   "head_mm": 15.65,
+   "inner_wall_r_mm": 104.1,
+   "outer_wall_r_mm": 114.7,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": true,
+   "saturation_margin_100C": 0.57,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -18.6,
+    "1.0 g": -5.9,
+    "5.0 g": -5.1,
+    "20.0 g": -4.6
+   }
+  },
+  {
+   "case": "U 1.0 mm 3C90, full walls",
+   "former": "rect 5 x 6",
+   "hood": "U",
+   "t_mm": 1.0,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 645.3,
+   "I_A": 5.79,
+   "first_gate_us": 22.27,
+   "axis_uT_100_300": [
+    355.13,
+    35.43
+   ],
+   "B_max_ferrite_mT": 366.3,
+   "mass_g": 91.5,
+   "mono_depth_mm": {
+    "0.1 g": 147,
+    "1.0 g": 319,
+    "5.0 g": 412,
+    "20.0 g": 496
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": 103.6,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.04,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -19.7,
+    "1.0 g": -6.2,
+    "5.0 g": -5.1,
+    "20.0 g": -4.8
+   }
+  },
+  {
+   "case": "U 1.0 mm 3C90, half walls",
+   "former": "rect 5 x 6",
+   "hood": "U",
+   "t_mm": 1.0,
+   "walls": "half",
+   "material": "3C90 MnZn",
+   "L_uH": 456.0,
+   "I_A": 6.88,
+   "first_gate_us": 19.03,
+   "axis_uT_100_300": [
+    401.02,
+    40.7
+   ],
+   "B_max_ferrite_mT": 250.6,
+   "mass_g": 67.7,
+   "mono_depth_mm": {
+    "0.1 g": 167,
+    "1.0 g": 331,
+    "5.0 g": 424,
+    "20.0 g": 509
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": 103.6,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.52,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -8.7,
+    "1.0 g": -2.6,
+    "5.0 g": -2.3,
+    "20.0 g": -2.3
+   }
+  },
+  {
+   "case": "U 2.0 mm 3C90, full walls",
+   "former": "rect 5 x 6",
+   "hood": "U",
+   "t_mm": 2.0,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 666.8,
+   "I_A": 5.69,
+   "first_gate_us": 22.61,
+   "axis_uT_100_300": [
+    355.68,
+    35.31
+   ],
+   "B_max_ferrite_mT": 239.0,
+   "mass_g": 208.1,
+   "mono_depth_mm": {
+    "0.1 g": 146,
+    "1.0 g": 319,
+    "5.0 g": 412,
+    "20.0 g": 496
+   },
+   "cap_top_mm": 14.4,
+   "head_mm": 16.95,
+   "inner_wall_r_mm": 102.6,
+   "outer_wall_r_mm": 116.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.59,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -20.2,
+    "1.0 g": -6.2,
+    "5.0 g": -5.1,
+    "20.0 g": -4.8
+   }
+  },
+  {
+   "case": "U 1.0 mm 4A11 NiZn, full walls",
+   "former": "rect 5 x 6",
+   "hood": "U",
+   "t_mm": 1.0,
+   "walls": "full",
+   "material": "4A11 NiZn",
+   "L_uH": 637.3,
+   "I_A": 5.82,
+   "first_gate_us": 22.14,
+   "axis_uT_100_300": [
+    356.22,
+    35.58
+   ],
+   "B_max_ferrite_mT": 358.7,
+   "mass_g": 91.5,
+   "mono_depth_mm": {
+    "0.1 g": 148,
+    "1.0 g": 320,
+    "5.0 g": 412,
+    "20.0 g": 496
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": 103.6,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 0.64,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -19.1,
+    "1.0 g": -5.9,
+    "5.0 g": -5.1,
+    "20.0 g": -4.8
+   }
+  },
+  {
+   "case": "U 1.0 mm 4C65 NiZn, full walls",
+   "former": "rect 5 x 6",
+   "hood": "U",
+   "t_mm": 1.0,
+   "walls": "full",
+   "material": "4C65 NiZn",
+   "L_uH": 578.7,
+   "I_A": 6.11,
+   "first_gate_us": 21.19,
+   "axis_uT_100_300": [
+    365.17,
+    36.77
+   ],
+   "B_max_ferrite_mT": 300.6,
+   "mass_g": 91.5,
+   "mono_depth_mm": {
+    "0.1 g": 153,
+    "1.0 g": 322,
+    "5.0 g": 415,
+    "20.0 g": 499
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": 103.6,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.13,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -16.4,
+    "1.0 g": -5.3,
+    "5.0 g": -4.4,
+    "20.0 g": -4.2
+   }
+  },
+  {
+   "case": "owner taper (wide top), no hood",
+   "former": "taper, wide top (owner), both faces sloped",
+   "hood": "none",
+   "t_mm": 0,
+   "walls": null,
+   "material": null,
+   "L_uH": 321.7,
+   "I_A": 8.19,
+   "first_gate_us": 16.29,
+   "axis_uT_100_300": [
+    434.27,
+    45.29
+   ],
+   "B_max_ferrite_mT": 0.0,
+   "mass_g": 0.0,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 338,
+    "5.0 g": 431,
+    "20.0 g": 518
+   },
+   "head_mm": 15.65,
+   "fits_option_B": true,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -0.5,
+    "1.0 g": -0.6,
+    "5.0 g": -0.7,
+    "20.0 g": -0.6
+   }
+  },
+  {
+   "case": "owner taper (wide top) + U 1.0 3C90",
+   "former": "taper, wide top (owner), both faces sloped",
+   "hood": "U",
+   "t_mm": 1.0,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 665.7,
+   "I_A": 5.7,
+   "first_gate_us": 22.59,
+   "axis_uT_100_300": [
+    351.97,
+    34.72
+   ],
+   "B_max_ferrite_mT": 363.3,
+   "mass_g": 95.8,
+   "mono_depth_mm": {
+    "0.1 g": 145,
+    "1.0 g": 317,
+    "5.0 g": 409,
+    "20.0 g": 494
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": 102.0,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.05,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -20.8,
+    "1.0 g": -6.8,
+    "5.0 g": -5.8,
+    "20.0 g": -5.2
+   }
+  },
+  {
+   "case": "taper wide bottom + U 1.0 3C90",
+   "former": "taper, wide bottom, outer wall flush",
+   "hood": "U",
+   "t_mm": 1.0,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 606.6,
+   "I_A": 5.97,
+   "first_gate_us": 21.65,
+   "axis_uT_100_300": [
+    368.86,
+    36.45
+   ],
+   "B_max_ferrite_mT": 359.8,
+   "mass_g": 95.8,
+   "mono_depth_mm": {
+    "0.1 g": 152,
+    "1.0 g": 322,
+    "5.0 g": 414,
+    "20.0 g": 498
+   },
+   "cap_top_mm": 13.4,
+   "head_mm": 15.95,
+   "inner_wall_r_mm": 102.0,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.06,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -16.9,
+    "1.0 g": -5.3,
+    "5.0 g": -4.6,
+    "20.0 g": -4.4
+   }
+  },
+  {
+   "case": "focus former low 4 x 7, no hood",
+   "former": "low 4 x 7",
+   "hood": "none",
+   "t_mm": 0,
+   "walls": null,
+   "material": null,
+   "L_uH": 319.3,
+   "I_A": 8.22,
+   "first_gate_us": 16.23,
+   "axis_uT_100_300": [
+    445.04,
+    45.95
+   ],
+   "B_max_ferrite_mT": 0.0,
+   "mass_g": 0.0,
+   "mono_depth_mm": {
+    "0.1 g": 184,
+    "1.0 g": 339,
+    "5.0 g": 433,
+    "20.0 g": 520
+   },
+   "head_mm": 15.65,
+   "fits_option_B": true,
+   "saturation_margin_100C": null,
+   "depth_vs_optionB_pct": {
+    "0.1 g": 0.5,
+    "1.0 g": -0.3,
+    "5.0 g": -0.2,
+    "20.0 g": -0.2
+   }
+  },
+  {
+   "case": "focus former low 4 x 7 + cap 2.0 3C90",
+   "former": "low 4 x 7",
+   "hood": "cap",
+   "t_mm": 2.0,
+   "walls": null,
+   "material": "3C90 MnZn",
+   "L_uH": 369.6,
+   "I_A": 7.64,
+   "first_gate_us": 17.31,
+   "axis_uT_100_300": [
+    431.48,
+    43.94
+   ],
+   "B_max_ferrite_mT": 48.6,
+   "mass_g": 67.2,
+   "mono_depth_mm": {
+    "0.1 g": 178,
+    "1.0 g": 336,
+    "5.0 g": 430,
+    "20.0 g": 516
+   },
+   "cap_top_mm": 12.8,
+   "head_mm": 15.65,
+   "inner_wall_r_mm": null,
+   "outer_wall_r_mm": null,
+   "fits_option_B": true,
+   "fits_if_shell_wall_thinned": true,
+   "saturation_margin_100C": 7.82,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -2.7,
+    "1.0 g": -1.2,
+    "5.0 g": -0.9,
+    "20.0 g": -1.0
+   }
+  },
+  {
+   "case": "focus former low 4 x 7 + U 0.5 3C90 (cap 2.0 would need walls outside the window)",
+   "former": "low 4 x 7",
+   "hood": "U",
+   "t_mm": 0.5,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 572.4,
+   "I_A": 6.14,
+   "first_gate_us": 21.08,
+   "axis_uT_100_300": [
+    374.4,
+    37.05
+   ],
+   "B_max_ferrite_mT": 588.5,
+   "mass_g": 39.8,
+   "mono_depth_mm": {
+    "0.1 g": 155,
+    "1.0 g": 323,
+    "5.0 g": 415,
+    "20.0 g": 499
+   },
+   "cap_top_mm": 11.3,
+   "head_mm": 15.65,
+   "inner_wall_r_mm": 102.5,
+   "outer_wall_r_mm": 114.7,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": true,
+   "saturation_margin_100C": 0.65,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -15.3,
+    "1.0 g": -5.0,
+    "5.0 g": -4.4,
+    "20.0 g": -4.2
+   }
+  },
+  {
+   "case": "focus former low 4 x 7 + L 1.0 3C90",
+   "former": "low 4 x 7",
+   "hood": "L",
+   "t_mm": 1.0,
+   "walls": "full",
+   "material": "3C90 MnZn",
+   "L_uH": 449.2,
+   "I_A": 6.93,
+   "first_gate_us": 18.9,
+   "axis_uT_100_300": [
+    398.5,
+    38.88
+   ],
+   "B_max_ferrite_mT": 277.9,
+   "mass_g": 61.2,
+   "mono_depth_mm": {
+    "0.1 g": 166,
+    "1.0 g": 324,
+    "5.0 g": 415,
+    "20.0 g": 498
+   },
+   "cap_top_mm": 11.8,
+   "head_mm": 15.65,
+   "inner_wall_r_mm": null,
+   "outer_wall_r_mm": 115.2,
+   "fits_option_B": false,
+   "fits_if_shell_wall_thinned": false,
+   "saturation_margin_100C": 1.37,
+   "depth_vs_optionB_pct": {
+    "0.1 g": -9.3,
+    "1.0 g": -4.7,
+    "5.0 g": -4.4,
+    "20.0 g": -4.4
+   }
+  }
+ ],
+ "seconds": 207
+}
