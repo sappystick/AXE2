@@ -530,25 +530,26 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.1,
+   "seconds": 3.6,
    "why": "",
    "tail": "",
-   "fingerprint": "8e67df5d234c2805",
+   "fingerprint": "768c2ba66d9e63a3",
    "inputs": {
-    "tests/selftest.py": "0f5e416340",
+    "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "f344af3d92",
+    "run.py": "e56d5e731d",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-30T12:27:00",
+   "finished": "2026-10-30T13:58:37",
    "log": "state/logs/selftest.log",
    "history": [
     3.3,
-    3.1
+    3.1,
+    3.6
    ]
   },
   "study:mp1v2_chain": {
@@ -557,17 +558,37 @@
    "seconds": 0.2,
    "why": "",
    "tail": "",
-   "fingerprint": "4c07aef7af4a941c",
+   "fingerprint": "a8aed84c46b62d4c",
    "inputs": {
-    "rf2/head/rf2_mp1v2_chain.py": "49f4bfd798",
+    "rf2/head/rf2_mp1v2_chain.py": "a6fdbba092",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "src/simcache.py": "7a842c96b9",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c"
    },
-   "finished": "2026-10-30T12:49:27",
+   "finished": "2026-10-30T13:58:33",
    "log": "state/logs/study_mp1v2_chain.log",
    "history": [
     0.2,
+    0.2,
+    0.2
+   ]
+  },
+  "study:mp1v2_protect": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "d4e6bfcdf20db0e0",
+   "inputs": {
+    "rf2/head/rf2_mp1v2_protect.py": "9002dd46d7",
+    "rf2/head/rf2_mp1v2_chain.py": "a6fdbba092",
+    "src/simcache.py": "7a842c96b9",
+    "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c"
+   },
+   "finished": "2026-10-30T13:58:33",
+   "log": "state/logs/study_mp1v2_protect.log",
+   "history": [
     0.2
    ]
   }
@@ -914,6 +935,21 @@
    "seconds": 0.2,
    "results": {
     "study:mp1v2_chain": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T13:58:33",
+   "seconds": 0.5,
+   "results": {
+    "study:mp1v2_chain": "pass",
+    "study:mp1v2_protect": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T13:58:37",
+   "seconds": 3.6,
+   "results": {
+    "selftest": "pass"
    }
   }
  ]

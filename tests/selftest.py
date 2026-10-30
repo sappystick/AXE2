@@ -4,6 +4,7 @@
   spice       the PSpice -> ngspice converter (VSWITCH, IF, | and &, noiseless resistors); the TI models in data/spice are byte-identical to their recorded SHA-256
   qualify     the op-amp bench PASSES the TI LMH6629 model and FAILS a wrong model (a behavioral 80 MHz op-amp): it has discriminating power
   runner      run.py names the input that changed, notices a missing output and a re-run dependency, and skips an unchanged step
+  netlist     the MP1 v2 chain's DC operating point is physical (clamp diodes < 1 nA at rest)
 Writes state/selftest.json.   usage: python3 tests/selftest.py   (make test)"""
 import os, sys, json, time, shutil, tempfile, hashlib, types, traceback
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -112,6 +113,13 @@ def _():
     bad = [x["name"] for x in r["rows"] if not x["ok"]]
     assert not r["ok"] and len(bad) >= 3, bad
     return f"{len(bad)} rows fail: {', '.join(bad[:5])}"
+@test("MP1 v2 chain netlist: the DC operating point is physical (reverse-biased clamp diodes carry < 1 nA; the stand-in stage's nodes agree)")
+def _():
+    import rf2_mp1v2_chain as Ch, rf2_mp1v2_protect as Pr
+    for cl in ("1 x BAV199", "2 x BAV199 + 2 x BAT54S (typ)"):
+        A, so = Ch.ng(Pr.netlist("IXTY01N100D", Pr.CLAMPS[cl], Ch.SRC_AC) + ".op\n", "run\nprint @dua00[id] @dda00[id] v(xo.p) v(xo.d)\nwrdata {OUT} v(clA)")
+        vals = {l.split("=")[0].strip(): float(l.split("=")[1]) for l in so.splitlines() if l.startswith(("@", "v(xo"))}
+        assert abs(vals["@dua00[id]"]) < 1e-9 and abs(vals["@dda00[id]"]) < 1e-9 and abs(vals["v(xo.p)"] - vals["v(xo.d)"]) < 1e-3, (cl, vals)
 # ------------------------------------------------------------------------------------------------ runner
 import run as R
 @test("runner: skips an unchanged step, names the changed input, sees a missing output and a re-run dependency")

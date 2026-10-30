@@ -17,7 +17,8 @@ OUT = os.path.join(HERE, "out"); os.makedirs(OUT, exist_ok=True)
 LMH = os.path.join(ROOT, "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib")
 # The difference stage is a BEHAVIORAL OPA211 (TI OPA211 datasheet SBOS377L: GBW 80 MHz, en 1.1 nV/rtHz, rail-to-rail within 0.2 V assumed), not TI's macro model: the TI OPAx211 file
 # (data/spice/OPAx211) converts to ngspice (spice_compat.py) but then shows a constant +2.85 V output offset, so it is not used until that is understood. The stage sits after the
-# gain-10 stage, so its noise enters the input divided by 10. It has no anti-windup, so the overload RECOVERY is measured at the LMH6629 stage outputs (the subject of the study),
+# gain-10 stage, so its noise enters the input divided by 10. Its output limit is a smooth tanh toward the rails less 0.2 V: a max()/min() clamp here made ngspice return an
+# inconsistent DC operating point (the pole node at 6.4 V with the output at 2.5 V), which showed up as about 150 uA of false current in the reverse-biased clamp diodes (fixed 2026-10-30). It has no anti-windup, so the overload RECOVERY is measured at the LMH6629 stage outputs (the subject of the study),
 # not at this stand-in stage's output (a first version measured at the output and showed a 30 us 'recovery' that was this stage's own windup).
 OPA = os.path.join(OUT, "bopa211.lib")
 open(OPA, "w").write(""".SUBCKT OPAx211 INP INM VCC VEE OUT
@@ -25,7 +26,7 @@ Ren INP ip 73
 Ed d 0 ip INM 1e5
 Rp d p 1k
 Cp p 0 199n
-Bo OUT 0 v = max(v(VEE) + 0.2, min(v(VCC) - 0.2, v(p)))
+Bo OUT 0 v = (v(VCC) + v(VEE)) / 2 + ((v(VCC) - v(VEE)) / 2 - 0.2) * tanh((v(p) - (v(VCC) + v(VEE)) / 2) / ((v(VCC) - v(VEE)) / 2 - 0.2))
 .ENDS
 """)
 sys.path.insert(0, os.path.join(ROOT, "src")); from simcache import memo

@@ -1,0 +1,299 @@
+{
+ "status": "MODELED: TI LMH6629 macro model; limiters and diodes are datasheet-anchored generics; capacitance curves read by eye; diode fits extrapolated past their tables",
+ "charge_equivalent_pF": {
+  "IXTY08N100D2@Q": {
+   "Coss": 14.04,
+   "Crss": 6.3
+  },
+  "IXTY01N100D@Q": {
+   "Coss": 7.69,
+   "Crss": 2.37
+  },
+  "IXTY08N50D2@Q230": {
+   "Coss": 34.44,
+   "Crss": 15.08
+  }
+ },
+ "runs": [
+  {
+   "question": "0. accuracy check against the chain study (reltol 1e-4, all nodes saved)",
+   "limiter": "IXTY01N100D",
+   "clamp": "1 x BAV199 (generic, as the chain study)",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 6.04,
+   "peak_coil_V": 463.8,
+   "peak_lmh_input_mA": 19.51,
+   "peak_per_diode_mA": {
+    "BAV199_GEN x1": 195.6
+   },
+   "settle_us": 17.54,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "0. accuracy check against the chain study (reltol 1e-4, all nodes saved)",
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199 (generic, as the chain study)",
+   "noise_per_leg_nV": 1.933,
+   "peak_clamp_node_V": 6.53,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 24.39,
+   "peak_per_diode_mA": {
+    "BAV199_GEN x1": 432.3
+   },
+   "settle_us": 19.48,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY01N100D",
+   "clamp": "1 x BAV199",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 6.31,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 22.18,
+   "peak_per_diode_mA": {
+    "BAV199_MAX x1": 193.8
+   },
+   "settle_us": 17.4,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY01N100D",
+   "clamp": "2 x BAV199",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 6.18,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 20.91,
+   "peak_per_diode_mA": {
+    "BAV199_MAX x2": 97.2
+   },
+   "settle_us": 17.39,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY01N100D",
+   "clamp": "BAV199 + BAT54S (max)",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 6.06,
+   "peak_coil_V": 463.8,
+   "peak_lmh_input_mA": 19.75,
+   "peak_per_diode_mA": {
+    "BAT54_MAX x1": 165.9,
+    "BAV199_MAX x1": 29.0
+   },
+   "settle_us": 17.51,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY01N100D",
+   "clamp": "BAV199 + BAT54S (typ)",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 5.65,
+   "peak_coil_V": 463.8,
+   "peak_lmh_input_mA": 15.76,
+   "peak_per_diode_mA": {
+    "BAT54_TYP x1": 199.8,
+    "BAV199_MAX x1": 8.0
+   },
+   "settle_us": 17.57,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY01N100D",
+   "clamp": "2 x BAT54S (max)",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 5.8,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 17.16,
+   "peak_per_diode_mA": {
+    "BAT54_MAX x2": 99.4
+   },
+   "settle_us": 17.46,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY01N100D",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 5.52,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 14.46,
+   "peak_per_diode_mA": {
+    "BAT54_TYP x2": 100.9,
+    "BAV199_MAX x2": 5.5
+   },
+   "settle_us": 17.5,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY08N100D2",
+   "clamp": "1 x BAV199",
+   "noise_per_leg_nV": 1.933,
+   "peak_clamp_node_V": 6.59,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 24.96,
+   "peak_per_diode_mA": {
+    "BAV199_MAX x1": 430.9
+   },
+   "settle_us": 19.17,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "1. clamp",
+   "limiter": "IXTY08N100D2",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "noise_per_leg_nV": 1.933,
+   "peak_clamp_node_V": 5.68,
+   "peak_coil_V": 463.6,
+   "peak_lmh_input_mA": 16.01,
+   "peak_per_diode_mA": {
+    "BAT54_TYP x2": 219.9,
+    "BAV199_MAX x2": 8.6
+   },
+   "settle_us": 19.59,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "3. Coss(V) charge-equivalent",
+   "limiter": "IXTY08N100D2@Q",
+   "clamp": "1 x BAV199",
+   "noise_per_leg_nV": 1.933,
+   "peak_clamp_node_V": 6.42,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 23.31,
+   "peak_per_diode_mA": {
+    "BAV199_MAX x1": 287.2
+   },
+   "settle_us": 19.18,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "3. Coss(V) charge-equivalent",
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "1 x BAV199",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 6.24,
+   "peak_coil_V": 463.8,
+   "peak_lmh_input_mA": 21.54,
+   "peak_per_diode_mA": {
+    "BAV199_MAX x1": 143.1
+   },
+   "settle_us": 17.4,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "3. Coss(V) charge-equivalent",
+   "limiter": "IXTY01N100D@Q",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "noise_per_leg_nV": 2.211,
+   "peak_clamp_node_V": 5.48,
+   "peak_coil_V": 463.8,
+   "peak_lmh_input_mA": 14.1,
+   "peak_per_diode_mA": {
+    "BAT54_TYP x2": 75.6,
+    "BAV199_MAX x2": 5.4
+   },
+   "settle_us": 17.5,
+   "diodes_inside_IFRM": true,
+   "passes": false
+  },
+  {
+   "question": "2. cascode",
+   "limiter": "CASCODE:IXTY08N50D2@Q230",
+   "clamp": "1 x BAV199",
+   "noise_per_leg_nV": 1.862,
+   "peak_clamp_node_V": 6.82,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 27.32,
+   "peak_per_diode_mA": {
+    "BAV199_MAX x1": 640.5
+   },
+   "peak_vds_lower_V": 261.7,
+   "peak_vds_upper_V": 195.0,
+   "settle_us": 19.62,
+   "diodes_inside_IFRM": false,
+   "passes": false
+  },
+  {
+   "question": "2. cascode",
+   "limiter": "CASCODE:IXTY08N50D2@Q230",
+   "clamp": "2 x BAV199 + 2 x BAT54S (typ)",
+   "noise_per_leg_nV": 1.862,
+   "peak_clamp_node_V": 5.81,
+   "peak_coil_V": 463.7,
+   "peak_lmh_input_mA": 17.29,
+   "peak_per_diode_mA": {
+    "BAT54_TYP x2": 322.8,
+    "BAV199_MAX x2": 13.2
+   },
+   "peak_vds_lower_V": 262.3,
+   "peak_vds_upper_V": 194.7,
+   "settle_us": 20.16,
+   "diodes_inside_IFRM": false,
+   "passes": false
+  }
+ ],
+ "accuracy_check": {
+  "pairs_fast_vs_reference": [
+   {
+    "limiter": "IXTY01N100D",
+    "lmh_mA": [
+     19.51,
+     19.48
+    ],
+    "clamp_node_V": [
+     6.04,
+     6.03
+    ],
+    "settle_us": [
+     17.54,
+     17.53
+    ],
+    "noise_nV": [
+     2.211,
+     2.211
+    ]
+   },
+   {
+    "limiter": "IXTY08N100D2",
+    "lmh_mA": [
+     24.39,
+     24.31
+    ],
+    "clamp_node_V": [
+     6.53,
+     6.52
+    ],
+    "settle_us": [
+     19.48,
+     19.48
+    ],
+    "noise_nV": [
+     1.933,
+     1.933
+    ]
+   }
+  ],
+  "max_rel_diff": 0.0033,
+  "ok": true
+ },
+ "any_option_passes": false
+}

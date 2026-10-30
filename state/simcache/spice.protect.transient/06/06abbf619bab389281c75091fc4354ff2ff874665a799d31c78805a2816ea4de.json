@@ -1,0 +1,1 @@
+{"key": "06abbf619bab389281c75091fc4354ff2ff874665a799d31c78805a2816ea4de", "kind": "spice.protect.transient", "seconds": 7.168, "created": "2026-10-30T13:39:51", "value": {"peak_clamp_node_V": 5.52, "peak_coil_V": 463.7, "peak_lmh_input_mA": 14.46, "peak_per_diode_mA": {"BAT54_TYP x2": 100.9, "BAV199_MAX x2": 5.5}, "settle_us": 17.5}}

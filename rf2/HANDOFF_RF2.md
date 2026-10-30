@@ -566,30 +566,54 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 
   | Rin2 | Rf / Rg | gain | -3 dB | noise per leg equivalent (100 kHz) |
   |---|---|---|---|---|
-  | 47 | 240 / 26.7 | 23.5 | 25 MHz | 1.69 nV/rtHz |
-  | 47 | 90 / 10 | 23.5 | 25 MHz | 1.60 |
-  | 68 | 240 / 26.7 | 23.3 | 25 MHz | 1.81 |
-  | 100 | 240 / 26.7 | 23.3 | 25 MHz | **1.97** |
-  | 100 | 90 / 10 | 23.3 | 25 MHz | 1.89 |
+  | 47 | 240 / 26.7 | 23.5 | 25 MHz | 1.65 nV/rtHz |
+  | 47 | 90 / 10 | 23.5 | 25 MHz | 1.57 |
+  | 68 | 240 / 26.7 | 23.5 | 25 MHz | 1.77 |
+  | 100 | 240 / 26.7 | 23.4 | 25 MHz | **1.93** |
+  | 100 | 90 / 10 | 23.4 | 25 MHz | 1.86 |
   | v1 (3 x 470 ohm, OPA2211 difference amp) | | 9.9 | | 6.69 |
 
-  - **Noise:** 1.97 nV/rtHz per leg equivalent with the chosen values, not the 1.7 used in the depth model (about -2.5 % depth if the sixth-root rule of section 18 holds). It is still about 3.4 x below v1's modeled 6.7 (v1's real chain gain is 9.9, not 24, and its noise 6.7, not 5.0).
+  - **Noise:** 1.93 nV/rtHz per leg equivalent with the chosen values, not the 1.7 used in the depth model (about -2.1 % depth if the sixth-root rule of section 18 holds). (First reported as 1.97: the stand-in stage's DC-operating-point error, below, inflated it.) It is still about 3.4 x below v1's modeled 6.7 (v1's real chain gain is 9.9, not 24, and its noise 6.7, not 5.0).
   - **Amplifier input current:** with the coil released into the 460 V clamp the LMH6629 input takes **24 mA (Rin2 100) to 35 mA (Rin2 68)**; its rating is 10 mA. A second BAV199 pair on the amplifier input does not help. The clamp node reaches 6.5 V at about 0.4 A: the charge the limiter's Cds passes (24 pF x 460 V, about 11 nC with the linear capacitance; the datasheet's own C(V) slope suggests about half, an extrapolation past its 40 V graph) goes through the clamp diodes. The rest of the Rsrc sweep (47 to 220 ohm) leaves the peak unchanged: it is displacement current, set before the source resistor.
   - **Recovery:** the stage-1 outputs settle to 1 mV at the coil terminals after **19.5 us**, not inside the 16.3 us gate (14.7 us was the clamp node alone). The stand-in second stage is excluded (it has no anti-windup; an earlier version of this study measured 30 us at the output and that was the stand-in's own windup).
   - **Limiter candidates (the four IXYS sheets and the Infineon BAV199 uploaded 2026-10-30; DATASHEET_LOG RF2-DS-LIMITERS).** Same chain, Rin2 100, Rsrc 22, each limiter with its datasheet numbers (max RDS(on), Coss / Crss at 25 V held constant: pessimistic):
 
     | Limiter | BVDSX | RDS(on) max | Coss / Crss | clamp RS | noise per leg | clamp node peak | LMH6629 input peak | settles to 1 mV |
     |---|---|---|---|---|---|---|---|---|
-    | IXTY08N100D2 (chosen) | 1000 V | 21 ohm | 24 / 6.5 pF | 2 | 1.97 nV | 6.52 V | 24.3 mA | 19.5 us |
-    | **IXTY01N100D** | 1000 V | 80 ohm (50 typ) | 12 / 2 pF | 2 | 2.43 nV | 6.03 V | 19.5 mA | 17.5 us |
-    | IXTY02N50D | **500 V: fails rule 6** | 30 ohm | 25 / 5 pF | 2 | 2.01 nV | 6.50 V | 24.2 mA | 18.5 us |
-    | IXTY08N50D2 | **500 V: fails rule 6** | 4.6 ohm | 35 / 11 pF | 2 | 1.86 nV | 6.95 V | 28.5 mA | 20.9 us |
-    | IXTY08N100D2, clamp at its datasheet-MAX forward drop | 1000 V | 21 ohm | 24 / 6.5 pF | 4 | 1.95 nV | 7.34 V | 32.4 mA | 19.4 us |
-    | IXTY01N100D, clamp at max forward drop | 1000 V | 80 ohm | 12 / 2 pF | 4 | 2.34 nV | 6.40 V | 23.2 mA | 17.5 us |
+    | IXTY08N100D2 (chosen) | 1000 V | 21 ohm | 24 / 6.5 pF | 2 | 1.93 nV | 6.52 V | 24.3 mA | 19.5 us |
+    | **IXTY01N100D** | 1000 V | 80 ohm (50 typ) | 12 / 2 pF | 2 | 2.21 nV | 6.03 V | 19.5 mA | 17.5 us |
+    | IXTY02N50D | **500 V: fails rule 6** | 30 ohm | 25 / 5 pF | 2 | 1.95 nV | 6.50 V | 24.2 mA | 18.5 us |
+    | IXTY08N50D2 | **500 V: fails rule 6** | 4.6 ohm | 35 / 11 pF | 2 | 1.85 nV | 6.95 V | 28.5 mA | 20.9 us |
+    | IXTY08N100D2, clamp at its datasheet-MAX forward drop | 1000 V | 21 ohm | 24 / 6.5 pF | 4 | 1.93 nV | 7.34 V | 32.4 mA | 19.4 us |
+    | IXTY01N100D, clamp at max forward drop | 1000 V | 80 ohm | 12 / 2 pF | 4 | 2.21 nV | 6.40 V | 23.2 mA | 17.5 us |
 
-    - **What the comparison says.** The spike is displacement current through the limiter's Coss and Crss, so the part with the least capacitance protects best: the IXTY01N100D cuts the clamp-node peak by 0.5 V and the amplifier current by 20 %, and settles 2 us sooner. But it still has 19.5 mA (rating 10 mA) and 17.5 us (gate 16.3 us), and its 50-80 ohm channel costs 0.6 nV in noise (2.43 nV at the 80 ohm maximum; about 2.1 nV at the 50 ohm typical, by the same arithmetic). **No single candidate closes the design.** The two 500 V parts are out on rule 6 and are no better on the spike (the 4.6 ohm part is the quietest, 1.86 nV, but the worst spike).
+    - **What the comparison says.** The spike is displacement current through the limiter's Coss and Crss, so the part with the least capacitance protects best: the IXTY01N100D cuts the clamp-node peak by 0.5 V and the amplifier current by 20 %, and settles 2 us sooner. But it still has 19.5 mA (rating 10 mA) and 17.5 us (gate 16.3 us), and its 50-80 ohm channel costs noise (2.21 nV at the 80 ohm maximum against 1.93 nV). **No single candidate closes the design.** The two 500 V parts are out on rule 6 and are no better on the spike (the 4.6 ohm part is the quietest, 1.85 nV, but the worst spike).
     - **The clamp diode matters as much as the limiter.** Using the BAV199's datasheet-maximum forward drop (1.25 V at 150 mA) instead of the typical raises the clamp node to 7.3 V and the amplifier current to 32 mA for the current part. Both BAV199 sheets stop at 150 mA, so the diode's drop at the 0.4 A spike is an extrapolation either way.
     - **Next candidates to simulate (not done):** the IXTY01N100D with parallel or Schottky clamp devices (a lower drop at 0.4 A), a cascode of two 500 V devices (Coss in series is half, and 2 x 4.6 ohm is 9.2 ohm, but it needs voltage balancing and each device would see 230 V peak), and the datasheet's own Coss(V) fall beyond 40 V (an extrapolation).
+  - **Protection options (`rf2/head/rf2_mp1v2_protect.py`, step `study:mp1v2_protect`; owner 2026-10-30: clamp first, then a cascode, then the Coss(V) curves).** Diodes fitted to their datasheet forward-voltage tables (BAV199 maxima, identical in the Nexperia and Infineon sheets; BAT54 max from Diodes DS11005, typical from onsemi BAT54LT1/D; every fit extrapolates past its table to the 0.4 A spike). Rin2 100 ohm, Rsrc 22 ohm.
+
+    | Limiter | Clamp (per leg, each rail) | noise per leg | clamp node | LMH6629 input | settles | per-diode peak (rating) |
+    |---|---|---|---|---|---|---|
+    | IXTY01N100D | 1 x BAV199 (max) | 2.21 nV | 6.31 V | 22.2 mA | 17.4 us | 194 mA (500) |
+    | IXTY01N100D | 2 x BAV199 | 2.21 | 6.18 | 20.9 | 17.4 | 97 |
+    | IXTY01N100D | BAV199 + BAT54S (max) | 2.21 | 6.06 | 19.8 | 17.5 | BAT54 166 (300) |
+    | IXTY01N100D | BAV199 + BAT54S (typ) | 2.21 | 5.65 | 15.8 | 17.6 | BAT54 200 (300) |
+    | IXTY01N100D | 2 x BAT54S (max) | 2.21 | 5.80 | 17.2 | 17.5 | 99 (300) |
+    | IXTY01N100D | 2 x BAV199 + 2 x BAT54S (typ) | 2.21 | 5.52 | 14.5 | 17.5 | BAT54 101 (300) |
+    | IXTY08N100D2 | 1 x BAV199 (max) | 1.93 | 6.59 | 25.0 | 19.2 | 431 (500) |
+    | IXTY08N100D2 | 2 x BAV199 + 2 x BAT54S (typ) | 1.93 | 5.68 | 16.0 | 19.6 | BAT54 220 (300) |
+    | IXTY08N100D2, Coss(V) charge-equivalent (14.0 / 6.3 pF) | 1 x BAV199 | 1.93 | 6.42 | 23.3 | 19.2 | 287 |
+    | IXTY01N100D, Coss(V) charge-equivalent (7.7 / 2.4 pF) | 1 x BAV199 | 2.21 | 6.24 | 21.5 | 17.4 | 143 |
+    | **IXTY01N100D, Coss(V) charge-equivalent** | **2 x BAV199 + 2 x BAT54S (typ)** | 2.21 | **5.48** | **14.1** | 17.5 | BAT54 76 |
+    | Cascode 2 x IXTY08N50D2 (Coss(V) to 230 V) | 1 x BAV199 | **1.86** | 6.82 | 27.3 | 19.6 | 641 (**above 500**) |
+    | Cascode 2 x IXTY08N50D2 | 2 x BAV199 + 2 x BAT54S (typ) | 1.86 | 5.81 | 17.3 | 20.2 | BAT54 323 (**above 300**) |
+
+    - **1. Clamp:** a lower clamp drop is the strongest lever on the amplifier current: 22.2 -> 14.5 mA with two BAV199 and two typical BAT54S per rail. It does not change the noise (the clamps are reverse-biased at rest) or the settling. But it relies on the BAT54's typical forward drop: at its datasheet maximum the Schottky is no better than a BAV199 at 0.4 A (fit: 1.96 V against 1.55 V). The BAT54 has 2 uA maximum leakage (BAV199: 5 nA) and up to 10 pF.
+    - **2. Cascode:** two 500 V depletion FETs in series share the flyback (upper 195 V, lower 262 V peak, both under 80 % of 500 V) and give the lowest noise (1.86 nV). But the upper gate divider and the larger capacitances inject more charge: 27.3 mA with one BAV199, settling 19.6-20.2 us, and the clamp diodes exceed their repetitive ratings. Not better. Whether a two-device 500 V stack meets rule 6 (630 V parts) is also a rule question.
+    - **3. Coss(V):** integrating the datasheet curves to the real peak VDS (graph to 40 V, power-law extrapolation beyond) gives charge-equivalent capacitances of 14.0 pF (IXTY08N100D2) and 7.7 pF (IXTY01N100D) instead of the 24 / 12 pF at 25 V. The constant-capacitance results were pessimistic by only 3-7 % on the amplifier current: the charge below 10 V, where the capacitance is hundreds of pF, dominates.
+    - **No option passes** (amplifier input < 10 mA, settling < 16.3 us, diodes inside their repetitive ratings). The best, IXTY01N100D with two BAV199 and two BAT54S per rail, reaches 14.1 mA and 17.5 us. **Settling is set by the limiter, not the clamp** (17.4-17.6 us for every IXTY01N100D option, 19.2-19.6 us for the IXTY08N100D2). The coil node alone is quiet sooner (its 460 V clamp lasts L x I / V = 5.8 us, then about 6 us of critically damped ring-down), so the front end adds about 4-5 us.
+    - **Next levers (not yet simulated):** Rin2 150-220 ohm with the strong clamp (current down, noise up: about 2.4 nV); a lower clamp rail (a dedicated +3.3 V clamp rail would keep the clamp node further from the LMH6629's 5.3 V ESD knee); the limiter's recovery (gate network, Rsrc); or a first gate at about 18 us and its cost in small-target depth (rf2_timing).
+    - **Simulation note.** The stand-in second stage's output limit was a max() / min() behavioral source; it made ngspice return an inconsistent DC operating point (its pole node at 6.4 V while its output sat at 2.5 V), which appeared as about 150 uA of false current in the reverse-biased clamp diodes and inflated the noise (IXTY01N100D 2.43 -> 2.21 nV, IXTY08N100D2 1.97 -> 1.93 nV; the transients moved < 0.5 %). It is now a smooth tanh limit, and the self-test checks the operating point. Saving only the measured vectors and reltol 1e-3 made each transient about 30 x faster; the study re-runs two reference cases at the tight settings and agrees within 0.33 %.
   - **Clamp rail:** the clamp current goes into the +5VA rail (and AGND): 79 uJ per pulse into the rail's decoupling is about 1.6 V on 10 uF. The rail needs to absorb it (a larger reservoir, or a separate clamp rail) or the clamp must go elsewhere. v1 has the same issue.
   - **What it means:** the protection has to be redesigned before the board is laid out: reduce the injected charge (a lower-Coss limiter or a cascode / second device), a stiffer low-drop clamp (parallel devices) with a protected rail, and a series resistance that does not cost noise. Candidates to simulate next: parallel clamp diodes (RS 2 -> 1 -> 0.5 ohm), a Schottky second clamp, the datasheet C(V) slope, and a longer first gate (20 us costs 0.1 g depth, section 18).
   - **Model limits:** the FET is a level-1 model without Cgs (Ciss 325 pF is not in it), the BAV199 a generic diode, the second stage a behavioral op-amp, capacitances linear (a voltage-dependent version ran more than 14 minutes per transient and was abandoned).
