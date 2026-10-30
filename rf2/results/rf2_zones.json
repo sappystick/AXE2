@@ -1,0 +1,500 @@
+{
+ "status": "zone'; shielding, isolation, potting). MODELED; ASSUMED values are marked. Option-B geometry: rf2_thin option B (board tier z 5.6-7.2, CB1D board",
+ "coil": {
+  "L_uH": 323.4,
+  "I_A": 8.17,
+  "dIdt_A_per_us": 1.42
+ },
+ "zones": {
+  "CB1D (controller)": {
+   "centre": {
+    "at_mm": [
+     0.0,
+     0.0,
+     7.4
+    ],
+    "B_peak_mT": 1.218,
+    "dBdt_T_per_s": 211.9,
+    "EMF_1cm2_flat_loop_V": 0.021,
+    "M_1cm2_flat_loop_nH": 14.9007,
+    "current_step_equal_to_gate_noise_uA": 2.83
+   },
+   "edge nearest the coil": {
+    "at_mm": [
+     39.0,
+     0.0,
+     7.4
+    ],
+    "B_peak_mT": 1.349,
+    "dBdt_T_per_s": 234.8,
+    "EMF_1cm2_flat_loop_V": 0.023,
+    "M_1cm2_flat_loop_nH": 16.5082,
+    "current_step_equal_to_gate_noise_uA": 2.55
+   }
+  },
+  "AB1A (analog)": {
+   "centre": {
+    "at_mm": [
+     -22.6,
+     78.8,
+     6.4
+    ],
+    "B_peak_mT": 2.326,
+    "dBdt_T_per_s": 404.7,
+    "EMF_1cm2_flat_loop_V": 0.04,
+    "M_1cm2_flat_loop_nH": 28.4388,
+    "current_step_equal_to_gate_noise_uA": 1.48
+   },
+   "edge nearest the coil": {
+    "at_mm": [
+     -28.1,
+     98.0,
+     6.4
+    ],
+    "B_peak_mT": 6.743,
+    "dBdt_T_per_s": 1173.5,
+    "EMF_1cm2_flat_loop_V": 0.116,
+    "M_1cm2_flat_loop_nH": 81.4166,
+    "current_step_equal_to_gate_noise_uA": 0.52
+   }
+  },
+  "AB1B (analog)": {
+   "centre": {
+    "at_mm": [
+     -60.0,
+     55.9,
+     6.4
+    ],
+    "B_peak_mT": 2.326,
+    "dBdt_T_per_s": 404.7,
+    "EMF_1cm2_flat_loop_V": 0.04,
+    "M_1cm2_flat_loop_nH": 28.4388,
+    "current_step_equal_to_gate_noise_uA": 1.48
+   },
+   "edge nearest the coil": {
+    "at_mm": [
+     -74.6,
+     69.6,
+     6.4
+    ],
+    "B_peak_mT": 6.743,
+    "dBdt_T_per_s": 1173.5,
+    "EMF_1cm2_flat_loop_V": 0.116,
+    "M_1cm2_flat_loop_nH": 81.4166,
+    "current_step_equal_to_gate_noise_uA": 0.52
+   }
+  },
+  "MP1 (mono preamp)": {
+   "centre": {
+    "at_mm": [
+     -76.0,
+     14.0,
+     6.4
+    ],
+    "B_peak_mT": 2.085,
+    "dBdt_T_per_s": 362.8,
+    "EMF_1cm2_flat_loop_V": 0.036,
+    "M_1cm2_flat_loop_nH": 25.4997,
+    "current_step_equal_to_gate_noise_uA": 1.65
+   },
+   "edge nearest the coil": {
+    "at_mm": [
+     -88.0,
+     16.2,
+     6.4
+    ],
+    "B_peak_mT": 2.94,
+    "dBdt_T_per_s": 511.6,
+    "EMF_1cm2_flat_loop_V": 0.051,
+    "M_1cm2_flat_loop_nH": 35.9184,
+    "current_step_equal_to_gate_noise_uA": 1.17
+   }
+  },
+  "TXJ (coil-lead board)": {
+   "centre": {
+    "at_mm": [
+     -99.5,
+     3.4,
+     6.4
+    ],
+    "B_peak_mT": 5.236,
+    "dBdt_T_per_s": 911.1,
+    "EMF_1cm2_flat_loop_V": 0.09,
+    "M_1cm2_flat_loop_nH": 63.5944,
+    "current_step_equal_to_gate_noise_uA": 0.66
+   },
+   "edge nearest the coil": {
+    "at_mm": [
+     -106.1,
+     3.6,
+     6.4
+    ],
+    "B_peak_mT": 7.036,
+    "dBdt_T_per_s": 1224.5,
+    "EMF_1cm2_flat_loop_V": 0.107,
+    "M_1cm2_flat_loop_nH": 75.4699,
+    "current_step_equal_to_gate_noise_uA": 0.56
+   }
+  },
+  "LR1 display flex (centre)": {
+   "centre": {
+    "at_mm": [
+     0.0,
+     0.0,
+     13.2
+    ],
+    "B_peak_mT": 1.213,
+    "dBdt_T_per_s": 211.2,
+    "EMF_1cm2_flat_loop_V": 0.021,
+    "M_1cm2_flat_loop_nH": 14.8487,
+    "current_step_equal_to_gate_noise_uA": 2.84
+   },
+   "edge nearest the coil": {
+    "at_mm": [
+     103.0,
+     -1.0,
+     13.2
+    ],
+    "B_peak_mT": 5.655,
+    "dBdt_T_per_s": 984.2,
+    "EMF_1cm2_flat_loop_V": 0.079,
+    "M_1cm2_flat_loop_nH": 55.2428,
+    "current_step_equal_to_gate_noise_uA": 0.76
+   }
+  },
+  "QA / QB receive boards": {
+   "centre": {
+    "at_mm": [
+     0.0,
+     0.0,
+     2.4
+    ],
+    "B_peak_mT": 1.213,
+    "dBdt_T_per_s": 211.1,
+    "EMF_1cm2_flat_loop_V": 0.021,
+    "M_1cm2_flat_loop_nH": 14.8453,
+    "current_step_equal_to_gate_noise_uA": 2.84
+   },
+   "edge nearest the coil": {
+    "at_mm": [
+     113.0,
+     -1.0,
+     2.4
+    ],
+    "B_peak_mT": 5.892,
+    "dBdt_T_per_s": 1025.4,
+    "EMF_1cm2_flat_loop_V": 0.035,
+    "M_1cm2_flat_loop_nH": 24.5212,
+    "current_step_equal_to_gate_noise_uA": 1.72
+   }
+  }
+ },
+ "echoes": [
+  {
+   "object": "CB1D (controller): one SOLID 35 um plane",
+   "where": "CB1D (controller)",
+   "tau_us": 17.831,
+   "V_gate": 0.0131,
+   "x_gate_noise": 312000.0,
+   "drift_x_noise_per_K": 102.0,
+   "note": "x 2 planes"
+  },
+  {
+   "object": "CB1D (controller): hatched plane with a CLOSED 0.5 mm border",
+   "where": "CB1D (controller)",
+   "tau_us": 1.191,
+   "V_gate": 0.000139,
+   "x_gate_noise": 3300.0,
+   "drift_x_noise_per_K": 164.0,
+   "note": ""
+  },
+  {
+   "object": "CB1D (controller): hatched 1.0 / 0.25 mm, border slit open",
+   "where": "CB1D (controller)",
+   "tau_us": 0.201,
+   "V_gate": 6.65e-28,
+   "x_gate_noise": 1.58e-20,
+   "drift_x_noise_per_K": 4.94e-21,
+   "note": ""
+  },
+  {
+   "object": "AB1A (analog): one SOLID 35 um plane",
+   "where": "AB1A (analog)",
+   "tau_us": 9.137,
+   "V_gate": 0.00626,
+   "x_gate_noise": 149000.0,
+   "drift_x_noise_per_K": 456.0,
+   "note": "x 2 planes"
+  },
+  {
+   "object": "AB1A (analog): hatched plane with a CLOSED 0.5 mm border",
+   "where": "AB1A (analog)",
+   "tau_us": 1.055,
+   "V_gate": 2.48e-05,
+   "x_gate_noise": 590.0,
+   "drift_x_noise_per_K": 33.3,
+   "note": ""
+  },
+  {
+   "object": "AB1A (analog): hatched 1.0 / 0.25 mm, border slit open",
+   "where": "AB1A (analog)",
+   "tau_us": 0.201,
+   "V_gate": 7.16e-28,
+   "x_gate_noise": 1.7e-20,
+   "drift_x_noise_per_K": 5.33e-21,
+   "note": ""
+  },
+  {
+   "object": "AB1B (analog): one SOLID 35 um plane",
+   "where": "AB1B (analog)",
+   "tau_us": 9.137,
+   "V_gate": 0.00626,
+   "x_gate_noise": 149000.0,
+   "drift_x_noise_per_K": 456.0,
+   "note": "x 2 planes"
+  },
+  {
+   "object": "AB1B (analog): hatched plane with a CLOSED 0.5 mm border",
+   "where": "AB1B (analog)",
+   "tau_us": 1.055,
+   "V_gate": 2.48e-05,
+   "x_gate_noise": 590.0,
+   "drift_x_noise_per_K": 33.3,
+   "note": ""
+  },
+  {
+   "object": "AB1B (analog): hatched 1.0 / 0.25 mm, border slit open",
+   "where": "AB1B (analog)",
+   "tau_us": 0.201,
+   "V_gate": 7.05e-28,
+   "x_gate_noise": 1.67e-20,
+   "drift_x_noise_per_K": 5.24e-21,
+   "note": ""
+  },
+  {
+   "object": "MP1 (mono preamp): one SOLID 35 um plane",
+   "where": "MP1 (mono preamp)",
+   "tau_us": 5.571,
+   "V_gate": 0.000504,
+   "x_gate_noise": 12000.0,
+   "drift_x_noise_per_K": 90.2,
+   "note": "x 2 planes"
+  },
+  {
+   "object": "MP1 (mono preamp): hatched plane with a CLOSED 0.5 mm border",
+   "where": "MP1 (mono preamp)",
+   "tau_us": 0.955,
+   "V_gate": 1.2e-06,
+   "x_gate_noise": 28.5,
+   "drift_x_noise_per_K": 1.79,
+   "note": ""
+  },
+  {
+   "object": "MP1 (mono preamp): hatched 1.0 / 0.25 mm, border slit open",
+   "where": "MP1 (mono preamp)",
+   "tau_us": 0.201,
+   "V_gate": 1.8e-28,
+   "x_gate_noise": 4.28e-21,
+   "drift_x_noise_per_K": 1.34e-21,
+   "note": ""
+  },
+  {
+   "object": "TXJ (coil-lead board): one SOLID 35 um plane",
+   "where": "TXJ (coil-lead board)",
+   "tau_us": 2.986,
+   "V_gate": 5.02e-05,
+   "x_gate_noise": 1190.0,
+   "drift_x_noise_per_K": 20.8,
+   "note": "x 1 planes"
+  },
+  {
+   "object": "TXJ (coil-lead board): hatched plane with a CLOSED 0.5 mm border",
+   "where": "TXJ (coil-lead board)",
+   "tau_us": 0.829,
+   "V_gate": 1.07e-07,
+   "x_gate_noise": 2.55,
+   "drift_x_noise_per_K": 0.186,
+   "note": ""
+  },
+  {
+   "object": "TXJ (coil-lead board): hatched 1.0 / 0.25 mm, border slit open",
+   "where": "TXJ (coil-lead board)",
+   "tau_us": 0.201,
+   "V_gate": 1.69e-28,
+   "x_gate_noise": 4.02e-21,
+   "drift_x_noise_per_K": 1.26e-21,
+   "note": ""
+  },
+  {
+   "object": "aluminium electrolytic can 6.3 x 5.4 mm (wall 0.25 ASSUMED)",
+   "where": "r 30",
+   "tau_us": 9.389,
+   "V_gate": 0.000974,
+   "x_gate_noise": 23100.0,
+   "drift_x_noise_per_K": 66.7,
+   "note": ""
+  },
+  {
+   "object": "same can at the analog boards",
+   "where": "r 82",
+   "tau_us": 9.389,
+   "V_gate": 0.00317,
+   "x_gate_noise": 75300.0,
+   "drift_x_noise_per_K": 217.0,
+   "note": ""
+  },
+  {
+   "object": "IXTY08N100D2 TO-252 tab (copper 6.5 x 6 x 0.5, as a disc)",
+   "where": "MP1",
+   "tau_us": 19.842,
+   "V_gate": 0.000114,
+   "x_gate_noise": 2710.0,
+   "drift_x_noise_per_K": 1.87,
+   "note": ""
+  },
+  {
+   "object": "522 SK9822-EC20 lead frames (copper 2 x 2 x 0.2 mm, ASSUMED)",
+   "where": "display",
+   "tau_us": 2.475,
+   "V_gate": 0.000232,
+   "x_gate_noise": 5500.0,
+   "drift_x_noise_per_K": 120.0,
+   "note": ""
+  },
+  {
+   "object": "SH1 shield: ONE outer ring left CLOSED (1 mm, no slit) - failure case",
+   "where": "SH1",
+   "tau_us": 2.546,
+   "V_gate": 0.912,
+   "x_gate_noise": 21700000.0,
+   "drift_x_noise_per_K": 457000.0,
+   "note": "rule 5: every SH1 ring has its slit"
+  },
+  {
+   "object": "MG 841AR nickel paint, closed band 1 mm wide inside the shell (1.6 ohm/sq)",
+   "where": "shell",
+   "tau_us": 0.001,
+   "V_gate": 0.0,
+   "x_gate_noise": 0.0,
+   "drift_x_noise_per_K": 0.0,
+   "note": ""
+  }
+ ],
+ "potting": [
+  {
+   "potting": "syntactic foam, glass bubbles (eps 1.8 UNVERIFIED)",
+   "eps_r": 1.8,
+   "C_winding_pF": 95.0,
+   "C_node_pF": 463.1,
+   "first_gate_us": 15.96,
+   "mono_depth_mm": {
+    "0.1 g": 185,
+    "1.0 g": 340,
+    "20.0 g": 521
+   }
+  },
+  {
+   "potting": "earlier assumption (eps 2.5)",
+   "eps_r": 2.5,
+   "C_winding_pF": 131.9,
+   "C_node_pF": 500.0,
+   "first_gate_us": 16.33,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "20.0 g": 521
+   }
+  },
+  {
+   "potting": "silicone gel (eps 2.8 UNVERIFIED)",
+   "eps_r": 2.8,
+   "C_winding_pF": 147.7,
+   "C_node_pF": 515.8,
+   "first_gate_us": 16.48,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 340,
+    "20.0 g": 521
+   }
+  },
+  {
+   "potting": "MG 832TC epoxy (eps 3.7 at 1 MHz, DF 0.1; datasheet)",
+   "eps_r": 3.7,
+   "C_winding_pF": 195.2,
+   "C_node_pF": 563.3,
+   "first_gate_us": 16.93,
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 339,
+    "20.0 g": 520
+   }
+  }
+ ],
+ "led_rings": [
+  {
+   "r_mm": 104,
+   "leds": 82,
+   "x_gate_noise": 2140.0
+  },
+  {
+   "r_mm": 96,
+   "leds": 75,
+   "x_gate_noise": 1310.0
+  },
+  {
+   "r_mm": 88,
+   "leds": 69,
+   "x_gate_noise": 685.0
+  },
+  {
+   "r_mm": 80,
+   "leds": 63,
+   "x_gate_noise": 416.0
+  },
+  {
+   "r_mm": 72,
+   "leds": 57,
+   "x_gate_noise": 280.0
+  },
+  {
+   "r_mm": 64,
+   "leds": 50,
+   "x_gate_noise": 196.0
+  },
+  {
+   "r_mm": 56,
+   "leds": 44,
+   "x_gate_noise": 145.0
+  },
+  {
+   "r_mm": 48,
+   "leds": 38,
+   "x_gate_noise": 109.0
+  },
+  {
+   "r_mm": 40,
+   "leds": 31,
+   "x_gate_noise": 80.3
+  },
+  {
+   "r_mm": 32,
+   "leds": 25,
+   "x_gate_noise": 59.8
+  },
+  {
+   "r_mm": 24,
+   "leds": 19,
+   "x_gate_noise": 42.8
+  },
+  {
+   "r_mm": 16,
+   "leds": 13,
+   "x_gate_noise": 28.1
+  },
+  {
+   "r_mm": 8,
+   "leds": 6,
+   "x_gate_noise": 12.7
+  }
+ ]
+}

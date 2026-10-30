@@ -355,3 +355,48 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - the heavier, wider head's swing and coverage of small targets in trash;
   - pinpoint precision (wider coil, wider response);
   - the mechanical and display changes.
+
+## 24. Option B zone map: stray field, coupling, metal echoes, potting (2026-10-30; rf2/rf2_zones.py; MODELED)
+- **Transmit field at the peak current (8.17 A) / largest dB/dt (clamp 460 V):**
+
+| Zone | B centre / nearest edge (mT) | EMF in a flat 1 cm2 loop (V) | Receive coupling of a flat 1 cm2 loop (nH) | Loop current step = gate noise (uA) |
+|---|---|---|---|---|
+| CB1D | 1.22 / 1.35 | 0.021-0.023 | 15-17 | 2.8 / 2.6 |
+| AB1A / AB1B | 2.3 / 6.7 | 0.040-0.116 | 28-81 | 1.5 / 0.52 |
+| MP1 | 2.1 / 2.9 | 0.036-0.051 | 25-36 | 1.7 / 1.2 |
+| TXJ | 5.2 / 7.0 | 0.090-0.107 | 64-75 | 0.66 / 0.56 |
+| display flex | 1.2 / 5.7 | 0.021-0.079 | 15-55 | 2.8 / 0.76 |
+
+- **Metal echoes at the first gate (x gate noise) and their drift (x noise per K):**
+
+| Object | Echo | Drift / K | Rule |
+|---|---|---|---|
+| solid 35 um plane | CB1D 3.1e5, AB1 1.5e5, MP1 1.2e4, TXJ 1.2e3 | 21-456 | banned |
+| hatched plane, CLOSED 0.5 mm border | CB1D 3300, AB1 590, MP1 29, TXJ 2.6 | 0.2-164 | banned: every hatch border gets a slit |
+| hatched 1.0 / 0.25 mm, border slit | about 1e-20 | 0 | required |
+| aluminium electrolytic can | 2.3e4-7.5e4 | 67-217 | banned in the head: MLCC only |
+| IXTY08N100D2 TO-252 tab (tau 19.8 us) | 2710 | 1.9 | stand it edge-on to the field, or another package (stage 3) |
+| 522 SK9822-EC20 lead frames (2 x 2 x 0.2 mm ASSUMED) | 5500 (ring r 104: 2140, r 96: 1310, r 88: 685) | 120 | measure the real lead frame; outer rings dominate (see the mitigations) |
+| SH1 with one ring left closed | 2.2e7 | 4.6e5 | every ring slit (already the design) |
+| MG 841AR nickel paint (1.6 ohm/sq), even closed | 0 (tau 1 ns) | 0 | usable as an electrostatic shield coat |
+
+- **LED mitigations, in order:**
+  1. the real lead-frame copper from the SK9822-EC20 drawing (the 2 x 2 x 0.2 mm is an upper bound);
+  2. a display-temperature sensor and firmware subtraction of the fixed head offset (a 1 % model of the drift cuts it 100x);
+  3. move or thin the outer two rings.
+- **Potting next to the coil (winding capacitance -> gate -> depth 0.1 / 1 / 20 g):**
+  - syntactic foam eps 1.8 (UNVERIFIED): 95 pF, 15.96 us, 185 / 340 / 521;
+  - eps 2.5: 132 pF, 16.33 us, 183 / 340 / 521;
+  - silicone eps 2.8 (UNVERIFIED): 148 pF, 16.48 us, 182 / 340 / 521;
+  - MG 832TC epoxy eps 3.7 (datasheet; DF 0.1 at 1 MHz, lossy): 195 pF, 16.93 us, 180 / 339 / 520.
+  - **Coil channel: low-permittivity syntactic foam; no 832TC epoxy within a few mm of the winding.**
+- **Layout rules this gives:**
+  - nothing switches during the receive window (CB1D clocks gated or spread, LEDs dark: already the timing plan);
+  - analog and TXJ loops under 0.1 cm2, laid edge-on (vertical) where the field is vertical;
+  - differential receive paths;
+  - no metal cans, no solid planes, no closed borders anywhere in the head.
+- **Not modeled:**
+  - non-axisymmetric plate modes (the ring model keeps only the symmetric one);
+  - the turn-off ramp (a step is used, conservative for fast objects);
+  - mechanical motion of boards relative to the coil (a second drift source: needs potting stiffness);
+  - the real lead-frame and tab geometry.

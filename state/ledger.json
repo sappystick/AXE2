@@ -239,6 +239,16 @@
    "fingerprint": "296bada3d9faeae2",
    "finished": "2026-10-30T08:10:21",
    "log": "state/logs/study_hood_size.log"
+  },
+  "study:zones": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 39.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "3374c9045c040b5f",
+   "finished": "2026-10-30T08:25:30",
+   "log": "state/logs/study_zones.log"
   }
  },
  "runs": [
@@ -352,6 +362,13 @@
    "seconds": 145.5,
    "results": {
     "study:hood_size": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T08:25:30",
+   "seconds": 39.1,
+   "results": {
+    "study:zones": "pass"
    }
   }
  ]
