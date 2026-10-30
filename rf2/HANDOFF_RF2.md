@@ -278,3 +278,15 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - finite ferrite size, ferrite loss and magnetic viscosity;
   - ground signal induced by the static field when sweeping over magnetic soil;
   - the fixed field's offset on the receive electronics.
+
+## 21. Wave-wound rim coil, stacked with a row-by-row twist (2026-10-30; rf2/rf2_wave.py; MODELED)
+- **Question (owner):** keep the stacked 5 x 6 rim coil and the same transmit = mono-receive chain, but make every turn a wave around the ring, the wave phase advancing row by row going up (a stacked, Rodin-like twist).
+- **Results (0.1 / 1 / 5 / 20 g mono depth, mm; 10.8 mJ; all columns of a row nested in phase):**
+  - flat turns (option B): 183 / 340 / 434 / 521; L 323.4 uH.
+  - radial wave 0.8 mm, 13 or 6 waves, with or without a 72 deg / row twist (fits the window): 183 / 339 / 432 / 519 (-0.3 %); L 320 uH.
+  - corkscrew 0.8 mm (radial + vertical, 90 deg), twisted: 183 / 339 / 432 / 519. A vertical wave needs 0.8 mm more height than the window has.
+  - vertical wave 0.8 mm, twisted: 183 / 340 / 434 / 521 (0 %).
+  - radial wave 3 mm (does not fit): -1.2 % with the twist, -1.5 % without.
+- **Field ripple around the ring:** 20 mm below the coil 0.4-1.2 % for 0.8 mm waves (the twist cuts it 3x), 5 % for a 3 mm wave without a twist; 100 mm down it is 0.0 % in every case.
+- **Reading:** the field at depth comes from the turns' enclosed area and current (the coil's dipole moment). A wave of n >= 6 per circuit is a high-order ripple, gone within about 1/n of the radius. At equal energy the wave only re-shuffles the turns: no depth gain; a small loss for large waves, which pull copper inward.
+- **Not modeled:** the wave's extra crossover capacitance and the winding labour.

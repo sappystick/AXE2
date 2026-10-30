@@ -1,0 +1,276 @@
+{
+ "status": "MODELED; inductance by Neumann polylines (rf2_rodin, eps 0.465 mm calibrated to rf2_coil_search.L_turns), 10.8 mJ, MP1 v2 noise, gate from",
+ "cases": [
+  {
+   "name": "flat turns (option B as today)",
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "wire_m": 17.91,
+   "R_ohm": 0.541,
+   "first_gate_us": 16.33,
+   "B_uT": {
+    "head_centre": 1217.7,
+    "axis_100mm": 440.78,
+    "axis_300mm": 45.977,
+    "inside_tube": 3902.0,
+    "under_rim_100mm": 299.59
+   },
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "params": {},
+   "fits_window": true,
+   "ripple_20mm_below_pct": 0.0,
+   "ripple_100mm_below_pct": 0.0,
+   "depth_vs_flat_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "name": "radial wave 0.8 mm, 13 waves, no twist",
+   "L_uH": 320.6,
+   "I_A": 8.21,
+   "wire_m": 17.82,
+   "R_ohm": 0.538,
+   "first_gate_us": 16.26,
+   "B_uT": {
+    "head_centre": 1232.1,
+    "axis_100mm": 441.14,
+    "axis_300mm": 45.618,
+    "inside_tube": 2776.0,
+    "under_rim_100mm": 297.73
+   },
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 339,
+    "5.0 g": 432,
+    "20.0 g": 519
+   },
+   "params": {
+    "Ar": 0.8
+   },
+   "fits_window": true,
+   "ripple_20mm_below_pct": 1.16,
+   "ripple_100mm_below_pct": 0.0,
+   "depth_vs_flat_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": -0.3,
+    "5.0 g": -0.5,
+    "20.0 g": -0.4
+   }
+  },
+  {
+   "name": "radial wave 0.8 mm, 13 waves, twist 72 deg / row",
+   "L_uH": 319.7,
+   "I_A": 8.22,
+   "wire_m": 17.82,
+   "R_ohm": 0.538,
+   "first_gate_us": 16.25,
+   "B_uT": {
+    "head_centre": 1233.8,
+    "axis_100mm": 441.78,
+    "axis_300mm": 45.685,
+    "inside_tube": 2656.0,
+    "under_rim_100mm": 298.16
+   },
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 339,
+    "5.0 g": 432,
+    "20.0 g": 519
+   },
+   "params": {
+    "Ar": 0.8,
+    "dphi": 1.257
+   },
+   "fits_window": true,
+   "ripple_20mm_below_pct": 0.37,
+   "ripple_100mm_below_pct": 0.0,
+   "depth_vs_flat_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": -0.3,
+    "5.0 g": -0.5,
+    "20.0 g": -0.4
+   }
+  },
+  {
+   "name": "radial wave 0.8 mm, 6 waves, twist 72 deg / row",
+   "L_uH": 319.7,
+   "I_A": 8.22,
+   "wire_m": 17.79,
+   "R_ohm": 0.537,
+   "first_gate_us": 16.25,
+   "B_uT": {
+    "head_centre": 1233.9,
+    "axis_100mm": 441.81,
+    "axis_300mm": 45.688,
+    "inside_tube": 2617.0,
+    "under_rim_100mm": 298.2
+   },
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 339,
+    "5.0 g": 432,
+    "20.0 g": 519
+   },
+   "params": {
+    "n": 6,
+    "Ar": 0.8,
+    "dphi": 1.257
+   },
+   "fits_window": true,
+   "ripple_20mm_below_pct": 0.59,
+   "ripple_100mm_below_pct": 0.01,
+   "depth_vs_flat_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": -0.3,
+    "5.0 g": -0.5,
+    "20.0 g": -0.4
+   }
+  },
+  {
+   "name": "corkscrew 0.8 mm (radial + vertical, 90 deg), 13 waves, twist",
+   "L_uH": 320.4,
+   "I_A": 8.21,
+   "wire_m": 17.86,
+   "R_ohm": 0.539,
+   "first_gate_us": 16.26,
+   "B_uT": {
+    "head_centre": 1232.5,
+    "axis_100mm": 441.32,
+    "axis_300mm": 45.637,
+    "inside_tube": 4598.0,
+    "under_rim_100mm": 297.86
+   },
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 339,
+    "5.0 g": 432,
+    "20.0 g": 519
+   },
+   "params": {
+    "Ar": 0.8,
+    "Az": 0.8,
+    "psi": 1.571,
+    "dphi": 1.257
+   },
+   "fits_window": false,
+   "ripple_20mm_below_pct": 0.58,
+   "ripple_100mm_below_pct": 0.0,
+   "depth_vs_flat_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": -0.3,
+    "5.0 g": -0.5,
+    "20.0 g": -0.4
+   }
+  },
+  {
+   "name": "vertical wave 0.8 mm, 13 waves, twist",
+   "L_uH": 324.2,
+   "I_A": 8.16,
+   "wire_m": 17.95,
+   "R_ohm": 0.542,
+   "first_gate_us": 16.34,
+   "B_uT": {
+    "head_centre": 1216.3,
+    "axis_100mm": 440.3,
+    "axis_300mm": 45.926,
+    "inside_tube": 2894.0,
+    "under_rim_100mm": 299.27
+   },
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "params": {
+    "Az": 0.8,
+    "dphi": 1.257
+   },
+   "fits_window": false,
+   "ripple_20mm_below_pct": 0.52,
+   "ripple_100mm_below_pct": 0.0,
+   "depth_vs_flat_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "name": "radial wave 3 mm, 13 waves, twist (does not fit)",
+   "L_uH": 303.9,
+   "I_A": 8.43,
+   "wire_m": 17.99,
+   "R_ohm": 0.543,
+   "first_gate_us": 15.89,
+   "B_uT": {
+    "head_centre": 1292.1,
+    "axis_100mm": 448.35,
+    "axis_300mm": 45.29,
+    "inside_tube": 2978.0,
+    "under_rim_100mm": 296.73
+   },
+   "mono_depth_mm": {
+    "0.1 g": 184,
+    "1.0 g": 336,
+    "5.0 g": 428,
+    "20.0 g": 514
+   },
+   "params": {
+    "Ar": 3.0,
+    "dphi": 1.257
+   },
+   "fits_window": false,
+   "ripple_20mm_below_pct": 1.69,
+   "ripple_100mm_below_pct": 0.0,
+   "depth_vs_flat_pct": {
+    "0.1 g": 0.5,
+    "1.0 g": -1.2,
+    "5.0 g": -1.4,
+    "20.0 g": -1.3
+   }
+  },
+  {
+   "name": "radial wave 3 mm, 13 waves, no twist (does not fit)",
+   "L_uH": 315.3,
+   "I_A": 8.28,
+   "wire_m": 17.99,
+   "R_ohm": 0.543,
+   "first_gate_us": 16.15,
+   "B_uT": {
+    "head_centre": 1268.5,
+    "axis_100mm": 440.16,
+    "axis_300mm": 44.463,
+    "inside_tube": 2697.0,
+    "under_rim_100mm": 291.31
+   },
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 335,
+    "5.0 g": 427,
+    "20.0 g": 512
+   },
+   "params": {
+    "Ar": 3.0
+   },
+   "fits_window": false,
+   "ripple_20mm_below_pct": 5.02,
+   "ripple_100mm_below_pct": 0.0,
+   "depth_vs_flat_pct": {
+    "0.1 g": -0.5,
+    "1.0 g": -1.5,
+    "5.0 g": -1.6,
+    "20.0 g": -1.7
+   }
+  }
+ ],
+ "seconds": 155
+}

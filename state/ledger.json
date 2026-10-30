@@ -199,6 +199,16 @@
    "fingerprint": "0dd4f76660e818b8",
    "finished": "2026-10-30T07:13:41",
    "log": "state/logs/study_rodin.log"
+  },
+  "study:wave": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 156.4,
+   "why": "",
+   "tail": "",
+   "fingerprint": "c1deed71015da58e",
+   "finished": "2026-10-30T07:24:17",
+   "log": "state/logs/study_wave.log"
   }
  },
  "runs": [
@@ -290,6 +300,13 @@
    "seconds": 240.5,
    "results": {
     "study:rodin": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T07:24:17",
+   "seconds": 156.4,
+   "results": {
+    "study:wave": "pass"
    }
   }
  ]
