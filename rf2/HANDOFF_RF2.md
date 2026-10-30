@@ -817,7 +817,7 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     - The TX pair runs about 1.1 m in the coil cord: 55 pF, first gate +0.56 us (first-order; re-run rf2_timing).
     - TXD echo drift in the chassis: 0.003 x noise.
     - Chassis surface rise 10.5 K in continuous boost (TXD + PWR, 7.7 W).
-  - **Main hinge** under the chassis front, with a hollow axis: the bundle makes two 12 mm-radius bends and a 180 deg twist over 30 mm (6 deg/mm).
+  - **Main hinge** at the chassis front, with a hollow axis: the bundle makes two 12 mm-radius bends and a 180 deg twist over 30 mm (6 deg/mm).
   - **Telescope:** three nested RECTANGULAR carbon profiles (owner: rectangular housing along the shaft), keyed so nothing twists.
     - Profiles: outer 38 x 32, middle 33 x 27, inner 28 x 22 mm, 2 mm walls; two flat lever clamps.
     - Pivot-to-hinge 690-980 mm; collapsed 430 mm; 100 mm minimum overlaps.
@@ -838,7 +838,7 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Fold search** (memoised, feasibility first; grip fixed / folded forward / laid sideways):
   - grip fixed: 497 x 251 x 233 mm;
   - grip forward: 553 x 233 x 199 mm;
-  - **grip laid sideways along the chassis: 497 x 249 x 186 mm**, inside the 520 x 320 x 210 backpack target. The hinge folds the shaft along the chassis side, and the head is stowed by the yoke knuckle.
+  - **grip laid sideways along the chassis: 497 x 249 x 186 mm**, inside the 520 x 320 x 210 backpack target. The hinge axis is lateral with its pin 51 mm above the shaft line, so the shaft folds back OVER the chassis top, which the laid-down grip has cleared; the head is stowed by the yoke knuckle (pitch 105 deg, roll 90 deg). (The SDC folds its shaft under the box; ours goes over, because the battery is under.)
   - The SDC is smaller (400 x 216 mm) with a 203 mm coil; ours carries a 233 mm head.
 - **Mass and torque:** 2.66 kg (ASSUMED items; SDC 2.3 kg); torque about the hand 3.9 N m (v1: 6.5).
 - **OPEN:**
