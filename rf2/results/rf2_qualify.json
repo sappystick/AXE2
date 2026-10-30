@@ -190,5 +190,51 @@
    "20.0 g": 530
   },
   "note": "anti-parallel pair across the LMH6629 inputs; the BAV199 rail clamps stay (BAT15 VR max 4 V)"
- }
+ },
+ "litz": [
+  {
+   "insulation": "enamel + nylon serve (eps 3.5 ASSUMED)",
+   "potting": "K1 syntactic in silicone (1.75)",
+   "eps_gap": 2.33,
+   "C_winding_pF": 123.1,
+   "first_gate_us": 13.92,
+   "mono_depth_mm": {
+    "0.1 g": 196,
+    "1.0 g": 343
+   }
+  },
+  {
+   "insulation": "enamel + nylon serve (eps 3.5 ASSUMED)",
+   "potting": "832TC epoxy (3.7)",
+   "eps_gap": 3.6,
+   "C_winding_pF": 189.8,
+   "first_gate_us": 14.73,
+   "mono_depth_mm": {
+    "0.1 g": 191,
+    "1.0 g": 342
+   }
+  },
+  {
+   "insulation": "FEP / PTFE (eps 2.1, Gund note)",
+   "potting": "K1 syntactic in silicone (1.75)",
+   "eps_gap": 1.91,
+   "C_winding_pF": 100.7,
+   "first_gate_us": 13.62,
+   "mono_depth_mm": {
+    "0.1 g": 197,
+    "1.0 g": 344
+   }
+  },
+  {
+   "insulation": "FEP / PTFE (eps 2.1, Gund note)",
+   "potting": "832TC epoxy (3.7)",
+   "eps_gap": 2.68,
+   "C_winding_pF": 141.3,
+   "first_gate_us": 14.15,
+   "mono_depth_mm": {
+    "0.1 g": 194,
+    "1.0 g": 343
+   }
+  }
+ ]
 }

@@ -343,11 +343,11 @@
   "study:qualify": {
    "status": "pass",
    "rc": 0,
-   "seconds": 103.2,
+   "seconds": 129.9,
    "why": "",
    "tail": "",
-   "fingerprint": "41e914ee83cb4caf",
-   "finished": "2026-10-30T09:36:51",
+   "fingerprint": "800ed9e63938e5c4",
+   "finished": "2026-10-30T09:42:42",
    "log": "state/logs/study_qualify.log"
   },
   "study:fluxgate": {
@@ -570,6 +570,13 @@
     "study:qualify": "pass",
     "study:fluxgate": "pass",
     "study:decaylib": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T09:42:42",
+   "seconds": 129.9,
+   "results": {
+    "study:qualify": "pass"
    }
   }
  ]

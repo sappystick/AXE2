@@ -506,3 +506,14 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - The head sensor sees 1.22 mT per TX pulse.
   - **Correction:** the earlier "0.9 mG at 100 mm" for a 3 g nail was 10x too high (CORRECTIONS).
 - **Decay library v0 (data/decaylib, docs/DECAY_LIBRARY.md):** 2878 SIMULATED entries with ground balance in the features; baseline 85 % on simulated data. Compact non-ferrous and rings overlap by physics.
+- **Litz insulation (added 2026-10-30, rf2_qualify section D; DATASHEET_LOG RF2-DS-FEP).** FEP eps 2.1 (Gund technical note). The gap between turns is modeled as insulation and potting in series (50 / 50 ASSUMED):
+
+| Insulation | Potting | eps of the gap | Winding C | First gate | 0.1 / 1 g |
+|---|---|---|---|---|---|
+| FEP | K1 syntactic in silicone | 1.91 | 101 pF | 13.62 us | 197 / 344 mm |
+| enamel + nylon serve (eps 3.5 ASSUMED) | K1 syntactic | 2.33 | 123 pF | 13.92 us | 196 / 343 mm |
+| FEP | 832TC epoxy | 2.68 | 141 pF | 14.15 us | 194 / 343 mm |
+| enamel + nylon | 832TC epoxy | 3.60 | 190 pF | 14.73 us | 191 / 342 mm |
+
+  - **FEP chosen** over PTFE: same eps, but PTFE creeps (both sources), and coil geometry must not move.
+  - The winding remains a small part of the node (the SiC switch and the leads are about 160 pF).

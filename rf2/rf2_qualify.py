@@ -8,6 +8,9 @@
      1.7 nV/rtHz used so far; depth by rf2_coil_search.evaluate (the quadrupole channel) on the option-B coil.
   C. BAT15-03W anti-parallel clamp at the LMH6629 input: IF max 110 mA limits Rin2 from the 6.55 V clamp node: Rin2 >= (6.55 - VF) / 0.110;
      the mono noise for that Rin2 (quadrature from the decided 1.7 nV/rtHz at Rin2 = 100 ohm) and the mono depth.
+  D. Litz insulation: the field between neighbouring turns crosses the wire insulation and the potting in series; insulation share of the
+     0.4 mm gap 50 % (ASSUMED). FEP / PTFE eps 2.1 (Gund technical note, data/datasheets) against an enamel + nylon serve at 3.5 (ASSUMED),
+     each with K1 syntactic in silicone (1.75) and with 832TC epoxy (3.7); winding C -> gate (SiC node) -> mono depth.
 usage: python3 rf2/rf2_qualify.py -> rf2/results/rf2_qualify.json"""
 import os, sys, json, math
 import numpy as np
@@ -40,4 +43,11 @@ if __name__ == "__main__":
                         mono_noise_nV=round(math.hypot(n68, shot) * 1e9, 3), leakage_shot_noise_bound_nV=round(shot * 1e9, 3), input_capacitance_pF=0.56,
                         mono_depth_mm_at_16p3us=d68, note="anti-parallel pair across the LMH6629 inputs; the BAV199 rail clamps stay (BAT15 VR max 4 V)")
     print(json.dumps(res["clamp"]), flush=True)
+    res["litz"] = []
+    for ins, ei in (("enamel + nylon serve (eps 3.5 ASSUMED)", 3.5), ("FEP / PTFE (eps 2.1, Gund note)", 2.1)):
+        for pot, ep in (("K1 syntactic in silicone (1.75)", 1.75), ("832TC epoxy (3.7)", 3.7)):
+            e = 1 / (0.5 / ei + 0.5 / ep); TP.EPS_R = e; Cw, _ = TP.self_cap(seq); g = RD.gate_for(L, Rw, I, Cn=Cw + 160e-12)
+            d = {f"{m} g": RC.depth(Bf, I, g * 1e-6, m, Bf) for m in (0.1, 1.0)}
+            row = dict(insulation=ins, potting=pot, eps_gap=round(e, 2), C_winding_pF=round(Cw * 1e12, 1), first_gate_us=g, mono_depth_mm=d); res["litz"].append(row); print(json.dumps(row), flush=True)
+    TP.EPS_R = 2.5
     json.dump(res, open(os.path.join(OUT, "rf2_qualify.json"), "w"), indent=1); print("done")
