@@ -646,31 +646,31 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.8,
+   "seconds": 2.7,
    "why": "",
    "tail": "",
-   "fingerprint": "e8ccf3f02cbc93ad",
+   "fingerprint": "c0877a49983336f9",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "43c9c3e862",
+    "run.py": "1ed9e24865",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-30T22:38:00",
+   "finished": "2026-10-30T22:43:45",
    "log": "state/logs/selftest.log",
    "history": [
-    3.3,
     3.2,
     2.9,
     3.1,
     2.7,
     3.1,
     2.8,
-    2.8
+    2.8,
+    2.7
    ]
   },
   "study:mp1v2_chain": {
@@ -922,21 +922,21 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "e7dda511e4d3147b",
+   "fingerprint": "1799ff4e26e3e70c",
    "inputs": {
     "rf2/rf2_readiness.py": "41b85e29f0",
-    "state/ledger.json": "dfad331753",
+    "state/ledger.json": "dcb2bbdb5a",
     "rf2/results/rf2_icd.json": "486d91c5c2"
    },
-   "finished": "2026-10-30T22:39:03",
+   "finished": "2026-10-30T22:44:25",
    "log": "state/logs/readiness.log",
    "history": [
+    0.1,
+    0.1,
     0.0,
     0.1,
-    0.1,
-    0.1,
     0.0,
-    0.1,
+    0.0,
     0.0,
     0.0
    ]
@@ -978,26 +978,26 @@
   "icd": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.7,
+   "seconds": 3.1,
    "why": "",
    "tail": "",
-   "fingerprint": "e1ef56afdfc00ca1",
+   "fingerprint": "ca563e45a8006a82",
    "inputs": {
     "rf2/rf2_icd.py": "78d01a337f",
     "rf2/rf2_system.py": "04c7d60cc0",
-    "docs/DATASHEET_LOG_ARX.md": "f11f9c1e3b"
+    "docs/DATASHEET_LOG_ARX.md": "a510f97322"
    },
-   "finished": "2026-10-30T22:39:03",
+   "finished": "2026-10-30T22:44:25",
    "log": "state/logs/icd.log",
    "history": [
-    2.6,
     2.8,
     2.2,
     2.3,
     2.5,
     2.4,
     2.9,
-    2.7
+    2.7,
+    3.1
    ]
   },
   "emi-rect": {
@@ -1087,19 +1087,21 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "1ed4593f6f0cc912",
+   "fingerprint": "95f6f563c646c57f",
    "inputs": {
-    "rf2/rf2_rules.py": "558cfc470e",
+    "rf2/rf2_rules.py": "c89e570c75",
     "rf2/results/rf2_system.json": "b74b40123c",
     "rf2/results/rf2_continuous.json": "7f2ee67390",
     "rf2/head/out/rf2_mp1v2_close.json": "3db3a383e2",
     "rf2/results/rf2_print.json": "e548dedeb6",
     "rf2/results/rf2_pack_options.json": "18a4470e08",
-    "rf2/results/rf2_wire_options.json": "217421016a"
+    "rf2/results/rf2_wire_options.json": "217421016a",
+    "rf2/results/rf2_flex_options.json": "79c8ab01fe"
    },
-   "finished": "2026-10-30T22:38:07",
+   "finished": "2026-10-30T22:43:48",
    "log": "state/logs/rules.log",
    "history": [
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -1125,23 +1127,28 @@
    "history": [
     3.5
    ]
+  },
+  "flex-options": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 3.3,
+   "why": "",
+   "tail": "",
+   "fingerprint": "8355dc049d5f1a72",
+   "inputs": {
+    "rf2/rf2_flex_options.py": "2c3b4ec8a7",
+    "rf2/chassis_out/rf2_chassis_check.json": "3a46a9f95d",
+    "rf2/rf2_zones.py": "b56fea10f8",
+    "rf2/rf2_chassis.py": "86818d0500"
+   },
+   "finished": "2026-10-30T22:43:48",
+   "log": "state/logs/flex-options.log",
+   "history": [
+    3.3
+   ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T08:43:22",
-   "seconds": 50.6,
-   "results": {
-    "study:mitigation": "pass"
-   }
-  },
-  {
-   "finished": "2026-10-30T08:44:23",
-   "seconds": 5.2,
-   "results": {
-    "head-section:B": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T08:45:51",
    "seconds": 39.8,
@@ -1637,6 +1644,24 @@
   {
    "finished": "2026-10-30T22:39:03",
    "seconds": 2.7,
+   "results": {
+    "icd": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T22:43:48",
+   "seconds": 6.1,
+   "results": {
+    "selftest": "pass",
+    "flex-options": "pass",
+    "rules": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T22:44:25",
+   "seconds": 3.1,
    "results": {
     "icd": "pass",
     "readiness": "pass"

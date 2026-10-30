@@ -1128,3 +1128,47 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - rule 6 for the coil litz and the TX pair (600 V parts, 460 V flyback);
   - coil comb pitch 1.77 mm (keeps 1000 V wire);
   - REF3 digitised at REF3T plus one RS-485 pair (makes the cord coilable).
+## 44. Owner flex / photo-etch brochures: cord as long flex, shield cans, BeCu contacts (2026-10-30; `rf2/rf2_flex_options.py`, step `flex-options`; MODELED)
+- **Received (7 more; all 11 are now in):**
+  - Tech Etch long flex (aerospace and medical sheets);
+  - Tech Etch precision etch & form and precision-engineered parts;
+  - Tech Etch ProtoShield;
+  - FPCexpress flex products;
+  - Tramonto reverse-bared flex.
+  These are capability brochures (DATASHEET_LOG RF2-DS-FLEX), not part datasheets.
+- **A. Coil cord -> long flex (fixes the cord-packing FAIL in section 43). Recommended.**
+  - **Construction:** single-layer 2 oz flex, **14.2 mm wide**, in the 18 mm bore.
+    - TX traces 2.35 mm (IPC-2221, 3.67 A boost, 10 K rise, internal) with 1.0 mm rule-6 gaps.
+    - Power traces 0.3 mm.
+    - One RS-485 pair.
+    - Three REF pairs with ground guards (the REF signals stay analog; digitising is no longer needed for size).
+  - **Split at REF3T:**
+    - segment 1 head -> REF3T: 961 mm, with a rolling loop storing half of the 550 mm telescope travel;
+    - segment 2 REF3T -> hinge: 394 mm, static.
+    - Both are inside Tech Etch's 1016 mm preferred length. One piece would be 1315 mm: inside the 1524 mm advanced limit only.
+  - **TX pair capacitance (coplanar strips):** 28.1 pF/m at eps_eff 1.6 (range 22.8-38.7, ASSUMED), against 50 pF/m for the wire. First-gate shift +0.107 us against +0.19 us (scaled from rf2_timing_cord).
+  - **Mass:** 9.9 g against about 86 g for the coiled cord (ASSUMED).
+  - **Open:**
+    - the coverlay / base voltage rating (rule 6) from the vendor;
+    - the rolling-loop carrier inside the two-stage telescope (mock-up);
+    - polyimide eps and the dynamic flex life.
+- **B. Board-level shield cans in the head: rejected.**
+  - A 12 x 12 x 3 mm can, 0.254 mm thick, conductivity swept from nickel silver to copper (ASSUMED).
+  - Closed can drift: 60200.4099 x the gate noise near the rim, 7535.6482 x at the centre.
+  - Even a photo-etched comb lid with a wall break gives 20.62866 / 2.58221 x, against a 0.5 x limit.
+  - Shields go only in the chassis (TXD, PWR, HB2); ProtoShield for those prototypes.
+  - In the head, the hatched copper of the boards is the only shield. The TPS65131 EMI open item (section 40) is solved by placement or filtering, not a can.
+- **C. Photo-etched BeCu contact fingers for the drill-style dock's BMS signals** (replaces the Mill-Max 0906 pins, whose sheet cannot be obtained).
+  - 4 fingers at 2.54 mm pitch, 0.254 mm C172 1/2 H, 10 x 1.5 mm, gold-plated.
+  - 0.63 N at 0.8 mm deflection; stress 390 MPa = 39 % of an ASSUMED 1000 MPa yield.
+  - The Tech Etch geometry and bend rules are met. Contact resistance and cycle life need a vendor test.
+- **Also noted:**
+  - Tramonto reverse-bared single-layer flex (3.7-5.4 mil) suits the hinge clock-spring plies (ICD I5).
+  - FPCexpress rigid-flex to 8 layers is a second source for TXD + PWR.
+- **Rule near-misses added:**
+  - flex segment 1 961 vs 1016 mm (PASS, 5.4 % headroom);
+  - one-piece flex 1315 vs 1016 mm (FAIL; advanced 1524 mm);
+  - slotted shield cans (FAIL).
+- **Decisions for the owner:**
+  - adopt the long-flex cord (ICD I3, rf2_system S1 / S2, the timing pair capacitance);
+  - adopt the BeCu dock fingers in place of the Mill-Max pins (ICD I6, P0.6).

@@ -94,6 +94,10 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - MP1 v2 settling closed in SPICE: 13.66 us vs the 16.48 us first gate, using +-12 V clamp rails and a series isolation switch. Parts: TMUX7212, TPS65131, TL431 (worst case 14.58 us).
     - The DFM wall metric is now max(ray, inscribed sphere).
     - Lid light plate 2.4 mm with a 0.9 mm land: the lid passes, head 16.55 mm, optics 0.825.
+  - **Flex / etch brochures** (section 44, `rf2_flex_options.py`):
+    - A long flex cord fits and is 76 g lighter (owner to adopt).
+    - Shield cans in the head are rejected (eddy echo).
+    - BeCu dock fingers proposed.
   - **Wire datasheets** (section 43, `rf2_wire_options.py`):
     - The coil resistance is corrected from 0.53 to 0.601 ohm.
     - The coil cord with every conductor needs 10 mm, against the 7 mm spec.

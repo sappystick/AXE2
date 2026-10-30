@@ -1,0 +1,188 @@
+{
+ "status": "MODELED: vendor capability brochures; voltage ratings, dielectric constants, conductivities, spring constants ASSUMED where marked",
+ "A_cord_to_flex": {
+  "travel_mm": 550.0,
+  "segments": {
+   "seg1_dynamic_mm": 961,
+   "seg2_static_mm": 394
+  },
+  "te_limit_mm": {
+   "preferred": 1016,
+   "advanced": 1524
+  },
+  "lengths_ok": true,
+  "one_piece_mm": 1315,
+  "one_piece_ok_preferred": false,
+  "one_piece_ok_advanced": true,
+  "copper_oz": 2.0,
+  "tx_trace_mm": 2.35,
+  "pwr_trace_mm": 0.3,
+  "lanes": [
+   {
+    "lane": "edge",
+    "mm": 0.75
+   },
+   {
+    "lane": "TX_A",
+    "mm": 2.35
+   },
+   {
+    "lane": "TX gap (rule 6)",
+    "mm": 1.0
+   },
+   {
+    "lane": "TX_B",
+    "mm": 2.35
+   },
+   {
+    "lane": "HV to LV gap (rule 6)",
+    "mm": 1.0
+   },
+   {
+    "lane": "VIN_H",
+    "mm": 0.3
+   },
+   {
+    "lane": "gap",
+    "mm": 0.3
+   },
+   {
+    "lane": "GND_H",
+    "mm": 0.3
+   },
+   {
+    "lane": "gap",
+    "mm": 0.3
+   },
+   {
+    "lane": "RS-485 pair (2 x 0.15 / 0.15)",
+    "mm": 0.45
+   },
+   {
+    "lane": "guard gap",
+    "mm": 0.3
+   },
+   {
+    "lane": "REFX pair with ground guards (0.15 / 0.15 + 2 x 0.3 guard)",
+    "mm": 1.35
+   },
+   {
+    "lane": "REFY pair with ground guards (0.15 / 0.15 + 2 x 0.3 guard)",
+    "mm": 1.35
+   },
+   {
+    "lane": "REFZ pair with ground guards (0.15 / 0.15 + 2 x 0.3 guard)",
+    "mm": 1.35
+   },
+   {
+    "lane": "edge",
+    "mm": 0.75
+   }
+  ],
+  "width_mm": 14.2,
+  "fits_bore": true,
+  "bore_mm": 18.0,
+  "rolling_loop_bend_r_mm": 4.0,
+  "loop_fits": true,
+  "min_line_mm": 0.076,
+  "tx_capacitance": [
+   {
+    "eps_eff": 1.3,
+    "C_pF_per_m": 22.8,
+    "C_pF_1m1": 25.1,
+    "first_gate_shift_us_scaled": 0.087
+   },
+   {
+    "eps_eff": 1.6,
+    "C_pF_per_m": 28.1,
+    "C_pF_1m1": 30.9,
+    "first_gate_shift_us_scaled": 0.107
+   },
+   {
+    "eps_eff": 2.2,
+    "C_pF_per_m": 38.7,
+    "C_pF_1m1": 42.5,
+    "first_gate_shift_us_scaled": 0.147
+   }
+  ],
+  "cord_C_pF": 55.0,
+  "cord_shift_us": 0.19,
+  "mass_g": {
+   "flex": 9.9,
+   "coiled_cord": 86
+  },
+  "open": [
+   "coverlay / base voltage rating (rule 6): not in the brochures; the vendor must confirm >= 630 V across 1.0 mm and through the coverlay",
+   "rolling-loop carrier inside the two-stage telescope (mock-up)",
+   "polyimide eps and the flex flex-life at 40 x thickness (vendor)"
+  ]
+ },
+ "B_shield_can": {
+  "can_mm": [
+   12.0,
+   12.0,
+   3.0
+  ],
+  "t_mm": 0.254,
+  "criterion": "drift for a 5 K step (2 %) <= 0.5 x the gate noise (rf2_system); static echo removed by the offset",
+  "places": {
+   "front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12)": {
+    "B_uT_per_A": 445.52,
+    "closed_can": {
+     "echo_x_gate_noise": 3010020.493,
+     "drift5K_x_noise": 60200.4099,
+     "worst_sigma": 58000000.0,
+     "tau_us": 20.422
+    },
+    "slotted": {
+     "echo_x_gate_noise": 1031.4332,
+     "drift5K_x_noise": 20.62866
+    },
+    "closed_ok": false,
+    "slotted_ok": false
+   },
+   "head centre (r 30 mm, z 12)": {
+    "B_uT_per_A": 157.63,
+    "closed_can": {
+     "echo_x_gate_noise": 376782.408,
+     "drift5K_x_noise": 7535.6482,
+     "worst_sigma": 58000000.0,
+     "tau_us": 20.422
+    },
+    "slotted": {
+     "echo_x_gate_noise": 129.1107,
+     "drift5K_x_noise": 2.58221
+    },
+    "closed_ok": false,
+    "slotted_ok": false
+   }
+  },
+  "note": "cold-rolled steel is excluded (ferromagnetic); slotted = photo-etched comb lid and a wall break so no closed loop (eddy rule 5)"
+ },
+ "C_becu_fingers": {
+  "material": "BeCu C172 1/2 H, 0.254 mm, gold-plated contact area (Tech Etch finishing)",
+  "n": 4,
+  "pitch_mm": 2.54,
+  "free_len_mm": 10.0,
+  "width_mm": 1.5,
+  "deflection_mm": 0.8,
+  "force_N": 0.63,
+  "stress_MPa": 390,
+  "stress_frac_of_yield": 0.39,
+  "rules": {
+   "min_finger_w_ge_T": true,
+   "pitch_ge_0p050in": true,
+   "bend_r_mm": 0.178,
+   "bend_rule": "C172 1/2 H: 0.5 T across, 0.7 T at 45 deg, 1.1 T with the grain (Tech Etch table 5)"
+  },
+  "ok": true,
+  "use": "BMS signal contacts (SDA, SCL, TS2 wake, sense) on the drill-style dock; power stays on the MT60",
+  "note": "E and yield ASSUMED (typical BeCu); contact resistance and cycle life: vendor test"
+ },
+ "findings": [
+  "A: the cord as a 14.2 mm single-layer 2 oz flex (TX traces 2.35 mm, 1.0 mm rule-6 gaps) fits the 18.0 mm bore; split at REF3T the pieces are 961 mm (rolling loop for 550.0 mm travel) and 394 mm, inside Tech Etch's 1016 mm preferred length; TX pair 28.1 pF/m (eps_eff 1.6 ASSUMED) vs 50 pF/m wire -> first gate +0.107 us vs +0.19 us; mass 9.9 g vs about 86 g",
+  "B: front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12): closed can drift 60200.4099 x noise (FAILS), slotted 20.62866; head centre (r 30 mm, z 12): closed can drift 7535.6482 x noise (FAILS), slotted 2.58221",
+  "C: 0.254 mm BeCu fingers 10 x 1.5 mm give 0.63 N at 0.8 mm at 39 % of an ASSUMED 1000 MPa yield; Tech Etch geometry rules met: True"
+ ],
+ "ok": true
+}

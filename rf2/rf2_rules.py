@@ -67,6 +67,14 @@ def rules():
             add(f"wire.tx.{t['name'][:24]}", "safety", f"cord TX pair option {t['name']} (OD {t['od_mm']} mm; flyback peak 460 V) insulation rating vs rule 6", t["v_rating"], 630.0, ">=", t["source"], unit="V")
         for k, v in wo["cord_packing"]["variants"].items():
             add(f"wire.cord.{k[:30]}", "target", f"coil cord OD, {k} (packing {wo['cord_packing']['packing_fraction']} ASSUMED)", v["cord_od_mm"], wo["cord_packing"]["spec"]["od"], "<=", "rf2_wire_options.json", unit="mm")
+    fo = J("rf2", "results", "rf2_flex_options.json")
+    if fo:
+        a = fo["A_cord_to_flex"]
+        add("flex.seg1_len", "target", "cord-as-flex segment 1 (head -> REF3T, rolling loop) vs Tech Etch preferred length", a["segments"]["seg1_dynamic_mm"], a["te_limit_mm"]["preferred"], "<=", "Tech Etch long flex brochure", unit="mm")
+        add("flex.one_piece", "target", "cord-as-flex in one piece (no REF3T joint) vs Tech Etch preferred length (advanced 1524 mm)", a["one_piece_mm"], a["te_limit_mm"]["preferred"], "<=", "Tech Etch long flex brochure", unit="mm")
+        add("flex.width", "target", "cord-as-flex width vs the 18 mm bore less 2 mm", a["width_mm"], a["bore_mm"] - 2.0, "<=", "rf2_flex_options.json", unit="mm")
+        for k, v in fo["B_shield_can"]["places"].items():
+            add(f"shield.slotted.{k[:20]}", "target", f"slotted etched shield can in the head, {k}: drift vs 0.5 x gate noise", v["slotted"]["drift5K_x_noise"], 0.5, "<=", "rf2_flex_options.json", unit="x noise")
     return R
 
 def status(r):
