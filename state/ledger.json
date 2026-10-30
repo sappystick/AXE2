@@ -179,6 +179,16 @@
    "fingerprint": "41f48aed1aaf4593",
    "finished": "2026-10-30T05:40:27",
    "log": "state/logs/study_depth_levers.log"
+  },
+  "study:taper": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 97.9,
+   "why": "",
+   "tail": "",
+   "fingerprint": "de38fe736b16d5a9",
+   "finished": "2026-10-30T06:21:06",
+   "log": "state/logs/study_taper.log"
   }
  },
  "runs": [
@@ -256,6 +266,13 @@
    "results": {
     "study:thin": "pass",
     "study:depth_levers": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T06:21:06",
+   "seconds": 97.9,
+   "results": {
+    "study:taper": "pass"
    }
   }
  ]

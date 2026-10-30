@@ -1,0 +1,450 @@
+{
+ "status": "MODELED: tapered rim former in option B's window; self-capacitance by the energy method (eps_r 2.5, plane at z 3.2, 500 pF node ASSUMED); first gate by rf2_timing.simulate; mono depth by rf2_depth_levers.mono_depth (in air, gold spheres)",
+ "designs": [
+  {
+   "shape": "rect 5 x 6",
+   "winding": "layered",
+   "rows_bottom_to_top": [
+    6,
+    6,
+    6,
+    6,
+    2
+   ],
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "centroid_r_z_mm": [
+    109.65,
+    7.91
+   ],
+   "Bz_uT_100_300mm": [
+    440.77,
+    45.98
+   ],
+   "C_winding_pF": 131.9,
+   "C_node_pF": 500.0,
+   "max_turn_to_turn_V": 202,
+   "first_gate_us": 16.33,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "shape": "rect 5 x 6",
+   "winding": "progressive",
+   "rows_bottom_to_top": [
+    6,
+    6,
+    6,
+    6,
+    2
+   ],
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "centroid_r_z_mm": [
+    109.65,
+    7.91
+   ],
+   "Bz_uT_100_300mm": [
+    440.77,
+    45.98
+   ],
+   "C_winding_pF": 168.1,
+   "C_node_pF": 536.2,
+   "max_turn_to_turn_V": 166,
+   "first_gate_us": 16.67,
+   "mono_depth_mm": {
+    "0.1 g": 181,
+    "1.0 g": 339,
+    "5.0 g": 433,
+    "20.0 g": 521
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": -1.1,
+    "1.0 g": -0.3,
+    "5.0 g": -0.2,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "shape": "rect 5 x 6",
+   "winding": "bank",
+   "rows_bottom_to_top": [
+    6,
+    6,
+    6,
+    6,
+    2
+   ],
+   "L_uH": 323.4,
+   "I_A": 8.17,
+   "centroid_r_z_mm": [
+    109.65,
+    7.91
+   ],
+   "Bz_uT_100_300mm": [
+    440.77,
+    45.98
+   ],
+   "C_winding_pF": 179.3,
+   "C_node_pF": 547.4,
+   "max_turn_to_turn_V": 386,
+   "first_gate_us": 16.78,
+   "mono_depth_mm": {
+    "0.1 g": 181,
+    "1.0 g": 339,
+    "5.0 g": 433,
+    "20.0 g": 521
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": -1.1,
+    "1.0 g": -0.3,
+    "5.0 g": -0.2,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "shape": "taper, wide top (owner), both faces sloped",
+   "winding": "layered",
+   "rows_bottom_to_top": [
+    3,
+    4,
+    6,
+    6,
+    7
+   ],
+   "L_uH": 321.7,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.09,
+    9.02
+   ],
+   "Bz_uT_100_300mm": [
+    434.27,
+    45.29
+   ],
+   "C_winding_pF": 113.2,
+   "C_node_pF": 481.3,
+   "max_turn_to_turn_V": 221,
+   "first_gate_us": 16.11,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 338,
+    "5.0 g": 431,
+    "20.0 g": 518
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": -0.6,
+    "5.0 g": -0.7,
+    "20.0 g": -0.6
+   }
+  },
+  {
+   "shape": "taper, wide top (owner), both faces sloped",
+   "winding": "progressive",
+   "rows_bottom_to_top": [
+    3,
+    4,
+    6,
+    6,
+    7
+   ],
+   "L_uH": 321.7,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.09,
+    9.02
+   ],
+   "Bz_uT_100_300mm": [
+    434.27,
+    45.29
+   ],
+   "C_winding_pF": 113.2,
+   "C_node_pF": 481.3,
+   "max_turn_to_turn_V": 166,
+   "first_gate_us": 16.11,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 338,
+    "5.0 g": 431,
+    "20.0 g": 518
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": -0.6,
+    "5.0 g": -0.7,
+    "20.0 g": -0.6
+   }
+  },
+  {
+   "shape": "taper, wide top (owner), both faces sloped",
+   "winding": "bank",
+   "rows_bottom_to_top": [
+    3,
+    4,
+    6,
+    6,
+    7
+   ],
+   "L_uH": 321.7,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.09,
+    9.02
+   ],
+   "Bz_uT_100_300mm": [
+    434.27,
+    45.29
+   ],
+   "C_winding_pF": 169.0,
+   "C_node_pF": 537.1,
+   "max_turn_to_turn_V": 313,
+   "first_gate_us": 16.64,
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 337,
+    "5.0 g": 431,
+    "20.0 g": 518
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": -1.6,
+    "1.0 g": -0.9,
+    "5.0 g": -0.7,
+    "20.0 g": -0.6
+   }
+  },
+  {
+   "shape": "taper, wide top, outer wall flush",
+   "winding": "layered",
+   "rows_bottom_to_top": [
+    3,
+    4,
+    6,
+    6,
+    7
+   ],
+   "L_uH": 322.1,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.71,
+    9.02
+   ],
+   "Bz_uT_100_300mm": [
+    435.1,
+    45.69
+   ],
+   "C_winding_pF": 109.8,
+   "C_node_pF": 477.9,
+   "max_turn_to_turn_V": 221,
+   "first_gate_us": 16.08,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 339,
+    "5.0 g": 433,
+    "20.0 g": 520
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": -0.3,
+    "5.0 g": -0.2,
+    "20.0 g": -0.2
+   }
+  },
+  {
+   "shape": "taper, wide top, outer wall flush",
+   "winding": "progressive",
+   "rows_bottom_to_top": [
+    3,
+    4,
+    6,
+    6,
+    7
+   ],
+   "L_uH": 322.1,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.71,
+    9.02
+   ],
+   "Bz_uT_100_300mm": [
+    435.1,
+    45.69
+   ],
+   "C_winding_pF": 162.2,
+   "C_node_pF": 530.3,
+   "max_turn_to_turn_V": 166,
+   "first_gate_us": 16.59,
+   "mono_depth_mm": {
+    "0.1 g": 181,
+    "1.0 g": 339,
+    "5.0 g": 433,
+    "20.0 g": 520
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": -1.1,
+    "1.0 g": -0.3,
+    "5.0 g": -0.2,
+    "20.0 g": -0.2
+   }
+  },
+  {
+   "shape": "taper, wide top, outer wall flush",
+   "winding": "bank",
+   "rows_bottom_to_top": [
+    3,
+    4,
+    6,
+    6,
+    7
+   ],
+   "L_uH": 322.1,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.71,
+    9.02
+   ],
+   "Bz_uT_100_300mm": [
+    435.1,
+    45.69
+   ],
+   "C_winding_pF": 171.9,
+   "C_node_pF": 540.0,
+   "max_turn_to_turn_V": 313,
+   "first_gate_us": 16.68,
+   "mono_depth_mm": {
+    "0.1 g": 180,
+    "1.0 g": 338,
+    "5.0 g": 433,
+    "20.0 g": 520
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": -1.6,
+    "1.0 g": -0.6,
+    "5.0 g": -0.2,
+    "20.0 g": -0.2
+   }
+  },
+  {
+   "shape": "taper, wide bottom, outer wall flush",
+   "winding": "layered",
+   "rows_bottom_to_top": [
+    7,
+    6,
+    6,
+    4,
+    3
+   ],
+   "L_uH": 322.1,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.71,
+    7.78
+   ],
+   "Bz_uT_100_300mm": [
+    442.6,
+    46.16
+   ],
+   "C_winding_pF": 132.1,
+   "C_node_pF": 500.2,
+   "max_turn_to_turn_V": 221,
+   "first_gate_us": 16.3,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": 0.0,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "shape": "taper, wide bottom, outer wall flush",
+   "winding": "progressive",
+   "rows_bottom_to_top": [
+    7,
+    6,
+    6,
+    4,
+    3
+   ],
+   "L_uH": 322.1,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.71,
+    7.78
+   ],
+   "Bz_uT_100_300mm": [
+    442.6,
+    46.16
+   ],
+   "C_winding_pF": 167.1,
+   "C_node_pF": 535.2,
+   "max_turn_to_turn_V": 166,
+   "first_gate_us": 16.63,
+   "mono_depth_mm": {
+    "0.1 g": 182,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": -0.5,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  },
+  {
+   "shape": "taper, wide bottom, outer wall flush",
+   "winding": "bank",
+   "rows_bottom_to_top": [
+    7,
+    6,
+    6,
+    4,
+    3
+   ],
+   "L_uH": 322.1,
+   "I_A": 8.19,
+   "centroid_r_z_mm": [
+    109.71,
+    7.78
+   ],
+   "Bz_uT_100_300mm": [
+    442.6,
+    46.16
+   ],
+   "C_winding_pF": 180.3,
+   "C_node_pF": 548.4,
+   "max_turn_to_turn_V": 368,
+   "first_gate_us": 16.76,
+   "mono_depth_mm": {
+    "0.1 g": 181,
+    "1.0 g": 340,
+    "5.0 g": 434,
+    "20.0 g": 521
+   },
+   "depth_vs_rect_layered_pct": {
+    "0.1 g": -1.1,
+    "1.0 g": 0.0,
+    "5.0 g": 0.0,
+    "20.0 g": 0.0
+   }
+  }
+ ],
+ "C_ext_pF": 368.1
+}

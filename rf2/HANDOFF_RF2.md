@@ -241,3 +241,16 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Physics limit:**
   - A small target's signal falls about as 1 / depth^6. Doubling the depth needs about 64x the SNR, so no single trick doubles it.
   - The gains come from stacking noise, averaging, energy and gate improvements, and in real ground from ground handling, which this noise-only model does not include.
+
+## 19. Tapered ("T-bone") rim former and winding order (2026-10-30; rf2/rf2_taper.py; MODELED)
+- **Question (owner):** a circular former with the same footprint, wide at the top and narrowing with sloped faces toward the bottom, wound down every other groove and back up through the skipped ones, channel by channel.
+- **Setting:** option B's window (r 103.8-113.4, z 4.4-12.6), 26 turns, 10.8 mJ, mono channel, MP1 v2 noise, gate computed by `rf2_timing.simulate` with the node capacitance = C_ext (368 pF, from the 500 pF ASSUMPTION) + the winding's own capacitance (energy method, eps_r 2.5 ASSUMED).
+- **Results (1 g / 5 g / 20 g mono depth; 0.1 g in brackets):**
+  - rect 5 x 6, layered (option B): 340 / 434 / 521 mm (183), C_w 132 pF, gate 16.3 us, max turn-to-turn 202 V.
+  - taper wide top, both faces sloped, owner's progressive order: 338 / 431 / 518 mm (183), C_w 113 pF, gate 16.1 us, max turn-to-turn 166 V.
+  - taper wide top, outer wall flush, progressive: 339 / 433 / 520 mm, C_w 162 pF, gate 16.6 us, 166 V.
+  - taper wide bottom: 340 / 434 / 521 mm (same as rect).
+  - classic bank order: worse here (C_w 169-180 pF, up to 386 V between neighbours).
+- **Reading:** the shape alone is neutral to -0.6 % (it lifts the copper centroid 1.1 mm away from the ground). The progressive order cuts the worst turn-to-turn voltage 18 % (insulation / rule 6 margin), but the winding is only about a quarter of the 500 pF node, so the gate moves by under 0.7 us.
+- **Ceiling:** a perfect winding (C_w = 0) gives a 14.9 us gate: 0.1 g 183 -> 189 mm, 1 g unchanged. Cutting the outside capacitance (switch Coss, leads, damping network) to 100-150 pF gives 12.9-13.6 us and 0.1 g 196-199 mm. That, not the former, is the timing lever, and it mainly sharpens small / fast targets (signature clarity), not depth on 1-20 g.
+- **Not modeled:** distributed (transmission-line) winding effects, litz strand capacitance, the real former material eps_r, proximity loss.
