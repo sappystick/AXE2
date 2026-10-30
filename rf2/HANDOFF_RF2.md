@@ -1077,3 +1077,54 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - the latch;
   - the face seal round the contacts;
   - the warm-up time after power-on.
+## 43. Owner wire datasheets: coil litz and the coil cord (2026-10-30; `rf2/rf2_wire_options.py`, step `wire-options`; MODELED)
+- **Received:** 4 of the 11 announced integrations, all wire datasheets (DATASHEET_LOG RF2-DS-WIRE):
+  - Rubadue insulated litz;
+  - Pack RUPALIT litz;
+  - FEP hook-up wire (HE / Li 6Y);
+  - Radix FEP/FEP cable.
+  The other 7 (flex, PCB circuits, integration ideas) have not arrived.
+- **Coil litz.** 149 Rubadue constructions were parsed from the PDF. The coil length is 18.3 m: 26 turns at the BF column radii, plus 0.3 m of leads. Fit means a finished OD <= 1.25 mm in the 1.3 mm comb slot; frequency means a band reaching >= 50 kHz.
+
+  | Option | Rating | OD mm | R_coil 20 C | Boost h | Status |
+  |---|---|---|---|---|---|
+  | Old model value (no wire behind it) | - | 1.2 | 0.53 ohm | 3.6 | CORRECTIONS |
+  | Best rule-6 litz in the current comb: TXXL35/38 triple ETFE | 1000 V | 1.08 | 1.13 ohm | 2.81 | coil 15.3 W in boost |
+  | SXXL66/38 single FEP, current comb | 600 V | 1.17 | 0.601 ohm | 3.5 | **BLOCKED by rule 6 by 4.8 %** (flyback 460 V; neighbours 166 V) |
+  | TXXL66/38 triple FEP, comb slot 1.45 / pitch 1.77 mm | 1000 V | 1.37 | 0.601 ohm | 3.5 | coil channel +1.0 mm radial, +0.85 mm height; L and the field need a re-run |
+
+  - **The model now uses R_coil 0.601 ohm** (both feasible paths give it).
+  - **Numbers that moved:**
+    - scan battery power 17.35 -> 17.69 W;
+    - boost 28.32 -> 29.26 W (TX power 17.7 -> 18.6 W);
+    - coil I2R in scan 2.57 -> 2.91 W;
+    - runtime boost 3.6 -> 3.5 h, scan 5.9 -> 5.8 h.
+  - The coil value in the SPICE decks (0.53 ohm in series with the 408 ohm damping) is left as is: its effect on the microsecond tail is negligible.
+  - **RUPALIT:** bare litz with silk wrapping and no voltage rating; useful only as the core of an FEP extrusion.
+- **Coil cord (new check).**
+  - The rf2_system S1 conductor set (TX pair, power pair, 3 digital pairs, 3 shielded REF pairs) needs a **10.0 mm cable** against the 7.0 mm spec (packing 0.65, 0.8 mm jacket, ASSUMED). At a 17 mm coil OD the coil ID is negative, so the cord cannot coil inside the 18 mm bore.
+
+  | Cord variant | Cable OD | Coil ID at 17 mm |
+  |---|---|---|
+  | All conductors | 10.02 mm (FAIL) | -3.0 mm |
+  | REF3 digitised at REF3T (3 STP pairs off) | 7.26 mm (**BLOCKED, +3.7 %**) | 2.5 mm |
+  | + one RS-485 pair for TXCMD / TXSTAT / DATA | **6.17 mm** | 4.7 mm |
+  | + Li 6Y TX pair | 5.95 mm | 5.1 mm |
+
+  - **Integration idea (proposed, not adopted):**
+    - Digitise the REF3 coils on REF3T (an ADC at the reference coils, sampling synchronised to the gates over the link).
+    - Carry TX command, status and data on one RS-485 pair.
+    - This takes the most sensitive analog signals off the moving cord.
+- **TX pair options:**
+  - HE 18 (2 kV) meets rule 6, but at 3.1 mm OD it makes even the reduced cord about 8.1 mm.
+  - Li 6Y 0.5 mm2 (600 V operating / 900 V peak) and Radix FQ18AT02A (600 V) are **BLOCKED by rule 6 by 4.8 %**.
+  - The model's 1000 V FEP AWG18 at 1.70 mm still has no vendor.
+- **Rule near-misses now:**
+  - BLOCKED 5: 2 coil litz, 2 TX pairs, the cord at 7.26 mm;
+  - FAIL 2: the cord with all conductors, MP1 noise;
+  - RELAXED 2: runtime;
+  - EDGE 3.
+- **Decisions for the owner:**
+  - rule 6 for the coil litz and the TX pair (600 V parts, 460 V flyback);
+  - coil comb pitch 1.77 mm (keeps 1000 V wire);
+  - REF3 digitised at REF3T plus one RS-485 pair (makes the cord coilable).

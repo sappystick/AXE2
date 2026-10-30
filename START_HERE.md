@@ -94,6 +94,10 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - MP1 v2 settling closed in SPICE: 13.66 us vs the 16.48 us first gate, using +-12 V clamp rails and a series isolation switch. Parts: TMUX7212, TPS65131, TL431 (worst case 14.58 us).
     - The DFM wall metric is now max(ray, inscribed sphere).
     - Lid light plate 2.4 mm with a 0.9 mm land: the lid passes, head 16.55 mm, optics 0.825.
+  - **Wire datasheets** (section 43, `rf2_wire_options.py`):
+    - The coil resistance is corrected from 0.53 to 0.601 ohm.
+    - The coil cord with every conductor needs 10 mm, against the 7 mm spec.
+    - Rule-6 near-misses on 600 V litz and TX pair wire wait for an owner decision.
   - **Pack 7S1P Molicel P45B, rated on continuous boost** (section 42):
     - Runtime: 3.6 h boost / 5.9 h scan; the 6 h target is relaxed by the owner.
     - System 2500 g; the drill-style dock is not drawn yet.

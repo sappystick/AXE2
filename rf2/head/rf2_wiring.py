@@ -45,7 +45,7 @@ POWER = dict(
            dict(rail="+3V3", regulator="TLV755P on CB1D (500 mA)", rating_A=0.5, loads_A={"RP2354A + flash + misc (ASSUMED)": 0.08}),
            dict(rail="+3V3D (each AB1)", regulator="local TLV755P (RF1)", rating_A=0.5, loads_A={"AD7389-4 digital + logic (ASSUMED)": 0.01})],
     tx="the TX current never enters the head's electronics: NECK driver runs from VIN with its own bulk bank (baseline PB1R topology)")
-L = S["coil"]["L_uH"] * 1e-6; I = S["coil"]["I_A"]; VB = 26.0; RC = 0.53; RCAB = 0.11
+L = S["coil"]["L_uH"] * 1e-6; I = S["coil"]["I_A"]; VB = 26.0; RC = 0.601; RCAB = 0.11          # RC from rf2_wire_options (was 0.53)
 TIMING = dict(
     pulse_rate_Hz="400 nominal, chosen per site in 380-420 to sit off VLF stations (rf2_emi: fixed rate beats blind jitter); listen-only: 1 frame in 16 without pulses",
     scan=dict(I_A=I, T1_us=round(L * I / VB * 1e6, 1), T2_us=round(L * I / VB * 1e6 + 300, 1), order="T1 and T2 alternate pulse by pulse (multi-period ground balance, rf2_ground)"),

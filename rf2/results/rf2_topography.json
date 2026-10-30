@@ -37,7 +37,7 @@
    "chassis": "pass",
    "system": "pass"
   },
-  "numbers": "runtime 5.9 h scan / 3.6 h boost; cartridge [92.2, 76.2, 53.1] mm",
+  "numbers": "runtime 5.8 h scan / 3.5 h boost; cartridge [92.2, 76.2, 53.1] mm",
   "open": "cell holder, contacts, latch; BQ76952 schematic"
  },
  {

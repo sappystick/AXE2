@@ -59,6 +59,14 @@ def rules():
         for o in po["options"]:
             if o.get("cell_current_frac_of_rating") is not None:
                 add(f"pack.cell_i.{o['key']}", "safety", f"pack option {o['key']}: cell current in boost at cut-off vs its coldest-band continuous rating", o["cell_current_frac_of_rating"], 1.0, "<=", "rf2_pack_options.json", unit="x rating")
+    wo = J("rf2", "results", "rf2_wire_options.json")
+    if wo:
+        for c in wo["coil_blocked_by_rule6_within_10pct"][:2]:
+            add(f"wire.coil.{c['part']}", "safety", f"coil litz {c['part']} ({c['kind']} {c['ins']}, OD {c['od_mm']} mm, {c['R_coil_20C']} ohm: fits the current comb) insulation rating vs rule 6", c["v_rating"], 630.0, ">=", "Rubadue catalog (rf2_wire_options)", unit="V")
+        for t in wo["tx_pair"]:
+            add(f"wire.tx.{t['name'][:24]}", "safety", f"cord TX pair option {t['name']} (OD {t['od_mm']} mm; flyback peak 460 V) insulation rating vs rule 6", t["v_rating"], 630.0, ">=", t["source"], unit="V")
+        for k, v in wo["cord_packing"]["variants"].items():
+            add(f"wire.cord.{k[:30]}", "target", f"coil cord OD, {k} (packing {wo['cord_packing']['packing_fraction']} ASSUMED)", v["cord_od_mm"], wo["cord_packing"]["spec"]["od"], "<=", "rf2_wire_options.json", unit="mm")
     return R
 
 def status(r):

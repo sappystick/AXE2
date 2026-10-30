@@ -7,7 +7,8 @@ Writes rf2/results/rf2_continuous.json.   usage: python3 rf2/rf2_continuous.py""
 import os, json, math
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 OUT = os.path.join(ROOT, "rf2", "results"); os.makedirs(OUT, exist_ok=True)
-L, R_COIL, R_CABLE, VBUS, F, V_CLAMP, RD, T_FLAT = 333e-6, 0.53, 0.11, 26.0, 400.0, 460.0, 408.0, 300e-6
+L, R_COIL, R_CABLE, VBUS, F, V_CLAMP, RD, T_FLAT = 333e-6, 0.601, 0.11, 26.0, 400.0, 460.0, 408.0, 300e-6
+# R_COIL 0.601 ohm at 20 C (2026-10-30, rf2_wire_options): Rubadue 66/38 litz, 1056 CM over 18.3 m; was 0.53 (unsourced, CORRECTIONS)
 MODES = {"scan": 8.06, "boost (trigger held, continuous)": 8.06 * math.sqrt(2.5)}
 TA = 40.0                                                     # ambient for the ratings, C (ASSUMED: sun on a desert dig)
 def pulse_train(I):
@@ -24,7 +25,7 @@ def analyse(mode, I):
     E_store = 0.5 * L * I ** 2
     # coil (litz): I^2 R; the head is potted, so this is heat into the coil channel
     P_coil = p["I_rms_coil"] ** 2 * R_COIL
-    row("coil, 26 turns FEP litz (I^2 R)", P_coil, None, "W", None, "R 0.53 ohm (coil model)", "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): %.1f K; the rise inside the foam-potted channel is NOT modeled" % (P_coil / (8 * 0.097)))
+    row("coil, 26 turns FEP litz (I^2 R)", P_coil, None, "W", None, "R %.3f ohm (rf2_wire_options: Rubadue 66/38 litz)" % R_COIL, "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): %.1f K; the rise inside the foam-potted channel is NOT modeled" % (P_coil / (8 * 0.097)))
     # transmit switch C3M0280090J
     rds_hot = 0.416 * 1.1                                      # 416 mohm typ at 150 C (datasheet) + 10 % (ASSUMED max at temperature)
     e_off = 2.4e-6 * (I / 7.5) * (V_CLAMP / 400.0)             # Eoff 2.4 uJ at 7.5 A / 400 V, scaled with I and V (ASSUMED linear)

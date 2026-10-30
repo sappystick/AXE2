@@ -2,13 +2,19 @@
 
 BLOCKED: a part fails a rule by 10 % or less (it fits right under it); the owner decides whether to relax or remove the rule. RELAXED: the owner relaxed it; shown against the old limit every run. EDGE: passes with 5 % headroom or less. FAIL: misses by more than 10 %. Safety rules (HV, eddy, absolute-maximum ratings) are never relaxed automatically.
 
-Rules checked: 52. BLOCKED 0, RELAXED 2, EDGE 3, FAIL 1, PASS 46
+Rules checked: 62. BLOCKED 5, RELAXED 2, EDGE 3, FAIL 2, PASS 50
 
 | Status | Kind | Rule | Value | Limit | Over (+) / headroom (-) | Note |
 |---|---|---|---|---|---|---|
+| **BLOCKED** | safety | coil litz SXXL66/38FX-2(MWXX) (Single FEP, OD 1.168 mm, 0.601 ohm: fits the current comb) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Rubadue catalog (rf2_wire_options) |
+| **BLOCKED** | safety | coil litz SXXL66/38FX-3(MWXX) (Single FEP, OD 1.219 mm, 0.601 ohm: fits the current comb) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Rubadue catalog (rf2_wire_options) |
+| **BLOCKED** | safety | cord TX pair option Li 6Y 0.5 mm2 FEP (27 x 0.15 tinned) (OD 1.5 mm; flyback peak 460 V) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | FEP hook-up catalog: 600 V operating / 900 V peak, 0.25 mm wall, -100..200 C |
+| **BLOCKED** | safety | cord TX pair option Radix FQ18AT02A FEP/FEP 2 x AWG18 jacketed (OD 4.72 mm; flyback peak 460 V) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Radix FEP/FEP 200 C / 600 V |
+| **BLOCKED** | target | coil cord OD, REF3 digitised at REF3T (3 STP pairs off the cord) (packing 0.65 ASSUMED) | 7.26 mm | <= 7.0 mm | +3.7 % | rf2_wire_options.json |
+| **FAIL** | target | coil cord OD, all conductors (rf2_system S1) (packing 0.65 ASSUMED) | 10.02 mm | <= 7.0 mm | +43.1 % | rf2_wire_options.json |
 | **FAIL** | target | MP1 v2 input noise per leg vs the 1.7 nV/rtHz target | 2.211 nV/rtHz | <= 1.7 nV/rtHz | +30.1 % | rf2_mp1v2_close.json chosen |
-| **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 3.6 h | >= 6.0 h | +40.0 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |
-| **RELAXED** | target | scan runtime, 7S1P Molicel P45B | 5.9 h | >= 6.0 h | +1.7 % | owner 2026-10-30: 6 h target relaxed |
+| **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 3.5 h | >= 6.0 h | +41.7 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |
+| **RELAXED** | target | scan runtime, 7S1P Molicel P45B | 5.8 h | >= 6.0 h | +3.3 % | owner 2026-10-30: 6 h target relaxed |
 | **EDGE** | target | TPS65131 VPOS setting vs its ROC maximum 15 V | 15.0 V | <= 15.0 V | +0.0 % | DATASHEET_LOG RF2-DS-MP1V2-SWITCH |
 | **EDGE** | safety | TMUX7212 pin voltage vs VDD (keep inside the supply; abs max VDD + 0.5 V) | 14.5 V | <= 15.0 V | -3.3 % | rf2_mp1v2_close.json |
 | **EDGE** | target | BAT54 reverse voltage (clamp-rail span) vs 80 % of VRRM 30 V | 23.0 V | <= 24.0 V | -4.2 % | rf2_mp1v2_close.json |

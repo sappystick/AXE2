@@ -13,32 +13,32 @@
    "on_fraction": 0.1013,
    "battery": {
     "dissipative clamp": {
-     "P_tx_W": 9.97,
+     "P_tx_W": 10.31,
      "P_head_W": 10.62,
-     "P_total_W": 20.6,
-     "I_battery_A": 0.82,
-     "Wh_per_hour": 20.6,
-     "runtime_h_per_100Wh": 4.86
+     "P_total_W": 20.94,
+     "I_battery_A": 0.83,
+     "Wh_per_hour": 20.9,
+     "runtime_h_per_100Wh": 4.78
     },
     "regenerative clamp (75 % recovery ASSUMED)": {
-     "P_tx_W": 6.73,
+     "P_tx_W": 7.07,
      "P_head_W": 10.62,
-     "P_total_W": 17.35,
-     "I_battery_A": 0.69,
-     "Wh_per_hour": 17.4,
-     "runtime_h_per_100Wh": 5.76
+     "P_total_W": 17.69,
+     "I_battery_A": 0.7,
+     "Wh_per_hour": 17.7,
+     "runtime_h_per_100Wh": 5.65
     }
    },
    "rows": [
     {
      "part": "coil, 26 turns FEP litz (I^2 R)",
-     "load": 2.567,
+     "load": 2.91,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
-     "source": "R 0.53 ohm (coil model)",
-     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 3.3 K; the rise inside the foam-potted channel is NOT modeled"
+     "source": "R 0.601 ohm (rf2_wire_options: Rubadue 66/38 litz)",
+     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 3.8 K; the rise inside the foam-potted channel is NOT modeled"
     },
     {
      "part": "TX switch Wolfspeed C3M0280090J: peak current",
@@ -170,32 +170,32 @@
    "on_fraction": 0.1253,
    "battery": {
     "dissipative clamp": {
-     "P_tx_W": 25.81,
+     "P_tx_W": 26.75,
      "P_head_W": 10.62,
-     "P_total_W": 36.43,
-     "I_battery_A": 1.45,
-     "Wh_per_hour": 36.4,
-     "runtime_h_per_100Wh": 2.74
+     "P_total_W": 37.37,
+     "I_battery_A": 1.48,
+     "Wh_per_hour": 37.4,
+     "runtime_h_per_100Wh": 2.68
     },
     "regenerative clamp (75 % recovery ASSUMED)": {
-     "P_tx_W": 17.7,
+     "P_tx_W": 18.64,
      "P_head_W": 10.62,
-     "P_total_W": 28.32,
-     "I_battery_A": 1.12,
-     "Wh_per_hour": 28.3,
-     "runtime_h_per_100Wh": 3.53
+     "P_total_W": 29.26,
+     "I_battery_A": 1.16,
+     "Wh_per_hour": 29.3,
+     "runtime_h_per_100Wh": 3.42
     }
    },
    "rows": [
     {
      "part": "coil, 26 turns FEP litz (I^2 R)",
-     "load": 7.144,
+     "load": 8.101,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
-     "source": "R 0.53 ohm (coil model)",
-     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 9.2 K; the rise inside the foam-potted channel is NOT modeled"
+     "source": "R 0.601 ohm (rf2_wire_options: Rubadue 66/38 litz)",
+     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 10.4 K; the rise inside the foam-potted channel is NOT modeled"
     },
     {
      "part": "TX switch Wolfspeed C3M0280090J: peak current",

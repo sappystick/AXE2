@@ -323,7 +323,7 @@
   "flat_top_pwm": {
    "where": "NECK driver current loop",
    "f_kHz": "200 (ASSUMED)",
-   "duty": 0.198,
+   "duty": 0.22,
    "note": "holds I during the 300 us flat-top; duty = I (R_coil + R_cable) / VBUS"
   },
   "boost": {

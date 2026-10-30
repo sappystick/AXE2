@@ -264,8 +264,8 @@
   "pack": "7S1P Molicel P45B",
   "rated_case": "continuous boost (trigger held the whole time): the maximum use case (owner 2026-10-30)",
   "usable_Wh": 102.1,
-  "scan_h": 5.9,
-  "boost_continuous_h": 3.6,
+  "scan_h": 5.8,
+  "boost_continuous_h": 3.5,
   "cells_g": 490,
   "note": "powers from rf2_continuous (regenerative clamp, 75 % recovery ASSUMED)",
   "target_h": null
