@@ -228,5 +228,5 @@
   "height_needed_mm": "shell top at z 8.5 + 6 + 1.5 = 16.0, above option B's display level (13.1): the head grows to about 19-20 mm"
  },
  "neumann_eps_mm": 0.465,
- "seconds": 256
+ "seconds": 234
 }
