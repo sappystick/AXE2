@@ -243,11 +243,11 @@
   "study:zones": {
    "status": "pass",
    "rc": 0,
-   "seconds": 39.1,
+   "seconds": 36.3,
    "why": "",
    "tail": "",
-   "fingerprint": "3374c9045c040b5f",
-   "finished": "2026-10-30T08:25:30",
+   "fingerprint": "2d6c9e3fc58856c1",
+   "finished": "2026-10-30T09:02:56",
    "log": "state/logs/study_zones.log"
   },
   "head:B": {
@@ -329,6 +329,16 @@
    "fingerprint": "531290fd4323ab6f",
    "finished": "2026-10-30T08:53:40",
    "log": "state/logs/study_layout.log"
+  },
+  "study:switch": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 46.9,
+   "why": "",
+   "tail": "",
+   "fingerprint": "46c5157a731fe7d0",
+   "finished": "2026-10-30T09:03:43",
+   "log": "state/logs/study_switch.log"
   }
  },
  "runs": [
@@ -512,6 +522,14 @@
     "head-section:B": "pass",
     "head-check": "pass",
     "wiring": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T09:03:43",
+   "seconds": 83.2,
+   "results": {
+    "study:zones": "pass",
+    "study:switch": "pass"
    }
   }
  ]

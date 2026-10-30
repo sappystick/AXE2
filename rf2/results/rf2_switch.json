@@ -1,0 +1,55 @@
+{
+ "status": "In the tail the drain sits at about VBUS (26 V): the switch adds its Coss AT 26 V to the coil node, and the node capacitance with L sets how soon the",
+ "cases": [
+  {
+   "case": "earlier assumption: 500 pF node",
+   "node_pF": 500,
+   "first_gate_us": 16.33,
+   "mono_depth_mm": {
+    "0.1 g": 183,
+    "1.0 g": 340,
+    "20.0 g": 521
+   }
+  },
+  {
+   "case": "IPB65R095C7 (Coss 400 pF at 26 V, READ) + winding 132 + 50",
+   "node_pF": 582,
+   "first_gate_us": 17.1,
+   "mono_depth_mm": {
+    "0.1 g": 179,
+    "1.0 g": 339,
+    "20.0 g": 520
+   }
+  },
+  {
+   "case": "C3M0280090J SiC (Coss 110 pF at 25 V, READ) + winding 132 + 50",
+   "node_pF": 292,
+   "first_gate_us": 14.04,
+   "mono_depth_mm": {
+    "0.1 g": 195,
+    "1.0 g": 343,
+    "20.0 g": 522
+   }
+  },
+  {
+   "case": "C3M0280090J + syntactic potting (winding 95 pF) + 50",
+   "node_pF": 255,
+   "first_gate_us": 13.54,
+   "mono_depth_mm": {
+    "0.1 g": 197,
+    "1.0 g": 344,
+    "20.0 g": 522
+   }
+  },
+  {
+   "case": "bound: 60 pF switch (a GaN / low-Coss part, UNVERIFIED) + 95 + 30",
+   "node_pF": 185,
+   "first_gate_us": 12.51,
+   "mono_depth_mm": {
+    "0.1 g": 203,
+    "1.0 g": 346,
+    "20.0 g": 523
+   }
+  }
+ ]
+}

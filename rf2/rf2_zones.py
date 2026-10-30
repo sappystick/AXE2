@@ -88,7 +88,11 @@ if __name__ == "__main__":
     for r in (104, 96, 88, 80, 72, 64, 56, 48, 40, 32, 24, 16, 8):
         n = max(1, int(round(2 * math.pi * r / 8))) if r > 8 else 6; rm, phi, w = flux_disc((r, 0.0), 1.1, 13.4, n_r=6); v, tau = rings_echo(rm, phi, w, SIG_CU, 0.2e-3); v_led += v * n; t_led = max(t_led, tau)
         res["led_rings"].append(dict(r_mm=r, leds=n, x_gate_noise=float(f"{v * n / NOISE_GATE:.3g}")))
-    add("522 SK9822-EC20 lead frames (copper 2 x 2 x 0.2 mm, ASSUMED)", "display", v_led, t_led)
+    add("522 SK9822-EC20 as a solid 2 x 2 x 0.2 mm copper block (old ASSUMPTION, upper bound)", "display", v_led, t_led)
+    v35 = 0.0; t35 = 0.0                                                                       # datasheet: '2.0x2.0x0.65mm PCB holder package' (OPSCO Rev A0): foil, not a lead frame
+    for r in (104, 96, 88, 80, 72, 64, 56, 48, 40, 32, 24, 16, 8):
+        n = max(1, int(round(2 * math.pi * r / 8))) if r > 8 else 6; rm, phi, w = flux_disc((r, 0.0), 1.1, 13.4, n_r=6); v, tau = rings_echo(rm, phi, w, SIG_CU, 35e-6); v35 += v * n; t35 = max(t35, tau)
+    add("522 SK9822-EC20, PCB-holder package: 2 x 2 mm of 35 um copper foil (datasheet construction; foil thickness ASSUMED)", "display", v35, t35)
     rmax = 113.0; phi_sh = abs(float(flux_disc((0.0, 0.0), rmax, 1.4, n_r=40)[1].sum())); v, tau = loop_echo(phi_sh, rmax * 1e-3, 1.0e-3, 0, SIG_CU, 35e-6)
     add("SH1 shield: ONE outer ring left CLOSED (1 mm, no slit) - failure case", "SH1", v, tau, "rule 5: every SH1 ring has its slit")
     v, tau = loop_echo(phi_sh, rmax * 1e-3, 1.0e-3, 0, 1 / (1.6 * 25e-6), 25e-6); add("MG 841AR nickel paint, closed band 1 mm wide inside the shell (1.6 ohm/sq)", "shell", v, tau)

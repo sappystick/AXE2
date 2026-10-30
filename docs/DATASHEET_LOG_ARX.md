@@ -267,3 +267,15 @@ Caveats:
 - The 510 / 250 mT values are B at a stated H, not saturation at 100 C.
 - The 77 sheet gives no 100 C value.
 - The complex-permeability and power-loss curves are linked CSVs that are not in the printouts.
+
+## RF2-DS-STAGE3: VERIFIED stage 3 parts (2026-10-30)
+
+| Part | Source | Numbers used | Design effect |
+|---|---|---|---|
+| Wolfspeed C3M0280090J, 900 V SiC MOSFET, D2PAK-7 | Rev. 04 Dec 2024, assets.wolfspeed.com, data/datasheets/Wolfspeed_C3M0280090J_Rev04_2024-12.pdf (sha256 35fa07e6809cea1a) | V(BR)DSS >= 900 V; RDS(on) 320 typ / 360 max mohm (VGS 15 V, 7.5 A, 25 C); ID 11 A (TC 25 C), 7 A (100 C), IDM 22 A; VGS op -4 / +15 V, max -8 / +19 V; Ciss 204, Coss 26, Crss 3 pF (VDS 600 V, 1 MHz); Eoss 5.5 uJ; Fig. 17: Coss about 110 pF at 25 V (READ from the curve) | candidate TX switch: about 290 pF less node capacitance in the decay tail than the IPB65R095C7 (rf2_switch.py: first gate 17.1 -> 14.0 us) |
+| Infineon IPB65R095C7 (today's TX switch) | already logged; Diagram 14 read | Coss 33 pF at 400 V; Co(er) 69 pF, Co(tr) 763 pF (0-400 V); Diagram 14: Coss falls from about 8 nF below 20 V to about 60 pF at 50 V; about 400 pF at 26 V (READ) | its Coss cliff sits at the tail voltage (VBUS 26 V) |
+| onsemi NTBG080N120SC1, 1200 V SiC, D2PAK-7L | onsemi data sheet, data/datasheets/onsemi_NTBG080N120SC1.pdf (sha256 fdf3611472b49ea3) | VDSS 1200 V; RDS(on) 80 typ / 110 max mohm (VGS 20 V, 20 A); "typ. Coss 79 pF" | alternative with more margin, higher Coss; not chosen |
+| ADI AD7389-4, 4-channel simultaneous 16-bit SAR | owner upload, data/datasheets/ADI_AD7389-4.pdf (sha256 803bf7a379a68471) | 16 bit, quad simultaneous sampling, fully differential inputs, 2 MSPS; internal 2.5 V reference 10 ppm/C; SNR 90.5 dB typ (97.9 dB with OSR 8 and RES = 1); INL 2 LSB max; 3.0-3.6 V; 4 x 4 mm LFCSP-24; -40 to 125 C | full-waveform receiver: mono, QA, QB and REF3 sampled together every 0.5 us; gates and matched filters move into firmware |
+| ADI AD4134, 4-channel 24-bit alias-free | owner upload, data/datasheets/ADI_AD4134_RevA.pdf (sha256 dc35f97c97dfc247) | 24 bit, 4 ch simultaneous, ODR 0.01-1496 kSPS; 108 dB dynamic range (374 kSPS, FIR); 137 dB (10 SPS, sinc3); low-latency sinc3 / sinc6 to 391.5 kHz; 4.5-5.5 V + 1.65-1.95 V; 8 x 8 mm LFCSP-56 | alternative; its digital filters spread a decay in time, so the SAR suits time-gated decay capture better |
+| TI LMH6629 | already on disk, data/datasheets/TI_LMH6629_SNOSB18I_2014-12.pdf | en 0.69 nV/rtHz, in 2.6 pA/rtHz | mono preamp (MP1 v2), unchanged |
+| OPSCO SK9822-EC20 construction | already on disk, OPSCO Rev A0 | "2.0x2.0x0.65mm PCB holder package" | foil on a PCB, not a stamped lead frame: display echo 5e-6 x noise (rf2_zones) |

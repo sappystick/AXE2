@@ -353,12 +353,21 @@
    "note": ""
   },
   {
-   "object": "522 SK9822-EC20 lead frames (copper 2 x 2 x 0.2 mm, ASSUMED)",
+   "object": "522 SK9822-EC20 as a solid 2 x 2 x 0.2 mm copper block (old ASSUMPTION, upper bound)",
    "where": "display",
    "tau_us": 2.475,
    "V_gate": 0.000232,
    "x_gate_noise": 5500.0,
    "drift_x_noise_per_K": 120.0,
+   "note": ""
+  },
+  {
+   "object": "522 SK9822-EC20, PCB-holder package: 2 x 2 mm of 35 um copper foil (datasheet construction; foil thickness ASSUMED)",
+   "where": "display",
+   "tau_us": 0.475,
+   "V_gate": 2.2e-13,
+   "x_gate_noise": 5.23e-06,
+   "drift_x_noise_per_K": 6.8e-07,
    "note": ""
   },
   {

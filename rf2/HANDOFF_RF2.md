@@ -468,3 +468,23 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - fins' coupling into the quadrupole (bearing) channel, which is not axisymmetric;
   - parts' own thickness (3-D pieces such as the IXTY tab still see B_z and B_r over their height);
   - the display, which stays a horizontal flex (lead-frame drift, section 24).
+
+## 27. Stage 3: parts, sensors, materials (2026-10-30; docs/STAGE3_PARTS.md, rf2/rf2_switch.py, DATASHEET_LOG RF2-DS-STAGE3)
+- **Display drift withdrawn:** the SK9822-EC20 is a PCB-holder package (datasheet): 5e-6 x noise (CORRECTIONS).
+- **TX switch:**
+  - The IPB65R095C7's Coss is about 400 pF at the 26 V tail (READ): node 582 pF, gate 17.1 us.
+  - The Wolfspeed C3M0280090J (900 V SiC) is about 110 pF: gate 14.0 us; 0.1 g 179 -> 195 mm; with syntactic potting 13.5 us, 197 mm.
+  - Needs a +15 / -4 V gate driver.
+- **Receiver:** AD7389-4 (4 x 16 bit simultaneous, 2 MSPS) proposed to digitise the full decay of mono, QA, QB and REF3; the gates move into firmware.
+- **IMU BMI270:**
+  - sweep speed and phase -> speed-matched filters;
+  - position on the arc + quadrupole bearing -> target map on the display;
+  - tilt -> ground model;
+  - shock blanking;
+  - auto re-zero when still.
+- **Magnetometer (new, passive ferrous channel):** a 3 g nail about 0.9 mG at 100 mm against about 0.4 mG noise (vendor figure, UNVERIFIED). It needs the IMU orientation removed to < 0.1 %. Bench test.
+- **Materials:**
+  - Parylene C on analog / HV fins (moisture, leakage);
+  - PTFE / FEP litz and syntactic foam (low eps);
+  - glass-filled resin for the coil supports (low CTE).
+- **Datasheets still to fetch:** docs/STAGE3_PARTS.md section 6.
