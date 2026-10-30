@@ -1029,3 +1029,51 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
     - Keep MT60 for power and spring pins for the BMS signals (ICD I6). The current is 1.4 A at most, so the owner's Keystone 3557 / 3558 fuse clips or panel XT60 would also carry it; the 3557 / 3558 are not on file (UNVERIFIED).
     - **Sealing is new work:** the bay kept spray off; a rail pack needs a face seal round the contacts, ASSUMED at 6 g.
 - **Not done:** the dock and rail geometry in rf2_chassis (the pack would be 156 x 77 x 31 mm in one row); latch strength; seal design; a swap hold-up (a swap restarts the detector).
+## 42. Pack changed to 7S1P Molicel P45B, runtime rated on continuous boost, rule near-miss report (2026-10-30; owner; MODELED)
+- **Owner decisions:**
+  - Relax the 6 h target.
+  - Use the P45B (full datasheet).
+  - Rate runtime on continuous boost, with the trigger held the whole time: the maximum use case. Sweeping uses less.
+- **Pack: 7 x Molicel INR-21700-P45B, 7S1P, in two rows (4 + 3)** (rf2_chassis / rf2_upper `cells`; rf2_system BT1).
+  - The one-row layout (157 mm long) hit the flip-up screen on its slide-out path, so two rows were chosen.
+  - **Cartridge:** 136.2 x 71.2 x 47.2 -> 92.2 x 76.2 x 53.1 mm.
+  - **Runtime:** **3.6 h continuous boost (rated case), 5.9 h scan** (was 4.8 / 7.8 h); 102.1 Wh usable (was 136.1).
+  - **Mass and torque:**
+    - pack 748 -> 560 g (ASSUMED shell / BMS overhead);
+    - system 2688 -> 2500 g, with the enclosed bay still modeled;
+    - the drill-style dock in place of the bay is about another 60 g (rf2_pack_options C2: 2465 g), not drawn yet;
+    - torque about the hand 4.08 -> 4.36 N m (the counterweight is lighter).
+  - **Fold packages:** fixed grip 497 x 254 x 194 -> 498 x 284 x 195 mm; grip forward 550 x 259 x 143; grip side 494 x 233 x 160 -> 494 x 238 x 160 mm. All inside the backpack target.
+  - **Cell current:** 1.35 A in boost at the 21 V cut-off = 3 % of the P45B's 45 A continuous rating. P45B discharge is -40 to 60 C; charge 0 to 60 C.
+  - **6 h of boost would need 7S2P P45B:** 204 Wh usable, 7.2 h boost, about 1070 g pack, +322 g over the P30B reference. No 21700 count in between keeps 7S.
+- **Rule near-miss report (`rf2/rf2_rules.py`, step `rules`, `docs/RULE_NEAR_MISSES.md`; CLAUDE.md rule 11).**
+  - **Statuses:**
+    - BLOCKED: fails by <= 10 %;
+    - RELAXED: shown against the old limit every run;
+    - EDGE: passes with <= 5 % headroom;
+    - FAIL: misses by more than 10 %.
+  - **Sources:** runtime, thermal, every rated row of rf2_continuous, the MP1 v2 closure, DFM per printed part, and pack cell currents (52 rules).
+  - Safety rules are reported, never relaxed.
+  - **Now:**
+
+    | Status | Rule | Value |
+    |---|---|---|
+    | RELAXED | boost runtime | 3.6 h vs 6 h |
+    | RELAXED | scan runtime | 5.9 h vs 6 h |
+    | EDGE | TPS65131 VPOS | at its 15 V ROC max |
+    | EDGE | TMUX7212 pin vs VDD | 14.5 vs 15 V |
+    | EDGE | BAT54 span | 23 vs 24 V |
+    | FAIL | MP1 v2 noise | 2.21 vs 1.7 nV/rtHz, +30 % |
+
+    No BLOCKED rows.
+- **Swap restart (owner question).** Removing the pack removes all power, so the MCU, the front-end bias and the TX bulk bank reset. Costs:
+  - MCU boot under 1 s (RP2354A);
+  - the TX bulk bank recharges;
+  - the front end and coil settle thermally;
+  - the ground-balance and noise-cancel learned state is lost unless it is saved.
+  - Mitigation: save settings, ground balance and the noise channel to flash on every change and at under-voltage. A swap is then a short warm-up; the hold-up circuit is not needed. The warm-up time is not modeled: OPEN.
+- **Open:**
+  - the drill-style dock and rails in rf2_chassis (replacing BATTERY_BAY);
+  - the latch;
+  - the face seal round the contacts;
+  - the warm-up time after power-on.

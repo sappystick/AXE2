@@ -28,7 +28,7 @@ IF = [
          connector="Panasonic Y5B FPC ends (50 V, 0.5 A / pin, datasheet on file) on the LV plies; the HV ply soldered to TXD and the cord board",
          conds=[w("TX_A", "HV", None, I_TX, 463, 1000, "flex, 1.0 mm spacing"), w("TX_B", "HV", None, I_TX, 463, 1000, "flex, 1.0 mm spacing"), w("VIN_H", "power", None, I_VH, 29.4), w("GND_H", "power", None, I_VH, 0),
                 w("TXCMD+", "diff"), w("TXCMD-", "diff"), w("TXSTAT+", "diff"), w("TXSTAT-", "diff"), w("DATA+", "diff"), w("DATA-", "diff")], status="design (P3.3)"),
-    dict(id="I6", name="Battery cartridge -> PWR (bay front blade contacts)", a="cartridge (7S2P, BQ76952)", b="PWR board", medium="sealed blade contacts at the bay front",
+    dict(id="I6", name="Battery cartridge -> PWR (bay front blade contacts)", a="cartridge (7S1P P45B, BQ76952)", b="PWR board", medium="sealed blade contacts at the bay front",
          connector="power: Amass MT60 mated pair (cartridge male, bay female; 30 A, keyed, datasheet on file); signals: 4 x Mill-Max 0906 spring pins (UNVERIFIED: official sheet not obtained)",
          conds=[w("VBAT+", "power", None, I_VIN * 1.5, 29.4), w("VBAT-", "power", None, I_VIN * 1.5, 0), w("SDA", "digital"), w("SCL", "digital"), w("BTN_TS2", "digital"), w("NTC", "analog")], status="design (P3.8)"),
     dict(id="I7", name="Charge port (cartridge)", a="charger", b="cartridge", medium="Amass MT60 keyed (datasheet on file)", connector="Amass MT60", conds=[w("CHG+", "power", None, 3.0, 29.4), w("CHG-", "power", None, 3.0, 0), w("CHG_SENSE", "power", None, 0.1, 29.4)], status="part chosen"),

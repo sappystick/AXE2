@@ -20,7 +20,9 @@ SYS = json.load(open(os.path.join(OUT, "rf2_system.json")))
 CH = json.load(open(os.path.join(HERE, "chassis_out", "rf2_chassis_check.json")))
 RHO_PETG = 1.27                       # g/cm3 (ASSUMED, PETG); printed parts at 100 % infill as the head budget does
 USABLE = 0.90                         # as rf2_system (ASSUMED)
-RULE_H = 6.0                          # rf2_system 'scan runtime >= 6 h'
+RULE_H = 6.0                          # the old rf2_system 'scan runtime >= 6 h' target: RELAXED by the owner 2026-10-30 (kept here to show who would have been blocked)
+REF_P30B_G = 748.0                    # the 7S2P P30B cartridge of the reference design (14 x 47 g + 90 g)
+CHOSEN = "C2"                         # owner 2026-10-30: 7S1P Molicel P45B (full datasheet), runtime rated on continuous boost
 CELLS = {   # name: (Wh typ, g max, d max mm, h max mm, max continuous discharge A at the coldest listed band, source)
     "Molicel P30B": (10.8, 47.0, 18.6, 65.2, 30.0, "data/datasheets/Molicel_INR-18650-P30B_PDS_v1.0.pdf (DATASHEET_LOG)"),
     "Molicel P45B": (16.2, 70.0, 21.55, 70.15, 45.0, "data/datasheets/Molicel_INR-21700-P45B_PDS_v1.2.pdf (min 15.5 Wh)"),
@@ -42,14 +44,15 @@ def stl_g(name):
 def main():
     rt = SYS["runtime"]; p_scan = rt["usable_Wh"] / rt["scan_h"]; p_boost = rt["usable_Wh"] / rt["boost_continuous_h"]
     lever = next(v for k, v in CH["mass"]["lever_mm"].items() if k.startswith("battery")) / 1000.0     # m, hand minus pack (negative: behind the hand)
-    base_cart = next(v for k, v in CH["mass"]["items_g"].items() if k.startswith("battery")); m_tot0 = CH["mass"]["total_g"]; tq0 = CH["mass"]["torque_about_hand_Nm"]
+    cur = next(v for k, v in CH["mass"]["items_g"].items() if k.startswith("battery")); base_cart = REF_P30B_G             # deltas stay relative to the 7S2P P30B reference
+    m_tot0 = CH["mass"]["total_g"] - cur + base_cart; tq0 = CH["mass"]["torque_about_hand_Nm"] + dm_pack_torque(base_cart - cur, lever)
     bay_g = stl_g("BATTERY_BAY")
     i_boost = p_boost / (7 * 3.0)                                                                   # A at the 21 V cut-off (worst case)
     opts = []
     def add(key, desc, wh_nom, pack_g, dims, removes_bay, n_p, cell=None, notes=()):
         wh_u = wh_nom * USABLE; dm = pack_g - base_cart + (DOCK_G + GASKET_G - bay_g if removes_bay else 0.0)
         r = dict(key=key, desc=desc, Wh_nominal=round(wh_nom, 1), Wh_usable=round(wh_u, 1), scan_h=round(wh_u / p_scan, 2), boost_h=round(wh_u / p_boost, 2),
-                 meets_6h=wh_u / p_scan >= RULE_H, pack_g=round(pack_g), system_delta_g=round(dm), system_total_g=round(m_tot0 + dm),
+                 meets_6h=wh_u / p_scan >= RULE_H, boost_vs_6h_frac=round(wh_u / p_boost / RULE_H, 3), pack_g=round(pack_g), system_delta_g=round(dm), system_total_g=round(m_tot0 + dm),
                  torque_about_hand_Nm=round(tq0 + dm_pack_torque(pack_g - base_cart, lever), 2), pack_mm=[round(v, 1) for v in dims],
                  cell_current_boost_A=round(i_boost / n_p, 2), notes=list(notes))
         if cell: u = i_boost / n_p / CELLS[cell][4]; r["cell_current_frac_of_rating"] = round(u, 2); r["cell_current_ok"] = bool(u <= 1.0); r["cell_source"] = CELLS[cell][5]
@@ -75,10 +78,13 @@ def main():
     add("F", "drill-style small 7S1P P30B, carried with a spare", 7 * 10.8, pack_mass("Molicel P30B", 7) + RAIL_LATCH_G, box("Molicel P30B", 7, 1, 1), True, 1, "Molicel P30B",
         ["fails 6 h per pack; two packs give the baseline runtime; a swap restarts the detector unless a hold-up is added"])
     feas = [o for o in opts if o["key"] != "A" and o["meets_6h"] and o.get("cell_current_ok", True)]
-    best = min(feas, key=lambda o: o["system_total_g"])
+    best = min(feas, key=lambda o: o["system_total_g"]); chosen = next(o for o in opts if o["key"] == CHOSEN)
+    blocked = [dict(key=o["key"], scan_h=o["scan_h"], short_pct=round(100 * (1 - o["scan_h"] / RULE_H), 1)) for o in opts if not o["meets_6h"] and o["scan_h"] >= 0.9 * RULE_H]
     res = dict(status="MODELED: cell values from datasheets on file (M50T from a rev 0 draft; the LiPo from a vendor listing, UNVERIFIED); shell, rail, latch, dock, seal and BMS masses ASSUMED; no bench test",
                p_scan_W=round(p_scan, 2), p_boost_W=round(p_boost, 2), boost_current_at_21V_A=round(i_boost, 2), pack_lever_mm=round(lever * 1000, 1), bay_g_from_stl=round(bay_g, 1),
-               baseline_total_g=m_tot0, baseline_torque_Nm=tq0, options=opts, lightest_meeting_6h=best["key"],
+               baseline_total_g=m_tot0, baseline_torque_Nm=tq0, options=opts, lightest_meeting_6h=best["key"], chosen=CHOSEN,
+               chosen_summary=f"{chosen['desc']}: {chosen['Wh_nominal']} Wh, {chosen['boost_h']} h continuous boost (rated case), {chosen['scan_h']} h scan, {chosen['system_total_g']} g system ({chosen['system_delta_g']:+d} g vs the P30B reference)",
+               blocked_by_relaxed_6h_rule_within_10pct=blocked,
                conclusion=dict(drill_rail_feasible=True, rc_lipo_lighter=bool(next(o for o in opts if o["key"] == "E")["system_total_g"] < m_tot0),
                                lightest=f"{best['key']}: {best['desc']}, {best['system_total_g']} g system ({best['system_delta_g']:+d} g), {best['scan_h']} h scan"))
     res["ok"] = bool(len(opts) == 8 and res["conclusion"]["drill_rail_feasible"])

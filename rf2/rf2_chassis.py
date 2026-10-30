@@ -33,7 +33,7 @@ SPEC = dict(tubes=dict(outer=(31.0, 31.0), mid=(26.0, 26.0), inner=(21.0, 21.0))
                       grooves=[(20.0, 10.0, 3.0), (44.0, 10.5, 3.2), (68.0, 10.5, 3.2)], head=(44.0, 38.0, 30.0), slide=25.0, ffc_loop=60.0),
             trigger=dict(len=28.0, w=11.0, t=6.0, reach=70.0), button=dict(cap_d=12.0, ring_d=17.0, h=3.0), screen=dict(len=30.0, w=32.0, t=6.0, open_deg=60.0),
             dial=dict(d=15.0, t=6.0), cuff=dict(r_in=42.0, t=4.0, len=62.0, centre_s=1150.0, wing_deg=55.0, slide=70.0), forearm_r=40.0,
-            rails=dict(d=8.0, y=35.0, n=0.0), cells=dict(d=18.6, l=65.2, n_s=7, n_p=2), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
+            rails=dict(d=8.0, y=35.0, n=0.0), cells=dict(d=21.55, l=70.15, n_s=7, n_p=1, rows=2, g=70.0, model="Molicel INR-21700-P45B"), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
             ref3_outer=tuple(REF3["outer_mm"]), ref3_len=REF3["length_mm"], C_pair_pF_per_m=50.0, bend_min=10.0, twist_max_deg_per_mm=10.0, cord=dict(od=7.0, coil_od=17.0, stretch_max=4.0),
             eye=dict(above=600.0, behind=250.0), backpack=(520.0, 320.0, 210.0), sdc_folded=(400.0, 216.0), fold_gap=2.0)
 def rrect(W, H, r): return cq.Workplane("XY").rect(H, W).extrude(1.0).edges("|Z").fillet(min(r, W / 2 - 0.1, H / 2 - 0.1)).faces(">Z").wires().toPending()
@@ -76,11 +76,11 @@ def build():
     P["CHASSIS"] = ("CH", shaft_frame(body, c0), "control chassis: TXD (front, vented), PWR board, HB2-M; battery bay below; rails and cuff above")
     P["HINGE_CHASSIS_LUGS"] = ("CH", shaft_frame(rbox(26, c["w"] - 6, 22, 5).translate((c["n"][0] - 8, 0, 11)), c0 - 4), "hinge lugs under the chassis front")
     # battery bay + cartridge under the chassis
-    ce = s["cells"]; cw = s["cart_wall"]; Lc = ce["n_s"] * ce["d"] + 2 * cw; Wc = ce["l"] + 2 * cw; Hc = ce["n_p"] * ce["d"] + 4.0 + 2 * cw
+    ce = s["cells"]; cw = s["cart_wall"]; per_row = -(-ce["n_s"] * ce["n_p"] // ce.get("rows", ce["n_p"])); Lc = per_row * ce["d"] + 2 * cw; Wc = ce["l"] + 2 * cw; Hc = ce.get("rows", ce["n_p"]) * ce["d"] + 4.0 + 2 * cw
     bw, bc = s["bay_wall"], s["bay_clear"]; b0, b1 = st["bay"]; Lb = Lc + 2 * bc + bw; Wb = Wc + 2 * bc + 2 * bw; Hb = Hc + 2 * bc + 2 * bw; n_bay = c["n"][0] + 1.0 - Hb / 2
     bay = rbox(Hb, Wb, Lb, 4.0).cut(cq.Workplane("XY").box(Hc + 2 * bc, Wc + 2 * bc, Lb).translate((0, 0, bw)).val())
     P["BATTERY_BAY"] = ("CH", shaft_frame(bay.translate((0, 0, Lb / 2)), b1 - Lb, n_bay), "battery bay under the chassis, open at the rear")
-    P["BATTERY_CARTRIDGE"] = ("CH", shaft_frame(rbox(Hc, Wc, Lc, 3.0).translate((0, 0, Lc / 2)), b1 - Lc - bc, n_bay), "7S2P cartridge (BQ76952, MT60); slides out rearward")
+    P["BATTERY_CARTRIDGE"] = ("CH", shaft_frame(rbox(Hc, Wc, Lc, 3.0).translate((0, 0, Lc / 2)), b1 - Lc - bc, n_bay), f"{ce['n_s']}S{ce['n_p']}P {ce['model']} cartridge (BQ76952, MT60); slides out rearward")
     # inverted grip: loft along 'up', finger wedges on the front face
     gp = s["grip"]; up, front = g_axis(); base = at(gp["base_s"], gp["base_n"])
     w = cq.Workplane("XY")
@@ -145,10 +145,11 @@ def electronics(geo):
     E["SW_TRG"] = ("GRIP_HEAD", gbox(6.2, 6.3, 3.5, top + up * 4.0 + front * 10.0))
     E["FFC_12WAY"] = ("GRIP", gbox(6.0, 0.5, SPEC["grip"]["length"] - 4, geo["base"] + up * 2.0))
     ce = s["cells"]; Lc, Wc, Hc = geo["cart"]; cw = s["cart_wall"]; s_c0 = geo["b1"] - Lc - s["bay_clear"]; cells = []
-    for i in range(ce["n_s"]):
-        for j in range(ce["n_p"]):
-            cells.append(shaft_frame(cq.Workplane("XZ").circle(ce["d"] / 2).extrude(ce["l"] / 2, both=True).val(), s_c0 + cw + ce["d"] / 2 + i * ce["d"], geo["n_bay"] - Hc / 2 + cw + ce["d"] / 2 + j * ce["d"]))
-    E["CELLS_7S2P"] = ("BATTERY_CARTRIDGE", cq.Compound.makeCompound(cells))
+    n_c = ce["n_s"] * ce["n_p"]; per_row = -(-n_c // ce.get("rows", ce["n_p"]))
+    for k in range(n_c):
+        i, j = k % per_row, k // per_row
+        cells.append(shaft_frame(cq.Workplane("XZ").circle(ce["d"] / 2).extrude(ce["l"] / 2, both=True).val(), s_c0 + cw + ce["d"] / 2 + i * ce["d"], geo["n_bay"] - Hc / 2 + cw + ce["d"] / 2 + j * ce["d"]))
+    E["CELLS"] = ("BATTERY_CARTRIDGE", cq.Compound.makeCompound(cells))
     to = s["tubes"]["outer"]
     ro = s["ref3_outer"]; E["REF3_WINDINGS"] = ("REF3_SLEEVE", rprof(ro[0] - 2.0, ro[1] - 2.0, st["REF3"][0] + 3, st["REF3"][1] - 3, wall=(ro[0] - 2.0 - to[0]) / 2 - 0.1, r=s["corner_r"] + 1))
     return E
@@ -276,9 +277,10 @@ def main():
     c["deployed_clear"] = dict(ok=min(dep.values()) >= 2.0, min_gaps_mm=dep)
     # mass and torque about the hand
     ref_cu = REF3["copper_g_total"]
+    n_cell = s["cells"]["n_s"] * s["cells"]["n_p"]; cart_oh = 90.0 * (0.55 + 0.45 * n_cell / 14.0)       # 90 g for 14 cells (ASSUMED); shell + strip scale with cell count
     masses = {"head (ASSUMED 650 g)": (650.0, np.array([0, 0, 8.0])), "rect profiles + yoke + clamps (CF, ASSUMED 330 g)": (330.0, at(420)), f"REF3 rect coils ({ref_cu} g Cu + 30 g)": (ref_cu + 30.0, at(ref_c)),
               "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": (420.0, at(960)), "grip + head + screen (ASSUMED 120 g)": (120.0, geo["base"] + up * 60), "cuff + rails (ASSUMED 110 g)": (110.0, at(1140, 60)),
-              "battery cartridge (14 x 47 g + 90 g)": (748.0, at(985, geo["n_bay"]))}
+              f"battery cartridge ({n_cell} x {s['cells']['g']:.0f} g + {cart_oh:.0f} g shell / BMS / MT60, ASSUMED)": (n_cell * s["cells"]["g"] + cart_oh, at(985, geo["n_bay"]))}
     hand = geo["base"] + up * 50.0
     tq = sum(m * 9.81e-3 * (hand[0] - p[0]) * 1e-3 for m, p in masses.values()); tot = sum(m for m, _ in masses.values())
     res["mass"] = dict(items_g={k: round(m) for k, (m, _) in masses.items()}, lever_mm={k: round(float(hand[0] - p[0]), 1) for k, (m, p) in masses.items()}, total_g=round(tot), torque_about_hand_Nm=round(tq, 2), sdc2300_reference_g=2300)

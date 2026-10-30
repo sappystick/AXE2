@@ -115,7 +115,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 
 ## I6. Battery cartridge -> PWR (bay front blade contacts)
 
-- **From / to:** cartridge (7S2P, BQ76952) -> PWR board
+- **From / to:** cartridge (7S1P P45B, BQ76952) -> PWR board
 - **Medium:** sealed blade contacts at the bay front
 - **Connector:** power: Amass MT60 mated pair (cartridge male, bay female; 30 A, keyed, datasheet on file); signals: 4 x Mill-Max 0906 spring pins (UNVERIFIED: official sheet not obtained)
 - **Status:** design (P3.8)

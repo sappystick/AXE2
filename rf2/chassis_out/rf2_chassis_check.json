@@ -71,9 +71,9 @@
    "ok": true,
    "hits": [],
    "cartridge_mm": [
-    136.2,
-    71.2,
-    47.2
+    92.2,
+    76.2,
+    53.1
    ]
   },
   "grip_slide_lock": {
@@ -85,18 +85,18 @@
   "folds_to_backpack": {
    "ok": true,
    "grip_fixed_mm": [
-    497,
+    498,
     284,
-    194
+    195
    ],
    "grip_forward_mm": [
     550,
-    254,
-    142
+    259,
+    143
    ],
    "grip_side_mm": [
     494,
-    233,
+    238,
     160
    ],
    "target_mm": [
@@ -130,11 +130,11 @@
     "side": -1
    },
    "package_mm": [
-    497,
+    498,
     284,
-    194
+    195
    ],
-   "search_s": 6.1,
+   "search_s": 5.9,
    "top3": [
     {
      "fits_backpack": true,
@@ -146,9 +146,9 @@
       "side": -1
      },
      "package_mm": [
-      497,
+      498,
       284,
-      194
+      195
      ]
     },
     {
@@ -161,31 +161,31 @@
       "side": 1
      },
      "package_mm": [
-      497,
+      498,
       284,
-      194
+      195
      ]
     },
     {
      "fits_backpack": true,
      "head_pitch": 120,
-     "head_roll": 90,
+     "head_roll": -90,
      "hinge": {
       "axis": "N",
       "offset_mm": 31.1,
-      "side": 1
+      "side": -1
      },
      "package_mm": [
       494,
       284,
-      204
+      205
      ]
     }
    ],
    "grip_mode": null
   },
   "grip_folded_forward": {
-   "evaluations": 562,
+   "evaluations": 561,
    "fits_backpack": false,
    "head_pitch": 120,
    "head_roll": 90,
@@ -196,10 +196,10 @@
    },
    "package_mm": [
     550,
-    254,
-    142
+    259,
+    143
    ],
-   "search_s": 4.3,
+   "search_s": 4.4,
    "top3": [
     {
      "fits_backpack": false,
@@ -212,8 +212,8 @@
      },
      "package_mm": [
       550,
-      254,
-      142
+      259,
+      143
      ]
     },
     {
@@ -227,22 +227,22 @@
      },
      "package_mm": [
       550,
-      254,
-      142
+      259,
+      143
      ]
     },
     {
      "fits_backpack": false,
      "head_pitch": -15,
-     "head_roll": -90,
+     "head_roll": 90,
      "hinge": {
       "axis": "Y",
       "offset_mm": 49.8,
       "side": 1
      },
      "package_mm": [
-      705,
-      254,
+      706,
+      259,
       120
      ]
     }
@@ -261,10 +261,10 @@
    },
    "package_mm": [
     494,
-    233,
+    238,
     160
    ],
-   "search_s": 4.8,
+   "search_s": 4.2,
    "top3": [
     {
      "fits_backpack": true,
@@ -277,23 +277,8 @@
      },
      "package_mm": [
       494,
-      233,
+      238,
       160
-     ]
-    },
-    {
-     "fits_backpack": true,
-     "head_pitch": 105,
-     "head_roll": 90,
-     "hinge": {
-      "axis": "Y",
-      "offset_mm": 39.3,
-      "side": 1
-     },
-     "package_mm": [
-      497,
-      233,
-      185
      ]
     },
     {
@@ -309,6 +294,21 @@
       497,
       233,
       187
+     ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 39.3,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      238,
+      185
      ]
     }
    ],
@@ -335,10 +335,10 @@
    },
    "package_mm": [
     494,
-    233,
+    238,
     160
    ],
-   "search_s": 4.8,
+   "search_s": 4.2,
    "top3": [
     {
      "fits_backpack": true,
@@ -351,23 +351,8 @@
      },
      "package_mm": [
       494,
-      233,
+      238,
       160
-     ]
-    },
-    {
-     "fits_backpack": true,
-     "head_pitch": 105,
-     "head_roll": 90,
-     "hinge": {
-      "axis": "Y",
-      "offset_mm": 39.3,
-      "side": 1
-     },
-     "package_mm": [
-      497,
-      233,
-      185
      ]
     },
     {
@@ -384,6 +369,21 @@
       233,
       187
      ]
+    },
+    {
+     "fits_backpack": true,
+     "head_pitch": 105,
+     "head_roll": 90,
+     "hinge": {
+      "axis": "Y",
+      "offset_mm": 39.3,
+      "side": 1
+     },
+     "package_mm": [
+      497,
+      238,
+      185
+     ]
     }
    ],
    "grip_mode": "side"
@@ -397,7 +397,7 @@
    "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": 420,
    "grip + head + screen (ASSUMED 120 g)": 120,
    "cuff + rails (ASSUMED 110 g)": 110,
-   "battery cartridge (14 x 47 g + 90 g)": 748
+   "battery cartridge (7 x 70 g + 70 g shell / BMS / MT60, ASSUMED)": 560
   },
   "lever_mm": {
    "head (ASSUMED 650 g)": 706.3,
@@ -406,19 +406,19 @@
    "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": -114.1,
    "grip + head + screen (ASSUMED 120 g)": 8.5,
    "cuff + rails (ASSUMED 110 g)": -213.4,
-   "battery cartridge (14 x 47 g + 90 g)": -159.4
+   "battery cartridge (7 x 70 g + 70 g shell / BMS / MT60, ASSUMED)": -161.3
   },
-  "total_g": 2688,
-  "torque_about_hand_Nm": 4.08,
+  "total_g": 2500,
+  "torque_about_hand_Nm": 4.36,
   "sdc2300_reference_g": 2300
  },
  "ok": true,
  "timings_s": {
-  "build": 1.86,
-  "containment": 0.4,
-  "fold search (cached)": 0.02,
-  "deployed clearance": 0.65,
-  "exports and views": 8.61,
-  "total": 16.2
+  "build": 1.75,
+  "containment": 0.31,
+  "fold search (cached)": 29.85,
+  "deployed clearance": 0.63,
+  "exports and views": 5.04,
+  "total": 41.7
  }
 }

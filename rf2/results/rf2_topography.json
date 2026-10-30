@@ -25,7 +25,7 @@
   "maturity": "CONCEPT",
   "items": [
    [
-    "7S2P P30B, BQ76952 (main switch, TS2 wake), fuse, MT60 charge port",
+    "7S1P Molicel P45B, BQ76952 (main switch, TS2 wake), fuse, MT60 charge port",
     "CONCEPT"
    ],
    [
@@ -37,7 +37,7 @@
    "chassis": "pass",
    "system": "pass"
   },
-  "numbers": "runtime 7.8 h scan / 4.8 h boost; cartridge [136.2, 71.2, 47.2] mm",
+  "numbers": "runtime 5.9 h scan / 3.6 h boost; cartridge [92.2, 76.2, 53.1] mm",
   "open": "cell holder, contacts, latch; BQ76952 schematic"
  },
  {
@@ -187,7 +187,7 @@
   "steps": {
    "chassis": "pass"
   },
-  "numbers": "[494, 233, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2688 g",
+  "numbers": "[494, 238, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2500 g",
   "open": "lighter REF3 / tubes toward the SDC's 2.3 kg"
  },
  {

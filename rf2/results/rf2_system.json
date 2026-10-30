@@ -18,14 +18,14 @@
   "TXD switch TJ under 125 C": true,
   "chassis surface rise <= 15 K in continuous boost (TXD + PWR together)": true,
   "pack dissipation under 3 W in continuous boost": true,
-  "scan runtime >= 6 h": true
+  "runtime rated on continuous boost, from the chosen cell's datasheet energy": true
  },
  "decisions": [
   "Audio: magnet-free SMD piezo in bridge drive on HB2 (rf2_audio.py); tones 3.0-7.6 kHz, equalised; AU1 class-D + speaker removed",
   "Power switching: BQ76952 DSG high-side switch is the main switch; the power button wakes it on TS2 (falling edge, datasheet 7.x 'Wake on TS2'), the pod MCU turns it off over I2C after a 2 s hold; PM2 soft latch and LTC4365 removed (keyed MT60 prevents reverse charge)",
   "TX driver placement: inside the control chassis (chassis v2, SDC pattern); the echo search along the shaft is kept as the record of why the shaft base fails",
   "Continuous boost thermal: the clamp energy (8.9 W boost) returns to the battery through a hysteretic buck on the PWR board in the chassis, beside the TXD (no HV pair up the shaft any more); the TXD keeps only the switch's 6.1 W on its heat sink (TJ 101 C, rf2_continuous); 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA",
-  "Pack: 7S2P Molicel P30B (151 Wh) under the forearm as the head's counterweight",
+  "Pack: 7S1P Molicel P45B (113 Wh) under the forearm as the head's counterweight",
   "Inputs: one switch part (C&K KSC2 TE, IP67) for power, trigger and the two selector cams; no magnet in the pod (no offset at REF3 / the upper fluxgate)",
   "TXD temperature: TMP117 in therm mode with EEPROM-stored limits drives the TXSTAT fault line; the head backs the boost off (no I2C to the TXD)",
   "Link: RS-485 class pair (DATA+-) from CB1D to the pod; the head schedules LED frames and audio events on one clock and both play them a fixed 20 ms later (rf2_display3 coupling holds across the link)"
@@ -219,7 +219,7 @@
    0,
    50
   ],
-  "14 x Molicel INR-18650-P30B (7S2P)": [
+  "7 x Molicel INR-21700-P45B (7S1P)": [
    17.5,
    29.400000000000002
   ],
@@ -261,12 +261,14 @@
   "note2": "chassis 360 x 72 x 47 mm, natural convection 8 W/m2K (ASSUMED); the TXD heat sink vents through the chassis sides"
  },
  "runtime": {
-  "pack": "7S2P Molicel P30B",
-  "usable_Wh": 136.1,
-  "scan_h": 7.8,
-  "boost_continuous_h": 4.8,
-  "cells_g": 658,
-  "note": "powers from rf2_continuous (regenerative clamp, 75 % recovery ASSUMED)"
+  "pack": "7S1P Molicel P45B",
+  "rated_case": "continuous boost (trigger held the whole time): the maximum use case (owner 2026-10-30)",
+  "usable_Wh": 102.1,
+  "scan_h": 5.9,
+  "boost_continuous_h": 3.6,
+  "cells_g": 490,
+  "note": "powers from rf2_continuous (regenerative clamp, 75 % recovery ASSUMED)",
+  "target_h": null
  },
  "all_pass": true
 }

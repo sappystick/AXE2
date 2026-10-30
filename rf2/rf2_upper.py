@@ -31,7 +31,7 @@ SPEC = dict(tilt_deg=50.0, pivot_r=85.0, pivot_above_lid=12.0, head_shell=os.pat
             trigger=dict(s=914.0, len=30.0, w=11.0, t=6.0, travel_deg=10.0, reach_from_backstrap=70.0), guard=dict(s=(900.0, 940.0), depth=40.0, t=5.0),
             button=dict(s=936.0, cap_d=12.0, ring_d=17.0, height=3.0), screen=dict(s=(944.0, 975.0), w=32.0, t=6.0, open_deg=60.0, hinge_s=975.0),
             dial=dict(s=922.0, d=15.0, t=6.0, n=8.0), spine=dict(w=34.0, h=26.0, wall=2.5), cuff=dict(r_in=46.0, t=4.0, arc_deg=210.0, centre_n=62.0, stem_angle=20.0),
-            cells=dict(d=18.6, l=65.2, n_s=7, n_p=2), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
+            cells=dict(d=21.55, l=70.15, n_s=7, n_p=1, rows=2, g=70.0, model="Molicel INR-21700-P45B"), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
             eye=dict(above=600.0, behind=250.0), backpack=(520.0, 320.0, 210.0), fold_gap=2.0, bend_r_min=15.0)
 TILT = math.radians(SPEC["tilt_deg"])
 try: LID_TOP = float(json.load(open(os.path.join(HERE, "head", "out_BF", "rf2_head_spec.json")))["shell"]["lid_z"][1])   # rf2_head option-B lid top (generated)
@@ -147,14 +147,14 @@ def build():
     stem_len = cu["centre_n"] - cu["r_in"] - cu["t"] + sp["h"] / 2 + 6
     stem = rbox(stem_len, 26.0, 40.0, 4.0).translate((stem_len / 2 - sp["h"] / 2, 0, 20.0))
     parts["UP_CUFF_STEM"] = ("UP", shaft_frame(stem, c0 - 6), "cuff stem rising from the spine (cuff pivot at its base)")
-    ce = s["cells"]; cw = s["cart_wall"]; Lc = ce["n_s"] * ce["d"] + 2 * cw; Wc = ce["l"] + 2 * cw; Hc = ce["n_p"] * ce["d"] + 4.0 + 2 * cw
+    ce = s["cells"]; cw = s["cart_wall"]; per_row = -(-ce["n_s"] * ce["n_p"] // ce.get("rows", ce["n_p"])); Lc = per_row * ce["d"] + 2 * cw; Wc = ce["l"] + 2 * cw; Hc = ce.get("rows", ce["n_p"]) * ce["d"] + 4.0 + 2 * cw
     bw = s["bay_wall"]; bc = s["bay_clear"]; b0, b1 = st["bay"]
     Lb = Lc + 2 * bc + bw; Wb = Wc + 2 * bc + 2 * bw; Hb = Hc + 2 * bc + 2 * bw
     n_top = -sp["h"] / 2 + 1.0; n_bay = n_top - Hb / 2
     bay = rbox(Hb, Wb, Lb, 4.0).cut(cq.Workplane("XY").box(Hc + 2 * bc, Wc + 2 * bc, Lb).translate((0, 0, bw)).val())
     parts["UP_BAY"] = ("UP", shaft_frame(bay.translate((0, 0, Lb / 2)), b1 - Lb, n_bay), "battery bay under the spine, open at the rear; blade contacts at its front")
     cart = rbox(Hc, Wc, Lc, 3.0)
-    parts["UP_CARTRIDGE"] = ("UP", shaft_frame(cart.translate((0, 0, Lc / 2)), b1 - Lc - bc, n_bay), f"battery cartridge: {ce['n_s']}S{ce['n_p']}P Molicel P30B + BQ76952 + MT60 charge port; slides out rearward")
+    parts["UP_CARTRIDGE"] = ("UP", shaft_frame(cart.translate((0, 0, Lc / 2)), b1 - Lc - bc, n_bay), f"battery cartridge: {ce['n_s']}S{ce['n_p']}P {ce['model']} + BQ76952 + MT60 charge port; slides out rearward")
     geo = dict(g=g, f=f, grip_top=grip_top, hinge_pt=hinge_pt, R_open=R_open, t_open=t_open, cart=(Lc, Wc, Hc), bay=(Lb, Wb, Hb), n_bay=n_bay, b1=b1)
     return parts, geo
 # ---------------------------------------------------------------- electronics envelopes in the new housings (part, housing, local box in the housing frame)
@@ -183,11 +183,12 @@ def electronics(geo):
     E["REF3_WINDINGS"] = ("REF3_SLEEVE", shaft_frame(cq.Workplane("XY").circle(r3["winding_r"][1]).circle(r3["winding_r"][0]).extrude(st["REF3"][1] - st["REF3"][0] - 6).val(), st["REF3"][0] + 3))
     ce = s["cells"]; Lc, Wc, Hc = geo["cart"]; cw = s["cart_wall"]; b1 = geo["b1"]; bc = s["bay_clear"]; s_c0 = b1 - Lc - bc
     cells = []
-    for i in range(ce["n_s"]):
-        for j in range(ce["n_p"]):
-            c = cq.Workplane("XZ").circle(ce["d"] / 2).extrude(ce["l"] / 2, both=True).val()
-            cells.append(shaft_frame(c.translate((0, 0, 0)), s_c0 + cw + ce["d"] / 2 + i * ce["d"], geo["n_bay"] - Hc / 2 + cw + ce["d"] / 2 + j * ce["d"]))
-    E["CELLS_7S2P"] = ("UP_CARTRIDGE", cq.Compound.makeCompound(cells))
+    n_c = ce["n_s"] * ce["n_p"]; per_row = -(-n_c // ce.get("rows", ce["n_p"]))
+    for k in range(n_c):
+        i, j = k % per_row, k // per_row
+        c = cq.Workplane("XZ").circle(ce["d"] / 2).extrude(ce["l"] / 2, both=True).val()
+        cells.append(shaft_frame(c, s_c0 + cw + ce["d"] / 2 + i * ce["d"], geo["n_bay"] - Hc / 2 + cw + ce["d"] / 2 + j * ce["d"]))
+    E["CELLS"] = ("UP_CARTRIDGE", cq.Compound.makeCompound(cells))
     E["BQ76952_BOARD"] = ("UP_CARTRIDGE", box_in_shaft(1.6, Wc - 2 * cw - 2, Lc - 2 * cw - 2, s_c0 + cw + 1, geo["n_bay"] + Hc / 2 - cw - 1.6))
     return E
 # ---------------------------------------------------------------- checks and the fold search
@@ -300,8 +301,8 @@ def main():
     path_clear = []
     for dz in np.linspace(10, Lc + 10, 8):
         mv = cart.moved(trsf(np.eye(3), D * dz)); hits = [k for k, p in parts.items() if p[0] == "UP" and k not in ("UP_CARTRIDGE", "UP_BAY") and mv.distance(p[1]) < 0.3]; path_clear.append(hits)
-    c["battery"] = dict(ok=all(not h for h in path_clear) and cont["CELLS_7S2P"] < 1.0, cartridge_mm=[round(v, 1) for v in (Lc, Wc, Hc)], slide_path_hits=sorted({x for h in path_clear for x in h}),
-                        cells="14 x Molicel INR-18650-P30B (18.6 x 65.2 mm max, datasheet)", note="the cartridge slides out rearward under the cuff without touching anything")
+    c["battery"] = dict(ok=all(not h for h in path_clear) and cont["CELLS"] < 1.0, cartridge_mm=[round(v, 1) for v in (Lc, Wc, Hc)], slide_path_hits=sorted({x for h in path_clear for x in h}),
+                        cells=f"{ce['n_s'] * ce['n_p']} x {ce['model']} ({ce['d']} x {ce['l']} mm max, datasheet)", note="the cartridge slides out rearward under the cuff without touching anything")
     # 4. deployed collisions between groups (hinge halves excluded where they meet)
     groups = ["HEAD", "L1", "L2", "UP"]
     G = {g_: comp([p[1] for k, p in parts.items() if p[0] == g_ and not k.startswith(("F1_", "F2_", "HEAD_EAR", "YOKE_CHEEK"))]) for g_ in groups}

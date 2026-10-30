@@ -5,21 +5,21 @@ Maturity is the lowest item at the station: CHECKED (generated + checked by a ru
 | Station | Where | Maturity | Checked by (last result) | Numbers | Open |
 |---|---|---|---|---|---|
 | 1. Elbow cuff on rails (rear, top) | chassis s 1000-1165 mm, above the chassis | **CONCEPT** | chassis pass | wrist-to-cuff angle to the shaft 0.0 deg; trough 7.1 mm above the chassis | wing spring and rail detent detail; strap |
-| 2. Battery cartridge (under the chassis) | s 905-1065 mm, below the shaft line | **CONCEPT** | chassis pass, system pass | runtime 7.8 h scan / 4.8 h boost; cartridge [136.2, 71.2, 47.2] mm | cell holder, contacts, latch; BQ76952 schematic |
+| 2. Battery cartridge (under the chassis) | s 905-1065 mm, below the shaft line | **CONCEPT** | chassis pass, system pass | runtime 5.9 h scan / 3.6 h boost; cartridge [92.2, 76.2, 53.1] mm | cell holder, contacts, latch; BQ76952 schematic |
 | 3. Control chassis body (TXD + PWR + HB2-M) | s 800-1160 mm, 360 x 72 x 47 mm | **OPEN** | chassis pass, system pass, study:continuous pass | chassis surface rise 10.5 K in continuous boost; TXD echo drift 0.003 x noise; switch TJ 100.8 C | driver + buck SPICE / schematics; venting; boards |
 | 4. Inverted control-stick grip (on top) | base at s 884 mm on the chassis top | **OPEN** | chassis pass, audio pass, display3 pass | screen 21.8 deg off the eye line; FFC loop 60.0 mm for 25.0 mm slide; audio floor 78.7 dB at 10 cm | HB2-G / FFC detail; trigger and slide-lock mechanisms; overmould |
 | 5. Main hinge (under the chassis front) | s 790-816 mm | **CONCEPT** | chassis pass | twist 6.0 deg/mm, bend r 12.0 mm | hinge detail, seals |
 | 6. Outer rectangular profile + REF3 | s 410-790 mm | **MODELED** | chassis pass, ref3 pass, study:emi not run | REF3 worst-axis penalty -2.06 % (box -1.39 %), copper 280.3 g; REF3 511.0 mm from the head at the shortest use length | re-run rf2_emi with the rect coils' e_ref; winding jig |
 | 7. Middle profile + clamp 1 | s 300-680 mm | **CHECKED** | chassis pass | pivot to hinge {'min_use': 690.0, 'nominal': 790, 'max': 980.0} mm; collapsed 430.0 mm | clamp mechanism detail |
 | 8. Inner profile + coil cord + yoke knuckle | s 0-420 mm | **CONCEPT** | chassis pass | cord stretch 550 mm (ratio 4.44); TX pair 1.1 m: first gate +0.19 us (first-order) | coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair |
-| 9. Folded package | whole machine | **CHECKED** | chassis pass | [494, 233, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2688 g | lighter REF3 / tubes toward the SDC's 2.3 kg |
+| 9. Folded package | whole machine | **CHECKED** | chassis pass | [494, 238, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2500 g | lighter REF3 / tubes toward the SDC's 2.3 kg |
 | 10. Search head (outside) | D233, heel at 178 deg | **CHECKED** | head:BF pass, head-check:BF pass, lightplate pass | light plate, gland and shell checked in rf2_head_check (option BF) | skid clip detail; bumper |
 | 11. Search head (inside) | r 0-116.5 mm | **OPEN** | board:MP1 pass, board:TXJ pass, board:TXF pass, board:LR1 pass, shield:SH1 pass, zonerules pass, construct pass, study:mp1v2_protect pass | MP1 v2 any option passes: False (best 14.1 mA / 17.5 us vs 10 mA / 16.3 us) | MP1 v2 levers; AB1 / CB1D routing (Phase C); Rd part |
 
 ## Items per station
 
 - **1. Elbow cuff on rails (rear, top)**: cuff trough + spring wings, twin side rails, U-slider; forearm on one straight line from the wrist (CHECKED); strap, padding, wing springs (CONCEPT)
-- **2. Battery cartridge (under the chassis)**: 7S2P P30B, BQ76952 (main switch, TS2 wake), fuse, MT60 charge port (CONCEPT); cartridge + bay geometry, rearward slide (CHECKED)
+- **2. Battery cartridge (under the chassis)**: 7S1P Molicel P45B, BQ76952 (main switch, TS2 wake), fuse, MT60 charge port (CONCEPT); cartridge + bay geometry, rearward slide (CHECKED)
 - **3. Control chassis body (TXD + PWR + HB2-M)**: part envelopes inside the chassis (CHECKED); TX driver values / schematic (OPEN); regenerative clamp buck (OPEN); HB2-M schematic + board (OPEN)
 - **4. Inverted control-stick grip (on top)**: 3 finger wedges, 18 deg rake, pilot trigger, thumb button + light ring, flip-up screen, dial, FFC down the core, 25 mm slide lock (CHECKED); audio piezo (3.0-7.6 kHz), display / audio coding v3 (MODELED); screen part, RS-485 part, HB2-G board (OPEN)
 - **5. Main hinge (under the chassis front)**: hollow-axis hinge, bundle pass-through (2 x 90 deg bends + 180 deg twist) (CHECKED); locking tooth + grip slide lock mechanism (CONCEPT)
