@@ -49,7 +49,7 @@
    "width_mm": 15.7,
    "inner_bore_min_mm": 18.0,
    "travel_mm": 550,
-   "rolling_loop_bend_r_mm": 4.0,
+   "rolling_loop_bend_r_mm": 6.0,
    "segments": {
     "seg1_dynamic_mm": 961,
     "seg2_static_mm": 394,
@@ -421,11 +421,11 @@
  },
  "ok": true,
  "timings_s": {
-  "build": 1.69,
-  "containment": 0.29,
+  "build": 1.78,
+  "containment": 0.31,
   "fold search (cached)": 0.02,
-  "deployed clearance": 0.62,
-  "exports and views": 5.5,
-  "total": 12.2
+  "deployed clearance": 0.79,
+  "exports and views": 7.13,
+  "total": 14.1
  }
 }

@@ -1231,3 +1231,30 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - **EDGE 4:** TPS65131 VPOS, cord-flex width, TMUX7212 pin, BAT54 span.
   - The replaced round-cord wire rows were removed from the live rules (kept in rf2_wire_options.json).
 - **Readiness:** 6 / 40. P0.6 is open on the cord-flex coverlay rating, the rectangular CF profiles and the cam clamp hardware.
+## 46. Minco design guide, Flex-Coils, Gore coax (2026-10-30; rf2_cordflex, rf2_flex_options D / E; MODELED)
+- **Received:**
+  - the Minco Flex Circuits Design Guide 2019;
+  - Minco Flex-Coils (FC01);
+  - the Gore spaceflight microwave cable catalog.
+  The re-sent Longflex / Flexpropro files are identical to section 44's.
+- **Cord flex updated from Minco:**
+  - stack 0.10 -> **0.15 mm per layer**, so the rolling-loop bend radius is 6.0 mm (40 x; Minco / IPC single layer >= 6 x, >= 10 x for reliability; single layer for dynamic). The loop still fits the 18 mm bore.
+  - **Insulation (rule 6):** 1 mil Kapton / acrylic coverlay (3500 V/mil) and 1000 VRMS typical withstand (Minco). The drawing calls a net-to-net hipot >= 1000 VRMS.
+  - **ICD I3 is no longer UNVERIFIED. P0.1 closes:** every connector or medium has its ratings on file. It closes on vendor design-guide typical values plus the hipot test written on the drawing, not on a part-specific datasheet.
+- **New near-miss rows:**
+
+  | Rule | Value | Status |
+  |---|---|---|
+  | LV traces vs Minco minimum on 2 oz | 0.15 vs 0.127 mm | pass |
+  | LV traces vs the 5 x thickness producibility guideline | 0.15 vs 0.356 mm | **FAIL** |
+  | One-piece flex vs Minco's 5 ft maximum | 1315 vs 1524 mm | pass (vs Tech Etch preferred 1016 mm still FAIL) |
+  | Insulation withstand | 1000 VRMS vs 630 V | pass |
+
+  - **Fix options for the FAIL:** thinner signal copper in the flex (selective plating / contoured copper), or wider traces, which push the flex past the 16 mm bore limit.
+- **Flex-Coils for the REF3 X / Y face coils (D):** feasible as 3 FEP-laminated segments of 116.7 mm per face.
+  - Thickness 1.1 mm: within FEP's 1.8 mm; polyimide's 1.0 mm is too thin.
+  - 0.2 mm wire = AWG 32, inside AWG 30-50.
+  - The end runs add 25 % copper: R 196.5 -> 245.5 ohm, e_ref 2.48 -> 2.64 nV/rtHz.
+  - **Packaging gain only:** repeatable orientation, and REF3T on the same flex as the cord-flex joint. Not adopted; the Z solenoid stays wound.
+- **Gore coax (E): not adopted.** 82 pF/m against 28.1 pF/m for the flex TX strips; the REF pairs are already guarded in the flex.
+- **Readiness: 7 / 40** (P0.1 added). P0.6 is open on the rectangular CF profiles and the cam clamp hardware only. Next on the critical path: P1.1 TXD schematic.

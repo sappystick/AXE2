@@ -678,31 +678,31 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.9,
+   "seconds": 3.1,
    "why": "",
    "tail": "",
-   "fingerprint": "284f70f09c81a071",
+   "fingerprint": "0d4a6b58bea305c5",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "afd58f6741",
+    "run.py": "ce19591248",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-30T22:53:37",
+   "finished": "2026-10-30T23:36:03",
    "log": "state/logs/selftest.log",
    "history": [
+    3.1,
+    2.7,
+    3.1,
+    2.8,
+    2.8,
+    2.7,
     2.9,
-    3.1,
-    2.7,
-    3.1,
-    2.8,
-    2.8,
-    2.7,
-    2.9
+    3.1
    ]
   },
   "study:mp1v2_chain": {
@@ -856,12 +856,12 @@
   "system": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.2,
+   "seconds": 3.4,
    "why": "",
    "tail": "",
-   "fingerprint": "75380e646b894b8d",
+   "fingerprint": "eccdb5db8f0dacb6",
    "inputs": {
-    "rf2/rf2_cordflex.py": "252f7ec98a",
+    "rf2/rf2_cordflex.py": "84b1024557",
     "rf2/rf2_system.py": "d14b048da2",
     "rf2/rf2_continuous.py": "cb2d38ee16",
     "rf2/rf2_zones.py": "b56fea10f8",
@@ -869,17 +869,17 @@
     "rf2/rf2_upper.py": "a4f5f5266b",
     "rf2/rf2_chassis.py": "eb739070c6"
    },
-   "finished": "2026-10-30T23:01:45",
+   "finished": "2026-10-30T23:37:50",
    "log": "state/logs/system.log",
    "history": [
-    3.1,
-    3.5,
     3.3,
     3.2,
     4.0,
     3.1,
     3.2,
-    3.2
+    3.2,
+    3.4,
+    3.4
    ]
   },
   "upper": {
@@ -905,14 +905,14 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "93a50e7cc71231db",
+   "fingerprint": "6c8a176fc704992e",
    "inputs": {
     "rf2/rf2_topography.py": "0a302903c4",
-    "rf2/chassis_out/rf2_chassis_check.json": "5845d1a987",
-    "rf2/results/rf2_system.json": "ccac3f80c5",
+    "rf2/chassis_out/rf2_chassis_check.json": "ec6613ae7c",
+    "rf2/results/rf2_system.json": "a6c9620d5c",
     "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T23:02:24",
+   "finished": "2026-10-30T23:38:35",
    "log": "state/logs/topography.log",
    "history": [
     0.0,
@@ -928,72 +928,74 @@
   "chassis": {
    "status": "pass",
    "rc": 0,
-   "seconds": 14.2,
+   "seconds": 16.7,
    "why": "",
    "tail": "",
-   "fingerprint": "26f18e43ce08b846",
+   "fingerprint": "e5f101b34ed0dca0",
    "inputs": {
-    "rf2/rf2_cordflex.py": "252f7ec98a",
+    "rf2/rf2_cordflex.py": "84b1024557",
     "rf2/rf2_chassis.py": "eb739070c6",
     "rf2/rf2_upper.py": "a4f5f5266b",
     "src/simcache.py": "7a842c96b9",
     "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T23:01:41",
+   "finished": "2026-10-30T23:37:47",
    "log": "state/logs/chassis.log",
    "history": [
-    15.8,
-    49.3,
     17.3,
     21.8,
     43.9,
     45.4,
     15.0,
-    14.2
+    14.2,
+    18.6,
+    16.7
    ]
   },
   "readiness": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.1,
+   "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "de92af3b8fab618b",
+   "fingerprint": "d0032b51f57923e3",
    "inputs": {
     "rf2/rf2_readiness.py": "41b85e29f0",
-    "state/ledger.json": "0bb2442b76",
-    "rf2/results/rf2_icd.json": "4133337fdf"
+    "state/ledger.json": "2d162bccd5",
+    "rf2/results/rf2_icd.json": "fa284672c1"
    },
-   "finished": "2026-10-30T23:04:45",
+   "finished": "2026-10-30T23:39:15",
    "log": "state/logs/readiness.log",
    "history": [
     0.0,
-    0.0,
     0.1,
     0.0,
     0.1,
-    0.0,
     0.1,
-    0.1
+    0.0,
+    0.0,
+    0.0
    ]
   },
   "timing-cord": {
    "status": "pass",
    "rc": 0,
-   "seconds": 29.8,
+   "seconds": 30.1,
    "why": "",
    "tail": "",
-   "fingerprint": "059e76b0cadd63c8",
+   "fingerprint": "e64137bec4ddf302",
    "inputs": {
-    "rf2/rf2_cordflex.py": "252f7ec98a",
+    "rf2/rf2_cordflex.py": "84b1024557",
     "rf2/rf2_timing_cord.py": "bd4590546e",
     "rf2/rf2_timing.py": "afc96b11c2"
    },
-   "finished": "2026-10-30T22:52:45",
+   "finished": "2026-10-30T23:37:30",
    "log": "state/logs/timing-cord.log",
    "history": [
     28.1,
-    29.8
+    29.8,
+    27.9,
+    30.1
    ]
   },
   "slim": {
@@ -1016,26 +1018,26 @@
   "icd": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.3,
+   "seconds": 3.0,
    "why": "",
    "tail": "",
-   "fingerprint": "3d8a9162dcebaeec",
+   "fingerprint": "47b0f98d03c88e19",
    "inputs": {
-    "rf2/rf2_icd.py": "d63a2160dd",
+    "rf2/rf2_icd.py": "7a00f6f8c6",
     "rf2/rf2_system.py": "d14b048da2",
-    "docs/DATASHEET_LOG_ARX.md": "a510f97322"
+    "docs/DATASHEET_LOG_ARX.md": "2f9137bf51"
    },
-   "finished": "2026-10-30T23:02:20",
+   "finished": "2026-10-30T23:39:15",
    "log": "state/logs/icd.log",
    "history": [
-    2.5,
-    2.4,
-    2.9,
     2.7,
     3.1,
     2.5,
     3.0,
-    2.3
+    2.3,
+    3.0,
+    2.7,
+    3.0
    ]
   },
   "emi-rect": {
@@ -1059,26 +1061,26 @@
   "print": {
    "status": "pass",
    "rc": 0,
-   "seconds": 33.3,
+   "seconds": 37.7,
    "why": "",
    "tail": "",
-   "fingerprint": "6170f8bd76d0c7ac",
+   "fingerprint": "b502dfae211bae0d",
    "inputs": {
     "rf2/rf2_print.py": "e53bffa875",
     "rf2/rf2_chassis.py": "eb739070c6",
-    "rf2/chassis_out/rf2_chassis_check.json": "5845d1a987"
+    "rf2/chassis_out/rf2_chassis_check.json": "ec6613ae7c"
    },
-   "finished": "2026-10-30T23:02:18",
+   "finished": "2026-10-30T23:38:28",
    "log": "state/logs/print.log",
    "history": [
-    12.6,
-    34.6,
     33.2,
     34.3,
     36.3,
     35.0,
     33.7,
-    33.3
+    33.3,
+    38.9,
+    37.7
    ]
   },
   "study:mp1v2_close": {
@@ -1103,46 +1105,46 @@
   "pack-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.8,
+   "seconds": 0.7,
    "why": "",
    "tail": "",
-   "fingerprint": "acf2a4967421969c",
+   "fingerprint": "8acd8ac165113eca",
    "inputs": {
     "rf2/rf2_pack_options.py": "e0a5eca4e6",
-    "rf2/chassis_out/rf2_chassis_check.json": "5845d1a987",
-    "rf2/results/rf2_system.json": "ccac3f80c5"
+    "rf2/chassis_out/rf2_chassis_check.json": "ec6613ae7c",
+    "rf2/results/rf2_system.json": "a6c9620d5c"
    },
-   "finished": "2026-10-30T23:02:21",
+   "finished": "2026-10-30T23:38:31",
    "log": "state/logs/pack-options.log",
    "history": [
-    0.8,
-    0.8,
     0.6,
     0.8,
     1.0,
     0.8,
     0.9,
-    0.8
+    0.8,
+    0.8,
+    0.7
    ]
   },
   "rules": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.1,
+   "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "db1f9dbde7c3aa6d",
+   "fingerprint": "39e2684681789e76",
    "inputs": {
-    "rf2/rf2_rules.py": "0a5b616008",
-    "rf2/results/rf2_system.json": "ccac3f80c5",
+    "rf2/rf2_rules.py": "2f35100cf4",
+    "rf2/results/rf2_system.json": "a6c9620d5c",
     "rf2/results/rf2_continuous.json": "7f2ee67390",
     "rf2/head/out/rf2_mp1v2_close.json": "cba1fcb3d1",
     "rf2/results/rf2_print.json": "e548dedeb6",
     "rf2/results/rf2_pack_options.json": "18a4470e08",
     "rf2/results/rf2_wire_options.json": "c9356af9d8",
-    "rf2/results/rf2_flex_options.json": "ba6275a923"
+    "rf2/results/rf2_flex_options.json": "9b2a3436c8"
    },
-   "finished": "2026-10-30T23:04:09",
+   "finished": "2026-10-30T23:38:35",
    "log": "state/logs/rules.log",
    "history": [
     0.0,
@@ -1150,15 +1152,15 @@
     0.0,
     0.0,
     0.0,
+    0.1,
     0.0,
-    0.0,
-    0.1
+    0.0
    ]
   },
   "wire-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.7,
+   "seconds": 0.9,
    "why": "",
    "tail": "",
    "fingerprint": "feaebaa57c07f1e7",
@@ -1169,104 +1171,46 @@
     "data/datasheets/Rubadue_insulated_litz_FEP_ETFE_TCA.pdf": "0aa8c4a977",
     "rf2/head/out_BF/rf2_head_spec.json": "b323b326ce"
    },
-   "finished": "2026-10-30T23:02:22",
+   "finished": "2026-10-30T23:38:32",
    "log": "state/logs/wire-options.log",
    "history": [
     3.5,
     0.8,
     0.9,
-    0.7
+    0.7,
+    0.7,
+    0.9
    ]
   },
   "flex-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.5,
+   "seconds": 2.7,
    "why": "",
    "tail": "",
-   "fingerprint": "74124a234bc91302",
+   "fingerprint": "dcf635f9d1178308",
    "inputs": {
-    "rf2/rf2_cordflex.py": "252f7ec98a",
-    "rf2/rf2_flex_options.py": "7069dd3013",
-    "rf2/chassis_out/rf2_chassis_check.json": "5845d1a987",
+    "rf2/rf2_cordflex.py": "84b1024557",
+    "rf2/rf2_flex_options.py": "512acdbef9",
+    "rf2/chassis_out/rf2_chassis_check.json": "ec6613ae7c",
     "rf2/rf2_zones.py": "b56fea10f8",
     "rf2/rf2_chassis.py": "eb739070c6",
-    "rf2/results/rf2_timing_cord.json": "411eb5b10d"
+    "rf2/results/rf2_timing_cord.json": "411eb5b10d",
+    "rf2/head/out/rf2_ref3.json": "17573fe10f"
    },
-   "finished": "2026-10-30T23:02:24",
+   "finished": "2026-10-30T23:38:35",
    "log": "state/logs/flex-options.log",
    "history": [
     3.3,
     2.6,
     2.6,
-    2.5
+    2.5,
+    2.6,
+    2.7
    ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T10:33:52",
-   "seconds": 379.8,
-   "results": {
-    "netlist": "pass",
-    "head": "pass",
-    "board:TXJ": "pass",
-    "board:TXF": "pass",
-    "board:MP1": "pass",
-    "board:LR1": "pass",
-    "field-xcheck": "pass",
-    "ledger": "pass",
-    "head:B": "pass",
-    "head-check:B": "pass",
-    "head-section:B": "pass",
-    "head:BF": "pass",
-    "head-check:BF": "pass",
-    "head-section:BF": "pass",
-    "head-check": "pass",
-    "wiring": "pass",
-    "zonerules": "pass",
-    "router-selftest": "pass",
-    "parity": "pass"
-   }
-  },
-  {
-   "finished": "2026-10-30T10:49:41",
-   "seconds": 110.3,
-   "results": {
-    "head": "pass",
-    "field-xcheck": "pass",
-    "ledger": "pass",
-    "head:B": "pass",
-    "head-check:B": "pass",
-    "head-section:B": "pass",
-    "head:BF": "pass",
-    "head-check:BF": "pass",
-    "head-section:BF": "pass",
-    "head-check": "pass",
-    "wiring": "pass",
-    "zonerules": "pass",
-    "construct": "pass",
-    "pod": "pass",
-    "ui": "pass",
-    "lightplate": "pass"
-   }
-  },
-  {
-   "finished": "2026-10-30T12:09:14",
-   "seconds": 251.9,
-   "results": {
-    "board:TXJ": "pass",
-    "board:TXF": "pass",
-    "board:MP1": "pass",
-    "board:LR1": "pass",
-    "zonerules": "pass",
-    "construct": "pass",
-    "opamp-qualify": "pass",
-    "selftest": "pass",
-    "router-selftest": "pass",
-    "parity": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T12:13:16",
    "seconds": 232.0,
@@ -1766,6 +1710,49 @@
    "finished": "2026-10-30T23:04:45",
    "seconds": 0.1,
    "results": {
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T23:36:49",
+   "seconds": 99.1,
+   "results": {
+    "timing-cord": "pass",
+    "chassis": "pass",
+    "system": "pass",
+    "selftest": "pass",
+    "print": "pass",
+    "icd": "pass",
+    "pack-options": "pass",
+    "wire-options": "pass",
+    "flex-options": "pass",
+    "rules": "pass",
+    "topography": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T23:38:35",
+   "seconds": 95.0,
+   "results": {
+    "timing-cord": "pass",
+    "chassis": "pass",
+    "system": "pass",
+    "print": "pass",
+    "icd": "pass",
+    "pack-options": "pass",
+    "wire-options": "pass",
+    "flex-options": "pass",
+    "rules": "pass",
+    "topography": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-30T23:39:15",
+   "seconds": 3.1,
+   "results": {
+    "icd": "pass",
     "readiness": "pass"
    }
   }

@@ -11,8 +11,8 @@
     "all_parts_verified"
    ],
    "done_means": "one table per interface (docs/ICD.md, generated); every connector part verified",
-   "status": "TODO",
-   "ready_to_start": true
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P0.2",
@@ -29,7 +29,7 @@
    ],
    "done_means": "coverage report lists every board above with nets; rf2_parity passes against built boards and harness",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P0.3",
@@ -107,7 +107,7 @@
    ],
    "done_means": "SPICE: current loop, turn-off, clamp, ratings in continuous boost",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P1.2",
@@ -203,7 +203,7 @@
    ],
    "done_means": "netlist entry",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P1.8",
@@ -218,7 +218,7 @@
    ],
    "done_means": "netlist entry",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P1.9",
@@ -542,7 +542,7 @@
    ],
    "done_means": "vendor quote-able spec",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P4.3",

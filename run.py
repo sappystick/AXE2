@@ -99,7 +99,7 @@ STEPS = [
          outputs=["rf2/results/rf2_pack_options.json"]),
     dict(id="wire-options", cmd=["rf2/rf2_wire_options.py"], inputs=["rf2/rf2_wire_options.py", "rf2/rf2_continuous.py", "rf2/rf2_system.py", "data/datasheets/Rubadue_insulated_litz_FEP_ETFE_TCA.pdf", "rf2/head/out_BF/rf2_head_spec.json"],
          deps=["system", "head:BF"], outputs=["rf2/results/rf2_wire_options.json"]),
-    dict(id="flex-options", cmd=["rf2/rf2_flex_options.py"], inputs=["rf2/rf2_cordflex.py", "rf2/rf2_flex_options.py", "rf2/chassis_out/rf2_chassis_check.json", "rf2/rf2_zones.py", "rf2/rf2_chassis.py", "rf2/results/rf2_timing_cord.json"],
+    dict(id="flex-options", cmd=["rf2/rf2_flex_options.py"], inputs=["rf2/rf2_cordflex.py", "rf2/rf2_flex_options.py", "rf2/chassis_out/rf2_chassis_check.json", "rf2/rf2_zones.py", "rf2/rf2_chassis.py", "rf2/results/rf2_timing_cord.json", "rf2/head/out/rf2_ref3.json"],
          deps=["chassis", "timing-cord"], outputs=["rf2/results/rf2_flex_options.json"]),
     dict(id="rules", cmd=["rf2/rf2_rules.py"], inputs=["rf2/rf2_rules.py", "rf2/results/rf2_system.json", "rf2/results/rf2_continuous.json", "rf2/head/out/rf2_mp1v2_close.json", "rf2/results/rf2_print.json", "rf2/results/rf2_pack_options.json", "rf2/results/rf2_wire_options.json", "rf2/results/rf2_flex_options.json"],
          deps=["system", "print", "pack-options", "wire-options", "flex-options"], outputs=["docs/RULE_NEAR_MISSES.md", "rf2/results/rf2_rules.json"]),

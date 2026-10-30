@@ -1,12 +1,12 @@
 {
  "status": "GENERATED from results files each run",
- "n_rules": 59,
+ "n_rules": 63,
  "counts": {
   "BLOCKED": 2,
   "RELAXED": 2,
   "EDGE": 4,
-  "FAIL": 4,
-  "PASS": 47
+  "FAIL": 5,
+  "PASS": 50
  },
  "flagged": [
   {
@@ -138,6 +138,19 @@
    "relaxed": null,
    "status": "EDGE",
    "over_pct": -1.9
+  },
+  {
+   "id": "flex.lv_producibility",
+   "kind": "target",
+   "desc": "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz)",
+   "value": 0.15,
+   "limit": 0.356,
+   "sense": ">=",
+   "unit": "mm",
+   "source": "Minco design guide 2019",
+   "relaxed": null,
+   "status": "FAIL",
+   "over_pct": 57.9
   },
   {
    "id": "shield.slotted.front end near the r",
@@ -907,6 +920,58 @@
    "relaxed": null,
    "status": "EDGE",
    "over_pct": -1.9
+  },
+  {
+   "id": "flex.withstand",
+   "kind": "safety",
+   "desc": "cord-flex insulation: Minco typical withstand (1000 VRMS 30 s) vs the rule-6 630 V (drawing hipot required)",
+   "value": 1000.0,
+   "limit": 630.0,
+   "sense": ">=",
+   "unit": "V",
+   "source": "Minco design guide 2019",
+   "relaxed": null,
+   "status": "PASS",
+   "over_pct": -58.7
+  },
+  {
+   "id": "flex.lv_min_w",
+   "kind": "target",
+   "desc": "cord-flex LV traces vs Minco minimum width on 2 oz",
+   "value": 0.15,
+   "limit": 0.127,
+   "sense": ">=",
+   "unit": "mm",
+   "source": "Minco design guide 2019",
+   "relaxed": null,
+   "status": "PASS",
+   "over_pct": -18.1
+  },
+  {
+   "id": "flex.lv_producibility",
+   "kind": "target",
+   "desc": "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz)",
+   "value": 0.15,
+   "limit": 0.356,
+   "sense": ">=",
+   "unit": "mm",
+   "source": "Minco design guide 2019",
+   "relaxed": null,
+   "status": "FAIL",
+   "over_pct": 57.9
+  },
+  {
+   "id": "flex.one_piece_minco",
+   "kind": "target",
+   "desc": "cord-flex in one piece vs Minco maximum length (5 ft)",
+   "value": 1315,
+   "limit": 1524,
+   "sense": "<=",
+   "unit": "mm",
+   "source": "Minco design guide 2019",
+   "relaxed": null,
+   "status": "PASS",
+   "over_pct": -13.7
   },
   {
    "id": "shield.slotted.front end near the r",

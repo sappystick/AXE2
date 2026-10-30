@@ -200,7 +200,7 @@
    "a": "head gland",
    "b": "cord board in the hinge knuckle",
    "medium": "single-layer 2 oz long flex, 15.1 mm wide (rf2_cordflex): TX strips 2.35 mm with 1.0 mm rule-6 gaps, VIN_H / GND_H, 3 diff pairs (TXCMD, TXSTAT, DATA), 3 guarded REF pairs; split at REF3T: segment 1 with a rolling loop for the 550 mm travel, segment 2 static",
-   "connector": "none on the TX strips (soldered at the gland board, REF3T and the cord board); vendor: Tech Etch long flex (capability on file, 40 in preferred); coverlay voltage rating UNVERIFIED (vendor to confirm >= 630 V, rule 6)",
+   "connector": "none on the TX strips (soldered at the gland board, REF3T and the cord board); vendor: Tech Etch long flex (40 in preferred) or Minco (to 5 ft), capability on file; insulation: Kapton / acrylic coverlay 3500 V/mil and 1000 VRMS typical withstand (Minco design guide 2019, on file), the drawing calls a net-to-net hipot >= 1000 VRMS (rule 6: 630 V)",
    "conds": [
     {
      "net": "TX_A",
@@ -1089,10 +1089,8 @@
    "ok": true
   },
   "every connector part verified (datasheet on file, ratings read)": {
-   "ok": false,
-   "tbd_or_unverified": [
-    "I3"
-   ]
+   "ok": true,
+   "tbd_or_unverified": []
   }
  },
  "p06_parts": {
@@ -1101,7 +1099,7 @@
   "FPC / FFC connectors (Panasonic Y5B)": "VERIFIED (catalog ACCTB1E + product page)",
   "wire-to-board (JST GH)": "VERIFIED (JST eGH)",
   "cartridge signal contacts (photo-etched BeCu fingers)": "decided: custom photo-etched part (Tech Etch capability on file; force modeled, resistance / cycle life by vendor test)",
-  "coil cord -> cord flex": "custom long flex (Tech Etch capability on file); coverlay voltage rating UNVERIFIED",
+  "coil cord -> cord flex": "decided: custom long flex, Kapton / acrylic stack (Minco design guide values on file; hipot >= 1000 VRMS on the drawing)",
   "rectangular CF profiles": "custom sizes: vendor pages only",
   "cam clamp hardware": "custom printed: no datasheet",
   "cell holder": "decided: spot-welded pack (Keystone holder logged as alternative)",
@@ -1111,6 +1109,6 @@
   "MP1 v2 clamp-rail shunts (TI TL431)": "VERIFIED (TI TL431 datasheet; stability with the rail capacitor still to check)"
  },
  "p06_all_verified": false,
- "all_parts_verified": false,
+ "all_parts_verified": true,
  "ok_except_parts": true
 }

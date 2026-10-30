@@ -82,8 +82,28 @@ def part_c():
                 force_N=round(F, 2), stress_MPa=round(sig), stress_frac_of_yield=round(sig / sy, 2), rules=rules, ok=bool(all(v for k, v in rules.items() if isinstance(v, bool)) and sig < 0.6 * sy),
                 use="BMS signal contacts (SDA, SCL, TS2 wake, sense) on the drill-style dock; power stays on the MT60", note="E and yield ASSUMED (typical BeCu); contact resistance and cycle life: vendor test")
 
+def part_d():
+    """REF3 rect-sleeve face coils (X, Y) as Minco Flex-Coils: max rectangular L 4.50 in (114 mm), up to 5.0 in (127 mm) when W < 2.0 in; AWG 30-50; laminated
+    thickness <= 1.0 mm (polyimide) / 1.8 mm (FEP); L tolerance +-5 %; -200..150 C (polyimide wire). Same wire and turns per segment, segments in series."""
+    rf = json.load(open(os.path.join(HERE, "head", "out", "rf2_ref3.json")))["rect_sleeve"]; X = rf["X"]; prof = rf["profile_mm"][0]; Lr = rf["length_mm"]
+    seg_max = 127.0 if prof < 50.8 else 114.0; n_seg = math.ceil(Lr / seg_max); seg_len = Lr / n_seg
+    t = X["layers"] * (X["wire_mm"] + 0.02); awg32 = abs(X["wire_mm"] - 0.202) < 0.01                 # 0.2 mm = AWG 32 (inside AWG 30-50)
+    wire_seg = 2 * (seg_len + prof) * X["turns"] / 1000.0; R_new = X["R_ohm"] * n_seg * wire_seg / X["wire_m"]
+    kT4 = 4 * 1.380649e-23 * 300.0; e_pre = 1.7e-9
+    e_new = math.sqrt(e_pre ** 2 + kT4 * R_new) * 1e9; e_old = X["e_ref_nV"]
+    return dict(segments=n_seg, seg_len_mm=round(seg_len, 1), seg_max_mm=seg_max, thickness_mm=round(t, 2), polyimide_ok=t <= 1.0, fep_ok=t <= 1.8, wire_in_range=awg32,
+                R_ohm_old=X["R_ohm"], R_ohm_new=round(R_new, 1), e_ref_nV_old=e_old, e_ref_nV_new=round(e_new, 2),
+                verdict="feasible as 3 FEP-laminated segments per face (polyimide too thin for 5 layers); the end runs add {:.0f} % copper and lift e_ref {:.2f} -> {:.2f} nV/rtHz: packaging gain (repeatable orientation, REF3T on the same flex), not a weight or noise gain".format(100 * (R_new / X["R_ohm"] - 1), e_old, e_new),
+                z_axis="the Z solenoid (3710 turns round the profile) is not a flat coil: stays wound")
+
+def part_e():
+    """Gore spaceflight microwave cable assemblies: 50 ohm ePTFE coax (eps about 1.4), nominal 82 pF/m, 3.94 ns/m; smallest 5U 1.2 mm 5.6 g/m, min bend 6.4 mm"""
+    import rf2_cordflex as CFX
+    return dict(coax_pF_per_m=82.0, flex_tx_pF_per_m=round(CFX.cps_c_pf_per_m(), 1), smallest="5U: 1.2 mm, 5.6 g/m, bend radius 6.4 mm", verdict="not adopted: 50 ohm microwave coax; "
+                "as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2")
+
 def main():
-    res = dict(status="MODELED: vendor capability brochures; voltage ratings, dielectric constants, conductivities, spring constants ASSUMED where marked", A_cord_to_flex=part_a(), B_shield_can=part_b(), C_becu_fingers=part_c())
+    res = dict(status="MODELED: vendor capability brochures; voltage ratings, dielectric constants, conductivities, spring constants ASSUMED where marked", A_cord_to_flex=part_a(), B_shield_can=part_b(), C_becu_fingers=part_c(), D_ref3_flexcoils=part_d(), E_gore_coax=part_e())
     a = res["A_cord_to_flex"]; b = res["B_shield_can"]["places"]; c = res["C_becu_fingers"]
     res["findings"] = [
         f"A: the cord as a {a['width_mm']} mm single-layer 2 oz flex (TX traces {a['tx_trace_mm']} mm, 1.0 mm rule-6 gaps) fits the {a['bore_mm']} mm bore; split at REF3T the pieces are "
@@ -92,6 +112,12 @@ def main():
         f"mass {a['mass_g']['flex']} g vs about {a['mass_g']['coiled_cord']} g",
         "B: " + "; ".join(f"{k}: closed can drift {v['closed_can']['drift5K_x_noise']} x noise ({'ok' if v['closed_ok'] else 'FAILS'}), slotted {v['slotted']['drift5K_x_noise']}" for k, v in b.items()),
         f"C: 0.254 mm BeCu fingers 10 x 1.5 mm give {c['force_N']} N at 0.8 mm at {int(100 * c['stress_frac_of_yield'])} % of an ASSUMED 1000 MPa yield; Tech Etch geometry rules met: {c['ok']}"]
+    import rf2_cordflex as CFX
+    res["A_cord_to_flex"]["minco"] = dict(len_max_mm=round(CFX.MINCO_LEN_MAX), one_piece_ok=a["one_piece_mm"] <= CFX.MINCO_LEN_MAX, cover_breakdown_V=CFX.COVER_MIL * CFX.COVER_V_PER_MIL,
+                                      withstand_VRMS=CFX.WITHSTAND_VRMS, rule6_basis="Kapton / acrylic 3500 V/mil x 1 mil coverlay; 1000 VRMS 30 s typical withstand (Minco); the drawing calls a net-to-net hipot >= 1000 VRMS",
+                                      lv_trace_mm=0.15, min_w_2oz_mm=round(CFX.MIN_W_2OZ, 3), producibility_w_mm=round(5 * CFX.CU_T_MM[2.0], 3),
+                                      note="LV traces 0.15 mm meet Minco's 0.13 mm minimum on 2 oz but not the 5 x thickness producibility guideline (0.36 mm): thinner signal copper (contoured / selective plating) or wider traces (width over the bore limit)")
+    res["findings"] += [f"D: {res['D_ref3_flexcoils']['verdict']}", f"E: {res['E_gore_coax']['verdict']}"]
     res["ok"] = bool(a["fits_bore"] and a["lengths_ok"])
     json.dump(res, open(os.path.join(OUT, "rf2_flex_options.json"), "w"), indent=1, default=float)
     for f in res["findings"]: print("-", f)

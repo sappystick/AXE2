@@ -126,8 +126,8 @@
    ]
   },
   "fill_fraction": {
-   "S1 head - REF3T (cord flex segment 1, rolling loop; rf2_cordflex)": 0.004,
-   "S2 REF3T - hinge (cord flex segment 2, static)": 0.003,
+   "S1 head - REF3T (cord flex segment 1, rolling loop; rf2_cordflex)": 0.006,
+   "S2 REF3T - hinge (cord flex segment 2, static)": 0.004,
    "S3 hinge pass-through into the chassis": 0.064
   },
   "vin_drop_V_boost": 0.007,

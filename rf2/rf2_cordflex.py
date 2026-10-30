@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 """RF2 cord flex (owner decision 2026-10-30, HANDOFF section 45): the coil cord replaced by a long flex split at REF3T. One definition shared by
 rf2_chassis (fit and rolling loop), rf2_system (harness), rf2_timing_cord (TX pair capacitance) and rf2_flex_options (study).
-Construction: single conductive layer, 2 oz copper, polyimide base + coverlay (about 0.1 mm total stack, ASSUMED); trace widths IPC-2221 (internal,
-10 K rise); rule 6: 1.0 mm between the TX traces and from TX to everything else. Coverlay voltage rating: UNVERIFIED (vendor to confirm >= 630 V).
+Construction: single conductive layer, 2 oz copper, Kapton base + 1 mil Kapton / acrylic coverlay (0.15 mm per layer, Minco design guide); trace widths
+IPC-2221 (internal, 10 K rise); rule 6: 1.0 mm between the TX traces and from TX to everything else. Insulation: 3500 V/mil and 1000 VRMS typical
+withstand (Minco design guide 2019); the drawing calls a net-to-net hipot >= 1000 VRMS.
 Segment 1 (head -> REF3T) carries a rolling loop that stores half the telescope travel; segment 2 (REF3T -> hinge cord board) is static."""
 import math
 from scipy.special import ellipk
 EPS0 = 8.854e-12
-OZ, STACK_MM, EPS_EFF = 2.0, 0.10, 1.6                 # copper oz, total stack, effective permittivity of the TX strips (ASSUMED; range 1.3-2.2)
+OZ, STACK_MM, EPS_EFF = 2.0, 0.15, 1.6                 # copper oz; stack 0.15 mm per layer (Minco design guide); eps_eff of the TX strips ASSUMED (range 1.3-2.2)
 HV_GAP = 1.0                                            # rule 6
 I_TX, I_PWR = 3.67, 0.45                                # A rms in continuous boost (rf2_continuous / rf2_system)
 TE_LEN_PREF, TE_LEN_ADV = 40 * 25.4, 60 * 25.4          # Tech Etch long flex (brochure on file)
-BEND_R = 40 * STACK_MM                                  # dynamic bend radius 40 x stack (ASSUMED rule of thumb)
+MINCO_LEN_MAX = 60 * 25.4                               # Minco: circuits up to 5 ft (design guide 2019); 1-2 layer panels 24 x 72 in (FC01)
+# insulation (Minco design guide 2019): Kapton / modified acrylic 3500 V/mil, plain Kapton 3500-7000 V/mil; typical dielectric 1000 VRMS 60 Hz 30 s,
+# 1 mA max leakage; withstanding test capability up to 6000 V; -65..105 C (acrylic), 150 C with the special adhesive
+COVER_MIL = 1.0; COVER_V_PER_MIL = 3500.0; WITHSTAND_VRMS = 1000.0                # 1 mil Kapton coverlay (ASSUMED stack choice); Minco values
+MIN_W_2OZ = 0.005 * 25.4                                # Minco minimum conductor width / space on 2 oz
+CU_T_MM = {0.5: 0.0007 * 25.4, 1.0: 0.0014 * 25.4, 2.0: 0.0028 * 25.4}   # nomograph copper thicknesses (IPC-2223 reprint)
+BEND_R = 40 * STACK_MM                                  # dynamic bend radius 40 x stack (ASSUMED; Minco: single layer >= 6 x (IPC), >= 10 x for reliability, single layer for dynamic)
 
 def ipc2221_width_mm(i_a, oz=OZ, d_t=10.0, internal=True):
     k = 0.024 if internal else 0.048; area_mil2 = (i_a / (k * d_t ** 0.44)) ** (1 / 0.725); return area_mil2 / (1.378 * oz) * 0.0254

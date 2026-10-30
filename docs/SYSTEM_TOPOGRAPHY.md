@@ -14,7 +14,7 @@ Maturity is the lowest item at the station: CHECKED (generated + checked by a ru
 | 8. Inner profile + coil cord + yoke knuckle | s 0-420 mm | **OPEN** | chassis pass | cord stretch n/a mm (ratio n/a); TX pair 1.35 m: first gate +0.14 us (first-order) | coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair |
 | 9. Folded package | whole machine | **CHECKED** | chassis pass | [494, 238, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2500 g | lighter REF3 / tubes toward the SDC's 2.3 kg |
 | 10. Search head (outside) | D233, heel at 178 deg | **CHECKED** | head:BF pass, head-check:BF pass, lightplate pass | light plate, gland and shell checked in rf2_head_check (option BF) | skid clip detail; bumper |
-| 11. Search head (inside) | r 0-116.5 mm | **OPEN** | board:MP1 pass, board:TXJ pass, board:TXF pass, board:LR1 pass, shield:SH1 pass, zonerules fail, construct pass, study:mp1v2_protect pass | MP1 v2 any option passes: False (best 14.1 mA / 17.5 us vs 10 mA / 16.3 us) | MP1 v2 levers; AB1 / CB1D routing (Phase C); Rd part |
+| 11. Search head (inside) | r 0-116.5 mm | **OPEN** | board:MP1 pass, board:TXJ pass, board:TXF pass, board:LR1 pass, shield:SH1 pass, zonerules pass, construct pass, study:mp1v2_protect pass | MP1 v2 any option passes: False (best 14.1 mA / 17.5 us vs 10 mA / 16.3 us) | MP1 v2 levers; AB1 / CB1D routing (Phase C); Rd part |
 
 ## Items per station
 

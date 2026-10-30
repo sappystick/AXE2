@@ -70,6 +70,12 @@ def rules():
         add("flex.seg1_len", "target", "cord-as-flex segment 1 (head -> REF3T, rolling loop) vs Tech Etch preferred length", a["segments"]["seg1_dynamic_mm"], a["te_limit_mm"]["preferred"], "<=", "Tech Etch long flex brochure", unit="mm")
         add("flex.one_piece", "target", "cord-as-flex in one piece (no REF3T joint) vs Tech Etch preferred length (advanced 1524 mm)", a["one_piece_mm"], a["te_limit_mm"]["preferred"], "<=", "Tech Etch long flex brochure", unit="mm")
         add("flex.width", "target", "cord-as-flex width vs the 18 mm bore less 2 mm", a["width_mm"], a["bore_mm"] - 2.0, "<=", "rf2_flex_options.json", unit="mm")
+        mi = a.get("minco")
+        if mi:
+            add("flex.withstand", "safety", "cord-flex insulation: Minco typical withstand (1000 VRMS 30 s) vs the rule-6 630 V (drawing hipot required)", mi["withstand_VRMS"], 630.0, ">=", "Minco design guide 2019", unit="V")
+            add("flex.lv_min_w", "target", "cord-flex LV traces vs Minco minimum width on 2 oz", 0.15, mi["min_w_2oz_mm"], ">=", "Minco design guide 2019", unit="mm")
+            add("flex.lv_producibility", "target", "cord-flex LV traces vs Minco producibility guideline (width >= 5 x copper thickness, 2 oz)", 0.15, mi["producibility_w_mm"], ">=", "Minco design guide 2019", unit="mm")
+            add("flex.one_piece_minco", "target", "cord-flex in one piece vs Minco maximum length (5 ft)", a["one_piece_mm"], mi["len_max_mm"], "<=", "Minco design guide 2019", unit="mm")
         for k, v in fo["B_shield_can"]["places"].items():
             add(f"shield.slotted.{k[:20]}", "target", f"slotted etched shield can in the head, {k}: drift vs 0.5 x gate noise", v["slotted"]["drift5K_x_noise"], 0.5, "<=", "rf2_flex_options.json", unit="x noise")
     return R

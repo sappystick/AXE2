@@ -236,7 +236,7 @@
    "board:TXF": "pass",
    "board:LR1": "pass",
    "shield:SH1": "pass",
-   "zonerules": "fail",
+   "zonerules": "pass",
    "construct": "pass",
    "study:mp1v2_protect": "pass"
   },

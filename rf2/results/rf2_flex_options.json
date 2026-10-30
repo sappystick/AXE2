@@ -97,7 +97,7 @@
   "width_mm": 15.7,
   "fits_bore": true,
   "bore_mm": 18.0,
-  "rolling_loop_bend_r_mm": 4.0,
+  "rolling_loop_bend_r_mm": 6.0,
   "loop_fits": true,
   "min_line_mm": 0.076,
   "tx_capacitance": [
@@ -127,7 +127,18 @@
    "coverlay / base voltage rating (rule 6): not in the brochures; the vendor must confirm >= 630 V across 1.0 mm and through the coverlay",
    "rolling-loop carrier inside the two-stage telescope (mock-up)",
    "polyimide eps and the dynamic flex life at 40 x stack"
-  ]
+  ],
+  "minco": {
+   "len_max_mm": 1524,
+   "one_piece_ok": true,
+   "cover_breakdown_V": 3500.0,
+   "withstand_VRMS": 1000.0,
+   "rule6_basis": "Kapton / acrylic 3500 V/mil x 1 mil coverlay; 1000 VRMS 30 s typical withstand (Minco); the drawing calls a net-to-net hipot >= 1000 VRMS",
+   "lv_trace_mm": 0.15,
+   "min_w_2oz_mm": 0.127,
+   "producibility_w_mm": 0.356,
+   "note": "LV traces 0.15 mm meet Minco's 0.13 mm minimum on 2 oz but not the 5 x thickness producibility guideline (0.36 mm): thinner signal copper (contoured / selective plating) or wider traces (width over the bore limit)"
+  }
  },
  "B_shield_can": {
   "can_mm": [
@@ -191,10 +202,33 @@
   "use": "BMS signal contacts (SDA, SCL, TS2 wake, sense) on the drill-style dock; power stays on the MT60",
   "note": "E and yield ASSUMED (typical BeCu); contact resistance and cycle life: vendor test"
  },
+ "D_ref3_flexcoils": {
+  "segments": 3,
+  "seg_len_mm": 116.7,
+  "seg_max_mm": 127.0,
+  "thickness_mm": 1.1,
+  "polyimide_ok": false,
+  "fep_ok": true,
+  "wire_in_range": true,
+  "R_ohm_old": 196.5,
+  "R_ohm_new": 245.5,
+  "e_ref_nV_old": 2.48,
+  "e_ref_nV_new": 2.64,
+  "verdict": "feasible as 3 FEP-laminated segments per face (polyimide too thin for 5 layers); the end runs add 25 % copper and lift e_ref 2.48 -> 2.64 nV/rtHz: packaging gain (repeatable orientation, REF3T on the same flex), not a weight or noise gain",
+  "z_axis": "the Z solenoid (3710 turns round the profile) is not a flat coil: stays wound"
+ },
+ "E_gore_coax": {
+  "coax_pF_per_m": 82.0,
+  "flex_tx_pF_per_m": 28.1,
+  "smallest": "5U: 1.2 mm, 5.6 g/m, bend radius 6.4 mm",
+  "verdict": "not adopted: 50 ohm microwave coax; as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2"
+ },
  "findings": [
   "A: the cord as a 15.7 mm single-layer 2 oz flex (TX traces 2.35 mm, 1.0 mm rule-6 gaps) fits the 18.0 mm bore; split at REF3T the pieces are 961 mm (rolling loop for 550.0 mm travel) and 394 mm, inside Tech Etch's 1016 mm preferred length; TX strips 28.1 pF/m over 1.355 m (eps_eff 1.6 ASSUMED) -> first gate +0.14 us (rf2_timing_cord; the wire pair gave +0.19 us); mass 10.6 g vs about 86 g",
   "B: front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12): closed can drift 60200.4099 x noise (FAILS), slotted 20.62866; head centre (r 30 mm, z 12): closed can drift 7535.6482 x noise (FAILS), slotted 2.58221",
-  "C: 0.254 mm BeCu fingers 10 x 1.5 mm give 0.63 N at 0.8 mm at 39 % of an ASSUMED 1000 MPa yield; Tech Etch geometry rules met: True"
+  "C: 0.254 mm BeCu fingers 10 x 1.5 mm give 0.63 N at 0.8 mm at 39 % of an ASSUMED 1000 MPa yield; Tech Etch geometry rules met: True",
+  "D: feasible as 3 FEP-laminated segments per face (polyimide too thin for 5 layers); the end runs add 25 % copper and lift e_ref 2.48 -> 2.64 nV/rtHz: packaging gain (repeatable orientation, REF3T on the same flex), not a weight or noise gain",
+  "E: not adopted: 50 ohm microwave coax; as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2"
  ],
  "ok": true
 }

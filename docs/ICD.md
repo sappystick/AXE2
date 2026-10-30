@@ -8,7 +8,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 - PASS: ampacity and pin counts
 - PASS: harness nets in rf2_system all defined at the cord's head end (I2)
 - PASS: screen FPC bend limit (3 bends) handled by a dynamic hinge flex (I11) and a static panel FPC (I12)
-- OPEN: every connector part verified (datasheet on file, ratings read) ({'tbd_or_unverified': ['I3']})
+- PASS: every connector part verified (datasheet on file, ratings read)
 
 ## I1. Coil leads -> TXJ (head)
 
@@ -53,7 +53,7 @@ Chassis v2 (rf2_chassis.py). 12 interfaces. Connector parts marked TBD carry the
 
 - **From / to:** head gland -> cord board in the hinge knuckle
 - **Medium:** single-layer 2 oz long flex, 15.1 mm wide (rf2_cordflex): TX strips 2.35 mm with 1.0 mm rule-6 gaps, VIN_H / GND_H, 3 diff pairs (TXCMD, TXSTAT, DATA), 3 guarded REF pairs; split at REF3T: segment 1 with a rolling loop for the 550 mm travel, segment 2 static
-- **Connector:** none on the TX strips (soldered at the gland board, REF3T and the cord board); vendor: Tech Etch long flex (capability on file, 40 in preferred); coverlay voltage rating UNVERIFIED (vendor to confirm >= 630 V, rule 6)
+- **Connector:** none on the TX strips (soldered at the gland board, REF3T and the cord board); vendor: Tech Etch long flex (40 in preferred) or Minco (to 5 ft), capability on file; insulation: Kapton / acrylic coverlay 3500 V/mil and 1000 VRMS typical withstand (Minco design guide 2019, on file), the drawing calls a net-to-net hipot >= 1000 VRMS (rule 6: 630 V)
 - **Status:** spec (roadmap P4.2: flex drawing + rolling-loop mock-up)
 
 | # | Net | Class | AWG | I rms (A) | V max | Insulation (V) | Note |
