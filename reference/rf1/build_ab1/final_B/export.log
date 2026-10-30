@@ -1,0 +1,13 @@
+{
+ "clearance_violations_below_0p09": 0,
+ "min_gap_mm": 0.2036,
+ "shorts": 0,
+ "short_list": [],
+ "viol_list": [],
+ "nets_with_opens": 0,
+ "time_s": 0.0
+}
+OPENS: []
+kicad_pcb paren balance: 0
+In4 carries the +3V3D island: the Gerber for this layer comes from kicad_gerber.py (hatched fill), not from this exporter
+exported kit_v3/PCB_AB1B 922 items

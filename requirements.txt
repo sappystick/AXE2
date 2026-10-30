@@ -1,0 +1,19 @@
+# AXE2 Python requirements (core: numpy / scipy / geometry / Gerbers; design tools: CAD, rendering, fields, SPICE, FEM, search). Install: pip install -r requirements.txt
+# (scripts/bootstrap.sh does it). System tools (KiCad 9, ngspice, gmsh, ARM gcc, Java 25 + Freerouting) come from scripts/bootstrap.sh.
+numpy==2.5.3
+scipy==1.18.1
+matplotlib==3.11.2
+pillow==12.3.0
+gerbonara==1.6.3
+shapely==2.2.0
+manifold3d==3.5.4
+kiutils==1.4.8          # read / write KiCad schematics, boards, footprints
+cadquery==2.8.0         # B-rep CAD (OpenCascade): STEP export of the housing for real CAD / machining
+pyvista==0.49.2         # VTK rendering (cut-aways, exploded views) off-screen
+trimesh==5.2.0          # mesh tools (loading KiCad STEP/VRML-converted parts, checks)
+magpylib==6.0.1         # analytic magnetic fields of coils / magnets (independent cross-check of the Biot-Savart code)
+spicelib==1.6.4         # drive ngspice from Python (front-end and driver simulation)
+meshio==5.3.5           # mesh format conversion (gmsh <-> STL / VTK)
+InteractiveHtmlBom==2.12.0   # assembly BOM / placement pages from KiCad boards
+scikit-fem==12.0.2      # finite elements (with gmsh meshes): axisymmetric eddy-current, winding-capacitance and shield-decay studies (ENHANCEMENT_PLAN_RF2.md)
+optuna==5.0.0           # parameter search for coil / receiver geometry at fixed energy per pulse

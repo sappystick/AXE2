@@ -1,0 +1,431 @@
+{
+ "status": "MODELED (RF1 phase 4, side experiment)",
+ "stackup": {
+  "layers": [
+   {
+    "name": "L1 F.Cu",
+    "material": "Cu 1 oz + plating",
+    "t_mm": 0.045,
+    "in_flex": false
+   },
+   {
+    "name": "prepreg (no-flow)",
+    "material": "FR4",
+    "t_mm": 0.2,
+    "in_flex": false
+   },
+   {
+    "name": "L2 In1.Cu GND (hatched)",
+    "material": "Cu 1/2 oz",
+    "t_mm": 0.018,
+    "in_flex": false
+   },
+   {
+    "name": "core",
+    "material": "FR4",
+    "t_mm": 0.42,
+    "in_flex": false
+   },
+   {
+    "name": "bond ply",
+    "material": "acrylic-free adhesive",
+    "t_mm": 0.025,
+    "in_flex": false
+   },
+   {
+    "name": "coverlay",
+    "material": "polyimide 25 um + adhesive 25 um",
+    "t_mm": 0.05,
+    "in_flex": true
+   },
+   {
+    "name": "L3 In2.Cu signals / hinge traces",
+    "material": "Cu 1/2 oz RA",
+    "t_mm": 0.018,
+    "in_flex": true
+   },
+   {
+    "name": "flex core",
+    "material": "polyimide 50 um (er 4, DF 0.04)",
+    "t_mm": 0.05,
+    "in_flex": true
+   },
+   {
+    "name": "L4 In3.Cu hatched GND in the flex",
+    "material": "Cu 1/2 oz RA",
+    "t_mm": 0.018,
+    "in_flex": true
+   },
+   {
+    "name": "coverlay",
+    "material": "polyimide 25 um + adhesive 25 um",
+    "t_mm": 0.05,
+    "in_flex": true
+   },
+   {
+    "name": "bond ply",
+    "material": "acrylic-free adhesive",
+    "t_mm": 0.025,
+    "in_flex": false
+   },
+   {
+    "name": "core",
+    "material": "FR4",
+    "t_mm": 0.42,
+    "in_flex": false
+   },
+   {
+    "name": "L5 In4.Cu plane / island",
+    "material": "Cu 1/2 oz",
+    "t_mm": 0.018,
+    "in_flex": false
+   },
+   {
+    "name": "prepreg (no-flow)",
+    "material": "FR4",
+    "t_mm": 0.2,
+    "in_flex": false
+   },
+   {
+    "name": "L6 B.Cu",
+    "material": "Cu 1 oz + plating",
+    "t_mm": 0.045,
+    "in_flex": false
+   }
+  ],
+  "rigid_mm": 1.602,
+  "flex_mm": 0.186,
+  "note": "rigid sections keep the 6-layer roles of AB1 / CB1D (F, In1 GND, In2, In3, In4 plane, B); LB1 4 -> 6 layers; the vendor builds 6L rigid-flex at 1.6 mm, 1 oz"
+ },
+ "panel": {
+  "sections": {
+   "CB1D": {
+    "cx": 0.0,
+    "cy": 0.0,
+    "r": 39.0
+   },
+   "LB1": {
+    "cx": 0.0,
+    "cy": 93.2,
+    "r": 39.0
+   },
+   "AB1A": {
+    "cx": -142.4,
+    "cy": 45.5,
+    "r": 20.0
+   },
+   "AB1B": {
+    "cx": 149.2,
+    "cy": 45.5,
+    "r": 20.0
+   }
+  },
+  "hinges": [
+   {
+    "name": "CB1D-LB1",
+    "length_mm": 15.2,
+    "width_mm": 7.0,
+    "from_": "CB1D duct edge",
+    "to": "LB1 duct edge",
+    "folds": 2
+   },
+   {
+    "name": "CB1D-AB1A",
+    "length_mm": 121.0,
+    "width_mm": 7.0,
+    "folds": 4,
+    "note": "duct route: AB1 lane, AB1 comb window, duct, CB1D comb window"
+   },
+   {
+    "name": "CB1D-AB1B",
+    "length_mm": 127.8,
+    "width_mm": 7.0,
+    "folds": 4
+   }
+  ],
+  "strips": [
+   {
+    "to": "AB1A",
+    "x_root": -9.0,
+    "y_root": 37.95,
+    "y_turn": 45.5,
+    "x_end": -122.4
+   },
+   {
+    "to": "AB1B",
+    "x_root": 9.0,
+    "y_root": 37.95,
+    "y_turn": 45.5,
+    "x_end": 129.2
+   }
+  ],
+  "extent_mm": [
+   331.7,
+   171.2
+  ],
+  "fits_18x24in": true,
+  "hinge_strip_clear_of_LB1": true,
+  "copper_area_mm2": 13918,
+  "panel_use_pct": 24.5,
+  "hta": "separate 4-layer board, 2-layer flex tail (about 21 mm, phase 1) hot-bar bonded to LB1: keeps the roof removable"
+ },
+ "rules": [
+  {
+   "id": "F1",
+   "rule": "no via, plated hole or pad within 1.0 mm of a rigid-flex transition line"
+  },
+  {
+   "id": "F2",
+   "rule": "traces cross every fold line at 90 deg; no trace corners, neck-downs or width changes inside a bend zone (fold line +- 2 mm)"
+  },
+  {
+   "id": "F3",
+   "rule": "flex ground = cross-hatch at 45 deg (eddy rule 5, and it bends); no solid copper in the flex"
+  },
+  {
+   "id": "F4",
+   "rule": "minimum fold radius 2.0 mm (10 x 0.2 mm flex), static folds only (folded once at assembly)"
+  },
+  {
+   "id": "F5",
+   "rule": "stiffeners FR4 or polyimide only: no stainless or aluminium (closed metal near the coils, rule 5)"
+  },
+  {
+   "id": "F6",
+   "rule": "no 460 V net on any flex (rule 6): COIL_A / COIL_B stay AWG22 600 V wire into CB1D JCL"
+  },
+  {
+   "id": "F7",
+   "rule": "the bend region of every hinge stays outside the potting pours (no rigid compound across a fold); the hinge roots may be in gel"
+  },
+  {
+   "id": "F8",
+   "rule": "signal / ground interleave on the hinge: every analog line (MONO_IN, VCM_OUT, receive tails) has a ground trace on both sides (phase 2 crosstalk model)"
+  }
+ ],
+ "ab1_F1_check": {
+  "A": {
+   "state": "routed",
+   "source": "final kicad_pcb",
+   "vias": 62,
+   "plated_holes": 0,
+   "vias_in_F1_zone": [],
+   "F1_ok": true,
+   "open_final": 0,
+   "router_unrouted": [
+    "OUT_GY: U1.7"
+   ]
+  },
+  "B": {
+   "state": "routed",
+   "source": "final kicad_pcb",
+   "vias": 53,
+   "plated_holes": 0,
+   "vias_in_F1_zone": [],
+   "F1_ok": true,
+   "open_final": 0,
+   "router_unrouted": []
+  }
+ },
+ "cb1d_section": {
+  "removed": [
+   {
+    "ref": "U1",
+    "was": "Raspberry Pi Pico 2 W module on pins (21 x 51 mm, 8 mm tall, CYW43439 radio)",
+    "freed_mm": [
+     51.0,
+     21.0
+    ],
+    "at": [
+     0.0,
+     16.0
+    ]
+   },
+   {
+    "ref": "M5",
+    "was": "Murata OKI-78SR 5 V module (SIP, 10.2 mm tall)",
+    "freed_mm": [
+     11.5,
+     8.5
+    ],
+    "at": [
+     12.0,
+     -6.0
+    ]
+   },
+   {
+    "ref": "JA / JB / JLB / JHTA",
+    "was": "1.27 mm headers and wire pads",
+    "freed_mm": null,
+    "at": null
+   }
+  ],
+  "added": [
+   {
+    "ref": "U1",
+    "part": "RP2354A (RP2350, 2 MB flash in package), QFN-60 7 x 7",
+    "w_h_mm": [
+     8.0,
+     8.0
+    ],
+    "source": "RP2350 datasheet, build 01/10/2026 (Table 1, 14.1)"
+   },
+   {
+    "ref": "Y1",
+    "part": "12 MHz crystal 3.2 x 2.5",
+    "w_h_mm": [
+     4.0,
+     3.2
+    ],
+    "source": "RP2350 datasheet: bootloader expects 12 MHz"
+   },
+   {
+    "ref": "LV1",
+    "part": "RP2350 core regulator inductor (value per the RP2350 hardware design section: to read)",
+    "w_h_mm": [
+     3.0,
+     3.0
+    ],
+    "source": "UNVERIFIED value"
+   },
+   {
+    "ref": "U3V",
+    "part": "TI TLV755P 3.3 V 500 mA LDO, SOT-23-5 (VREG_AVDD / IOVDD 3.3 V from +5V)",
+    "w_h_mm": [
+     3.6,
+     3.4
+    ],
+    "source": "TI SBVS320D (on disk)"
+   },
+   {
+    "ref": "C*",
+    "part": "RP2350 decoupling, 14 x 0402 (count to be taken from the hardware design section)",
+    "w_h_mm": [
+     6.0,
+     4.0
+    ],
+    "source": "UNVERIFIED count"
+   },
+   {
+    "ref": "U5",
+    "part": "TI LMR36015 4.2-60 V 1.5 A buck, VQFN-HR 2 x 3 (replaces M5)",
+    "w_h_mm": [
+     3.4,
+     4.0
+    ],
+    "source": "TI SNVSB49D"
+   },
+   {
+    "ref": "L5",
+    "part": "Bourns SRN4018-6R8M 6.8 uH, Isat 1.6 A",
+    "w_h_mm": [
+     4.6,
+     4.6
+    ],
+    "source": "Bourns SRN4018 (on disk)"
+   },
+   {
+    "ref": "C5*",
+    "part": "buck input 2 x 2.2 uF 50 V 1206, output 2 x 22 uF 10 V 1206, boot 0.1 uF",
+    "w_h_mm": [
+     8.0,
+     4.0
+    ],
+    "source": "values per the LMR36015 design section: to size"
+   }
+  ],
+  "area_check": {
+   "pico_freed_mm2": 1071.0,
+   "mcu_cluster_mm2": 122.0,
+   "oki_freed_mm2": 97.75,
+   "buck_cluster_mm2": 66.8,
+   "fits": true
+  },
+  "note": "placement-level only: CB1D is not re-routed in phase 4 (phase 5); the radio goes (OPEN_ITEMS 42 settled by removal); firmware keeps the RP2350 core"
+ },
+ "cb1d_map": {
+  "new": [
+   {
+    "part": "U1 RP2354A",
+    "x": -6.0,
+    "y": -16.0,
+    "w": 8.0,
+    "h": 8.0,
+    "collides_with": [],
+    "inside_board": true
+   },
+   {
+    "part": "Y1 12 MHz",
+    "x": 1.0,
+    "y": -13.5,
+    "w": 4.0,
+    "h": 3.2,
+    "collides_with": [],
+    "inside_board": true
+   },
+   {
+    "part": "LV1 core L",
+    "x": 1.0,
+    "y": -18.5,
+    "w": 3.0,
+    "h": 3.0,
+    "collides_with": [],
+    "inside_board": true
+   },
+   {
+    "part": "U3V TLV755P",
+    "x": 6.0,
+    "y": -13.5,
+    "w": 3.6,
+    "h": 3.4,
+    "collides_with": [],
+    "inside_board": true
+   },
+   {
+    "part": "C* decoupling",
+    "x": 6.0,
+    "y": -18.6,
+    "w": 6.0,
+    "h": 4.0,
+    "collides_with": [],
+    "inside_board": true
+   },
+   {
+    "part": "U5 LMR36015",
+    "x": -14.5,
+    "y": 7.5,
+    "w": 3.4,
+    "h": 4.0,
+    "collides_with": [],
+    "inside_board": true
+   },
+   {
+    "part": "L5 SRN4018",
+    "x": -10.2,
+    "y": 7.5,
+    "w": 4.6,
+    "h": 4.6,
+    "collides_with": [],
+    "inside_board": true
+   },
+   {
+    "part": "C5* buck caps",
+    "x": -12.0,
+    "y": 3.4,
+    "w": 8.0,
+    "h": 3.0,
+    "collides_with": [],
+    "inside_board": true
+   }
+  ],
+  "ok": true,
+  "removed": [
+   "U1",
+   "M5",
+   "JA",
+   "JB",
+   "JHTA",
+   "JLB"
+  ]
+ }
+}

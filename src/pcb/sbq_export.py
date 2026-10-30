@@ -1,0 +1,83 @@
+import json, math, os, numpy as np
+import models3d as M3
+import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+G=json.load(open("kit_v22/sbq_geometry.json")); W,VD,VR,VDR=0.8,0.8,0.4,0.4;     # VR is the via PAD radius; VDR the finished DRILL diameter (the drill was written as 2*VR = 0.8 = the pad: zero annular ring in the KiCad file and in the fabrication PTH drill file)
+HA=G["hole_angles"]; RB=114.0
+def rot(a,deg):
+    c,s=math.cos(math.radians(deg)),math.sin(math.radians(deg)); a=np.asarray(a,float); return np.c_[a[:,0]*c-a[:,1]*s,a[:,0]*s+a[:,1]*c]
+def board(deg):
+    if deg==0.0: L={int(k):[np.asarray(p,float) for p in v] for k,v in G["layers"].items()}; vias=[tuple(x) for x in G["via_xy"]]; pads=[tuple(x) for x in G["pads"]]
+    else: L={int(k):[np.asarray(p,float) for p in v] for k,v in G["layersB"].items()}; vias=[tuple(x) for x in G["via_xyB"]]; pads=[tuple(x) for x in G["padsB"]]
+    HR_=G["hole_radius"]; holes=[(HR_*math.cos(math.radians(a)),HR_*math.sin(math.radians(a))) for a in HA]; return L,vias,pads,holes
+def outline():
+    t0=math.asin(2.0/RB); a=np.linspace(t0,2*math.pi-t0,360); pts=[(RB*math.cos(x),RB*math.sin(x)) for x in a]
+    return pts+[(116.0,-2.0),(116.0,2.0),pts[0]]
+LAY=["F.Cu","In1.Cu","In2.Cu","B.Cu"]
+RDP,RDW=(1.0,1.3),0.4                                       # 0805 pad size and chord trace width (sbq_gen2 RD_PAD, RD_TRACE)
+def extras(deg):
+    """QA only: transfer PTHs T1/T2 over the QB pads (net QB_COIL), RD1 across P1/P2 (QA_COIL), RD2 across T1/T2 (QB_COIL)"""
+    if deg!=0.0: return [],[]
+    rd=G["rd"]; T=[tuple(x) for x in G["padsB"]]; P=[tuple(x) for x in G["pads"]]
+    fps=[(nm,rd[nm],2 if nm=="RD2" else 1) for nm in ("RD1","RD2")]
+    tr=[(P[0],tuple(rd["RD1"]["pads"][0]),1),(tuple(rd["RD1"]["pads"][1]),P[1],1),(T[0],tuple(rd["RD2"]["pads"][0]),2),(tuple(rd["RD2"]["pads"][1]),T[1],3)]
+    return fps,tr
+def kicad(name,net,deg,path):
+    L,vias,pads,holes=board(deg); CX,CY=150.0,120.0; k=lambda p:(CX+p[0],CY-p[1]); o=[]
+    o.append('(kicad_pcb (version 20221018) (generator "arx_sbq")\n  (general (thickness 0.8) (legacy_teardrops no))\n  (paper "A3")\n  (layers (0 "F.Cu" signal) (1 "In1.Cu" signal) (2 "In2.Cu" signal) (31 "B.Cu" signal) (34 "B.Paste" user) (35 "F.Paste" user) (36 "B.SilkS" user "B.Silkscreen") (37 "F.SilkS" user "F.Silkscreen") (38 "B.Mask" user) (39 "F.Mask" user) (40 "Dwgs.User" user "User.Drawings") (41 "Cmts.User" user "User.Comments") (44 "Edge.Cuts" user) (47 "F.CrtYd" user "F.Courtyard") (49 "F.Fab" user))')
+    o.append('  (setup (pad_to_mask_clearance 0.05) (stackup (layer "F.Cu" (type "copper") (thickness 0.035)) (layer "dielectric 1" (type "prepreg") (thickness 0.15)) (layer "In1.Cu" (type "copper") (thickness 0.035)) (layer "dielectric 2" (type "core") (thickness 0.34)) (layer "In2.Cu" (type "copper") (thickness 0.035)) (layer "dielectric 3" (type "prepreg") (thickness 0.15)) (layer "B.Cu" (type "copper") (thickness 0.035)) (copper_finish "Immersion silver")))')
+    o.append(f'  (net 0 "")\n  (net 1 "{net}")' + ('\n  (net 2 "QB_T1")\n  (net 3 "QB_T2")' if deg==0.0 else ''))
+    fps,tr=extras(deg)
+    for i,(x,y) in enumerate(G["padsB"] if deg==0.0 else []): X,Y=k((x,y)); o.append(f'  (footprint "SB1R:TRANSFER_PAD" (layer "F.Cu") (at {X:.3f} {Y:.3f}) (property "Reference" "T{i+1}" (at 0 -2) (layer "F.SilkS")) (pad "1" thru_hole circle (at 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net {2+i} "QB_T{i+1}")))')
+    for nm,fp,ni in fps:
+        X,Y=k(fp["centre"]); nn="QB_COIL" if ni==2 else net; n1,m1,n2,m2=(2,"QB_T1",3,"QB_T2") if ni==2 else (1,net,1,net)       # the two QB transfer terminals are different nodes (joined by the QB coil on the other board)
+        o.append(f'  (footprint "Resistor_SMD:R_0805_2012Metric" (layer "F.Cu") (at {X:.3f} {Y:.3f} {fp["angle"]:.3f}) (property "Reference" "{nm}" (at 0 -1.6) (layer "F.SilkS")) (property "Value" "680R 0.1% thin film 0805, non-magnetic terminations preferred (unverified)" (at 0 1.6) (layer "F.Fab")) (pad "1" smd roundrect (at -0.95 0 {fp["angle"]:.3f}) (size {RDP[0]} {RDP[1]}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25) (net {n1} "{m1}")) (pad "2" smd roundrect (at 0.95 0 {fp["angle"]:.3f}) (size {RDP[0]} {RDP[1]}) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.25) (net {n2} "{m2}")) {M3.model_line("R0805", indent="")})')
+    for a,b,ni in tr: (x0,y0),(x1,y1)=k(a),k(b); o.append(f'  (segment (start {x0:.4f} {y0:.4f}) (end {x1:.4f} {y1:.4f}) (width {RDW}) (layer "F.Cu") (net {ni}))')
+    for i,(x,y) in enumerate(pads): X,Y=k((x,y)); o.append(f'  (footprint "SB1R:LEAD_PAD" (layer "F.Cu") (at {X:.3f} {Y:.3f}) (property "Reference" "P{i+1}" (at 0 -2) (layer "F.SilkS")) (pad "1" thru_hole circle (at 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "{net}")))')
+    for i,(x,y) in enumerate(holes): X,Y=k((x,y)); o.append(f'  (footprint "SB1R:MH_M3" (layer "F.Cu") (at {X:.3f} {Y:.3f}) (property "Reference" "H{i+1}" (at 0 -3) (layer "F.SilkS")) (pad "" np_thru_hole circle (at 0 0) (size 3.4 3.4) (drill 3.4) (layers "*.Cu" "*.Mask")))')
+    for li,polys in L.items():
+        for p in polys:
+            for a,b in zip(p[:-1],p[1:]):
+                if math.dist(a,b)<1e-6: continue
+                (x0,y0),(x1,y1)=k(a),k(b); o.append(f'  (segment (start {x0:.4f} {y0:.4f}) (end {x1:.4f} {y1:.4f}) (width {W}) (layer "{LAY[li]}") (net 1))')
+    for v in vias: X,Y=k(v); o.append(f'  (via (at {X:.4f} {Y:.4f}) (size {VD}) (drill {VDR}) (layers "F.Cu" "B.Cu") (net 1))')
+    ol=outline()
+    for a,b in zip(ol[:-1],ol[1:]): (x0,y0),(x1,y1)=k(a),k(b); o.append(f'  (gr_line (start {x0:.3f} {y0:.3f}) (end {x1:.3f} {y1:.3f}) (stroke (width 0.1) (type default)) (layer "Edge.Cuts"))')
+    o.append(')'); t="\n".join(o); assert t.count("(")==t.count(")"),"paren balance"; open(path,"w").write(t); return len(L)
+def gerber(prefix,deg,outdir):
+    L,vias,pads,holes=board(deg); os.makedirs(outdir,exist_ok=True); f6=lambda v:int(round(v*1e6))
+    def hdr(tag): return ["%TF.GenerationSoftware,Arx,sbq_export*%",f"%TF.FileFunction,{tag}*%","%FSLAX46Y46*%","%MOMM*%",f"%ADD10C,{W:.3f}*%",f"%ADD11C,{VD:.3f}*%","%ADD12C,1.600*%","%ADD13C,0.100*%","%ADD14C,1.800*%","G01*","%LPD*%"]
+    def poly(p,ap): 
+        s=[f"D{ap}*"]; 
+        for i,(x,y) in enumerate(p): s.append(f"X{f6(x)}Y{f6(y)}D0{2 if i==0 else 1}*")
+        return s
+    def fl(x,y): return f"X{f6(x)}Y{f6(y)}D03*"
+    fps,tr=extras(deg); T=[tuple(x) for x in G["padsB"]] if deg==0.0 else []
+    def rect(c,ang):                                         # rotated pad as a G36/G37 region
+        a=math.radians(ang); u=np.array([math.cos(a),math.sin(a)]); v=np.array([-u[1],u[0]]); c=np.asarray(c); h,w=RDP[0]/2,RDP[1]/2
+        q=[c-u*h-v*w,c+u*h-v*w,c+u*h+v*w,c-u*h+v*w,c-u*h-v*w]; return ["G36*"]+[f"X{f6(x)}Y{f6(y)}D0{2 if i==0 else 1}*" for i,(x,y) in enumerate(q)]+["G37*"]
+    def rdpads(): return [l for _,fp,_ in fps for c in fp["pads"] for l in rect(c,fp["angle"])]
+    names=["F_Cu","In1_Cu","In2_Cu","B_Cu"]
+    for li,nm in enumerate(names):
+        s=hdr(f"Copper,L{li+1},{'Top' if li==0 else 'Bot' if li==3 else 'Inr'}")
+        for p in L[li]: s+=poly(p,10)
+        s.append("D11*"); s+=[fl(*v) for v in vias]; s.append("D12*"); s+=[fl(*p) for p in pads+T]
+        if li==0 and fps: s.append("%ADD15C,0.400*%"); [s.extend(poly(np.array([a,b]),15)) for a,b,_ in tr]; s+=rdpads()
+        s.append("M02*"); open(f"{outdir}/{prefix}-{nm}.gbr","w").write("\n".join(s))
+    for nm in ("F_Mask","B_Mask"): s=hdr("Soldermask,"+("Top" if nm[0]=="F" else "Bot")); s.append("D14*"); s+=[fl(*p) for p in pads+T]; s+=(rdpads() if nm=="F_Mask" else []); s.append("M02*"); open(f"{outdir}/{prefix}-{nm}.gbr","w").write("\n".join(s))
+    if fps: s=hdr("Paste,Top"); s+=rdpads(); s.append("M02*"); open(f"{outdir}/{prefix}-F_Paste.gbr","w").write("\n".join(s))
+    s=hdr("Profile,NP"); s+=poly(outline(),13); s.append("M02*"); open(f"{outdir}/{prefix}-Edge_Cuts.gbr","w").write("\n".join(s))
+    d=["M48","METRIC,TZ",f"T1C{VDR:.3f}",f"T2C0.800","%","T1"]+[f"X{x:.3f}Y{y:.3f}" for x,y in vias]+["T2"]+[f"X{x:.3f}Y{y:.3f}" for x,y in pads+T]+["M30"]; open(f"{outdir}/{prefix}-PTH.drl","w").write("\n".join(d))
+    d=["M48","METRIC,TZ","T1C3.400","%","T1"]+[f"X{x:.3f}Y{y:.3f}" for x,y in holes]+["M30"]; open(f"{outdir}/{prefix}-NPTH.drl","w").write("\n".join(d))
+os.makedirs("kit_v22/KICAD_SBQ",exist_ok=True)
+kicad("SB1R-QA","QA_COIL",0.0,"kit_v22/KICAD_SBQ/SB1R-QA.kicad_pcb"); kicad("SB1R-QB","QB_COIL",45.0,"kit_v22/KICAD_SBQ/SB1R-QB.kicad_pcb")
+gerber("SB1R-QA",0.0,"kit_v22/GERBER_SB1R_QA"); gerber("SB1R-QB",45.0,"kit_v22/GERBER_SB1R_QB")
+fig,ax=plt.subplots(1,4,figsize=(26,7),facecolor="#0b2a52"); col=["#7fd4ff","#6fe3a0","#ffb347","#ff8a8a"]
+L,vias,pads,holes=board(0.0)
+for li in range(4):
+    a=ax[li]; a.set_facecolor("#0b2a52"); a.set_aspect(1); a.set_title(f"SB1R-QA layer {li+1} ({LAY[li]})",color="w")
+    for p in L[li]: a.plot(p[:,0],p[:,1],color=col[li],lw=0.9)
+    a.scatter([v[0] for v in vias],[v[1] for v in vias],s=14,c="w",zorder=5); a.scatter([p[0] for p in pads],[p[1] for p in pads],s=40,c="#f2c94c",zorder=6)
+    for h in holes: a.add_patch(plt.Circle(h,1.7,fc="none",ec="w"))
+    a.add_patch(plt.Circle((0,0),RB,fc="none",ec="w",lw=0.8)); a.axis("off"); a.set_xlim(-118,118); a.set_ylim(-118,118)
+fig.suptitle("SB1R-Q board A (quadrupole A): 4 layers, 4 lobes x 4 series spirals, white dots = vias, yellow = lead pads, circles = M3 holes. Board B = the same copper rotated 45 deg.",color="w",fontsize=13)
+plt.savefig("kit_v22/SBQ_LAYERS.png",dpi=55,facecolor="#0b2a52"); print("exported", os.listdir("kit_v22/GERBER_SB1R_QA"))

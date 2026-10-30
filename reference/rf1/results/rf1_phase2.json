@@ -1,0 +1,293 @@
+{
+ "status": "MODELED (RF1 phase 2, side experiment)",
+ "lead_pickup": {
+  "didt_A_per_s": 9679378.8,
+  "units": "peak mV at turn-off, the same scale as kit_v22/sbq_sim.json leak",
+  "path": "ASSUMED: pad -> z 6 gallery -> floor slot -> AB1A J1 (x -36.7, z 12.7)",
+  "boards": {
+   "QA": {
+    "AWG36 untwisted": {
+     "mean_mV": -1.6223,
+     "std_mV": 26.8123,
+     "p95_abs_mV": 49.2754,
+     "max_abs_mV": 62.5729
+    },
+    "AWG36 twisted": {
+     "mean_mV": -0.0259,
+     "std_mV": 0.688,
+     "p95_abs_mV": 1.2685,
+     "max_abs_mV": 1.6892
+    },
+    "flex broadside (RF1)": {
+     "mean_mV": 0.091,
+     "std_mV": 0.1501,
+     "p95_abs_mV": 0.305,
+     "max_abs_mV": 0.35
+    },
+    "flex at the worst fixed orientation (if routed carelessly)": {
+     "abs_mV": 3.0148
+    },
+    "board_leak_reference_mV": {
+     "aligned": 0.008,
+     "0.1 mm x": 0.015,
+     "0.5 mm x": 0.128
+    },
+    "design_theta_deg": 85.0,
+    "seconds": 20.7
+   },
+   "QB": {
+    "AWG36 untwisted": {
+     "mean_mV": 0.5532,
+     "std_mV": 15.6084,
+     "p95_abs_mV": 29.8738,
+     "max_abs_mV": 33.4199
+    },
+    "AWG36 twisted": {
+     "mean_mV": -0.0158,
+     "std_mV": 0.6286,
+     "p95_abs_mV": 1.1434,
+     "max_abs_mV": 1.5715
+    },
+    "flex broadside (RF1)": {
+     "mean_mV": 0.0504,
+     "std_mV": 0.0808,
+     "p95_abs_mV": 0.1758,
+     "max_abs_mV": 0.2094
+    },
+    "flex at the worst fixed orientation (if routed carelessly)": {
+     "abs_mV": 1.6429
+    },
+    "board_leak_reference_mV": {
+     "aligned": 0.066,
+     "0.1 mm x": 0.591,
+     "0.5 mm x": 5.983
+    },
+    "design_theta_deg": 85.0,
+    "seconds": 13.0
+   }
+  }
+ },
+ "crosstalk": {
+  "ribbon": {
+   "length_m": 0.135,
+   "conductors": [
+    "+5VA",
+    "+3V3D",
+    "SCLK",
+    "CS",
+    "SDO1",
+    "SDO2",
+    "BLANK",
+    "MONO_IN",
+    "VCM_OUT",
+    "GND"
+   ],
+   "victims": {
+    "MONO_IN": {
+     "SCLK": {
+      "Cm_pF_per_m": 0.104,
+      "kC": 0.001,
+      "kL": 0.0736,
+      "v_cap_mV": 0.406,
+      "v_ind_mV": 62.103
+     },
+     "CS": {
+      "Cm_pF_per_m": 0.256,
+      "kC": 0.0024,
+      "kL": 0.1376,
+      "v_cap_mV": 0.996,
+      "v_ind_mV": 116.133
+     },
+     "SDO1": {
+      "Cm_pF_per_m": 0.746,
+      "kC": 0.007,
+      "kL": 0.2188,
+      "v_cap_mV": 2.906,
+      "v_ind_mV": 180.708
+     },
+     "SDO2": {
+      "Cm_pF_per_m": 3.587,
+      "kC": 0.0336,
+      "kL": 0.3343,
+      "v_cap_mV": 13.965,
+      "v_ind_mV": 277.34
+     },
+     "BLANK": {
+      "Cm_pF_per_m": 45.65,
+      "kC": 0.4273,
+      "kL": 0.529,
+      "v_cap_mV": 177.734,
+      "v_ind_mV": 436.878
+     }
+    },
+    "VCM_OUT": {
+     "SCLK": {
+      "Cm_pF_per_m": 0.047,
+      "kC": 0.0004,
+      "kL": 0.0494,
+      "v_cap_mV": 0.182,
+      "v_ind_mV": 33.538
+     },
+     "CS": {
+      "Cm_pF_per_m": 0.106,
+      "kC": 0.001,
+      "kL": 0.0919,
+      "v_cap_mV": 0.413,
+      "v_ind_mV": 62.398
+     },
+     "SDO1": {
+      "Cm_pF_per_m": 0.253,
+      "kC": 0.0024,
+      "kL": 0.1446,
+      "v_cap_mV": 0.984,
+      "v_ind_mV": 96.075
+     },
+     "SDO2": {
+      "Cm_pF_per_m": 0.769,
+      "kC": 0.0072,
+      "kL": 0.216,
+      "v_cap_mV": 2.994,
+      "v_ind_mV": 144.22
+     },
+     "BLANK": {
+      "Cm_pF_per_m": 3.452,
+      "kC": 0.0324,
+      "kL": 0.324,
+      "v_cap_mV": 13.443,
+      "v_ind_mV": 215.343
+     }
+    }
+   },
+   "C_self_pF_per_m": {
+    "+5VA": 67.65,
+    "+3V3D": 105.04,
+    "SCLK": 106.86,
+    "CS": 106.86,
+    "SDO1": 104.59,
+    "SDO2": 105.06,
+    "BLANK": 104.59,
+    "MONO_IN": 106.84,
+    "VCM_OUT": 106.57
+   }
+  },
+  "hinge": {
+   "length_m": 0.128,
+   "conductors": [
+    "+5VA",
+    "+3V3D",
+    "SCLK",
+    "CS",
+    "SDO1",
+    "SDO2",
+    "BLANK",
+    "MONO_IN",
+    "VCM_OUT",
+    "GND"
+   ],
+   "victims": {
+    "MONO_IN": {
+     "SCLK": {
+      "Cm_pF_per_m": 0.011,
+      "kC": 0.0001,
+      "kL": 0.0004,
+      "v_cap_mV": 0.039,
+      "v_ind_mV": 0.221
+     },
+     "CS": {
+      "Cm_pF_per_m": 0.036,
+      "kC": 0.0003,
+      "kL": 0.0016,
+      "v_cap_mV": 0.133,
+      "v_ind_mV": 0.825
+     },
+     "SDO1": {
+      "Cm_pF_per_m": 0.072,
+      "kC": 0.0006,
+      "kL": 0.003,
+      "v_cap_mV": 0.263,
+      "v_ind_mV": 1.614
+     },
+     "SDO2": {
+      "Cm_pF_per_m": 0.157,
+      "kC": 0.0014,
+      "kL": 0.0061,
+      "v_cap_mV": 0.578,
+      "v_ind_mV": 3.26
+     },
+     "BLANK": {
+      "Cm_pF_per_m": 0.457,
+      "kC": 0.0039,
+      "kL": 0.0134,
+      "v_cap_mV": 1.68,
+      "v_ind_mV": 7.107
+     }
+    },
+    "VCM_OUT": {
+     "SCLK": {
+      "Cm_pF_per_m": 0.003,
+      "kC": 0.0,
+      "kL": 0.0001,
+      "v_cap_mV": 0.012,
+      "v_ind_mV": 0.071
+     },
+     "CS": {
+      "Cm_pF_per_m": 0.011,
+      "kC": 0.0001,
+      "kL": 0.0005,
+      "v_cap_mV": 0.039,
+      "v_ind_mV": 0.248
+     },
+     "SDO1": {
+      "Cm_pF_per_m": 0.019,
+      "kC": 0.0002,
+      "kL": 0.0009,
+      "v_cap_mV": 0.071,
+      "v_ind_mV": 0.452
+     },
+     "SDO2": {
+      "Cm_pF_per_m": 0.036,
+      "kC": 0.0003,
+      "kL": 0.0015,
+      "v_cap_mV": 0.133,
+      "v_ind_mV": 0.8
+     },
+     "BLANK": {
+      "Cm_pF_per_m": 0.072,
+      "kC": 0.0006,
+      "kL": 0.0026,
+      "v_cap_mV": 0.264,
+      "v_ind_mV": 1.36
+     }
+    }
+   },
+   "C_self_pF_per_m": {
+    "+5VA": 115.3,
+    "+3V3D": 115.86,
+    "SCLK": 115.86,
+    "CS": 115.86,
+    "SDO1": 115.86,
+    "SDO2": 115.86,
+    "BLANK": 115.86,
+    "MONO_IN": 115.86,
+    "VCM_OUT": 115.86
+   }
+  },
+  "MONO_IN_worst_mV": {
+   "ribbon": 436.878,
+   "hinge": 7.107
+  },
+  "MONO_IN_worst_LSB": {
+   "ribbon": 5726.5,
+   "hinge": 93.2
+  },
+  "VCM_OUT_worst_mV": {
+   "ribbon": 215.343,
+   "hinge": 1.36
+  },
+  "VCM_OUT_worst_LSB": {
+   "ribbon": 2822.7,
+   "hinge": 17.8
+  },
+  "assumed": "ribbon AWG28 0.32 mm in PVC er 3.5; victim node 100 pF; 3.3 V edge in 2 ns; hinge L2 plane solid-equivalent (a hatched plane couples more: bound)"
+ }
+}

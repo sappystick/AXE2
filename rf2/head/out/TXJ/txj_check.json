@@ -1,0 +1,154 @@
+{
+ "board": "TXJ",
+ "placement": {
+  "overlaps_or_outside": [],
+  "ok": true
+ },
+ "route": {
+  "unconnected_after": 0,
+  "tracks": 4,
+  "vias": 0,
+  "widened_to_floor": 0,
+  "mode": "resume, complete: no autorouter",
+  "resume": {
+   "copied_items": 4,
+   "changed_pads": 0,
+   "changed_nets": [],
+   "deleted_drc_items": 0
+  },
+  "strategies": [
+   {
+    "name": "template / pre-routes / resumed copper",
+    "open": 0,
+    "drc_errors": 0,
+    "used": true
+   }
+  ],
+  "ok": true
+ },
+ "kicad_drc": {
+  "errors": 0,
+  "error_types": [],
+  "examples": [],
+  "unconnected": 0,
+  "warnings": 12,
+  "hv_rule_control_violations": 13,
+  "ok": true
+ },
+ "copper": {
+  "loops_around_axis": [],
+  "min_clearance_mm": 3.4,
+  "worst_pair": [
+   "F",
+   "TX_A",
+   "TX_B"
+  ],
+  "min_hv_clearance_mm": 3.4,
+  "worst_hv_pair": [
+   "F",
+   "TX_A",
+   "TX_B"
+  ],
+  "ok": true
+ },
+ "parity": {
+  "pads_checked": 6,
+  "mismatches": [],
+  "ok": true
+ },
+ "gerbers": {
+  "files": [
+   "PF233-RF2-TXJ-B_Cu.gbr",
+   "PF233-RF2-TXJ-B_Mask.gbr",
+   "PF233-RF2-TXJ-Edge_Cuts.gbr",
+   "PF233-RF2-TXJ-F_Cu.gbr",
+   "PF233-RF2-TXJ-F_Mask.gbr",
+   "PF233-RF2-TXJ-F_Paste.gbr",
+   "PF233-RF2-TXJ-NPTH.drl",
+   "PF233-RF2-TXJ-PTH.drl",
+   "PF233-RF2-TXJ-job.gbrjob"
+  ],
+  "ok": true
+ },
+ "placement_in_head": [
+  {
+   "ref": "JCA",
+   "type": "WIRE_LITZ",
+   "x": -102.7,
+   "y": 8.4,
+   "rot": 0.0,
+   "z": 7.2,
+   "body": [
+    3.0,
+    3.0,
+    0.05
+   ]
+  },
+  {
+   "ref": "JKA",
+   "type": "WIRE_AWG18",
+   "x": -102.7,
+   "y": 2.8,
+   "rot": 0.0,
+   "z": 7.2,
+   "body": [
+    2.8,
+    2.8,
+    0.05
+   ]
+  },
+  {
+   "ref": "JSA",
+   "type": "WIRE_SENSE",
+   "x": -102.7,
+   "y": -1.6,
+   "rot": 0.0,
+   "z": 7.2,
+   "body": [
+    1.9,
+    1.9,
+    0.05
+   ]
+  },
+  {
+   "ref": "JCB",
+   "type": "WIRE_LITZ",
+   "x": -96.3,
+   "y": 8.4,
+   "rot": 0.0,
+   "z": 7.2,
+   "body": [
+    3.0,
+    3.0,
+    0.05
+   ]
+  },
+  {
+   "ref": "JKB",
+   "type": "WIRE_AWG18",
+   "x": -96.3,
+   "y": 2.8,
+   "rot": 0.0,
+   "z": 7.2,
+   "body": [
+    2.8,
+    2.8,
+    0.05
+   ]
+  },
+  {
+   "ref": "JSB",
+   "type": "WIRE_SENSE",
+   "x": -96.3,
+   "y": -1.6,
+   "rot": 0.0,
+   "z": 7.2,
+   "body": [
+    1.9,
+    1.9,
+    0.05
+   ]
+  }
+ ],
+ "ok": true
+}

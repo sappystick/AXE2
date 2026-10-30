@@ -1,0 +1,259 @@
+{
+ "status": "parity of the BUILT boards against the RF2 system netlist",
+ "netlist": {
+  "ok": true,
+  "errors": [],
+  "harness_checked": [
+   "C03a",
+   "C03b"
+  ],
+  "harness_pending_phase_c": [
+   "C01a",
+   "C01b",
+   "C02a",
+   "C02b",
+   "C04a",
+   "C04b",
+   "C04c",
+   "C10a",
+   "C10b",
+   "C10c",
+   "C10d",
+   "C10e",
+   "C10f",
+   "C10g",
+   "C10h",
+   "C10i",
+   "C10j",
+   "C10k",
+   "C10l",
+   "C07"
+  ],
+  "parts": {
+   "MP1": 24,
+   "TXJ": 6,
+   "LR1": 1056
+  },
+  "nets": {
+   "MP1": 16,
+   "TXJ": 2,
+   "LR1": 1054
+  }
+ },
+ "boards": {
+  "MP1": {
+   "pads": 51,
+   "mismatches": [],
+   "unconnected": 0,
+   "ok": true
+  },
+  "TXJ": {
+   "pads": 6,
+   "mismatches": [],
+   "unconnected": 0,
+   "ok": true
+  },
+  "LR1": {
+   "pads": 4188,
+   "mismatches": [],
+   "unconnected": 0,
+   "ok": true
+  },
+  "SH1": {
+   "pads": 1,
+   "nets": [
+    "SHIELD"
+   ],
+   "ok": true,
+   "note": "built by its own generator (SH1: rf2_shield_pcb.py; QA / QB: rf2_sb1r_variant.py)"
+  },
+  "QA": {
+   "pads": 8,
+   "nets": [
+    "QA_COIL",
+    "QB_T1",
+    "QB_T2"
+   ],
+   "ok": true,
+   "note": "built by its own generator (SH1: rf2_shield_pcb.py; QA / QB: rf2_sb1r_variant.py)"
+  },
+  "QB": {
+   "pads": 2,
+   "nets": [
+    "QB_COIL"
+   ],
+   "ok": true,
+   "note": "built by its own generator (SH1: rf2_shield_pcb.py; QA / QB: rf2_sb1r_variant.py)"
+  }
+ },
+ "harness": {
+  "checked": [
+   "C03a",
+   "C03b"
+  ],
+  "pending_phase_c": [
+   {
+    "id": "C01a",
+    "a": "COIL.A",
+    "z": "TXJ.JCA.1",
+    "built_end_net": [
+     "TX_A"
+    ]
+   },
+   {
+    "id": "C01b",
+    "a": "COIL.B",
+    "z": "TXJ.JCB.1",
+    "built_end_net": [
+     "TX_B"
+    ]
+   },
+   {
+    "id": "C02a",
+    "a": "TXJ.JKA.1",
+    "z": "NECK.TX_A",
+    "built_end_net": [
+     "TX_A"
+    ]
+   },
+   {
+    "id": "C02b",
+    "a": "TXJ.JKB.1",
+    "z": "NECK.TX_B",
+    "built_end_net": [
+     "TX_B"
+    ]
+   },
+   {
+    "id": "C04a",
+    "a": "MP1.J3.1",
+    "z": "AB1B.MONO_IN",
+    "built_end_net": [
+     "MONO_OUT"
+    ]
+   },
+   {
+    "id": "C04b",
+    "a": "MP1.J4.1",
+    "z": "AB1B.+5VA",
+    "built_end_net": [
+     "+5VA"
+    ]
+   },
+   {
+    "id": "C04c",
+    "a": "MP1.J5.1",
+    "z": "AB1B.AGND",
+    "built_end_net": [
+     "AGND"
+    ]
+   },
+   {
+    "id": "C10a",
+    "a": "CB1D.LED1",
+    "z": "LR1.JH1.1",
+    "built_end_net": [
+     "GND"
+    ]
+   },
+   {
+    "id": "C10b",
+    "a": "CB1D.LED2",
+    "z": "LR1.JH2.1",
+    "built_end_net": [
+     "GND"
+    ]
+   },
+   {
+    "id": "C10c",
+    "a": "CB1D.LED3",
+    "z": "LR1.JH3.1",
+    "built_end_net": [
+     "+5V_LED"
+    ]
+   },
+   {
+    "id": "C10d",
+    "a": "CB1D.LED4",
+    "z": "LR1.JH4.1",
+    "built_end_net": [
+     "+5V_LED"
+    ]
+   },
+   {
+    "id": "C10e",
+    "a": "CB1D.LED5",
+    "z": "LR1.JH5.1",
+    "built_end_net": [
+     "C1_K0"
+    ]
+   },
+   {
+    "id": "C10f",
+    "a": "CB1D.LED6",
+    "z": "LR1.JH6.1",
+    "built_end_net": [
+     "C1_D0"
+    ]
+   },
+   {
+    "id": "C10g",
+    "a": "CB1D.LED7",
+    "z": "LR1.JH7.1",
+    "built_end_net": [
+     "C3_D0"
+    ]
+   },
+   {
+    "id": "C10h",
+    "a": "CB1D.LED8",
+    "z": "LR1.JH8.1",
+    "built_end_net": [
+     "C3_K0"
+    ]
+   },
+   {
+    "id": "C10i",
+    "a": "CB1D.LED9",
+    "z": "LR1.JH9.1",
+    "built_end_net": [
+     "C2_K0"
+    ]
+   },
+   {
+    "id": "C10j",
+    "a": "CB1D.LED10",
+    "z": "LR1.JH10.1",
+    "built_end_net": [
+     "C2_D0"
+    ]
+   },
+   {
+    "id": "C10k",
+    "a": "CB1D.LED11",
+    "z": "LR1.JH11.1",
+    "built_end_net": [
+     "C4_K0"
+    ]
+   },
+   {
+    "id": "C10l",
+    "a": "CB1D.LED12",
+    "z": "LR1.JH12.1",
+    "built_end_net": [
+     "C4_D0"
+    ]
+   },
+   {
+    "id": "C07",
+    "a": "SH1.H1.1",
+    "z": "AB1A.AGND",
+    "built_end_net": [
+     "SHIELD"
+    ]
+   }
+  ],
+  "errors": []
+ },
+ "ok": true
+}

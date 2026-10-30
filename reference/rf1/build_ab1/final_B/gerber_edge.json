@@ -1,0 +1,41 @@
+{
+ "floor_mm": 0.5,
+ "sets": {
+  "GERBER_AB1B": {
+   "layers": {
+    "B_Cu": {
+     "outside_mm2": 0.0,
+     "min_edge_gap_mm": 2.142,
+     "ok": true
+    },
+    "F_Cu": {
+     "outside_mm2": 0.0,
+     "min_edge_gap_mm": 2.042,
+     "ok": true
+    },
+    "In1_Cu": {
+     "outside_mm2": 0.0,
+     "min_edge_gap_mm": 0.547,
+     "ok": true
+    },
+    "In2_Cu": {
+     "outside_mm2": 0.0,
+     "min_edge_gap_mm": 2.142,
+     "ok": true
+    },
+    "In3_Cu": {
+     "outside_mm2": 0.0,
+     "min_edge_gap_mm": 2.142,
+     "ok": true
+    },
+    "In4_Cu": {
+     "outside_mm2": 0.0,
+     "min_edge_gap_mm": 0.547,
+     "ok": true
+    }
+   },
+   "ok": true
+  }
+ },
+ "ok": true
+}

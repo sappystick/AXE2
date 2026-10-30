@@ -1,0 +1,15 @@
+{
+ "status": "MODELED field code cross-check (two independent analytic implementations); not a measurement",
+ "turns": 26,
+ "points": 30,
+ "max_rel_diff": 1.32033443305116e-10,
+ "Bz_axis_uT_per_A": {
+  "20 mm": 130.9635,
+  "50 mm": 99.3472,
+  "100 mm": 52.6168,
+  "200 mm": 15.0997,
+  "300 mm": 5.688,
+  "500 mm": 1.4322
+ },
+ "ok": true
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+state/logs/
+state/run.lock
+tools/freerouting/*.jar
+tools/freerouting/*.part
+rf2/head/out/*.stl
+rf2/head/out/*/*_fr/
+rf2/head/out/*/*_placed.kicad_*
+rf2/head/out/*/*_resume.kicad_*
+rf2/head/out/*/*.kicad_prl
+*.kicad_prl

@@ -1,0 +1,15 @@
+# RF2 clean-sheet head tooling (2026-10-29). Install: pip install -r requirements-rf2.txt  (or RF2_TOOLS=1 scripts/bootstrap.sh)
+# System packages (apt): kicad-footprints kicad-symbols kicad-packages3d (official KiCad 9 libraries + 3D models, 3.3 GB), ngspice (circuit simulation),
+#   gcc-arm-none-eabi libnewlib-arm-none-eabi (firmware toolchain), gmsh (meshing), libosmesa6 libegl1 libgl1 (off-screen 3D rendering); Java 25 + Freerouting
+#   (make freeroute-fetch).
+# Not installable here (legacy setup.py dependencies fail on Python 3.13): kikit 1.8.1, skidl 3.0.0. kicad-cli covers panel / fab outputs; kiutils writes schematics.
+kiutils==1.4.8          # read / write KiCad schematics, boards, footprints
+cadquery==2.8.0         # B-rep CAD (OpenCascade): STEP export of the housing for real CAD / machining
+pyvista==0.49.2         # VTK rendering (cut-aways, exploded views) off-screen
+trimesh==5.2.0          # mesh tools (loading KiCad STEP/VRML-converted parts, checks)
+magpylib==6.0.1         # analytic magnetic fields of coils / magnets (independent cross-check of the Biot-Savart code)
+spicelib==1.6.4         # drive ngspice from Python (front-end and driver simulation)
+meshio==5.3.5           # mesh format conversion (gmsh <-> STL / VTK)
+InteractiveHtmlBom==2.12.0   # assembly BOM / placement pages from KiCad boards
+scikit-fem==12.0.2      # finite elements (with gmsh meshes): axisymmetric eddy-current, winding-capacitance and shield-decay studies (ENHANCEMENT_PLAN_RF2.md)
+optuna==5.0.0           # parameter search for coil / receiver geometry at fixed energy per pulse

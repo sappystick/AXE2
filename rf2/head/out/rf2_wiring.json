@@ -1,0 +1,425 @@
+{
+ "status": "MODELED wiring / power / timing plan (loads ASSUMED where marked)",
+ "external": {
+  "NECK": "neck module at the shaft base: TX driver (baseline PB1R topology, 630 V parts), clamp about 460 V, flat-top PWM current loop",
+  "HANDLE": "handle: battery 7S, PM2 power switch / fuse, HB2 controls, AU1 audio (speaker)",
+  "REF3": "3-axis reference coil on the shaft, 0.6 m from the head (EMI canceller input)"
+ },
+ "connections": [
+  {
+   "id": "C01",
+   "frm": "COIL_LEADS",
+   "to": "TXJ",
+   "medium": "litz ends",
+   "net_class": "HV",
+   "conductors": [
+    "TX_A",
+    "TX_B"
+   ],
+   "path": [
+    "coil channel lead slot 178",
+    "hv"
+   ],
+   "note": "coil to wire-hole pads; potted in epoxy"
+  },
+  {
+   "id": "C02",
+   "frm": "TXJ",
+   "to": "GLAND",
+   "medium": "shaft cable, HV pair (630 V insulation, own jacket)",
+   "net_class": "HV",
+   "conductors": [
+    "TX_A",
+    "TX_B"
+   ],
+   "path": [
+    "hv",
+    "lid gland"
+   ],
+   "note": "to the NECK driver"
+  },
+  {
+   "id": "C03",
+   "frm": "TXJ",
+   "to": "MP1",
+   "medium": "2 short wires in the tray HV slots",
+   "net_class": "HV",
+   "conductors": [
+    "COIL_SENSE",
+    "COIL_RET"
+   ],
+   "path": [
+    "hv"
+   ],
+   "note": "MP1 input side; >= 1.0 mm on both boards"
+  },
+  {
+   "id": "C04",
+   "frm": "MP1",
+   "to": "AB1B",
+   "medium": "2-layer flex jumper, hatched ground",
+   "net_class": "analog",
+   "conductors": [
+    "MONO_OUT",
+    "+5VA",
+    "AGND"
+   ],
+   "path": [
+    "hv",
+    "wall 156 LV slot",
+    "analog"
+   ],
+   "note": "MP1 output side only (low voltage after the protection)"
+  },
+  {
+   "id": "C05",
+   "frm": "QA_PADS",
+   "to": "AB1A",
+   "medium": "flex tail soldered to the SB1R pads",
+   "net_class": "analog",
+   "conductors": [
+    "QA_P",
+    "QA_N"
+   ],
+   "path": [
+    "under tower",
+    "tower slot 106",
+    "analog"
+   ],
+   "note": "the quadrupole tails"
+  },
+  {
+   "id": "C06",
+   "frm": "QB_PADS",
+   "to": "AB1B",
+   "medium": "flex tail soldered to the SB1R pads",
+   "net_class": "analog",
+   "conductors": [
+    "QB_P",
+    "QB_N"
+   ],
+   "path": [
+    "under tower",
+    "tower slot 137",
+    "analog"
+   ],
+   "note": ""
+  },
+  {
+   "id": "C07",
+   "frm": "SH1_GND",
+   "to": "AB1A",
+   "medium": "0.5 mm wire up the 22.5 deg stack hole",
+   "net_class": "analog",
+   "conductors": [
+    "SHIELD"
+   ],
+   "path": [
+    "stack hole 22.5",
+    "under tower",
+    "tower slot 106",
+    "analog"
+   ],
+   "note": "single-point shield ground to AB1A AGND"
+  },
+  {
+   "id": "C08",
+   "frm": "CB1D",
+   "to": "AB1A",
+   "medium": "rigid-flex hinge (RF1 concept C)",
+   "net_class": "digital",
+   "conductors": [
+    "SCLK",
+    "CS",
+    "SDO1",
+    "SDO2",
+    "+5V",
+    "GND"
+   ],
+   "path": [
+    "tower slot 106",
+    "analog"
+   ],
+   "note": "ADC data, power in"
+  },
+  {
+   "id": "C09",
+   "frm": "CB1D",
+   "to": "AB1B",
+   "medium": "rigid-flex hinge",
+   "net_class": "digital",
+   "conductors": [
+    "SCLK",
+    "CS",
+    "SDO1",
+    "SDO2",
+    "+5V",
+    "GND"
+   ],
+   "path": [
+    "tower slot 137",
+    "analog"
+   ],
+   "note": ""
+  },
+  {
+   "id": "C10",
+   "frm": "CB1D",
+   "to": "LED",
+   "medium": "rigid-flex hinge flap (up)",
+   "net_class": "digital",
+   "conductors": [
+    "+5V_LED",
+    "+5V_LED",
+    "GND",
+    "GND",
+    "C1_D0",
+    "C1_K0",
+    "C2_D0",
+    "C2_K0",
+    "C3_D0",
+    "C3_K0",
+    "C4_D0",
+    "C4_K0"
+   ],
+   "path": [
+    "digital"
+   ],
+   "note": "LR1 display: 4 parallel SK9822-EC20 chains (rf2_ledgrid), one RP2354A PIO state machine each; dark during receive windows, power-gated when silent"
+  },
+  {
+   "id": "C11",
+   "frm": "GLAND",
+   "to": "CB1D",
+   "medium": "shaft cable, LV cores (separate sleeve, >= 10 mm from the HV pair)",
+   "net_class": "power/digital",
+   "conductors": [
+    "VIN",
+    "GND",
+    "TXCMD_P",
+    "TXCMD_N",
+    "TXSTAT_P",
+    "TXSTAT_N",
+    "DATA_P",
+    "DATA_N"
+   ],
+   "path": [
+    "hv (sleeved, along the 198 wall)",
+    "tower slot 186",
+    "digital"
+   ],
+   "note": "power in, TX timing out, link to the handle"
+  },
+  {
+   "id": "C12",
+   "frm": "GLAND",
+   "to": "AB1A",
+   "medium": "shaft cable, 3 shielded twisted pairs",
+   "net_class": "analog",
+   "conductors": [
+    "REFX_P",
+    "REFX_N",
+    "REFY_P",
+    "REFY_N",
+    "REFZ_P",
+    "REFZ_N"
+   ],
+   "path": [
+    "hv (sleeved)",
+    "wall 156 LV slot",
+    "analog (over AB1B, z 11-13)"
+   ],
+   "note": "from REF3 on the shaft"
+  }
+ ],
+ "adc_map": {
+  "AB1A": [
+   "QA",
+   "REFX",
+   "REFY",
+   "REFZ"
+  ],
+  "AB1B": [
+   "QB",
+   "MONO",
+   "spare",
+   "spare"
+  ]
+ },
+ "shaft_cable": {
+  "hv_pair": [
+   "TX_A",
+   "TX_B"
+  ],
+  "lv": [
+   "VIN",
+   "GND",
+   "TXCMD_P",
+   "TXCMD_N",
+   "TXSTAT_P",
+   "TXSTAT_N",
+   "DATA_P",
+   "DATA_N"
+  ],
+  "ref": [
+   "REFX_P",
+   "REFX_N",
+   "REFY_P",
+   "REFY_N",
+   "REFZ_P",
+   "REFZ_N"
+  ]
+ },
+ "power": {
+  "source": "VIN about 24 V (7S pack 25.2 V nominal, switched and fused by PM2 in the handle) down the shaft",
+  "rails": [
+   {
+    "rail": "+5V",
+    "regulator": "LMR36015 on CB1D (TI SNVSB49D: 4.2-60 V in, 1.5 A)",
+    "rating_A": 1.5,
+    "loads_A": {
+     "AB1A analog (ASSUMED)": 0.04,
+     "AB1B analog (ASSUMED)": 0.04,
+     "MP1 (ASSUMED)": 0.02,
+     "+3V3 LDO input": 0.09
+    }
+   },
+   {
+    "rail": "+5V_LED (display, own buck, power-gated)",
+    "regulator": "LMR36520 on CB1D (TI Rev. C: 4.2-65 V in, 70 V transient, 2 A) + TPS22918 load switch (TI Rev. C: 1-5.5 V, 2 A continuous, 52 mohm); off whenever the display is dark (silent until a detection)",
+    "rating_A": 2.0,
+    "loads_A": {
+     "522 x SK9822-EC20 static current (OPSCO Rev. A/0: IDD 1 mA typ)": 0.522,
+     "lit LEDs, firmware brightness cap": 0.85
+    }
+   },
+   {
+    "rail": "+3V3",
+    "regulator": "TLV755P on CB1D (500 mA)",
+    "rating_A": 0.5,
+    "loads_A": {
+     "RP2354A + flash + misc (ASSUMED)": 0.08
+    }
+   },
+   {
+    "rail": "+3V3D (each AB1)",
+    "regulator": "local TLV755P (RF1)",
+    "rating_A": 0.5,
+    "loads_A": {
+     "AD7389-4 digital + logic (ASSUMED)": 0.01
+    }
+   }
+  ],
+  "tx": "the TX current never enters the head's electronics: NECK driver runs from VIN with its own bulk bank (baseline PB1R topology)"
+ },
+ "timing": {
+  "pulse_rate_Hz": "400 nominal, chosen per site in 380-420 to sit off VLF stations (rf2_emi: fixed rate beats blind jitter); listen-only: 1 frame in 16 without pulses",
+  "scan": {
+   "I_A": 8.06,
+   "T1_us": 103.2,
+   "T2_us": 403.2,
+   "order": "T1 and T2 alternate pulse by pulse (multi-period ground balance, rf2_ground)"
+  },
+  "flat_top_pwm": {
+   "where": "NECK driver current loop",
+   "f_kHz": "200 (ASSUMED)",
+   "duty": 0.198,
+   "note": "holds I during the 300 us flat-top; duty = I (R_coil + R_cable) / VBUS"
+  },
+  "boost": {
+   "trigger": "pinpoint (rf2_pinpoint)",
+   "energy_x": 2.5,
+   "I_A": 12.74,
+   "T1_us": 163.2,
+   "limit": "a few seconds; FET 20 A rating"
+  },
+  "turn_off": {
+   "clamp_V": 460,
+   "damping": "critical, Rd = 0.5 sqrt(L / C) = 408 ohm (C 500 pF ASSUMED)",
+   "first_gate_us": 16.3
+  },
+  "gates_us": [
+   16.3,
+   26.4,
+   42.7,
+   69.0,
+   111.7,
+   180.8,
+   292.5,
+   473.2,
+   765.6
+  ],
+  "led": "LED stream only after the last gate and before the next pulse, dark during receive windows; 4 chains clocked in parallel at 8 MHz (SK9822-EC20 max 15 MHz)",
+  "adc": "AD7389-4 on each AB1, SCLK >= 27.2 MHz (3 frames in the first gate, baseline fw timing)"
+ },
+ "checks": {
+  "endpoints_exist": true,
+  "hv_not_on_flex_and_only_in_hv_sector": true,
+  "every_slot_open_in_the_solids": true,
+  "slot_probe_overlap_mm3": {
+   "tower slot 106": 0.0,
+   "tower slot 137": 0.0,
+   "tower slot 186": 0.0,
+   "wall 156 LV slot": 0.0,
+   "coil channel lead slot 178": 0.0,
+   "stack hole 22.5": 0.0,
+   "lid gland": 0.0
+  },
+  "adc_channels_within_4": true,
+  "power": [
+   {
+    "rail": "+5V",
+    "load_A": 0.19,
+    "rating_A": 1.5,
+    "margin": 0.87
+   },
+   {
+    "rail": "+5V_LED (display, own buck, power-gated)",
+    "load_A": 1.372,
+    "rating_A": 2.0,
+    "margin": 0.31
+   },
+   {
+    "rail": "+3V3",
+    "load_A": 0.08,
+    "rating_A": 0.5,
+    "margin": 0.84
+   },
+   {
+    "rail": "+3V3D (each AB1)",
+    "load_A": 0.01,
+    "rating_A": 0.5,
+    "margin": 0.98
+   }
+  ],
+  "power_margin_ge_30pct": true,
+  "led_stream": {
+   "longest_chain": 215,
+   "clock_MHz": 8,
+   "frame_us": 877.5,
+   "quiet_slot_us": 1162.2,
+   "fits": true
+  },
+  "shaft_cable": {
+   "hv": 2,
+   "lv": 8,
+   "ref": 6,
+   "total": 16
+  },
+  "lengths_mm_estimate": {
+   "C01": 26.0,
+   "C02": 24.0,
+   "C03": 43.0,
+   "C04": 87.0,
+   "C05": 81.0,
+   "C06": 92.0,
+   "C07": 111.0,
+   "C08": 122.0,
+   "C09": 122.0,
+   "C10": 74.0,
+   "C11": 121.0,
+   "C12": 133.0
+  },
+  "ok": true
+ }
+}

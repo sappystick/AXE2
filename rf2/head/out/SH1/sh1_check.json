@@ -1,0 +1,36 @@
+{
+ "board": "RF2 SH1 split-ring shield",
+ "rings": 37,
+ "outer_ring_r_mm": 110.0,
+ "trace_mm": 1.5,
+ "pitch_mm": 2.5,
+ "gap_mm": 3.0,
+ "kicad_drc_errors": 0,
+ "kicad_drc_error_types": [],
+ "kicad_unconnected": 0,
+ "gerber_rc": 0,
+ "gerbers": [
+  "PF233-RF2-SH1-B_Cu.gbr",
+  "PF233-RF2-SH1-B_Mask.gbr",
+  "PF233-RF2-SH1-Edge_Cuts.gbr",
+  "PF233-RF2-SH1-F_Cu.gbr",
+  "PF233-RF2-SH1-F_Mask.gbr",
+  "PF233-RF2-SH1-NPTH.drl",
+  "PF233-RF2-SH1-PTH.drl",
+  "PF233-RF2-SH1-job.gbrjob"
+ ],
+ "topology": {
+  "copper_pieces": 1,
+  "holes_in_copper_excluding_pad_drill": 0,
+  "loop_free": true,
+  "copper_to_pin_holes_mm": 2.05,
+  "rings_skipped_band_mm": [
+   24.2,
+   31.8
+  ],
+  "min_free_end_to_spine_mm": 1.5,
+  "ring_spacing_mm": 1.0,
+  "copper_area_cm2": 222.9,
+  "eddy_tau_us": 0.388
+ }
+}

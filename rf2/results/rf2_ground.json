@@ -1,0 +1,270 @@
+{
+ "status": "MODELED (RF2 step 3: ground; ASSUMED ground parameters, swept)",
+ "coils": {
+  "A": {
+   "turns": 26,
+   "L_uH": 321,
+   "I_A": 8.2,
+   "T1_us": 101.3,
+   "R_ohm": 0.551,
+   "flat_top_I2R_W_at_200Hz": 2.22
+  },
+  "B": {
+   "turns": 42,
+   "L_uH": 306,
+   "I_A": 8.4,
+   "T1_us": 98.9,
+   "R_ohm": 0.465,
+   "flat_top_I2R_W_at_200Hz": 1.97
+  },
+  "S": {
+   "turns": 28,
+   "L_uH": 300,
+   "I_A": 8.48,
+   "T1_us": 97.9,
+   "R_ohm": 0.51,
+   "flat_top_I2R_W_at_200Hz": 2.2
+  }
+ },
+ "ground_G_T2m3_per_A2": {
+  "A->A": {
+   "level_25mm": 4.36e-11,
+   "tilt3deg_25mm": 4.401e-11,
+   "h15": 6.055e-11,
+   "h45": 2.477e-11
+  },
+  "A->QA": {
+   "level_25mm": -2.584e-29,
+   "tilt3deg_25mm": -7.494e-30,
+   "h15": -6.094e-29,
+   "h45": -4.142e-30
+  },
+  "A->QB": {
+   "level_25mm": 0.0,
+   "tilt3deg_25mm": -3.738e-14,
+   "h15": -2.524e-29,
+   "h45": -2.524e-29
+  },
+  "B->A": {
+   "level_25mm": 2.336e-11,
+   "tilt3deg_25mm": 2.34e-11,
+   "h15": 3.054e-11,
+   "h45": 1.341e-11
+  },
+  "B->QA": {
+   "level_25mm": -1.307e-29,
+   "tilt3deg_25mm": 9.466e-30,
+   "h15": 3.747e-30,
+   "h45": -5.571e-30
+  },
+  "B->QB": {
+   "level_25mm": -1.893e-29,
+   "tilt3deg_25mm": -4.204e-15,
+   "h15": 3.471e-29,
+   "h45": -7.889e-30
+  },
+  "S->S": {
+   "level_25mm": 3.598e-11,
+   "tilt3deg_25mm": 3.626e-11,
+   "h15": 5.156e-11,
+   "h45": 1.932e-11
+  }
+ },
+ "depth_mm": {
+  "none": {
+   "D1 mono, no ground balance": {
+    "1.0 g": 362,
+    "5.0 g": 457
+   },
+   "D2 mono, time-domain balance (optimal gates)": {
+    "1.0 g": 366,
+    "5.0 g": 467
+   },
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 367,
+    "5.0 g": 478
+   },
+   "D4 quadrupole pair only, no balance": {
+    "1.0 g": 137,
+    "5.0 g": 170
+   },
+   "D5 mono + QA + QB, space-time balance": {
+    "1.0 g": 366,
+    "5.0 g": 467
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 367,
+    "5.0 g": 478
+   },
+   "D7 D6 + dual transmit (inner coil B)": {
+    "1.0 g": 350,
+    "5.0 g": 457
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 342,
+    "5.0 g": 445
+   }
+  },
+  "mild 2e-6": {
+   "D1 mono, no ground balance": {
+    "1.0 g": 0,
+    "5.0 g": 93
+   },
+   "D2 mono, time-domain balance (optimal gates)": {
+    "1.0 g": 244,
+    "5.0 g": 291
+   },
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 249,
+    "5.0 g": 327
+   },
+   "D4 quadrupole pair only, no balance": {
+    "1.0 g": 128,
+    "5.0 g": 160
+   },
+   "D5 mono + QA + QB, space-time balance": {
+    "1.0 g": 244,
+    "5.0 g": 291
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 249,
+    "5.0 g": 327
+   },
+   "D7 D6 + dual transmit (inner coil B)": {
+    "1.0 g": 239,
+    "5.0 g": 313
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 235,
+    "5.0 g": 306
+   }
+  },
+  "moderate 2e-5": {
+   "D1 mono, no ground balance": {
+    "1.0 g": 0,
+    "5.0 g": 0
+   },
+   "D2 mono, time-domain balance (optimal gates)": {
+    "1.0 g": 221,
+    "5.0 g": 278
+   },
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 228,
+    "5.0 g": 292
+   },
+   "D4 quadrupole pair only, no balance": {
+    "1.0 g": 88,
+    "5.0 g": 113
+   },
+   "D5 mono + QA + QB, space-time balance": {
+    "1.0 g": 221,
+    "5.0 g": 278
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 228,
+    "5.0 g": 293
+   },
+   "D7 D6 + dual transmit (inner coil B)": {
+    "1.0 g": 220,
+    "5.0 g": 284
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 216,
+    "5.0 g": 277
+   }
+  },
+  "severe 2e-4": {
+   "D1 mono, no ground balance": {
+    "1.0 g": 0,
+    "5.0 g": 0
+   },
+   "D2 mono, time-domain balance (optimal gates)": {
+    "1.0 g": 204,
+    "5.0 g": 272
+   },
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 221,
+    "5.0 g": 281
+   },
+   "D4 quadrupole pair only, no balance": {
+    "1.0 g": 0,
+    "5.0 g": 70
+   },
+   "D5 mono + QA + QB, space-time balance": {
+    "1.0 g": 204,
+    "5.0 g": 272
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 221,
+    "5.0 g": 281
+   },
+   "D7 D6 + dual transmit (inner coil B)": {
+    "1.0 g": 212,
+    "5.0 g": 269
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 209,
+    "5.0 g": 264
+   }
+  }
+ },
+ "exponent_tracking_severe": {
+  "a spread 0.03": {
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 221,
+    "5.0 g": 281
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 221,
+    "5.0 g": 281
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 209,
+    "5.0 g": 264
+   }
+  },
+  "a spread 0.01": {
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 227,
+    "5.0 g": 291
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 227,
+    "5.0 g": 291
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 215,
+    "5.0 g": 275
+   }
+  },
+  "a spread 0.003": {
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 249,
+    "5.0 g": 327
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 249,
+    "5.0 g": 327
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 235,
+    "5.0 g": 306
+   }
+  },
+  "a spread 0.0": {
+   "D3 mono, multi-period (PWM flat-top) balance": {
+    "1.0 g": 274,
+    "5.0 g": 350
+   },
+   "D6 D5 + multi-period (PWM)": {
+    "1.0 g": 274,
+    "5.0 g": 350
+   },
+   "SDC 2300-class 8 in mono, multi-period balance": {
+    "1.0 g": 257,
+    "5.0 g": 328
+   }
+  }
+ },
+ "seconds": 87.3
+}

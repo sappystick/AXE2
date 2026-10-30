@@ -1,0 +1,138 @@
+{
+ "status": "MODELED / tool-checked (KiCad 9 DRC + independent DRC); RF1 side experiment",
+ "boards": {
+  "A": {
+   "open": 0,
+   "router_open": 1,
+   "unrouted": [
+    "OUT_GY: U1.7"
+   ],
+   "fanout_failed": [],
+   "tracks": 623,
+   "vias": 59,
+   "freerouting": {
+    "version": "2.4.1",
+    "jar_sha256": "fb2e91df901fa50cd23a09ab42793af0ece4f3b1f3857d6724dd6f9c0c00be98",
+    "rules_mm": {
+     "track": 0.15,
+     "clearance": 0.16,
+     "via": 0.508,
+     "drill": 0.254
+    },
+    "ripped": [
+     "OUT_GY"
+    ],
+    "passes": 30,
+    "unconnected_before": 4,
+    "unconnected_after": 0,
+    "tracks": 906,
+    "vias": 62
+   },
+   "gerber_edge": {
+    "floor_mm": 0.5,
+    "sets": {
+     "GERBER_AB1A": {
+      "layers": {
+       "B_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 2.043,
+        "ok": true
+       },
+       "F_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 1.578,
+        "ok": true
+       },
+       "In1_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 0.547,
+        "ok": true
+       },
+       "In2_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 2.043,
+        "ok": true
+       },
+       "In3_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 2.043,
+        "ok": true
+       },
+       "In4_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 0.547,
+        "ok": true
+       }
+      },
+      "ok": true
+     }
+    },
+    "ok": true
+   },
+   "kicad_errors": {},
+   "kicad_unconnected": 0,
+   "kicad_warnings": {
+    "track_dangling": 26
+   },
+   "indep": {},
+   "placement": "RB1:8.328:-2.573:90:F;RB2:6.839:-2.0:90:F;RB3:8.589:11.5:0:F;RISA:8.0:3.5:0:F;RISB:7.947:6.26:90:F;RD1:10.715:-1.792:0:F;RD2:12.125:-1.121:0:F;CDF:12.038:-2.454:0:F;CVB:0.029:0.973:90:F;CVM:12.221:0.87:0:F;CAAF2:8.65:-0.25:0:F;CF1:4.8:-9.8:0:F;CF2:4.8:0.2:0:F;CLO:9.35:1.55:90:F;CRG:9.85:4.0:90:B;CVC:8.45:3.85:90:B;RAAF2:6.6:-0.25:0:F;ULD:11.3:4.25:0:F"
+  },
+  "B": {
+   "open": 0,
+   "router_open": 0,
+   "unrouted": [],
+   "fanout_failed": [],
+   "tracks": 513,
+   "vias": 53,
+   "freerouting": null,
+   "gerber_edge": {
+    "floor_mm": 0.5,
+    "sets": {
+     "GERBER_AB1B": {
+      "layers": {
+       "B_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 2.142,
+        "ok": true
+       },
+       "F_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 2.042,
+        "ok": true
+       },
+       "In1_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 0.547,
+        "ok": true
+       },
+       "In2_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 2.142,
+        "ok": true
+       },
+       "In3_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 2.142,
+        "ok": true
+       },
+       "In4_Cu": {
+        "outside_mm2": 0.0,
+        "min_edge_gap_mm": 0.547,
+        "ok": true
+       }
+      },
+      "ok": true
+     }
+    },
+    "ok": true
+   },
+   "kicad_errors": {},
+   "kicad_unconnected": 0,
+   "kicad_warnings": {
+    "track_dangling": 20
+   },
+   "indep": {},
+   "placement": "D2:-11.7:6.5:90:F;RF1:4.55:-5.45:0:F;CF1:4.55:-4.3:0:F;CVB:1.907:-4.0:0:F;RB1:8.328:-2.573:90:F;RB2:8.089:-0.583:0:F;RISA:0.809:7.883:90:F;RISB:6.276:9.34:90:F;RD1:4.04:10.333:0:F;RD2:4.85:9.154:90:F;CDF:7.433:14.574:0:F;CVM:8.205:1.15:0:F"
+  }
+ }
+}

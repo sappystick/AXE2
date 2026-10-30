@@ -1,0 +1,231 @@
+{
+ "status": "MODELED (RF2 step 8: separate disc receiver; ASSUMED rx capacitance 150 pF, preamp recovery 2 us)",
+ "rows": [
+  {
+   "pattern": "DISC",
+   "turns": 24,
+   "L_uH": 54,
+   "R_ohm": 4.3,
+   "k_to_tx": 0.427,
+   "rx_flyback_peak_V": 101.2,
+   "noise_nV": 1.72,
+   "first_gate_rx_us": 17.9,
+   "first_gate_mono_us": 18.7,
+   "depth_1g_mm": {
+    "disc_rx": 278,
+    "mono": 339,
+    "both": 342
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.91,
+   "depth_5g_mm": {
+    "disc_rx": 357,
+    "mono": 435,
+    "both": 439
+   },
+   "depth_20g_mm": {
+    "disc_rx": 429,
+    "mono": 500,
+    "both": 500
+   }
+  },
+  {
+   "pattern": "DISC",
+   "turns": 48,
+   "L_uH": 214,
+   "R_ohm": 8.5,
+   "k_to_tx": 0.422,
+   "rx_flyback_peak_V": 198.9,
+   "noise_nV": 1.75,
+   "first_gate_rx_us": 20.2,
+   "first_gate_mono_us": 20.6,
+   "depth_1g_mm": {
+    "disc_rx": 310,
+    "mono": 336,
+    "both": 348
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.9,
+   "depth_5g_mm": {
+    "disc_rx": 398,
+    "mono": 434,
+    "both": 447
+   },
+   "depth_20g_mm": {
+    "disc_rx": 481,
+    "mono": 500,
+    "both": 500
+   }
+  },
+  {
+   "pattern": "SUNFLOWER",
+   "turns": 24,
+   "L_uH": 78,
+   "R_ohm": 5.0,
+   "k_to_tx": 0.468,
+   "rx_flyback_peak_V": 133.8,
+   "noise_nV": 1.73,
+   "first_gate_rx_us": 18.7,
+   "first_gate_mono_us": 19.4,
+   "depth_1g_mm": {
+    "disc_rx": 288,
+    "mono": 337,
+    "both": 343
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.92,
+   "depth_5g_mm": {
+    "disc_rx": 372,
+    "mono": 435,
+    "both": 441
+   },
+   "depth_20g_mm": {
+    "disc_rx": 448,
+    "mono": 500,
+    "both": 500
+   }
+  },
+  {
+   "pattern": "SUNFLOWER",
+   "turns": 48,
+   "L_uH": 315,
+   "R_ohm": 10.0,
+   "k_to_tx": 0.465,
+   "rx_flyback_peak_V": 265.0,
+   "noise_nV": 1.77,
+   "first_gate_rx_us": 21.8,
+   "first_gate_mono_us": 22.0,
+   "depth_1g_mm": {
+    "disc_rx": 323,
+    "mono": 334,
+    "both": 351
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.92,
+   "depth_5g_mm": {
+    "disc_rx": 416,
+    "mono": 433,
+    "both": 453
+   },
+   "depth_20g_mm": {
+    "disc_rx": 500,
+    "mono": 500,
+    "both": 500
+   }
+  },
+  {
+   "pattern": "OUTER",
+   "turns": 24,
+   "L_uH": 221,
+   "R_ohm": 6.9,
+   "k_to_tx": 0.512,
+   "rx_flyback_peak_V": 244.8,
+   "noise_nV": 1.75,
+   "first_gate_rx_us": 21.4,
+   "first_gate_mono_us": 21.7,
+   "depth_1g_mm": {
+    "disc_rx": 311,
+    "mono": 334,
+    "both": 347
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.97,
+   "depth_5g_mm": {
+    "disc_rx": 402,
+    "mono": 433,
+    "both": 448
+   },
+   "depth_20g_mm": {
+    "disc_rx": 486,
+    "mono": 500,
+    "both": 500
+   }
+  },
+  {
+   "pattern": "OUTER",
+   "turns": 48,
+   "L_uH": 893,
+   "R_ohm": 13.7,
+   "k_to_tx": 0.509,
+   "rx_flyback_peak_V": 484.3,
+   "noise_nV": 1.87,
+   "first_gate_rx_us": 26.7,
+   "first_gate_mono_us": 26.3,
+   "depth_1g_mm": {
+    "disc_rx": 344,
+    "mono": 327,
+    "both": 359
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.97,
+   "depth_5g_mm": {
+    "disc_rx": 448,
+    "mono": 429,
+    "both": 467
+   },
+   "depth_20g_mm": {
+    "disc_rx": 500,
+    "mono": 500,
+    "both": 500
+   }
+  },
+  {
+   "pattern": "INNER",
+   "turns": 24,
+   "L_uH": 39,
+   "R_ohm": 2.8,
+   "k_to_tx": 0.167,
+   "rx_flyback_peak_V": 33.8,
+   "noise_nV": 1.71,
+   "first_gate_rx_us": 15.7,
+   "first_gate_mono_us": 16.8,
+   "depth_1g_mm": {
+    "disc_rx": 241,
+    "mono": 341,
+    "both": 342
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.81,
+   "depth_5g_mm": {
+    "disc_rx": 305,
+    "mono": 437,
+    "both": 437
+   },
+   "depth_20g_mm": {
+    "disc_rx": 369,
+    "mono": 500,
+    "both": 500
+   }
+  },
+  {
+   "pattern": "INNER",
+   "turns": 48,
+   "L_uH": 156,
+   "R_ohm": 5.6,
+   "k_to_tx": 0.166,
+   "rx_flyback_peak_V": 67.2,
+   "noise_nV": 1.73,
+   "first_gate_rx_us": 16.7,
+   "first_gate_mono_us": 17.4,
+   "depth_1g_mm": {
+    "disc_rx": 272,
+    "mono": 340,
+    "both": 343
+   },
+   "ground_rel_mono": 1.0,
+   "ground_rel_rx": 0.81,
+   "depth_5g_mm": {
+    "disc_rx": 346,
+    "mono": 436,
+    "both": 439
+   },
+   "depth_20g_mm": {
+    "disc_rx": 414,
+    "mono": 500,
+    "both": 500
+   }
+  }
+ ],
+ "mono_noise_nV": 1.73,
+ "seconds": 32.2
+}

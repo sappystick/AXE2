@@ -1,0 +1,63 @@
+{
+ "status": "RF2 SB1R outline variant (copper from the baseline generator, outline changed only)",
+ "export_rc": 0,
+ "export_err": "",
+ "copper_identical": {
+  "layers": {
+   "SB1R-QA SB1R-QA-B_Cu.gbr": {
+    "area_mm2": 3435.414,
+    "sym_diff_mm2": 0.0
+   },
+   "SB1R-QA SB1R-QA-F_Cu.gbr": {
+    "area_mm2": 3488.461,
+    "sym_diff_mm2": 0.0
+   },
+   "SB1R-QA SB1R-QA-In1_Cu.gbr": {
+    "area_mm2": 3361.172,
+    "sym_diff_mm2": 0.0
+   },
+   "SB1R-QA SB1R-QA-In2_Cu.gbr": {
+    "area_mm2": 3361.172,
+    "sym_diff_mm2": 0.0
+   },
+   "SB1R-QB SB1R-QB-B_Cu.gbr": {
+    "area_mm2": 3430.713,
+    "sym_diff_mm2": 0.0
+   },
+   "SB1R-QB SB1R-QB-F_Cu.gbr": {
+    "area_mm2": 3454.776,
+    "sym_diff_mm2": 0.0
+   },
+   "SB1R-QB SB1R-QB-In1_Cu.gbr": {
+    "area_mm2": 3357.158,
+    "sym_diff_mm2": 0.0
+   },
+   "SB1R-QB SB1R-QB-In2_Cu.gbr": {
+    "area_mm2": 3357.158,
+    "sym_diff_mm2": 0.0
+   }
+  },
+  "ok": true
+ },
+ "outline_radius_mm": {
+  "values": {
+   "SB1R-QA": 114.0,
+   "SB1R-QB": 114.0
+  },
+  "ok": true
+ },
+ "kicad_drc": {
+  "boards": {
+   "SB1R-QA": {
+    "errors": {},
+    "unconnected": 0
+   },
+   "SB1R-QB": {
+    "errors": {},
+    "unconnected": 0
+   }
+  },
+  "ok": true
+ },
+ "ok": true
+}

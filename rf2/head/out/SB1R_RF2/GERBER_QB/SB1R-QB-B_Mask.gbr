@@ -1,0 +1,15 @@
+%TF.GenerationSoftware,Arx,sbq_export*%
+%TF.FileFunction,Soldermask,Bot*%
+%FSLAX46Y46*%
+%MOMM*%
+%ADD10C,0.800*%
+%ADD11C,0.800*%
+%ADD12C,1.600*%
+%ADD13C,0.100*%
+%ADD14C,1.800*%
+G01*
+%LPD*%
+D14*
+X-14188300Y18102300D03*
+X-18102300Y14188300D03*
+M02*

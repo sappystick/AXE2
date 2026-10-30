@@ -1,0 +1,7 @@
+(version 1)
+(rule "generic" (constraint clearance (min 0.2mm)))
+(rule "track" (constraint track_width (min 0.15mm)))
+(rule "edge" (constraint edge_clearance (min 0.5mm)))
+(rule "via" (constraint via_diameter (min 0.6mm)) (condition "A.Type == 'Via'"))
+(rule "via drill" (constraint hole_size (min 0.3mm)) (condition "A.Type == 'Via'"))
+(rule "HV rule 6" (constraint clearance (min 1.0mm)) (condition "A.NetName == 'COIL_A' || B.NetName == 'COIL_A' || A.NetName == 'COIL_B' || B.NetName == 'COIL_B' || A.NetName == 'HA1' || B.NetName == 'HA1' || A.NetName == 'HA2' || B.NetName == 'HA2' || A.NetName == 'HB1' || B.NetName == 'HB1' || A.NetName == 'HB2' || B.NetName == 'HB2'"))

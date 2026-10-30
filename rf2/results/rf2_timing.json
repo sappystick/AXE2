@@ -1,0 +1,195 @@
+{
+ "status": "MODELED (RF2 step 5: turn-off timing; coil capacitance 500 pF and preamp recovery 2 us ASSUMED)",
+ "coils": {
+  "A_uH": 321,
+  "B_uH": 306,
+  "M_AB_uH": 72.9,
+  "k_AB": 0.232,
+  "I_A": 8.2
+ },
+ "cases": [
+  {
+   "case": "A alone",
+   "damping": "baseline ratio",
+   "Rd_A_ohm": 805,
+   "Rd_B_ohm": 786,
+   "t_zero_A_us": 4.75,
+   "last_diode_us": 7.58,
+   "B_peak_current_A": 0.0,
+   "B_node_V": [
+    0.0,
+    0.0
+   ],
+   "mono_clean_us": 24.82,
+   "quad_clean_us": 13.54,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B idle, same sense",
+   "damping": "baseline ratio",
+   "Rd_A_ohm": 805,
+   "Rd_B_ohm": 786,
+   "t_zero_A_us": 4.75,
+   "last_diode_us": 7.24,
+   "B_peak_current_A": 0.191,
+   "B_node_V": [
+    -26.3,
+    139.5
+   ],
+   "mono_clean_us": 23.25,
+   "quad_clean_us": 12.86,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B idle, opposite sense",
+   "damping": "baseline ratio",
+   "Rd_A_ohm": 805,
+   "Rd_B_ohm": 786,
+   "t_zero_A_us": 4.58,
+   "last_diode_us": 21.46,
+   "B_peak_current_A": 1.58,
+   "B_node_V": [
+    -27.3,
+    3.6
+   ],
+   "mono_clean_us": 38.73,
+   "quad_clean_us": 26.88,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B idle, same sense, clamp discharged",
+   "damping": "baseline ratio",
+   "Rd_A_ohm": 805,
+   "Rd_B_ohm": 786,
+   "t_zero_A_us": 4.56,
+   "last_diode_us": 10.78,
+   "B_peak_current_A": 1.742,
+   "B_node_V": [
+    -13.0,
+    97.5
+   ],
+   "mono_clean_us": 28.38,
+   "quad_clean_us": 17.82,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B disconnected (back-to-back switch)",
+   "damping": "baseline ratio",
+   "Rd_A_ohm": 805,
+   "Rd_B_ohm": 786,
+   "t_zero_A_us": 4.75,
+   "last_diode_us": 7.24,
+   "B_peak_current_A": 0.191,
+   "B_node_V": [
+    -26.3,
+    139.5
+   ],
+   "mono_clean_us": 23.25,
+   "quad_clean_us": 12.86,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "A alone",
+   "damping": "critical",
+   "Rd_A_ohm": 401,
+   "Rd_B_ohm": 391,
+   "t_zero_A_us": 51.21,
+   "last_diode_us": 3.98,
+   "B_peak_current_A": 0.0,
+   "B_node_V": [
+    0.0,
+    0.0
+   ],
+   "mono_clean_us": 16.29,
+   "quad_clean_us": 9.19,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B idle, same sense",
+   "damping": "critical",
+   "Rd_A_ohm": 401,
+   "Rd_B_ohm": 391,
+   "t_zero_A_us": NaN,
+   "last_diode_us": 3.94,
+   "B_peak_current_A": 0.338,
+   "B_node_V": [
+    0.0,
+    132.0
+   ],
+   "mono_clean_us": 21.71,
+   "quad_clean_us": 11.59,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B idle, opposite sense",
+   "damping": "critical",
+   "Rd_A_ohm": 401,
+   "Rd_B_ohm": 391,
+   "t_zero_A_us": NaN,
+   "last_diode_us": 21.07,
+   "B_peak_current_A": 1.479,
+   "B_node_V": [
+    -27.3,
+    0.0
+   ],
+   "mono_clean_us": 36.69,
+   "quad_clean_us": 24.04,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B idle, same sense, clamp discharged",
+   "damping": "critical",
+   "Rd_A_ohm": 401,
+   "Rd_B_ohm": 391,
+   "t_zero_A_us": NaN,
+   "last_diode_us": 10.71,
+   "B_peak_current_A": 1.644,
+   "B_node_V": [
+    0.0,
+    91.7
+   ],
+   "mono_clean_us": 27.17,
+   "quad_clean_us": 17.05,
+   "mono_residual_at_period_V": 0.0
+  },
+  {
+   "case": "B disconnected (back-to-back switch)",
+   "damping": "critical",
+   "Rd_A_ohm": 401,
+   "Rd_B_ohm": 391,
+   "t_zero_A_us": NaN,
+   "last_diode_us": 3.94,
+   "B_peak_current_A": 0.338,
+   "B_node_V": [
+    0.0,
+    132.0
+   ],
+   "mono_clean_us": 21.71,
+   "quad_clean_us": 11.59,
+   "mono_residual_at_period_V": 0.0
+  }
+ ],
+ "depth_with_computed_gate": {
+  "assumed 15 us": {
+   "none": {
+    "1.0 g": 367,
+    "5.0 g": 478
+   },
+   "severe 2e-4": {
+    "1.0 g": 221,
+    "5.0 g": 281
+   }
+  },
+  "computed 16.3 us": {
+   "none": {
+    "1.0 g": 363,
+    "5.0 g": 475
+   },
+   "severe 2e-4": {
+    "1.0 g": 221,
+    "5.0 g": 277
+   }
+  }
+ },
+ "seconds": 47.9
+}

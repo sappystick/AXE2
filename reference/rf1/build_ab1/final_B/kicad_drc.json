@@ -1,0 +1,14 @@
+{
+ "board": "PF233-AB1B.kicad_pcb",
+ "board_key": "AB1B",
+ "kicad": "9.0.9",
+ "zones_filled": true,
+ "violations": 63,
+ "unconnected": 0,
+ "errors": {},
+ "warnings": {
+  "track_dangling": 20
+ },
+ "lib_footprint_warnings": 43,
+ "examples": []
+}

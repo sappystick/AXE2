@@ -1,0 +1,60 @@
+{
+ "board": "AB1A",
+ "file": "/home/user/ARX/experiments/RF1_rigidflex/build_ab1/final_A/kit_v3/PCB_AB1A/PF233-AB1A.kicad_pcb",
+ "checks": {
+  "width_track": {
+   "n": 906,
+   "bad": 0,
+   "min": 0.15
+  },
+  "via_size_drill": {
+   "n": 62,
+   "bad": 0
+  },
+  "pth_drill": {
+   "bad": 0
+  },
+  "pth_annular": {
+   "bad": 0
+  },
+  "clearance": {
+   "bad": 0,
+   "min_gap_mm": 0.165,
+   "examples": []
+  },
+  "hole_to_hole": {
+   "bad": 0,
+   "examples": []
+  },
+  "hole_to_copper": {
+   "bad": 0,
+   "examples": []
+  },
+  "edge": {
+   "bad": 0,
+   "examples": []
+  },
+  "connectivity": {
+   "nets": 32,
+   "split_nets": {},
+   "connections": 2176
+  }
+ },
+ "errors": [],
+ "zones": 3,
+ "zone_nets_joined": {
+  "GND": [
+   30
+  ],
+  "+3V3D": [
+   2
+  ],
+  "+5VA": [
+   20
+  ]
+ },
+ "fails": {},
+ "n_fail": 0,
+ "zones_checked": false,
+ "zone_clearance_checked": false
+}
