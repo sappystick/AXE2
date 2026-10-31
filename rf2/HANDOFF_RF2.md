@@ -1410,3 +1410,28 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - The litz slot now lists the lowest-resistance constructions and every one that fits with less resistance than the incumbent, whatever rule they break.
   - Oversize wires show "OD x mm vs y mm max, z mm oversize (a new comb / coil layout, rule 12)".
   - 19 BREAKS rows in docs/COMPONENT_SELECTION.md.
+## 52. Owner concept boards tested in isolation (2026-10-31; `concepts/`, steps `concept:head`, `concept:shaft`, `concept:report` -> `docs/CONCEPTS_EVALUATION.md`; MODELED)
+- **Scope:** four concept boards (two 1 in hex-bore shafts, the Hyperion 9 in head, the total-system board) and their synthesis text. Tested with no AXE2 rule or geometry as a constraint; AXE2 values appear as a reference only.
+- **Physics library (`concepts/clib.py`):** magpylib fields; Neumann self / mutual inductance with the wire GMD; wire-pair capacitance; critically damped PI tail; eddy-loop echo; thin-tube shielding; skin depth; beam sag; shell buckling.
+  - Self-checked against closed forms: {'L_rel': 0.00033, 'M_rel': 0.0001, 'B_rel': 2e-05, 'ok': True}.
+- **Real part data fetched and logged** (DATASHEET_LOG RF2-DS-CONCEPTS): ADS1282, BSC007N04LS6, WS2812B, SK6812MINI, MuMETAL; RG316-DS from listings.
+- **Meshes:** concept head (shell, hex lattice band, 8-turn helical-hex TX, nested-hex RX on 5 mil PI, Mu-metal fins, graphene ring, 360 LEDs, SoC module with real package outlines, RG316-DS exit) and shaft A / B 300 mm sections; STL + STEP in concepts/out; view concepts/out/concepts_view.png.
+- **Head findings:**
+  - geometry: a hexagon inscribed in the rim loses 17 % of the loop area; the honeycomb zigzag adds wire with no field gain
+  - capacitance: 3 mm air cells cut the winding capacitance, but the PU potting the concept calls for puts eps_r back; with the BSC007N04LS6's 2.1 nF on the node the winding C does not matter
+  - sub-2 us needs a coil of about 10 uH or less with a 460 V clamp (2.01 us), or about 1 uH at a 36 V clamp (1.65 us): 1-3 turns. The concept's 8-turn coil at 50 A falls in 42 us on the 40 V switch; with a 900 V SiC-class switch the same coil reads at about 4-5 us
+  - planar RX: low noise (0.87 nV/rtHz) but k = 0.136 to the TX: 16.2 V induced at turn-off on the 40 V switch, 207.4 V with a fast switch: blinded without geometric nulling
+  - metal in the head vs a 1 g gold at 150 mm (10 us): Mu-metal fins 54915 x (a ferrous target with a 106.1 us relaxation inside the coil); the concentric graphene ring decays in 0.168 us (gone by the first sample, but it is a closed loop that absorbs TX energy)
+  - LEDs: 72 W full white, frame 10.9 ms vs a 2.5 ms PI period; ADS1282 is 15-500 x too slow for a PI decay
+- **Shaft findings:**
+  - A cables: three RG316-DS (2.9 mm) in a 3 mm conduit fill 280 %: they do not fit (max 1.39 mm each; three RG316-DS need a 6.25 mm bore); mesh overlap {'cable_cable': 2978.0, 'cable_conduit_wall': 1416.5}
+  - A structure: 416 g/m (Garrett two-piece 155 g/m); 1 m tip sag 23.44 mm under a 931 g head; bending 38.2 MPa vs buckling 1191 MPa
+  - A conduit: static shielding x7144, but coax has no external field to shield; as a ferrous target 30 mm above the coil it reads about 1,935 x a 1 g gold at 150 mm, relaxing over 2.65 ms
+  - A accordion: a 6-layer flex needs a 21.6 mm bend radius and a 2-layer hinge 3.6 mm; about 1.9 mm is available: only single-layer hinges (0.9 mm) fold
+  - B shell: 0.1 mm at 30 GPa: bending 182 MPa vs local buckling 143 MPa -> buckles; the cable loss is 11.67 W/m (18.3 K rise in still air, 25.1 K inside the aerogel): convection handles it without a liquid loop; the aerogel makes it worse
+  - B 'metamaterial' and the EM waveguide have no physical role at PI frequencies; the optical data link is the one real idea (a 1 mm POF)
+- **Survives the test:**
+  - a low-inductance TX (about 8 turns, 30 uH) on a 900 V-class SiC switch reads at about 4-5 us with nearly the same field per joule as 26 turns;
+  - a planar polyimide RX (quiet, but it needs geometric nulling);
+  - an optical data link up the shaft.
+- **Not adopted into AXE2:** owner to decide; a low-inductance / high-current TX study inside AXE2 is the candidate next step.

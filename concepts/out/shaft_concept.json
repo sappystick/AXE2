@@ -1,0 +1,121 @@
+{
+ "status": "  A (REV A / REV 05): carbon shell 25.4 x 0.5 mm, 6 PEEK radial fins, central Mu-metal conduit 3 mm ID x 0.5 mm wall carrying three twin-axial cables",
+ "selftest": {
+  "L_rel": 0.00033,
+  "M_rel": 0.0001,
+  "B_rel": 2e-05,
+  "ok": true
+ },
+ "A": {
+  "cables": {
+   "conduit_id_mm": 3.0,
+   "cables": 3,
+   "rg316ds_od_mm": 2.9,
+   "fill_pct": 280.0,
+   "fits": false,
+   "max_od_for_3_mm": 1.39,
+   "conduit_id_for_3_rg316ds_mm": 6.25
+  },
+  "structure": {
+   "I_mm4": 3033,
+   "mass_g_per_m": {
+    "shell": 61,
+    "fins": 40,
+    "mumetal_conduit": 48,
+    "rigid_flex": 178,
+    "cables": 90
+   },
+   "total_g_per_m": 416,
+   "tip_sag_mm_1m": 23.44,
+   "bending_stress_MPa": 38.2,
+   "buckling_MPa": 1191
+  },
+  "shielding": {
+   "static_transverse_factor": 7144,
+   "skin_depth_50kHz_mm": 0.008,
+   "wall_mm": 0.5,
+   "twin_lead_50A_B_at_flex_uT": 165.29,
+   "emf_in_a_1m_trace_pair_mV_unshielded": 16.53,
+   "coax_external_field": "about 0 for an ideal coax (equal and opposite currents): a magnetic conduit adds nothing for coax lines",
+   "note": "the conduit matters only for twin-lead; a grounded copper braid / foil already handles the electric coupling"
+  },
+  "conduit_as_target": {
+   "chi_eff": 1000.0,
+   "tau_ms": 2.65,
+   "ratio_to_1g_gold_150mm": 1935,
+   "note": "chi_eff capped at 1000 (demagnetisation, ASSUMED low); the conduit is a soft-ferrous target 30 mm above the coil with a millisecond relaxation"
+  },
+  "accordion": {
+   "six_layer_bend_min_mm": 21.6,
+   "two_layer_hinge_bend_min_mm": 3.6,
+   "single_layer_hinge_bend_min_mm": 0.9,
+   "fold_radius_available_mm": 1.9,
+   "six_layer_ok": false,
+   "two_layer_hinge_ok": false,
+   "single_layer_hinge_ok": true,
+   "note": "a 6-layer flex cannot fold inside a 25 mm tube; only single-layer flex hinges between rigid panels fold in the space; 0.5 mm boards in 0.5 mm tracks have no fit clearance"
+  },
+  "mesh_interference_mm3": {
+   "cable_cable": 2978.0,
+   "cable_conduit_wall": 1416.5
+  }
+ },
+ "B": {
+  "shell": {
+   "wall_mm": 0.1,
+   "E_GPa": 30,
+   "I_mm4": 636,
+   "mass_g_per_m": 10,
+   "bending_stress_MPa": 182,
+   "local_buckling_MPa": 143,
+   "buckles": true,
+   "tip_sag_mm_shell_only": 160.2,
+   "note": "the 0.1 mm shell alone buckles under the head's moment; the inner layers would have to carry the load (not specified)"
+  },
+  "heat": {
+   "I_rms_A": 9.1,
+   "W_per_m": 11.67,
+   "dT_bare_K": 18.3,
+   "dT_with_aerogel_inner_K": 25.1,
+   "note": "a 25 mm tube sheds the cable loss by natural convection; the aerogel barrier traps it inside; a closed microfluidic loop with no radiator only moves heat around"
+  },
+  "metamaterial_core": {
+   "claim": "mu_r = 0.01, negative index, Z0 = 377 ohm",
+   "physical_analogue": "0.1 mm copper sleeve at r 7 mm: transverse cut-off 6.2 kHz, above it the inside field falls like a low effective mu",
+   "shield_at_50kHz": 0.123,
+   "note": "no passive kHz-MHz material with mu_r = 0.01 exists outside superconductors; a copper sleeve near the head is itself an eddy target"
+  },
+  "waveguides": {
+   "optical": "a 10 um core is single-mode (laser + precise coupling); a 1 mm plastic optical fibre is the practical EMI-immune data link (real option, no datasheet on file)",
+   "em_waveguide": "a metal tube of about 5 mm passes nothing below about 35 GHz: no role at PI frequencies"
+  }
+ },
+ "reference": {
+  "garrett_two_piece_g_per_m": 155,
+  "AXE2_nested_g_per_m": 184
+ },
+ "meshes": {
+  "section_mm": 300.0,
+  "parts_cm3": {
+   "A_SHELL_CF": 11.734,
+   "A_CONDUIT_MUMETAL": 1.649,
+   "A_FINS_PEEK": 9.18,
+   "A_CABLES_RG316DS": 5.945,
+   "A_RIGIDFLEX_ACCORDION": 0.6,
+   "B_SHELL_PEEK_0p1": 2.384,
+   "B_FLEX_HELICAL": 0.827,
+   "B_CORE_GRID": 23.205,
+   "B_WAVEGUIDE_TUBE": 3.534,
+   "B_TWINAX": 3.963
+  }
+ },
+ "findings": [
+  "A cables: three RG316-DS (2.9 mm) in a 3 mm conduit fill 280 %: they do not fit (max 1.39 mm each; three RG316-DS need a 6.25 mm bore); mesh overlap {'cable_cable': 2978.0, 'cable_conduit_wall': 1416.5}",
+  "A structure: 416 g/m (Garrett two-piece 155 g/m); 1 m tip sag 23.44 mm under a 931 g head; bending 38.2 MPa vs buckling 1191 MPa",
+  "A conduit: static shielding x7144, but coax has no external field to shield; as a ferrous target 30 mm above the coil it reads about 1,935 x a 1 g gold at 150 mm, relaxing over 2.65 ms",
+  "A accordion: a 6-layer flex needs a 21.6 mm bend radius and a 2-layer hinge 3.6 mm; about 1.9 mm is available: only single-layer hinges (0.9 mm) fold",
+  "B shell: 0.1 mm at 30 GPa: bending 182 MPa vs local buckling 143 MPa -> buckles; the cable loss is 11.67 W/m (18.3 K rise in still air, 25.1 K inside the aerogel): convection handles it without a liquid loop; the aerogel makes it worse",
+  "B 'metamaterial' and the EM waveguide have no physical role at PI frequencies; the optical data link is the one real idea (a 1 mm POF)"
+ ],
+ "ok": true
+}
