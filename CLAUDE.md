@@ -52,5 +52,15 @@ Every attempt is recorded in `out/<B>/<b>_check.json` under `route.strategies`. 
 11. Rule near-misses (owner, 2026-10-30): `docs/RULE_NEAR_MISSES.md` (step `rules`, `rf2/rf2_rules.py`) lists every rule a part fails by 10 % or less (BLOCKED), every rule the owner relaxed (RELAXED), and every pass with 5 % headroom or less (EDGE). Every report to the owner names these rows, so the owner can relax or remove a rule. Safety rules (rule 5, rule 6, absolute-maximum ratings) are reported, never relaxed automatically. Add a rule to `rf2_rules.py` whenever a new check with a numeric limit is written.
 12. Integrations may reshape the layout (owner, 2026-10-31): when a new component or integration is adopted, the surrounding geometry, layout and structure may be redesigned too if that improves the whole machine; the old layout is not a constraint. Shelved options stay documented in `docs/INTEGRATION_MATRIX.md`.
 
+## Working mode (owner, token budget)
+1. Replies: outcome first; then moved numbers, rule breaks (rule 11), the next decision. Details go in repo docs, not chat.
+2. One task per request; never widen scope unasked.
+3. Agents only when work splits into independent files; at most 2 at once; agent replies under 300 words with details written to a doc; use a cheaper model for mechanical work (datasheet logging, doc regeneration, renames).
+4. Runs: always `python3 run.py --plan` first, then `--step <id>` or the incremental default. Never `--cold` unless asked. Heavy optional tools (clean-sheet, Optuna, learning layer, head-best, full variant runs) only on owner request.
+5. Never print whole JSON / logs / greps into chat; use tail / head or a targeted key.
+6. One commit per finished task; batch; no WIP commits unless the stop hook forces it.
+7. Don't re-read files already summarised in HANDOFF; cite the doc.
+8. Physics rules unchanged: everything MODELED, nothing fabricated, every near-miss reported, safety rules never relaxed.
+
 ## Conventions
 mm / deg; z up from the underside of the skid; azimuth CCW from +x; heel (shaft side) at 178 deg. The display's spine frame: x' runs along the heel axis.

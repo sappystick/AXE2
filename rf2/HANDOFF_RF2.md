@@ -1532,3 +1532,19 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - analog gel: 6.2 cm3;
   - coil syntactic foam: 33.2 cm3.
 - **Checks:** interference 0. Every pocket clearance and the minimum walls pass (printed PETG). Head mass, BF islands-only: 771 g -> 759 g. The moulded variant is blocked by the 0.6 mm floor.
+
+## 57. Open decisions and next steps (2026-10-31)
+- **Cord flex piece-1 width 18.24 vs 16.6 mm: BLOCKED.** Options: 3 oz TX strips; drop the guard trace (17.44 mm, still over); relax the 10 K strip rise; a wider inner tube.
+- **TXD echo at the shortest shaft 0.605 vs 0.5 x gate noise: FAIL.** Options: limit collapse by 13 mm; move REF3 and the TXD pod up the shaft.
+- **Open work:**
+  - PRX board artwork (geometry only);
+  - the HV fin board (MP1 v2 on a fin, reservation r 40-102);
+  - the cord-flex land board in the head;
+  - MP2 output tail to the hub (harness C21);
+  - potting densities unconfirmed (ASSUMED).
+- **Gyro / IMU:** BMI270 (U9, CB1D function, alternate LSM6DSO) is assigned to digital fin FIN_D7 (sensors).
+  - LGA-14 2.5 x 3.0 x 0.83 mm (0.86 max for the alternate) sits inside the 1.2 mm fin parts envelope, which is the glove housing's fin pocket.
+  - No extra pocket is needed.
+- **Not done (stopped by the owner):** rebase of the variant engine, plugins, clean-sheet calibration and head-best onto the adopted machine.
+  - Their "today" is still the pre-adoption machine.
+  - Backlog in rf2/ENHANCEMENT_PLAN_RF2.md.

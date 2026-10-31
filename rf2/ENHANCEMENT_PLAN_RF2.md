@@ -141,3 +141,37 @@ Already done with the new tools:
   - Before choosing, run study 2 (self-capacitance of the 5 x 6 and 4 x 7 bundles) and study 3 (flex receive copper), and check the coil-to-AB1 coupling.
 - **MP1 v2:** the parts are decided (IXTY08N100D2, Rin2 100 ohm, LMH6629). Next: board layout and routing. The bench must measure the turn-off edge dV/dt, since the clamp-current spike depends on it.
 - **Coil modeling:** add a finite-cross-section / tilt mutual-inductance cross-check (An 2022 Neumann model, or magpylib) for the flatter bundles and for REF3 under shaft tilt.
+
+## Backlog: data, testing and tools (owner 2026-10-31; record only)
+
+### How to add data
+- **New chip / datasheet:**
+  1. Put the PDF in data/datasheets/.
+  2. Add a DATASHEET_LOG row.
+  3. Rebuild the KB (`rf2/rf2_kb.py build`).
+  4. Add the part as an axis option (rf2/rf2_variant_axes.py or a plugin).
+- **New concept:**
+  1. Test it in isolation in concepts/.
+  2. Write an options study in rf2/.
+  3. Add an axis or a plugin in rf2/variant_plugins/.
+- **New formula:**
+  - Reusable physics goes into concepts/clib.py with a self-test.
+  - Study-specific formulas go in the module docstring (the KB indexes them).
+
+### How to strengthen testing
+1. **Fidelity ladder:** re-check formula winners with FastHenry, the full SPICE chain, 3D FEM (Elmer when built), and multi-time-constant target and viscous ground models. A disagreement over 10 % gets a flag and a CORRECTIONS row.
+2. **Claim-based scenario library (rf2/scenarios/):**
+   - target orientation sweeps;
+   - ground types (neutral, magnetite, salt);
+   - tilt and height wobble;
+   - EMI;
+   - temperature drift.
+3. **Standing devil's-advocate agent:** it asks what physics the model misses that favours this idea. Each answer becomes a new test.
+4. **Continuous design search** (coil radius, turns, comb pitch, bucking radius, tube across-flats) with differential evolution or Bayesian optimisation.
+5. **Uncertainty on every ASSUMED value;** rank by the worst likely case.
+6. **Reality grounding:** wire and flex coupon measurements (docs/WIRE_COUPONS.md, docs/FLEX_COUPONS.md) calibrate the models.
+7. **Novelty scoring:** keep a few high-novelty variants in every search.
+
+### Deferred (owner stopped them 2026-10-31)
+- **Rebase onto the adopted machine:** the variant engine, its plugins (today flags: NTBG, s400, hybrid, bank, gland_fpc, ref_guard, rx_18um) and the clean-sheet calibration. No double counting. A partial patch of a stopped attempt was kept outside the repo.
+- **Re-run of rf2_head_best.py** against the adopted machine, with the real PRX copper (2 x 35 um, about 103 ohm, 1.31 nV/rtHz).

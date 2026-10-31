@@ -142,7 +142,7 @@ def apply_option_bf(S):
     bi["FIN_A2"] = dict(fin(122.0, "analog", "MP2: second MP1-class receive channel (MP1 v1 schematic: 3 x 470R CRCW2512 per leg, BAV199 clamps, OPA2211 difference amp) "
                                           "for the planar nulled RX; inputs at the rim end (lead from the PRX feed), output by flex tail to the LV hub", False, 21.0), side=1.8, board="MP2")
     for k, d in enumerate((214.0, 245.0, 276.0, 307.0, 338.0, 9.0, 40.0, 71.0)):
-        bi[f"FIN_D{k + 1}"] = fin(d, "digital", "CB1D function: RP2354A, clocks, LMR36520 + TPS22918 LED rail, LED data, power entry" if k < 6 else "CB1D function: sensors, audio / link, spare")
+        bi[f"FIN_D{k + 1}"] = fin(d, "digital", "CB1D function: RP2354A, clocks, LMR36520 + TPS22918 LED rail, LED data, power entry" if k < 6 else "CB1D function: sensors (yaw gyro BMI270 U9, LGA-14 2.5 x 3.0 x 0.83 mm, alternate LSM6DSO 0.86 mm max: inside the 1.2 mm fin parts envelope / glove fin pocket; gyro axis set along the head normal), audio / link, spare")
     bi["HUB_PCB"] = dict(kind="disc", c=(0.0, 0.0), r=20.5, z=(11.6, 12.4), below=0.0, above=0.5, what="LV hub: star (radial) interconnect of the LV fins by soldered flex tails; no ring traces (rule 5); 4 mm fill bore")
     bi["LED"] = S["boards_inner"]["LED"]; S["boards_inner"] = bi
     S["hub"] = dict(r=20.0, z=(round(3.8 + DZ_PRX, 2), 11.0), slot_depth=1.0, slot_w=1.1, bore_d=4.0, what="printed hub: radial slots for the LV fins' inner edges, a 4 mm bore to inject potting from the centre")
