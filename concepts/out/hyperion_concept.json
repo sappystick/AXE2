@@ -1,0 +1,829 @@
+{
+ "status": "MODELED; isolated from AXE2 rules; part values from datasheets where named, else UNVERIFIED / ASSUMED",
+ "selftest": {
+  "L_rel": 0.00033,
+  "M_rel": 0.0001,
+  "B_rel": 2e-05,
+  "ok": true
+ },
+ "housing": {
+  "D_mm": 300,
+  "stack_mm": 18,
+  "skid_mm": 2.0,
+  "lowest_wire_centre_mm": 3.31
+ },
+ "assumptions": {
+  "litz_g_per_m": 9.9,
+  "eps_serve": 2.2,
+  "C_ext_pF": 60.0,
+  "V_clamp_fast_switch": 460.0,
+  "detection_threshold_uV": 0.174,
+  "threshold_basis": "OPA211 1.1 nV/rtHz, 1 MHz, 1000-pulse average, SNR 5; no ground or EMI: absolute depths are optimistic, ratios are the result"
+ },
+ "reproduce": {
+  "concept_code_rerun": {
+   "1 cm": {
+    "planar_uT": 1361.4,
+    "hyperion_uT": 1522.89
+   },
+   "30 cm": {
+    "planar_uT": 40.95,
+    "hyperion_uT": 36.87
+   },
+   "100 cm": {
+    "planar_uT": 1.34,
+    "hyperion_uT": 1.14
+   }
+  },
+  "claimed_log": {
+   "1 cm": {
+    "planar_uT": 1361.4,
+    "hyperion_uT": 1523.31
+   },
+   "30 cm": {
+    "planar_uT": 40.95,
+    "hyperion_uT": 36.86
+   },
+   "100 cm": {
+    "planar_uT": 1.34,
+    "hyperion_uT": 1.14
+   }
+  },
+  "exact_biot_savart": {
+   "1 cm": {
+    "planar_uT": 1361.66,
+    "hyperion_uT": 1522.97
+   },
+   "30 cm": {
+    "planar_uT": 40.94,
+    "hyperion_uT": 36.87
+   },
+   "100 cm": {
+    "planar_uT": 1.34,
+    "hyperion_uT": 1.14
+   }
+  },
+  "gain_decomposition": {
+   "1 cm": {
+    "log_spacing_only_pct": 8.9,
+    "cone_only_pct": 2.3,
+    "both_pct": 11.8
+   },
+   "30 cm": {
+    "log_spacing_only_pct": -14.4,
+    "cone_only_pct": 4.1,
+    "both_pct": -9.9
+   }
+  },
+  "hyperion_vs_flat_same_floor_pct": {
+   "1 cm": 7.1,
+   "30 cm": -19.2,
+   "100 cm": -18.2
+  },
+  "notes": [
+   "the concept's own numbers re-run to the printed precision: the code is reproducible",
+   "its evaluation point at '1 cm' (z = -10 mm) lies ABOVE the innermost turns (z = -12.3 mm): the +11.9 % is the inner turns being moved past the probe point",
+   "its flat reference sits at the cone's outer (highest) edge; on a common skid floor the flat coil drops 12.3 mm and the cone loses at every depth",
+   "its own log already shows the cone 10 % weaker at 30 cm and 15 % weaker at 100 cm: there is no focusing at depth"
+  ]
+ },
+ "coils": {
+  "HYP_CONE_7deg": {
+   "L_uH": 87.5,
+   "R_ohm": 0.248,
+   "wire_m": 11.44,
+   "C_wind_pF": 1.2,
+   "B_per_A_uT": {
+    "50 mm": 79.744,
+    "100 mm": 34.134,
+    "300 mm": 3.222,
+    "500 mm": 0.806,
+    "1000 mm": 0.109
+   },
+   "falloff_exponent": {
+    "50 mm": 0.87,
+    "100 mm": 1.6,
+    "300 mm": 2.59,
+    "500 mm": 2.81,
+    "1000 mm": 2.93
+   },
+   "beam_FWHM_at_300mm_mm": 316,
+   "B300_per_sqrtJ_uT": 487.2,
+   "B300_sq_per_ohm": 41.94,
+   "I_A": 10.0,
+   "E_mJ": 4.38,
+   "P_I2R_W_at_10pct_duty": 2.48,
+   "mass_wire_g": 114,
+   "first_sample_us_SiC460": 3.6,
+   "fall_us": 1.9,
+   "depth_cm_concept_driver_1p2A": {
+    "gold_1g": 20.5,
+    "gold_0p1g_small": 20.0,
+    "silver_coin_25mm": 40.1,
+    "gold_flake_0p5mm": 0.0
+   },
+   "note": "conical log spiral as simulated (7 deg; outer turns 12.3 mm up)",
+   "depth_cm_at_own_current": {
+    "gold_1g": 31.5,
+    "gold_0p1g_small": 30.7,
+    "silver_coin_25mm": 58.5,
+    "gold_flake_0p5mm": 0.0
+   },
+   "depth_cm_equal_energy": {
+    "gold_1g": 31.5,
+    "gold_0p1g_small": 30.7,
+    "silver_coin_25mm": 58.5,
+    "gold_flake_0p5mm": 0.0
+   },
+   "I_equal_energy_A": 10.0,
+   "tau_us": {
+    "gold_1g": 29.0161,
+    "gold_0p1g_small": 3.5827,
+    "silver_coin_25mm": 264.4261,
+    "gold_flake_0p5mm": 0.0636
+   }
+  },
+  "HYP_CONE_drawn_3p5deg": {
+   "L_uH": 87.7,
+   "R_ohm": 0.248,
+   "wire_m": 11.44,
+   "C_wind_pF": 1.2,
+   "B_per_A_uT": {
+    "50 mm": 82.206,
+    "100 mm": 35.484,
+    "300 mm": 3.316,
+    "500 mm": 0.822,
+    "1000 mm": 0.111
+   },
+   "falloff_exponent": {
+    "50 mm": 0.85,
+    "100 mm": 1.6,
+    "300 mm": 2.61,
+    "500 mm": 2.83,
+    "1000 mm": 2.94
+   },
+   "beam_FWHM_at_300mm_mm": 314,
+   "B300_per_sqrtJ_uT": 500.8,
+   "B300_sq_per_ohm": 44.42,
+   "I_A": 10.0,
+   "E_mJ": 4.39,
+   "P_I2R_W_at_10pct_duty": 2.48,
+   "mass_wire_g": 114,
+   "first_sample_us_SiC460": 3.6,
+   "fall_us": 1.91,
+   "depth_cm_concept_driver_1p2A": {
+    "gold_1g": 20.8,
+    "gold_0p1g_small": 20.3,
+    "silver_coin_25mm": 40.4,
+    "gold_flake_0p5mm": 0.0
+   },
+   "note": "as drawn (6.13 mm rise over 100 mm = 3.5 deg)",
+   "depth_cm_at_own_current": {
+    "gold_1g": 31.8,
+    "gold_0p1g_small": 31.0,
+    "silver_coin_25mm": 58.9,
+    "gold_flake_0p5mm": 0.0
+   },
+   "depth_cm_equal_energy": {
+    "gold_1g": 31.8,
+    "gold_0p1g_small": 31.0,
+    "silver_coin_25mm": 58.9,
+    "gold_flake_0p5mm": 0.0
+   },
+   "I_equal_energy_A": 9.99,
+   "tau_us": {
+    "gold_1g": 29.0161,
+    "gold_0p1g_small": 3.5827,
+    "silver_coin_25mm": 264.4261,
+    "gold_flake_0p5mm": 0.0636
+   }
+  },
+  "LOG_SPIRAL_FLAT": {
+   "L_uH": 87.8,
+   "R_ohm": 0.248,
+   "wire_m": 11.44,
+   "C_wind_pF": 1.2,
+   "B_per_A_uT": {
+    "50 mm": 84.674,
+    "100 mm": 36.89,
+    "300 mm": 3.415,
+    "500 mm": 0.839,
+    "1000 mm": 0.112
+   },
+   "falloff_exponent": {
+    "50 mm": 0.83,
+    "100 mm": 1.59,
+    "300 mm": 2.63,
+    "500 mm": 2.84,
+    "1000 mm": 2.95
+   },
+   "beam_FWHM_at_300mm_mm": 312,
+   "B300_per_sqrtJ_uT": 515.4,
+   "B300_sq_per_ohm": 47.09,
+   "I_A": 10.0,
+   "E_mJ": 4.39,
+   "P_I2R_W_at_10pct_duty": 2.48,
+   "mass_wire_g": 114,
+   "first_sample_us_SiC460": 3.6,
+   "fall_us": 1.91,
+   "depth_cm_concept_driver_1p2A": null,
+   "note": "same log spiral, flat on the skid",
+   "depth_cm_at_own_current": {
+    "gold_1g": 32.1,
+    "gold_0p1g_small": 31.4,
+    "silver_coin_25mm": 59.2,
+    "gold_flake_0p5mm": 0.0
+   },
+   "depth_cm_equal_energy": {
+    "gold_1g": 32.1,
+    "gold_0p1g_small": 31.4,
+    "silver_coin_25mm": 59.2,
+    "gold_flake_0p5mm": 0.0
+   },
+   "I_equal_energy_A": 9.98,
+   "tau_us": {
+    "gold_1g": 29.0161,
+    "gold_0p1g_small": 3.5827,
+    "silver_coin_25mm": 264.4261,
+    "gold_flake_0p5mm": 0.0636
+   }
+  },
+  "LINEAR_FLAT_REF": {
+   "L_uH": 85.5,
+   "R_ohm": 0.272,
+   "wire_m": 12.57,
+   "C_wind_pF": 1.1,
+   "B_per_A_uT": {
+    "50 mm": 82.892,
+    "100 mm": 39.081,
+    "300 mm": 3.991,
+    "500 mm": 0.996,
+    "1000 mm": 0.134
+   },
+   "falloff_exponent": {
+    "50 mm": 0.74,
+    "100 mm": 1.47,
+    "300 mm": 2.59,
+    "500 mm": 2.82,
+    "1000 mm": 2.95
+   },
+   "beam_FWHM_at_300mm_mm": 318,
+   "B300_per_sqrtJ_uT": 610.3,
+   "B300_sq_per_ohm": 58.55,
+   "I_A": 10.0,
+   "E_mJ": 4.28,
+   "P_I2R_W_at_10pct_duty": 2.72,
+   "mass_wire_g": 125,
+   "first_sample_us_SiC460": 3.53,
+   "fall_us": 1.86,
+   "depth_cm_concept_driver_1p2A": null,
+   "note": "the concept's flat reference (20 loops 50-150 mm), on the skid",
+   "depth_cm_at_own_current": {
+    "gold_1g": 34.1,
+    "gold_0p1g_small": 33.4,
+    "silver_coin_25mm": 63.0,
+    "gold_flake_0p5mm": 0.0
+   },
+   "depth_cm_equal_energy": {
+    "gold_1g": 34.2,
+    "gold_0p1g_small": 33.5,
+    "silver_coin_25mm": 63.1,
+    "gold_flake_0p5mm": 0.0
+   },
+   "I_equal_energy_A": 10.11,
+   "tau_us": {
+    "gold_1g": 29.0161,
+    "gold_0p1g_small": 3.5827,
+    "silver_coin_25mm": 264.4261,
+    "gold_flake_0p5mm": 0.0636
+   }
+  },
+  "RIM_BUNDLE_300": {
+   "L_uH": 268.5,
+   "R_ohm": 0.39,
+   "wire_m": 17.99,
+   "C_wind_pF": 5.2,
+   "B_per_A_uT": {
+    "50 mm": 70.055,
+    "100 mm": 44.843,
+    "300 mm": 6.614,
+    "500 mm": 1.764,
+    "1000 mm": 0.246
+   },
+   "falloff_exponent": {
+    "50 mm": 0.36,
+    "100 mm": 1.01,
+    "300 mm": 2.4,
+    "500 mm": 2.74,
+    "1000 mm": 2.92
+   },
+   "beam_FWHM_at_300mm_mm": 343,
+   "B300_per_sqrtJ_uT": 570.9,
+   "B300_sq_per_ohm": 112.29,
+   "I_A": 10.0,
+   "E_mJ": 13.42,
+   "P_I2R_W_at_10pct_duty": 3.9,
+   "mass_wire_g": 179,
+   "first_sample_us_SiC460": 8.9,
+   "fall_us": 5.84,
+   "depth_cm_concept_driver_1p2A": null,
+   "note": "same wire, same turns, a 4 x 5 bundle at the rim of the same 300 mm housing",
+   "depth_cm_at_own_current": {
+    "gold_1g": 40.4,
+    "gold_0p1g_small": 30.5,
+    "silver_coin_25mm": 77.1,
+    "gold_flake_0p5mm": 0.0
+   },
+   "depth_cm_equal_energy": {
+    "gold_1g": 36.3,
+    "gold_0p1g_small": 27.1,
+    "silver_coin_25mm": 69.9,
+    "gold_flake_0p5mm": 0.0
+   },
+   "I_equal_energy_A": 5.71,
+   "tau_us": {
+    "gold_1g": 29.0161,
+    "gold_0p1g_small": 3.5827,
+    "silver_coin_25mm": 264.4261,
+    "gold_flake_0p5mm": 0.0636
+   }
+  },
+  "HYP_CONE_in_233": {
+   "L_uH": 61.7,
+   "R_ohm": 0.184,
+   "wire_m": 8.51,
+   "C_wind_pF": 1.4,
+   "B_per_A_uT": {
+    "50 mm": 76.276,
+    "100 mm": 26.351,
+    "300 mm": 1.928,
+    "500 mm": 0.46,
+    "1000 mm": 0.061
+   },
+   "falloff_exponent": {
+    "50 mm": 1.16,
+    "100 mm": 1.91,
+    "300 mm": 2.73,
+    "500 mm": 2.87,
+    "1000 mm": 2.95
+   },
+   "beam_FWHM_at_300mm_mm": 300,
+   "B300_per_sqrtJ_uT": 347.1,
+   "B300_sq_per_ohm": 20.18,
+   "I_A": 10.0,
+   "E_mJ": 3.09,
+   "P_I2R_W_at_10pct_duty": 1.84,
+   "mass_wire_g": 85,
+   "first_sample_us_SiC460": 2.77,
+   "fall_us": 1.34,
+   "depth_cm_concept_driver_1p2A": {
+    "gold_1g": 17.2,
+    "gold_0p1g_small": 17.5,
+    "silver_coin_25mm": 33.0,
+    "gold_flake_0p5mm": 0.0
+   },
+   "note": "the conical spiral scaled into the AXE2 233 x 25.4 envelope",
+   "depth_cm_at_own_current": {
+    "gold_1g": 26.1,
+    "gold_0p1g_small": 26.5,
+    "silver_coin_25mm": 48.1,
+    "gold_flake_0p5mm": 0.0
+   },
+   "depth_cm_equal_energy": {
+    "gold_1g": 27.0,
+    "gold_0p1g_small": 27.4,
+    "silver_coin_25mm": 49.6,
+    "gold_flake_0p5mm": 0.0
+   },
+   "I_equal_energy_A": 11.91,
+   "tau_us": {
+    "gold_1g": 29.0161,
+    "gold_0p1g_small": 3.5827,
+    "silver_coin_25mm": 264.4261,
+    "gold_flake_0p5mm": 0.0636
+   }
+  },
+  "AXE2_COIL": {
+   "L_uH": 340.0,
+   "R_ohm": 0.601,
+   "wire_m": 17.97,
+   "C_wind_pF": null,
+   "B_per_A_uT": {
+    "50 mm": 103.344,
+    "100 mm": 54.329,
+    "300 mm": 5.69,
+    "500 mm": 1.418,
+    "1000 mm": 0.191
+   },
+   "falloff_exponent": {
+    "50 mm": 0.56,
+    "100 mm": 1.36,
+    "300 mm": 2.59,
+    "500 mm": 2.82,
+    "1000 mm": 2.94
+   },
+   "beam_FWHM_at_300mm_mm": 316,
+   "B300_per_sqrtJ_uT": 436.4,
+   "B300_sq_per_ohm": 53.87,
+   "I_A": 8.06,
+   "E_mJ": 11.04,
+   "P_I2R_W_at_10pct_duty": 3.9,
+   "mass_wire_g": 124,
+   "first_sample_us_SiC460": 9.26,
+   "fall_us": 5.96,
+   "depth_cm_concept_driver_1p2A": null,
+   "note": "AXE2 rim mono coil (26 turns, Rubadue TXXL66/38F-2 comb, rf2_head)",
+   "depth_cm_at_own_current": {
+    "gold_1g": 34.4,
+    "gold_0p1g_small": 17.6,
+    "silver_coin_25mm": 68.0,
+    "gold_flake_0p5mm": 0.0
+   },
+   "depth_cm_equal_energy": {
+    "gold_1g": 31.6,
+    "gold_0p1g_small": 15.7,
+    "silver_coin_25mm": 62.7,
+    "gold_flake_0p5mm": 0.0
+   },
+   "I_equal_energy_A": 5.07,
+   "tau_us": {
+    "gold_1g": 29.0161,
+    "gold_0p1g_small": 3.5827,
+    "silver_coin_25mm": 264.4261,
+    "gold_flake_0p5mm": 0.0636
+   }
+  }
+ },
+ "E_ref_mJ": 4.38,
+ "depth_claim": {
+  "claimed": "45-60 cm -> 110-135 cm (> 100 %)",
+  "signal_ratio_needed": 139.8,
+  "modelled_ratio_cone_vs_flat_at_120cm": 0.673,
+  "falloff_exponent_signal_at_1m": 5.9
+ },
+ "spin": {
+  "interleaved_spirals_as_written": {
+   "max_angle_between_phase_fields_deg": {
+    "[0, 0, -0.1]": 0.66,
+    "[0, 0, -0.3]": 5.44,
+    "[0.1, 0, -0.3]": 6.44,
+    "[0, 0.1, -0.3]": 6.71
+   },
+   "note": "three interleaved 120-deg-rotated spirals are three copies of the same axisymmetric source: the field directions agree to a fraction of a degree, so sequencing them spins nothing"
+  },
+  "sector_coils_alternative": {
+   "per_depth": {
+    "100 mm": {
+     "tilt_each_phase_deg": [
+      52.9,
+      52.9,
+      52.9
+     ],
+     "edge_on_coin_coupling_vs_flat_coin_all_phases": 0.1945,
+     "single_phase_flat_coin_vs_all": 0.111
+    },
+    "300 mm": {
+     "tilt_each_phase_deg": [
+      21.3,
+      21.3,
+      21.3
+     ],
+     "edge_on_coin_coupling_vs_flat_coin_all_phases": 0.017,
+     "single_phase_flat_coin_vs_all": 0.111
+    },
+    "500 mm": {
+     "tilt_each_phase_deg": [
+      13.1,
+      13.1,
+      13.1
+     ],
+     "edge_on_coin_coupling_vs_flat_coin_all_phases": 0.0061,
+     "single_phase_flat_coin_vs_all": 0.111
+    }
+   },
+   "note": "three 120-deg sector coils fired in turn DO tilt the field off the axis: an edge-on coin couples a few % of a flat one at shallow depth, falling with depth; each phase alone has about 1/9 of the full coil's squared field on axis"
+  },
+  "timing": "the target stores the field present at each turn-off; a 25 kHz 'rotation' during the pulse is not seen by the target. Sequential phases are three separate measurements: 3 x the TX time per reading"
+ },
+ "ferrite": {
+  "L_uH": [
+   87.8,
+   143.1
+  ],
+  "B300_gain": 1.819,
+  "B300_per_sqrtL_gain": 1.425,
+  "echo_gain_equal_energy": 2.592,
+  "ferrite_B_at_10A_T": 0.038,
+  "Bsat_T": 0.48,
+  "mass_g": 359,
+  "first_sample_ratio": 1.277,
+  "fits_18mm_on_7deg_cone": false,
+  "top_of_ferrite_mm_on_7deg_cone": 20.65,
+  "note": "a high-mu backing works as a magnetic mirror: more field below for the same current, but L rises with it; per joule the gain is small. MnZn ferrite also carries a slow magnetic after-effect (disaccommodation / viscosity) that shows as a late tail in PI: magnitude UNVERIFIED, must be measured"
+ },
+ "shields": {
+  "transmission_below_static": 0.0741,
+  "field_loss_dB": 22.6,
+  "eddy_tau_us": 0.99,
+  "ferro_relax_tau_us": 13.3,
+  "closed_shell_shielding_dB": 24.9,
+  "mass_g_two_sheets": 50.2,
+  "notes": [
+   "a lower sheet sits between the coil and the ground: it shunts the field sideways (about the dB above at DC) and is itself a conducting, ferromagnetic disc inside the coil (eddy and ferromagnetic decay at the taus above)",
+   "even a closed two-layer shell gives the closed-shell figure above at DC; a PI head must be open toward the ground, so >85 dB (17 800 x) from 10 Hz to 500 kHz is not reachable by any sheet that lets the TX out",
+   "an upper sheet only is a known option (shields the electronics side) but it is a ferromagnetic target inside the coil: place it far above the winding or omit it"
+  ]
+ },
+ "rx_metatron": {
+  "nodes": 13,
+  "layout": "Metatron's Cube: centre, 6 at 54 mm, 6 at 108 mm; node radius 26 mm",
+  "turns_per_node": 36,
+  "trace": "0.25 / 0.25 mm, 2 oz (70 um)",
+  "R_node_ohm": 3.83,
+  "johnson_nV": 0.25,
+  "L_node_uH": 78.9,
+  "M_tx_node_uH": [
+   5.705,
+   6.938,
+   6.889,
+   6.948,
+   6.999,
+   7.021,
+   7.021,
+   0.427,
+   0.343,
+   0.383,
+   0.43,
+   0.476,
+   0.513
+  ],
+  "V_node_at_turnoff_V": [
+   30.0,
+   36.5,
+   2.2
+  ],
+  "pair_residual_uH": 0.0615,
+  "residual_per_0p1mm_misplacement_uH": 0.0126,
+  "V_pair_residual_per_0p1mm_V": 0.07,
+  "target_coupling": {
+   "100 mm": {
+    "single_node_vs_mono": 0.1414,
+    "best_pair_diff_vs_mono": 0.14949
+   },
+   "300 mm": {
+    "single_node_vs_mono": 0.081,
+    "best_pair_diff_vs_mono": 0.02262
+   },
+   "500 mm": {
+    "single_node_vs_mono": 0.0716,
+    "best_pair_diff_vs_mono": 0.00965
+   }
+  },
+  "ground_pair_rejection_level": 0.02022,
+  "ground_pair_rejection_tilt3deg": 0.22,
+  "notes": [
+   "planar coils on a flat flex sense only the field normal to the board; '45 / 90 degree vector planes' need folded or vertical coils (an 18 mm stack limits a vertical node to about 14 mm x 50 mm)",
+   "single nodes inside the TX see the full primary: tens to hundreds of volts at turn-off; they are not in a null",
+   "opposite node pairs cancel the TX and a level, uniform ground by symmetry (a gradiometer); the same symmetry cancels a centred target, and a 3 deg tilt breaks the ground balance",
+   "a 26 mm node collects a few % of the mono coil's target flux; differential pairs collect less at depth (gradient falls one power of z faster)"
+  ]
+ },
+ "parts": {
+  "IXTY02N100D": {
+   "status": "UNVERIFIED: no datasheet found for this part number; the IXTY01N100D family sheet (IXYS 2006) gives 1000 V, ID 100 mA, RDS(on) 90-110 ohm at VGS 0; distributors list 400 mA (Tc) / 80 ohm",
+   "finding": "a depletion-mode small-signal FET conducts ~0.1-0.4 A class current with ~80-110 ohm on-resistance: it cannot carry a 10 A coil pulse (10 A x 80 ohm = 800 V drop). Normally-on: with no gate bias at power-up it shorts the coil across the supply. Used in PI as a current source or start-up device, not as the TX switch",
+   "I_reachable_A_3_parallel": 1.2,
+   "B_ratio_vs_10A": 0.12
+  },
+  "BAV199": {
+   "source": "NXP/Philips BAV199 datasheet: VR 75 V, VRRM 85 V, IF 160 mA, leakage typ 3 pA, trr 0.8 typ / 3 us max (10 mA / 10 mA), Cd 2 pF",
+   "finding": "a good low-leakage preamp clamp, but slow: its 0.8-3 us recovery after the flyback alone exceeds the claimed 0.8 us settle. It is not a Schottky and not fast-recovery"
+  },
+  "OPA211": {
+   "source": "TI SBOS377L: 1.1 nV/rtHz at 1 kHz, GBW 80 MHz (G 100) / 45 MHz (G 1), 27 V/us, +-2.25 to +-18 V, settling 700 ns to 16 bit",
+   "finding": "a sound PI preamp choice; its settling (0.7 us) and overload recovery also sit at or above the claimed 0.8 us"
+  },
+  "LITZ_1050_48": {
+   "source": "MWS LITZ-1050-48-T2 sheet not obtained (UNVERIFIED part number); copper area from strand count: 1050 x 48 AWG = 0.818 mm2, 0.0217 ohm/m",
+   "finding": "text says silicone-insulated in one place and PU-nylon served in another; 22 m on the BOM vs about 11 m per 20-turn spiral"
+  },
+  "FERRITE_9478012002": {
+   "source": "not a Fair-Rite catalogue number (-MOD); 78 material data from fair-rite.com: mu_i 2300, Bsat 4800 G at 5 Oe, rho 200 ohm cm, Tc > 200 C",
+   "finding": "see ferrite block"
+  },
+  "NC_0050_S": {
+   "source": "not found in Magnetics Inc literature: UNVERIFIED; modelled as FINEMET-class (mu_r 50 000, rho 1.2 uohm m, 7.3 g/cm3, ASSUMED)",
+   "finding": "see shields block"
+  }
+ },
+ "claims": [
+  {
+   "claim": "+11.89 % near-surface flux concentration",
+   "model": "reproduced only because the probe point sits above the cone's inner turns; on a common floor the cone is 7.1 % at 1 cm, -19.2 % at 30 cm, -18.2 % at 100 cm vs the flat coil",
+   "verdict": "not supported"
+  },
+  {
+   "claim": "field decay shifts from 1/r^3 toward 1/r^2",
+   "model": "local fall-off exponent of B at 0.3 / 0.5 / 1.0 m: cone 2.59 / 2.81 / 2.93, flat 2.59 / 2.82 / 2.95: any finite loop tends to 3 far away",
+   "verdict": "not supported"
+  },
+  {
+   "claim": "downward-focused 'vortex jet' / parabolic column",
+   "model": "beam FWHM of B^2 at 300 mm: cone 316 mm, flat 318 mm, rim 343 mm",
+   "verdict": "not supported (width at depth is set by diameter)"
+  },
+  {
+   "claim": "depth 110-135 cm vs 45-60 cm (> 100 %)",
+   "model": "needs 139.8 x the target signal; the cone gives 0.673 x the flat coil's at 120 cm",
+   "verdict": "not supported"
+  },
+  {
+   "claim": "flyback settles in < 0.8 us",
+   "model": "cone coil 87.5 uH at 10 A: fall 1.9 us alone with a 460 V clamp, first sample 3.6 us; 0.8 us needs L <= 37 uH before any settling; BAV199 trr 0.8-3 us",
+   "verdict": "not supported"
+  },
+  {
+   "claim": "3-phase spinning field removes blind spots",
+   "model": "interleaved spirals: phase fields agree within 6.71 deg at 300 mm; sector coils tilt the field [21.3, 21.3, 21.3] deg at 300 mm",
+   "verdict": "not as written; partly with sector coils"
+  },
+  {
+   "claim": "Rx in TX nulls (gamma -> 0)",
+   "model": "node coupling 5.705 uH (centre), 30.0 V at turn-off; pairs cancel by symmetry, residual 0.07 V per 0.1 mm placement error",
+   "verdict": "only as differential pairs (a gradiometer)"
+  },
+  {
+   "claim": "> 85 dB EMI suppression 10 Hz-500 kHz",
+   "model": "a closed two-layer shell gives 24.9 dB at DC; a lower sheet costs the TX 22.6 dB",
+   "verdict": "not supported"
+  },
+  {
+   "claim": "resolves sub-millimetre targets / sub-grain gold",
+   "model": "0.5 mm flake tau 0.0636 us: gone long before any first sample",
+   "verdict": "not supported"
+  },
+  {
+   "claim": "10 A pulse from IXTY02N100D",
+   "model": "depletion FET class ~0.1-0.4 A, 80-110 ohm (family data; part UNVERIFIED)",
+   "verdict": "not supported"
+  }
+ ],
+ "axe2_compare": {
+  "reference": {
+   "head_mass_g": 771,
+   "first_sample_us": 16.43,
+   "L_uH_design": 333,
+   "I_scan_A": 8.06,
+   "I_boost_A": 12.74,
+   "envelope": "D233 x 25.4 mm",
+   "R_coil_ohm": 0.601
+  },
+  "rows": {
+   "HYP_CONE_7deg": {
+    "L_uH": 87.5,
+    "R_ohm": 0.248,
+    "B300_per_A_uT": 3.222,
+    "B300_per_sqrtJ_uT": 487.2,
+    "first_sample_us": 3.6,
+    "depth_coin_cm": 58.5,
+    "depth_gold_cm": 31.5,
+    "depth_small_gold_cm": 30.7,
+    "depth_coin_equalE_cm": 58.5,
+    "depth_gold_equalE_cm": 31.5,
+    "I_A": 10.0
+   },
+   "HYP_CONE_drawn_3p5deg": {
+    "L_uH": 87.7,
+    "R_ohm": 0.248,
+    "B300_per_A_uT": 3.316,
+    "B300_per_sqrtJ_uT": 500.8,
+    "first_sample_us": 3.6,
+    "depth_coin_cm": 58.9,
+    "depth_gold_cm": 31.8,
+    "depth_small_gold_cm": 31.0,
+    "depth_coin_equalE_cm": 58.9,
+    "depth_gold_equalE_cm": 31.8,
+    "I_A": 10.0
+   },
+   "LOG_SPIRAL_FLAT": {
+    "L_uH": 87.8,
+    "R_ohm": 0.248,
+    "B300_per_A_uT": 3.415,
+    "B300_per_sqrtJ_uT": 515.4,
+    "first_sample_us": 3.6,
+    "depth_coin_cm": 59.2,
+    "depth_gold_cm": 32.1,
+    "depth_small_gold_cm": 31.4,
+    "depth_coin_equalE_cm": 59.2,
+    "depth_gold_equalE_cm": 32.1,
+    "I_A": 10.0
+   },
+   "LINEAR_FLAT_REF": {
+    "L_uH": 85.5,
+    "R_ohm": 0.272,
+    "B300_per_A_uT": 3.991,
+    "B300_per_sqrtJ_uT": 610.3,
+    "first_sample_us": 3.53,
+    "depth_coin_cm": 63.0,
+    "depth_gold_cm": 34.1,
+    "depth_small_gold_cm": 33.4,
+    "depth_coin_equalE_cm": 63.1,
+    "depth_gold_equalE_cm": 34.2,
+    "I_A": 10.0
+   },
+   "RIM_BUNDLE_300": {
+    "L_uH": 268.5,
+    "R_ohm": 0.39,
+    "B300_per_A_uT": 6.614,
+    "B300_per_sqrtJ_uT": 570.9,
+    "first_sample_us": 8.9,
+    "depth_coin_cm": 77.1,
+    "depth_gold_cm": 40.4,
+    "depth_small_gold_cm": 30.5,
+    "depth_coin_equalE_cm": 69.9,
+    "depth_gold_equalE_cm": 36.3,
+    "I_A": 10.0
+   },
+   "HYP_CONE_in_233": {
+    "L_uH": 61.7,
+    "R_ohm": 0.184,
+    "B300_per_A_uT": 1.928,
+    "B300_per_sqrtJ_uT": 347.1,
+    "first_sample_us": 2.77,
+    "depth_coin_cm": 48.1,
+    "depth_gold_cm": 26.1,
+    "depth_small_gold_cm": 26.5,
+    "depth_coin_equalE_cm": 49.6,
+    "depth_gold_equalE_cm": 27.0,
+    "I_A": 10.0
+   },
+   "AXE2_COIL": {
+    "L_uH": 340.0,
+    "R_ohm": 0.601,
+    "B300_per_A_uT": 5.69,
+    "B300_per_sqrtJ_uT": 436.4,
+    "first_sample_us": 16.43,
+    "depth_coin_cm": 68.0,
+    "depth_gold_cm": 34.4,
+    "depth_small_gold_cm": 17.6,
+    "depth_coin_equalE_cm": 62.7,
+    "depth_gold_equalE_cm": 31.6,
+    "I_A": 8.06
+   }
+  }
+ },
+ "mass": {
+  "housing_g": 364,
+  "litz_g": 114,
+  "cone_former_g": 152,
+  "ferrite_g": 359,
+  "nano_sheets_g": 50.2,
+  "flex_g": 20,
+  "electronics_g": 25,
+  "note": "ABS-CF 1.15 g/cm3, 2 mm walls, cone former 35 % infill, electronics 25 g (ASSUMED)",
+  "total_g": 1084
+ },
+ "survives": [
+  "sector / multi-coil TX fired in sequence: a real way to tilt the excitation and see edge-on targets (costs TX time and field per phase)",
+  "differential planar RX pairs (gradiometer) for TX and level-ground cancellation: real, and the same principle as AXE2's quadrupole RX boards",
+  "OPA211 preamp and a slotted / finger Faraday shield: sound, standard",
+  "low-leakage BAV199 clamps: fine for leakage, too slow for a sub-microsecond gate"
+ ],
+ "ok": true,
+ "meshes": {
+  "parts_cm3": {
+   "HOUSING_ABS_CF": 171.33,
+   "LID": 103.22,
+   "CONE_FORMER": 483.861,
+   "NANO_SHEET_LOWER": 3.417,
+   "RX_FLEX_PI": 2.761,
+   "RX_METATRON_NODES": 0.23,
+   "FARADAY_FINGERS": 0.336,
+   "TX_LITZ_CONE_SPIRAL": 40.284,
+   "FERRITE_78_x24": 167.132,
+   "NANO_SHEET_UPPER": 3.417,
+   "ELECTRONICS_IXTY_BAV199_OPA211": 4.207
+  },
+  "interference": {
+   "ferrite_x_LID_mm3": 19351.0,
+   "ferrite_x_HOUSING_ABS_CF_mm3": 0.0,
+   "ferrite_x_NANO_SHEET_UPPER_mm3": 714.3,
+   "ferrite_top_mm": 20.05,
+   "stack_mm": 18.0
+  },
+  "files": [
+   "hyp_CONE_FORMER.stl",
+   "hyp_ELECTRONICS_IXTY_BAV199_OPA211.stl",
+   "hyp_FARADAY_FINGERS.stl",
+   "hyp_FERRITE_78_x24.stl",
+   "hyp_HOUSING_ABS_CF.stl",
+   "hyp_LID.stl",
+   "hyp_NANO_SHEET_LOWER.stl",
+   "hyp_NANO_SHEET_UPPER.stl",
+   "hyp_RX_FLEX_PI.stl",
+   "hyp_RX_METATRON_NODES.stl",
+   "hyp_TX_LITZ_CONE_SPIRAL.stl",
+   "hyperion_concept.step"
+  ]
+ }
+}

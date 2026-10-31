@@ -436,3 +436,12 @@ The re-sent Minco design guide and Mincoflex files are byte-identical to the RF2
 | MuMETAL fully annealed foil / stress-annealed sheet | Magnetic Shield Corp data sheets, data/datasheets/MagneticShield_MuMETAL_foil.pdf (a7c4b604790dfa80), MagneticShield_MuMETAL_sheet.pdf (5f5cf5d97f081205) | 80 Ni - 5 Mo - Fe; mu_i 50 000 (DC) / 100 000 (60 Hz) at B = 40 G; mu_max 350 000; Hc < 0.02 Oe; Bs 0.74 T; 8.7 g/cm3; rho 60 uOhm cm; Curie 370 C | concept conduit and fins: a ferrous target near the coil (millisecond relaxation) |
 | RG316-DS coax | vendor listings (Pasternack 95.01 pF/m, jacket 0.114 in; IEWC 96.46 pF/m): UNVERIFIED, no datasheet on file | 95 pF/m, OD about 2.9 mm | concept conduit cables: three do not fit a 3 mm bore |
 | IGLOO2 M2GL010, Aspen Cryogel Z, Kimya PEEK-CF, Ultem 1010 | official PDFs not obtained (403 / 404) | concept figures (12K LE; 14 mW/m K; 12 GPa) UNVERIFIED | listed only |
+
+## RF2-DS-HYPERION: parts named in the Hyperion conical log-spiral concept (read 2026-10-31; concepts/hyperion_concept.py)
+| Part | Source | Values read | Use |
+|---|---|---|---|
+| TI OPA211 | TI SBOS377L (2006, rev. 2020-01), https://www.ti.com/lit/ds/symlink/opa211.pdf, data/datasheets/TI_OPA211_SBOS377L.pdf (2415597a36a2108b) | 1.1 nV/rtHz at 1 kHz; GBW 80 MHz (G 100) / 45 MHz (G 1); 27 V/us; +-2.25 to +-18 V; 700 ns settling to 16 bit | concept preamp: sound choice |
+| NXP/Philips BAV199 | Philips data sheet, data/datasheets/Philips_BAV199.pdf (5a0d985993ce7bc6) | VR 75 V, VRRM 85 V, IF 160 mA; leakage typ 3 pA; trr 0.8 typ / 3 us max (IF = IR = 10 mA); Cd 2 pF | concept clamp: low leakage, too slow for a sub-us gate |
+| Fair-Rite 78 material | https://fair-rite.com/78-material-data-sheet/, data/datasheets/web/FairRite_78_material_2026-10-31.txt (2d70a4da8a424f8c) | MnZn; mu_i 2300; B 4800 G at 5 Oe; Br 1500 G; Hc 0.20 Oe; Tc > 200 C; rho 200 ohm cm | concept ferrite backing |
+| IXYS IXTY02N100D | no datasheet found (searched 2026-10-31); IXTY01N100D family: IXYS 2006 preliminary 1000 V, 100 mA, RDS(on) 90-110 ohm; DigiKey 400 mA (Tc), 80 ohm: UNVERIFIED | depletion-mode, normally-on | concept TX switch: cannot carry 10 A |
+| MWS LITZ-1050-48-T2, Fair-Rite 9478012002-MOD, Magnetics NC-0050-S | not found / not catalogue numbers: UNVERIFIED; litz copper from strand count (0.818 mm2); nanocrystalline modelled as FINEMET class (ASSUMED) | - | listed only |

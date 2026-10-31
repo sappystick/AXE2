@@ -1435,3 +1435,12 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - a planar polyimide RX (quiet, but it needs geometric nulling);
   - an optical data link up the shaft.
 - **Not adopted into AXE2:** owner to decide; a low-inductance / high-current TX study inside AXE2 is the candidate next step.
+
+## 53. Project Hyperion conical log-spiral head tested in isolation (2026-10-31; `concepts/hyperion_concept.py`, steps `concept:hyperion`, `concept:hyperion-report` -> `docs/HYPERION_EVALUATION.md`; MODELED)
+- **Scope:** the owner's Hyperion board (300 x 18 mm, 20-turn 7 deg conical Fibonacci/log spiral of 1050/48 litz, 3-phase "spinning" TX, Metatron's Cube micro-coil RX, Fair-Rite 78 ferrite, nanocrystalline shields, IXTY02N100D / BAV199 / OPA211). No AXE2 rule constrains it; AXE2 is the reference at the end.
+- **Their simulation:** re-runs to the printed numbers. The +11.9 % at "1 cm" exists because the probe sits above the cone's inner turns; on a common floor the cone is {'1 cm': 7.1, '30 cm': -19.2, '100 cm': -18.2} % vs the flat coil (1 / 30 / 100 cm).
+- **Coils (10 A):** cone 87.5 uH, B300/A 3.222 uT; flat reference 3.991; rim bundle 6.614; AXE2 coil (Neumann 340.0 uH vs 333 design) 5.69. Fall-off exponent tends to 3 for all; beam width at 300 mm about the same.
+- **Low inductance is the real gain:** first sample 3.6 us (SiC 460 V clamp, ASSUMED driver) vs AXE2 16.43 us: 0.1 g-class gold (tau 3.6 us) 30.7 cm vs 17.6 cm; coin 58.5 vs 68.0 cm.
+- **Rejected by the model:** 1/r^2 focusing, the vortex jet, the depth doubling (needs 139.8 x signal), < 0.8 us settle, interleaved 3-phase spin, > 85 dB shielding, sub-mm targets, a 10 A depletion-FET driver, the lower nanocrystalline sheet (22.6 dB TX loss), ferrite in an 18 mm stack (top 20.05 mm).
+- **Partly real:** sector coils fired in turn tilt the field (21 deg at 300 mm); differential RX pairs = gradiometer (AXE2's quadrupole boards already do this); ferrite backing gives x2.592 echo at equal energy but +359 g and an unmeasured ferrite tail.
+- **Not adopted into AXE2.** Candidate study: a lower-inductance AXE2 TX (fewer turns, higher current) for small fast gold.

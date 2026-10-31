@@ -707,26 +707,26 @@
    "seconds": 2.8,
    "why": "",
    "tail": "",
-   "fingerprint": "9a269985a7bd6c89",
+   "fingerprint": "ef7154fe2d42b1fb",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "4f93b6de97",
+    "run.py": "b4b3c72026",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-31T01:51:29",
+   "finished": "2026-10-31T02:27:50",
    "log": "state/logs/selftest.log",
    "history": [
-    2.8,
     2.7,
     2.9,
     3.1,
     3.0,
     3.1,
+    2.8,
     2.8,
     2.8
    ]
@@ -985,21 +985,21 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "a303e1619792de2c",
+   "fingerprint": "87eaf1ab1d080578",
    "inputs": {
     "rf2/rf2_readiness.py": "5654f874f2",
-    "state/ledger.json": "6a22570540",
+    "state/ledger.json": "105c666a38",
     "rf2/results/rf2_icd.json": "93dd81c6b8"
    },
-   "finished": "2026-10-31T01:52:01",
+   "finished": "2026-10-31T02:28:46",
    "log": "state/logs/readiness.log",
    "history": [
-    0.0,
     0.1,
     0.0,
     0.0,
     0.1,
     0.1,
+    0.0,
     0.0,
     0.0
    ]
@@ -1422,23 +1422,43 @@
    "history": [
     1.5
    ]
+  },
+  "concept:hyperion": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 55.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "f30f911fda6d3fd3",
+   "inputs": {
+    "concepts/hyperion_concept.py": "225a9d5c72",
+    "concepts/clib.py": "4cc9b59087"
+   },
+   "finished": "2026-10-31T02:28:45",
+   "log": "state/logs/concept_hyperion.log",
+   "history": [
+    55.5
+   ]
+  },
+  "concept:hyperion-report": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.0,
+   "why": "",
+   "tail": "",
+   "fingerprint": "21f07024481ac1cb",
+   "inputs": {
+    "concepts/hyperion_report.py": "53b3c17257",
+    "concepts/out/hyperion_concept.json": "97a2a169a0"
+   },
+   "finished": "2026-10-31T02:28:45",
+   "log": "state/logs/concept_hyperion-report.log",
+   "history": [
+    0.0
+   ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T16:26:39",
-   "seconds": 11.7,
-   "results": {
-    "wiring": "pass",
-    "pod": "pass",
-    "audio": "pass",
-    "system": "pass",
-    "ui": "pass",
-    "selftest": "pass",
-    "display": "pass",
-    "display3": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T17:20:37",
    "seconds": 42.7,
@@ -2060,6 +2080,16 @@
     "concept:head": "pass",
     "concept:shaft": "pass",
     "concept:report": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-31T02:28:46",
+   "seconds": 58.3,
+   "results": {
+    "selftest": "pass",
+    "concept:hyperion": "pass",
+    "concept:hyperion-report": "pass",
     "readiness": "pass"
    }
   }

@@ -116,6 +116,8 @@ STEPS = [
          deps=["system", "wire-options", "pack-options", "shaft-options", "continuous"], outputs=["docs/COMPONENT_SELECTION.md", "rf2/results/rf2_select.json"]),
     dict(id="concept:head", cmd=["concepts/head_concept.py"], inputs=["concepts/head_concept.py", "concepts/clib.py"], deps=[], outputs=["concepts/out/head_concept.json"], timeout=3600),
     dict(id="concept:shaft", cmd=["concepts/shaft_concept.py"], inputs=["concepts/shaft_concept.py", "concepts/clib.py", "concepts/out/head_concept.json"], deps=["concept:head"], outputs=["concepts/out/shaft_concept.json"], timeout=3600),
+    dict(id="concept:hyperion", cmd=["concepts/hyperion_concept.py"], inputs=["concepts/hyperion_concept.py", "concepts/clib.py"], deps=[], outputs=["concepts/out/hyperion_concept.json"], timeout=3600),
+    dict(id="concept:hyperion-report", cmd=["concepts/hyperion_report.py"], inputs=["concepts/hyperion_report.py", "concepts/out/hyperion_concept.json"], deps=["concept:hyperion"], outputs=["docs/HYPERION_EVALUATION.md"]),
     dict(id="concept:report", cmd=["concepts/report.py"], inputs=["concepts/report.py", "concepts/out/head_concept.json", "concepts/out/shaft_concept.json"], deps=["concept:shaft"], outputs=["docs/CONCEPTS_EVALUATION.md"]),
     dict(id="topography", cmd=["rf2/rf2_topography.py"], inputs=["rf2/rf2_topography.py", "rf2/chassis_out/rf2_chassis_check.json", "rf2/results/rf2_system.json", "rf2/head/out/rf2_ref3.json"],
          deps=["chassis", "system", "ref3"], outputs=["docs/SYSTEM_TOPOGRAPHY.md"]),
