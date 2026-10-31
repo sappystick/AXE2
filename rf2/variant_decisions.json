@@ -1,7 +1,115 @@
-{"note": "Owner decisions the variant engine learns its weights from (rf2_variant_learn.py). Add a row whenever the owner chooses between options that exist as axes. Combos list only the axes that differ from today's machine; omitted axes are today's.",
+{
+ "note": "Owner decisions the variant engine learns its weights from (rf2_variant_learn.py). Add a row whenever the owner chooses between options that exist as axes. Combos list only the axes that differ from today's machine; omitted axes are today's.",
  "decisions": [
-  {"date": "2026-10-30", "prefer": {"pack": "C2"}, "over": {"pack": "B"}, "note": "owner chose 7S1P P45B (lighter) over 7S2P P30B and relaxed the 6 h target"},
-  {"date": "2026-10-30", "prefer": {"wall": "w1.2"}, "over": {"wall": "w1.5"}, "note": "owner chose 1.2 mm telescope walls"},
-  {"date": "2026-10-30", "prefer": {"wall": "w1.2"}, "over": {"wall": "w1.0"}, "note": "owner chose 1.2 mm telescope walls"},
-  {"date": "2026-10-30", "prefer": {"clamp": "regen"}, "over": {"clamp": "dissip"}, "note": "runtime rated on continuous boost with the regenerative clamp budget (rf2_continuous)"}
- ]}
+  {
+   "date": "2026-10-30",
+   "prefer": {
+    "pack": "C2"
+   },
+   "over": {
+    "pack": "B"
+   },
+   "note": "owner chose 7S1P P45B (lighter) over 7S2P P30B and relaxed the 6 h target"
+  },
+  {
+   "date": "2026-10-30",
+   "prefer": {
+    "wall": "w1.2"
+   },
+   "over": {
+    "wall": "w1.5"
+   },
+   "note": "owner chose 1.2 mm telescope walls"
+  },
+  {
+   "date": "2026-10-30",
+   "prefer": {
+    "wall": "w1.2"
+   },
+   "over": {
+    "wall": "w1.0"
+   },
+   "note": "owner chose 1.2 mm telescope walls"
+  },
+  {
+   "date": "2026-10-30",
+   "prefer": {
+    "clamp": "regen"
+   },
+   "over": {
+    "clamp": "dissip"
+   },
+   "note": "runtime rated on continuous boost with the regenerative clamp budget (rf2_continuous)"
+  },
+  {
+   "date": "2026-10-31",
+   "prefer": {
+    "switch": "NTBG"
+   },
+   "over": {
+    "switch": "C3M"
+   },
+   "note": "owner adopted the head-best upgrades 2026-10-31 (docs/HEAD_BEST.md, HANDOFF 55)"
+  },
+  {
+   "date": "2026-10-31",
+   "prefer": {
+    "rx": "hybrid"
+   },
+   "over": {
+    "rx": "mono"
+   },
+   "note": "owner adopted the head-best upgrades 2026-10-31 (docs/HEAD_BEST.md, HANDOFF 55)"
+  },
+  {
+   "date": "2026-10-31",
+   "prefer": {
+    "winding": "bank"
+   },
+   "over": {
+    "winding": "row"
+   },
+   "note": "owner adopted the head-best upgrades 2026-10-31 (docs/HEAD_BEST.md, HANDOFF 55)"
+  },
+  {
+   "date": "2026-10-31",
+   "prefer": {
+    "txd": "s400"
+   },
+   "over": {
+    "txd": "s857"
+   },
+   "note": "owner adopted the head-best upgrades 2026-10-31 (docs/HEAD_BEST.md, HANDOFF 55)"
+  },
+  {
+   "date": "2026-10-31",
+   "prefer": {
+    "connectors": "gland_fpc"
+   },
+   "over": {
+    "connectors": "today"
+   },
+   "note": "owner adopted the head-best upgrades 2026-10-31 (docs/HEAD_BEST.md, HANDOFF 55)"
+  },
+  {
+   "date": "2026-10-31",
+   "prefer": {
+    "cord_lanes": "ref_guard"
+   },
+   "over": {
+    "cord_lanes": "today"
+   },
+   "note": "owner adopted the head-best upgrades 2026-10-31 (docs/HEAD_BEST.md, HANDOFF 55)"
+  },
+  {
+   "date": "2026-10-31",
+   "prefer": {
+    "board_stack": "rx_18um"
+   },
+   "over": {
+    "board_stack": "as_built"
+   },
+   "note": "owner adopted the head-best upgrades 2026-10-31 (docs/HEAD_BEST.md, HANDOFF 55)"
+  }
+ ]
+}
