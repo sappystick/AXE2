@@ -117,6 +117,7 @@ STEPS = [
          outputs=["rf2/results/rf2_fold_options.json"]),
     dict(id="variants", cmd=["rf2/rf2_variants.py"], inputs=["rf2/rf2_variants.py", "rf2/rf2_variant_axes.py", "rf2/rf2_lowL_options.py", "rf2/results/rf2_fold_options.json", "rf2/results/rf2_hex_section.json", "rf2/results/rf2_pack_options.json", "rf2/results/rf2_shaft_options.json", "rf2/rf2_select.py", "rf2/rf2_cordflex.py", "rf2/variant_plugins/README.md"], deps=["fold-options", "lowL-options", "hex-section", "pack-options", "shaft-options"],
          outputs=["rf2/results/rf2_variants.json", "docs/VARIANTS.md"], timeout=3600),
+    dict(id="kb", cmd=["rf2/rf2_kb.py"], inputs=["rf2/rf2_kb.py", "docs/DATASHEET_LOG_ARX.md", "rf2/PARTS_RF2.md", "rf2/HANDOFF_RF2.md"], deps=[], outputs=["docs/KNOWLEDGE_BASE.md", "rf2/results/rf2_kb.json"], timeout=1800),
     dict(id="variant-learn", cmd=["rf2/rf2_variant_learn.py"], inputs=["rf2/rf2_variant_learn.py", "rf2/variant_decisions.json", "rf2/results/rf2_variants.json"], deps=["variants"],
          outputs=["rf2/results/rf2_variant_learn.json", "docs/VARIANTS_LEARNING.md"], timeout=3600),
     dict(id="enhance-report", cmd=["rf2/rf2_enhance_report.py"], inputs=["rf2/rf2_enhance_report.py", "rf2/results/rf2_lowL_options.json", "rf2/results/rf2_shaftlink_options.json"], deps=["lowL-options", "shaftlink-options"],

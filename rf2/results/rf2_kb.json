@@ -1,0 +1,206 @@
+{
+ "ok": true,
+ "build_s": 9.8,
+ "documents_s": 4.6,
+ "db": "rf2/kb/axe2_kb.sqlite",
+ "counts": {
+  "documents": 2862,
+  "parts": 228,
+  "params": 272,
+  "facts": 73210,
+  "formulas": 130,
+  "modules": 107,
+  "steps": 94
+ },
+ "detail": {
+  "pdf_files": 122,
+  "pdf_pages": 2607,
+  "params_matching_log": 107,
+  "parts_with_pdf_link": 130,
+  "fact_files": 98,
+  "fact_files_skipped": []
+ },
+ "gaps": {
+  "parts_without_pdf": 17,
+  "pdfs_not_in_datasheet_log": 1,
+  "unverified_rows": 17,
+  "rf2_log_rows_without_pdf_link": 13
+ },
+ "gap_lists": {
+  "parts_without_pdf": [
+   {
+    "part": "RP2354A",
+    "mentions": 4
+   },
+   {
+    "part": "RG316-DS",
+    "mentions": 4
+   },
+   {
+    "part": "LMR36015",
+    "mentions": 3
+   },
+   {
+    "part": "ADA4896-2",
+    "mentions": 2
+   },
+   {
+    "part": "LT6201",
+    "mentions": 2
+   },
+   {
+    "part": "LT6200",
+    "mentions": 2
+   },
+   {
+    "part": "LT3045",
+    "mentions": 2
+   },
+   {
+    "part": "AN-1516",
+    "mentions": 2
+   },
+   {
+    "part": "HD107S-2020",
+    "mentions": 1
+   },
+   {
+    "part": "APA102-2020",
+    "mentions": 1
+   },
+   {
+    "part": "SLOA071",
+    "mentions": 1
+   },
+   {
+    "part": "SNOSB18E",
+    "mentions": 1
+   },
+   {
+    "part": "WSL2512",
+    "mentions": 1
+   },
+   {
+    "part": "BZT52C15",
+    "mentions": 1
+   },
+   {
+    "part": "AYF531035",
+    "mentions": 1
+   },
+   {
+    "part": "VSS-0.5",
+    "mentions": 1
+   },
+   {
+    "part": "IXTY02N100D",
+    "mentions": 1
+   }
+  ],
+  "pdfs_not_in_datasheet_log": [
+   "data/datasheets/Vishay_DCRCW_e3_20035_2026-04-14.pdf"
+  ],
+  "unverified_rows": [
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "CB1D yaw gyro (sweep direction for the LED side display, owner approval 2026-10-28): VERIFIED (2026-10-28)",
+    "part": "LSM6DSO (alternate for UG, owner-supplied)"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "Potting and shielding products (owner-supplied PDFs, 2026-10-28): READ",
+    "part": "MG Chemicals 841AR-Liquid (older sheet)"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-OWNER2: VERIFIED owner-supplied datasheets (read 2026-10-30)",
+    "part": "Rubadue litz wire brochure"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-INTERFACES: parts for the interface document and the chassis (downloaded 2026-10-30; roadmap P0.6)",
+    "part": "Panasonic Y5B / Y5BW 0.5 mm FPC / FFC connectors (AYF53xx35)"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-INTERFACES: parts for the interface document and the chassis (downloaded 2026-10-30; roadmap P0.6)",
+    "part": "Panasonic Y5B / Y5BW ratings (supersedes 'UNVERIFIED' above)"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-INTERFACES: parts for the interface document and the chassis (downloaded 2026-10-30; roadmap P0.6)",
+    "part": "Mill-Max 0906 spring-loaded pins (cartridge signal contacts)"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-PACK: cells for the drill-style rail pack study (downloaded 2026-10-30; rf2/rf2_pack_options.py)",
+    "part": "Gens Ace 5000 mAh 7S 45C LiPo (RC soft pack)"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-CONCEPTS: parts named in the owner's concept boards (read 2026-10-31; concepts/)",
+    "part": "SK6812MINI (3535-class WS2812-type LED)"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-CONCEPTS: parts named in the owner's concept boards (read 2026-10-31; concepts/)",
+    "part": "RG316-DS coax"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-CONCEPTS: parts named in the owner's concept boards (read 2026-10-31; concepts/)",
+    "part": "IGLOO2 M2GL010, Aspen Cryogel Z, Kimya PEEK-CF, Ultem 1010"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-HYPERION: parts named in the Hyperion conical log-spiral concept (read 2026-10-31; concepts/hyperion_concept.py)",
+    "part": "IXYS IXTY02N100D"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-HYPERION: parts named in the Hyperion conical log-spiral concept (read 2026-10-31; concepts/hyperion_concept.py)",
+    "part": "MWS LITZ-1050-48-T2, Fair-Rite 9478012002-MOD, Magnetics NC-0050-S"
+   },
+   {
+    "file": "docs/DATASHEET_LOG_ARX.md",
+    "section": "RF2-DS-ENHANCE: optical shaft link parts (read 2026-10-31; rf2_shaftlink_options)",
+    "part": "Broadcom AFBR-1624Z / AFBR-2624Z"
+   },
+   {
+    "file": "rf2/PARTS_RF2.md",
+    "section": "MP1 mono preamp: input protection (largest performance lever)",
+    "part": "Microchip DN2470 (N-channel depletion-mode vertical DMOS)"
+   },
+   {
+    "file": "rf2/PARTS_RF2.md",
+    "section": "MP1 amplifier",
+    "part": "ADI ADA4896-2"
+   },
+   {
+    "file": "rf2/PARTS_RF2.md",
+    "section": "MP1 amplifier",
+    "part": "ADI / LTC LT6201 (dual LT6200)"
+   },
+   {
+    "file": "rf2/PARTS_RF2.md",
+    "section": "LED display (LR1, flex; 522 LEDs since 2026-10-30)",
+    "part": "HD107S-2020, APA102-2020"
+   }
+  ],
+  "rf2_log_rows_without_pdf_link": [
+   "Flat lever cam clamps",
+   "Gens Ace 5000 mAh 7S 45C LiPo (RC soft pack)",
+   "IGLOO2 M2GL010, Aspen Cryogel Z, Kimya PEEK-CF, Ultem 1010",
+   "IXYS IXTY02N100D",
+   "MWS LITZ-1050-48-T2, Fair-Rite 9478012002-MOD, Magnetics NC-0050-S",
+   "Mill-Max 0906 spring-loaded pins (cartridge signal contacts)",
+   "RF2-DS-SPICE / Littelfuse IXTY08N100D2 and Nexperia BAV199 SPICE models",
+   "RF2-DS-SPICE / TI \"SPICE models for Precision DACs\" (Analog Applications Journal)",
+   "RF2-DS-SPICE / TI AN-1516 \"SPICE Universal Test Circuits\"",
+   "RF2-DS-SPICE / TI OPAx211 SPICE model",
+   "RF2-DS-SPICE / TI SLOA071 \"Using TI Spice Models in Electronics Workbench\"",
+   "RG316-DS coax",
+   "Reference, already logged: IXTY08N100D2"
+  ]
+ }
+}
