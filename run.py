@@ -122,6 +122,8 @@ STEPS = [
     dict(id="variant-optuna", cmd=["rf2/rf2_variant_optuna.py"], inputs=["rf2/rf2_variant_optuna.py", "rf2/results/rf2_variants.json"], deps=["variants"], outputs=["rf2/results/rf2_variant_optuna.json"], timeout=3600),
     dict(id="cleansheet", cmd=["rf2/rf2_cleansheet.py"], inputs=["rf2/rf2_cleansheet.py", "rf2/rf2_lowL_options.py", "rf2/results/rf2_wire_options.json", "rf2/results/rf2_pack_options.json", "rf2/results/rf2_solver_xcheck.json"],
          deps=["lowL-options", "pack-options", "wire-options", "solver-xcheck"], outputs=["rf2/results/rf2_cleansheet.json", "docs/CLEANSHEET.md"], timeout=1800),
+    dict(id="head-best", cmd=["rf2/rf2_head_best.py"], inputs=["rf2/rf2_head_best.py", "rf2/rf2_cleansheet.py", "rf2/rf2_variants.py", "rf2/rf2_txd_spice.py"], deps=["cleansheet", "variants"],
+         outputs=["rf2/results/rf2_head_best.json", "docs/HEAD_BEST.md"], timeout=1800),
     dict(id="kb", cmd=["rf2/rf2_kb.py"], inputs=["rf2/rf2_kb.py", "docs/DATASHEET_LOG_ARX.md", "rf2/PARTS_RF2.md", "rf2/HANDOFF_RF2.md"], deps=[], outputs=["docs/KNOWLEDGE_BASE.md", "rf2/results/rf2_kb.json"], timeout=1800),
     dict(id="variant-learn", cmd=["rf2/rf2_variant_learn.py"], inputs=["rf2/rf2_variant_learn.py", "rf2/variant_decisions.json", "rf2/results/rf2_variants.json"], deps=["variants"],
          outputs=["rf2/results/rf2_variant_learn.json", "docs/VARIANTS_LEARNING.md"], timeout=3600),

@@ -481,6 +481,7 @@ def balanced(m, t):
 def polish(x0, key, tm):
     """scipy Powell over the continuous variables (normalised), integers and categories held; penalty 10 x total violation"""
     x0 = dict(x0); lo = np.array([BOUNDS[k][0] for k in CONT]); hi = np.array([BOUNDS[k][1] for k in CONT])
+    hi = np.where(hi > lo, hi, lo + 1e-9)                                  # a variable fixed with --fix has lo == hi
     u0 = (np.array([x0[k] for k in CONT]) - lo) / (hi - lo)
     def val(e):
         m = e["m"]
@@ -665,7 +666,15 @@ LIMITATIONS = [
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--budget", type=float, default=70.0); ap.add_argument("--workers", type=int, default=min(4, os.cpu_count() or 1)); ap.add_argument("--no-cad", action="store_true")
+    ap.add_argument("--fix", nargs="*", default=[], help="hold variables: e.g. D=233 H=25.4 cell='Molicel P45B' S=7 P=1 profile=square af=31 wall=1.2 L_shaft=0.98")
+    ap.add_argument("--tag", default="", help="write rf2_cleansheet_<tag>.json and docs/CLEANSHEET_<tag>.md (no CAD) instead of the main outputs")
     a = ap.parse_args(); T0 = time.time()
+    for kv in a.fix:                                                       # 2026-10-31: constrained runs (e.g. today's head envelope)
+        k, v = kv.split("=", 1)
+        if k in CATS: CATS[k] = [type(CATS[k][0])(v) if not isinstance(CATS[k][0], str) else v]
+        elif k in BOUNDS: x = float(v); BOUNDS[k] = (int(x), int(x)) if k in INTS else (x, x)
+        else: raise SystemExit(f"--fix: unknown variable {k}")
+    if a.tag: a.no_cad = True
     cal = calibrate(); today = cal["today"]; tm = today["m"]
     t1 = time.time(); [evaluate(dict(TODAY, N=n)) for n in range(10, 40)]; ms = (time.time() - t1) / 30 * 1e3
     print("calibration:"); [print(f"  {r['quantity']:<48} model {r['model']:>10}  repo {r['repo']:>8}  {r['err_pct']:+6.2f} %") for r in cal["rows"]]
@@ -736,8 +745,9 @@ def main():
         t4 = time.time(); files += ["rf2/results/" + f for f in build_cad(champs["balanced"] if champs["balanced"]["feasible"] else top5[0])]; res["run_s"]["cad"] = round(time.time() - t4, 1)
     res["run_s"]["total"] = round(time.time() - T0, 1); res["files"] = files
     res["ok"] = bool(cal["ok"])
-    json.dump(res, open(os.path.join(OUT, "rf2_cleansheet.json"), "w"), indent=1, default=float)
-    write_md(res, os.path.join(ROOT, "docs", "CLEANSHEET.md"))
+    res["fixed"] = a.fix; sfx = f"_{a.tag}" if a.tag else ""
+    json.dump(res, open(os.path.join(OUT, f"rf2_cleansheet{sfx}.json"), "w"), indent=1, default=float)
+    write_md(res, os.path.join(ROOT, "docs", f"CLEANSHEET{sfx}.md"))
     print("champions:"); [print(f"  {k:<12} gm {s['depth_gm_cm']} 0.1g {s['depth_cm']['gold_0p1g']} boost {s['boost_h']} torque {s['torque_Nm']} feasible {s['feasible']}") for k, s in cs.items()]
     print("run s:", res["run_s"])
     return res

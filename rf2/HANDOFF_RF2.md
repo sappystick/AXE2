@@ -1452,3 +1452,38 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Planar nulled RX (40 turns + bucking under the TX wire):** with 7 x 4 TX gate 5.32 us, 0.1 g 23.8 cm (+59 %), coin 48.3 cm; but 47 A TX current breaks flex width and TJ.
 - **Optical link:** REJECTED for the telescope: POF needs 15 mm repeated-bend radius, the rolling loop has 8.2 mm. Gain if it fitted: flex 15.7 -> 13.7 mm, 6 conductors, +0.41-0.60 W.
 - **Hex shaft:** same across-flats: 182 g vs 210 g, sag 4.68 vs 3.52 mm; equal mass: sag 3.08 mm at AF [35.6, 29.8, 24.1]. Central bore only in the innermost tube. Long flex boards on the upper tube's outside flats: 408.1 cm2 at s 410-790 mm (past the 375 mm echo distance). STL / STEP: rf2/results/shaftlink_*.
+
+## 55. Best head design across the board (2026-10-31; `rf2_head_best.py` -> `docs/HEAD_BEST.md`; MODELED, nothing adopted)
+- **Method:** maximin over coin / 1 g / 0.1 g depth and boost runtime vs today, with the pack (P45B 7S1P) and shaft held. It runs in three stages:
+  1. clean-sheet physics (calibrated within 1.4 %), Optuna TPE in 4 processes, then a Powell polish;
+  2. head build options in the variant engine (plugins), coordinate ascent from 4 seeds, plus a pass for options that keep every target and lower mass, parts or pickup;
+  3. the TXD in ngspice with the winning coil.
+- **Today's 233 x 25.4 head, best overall:** today's comb and litz (26 x 1 TXXL66/38F-2, 327.6 uH) with:
+  - the NTBG080N120SC1 switch, a 477 V clamp, 8.94 A scan / 14.13 A boost and a 318 us flat-top;
+  - the hybrid RX (rim coil + planar nulled RX on a second channel);
+  - TX strips 2.75 mm wide.
+  - **Result:** depth 62.1 / 31.3 / 17.1 cm (+3 / +4 / +14 %), boost 2.68 h (+3 %), switch TJ 62 C. No broken rule.
+  - **EDGE:** coil top 12.38 vs 12.6 mm, flex width 16.50 vs 16.6 mm.
+- **Free head size:** the optimiser keeps D about 233 mm and goes to 31 x 2 TXXL40/40, 437 uH, mono receive, 562 V clamp.
+  - **Result:** 63.7 / 31.2 / 16.1 cm, 2.69 h.
+  - **EDGE:** IPC-2221 B4 clearance 0.989 vs 1.0 mm (UNVERIFIED table).
+- **Build options that help on top:**
+  - bank winding (C_self 198.6 -> 160.9 pF);
+  - TXD at s 400 (REF pickup -3.1 mV);
+  - gland Y5B ZIFs (-2 g, -2 parts);
+  - REF guard trace (-1.05 mV, +0.8 mm flex);
+  - QA/QB in 18 um copper (-4 g).
+- **Keep as built:**
+  - BF-fin placement (every studied alternative fails the echo-drift rule);
+  - the LMH6629 preamp (no op-amp on file meets 1.7 nV/rtHz; the input-network floor is 1.911);
+  - the as-built stack (7 boards, 0 open, 0 DRC);
+  - the second receive channel on analog fin A2 (122 deg, drift 0.0027 x noise, passes).
+- **TXD (ngspice, boost):**
+  - today's coil at 14.1 A: ramp 343 us, hysteretic flat-top PWM 166 kHz, ripple 0.12 A pp, fall 10.6 us (ideal 9.7), VDS peak 481 V vs 720 V;
+  - free-head coil: 131 kHz, fall 9.5 us, VDS 565 V.
+- **To build next if adopted:**
+  - planar RX layer (0.1 mm PI at z 1.65; QA/QB move up 0.1 mm);
+  - second MP1-class channel on fin A2;
+  - NTBG on the TXD;
+  - re-wind as bank fill;
+  - Y5B gland ZIFs and a REF guard in the cord flex.

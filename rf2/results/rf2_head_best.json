@@ -1,0 +1,333 @@
+{
+ "status": "MODELED head study (owner 2026-10-31): maximin over coin / 1 g / 0.1 g depth and boost runtime vs today; pack and shaft at today's; nothing adopted",
+ "reference": {
+  "coin_25mm_silver": 60.2,
+  "gold_1g": 30.2,
+  "gold_0p1g": 15.0,
+  "boost": 2.6
+ },
+ "fixed": {
+  "cell": "Molicel P45B",
+  "S": 7,
+  "P": 1,
+  "profile": "square",
+  "af": 31.0,
+  "wall": 1.2,
+  "L_shaft": 0.98
+ },
+ "coil_drive": {
+  "head233": {
+   "env": "head233",
+   "trials": 9600,
+   "maximin": 1.031,
+   "ratios": {
+    "coin": 1.031,
+    "g1": 1.037,
+    "g01": 1.141,
+    "boost": 1.031
+   },
+   "design": {
+    "D_mm": 233.0,
+    "H_mm": 25.4,
+    "r_mean_mm": 109.9,
+    "N": 26,
+    "p": 1,
+    "bundle": "6x5",
+    "litz": "TXXL66/38FXXX-2(MWXX) (FEP 1000 V, 0.535 mm2, OD 1.372)",
+    "I_scan_A": 8.94,
+    "I_boost_A": 14.13,
+    "T_flat_us": 318,
+    "V_clamp": 477,
+    "switch": "NTBG080N120SC1",
+    "rx": "hybrid",
+    "cord": "2.75 mm 2 oz",
+    "L_uH": 327.6,
+    "R_coil": 0.601,
+    "gate_us": 15.19,
+    "gate_planar_us": 14.44,
+    "depth_cm": {
+     "coin_25mm_silver": 62.1,
+     "gold_1g": 31.3,
+     "gold_0p1g": 17.1
+    },
+    "boost_h": 2.68,
+    "scan_h": 5.09,
+    "P_boost_W": 38.07,
+    "Tj_C": 62.4,
+    "head_g": 771,
+    "total_g": 2537,
+    "torque_Nm": 5.023,
+    "sag_mm": 3.41,
+    "flex_w_mm": 16.5,
+    "edge": [
+     "coil bundle top vs head height less today's 12.8 mm stack @ coil channel (12.376 vs 12.6)",
+     "cord-flex width vs bore chord less 2 @ telescope inner bore (square) (16.4988 vs 16.6)",
+     "tip sag vs today's telescope 3.41 mm @ shaft (square 31.0/1.20) (3.4083 vs 3.41)",
+     "collapsed length vs today's 430 mm @ shaft (telescope) (430.0 vs 430.0)"
+    ]
+   },
+   "x": {
+    "D": 233.000000001,
+    "H": 25.4,
+    "inset": 0.0,
+    "I": 8.938652804787079,
+    "T_flat": 317.563293682561,
+    "V_cl": 477.18450107243933,
+    "L_shaft": 0.98,
+    "af": 31.0,
+    "wall": 1.2,
+    "w_tx": 2.749378217777454,
+    "N": 26,
+    "p": 1,
+    "cols": 5,
+    "S": 7,
+    "P": 1,
+    "litz": "TXXL66/38FXXX-2(MWXX)",
+    "switch": "NTBG080N120SC1",
+    "cell": "Molicel P45B",
+    "profile": "square",
+    "rx": "hybrid",
+    "oz": 2
+   },
+   "broken": [],
+   "edge": [
+    "coil bundle top vs head height less today's 12.8 mm stack @ coil channel (12.376 vs 12.6)",
+    "cord-flex width vs bore chord less 2 @ telescope inner bore (square) (16.4988 vs 16.6)",
+    "tip sag vs today's telescope 3.41 mm @ shaft (square 31.0/1.20) (3.4083 vs 3.41)",
+    "collapsed length vs today's 430 mm @ shaft (telescope) (430.0 vs 430.0)"
+   ]
+  },
+  "headfree": {
+   "env": "headfree",
+   "trials": 8800,
+   "maximin": 1.0332,
+   "ratios": {
+    "coin": 1.058,
+    "g1": 1.033,
+    "g01": 1.07,
+    "boost": 1.033
+   },
+   "design": {
+    "D_mm": 233.5,
+    "H_mm": 24.1,
+    "r_mean_mm": 108.4,
+    "N": 31,
+    "p": 2,
+    "bundle": "7x9",
+    "litz": "TXXL40/40FXXX-2(MWXX) (FEP 1000 V, 0.195 mm2, OD 0.95)",
+    "I_scan_A": 6.92,
+    "I_boost_A": 10.94,
+    "T_flat_us": 433,
+    "V_clamp": 562,
+    "switch": "NTBG080N120SC1",
+    "rx": "mono",
+    "cord": "2.40 mm 2 oz",
+    "L_uH": 437.1,
+    "R_coil": 0.968,
+    "gate_us": 15.9,
+    "gate_planar_us": null,
+    "depth_cm": {
+     "coin_25mm_silver": 63.7,
+     "gold_1g": 31.2,
+     "gold_0p1g": 16.1
+    },
+    "boost_h": 2.69,
+    "scan_h": 5.12,
+    "P_boost_W": 37.99,
+    "Tj_C": 55.9,
+    "head_g": 768,
+    "total_g": 2533,
+    "torque_Nm": 4.998,
+    "sag_mm": 3.39,
+    "flex_w_mm": 15.79,
+    "edge": [
+     "IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) @ cord flex / TXD HV lanes (0.9892 vs 1.0)",
+     "coil bundle top vs head height less today's 12.8 mm stack @ coil channel (10.862 vs 11.3439)",
+     "cord TX strip width vs IPC-2221 width at the boost rms (10 K) @ cord flex TX strips 2 oz (2.3955 vs 2.348)",
+     "cord-flex width vs bore chord less 2 @ telescope inner bore (square) (15.7911 vs 16.6)",
+     "tip sag vs today's telescope 3.41 mm @ shaft (square 31.0/1.20) (3.3939 vs 3.41)",
+     "collapsed length vs today's 430 mm @ shaft (telescope) (430.0 vs 430.0)"
+    ]
+   },
+   "x": {
+    "D": 233.46135864705178,
+    "H": 24.14389921386873,
+    "inset": 0.0,
+    "I": 6.916258948971304,
+    "T_flat": 432.7819710649612,
+    "V_cl": 562.0327303652005,
+    "L_shaft": 0.98,
+    "af": 31.0,
+    "wall": 1.2,
+    "w_tx": 2.3955416789742383,
+    "N": 31,
+    "p": 2,
+    "cols": 9,
+    "S": 7,
+    "P": 1,
+    "litz": "TXXL40/40FXXX-2(MWXX)",
+    "switch": "NTBG080N120SC1",
+    "cell": "Molicel P45B",
+    "profile": "square",
+    "rx": "mono",
+    "oz": 2
+   },
+   "broken": [],
+   "edge": [
+    "IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) @ cord flex / TXD HV lanes (0.9892 vs 1.0)",
+    "coil bundle top vs head height less today's 12.8 mm stack @ coil channel (10.862 vs 11.3439)",
+    "cord TX strip width vs IPC-2221 width at the boost rms (10 K) @ cord flex TX strips 2 oz (2.3955 vs 2.348)",
+    "cord-flex width vs bore chord less 2 @ telescope inner bore (square) (15.7911 vs 16.6)",
+    "tip sag vs today's telescope 3.41 mm @ shaft (square 31.0/1.20) (3.3939 vs 3.41)",
+    "collapsed length vs today's 430 mm @ shaft (telescope) (430.0 vs 430.0)"
+   ]
+  }
+ },
+ "head_build": {
+  "maximin": 1.0083,
+  "combo": {
+   "switch": "NTBG",
+   "rx": "hybrid",
+   "winding": "bank"
+  },
+  "depth_cm": {
+   "coin_25mm_silver": 60.7,
+   "gold_1g": 30.5,
+   "gold_0p1g": 16.2
+  },
+  "boost_h": 3.2,
+  "gate_us": 13.66,
+  "mass_delta_g": 16,
+  "ref_crosstalk_mV": 5.82,
+  "extra": {
+   "bd_rx2_board": "second MP1-class board: 26 x 36 mm = 9.4 cm2 as MP1 v1 (or an 8.0 cm2 HV-class fin, HANDOFF 26); 24 parts (MP1 v1 netlist; the v2 BOM is not built); 8 g ASSUMED; power 0.35 W already in rf2_lowL hybrid",
+   "C_self_pF": 160.9,
+   "C_self_today_pF": 198.6,
+   "C_node_pF": 427.4,
+   "R_coil_ohm": 0.603,
+   "L_uH": 329.0,
+   "L_uH_change_pct": 0.45,
+   "gate_delta_us": -0.347,
+   "V_turn_turn_max": 123.8,
+   "V_turn_turn_touching": 106.2,
+   "litz_v_rating": 1000.0,
+   "litz_od_mm": 1.372
+  },
+  "evaluations": 491,
+  "free_improvements": [
+   {
+    "axis": "txd",
+    "option": "s400",
+    "desc": "s 400 mm (shorter TX strips; past the 375 mm echo distance)",
+    "mass_g": 0,
+    "parts": 0,
+    "ref_pickup_mV": -3.1,
+    "extra": {
+     "C_self_pF": 160.9,
+     "C_self_today_pF": 198.6,
+     "C_node_pF": 427.4
+    }
+   },
+   {
+    "axis": "board_stack",
+    "option": "rx_18um",
+    "desc": "QA/QB receive boards in 18 um copper (flex receive boards, option C)",
+    "mass_g": -4,
+    "parts": 0,
+    "ref_pickup_mV": 0.0,
+    "extra": {
+     "C_self_pF": 160.9,
+     "C_self_today_pF": 198.6,
+     "C_node_pF": 427.4
+    }
+   },
+   {
+    "axis": "cord_lanes",
+    "option": "ref_guard",
+    "desc": "today + a 0.5 mm ground guard trace (and 0.3 gap) between the DATA pair and the REF group (+0.8 mm)",
+    "mass_g": 0,
+    "parts": 0,
+    "ref_pickup_mV": -1.0500000000000007,
+    "extra": {
+     "C_self_pF": 160.9,
+     "C_self_today_pF": 198.6,
+     "C_node_pF": 427.4,
+     "ref_pickup_pF_per_m": 0.04379,
+     "data_ref_pF_per_m": 0.18784,
+     "ref_pickup_vs_today": 0.697,
+     "wiring_tx_node_dC_pF": 0.0
+    }
+   },
+   {
+    "axis": "cord_lanes",
+    "option": "hv_lv_guard",
+    "desc": "a 0.5 mm ground guard trace 1.0 mm from TX_B (rule 6 to the guard), 0.3 mm to VIN_H (+0.8 mm)",
+    "mass_g": 0,
+    "parts": 0,
+    "ref_pickup_mV": -1.0500000000000007,
+    "extra": {
+     "C_self_pF": 160.9,
+     "C_self_today_pF": 198.6,
+     "C_node_pF": 427.4,
+     "ref_pickup_pF_per_m": 0.04381,
+     "data_ref_pF_per_m": 0.93672,
+     "ref_pickup_vs_today": 0.697,
+     "wiring_tx_node_dC_pF": 0.01
+    }
+   },
+   {
+    "axis": "connectors",
+    "option": "gland_fpc",
+    "desc": "cord flex plugs straight into Panasonic Y5B ZIFs on CB1D (10-way, VIN / GND on 2 pins each) and AB1A (10-way); no pigtails, TX still soldered",
+    "mass_g": -2,
+    "parts": -2,
+    "ref_pickup_mV": 0.0,
+    "extra": {
+     "C_self_pF": 160.9,
+     "C_self_today_pF": 198.6,
+     "C_node_pF": 427.4
+    }
+   }
+  ],
+  "edge": [
+   "tip sag vs today's telescope @ shaft (telescope (today)) (3.41 vs 3.41)",
+   "collapsed length vs today's 430 mm @ shaft (telescope (today)) (430 vs 430.0)",
+   "litz OD vs comb slot (OD <= slot - 0.05) @ coil comb (bank) (1.372 vs 1.42)",
+   "coil stack top vs channel top z 12.6 @ coil channel (bank) (12.376 vs 12.6)",
+   "coil inner column edge vs channel inner wall r 104.6 @ coil channel (bank) (105.634 vs 104.6)"
+  ]
+ },
+ "drivers": {
+  "head233": {
+   "L_uH": 327.6,
+   "R_coil": 0.601,
+   "I_set_A": 14.135381140952656,
+   "V_clamp": 477,
+   "Rd_ohm": 405,
+   "t_ramp_us": 343.1,
+   "f_pwm_kHz": 166.1,
+   "ripple_pp_A": 0.122,
+   "i_peak_A": 14.18,
+   "fall_us": 10.55,
+   "fall_ideal_us": 9.71,
+   "vds_peak_V": 481.3,
+   "vds_limit_V": 720.0
+  },
+  "headfree": {
+   "L_uH": 437.1,
+   "R_coil": 0.968,
+   "I_set_A": 10.941480704182593,
+   "V_clamp": 562,
+   "Rd_ohm": 467,
+   "t_ramp_us": 348.0,
+   "f_pwm_kHz": 131.5,
+   "ripple_pp_A": 0.08,
+   "i_peak_A": 10.98,
+   "fall_us": 9.51,
+   "fall_ideal_us": 8.51,
+   "vds_peak_V": 565.4,
+   "vds_limit_V": 720.0
+  }
+ },
+ "run_s": 1.0
+}
