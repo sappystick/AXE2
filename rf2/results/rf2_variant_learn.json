@@ -1,50 +1,50 @@
 {
  "status": "MODELED learning layer over the variant engine's evaluated rows (numpy; no external ML library)",
- "n_rows": 17280,
+ "n_rows": 33005,
  "main_effects": {
   "coil": {
    "26x1": {
-    "n": 5760,
+    "n": 12862,
     "d_score": 0.0,
-    "no_break_rate": 0.028,
+    "no_break_rate": 0.023,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    },
    "15x2": {
-    "n": 5760,
-    "d_score": -0.0346,
+    "n": 10035,
+    "d_score": -0.0869,
     "no_break_rate": 0.0,
-    "d_coin_cm": -5.05,
-    "d_gold0p1g_cm": 4.92,
-    "d_boost_h": -0.43,
-    "d_mass_g": 0.0
+    "d_coin_cm": -5.16,
+    "d_gold0p1g_cm": 4.95,
+    "d_boost_h": -0.84,
+    "d_mass_g": -4.6
    },
    "10x3": {
-    "n": 5760,
-    "d_score": -0.0885,
+    "n": 10108,
+    "d_score": -0.1375,
     "no_break_rate": 0.0,
-    "d_coin_cm": -8.33,
-    "d_gold0p1g_cm": 6.85,
-    "d_boost_h": -1.1,
-    "d_mass_g": 0.0
+    "d_coin_cm": -8.36,
+    "d_gold0p1g_cm": 6.82,
+    "d_boost_h": -1.49,
+    "d_mass_g": -6.0
    }
   },
   "switch": {
    "NTBG": {
-    "n": 8640,
-    "d_score": 0.0595,
-    "no_break_rate": 0.009,
-    "d_coin_cm": -0.02,
-    "d_gold0p1g_cm": -0.38,
-    "d_boost_h": 0.82,
-    "d_mass_g": 0.0
+    "n": 17898,
+    "d_score": 0.103,
+    "no_break_rate": 0.014,
+    "d_coin_cm": 0.76,
+    "d_gold0p1g_cm": -0.97,
+    "d_boost_h": 1.13,
+    "d_mass_g": 2.1
    },
    "C3M": {
-    "n": 8640,
+    "n": 15107,
     "d_score": 0.0,
-    "no_break_rate": 0.009,
+    "no_break_rate": 0.002,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
@@ -53,18 +53,18 @@
   },
   "txd": {
    "s400": {
-    "n": 8640,
-    "d_score": 0.0097,
-    "no_break_rate": 0.009,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.16,
+    "n": 17907,
+    "d_score": 0.0565,
+    "no_break_rate": 0.014,
+    "d_coin_cm": 0.76,
+    "d_gold0p1g_cm": -0.66,
+    "d_boost_h": 0.52,
     "d_mass_g": 0.0
    },
    "s857": {
-    "n": 8640,
+    "n": 15098,
     "d_score": 0.0,
-    "no_break_rate": 0.009,
+    "no_break_rate": 0.003,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
@@ -73,390 +73,866 @@
   },
   "rx": {
    "mono": {
-    "n": 8640,
+    "n": 17964,
     "d_score": 0.0,
-    "no_break_rate": 0.009,
+    "no_break_rate": 0.015,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    },
    "hybrid": {
-    "n": 8640,
-    "d_score": 0.0003,
-    "no_break_rate": 0.009,
-    "d_coin_cm": 1.02,
-    "d_gold0p1g_cm": 1.72,
-    "d_boost_h": -0.02,
-    "d_mass_g": 8.0
+    "n": 15041,
+    "d_score": -0.0442,
+    "no_break_rate": 0.002,
+    "d_coin_cm": 0.06,
+    "d_gold0p1g_cm": 2.23,
+    "d_boost_h": -0.39,
+    "d_mass_g": 13.4
    }
   },
   "shaft": {
    "tele_sq": {
-    "n": 2880,
+    "n": 7586,
     "d_score": 0.0,
-    "no_break_rate": 0.056,
+    "no_break_rate": 0.038,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    },
    "f1_sq31": {
-    "n": 2880,
-    "d_score": -0.067,
+    "n": 5112,
+    "d_score": -0.1328,
     "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.02,
-    "d_mass_g": 37.5
-   },
-   "f2_sq31": {
-    "n": 2880,
-    "d_score": -0.0703,
-    "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": -0.02,
-    "d_mass_g": 67.5
+    "d_coin_cm": -1.69,
+    "d_gold0p1g_cm": 1.5,
+    "d_boost_h": -0.79,
+    "d_mass_g": 6.0
    },
    "f1_hex31cu": {
-    "n": 2880,
-    "d_score": -0.0772,
+    "n": 4994,
+    "d_score": -0.1403,
     "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.02,
-    "d_mass_g": 130.0
+    "d_coin_cm": -1.61,
+    "d_gold0p1g_cm": 1.37,
+    "d_boost_h": -0.79,
+    "d_mass_g": 98.0
+   },
+   "f2_sq31": {
+    "n": 5049,
+    "d_score": -0.1221,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -1.61,
+    "d_gold0p1g_cm": 1.37,
+    "d_boost_h": -0.82,
+    "d_mass_g": 38.9
    },
    "f2_hex31cu": {
-    "n": 2880,
-    "d_score": -0.0783,
+    "n": 5013,
+    "d_score": -0.1308,
     "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": -0.02,
-    "d_mass_g": 160.0
+    "d_coin_cm": -1.65,
+    "d_gold0p1g_cm": 1.41,
+    "d_boost_h": -0.84,
+    "d_mass_g": 132.6
    },
    "fnm_hex31cu": {
-    "n": 2880,
-    "d_score": -0.0913,
+    "n": 5251,
+    "d_score": -0.1539,
     "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": -0.02,
-    "d_mass_g": 160.0
+    "d_coin_cm": -1.57,
+    "d_gold0p1g_cm": 1.39,
+    "d_boost_h": -0.83,
+    "d_mass_g": 129.8
    }
   },
   "data": {
    "cu": {
-    "n": 8640,
+    "n": 17836,
     "d_score": 0.0,
-    "no_break_rate": 0.019,
+    "no_break_rate": 0.016,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    },
    "pof": {
-    "n": 8640,
-    "d_score": -0.0381,
+    "n": 15169,
+    "d_score": -0.0762,
     "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": -0.04,
-    "d_mass_g": 18.1
+    "d_coin_cm": -0.81,
+    "d_gold0p1g_cm": 0.66,
+    "d_boost_h": -0.39,
+    "d_mass_g": 18.5
    }
   },
   "pack": {
    "B": {
-    "n": 3456,
-    "d_score": 0.0433,
-    "no_break_rate": 0.009,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.77,
-    "d_mass_g": 188.0
+    "n": 8498,
+    "d_score": 0.1174,
+    "no_break_rate": 0.019,
+    "d_coin_cm": 1.36,
+    "d_gold0p1g_cm": -1.18,
+    "d_boost_h": 1.31,
+    "d_mass_g": 164.7
    },
    "D2": {
-    "n": 3456,
-    "d_score": 0.0193,
-    "no_break_rate": 0.009,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
+    "n": 6145,
+    "d_score": 0.0188,
+    "no_break_rate": 0.004,
+    "d_coin_cm": -0.0,
+    "d_gold0p1g_cm": 0.01,
     "d_boost_h": 0.28,
-    "d_mass_g": 0.0
+    "d_mass_g": -2.0
    },
    "E": {
-    "n": 3456,
-    "d_score": 0.0012,
-    "no_break_rate": 0.009,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.32,
-    "d_mass_g": 319.0
+    "n": 6203,
+    "d_score": -0.001,
+    "no_break_rate": 0.004,
+    "d_coin_cm": -0.13,
+    "d_gold0p1g_cm": 0.03,
+    "d_boost_h": 0.29,
+    "d_mass_g": 318.4
    },
    "C2": {
-    "n": 3456,
+    "n": 6171,
     "d_score": 0.0,
-    "no_break_rate": 0.009,
+    "no_break_rate": 0.011,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    },
    "F": {
-    "n": 3456,
-    "d_score": -0.0487,
-    "no_break_rate": 0.009,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": -0.77,
-    "d_mass_g": -161.0
+    "n": 5988,
+    "d_score": -0.0508,
+    "no_break_rate": 0.003,
+    "d_coin_cm": -0.15,
+    "d_gold0p1g_cm": 0.06,
+    "d_boost_h": -0.78,
+    "d_mass_g": -159.6
    }
   },
   "wall": {
    "w1.2": {
-    "n": 5760,
+    "n": 12030,
     "d_score": 0.0,
-    "no_break_rate": 0.014,
+    "no_break_rate": 0.022,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    },
    "w1.5": {
-    "n": 5760,
-    "d_score": -0.0051,
-    "no_break_rate": 0.014,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.0,
-    "d_mass_g": 65.0
+    "n": 10222,
+    "d_score": -0.0479,
+    "no_break_rate": 0.003,
+    "d_coin_cm": -0.71,
+    "d_gold0p1g_cm": 0.53,
+    "d_boost_h": -0.33,
+    "d_mass_g": 65.5
    },
    "w1.0": {
-    "n": 5760,
-    "d_score": -0.0017,
+    "n": 10753,
+    "d_score": -0.0254,
     "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.0,
-    "d_mass_g": -43.0
+    "d_coin_cm": -0.41,
+    "d_gold0p1g_cm": 0.3,
+    "d_boost_h": -0.18,
+    "d_mass_g": -40.6
    }
   },
   "clamp": {
    "regen": {
-    "n": 8640,
+    "n": 17982,
     "d_score": 0.0,
-    "no_break_rate": 0.009,
+    "no_break_rate": 0.015,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    },
    "dissip": {
-    "n": 8640,
-    "d_score": -0.0377,
-    "no_break_rate": 0.009,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": -0.46,
-    "d_mass_g": 0.0
+    "n": 15023,
+    "d_score": -0.0795,
+    "no_break_rate": 0.002,
+    "d_coin_cm": -0.85,
+    "d_gold0p1g_cm": 0.68,
+    "d_boost_h": -0.79,
+    "d_mass_g": 1.5
    }
   },
   "flex_cu": {
    "3oz": {
-    "n": 8640,
-    "d_score": 0.0042,
+    "n": 17062,
+    "d_score": 0.0278,
     "no_break_rate": 0.0,
-    "d_coin_cm": 0.0,
-    "d_gold0p1g_cm": 0.0,
-    "d_boost_h": 0.09,
-    "d_mass_g": 0.0
+    "d_coin_cm": 0.34,
+    "d_gold0p1g_cm": -0.34,
+    "d_boost_h": 0.29,
+    "d_mass_g": 2.1
    },
    "2oz": {
-    "n": 8640,
+    "n": 15943,
     "d_score": 0.0,
-    "no_break_rate": 0.019,
+    "no_break_rate": 0.018,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
     "d_mass_g": 0.0
    }
+  },
+  "preamp": {
+   "LMH6629": {
+    "n": 5623,
+    "d_score": 0.0,
+    "no_break_rate": 0.052,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "ADA4896_2": {
+    "n": 4085,
+    "d_score": -0.0733,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -1.11,
+    "d_gold0p1g_cm": 1.26,
+    "d_boost_h": -0.55,
+    "d_mass_g": 5.5
+   },
+   "LT6201": {
+    "n": 4071,
+    "d_score": -0.075,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.97,
+    "d_gold0p1g_cm": 1.13,
+    "d_boost_h": -0.57,
+    "d_mass_g": -2.9
+   },
+   "INA849_G100": {
+    "n": 3876,
+    "d_score": -0.094,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -1.27,
+    "d_gold0p1g_cm": 1.49,
+    "d_boost_h": -0.73,
+    "d_mass_g": -1.5
+   },
+   "OPA2211": {
+    "n": 3928,
+    "d_score": -0.0975,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -2.33,
+    "d_gold0p1g_cm": 1.07,
+    "d_boost_h": -0.72,
+    "d_mass_g": 0.6
+   },
+   "OPA1612": {
+    "n": 3799,
+    "d_score": -0.0935,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -2.35,
+    "d_gold0p1g_cm": 1.05,
+    "d_boost_h": -0.67,
+    "d_mass_g": 6.1
+   },
+   "INA849_G24": {
+    "n": 3853,
+    "d_score": -0.1023,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -3.51,
+    "d_gold0p1g_cm": 0.54,
+    "d_boost_h": -0.7,
+    "d_mass_g": 0.8
+   },
+   "OP470": {
+    "n": 3770,
+    "d_score": -0.1251,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -8.24,
+    "d_gold0p1g_cm": -0.92,
+    "d_boost_h": -0.75,
+    "d_mass_g": -0.4
+   }
+  },
+  "head_placement": {
+   "BF_fins": {
+    "n": 6602,
+    "d_score": 0.0,
+    "no_break_rate": 0.039,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "chassis": {
+    "n": 5626,
+    "d_score": -0.031,
+    "no_break_rate": 0.006,
+    "d_coin_cm": -0.58,
+    "d_gold0p1g_cm": 0.48,
+    "d_boost_h": -0.21,
+    "d_mass_g": 10.7
+   },
+   "hv1_lead_plane": {
+    "n": 5754,
+    "d_score": -0.0247,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.47,
+    "d_gold0p1g_cm": 0.37,
+    "d_boost_h": -0.15,
+    "d_mass_g": 6.8
+   },
+   "centre_can": {
+    "n": 4994,
+    "d_score": -0.0817,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -1.15,
+    "d_gold0p1g_cm": 0.91,
+    "d_boost_h": -0.46,
+    "d_mass_g": 7.6
+   },
+   "B_flat": {
+    "n": 5025,
+    "d_score": -0.1015,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -1.09,
+    "d_gold0p1g_cm": 0.9,
+    "d_boost_h": -0.48,
+    "d_mass_g": -16.7
+   },
+   "fin_can": {
+    "n": 5004,
+    "d_score": -0.1035,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -1.01,
+    "d_gold0p1g_cm": 0.9,
+    "d_boost_h": -0.44,
+    "d_mass_g": 2.0
+   }
+  },
+  "board_stack": {
+   "as_built": {
+    "n": 6099,
+    "d_score": 0.0,
+    "no_break_rate": 0.032,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "rx_18um": {
+    "n": 6021,
+    "d_score": 0.0089,
+    "no_break_rate": 0.003,
+    "d_coin_cm": 0.01,
+    "d_gold0p1g_cm": -0.02,
+    "d_boost_h": 0.12,
+    "d_mass_g": 3.7
+   },
+   "txdpwr_8L_fpcx": {
+    "n": 5428,
+    "d_score": -0.0246,
+    "no_break_rate": 0.004,
+    "d_coin_cm": -0.49,
+    "d_gold0p1g_cm": 0.43,
+    "d_boost_h": -0.16,
+    "d_mass_g": 2.0
+   },
+   "rx_70um": {
+    "n": 5072,
+    "d_score": -0.0364,
+    "no_break_rate": 0.004,
+    "d_coin_cm": -0.65,
+    "d_gold0p1g_cm": 0.55,
+    "d_boost_h": -0.26,
+    "d_mass_g": 9.7
+   },
+   "rx_105um": {
+    "n": 5361,
+    "d_score": -0.0247,
+    "no_break_rate": 0.006,
+    "d_coin_cm": -0.5,
+    "d_gold0p1g_cm": 0.4,
+    "d_boost_h": -0.15,
+    "d_mass_g": 18.2
+   },
+   "txdpwr_split": {
+    "n": 5024,
+    "d_score": -0.044,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.78,
+    "d_gold0p1g_cm": 0.62,
+    "d_boost_h": -0.28,
+    "d_mass_g": 0.8
+   }
+  },
+  "litz": {
+   "SXXL100/38F-2": {
+    "n": 5190,
+    "d_score": 0.0488,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.54,
+    "d_gold0p1g_cm": -0.67,
+    "d_boost_h": 0.59,
+    "d_mass_g": 43.7
+   },
+   "TXXL66/38F-2": {
+    "n": 4605,
+    "d_score": 0.0,
+    "no_break_rate": 0.06,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "SXXL66/38F-2": {
+    "n": 3819,
+    "d_score": -0.0423,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.78,
+    "d_gold0p1g_cm": 0.46,
+    "d_boost_h": -0.28,
+    "d_mass_g": -10.5
+   },
+   "DXXL66/38F-2": {
+    "n": 3862,
+    "d_score": -0.0416,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.85,
+    "d_gold0p1g_cm": 0.56,
+    "d_boost_h": -0.29,
+    "d_mass_g": -4.3
+   },
+   "TXXL108/40F-2": {
+    "n": 3979,
+    "d_score": -0.0416,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.74,
+    "d_gold0p1g_cm": 0.57,
+    "d_boost_h": -0.28,
+    "d_mass_g": 8.9
+   },
+   "TXXL66/38F-3": {
+    "n": 3823,
+    "d_score": -0.0419,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.76,
+    "d_gold0p1g_cm": 0.8,
+    "d_boost_h": -0.27,
+    "d_mass_g": 24.1
+   },
+   "TXXL230/44F-2": {
+    "n": 3947,
+    "d_score": -0.0474,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.76,
+    "d_gold0p1g_cm": 0.64,
+    "d_boost_h": -0.37,
+    "d_mass_g": -4.5
+   },
+   "TXXL35/38T-2": {
+    "n": 3780,
+    "d_score": -0.0822,
+    "no_break_rate": 0.003,
+    "d_coin_cm": -1.01,
+    "d_gold0p1g_cm": 0.91,
+    "d_boost_h": -0.84,
+    "d_mass_g": -46.2
+   }
+  },
+  "winding": {
+   "bank": {
+    "n": 6122,
+    "d_score": 0.0321,
+    "no_break_rate": 0.007,
+    "d_coin_cm": 0.45,
+    "d_gold0p1g_cm": -0.12,
+    "d_boost_h": 0.31,
+    "d_mass_g": 11.2
+   },
+   "row": {
+    "n": 5509,
+    "d_score": 0.0,
+    "no_break_rate": 0.031,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "prog": {
+    "n": 5486,
+    "d_score": -0.0042,
+    "no_break_rate": 0.004,
+    "d_coin_cm": -0.05,
+    "d_gold0p1g_cm": 0.14,
+    "d_boost_h": 0.01,
+    "d_mass_g": 8.1
+   },
+   "colzz": {
+    "n": 5644,
+    "d_score": 0.0002,
+    "no_break_rate": 0.006,
+    "d_coin_cm": 0.03,
+    "d_gold0p1g_cm": 0.01,
+    "d_boost_h": 0.05,
+    "d_mass_g": 10.5
+   },
+   "wide2.0": {
+    "n": 5208,
+    "d_score": -0.015,
+    "no_break_rate": 0.004,
+    "d_coin_cm": -0.44,
+    "d_gold0p1g_cm": 0.39,
+    "d_boost_h": -0.09,
+    "d_mass_g": 10.5
+   },
+   "narrow1.67": {
+    "n": 5036,
+    "d_score": -0.0239,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.49,
+    "d_gold0p1g_cm": 0.29,
+    "d_boost_h": -0.13,
+    "d_mass_g": 7.3
+   }
+  },
+  "cord_lanes": {
+   "today": {
+    "n": 7429,
+    "d_score": 0.0,
+    "no_break_rate": 0.028,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "ref_guard": {
+    "n": 6556,
+    "d_score": -0.0302,
+    "no_break_rate": 0.006,
+    "d_coin_cm": -0.5,
+    "d_gold0p1g_cm": 0.45,
+    "d_boost_h": -0.23,
+    "d_mass_g": 3.5
+   },
+   "pwr_guard": {
+    "n": 6499,
+    "d_score": -0.0233,
+    "no_break_rate": 0.003,
+    "d_coin_cm": -0.4,
+    "d_gold0p1g_cm": 0.38,
+    "d_boost_h": -0.16,
+    "d_mass_g": 4.6
+   },
+   "hv_lv_guard": {
+    "n": 6376,
+    "d_score": -0.0292,
+    "no_break_rate": 0.003,
+    "d_coin_cm": -0.54,
+    "d_gold0p1g_cm": 0.49,
+    "d_boost_h": -0.21,
+    "d_mass_g": 6.7
+   },
+   "ref_layer2": {
+    "n": 6145,
+    "d_score": -0.0487,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.77,
+    "d_gold0p1g_cm": 0.64,
+    "d_boost_h": -0.35,
+    "d_mass_g": 6.6
+   }
+  },
+  "connectors": {
+   "gland_fpc": {
+    "n": 11530,
+    "d_score": 0.0229,
+    "no_break_rate": 0.003,
+    "d_coin_cm": 0.14,
+    "d_gold0p1g_cm": -0.14,
+    "d_boost_h": 0.14,
+    "d_mass_g": -0.8
+   },
+   "today": {
+    "n": 11013,
+    "d_score": 0.0,
+    "no_break_rate": 0.023,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "cord_mt60": {
+    "n": 10462,
+    "d_score": -0.0221,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.3,
+    "d_gold0p1g_cm": 0.23,
+    "d_boost_h": -0.1,
+    "d_mass_g": 4.3
+   }
+  },
+  "splice": {
+   "today": {
+    "n": 8726,
+    "d_score": 0.0,
+    "no_break_rate": 0.03,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "one_piece": {
+    "n": 8441,
+    "d_score": -0.0045,
+    "no_break_rate": 0.003,
+    "d_coin_cm": -0.11,
+    "d_gold0p1g_cm": 0.1,
+    "d_boost_h": 0.0,
+    "d_mass_g": 2.9
+   },
+   "acf": {
+    "n": 7985,
+    "d_score": -0.0181,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.26,
+    "d_gold0p1g_cm": 0.22,
+    "d_boost_h": -0.1,
+    "d_mass_g": 6.3
+   },
+   "zif_lv": {
+    "n": 7853,
+    "d_score": -0.0323,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -0.44,
+    "d_gold0p1g_cm": 0.37,
+    "d_boost_h": -0.14,
+    "d_mass_g": 4.8
+   }
   }
  },
  "surrogate": {
-  "lambda_": 0.01,
-  "r2_cv": 0.9939,
-  "r2_in": 0.994,
-  "n_features": 173,
+  "lambda_": 0.1,
+  "r2_cv": 0.9948,
+  "r2_in": 0.9952,
+  "n_features": 1554,
   "top_interactions": [
    {
-    "pair": "shaft=f2_hex31cu x data=pof",
-    "coef": 0.0394
+    "pair": "shaft=f2_hex31cu x head_placement=fin_can",
+    "coef": 0.0638
    },
    {
-    "pair": "shaft=fnm_hex31cu x data=pof",
-    "coef": 0.0394
+    "pair": "shaft=f2_hex31cu x head_placement=B_flat",
+    "coef": 0.0637
    },
    {
-    "pair": "shaft=f2_sq31 x data=pof",
-    "coef": 0.0392
+    "pair": "shaft=f2_sq31 x head_placement=fin_can",
+    "coef": 0.0623
    },
    {
-    "pair": "coil=10x3 x switch=NTBG",
-    "coef": 0.039
+    "pair": "shaft=f2_sq31 x head_placement=B_flat",
+    "coef": 0.0622
    },
    {
-    "pair": "shaft=f1_hex31cu x data=pof",
-    "coef": 0.0358
+    "pair": "shaft=f2_sq31 x head_placement=centre_can",
+    "coef": 0.0611
    },
    {
-    "pair": "shaft=f1_sq31 x data=pof",
-    "coef": 0.0357
+    "pair": "shaft=f2_hex31cu x head_placement=centre_can",
+    "coef": 0.061
    },
    {
-    "pair": "coil=10x3 x shaft=fnm_hex31cu",
-    "coef": 0.0308
+    "pair": "coil=10x3 x litz=TXXL35/38T-2",
+    "coef": 0.0585
    },
    {
-    "pair": "coil=10x3 x shaft=f2_hex31cu",
-    "coef": 0.0308
+    "pair": "coil=15x2 x litz=TXXL35/38T-2",
+    "coef": 0.0439
    },
    {
-    "pair": "coil=10x3 x shaft=f2_sq31",
-    "coef": 0.0308
+    "pair": "shaft=fnm_hex31cu x head_placement=fin_can",
+    "coef": 0.0414
    },
    {
-    "pair": "coil=10x3 x clamp=dissip",
-    "coef": 0.0286
+    "pair": "shaft=f1_hex31cu x head_placement=fin_can",
+    "coef": 0.0408
    },
    {
-    "pair": "coil=10x3 x shaft=f1_sq31",
-    "coef": 0.0276
+    "pair": "shaft=f1_hex31cu x head_placement=B_flat",
+    "coef": 0.0406
    },
    {
-    "pair": "coil=10x3 x shaft=f1_hex31cu",
-    "coef": 0.0276
+    "pair": "shaft=fnm_hex31cu x head_placement=B_flat",
+    "coef": 0.0406
    }
   ],
   "main_coefs": {
-   "coil=10x3": -0.1483,
-   "coil=15x2": -0.0729,
-   "switch=NTBG": 0.0493,
-   "txd=s400": 0.0172,
-   "rx=hybrid": -0.0058,
-   "shaft=f1_hex31cu": -0.1101,
-   "shaft=f1_sq31": -0.0996,
-   "shaft=f2_hex31cu": -0.1159,
-   "shaft=f2_sq31": -0.1077,
-   "shaft=fnm_hex31cu": -0.129,
-   "data=pof": -0.0795,
-   "pack=B": 0.0481,
-   "pack=D2": 0.0215,
-   "pack=E": 0.0019,
-   "pack=F": -0.0534,
-   "wall=w1.0": -0.0047,
-   "wall=w1.5": -0.0065,
-   "clamp=dissip": -0.0365,
-   "flex_cu=3oz": 0.0056
+   "coil=10x3": -0.1367,
+   "coil=15x2": -0.0649,
+   "switch=NTBG": 0.0484,
+   "txd=s400": 0.02,
+   "rx=hybrid": -0.0082,
+   "shaft=f1_hex31cu": -0.1031,
+   "shaft=f1_sq31": -0.0913,
+   "shaft=f2_hex31cu": -0.1093,
+   "shaft=f2_sq31": -0.0998,
+   "shaft=fnm_hex31cu": -0.1229,
+   "data=pof": -0.0647,
+   "pack=B": 0.0544,
+   "pack=D2": 0.0239,
+   "pack=E": 0.0047,
+   "pack=F": -0.0515,
+   "wall=w1.0": -0.0057,
+   "wall=w1.5": -0.0101,
+   "clamp=dissip": -0.0404,
+   "flex_cu=3oz": 0.0083,
+   "preamp=ADA4896_2": -0.0102,
+   "preamp=INA849_G100": -0.0194,
+   "preamp=INA849_G24": -0.0385,
+   "preamp=LT6201": -0.0104,
+   "preamp=OP470": -0.0771,
+   "preamp=OPA1612": -0.0285,
+   "preamp=OPA2211": -0.027,
+   "head_placement=B_flat": -0.1003,
+   "head_placement=centre_can": -0.0784,
+   "head_placement=chassis": -0.0079,
+   "head_placement=fin_can": -0.105,
+   "head_placement=hv1_lead_plane": -0.0093,
+   "board_stack=rx_105um": -0.0058,
+   "board_stack=rx_18um": -0.0026,
+   "board_stack=rx_70um": -0.0051,
+   "board_stack=txdpwr_8L_fpcx": -0.0033,
+   "board_stack=txdpwr_split": -0.0109,
+   "litz=DXXL66/38F-2": -0.0039,
+   "litz=SXXL100/38F-2": 0.0265,
+   "litz=SXXL66/38F-2": -0.0039,
+   "litz=TXXL108/40F-2": -0.0058,
+   "litz=TXXL230/44F-2": -0.0164,
+   "litz=TXXL35/38T-2": -0.0775,
+   "litz=TXXL66/38F-3": -0.0056,
+   "winding=bank": 0.0004,
+   "winding=colzz": -0.0016,
+   "winding=narrow1.67": -0.0153,
+   "winding=prog": -0.0014,
+   "winding=wide2.0": -0.0033,
+   "cord_lanes=hv_lv_guard": -0.0046,
+   "cord_lanes=pwr_guard": -0.0037,
+   "cord_lanes=ref_guard": -0.0037,
+   "cord_lanes=ref_layer2": -0.0162,
+   "connectors=cord_mt60": -0.018,
+   "connectors=gland_fpc": 0.0182,
+   "splice=acf": -0.0035,
+   "splice=one_piece": -0.0024,
+   "splice=zif_lv": -0.0197
   },
   "variance_share": {
-   "coil": 0.259,
-   "pack": 0.179,
-   "switch": 0.173,
-   "shaft": 0.171,
-   "data": 0.071,
-   "clamp": 0.069,
-   "txd": 0.005,
-   "wall": 0.001,
-   "flex_cu": 0.001,
-   "rx": 0.0
+   "coil": 0.257,
+   "pack": 0.244,
+   "shaft": 0.213,
+   "switch": 0.212,
+   "head_placement": 0.129,
+   "clamp": 0.126,
+   "data": 0.116,
+   "litz": 0.107,
+   "preamp": 0.096,
+   "txd": 0.064,
+   "rx": 0.039,
+   "wall": 0.031,
+   "board_stack": 0.028,
+   "connectors": 0.027,
+   "winding": 0.024,
+   "cord_lanes": 0.02,
+   "flex_cu": 0.015,
+   "splice": 0.013
   }
  },
  "robustness_any": [
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 1.0,
-   "score_p5": 1.1388,
-   "score_p50": 1.1465,
-   "score_p95": 1.1542
+   "score_p5": 1.2033,
+   "score_p50": 1.2121,
+   "score_p95": 1.2211
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.1323,
-   "score_p50": 1.1408,
-   "score_p95": 1.148
+   "score_p5": 1.2016,
+   "score_p50": 1.2117,
+   "score_p95": 1.2201
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=3oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1328,
-   "score_p50": 1.1406,
-   "score_p95": 1.1483
+   "score_p5": 1.2018,
+   "score_p50": 1.2106,
+   "score_p95": 1.2196
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=prog|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1287,
-   "score_p50": 1.1378,
-   "score_p95": 1.1447
+   "score_p5": 1.2019,
+   "score_p50": 1.2108,
+   "score_p95": 1.2197
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=colzz|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1264,
-   "score_p50": 1.1349,
-   "score_p95": 1.142
+   "score_p5": 1.2012,
+   "score_p50": 1.2101,
+   "score_p95": 1.219
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.123,
-   "score_p50": 1.1313,
-   "score_p95": 1.1392
+   "score_p5": 1.2011,
+   "score_p50": 1.21,
+   "score_p95": 1.2189
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=3oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.1228,
-   "score_p50": 1.1319,
-   "score_p95": 1.1387
+   "score_p5": 1.2001,
+   "score_p50": 1.2104,
+   "score_p95": 1.2187
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.0|clamp=regen|flex_cu=3oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=prog|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.1198,
-   "score_p50": 1.1277,
-   "score_p95": 1.1353
+   "score_p5": 1.2002,
+   "score_p50": 1.2104,
+   "score_p95": 1.2187
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=acf",
    "p_rank1": 0.0,
-   "score_p5": 1.1171,
-   "score_p50": 1.1254,
-   "score_p95": 1.1333
+   "score_p5": 1.2008,
+   "score_p50": 1.2096,
+   "score_p95": 1.2186
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=ADA4896_2|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1178,
-   "score_p50": 1.1258,
-   "score_p95": 1.1326
+   "score_p5": 1.2008,
+   "score_p50": 1.2096,
+   "score_p95": 1.2186
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.0|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LT6201|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1114,
-   "score_p50": 1.1199,
-   "score_p95": 1.127
+   "score_p5": 1.2008,
+   "score_p50": 1.2096,
+   "score_p95": 1.2186
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=3oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=chassis|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1119,
-   "score_p50": 1.12,
-   "score_p95": 1.1266
+   "score_p5": 1.2008,
+   "score_p50": 1.2096,
+   "score_p95": 1.2186
   }
  ],
  "influence_any": {
@@ -468,88 +944,88 @@
  },
  "robustness_no_break": [
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 1.0,
-   "score_p5": 1.1323,
-   "score_p50": 1.1408,
-   "score_p95": 1.148
+   "score_p5": 1.1553,
+   "score_p50": 1.1639,
+   "score_p95": 1.171
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1264,
-   "score_p50": 1.1349,
-   "score_p95": 1.142
+   "score_p5": 1.155,
+   "score_p50": 1.1635,
+   "score_p95": 1.1706
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.123,
-   "score_p50": 1.1313,
-   "score_p95": 1.1392
+   "score_p5": 1.1544,
+   "score_p50": 1.1629,
+   "score_p95": 1.1701
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=prog|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1171,
-   "score_p50": 1.1254,
-   "score_p95": 1.1333
+   "score_p5": 1.154,
+   "score_p50": 1.1628,
+   "score_p95": 1.1698
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=colzz|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1013,
-   "score_p50": 1.1092,
-   "score_p95": 1.1159
+   "score_p5": 1.1534,
+   "score_p50": 1.1618,
+   "score_p95": 1.169
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.0954,
-   "score_p50": 1.1033,
-   "score_p95": 1.1099
+   "score_p5": 1.1531,
+   "score_p50": 1.1617,
+   "score_p95": 1.1688
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s857|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.0929,
-   "score_p50": 1.101,
-   "score_p95": 1.1077
+   "score_p5": 1.1528,
+   "score_p50": 1.1614,
+   "score_p95": 1.1685
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.0904,
-   "score_p50": 1.0974,
-   "score_p95": 1.1038
+   "score_p5": 1.1528,
+   "score_p50": 1.1614,
+   "score_p95": 1.1685
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s857|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=ref_guard|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.0869,
-   "score_p50": 1.0951,
-   "score_p95": 1.1018
+   "score_p5": 1.1528,
+   "score_p50": 1.1614,
+   "score_p95": 1.1685
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=D2|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.0839,
-   "score_p50": 1.0909,
-   "score_p95": 1.0973
+   "score_p5": 1.1528,
+   "score_p50": 1.1614,
+   "score_p95": 1.1685
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.0813,
-   "score_p50": 1.0886,
-   "score_p95": 1.0949
+   "score_p5": 1.1528,
+   "score_p50": 1.1614,
+   "score_p95": 1.1685
   },
   {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.0748,
-   "score_p50": 1.0821,
-   "score_p95": 1.0884
+   "score_p5": 1.1528,
+   "score_p50": 1.1613,
+   "score_p95": 1.1684
   }
  ],
  "influence_no_break": {

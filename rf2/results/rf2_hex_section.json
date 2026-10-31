@@ -1,5 +1,5 @@
 {
- "status": "MODELED (no bench test): 24 sections, 18 coupled variants, coax check -1.26 %, CAD interference none; run 31 s",
+ "status": "MODELED (no bench test): 24 sections, 18 coupled variants, coax check -1.26 %, CAD interference none; run 33 s",
  "solver_check": {
   "case": "coax a = 1 mm, b = 5 mm, h = 0.05 mm (staircased circles)",
   "C_fd_pF_per_m": 34.13,
@@ -1564,8 +1564,8 @@
     "Y": 0.4003,
     "Z": 0.4592
    },
-   "ratio_vs_coplanar_tx_ref": 0.3602,
-   "ratio_vs_coplanar_data_ref": 0.0001496,
+   "ratio_vs_coplanar_tx_ref": 0.3824,
+   "ratio_vs_coplanar_data_ref": 0.0001073,
    "C_TXA_self_pF_per_m": 1494.17,
    "C_TXA_DATA_pF_per_m": 0.01959,
    "C_matrix_names": [
@@ -2340,8 +2340,8 @@
     "Y": 0.2326,
     "Z": 0.2624
    },
-   "ratio_vs_coplanar_tx_ref": 0.1863,
-   "ratio_vs_coplanar_data_ref": 5.82e-05,
+   "ratio_vs_coplanar_tx_ref": 0.1978,
+   "ratio_vs_coplanar_data_ref": 4.176e-05,
    "C_TXA_self_pF_per_m": 1494.12,
    "C_TXA_DATA_pF_per_m": 0.008242,
    "C_matrix_names": [
@@ -3116,8 +3116,8 @@
     "Y": 0.1512,
     "Z": 0.1681
    },
-   "ratio_vs_coplanar_tx_ref": 0.1081,
-   "ratio_vs_coplanar_data_ref": 2.708e-05,
+   "ratio_vs_coplanar_tx_ref": 0.1148,
+   "ratio_vs_coplanar_data_ref": 1.943e-05,
    "C_TXA_self_pF_per_m": 1494.1,
    "C_TXA_DATA_pF_per_m": 0.004213,
    "C_matrix_names": [
@@ -3892,8 +3892,8 @@
     "Y": 0.5485,
     "Z": 0.5755
    },
-   "ratio_vs_coplanar_tx_ref": 0.4349,
-   "ratio_vs_coplanar_data_ref": 0.0007411,
+   "ratio_vs_coplanar_tx_ref": 0.4617,
+   "ratio_vs_coplanar_data_ref": 0.0005318,
    "C_TXA_self_pF_per_m": 1494.26,
    "C_TXA_DATA_pF_per_m": 0.1938,
    "C_matrix_names": [
@@ -4668,8 +4668,8 @@
     "Y": 0.3308,
     "Z": 0.348
    },
-   "ratio_vs_coplanar_tx_ref": 0.2584,
-   "ratio_vs_coplanar_data_ref": 0.0003704,
+   "ratio_vs_coplanar_tx_ref": 0.2743,
+   "ratio_vs_coplanar_data_ref": 0.0002658,
    "C_TXA_self_pF_per_m": 1494.17,
    "C_TXA_DATA_pF_per_m": 0.08287,
    "C_matrix_names": [
@@ -5444,8 +5444,8 @@
     "Y": 0.2203,
     "Z": 0.2313
    },
-   "ratio_vs_coplanar_tx_ref": 0.1663,
-   "ratio_vs_coplanar_data_ref": 0.0002119,
+   "ratio_vs_coplanar_tx_ref": 0.1765,
+   "ratio_vs_coplanar_data_ref": 0.0001521,
    "C_TXA_self_pF_per_m": 1494.13,
    "C_TXA_DATA_pF_per_m": 0.04193,
    "C_matrix_names": [
@@ -6212,8 +6212,8 @@
  },
  "coplanar_reference": {
   "geometry": "rf2_cordflex.LANES side by side (16.00 mm incl. 2 x 0.15 inter-pair gaps), strip bottom 2.0 mm above ground plane, grounded box 10 mm clear",
-  "C_tx_ref_pF_per_m": 0.01767,
-  "C_data_ref_pF_per_m": 0.67471,
+  "C_tx_ref_pF_per_m": 0.01664,
+  "C_data_ref_pF_per_m": 0.94032,
   "M_tx_ref_nH_per_m": 3.06143,
   "V_ref_per_m_8A_6us_mV": 4.0819,
   "V_ref_per_m_47A_5us_mV": 28.77742,
@@ -6328,7 +6328,7 @@
  },
  "findings": [
   "solver check: coax FD 34.13 vs exact 34.566 pF/m (-1.26 %)",
-  "coplanar single flex (LANES): TX_A->nearest REF 0.0177 pF/m, DATA->nearest REF 0.675 pF/m, M 3.06 nH/m (4.08 mV/m at 8 A / 6 us, 28.8 mV/m at 47 A / 5 us)",
+  "coplanar single flex (LANES): TX_A->nearest REF 0.0166 pF/m, DATA->nearest REF 0.94 pF/m, M 3.06 nH/m (4.08 mV/m at 8 A / 6 us, 28.8 mV/m at 47 A / 5 us)",
   "every group fits one face in every variant studied (HV strip 7.20 mm vs smallest usable face 10.14 mm, hex 21); not_fitting is empty",
   "central bore (hub ID 4.0): 6 digital wires (PTFE AWG30 OD 0.5 ASSUMED) bundle 1.50 mm FIT; 3 POF bare 1.0 mm bundle 2.15 mm FIT; 3 POF jacketed 2.2 mm bundle 4.74 mm DO NOT FIT; 'none' variants have no bore",
   "hub6 and hub6_cu are electrostatically identical once the CF wall and webs are grounded; Cu adds magnetic separation only (thin-sheet, see shielding)",
@@ -6336,22 +6336,22 @@
   "hub6 webs (0.6 mm CF) add 44-46 % mass for 16-17 % more I (hex 21-31); the Cu plating adds a further 19.7-30.9 g/m",
   "allocation optimum (lexicographic HV-REF, DIG-REF, PWR-REF centroid distance; HV alone): HV on the top face, REF on the opposite face pushed to one end, digital + power share a face adjacent to HV; in hub variants each group therefore sits in its own chamber except digital + power",
   "LANES packs the three digital pair lanes edge to edge (adjacent pairs' traces touch); a 0.15 mm inter-pair gap was added here; rf2_cordflex should be checked",
-  "square21|none: C TX_A-REF 0.00636 pF/m (x0.36 coplanar), C DATA-REF 0.000101 pF/m (x0.00015), M 0.459 nH/m, 147.31 g/m, I 6232.7 mm4",
+  "square21|none: C TX_A-REF 0.00636 pF/m (x0.38 coplanar), C DATA-REF 0.000101 pF/m (x0.00011), M 0.459 nH/m, 147.31 g/m, I 6232.7 mm4",
   "square21|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.459 nH/m, 197.36 g/m, I 7124.4 mm4",
   "square21|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.459 nH/m, 215.07 g/m, I 7124.4 mm4",
-  "square26|none: C TX_A-REF 0.00329 pF/m (x0.19 coplanar), C DATA-REF 3.93e-05 pF/m (x5.8e-05), M 0.262 nH/m, 184.51 g/m, I 12231.0 mm4",
+  "square26|none: C TX_A-REF 0.00329 pF/m (x0.2 coplanar), C DATA-REF 3.93e-05 pF/m (x4.2e-05), M 0.262 nH/m, 184.51 g/m, I 12231.0 mm4",
   "square26|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.262 nH/m, 247.71 g/m, I 14052.7 mm4",
   "square26|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.262 nH/m, 269.98 g/m, I 14052.7 mm4",
-  "square31|none: C TX_A-REF 0.00191 pF/m (x0.11 coplanar), C DATA-REF 1.83e-05 pF/m (x2.7e-05), M 0.168 nH/m, 221.71 g/m, I 21205.2 mm4",
+  "square31|none: C TX_A-REF 0.00191 pF/m (x0.11 coplanar), C DATA-REF 1.83e-05 pF/m (x1.9e-05), M 0.168 nH/m, 221.71 g/m, I 21205.2 mm4",
   "square31|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.168 nH/m, 298.06 g/m, I 24453.2 mm4",
   "square31|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.168 nH/m, 324.9 g/m, I 24453.2 mm4",
-  "hex21|none: C TX_A-REF 0.00768 pF/m (x0.43 coplanar), C DATA-REF 0.0005 pF/m (x0.00074), M 0.576 nH/m, 127.58 g/m, I 4498.1 mm4",
+  "hex21|none: C TX_A-REF 0.00768 pF/m (x0.46 coplanar), C DATA-REF 0.0005 pF/m (x0.00053), M 0.576 nH/m, 127.58 g/m, I 4498.1 mm4",
   "hex21|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.576 nH/m, 184.05 g/m, I 5232.6 mm4",
   "hex21|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.576 nH/m, 203.77 g/m, I 5232.6 mm4",
-  "hex26|none: C TX_A-REF 0.00456 pF/m (x0.26 coplanar), C DATA-REF 0.00025 pF/m (x0.00037), M 0.348 nH/m, 159.79 g/m, I 8826.9 mm4",
+  "hex26|none: C TX_A-REF 0.00456 pF/m (x0.27 coplanar), C DATA-REF 0.00025 pF/m (x0.00027), M 0.348 nH/m, 159.79 g/m, I 8826.9 mm4",
   "hex26|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.348 nH/m, 232.38 g/m, I 10325.4 mm4",
   "hex26|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.348 nH/m, 257.68 g/m, I 10325.4 mm4",
-  "hex31|none: C TX_A-REF 0.00294 pF/m (x0.17 coplanar), C DATA-REF 0.000143 pF/m (x0.00021), M 0.231 nH/m, 192.01 g/m, I 15303.5 mm4",
+  "hex31|none: C TX_A-REF 0.00294 pF/m (x0.18 coplanar), C DATA-REF 0.000143 pF/m (x0.00015), M 0.231 nH/m, 192.01 g/m, I 15303.5 mm4",
   "hex31|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.231 nH/m, 280.7 g/m, I 17972.2 mm4",
   "hex31|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.231 nH/m, 311.59 g/m, I 17972.2 mm4"
  ]

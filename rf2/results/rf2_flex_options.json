@@ -58,20 +58,20 @@
     "mm": 0.45
    },
    {
+    "lane": "gap",
+    "mm": 0.3
+   },
+   {
     "lane": "TXSTAT pair (2 x 0.15 / 0.15)",
     "mm": 0.45
    },
    {
+    "lane": "gap",
+    "mm": 0.3
+   },
+   {
     "lane": "DATA pair (2 x 0.15 / 0.15)",
     "mm": 0.45
-   },
-   {
-    "lane": "gap",
-    "mm": 0.3
-   },
-   {
-    "lane": "gap",
-    "mm": 0.3
    },
    {
     "lane": "guard gap",

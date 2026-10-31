@@ -422,11 +422,11 @@
  },
  "ok": true,
  "timings_s": {
-  "build": 1.68,
-  "containment": 0.27,
+  "build": 1.81,
+  "containment": 0.29,
   "fold search (cached)": 0.01,
   "deployed clearance": 0.6,
-  "exports and views": 5.69,
-  "total": 12.2
+  "exports and views": 9.82,
+  "total": 16.3
  }
 }

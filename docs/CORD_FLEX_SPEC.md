@@ -20,10 +20,10 @@ Carries the coil transmit pair, head power, three RS-485-class differential pair
 | GND_H | 0.30 |
 | gap | 0.30 |
 | TXCMD pair (2 x 0.15 / 0.15) | 0.45 |
+| gap | 0.30 |
 | TXSTAT pair (2 x 0.15 / 0.15) | 0.45 |
+| gap | 0.30 |
 | DATA pair (2 x 0.15 / 0.15) | 0.45 |
-| gap | 0.30 |
-| gap | 0.30 |
 | guard gap | 0.30 |
 | REFX pair with ground guards (0.15 / 0.15 + 2 x 0.3) | 1.35 |
 | REFY pair with ground guards (0.15 / 0.15 + 2 x 0.3) | 1.35 |
