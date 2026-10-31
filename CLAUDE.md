@@ -49,6 +49,7 @@ Every attempt is recorded in `out/<B>/<b>_check.json` under `route.strategies`. 
 9. Ask one question only when a decision changes the design; otherwise choose, state the choice and proceed.
 10. Safety: no `rm -rf`, no glob deletes, no `pkill -f`; one background job at a time; never force-push.
 11. Rule near-misses (owner, 2026-10-30): `docs/RULE_NEAR_MISSES.md` (step `rules`, `rf2/rf2_rules.py`) lists every rule a part fails by 10 % or less (BLOCKED), every rule the owner relaxed (RELAXED), and every pass with 5 % headroom or less (EDGE). Every report to the owner names these rows, so the owner can relax or remove a rule. Safety rules (rule 5, rule 6, absolute-maximum ratings) are reported, never relaxed automatically. Add a rule to `rf2_rules.py` whenever a new check with a numeric limit is written.
+12. Integrations may reshape the layout (owner, 2026-10-31): when a new component or integration is adopted, the surrounding geometry, layout and structure may be redesigned too if that improves the whole machine; the old layout is not a constraint. Shelved options stay documented in `docs/INTEGRATION_MATRIX.md`.
 
 ## Conventions
 mm / deg; z up from the underside of the skid; azimuth CCW from +x; heel (shaft side) at 178 deg. The display's spine frame: x' runs along the heel axis.

@@ -35,7 +35,7 @@
    "centre_mm": [
     -741.0,
     25.9,
-    579.2
+    579.4
    ],
    "B_centre_uT_boost": 2.23,
    "B_max_uT_boost": 2.58,
@@ -50,7 +50,7 @@
    "centre_mm": [
     -552.7,
     19.3,
-    421.1
+    421.3
    ],
    "B_centre_uT_boost": 5.53,
    "B_max_uT_boost": 13.19,
@@ -65,7 +65,7 @@
    "centre_mm": [
     -835.2,
     29.2,
-    658.3
+    658.5
    ],
    "B_centre_uT_boost": 1.54,
    "B_max_uT_boost": 2.69,
@@ -80,7 +80,7 @@
    "centre_mm": [
     -871.2,
     30.4,
-    623.2
+    623.4
    ],
    "B_centre_uT_boost": 1.46,
    "B_max_uT_boost": 1.84,
@@ -143,38 +143,38 @@
   "txd_search": [
    {
     "s_mm": 90,
-    "B_uT_boost": 376.3,
-    "echo_x_noise": 5075.61,
-    "drift5K_x_noise": 101.512
+    "B_uT_boost": 375.5,
+    "echo_x_noise": 5054.42,
+    "drift5K_x_noise": 101.088
    },
    {
     "s_mm": 200,
-    "B_uT_boost": 81.1,
-    "echo_x_noise": 199.63,
-    "drift5K_x_noise": 3.993
+    "B_uT_boost": 81.0,
+    "echo_x_noise": 199.24,
+    "drift5K_x_noise": 3.985
    },
    {
     "s_mm": 300,
-    "B_uT_boost": 32.6,
-    "echo_x_noise": 30.37,
+    "B_uT_boost": 32.5,
+    "echo_x_noise": 30.33,
     "drift5K_x_noise": 0.607
    },
    {
     "s_mm": 350,
-    "B_uT_boost": 22.6,
-    "echo_x_noise": 14.32,
+    "B_uT_boost": 22.5,
+    "echo_x_noise": 14.3,
     "drift5K_x_noise": 0.286
    },
    {
     "s_mm": 375,
     "B_uT_boost": 19.1,
-    "echo_x_noise": 10.17,
+    "echo_x_noise": 10.15,
     "drift5K_x_noise": 0.203
    },
    {
     "s_mm": 400,
     "B_uT_boost": 16.3,
-    "echo_x_noise": 7.36,
+    "echo_x_noise": 7.35,
     "drift5K_x_noise": 0.147
    }
   ],
@@ -252,7 +252,7 @@
   ]
  },
  "thermal": {
-  "txd_switch_TJ_C": 100.784,
+  "txd_switch_TJ_C": 89.867,
   "txd_W": 6.3,
   "pack_W_boost": 1.44,
   "note": "TXD: switch 6.1 W + driver / shunt about 0.2 W; pack: regenerative buck losses at 90 % (ASSUMED), LMR36520 and cell I2R",
@@ -264,8 +264,8 @@
   "pack": "7S1P Molicel P45B",
   "rated_case": "continuous boost (trigger held the whole time): the maximum use case (owner 2026-10-30)",
   "usable_Wh": 102.1,
-  "scan_h": 5.8,
-  "boost_continuous_h": 3.5,
+  "scan_h": 5.2,
+  "boost_continuous_h": 2.6,
   "cells_g": 490,
   "note": "powers from rf2_continuous (regenerative clamp, 75 % recovery ASSUMED)",
   "target_h": null

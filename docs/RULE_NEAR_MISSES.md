@@ -12,8 +12,8 @@ Rules checked: 65. BLOCKED 2, RELAXED 2, EDGE 3, FAIL 4, PASS 54
 | **FAIL** | target | slotted etched shield can in the head, head centre (r 30 mm, z 12): drift vs 0.5 x gate noise | 2.58221 x noise | <= 0.5 x noise | +416.4 % | rf2_flex_options.json |
 | **FAIL** | target | MP1 v2 input noise per leg vs the 1.7 nV/rtHz target | 2.211 nV/rtHz | <= 1.7 nV/rtHz | +30.1 % | rf2_mp1v2_close.json chosen |
 | **FAIL** | target | cord-as-flex in one piece (no REF3T joint) vs Tech Etch preferred length (advanced 1524 mm) | 1315 mm | <= 1016 mm | +29.4 % | Tech Etch long flex brochure |
-| **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 3.5 h | >= 6.0 h | +41.7 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |
-| **RELAXED** | target | scan runtime, 7S1P Molicel P45B | 5.8 h | >= 6.0 h | +3.3 % | owner 2026-10-30: 6 h target relaxed |
+| **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 2.6 h | >= 6.0 h | +56.7 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |
+| **RELAXED** | target | scan runtime, 7S1P Molicel P45B | 5.2 h | >= 6.0 h | +13.3 % | owner 2026-10-30: 6 h target relaxed |
 | **EDGE** | target | TPS65131 VPOS setting vs its ROC maximum 15 V | 15.0 V | <= 15.0 V | +0.0 % | DATASHEET_LOG RF2-DS-MP1V2-SWITCH |
 | **EDGE** | safety | TMUX7212 pin voltage vs VDD (keep inside the supply; abs max VDD + 0.5 V) | 14.5 V | <= 15.0 V | -3.3 % | rf2_mp1v2_close.json |
 | **EDGE** | target | BAT54 reverse voltage (clamp-rail span) vs 80 % of VRRM 30 V | 23.0 V | <= 24.0 V | -4.2 % | rf2_mp1v2_close.json |

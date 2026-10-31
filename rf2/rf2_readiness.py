@@ -59,7 +59,7 @@ D = [
     ("P3.9", 3, "Head exterior for print: skid clips, bumper, ears; head interior trays already generated", [], ("json", "rf2/results/rf2_print.json", "P3.9_ok"), "DFM pass on skid, bumper, shell and lid"),
     # ---- phase 4: harness, winding, potting, BOM, assembly
     ("P4.1", 4, "Harness drawings with lengths from the 3-D routes (cord, hinge pass-through, grip FFC, head harness)", ["P0.2", "P3.3"], ("files", ["docs/HARNESS.md"]), "every wire end, length, sleeve, voltage class"),
-    ("P4.2", 4, "Coil-cord specification (1000 V pair + power + STP pairs, coil OD 17 mm, stretch 4.4:1)", ["P0.1"], ("files", ["docs/COIL_CORD_SPEC.md"]), "vendor quote-able spec"),
+    ("P4.2", 4, "Cord-flex specification (owner 2026-10-30: the coil cord is a split long flex; TX strips, power, diff + guarded REF pairs, hipot, lengths)", ["P0.1"], ("files", ["docs/CORD_FLEX_SPEC.md"]), "vendor quote-able spec"),
     ("P4.3", 4, "Winding specs: rim coil (exists), REF3 face coils + solenoid", ["P3.5"], ("files", ["docs/REF3_WINDING.md"]), "turns, layers, wire, terminations"),
     ("P4.4", 4, "Potting and sealing process (syntactic foam / silicone / 832TC zones; O-rings; vents)", ["P3.1"], ("files", ["docs/POTTING_SEALING.md"]), "materials logged, volumes from the models"),
     ("P4.5", 4, "BOM with sources, EOL flags (Murata piezo) and alternates", ["P1.1", "P1.2", "P1.4", "P1.5", "P1.6"], ("files", ["docs/BOM.csv"]), "every line VERIFIED or marked"),

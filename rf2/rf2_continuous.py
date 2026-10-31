@@ -7,17 +7,23 @@ Writes rf2/results/rf2_continuous.json.   usage: python3 rf2/rf2_continuous.py""
 import os, json, math
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 OUT = os.path.join(ROOT, "rf2", "results"); os.makedirs(OUT, exist_ok=True)
-L, R_COIL, R_CABLE, VBUS, F, V_CLAMP, RD, T_FLAT = 333e-6, 0.601, 0.11, 26.0, 400.0, 460.0, 408.0, 300e-6
+L, R_COIL, R_CABLE, VBUS, F, V_CLAMP, RD, T_FLAT = 333e-6, 0.601, 0.11, 25.2, 400.0, 460.0, 408.0, 300e-6   # VBUS 7 x 3.6 V nominal (was 26.0; 2026-10-31)
 # R_COIL 0.601 ohm at 20 C (2026-10-30, rf2_wire_options): Rubadue 66/38 litz, 1056 CM over 18.3 m; was 0.53 (unsourced, CORRECTIONS)
+import rf2_cordflex as _CFX
+R_CABLE = _CFX.R_TX_LOOP                                   # 2026-10-31: the cord flex's TX strips out and back (was 0.11 ohm for the wire pair, CORRECTIONS)
 MODES = {"scan": 8.06, "boost (trigger held, continuous)": 8.06 * math.sqrt(2.5)}
 TA = 40.0                                                     # ambient for the ratings, C (ASSUMED: sun on a desert dig)
+RDS_HOT, R_SHUNT = 0.416 * 1.1, 0.010
+R_LOOP = R_COIL + R_CABLE + RDS_HOT + R_SHUNT                 # the ramp is resistance-limited (rf2_txd_spice: 139 us to 8.06 A at 25.2 V, not L I / V = 107 us)
 def pulse_train(I):
-    T1 = L * I / VBUS; tf = L * I / V_CLAMP
-    # mean of i^2 over time: ramp phases I^2 T / 3, flat-top I^2 T, on every second pulse
-    i2 = F * ((I ** 2 / 3) * T1 + 0.5 * I ** 2 * T_FLAT + (I ** 2 / 3) * tf); ia = F * (0.5 * I * T1 + 0.5 * I * T_FLAT + 0.5 * I * tf)
-    sw_i2 = F * ((I ** 2 / 3) * T1 + 0.5 * I ** 2 * T_FLAT)   # the switch carries the on-time only
+    tau = L / R_LOOP; imax = VBUS / R_LOOP; T1 = -tau * math.log(1 - I / imax); tf = L * I / V_CLAMP
+    tt = [T1 * k / 400 for k in range(401)]; ir = [imax * (1 - math.exp(-x / tau)) for x in tt]
+    ramp_i2 = sum((ir[k] ** 2 + ir[k + 1] ** 2) / 2 * (tt[k + 1] - tt[k]) for k in range(400)); ramp_i = sum((ir[k] + ir[k + 1]) / 2 * (tt[k + 1] - tt[k]) for k in range(400))
+    # mean of i^2 over time: the exponential ramp (exact), flat-top I^2 T on every second pulse, the linear fall I^2 tf / 3
+    i2 = F * (ramp_i2 + 0.5 * I ** 2 * T_FLAT + (I ** 2 / 3) * tf); ia = F * (ramp_i + 0.5 * I * T_FLAT + 0.5 * I * tf)
+    sw_i2 = F * (ramp_i2 + 0.5 * I ** 2 * T_FLAT * 0.30)        # the switch carries the ramp, and about 30 % of the flat-top (duty, rf2_txd_spice); the freewheel Q2 carries the rest
     on_frac = F * (T1 + 0.5 * T_FLAT)
-    return dict(I_pk=I, T1_us=T1 * 1e6, fall_us=tf * 1e6, I_rms_coil=math.sqrt(i2), I_avg_coil=ia, I_rms_switch=math.sqrt(sw_i2), on_fraction=on_frac)
+    return dict(I_pk=I, T1_us=T1 * 1e6, ramp_i2_As=ramp_i2, fall_us=tf * 1e6, I_rms_coil=math.sqrt(i2), I_avg_coil=ia, I_rms_switch=math.sqrt(sw_i2), on_fraction=on_frac)
 def analyse(mode, I):
     p = pulse_train(I); r = dict(mode=mode, **{k: round(v, 4) for k, v in p.items()}); rows = []
     def row(part, load, rating, unit, ok, src, note=""):
@@ -27,7 +33,7 @@ def analyse(mode, I):
     P_coil = p["I_rms_coil"] ** 2 * R_COIL
     row("coil, 26 turns FEP litz (I^2 R)", P_coil, None, "W", None, "R %.3f ohm (rf2_wire_options: Rubadue 66/38 litz)" % R_COIL, "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): %.1f K; the rise inside the foam-potted channel is NOT modeled" % (P_coil / (8 * 0.097)))
     # transmit switch C3M0280090J
-    rds_hot = 0.416 * 1.1                                      # 416 mohm typ at 150 C (datasheet) + 10 % (ASSUMED max at temperature)
+    rds_hot = RDS_HOT                                          # 416 mohm typ at 150 C (datasheet) + 10 % (ASSUMED max at temperature)
     e_off = 2.4e-6 * (I / 7.5) * (V_CLAMP / 400.0)             # Eoff 2.4 uJ at 7.5 A / 400 V, scaled with I and V (ASSUMED linear)
     P_sw = p["I_rms_switch"] ** 2 * rds_hot + F * e_off
     row("TX switch Wolfspeed C3M0280090J: peak current", I, 22.0, "A (IDM)", I <= 22.0 * 0.8, "Rev 04: IDM 22 A", "80 % of the pulsed rating")
@@ -59,7 +65,8 @@ def analyse(mode, I):
     i_cap = math.sqrt(max(p["I_rms_switch"] ** 2 - (F * (0.5 * I * p["T1_us"] * 1e-6 + 0.5 * I * T_FLAT)) ** 2, 0)) / 9
     row("bulk bank: 9 x Panasonic EEHZC1H101P, ripple per capacitor", i_cap, 1.6, "A rms (100 kHz, 105 C)", i_cap <= 1.6 * 0.7, "ZC series ZC-16", "70 % derating; the pulse frequency is 400 Hz, where the ripple rating is lower than at 100 kHz (frequency multiplier not read: OPEN)")
     # battery and fuse
-    P_ohmic_on = F * (I ** 2 / 3 * p["T1_us"] * 1e-6 * (R_COIL + R_CABLE) + 0.5 * I ** 2 * T_FLAT * (R_COIL + R_CABLE + rds_hot))
+    P_ohmic_on = F * (p["ramp_i2_As"] * (R_COIL + R_CABLE + rds_hot + R_SHUNT) + 0.5 * I ** 2 * T_FLAT * (R_COIL + R_CABLE + rds_hot + R_SHUNT)
+                      + 0.5 * T_FLAT * 0.70 * 1.2 * I)          # freewheel: Q2 + shunt carry the current about 70 % of the flat-top, US3M drop about 1.2 V (rf2_txd_spice topology)
     P_tx_dissipative = F * E_store + P_ohmic_on + P_sw * 0.3 + P_rd * 0.1
     P_tx_regen = F * E_store * 0.25 + P_ohmic_on + P_sw * 0.3 + P_rd * 0.1   # regenerative clamp recovering about 75 % (ASSUMED)
     P_head = 5.0 * 0.54 / 0.9 + 5.0 * 1.372 / 0.9                           # +5 V rail budget and the LED rail at its cap, converter efficiency 90 % (rf2_wiring)

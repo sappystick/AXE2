@@ -5,40 +5,41 @@
   {
    "mode": "scan",
    "I_pk": 8.06,
-   "T1_us": 103.23,
+   "T1_us": 139.373,
+   "ramp_i2_As": 0.0035,
    "fall_us": 5.8347,
-   "I_rms_coil": 2.2006,
-   "I_avg_coil": 0.6594,
-   "I_rms_switch": 2.1891,
-   "on_fraction": 0.1013,
+   "I_rms_coil": 2.309,
+   "I_avg_coil": 0.7387,
+   "I_rms_switch": 1.5976,
+   "on_fraction": 0.1157,
    "battery": {
     "dissipative clamp": {
-     "P_tx_W": 10.31,
+     "P_tx_W": 12.34,
      "P_head_W": 10.62,
-     "P_total_W": 20.94,
-     "I_battery_A": 0.83,
-     "Wh_per_hour": 20.9,
-     "runtime_h_per_100Wh": 4.78
+     "P_total_W": 22.97,
+     "I_battery_A": 0.91,
+     "Wh_per_hour": 23.0,
+     "runtime_h_per_100Wh": 4.35
     },
     "regenerative clamp (75 % recovery ASSUMED)": {
-     "P_tx_W": 7.07,
+     "P_tx_W": 9.1,
      "P_head_W": 10.62,
-     "P_total_W": 17.69,
-     "I_battery_A": 0.7,
-     "Wh_per_hour": 17.7,
-     "runtime_h_per_100Wh": 5.65
+     "P_total_W": 19.72,
+     "I_battery_A": 0.78,
+     "Wh_per_hour": 19.7,
+     "runtime_h_per_100Wh": 5.07
     }
    },
    "rows": [
     {
      "part": "coil, 26 turns FEP litz (I^2 R)",
-     "load": 2.91,
+     "load": 3.204,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "R 0.601 ohm (rf2_wire_options: Rubadue 66/38 litz)",
-     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 3.8 K; the rise inside the foam-potted channel is NOT modeled"
+     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 4.1 K; the rise inside the foam-potted channel is NOT modeled"
     },
     {
      "part": "TX switch Wolfspeed C3M0280090J: peak current",
@@ -52,23 +53,23 @@
     },
     {
      "part": "TX switch: RMS current",
-     "load": 2.189,
+     "load": 1.598,
      "rating": 7.0,
      "unit": "A (ID at TC 100 C)",
-     "margin": 3.2,
+     "margin": 4.38,
      "ok": true,
      "source": "Rev 04: ID 7 A at TC 100 C",
      "note": ""
     },
     {
      "part": "TX switch: junction temperature",
-     "load": 61.94,
+     "load": 51.691,
      "rating": 150.0,
      "unit": "C (TJ max)",
-     "margin": 2.42,
+     "margin": 2.9,
      "ok": true,
      "source": "Rev 04: RthJC 2.5 C/W, RthJA 40 C/W",
-     "note": "2.19 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 62 C; on bare PCB (RthJA 40) TJ 128 C. Derated limit 125 C"
+     "note": "1.17 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 52 C; on bare PCB (RthJA 40) TJ 87 C. Derated limit 125 C"
     },
     {
      "part": "clamp diode Diodes US3M: average current",
@@ -92,7 +93,7 @@
     },
     {
      "part": "damping resistor Rd 408 ohm (across the coil)",
-     "load": 1.378,
+     "load": 1.391,
      "rating": null,
      "unit": "W",
      "margin": null,
@@ -112,40 +113,40 @@
     },
     {
      "part": "shaft HV pair (FEP AWG18, ASSUMED)",
-     "load": 0.533,
+     "load": 1.492,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "R 0.11 ohm both conductors (rf2_wiring)",
-     "note": "AWG18 carries well over 5 A continuously in free air; at 2.20 A RMS it runs cool"
+     "note": "AWG18 carries well over 5 A continuously in free air; at 2.31 A RMS it runs cool"
     },
     {
      "part": "TXF fin buses (2.5 mm, both layers, 1 oz ASSUMED)",
-     "load": 0.378,
+     "load": 0.422,
      "rating": 10.0,
      "unit": "K rise (IPC-2221)",
-     "margin": 26.43,
+     "margin": 23.69,
      "ok": true,
      "source": "IPC-2221 external-layer formula",
-     "note": "RMS 1.10 A per layer; peak 8.1 A for under 0.5 ms"
+     "note": "RMS 1.15 A per layer; peak 8.1 A for under 0.5 ms"
     },
     {
      "part": "current shunt Vishay WSL2512 10 mohm",
-     "load": 0.048,
+     "load": 0.026,
      "rating": 1.0,
      "unit": "W at 70 C",
-     "margin": 20.87,
+     "margin": 39.18,
      "ok": true,
      "source": "WSL rev 23-Nov-2023",
      "note": "50 % derating"
     },
     {
      "part": "bulk bank: 9 x Panasonic EEHZC1H101P, ripple per capacitor",
-     "load": 0.232,
+     "load": 0.159,
      "rating": 1.6,
      "unit": "A rms (100 kHz, 105 C)",
-     "margin": 6.89,
+     "margin": 10.06,
      "ok": true,
      "source": "ZC series ZC-16",
      "note": "70 % derating; the pulse frequency is 400 Hz, where the ripple rating is lower than at 100 kHz (frequency multiplier not read: OPEN)"
@@ -162,40 +163,41 @@
   {
    "mode": "boost (trigger held, continuous)",
    "I_pk": 12.744,
-   "T1_us": 163.221,
+   "T1_us": 282.867,
+   "ramp_i2_As": 0.0199,
    "fall_us": 9.2255,
-   "I_rms_coil": 3.6713,
-   "I_avg_coil": 1.2042,
-   "I_rms_switch": 3.644,
-   "on_fraction": 0.1253,
+   "I_rms_coil": 4.2325,
+   "I_avg_coil": 1.6438,
+   "I_rms_switch": 3.3005,
+   "on_fraction": 0.1731,
    "battery": {
     "dissipative clamp": {
-     "P_tx_W": 26.75,
+     "P_tx_W": 37.06,
      "P_head_W": 10.62,
-     "P_total_W": 37.37,
-     "I_battery_A": 1.48,
-     "Wh_per_hour": 37.4,
-     "runtime_h_per_100Wh": 2.68
+     "P_total_W": 47.68,
+     "I_battery_A": 1.89,
+     "Wh_per_hour": 47.7,
+     "runtime_h_per_100Wh": 2.1
     },
     "regenerative clamp (75 % recovery ASSUMED)": {
-     "P_tx_W": 18.64,
+     "P_tx_W": 28.95,
      "P_head_W": 10.62,
-     "P_total_W": 29.26,
-     "I_battery_A": 1.16,
-     "Wh_per_hour": 29.3,
-     "runtime_h_per_100Wh": 3.42
+     "P_total_W": 39.57,
+     "I_battery_A": 1.57,
+     "Wh_per_hour": 39.6,
+     "runtime_h_per_100Wh": 2.53
     }
    },
    "rows": [
     {
      "part": "coil, 26 turns FEP litz (I^2 R)",
-     "load": 8.101,
+     "load": 10.767,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "R 0.601 ohm (rf2_wire_options: Rubadue 66/38 litz)",
-     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 10.4 K; the rise inside the foam-potted channel is NOT modeled"
+     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 13.9 K; the rise inside the foam-potted channel is NOT modeled"
     },
     {
      "part": "TX switch Wolfspeed C3M0280090J: peak current",
@@ -209,23 +211,23 @@
     },
     {
      "part": "TX switch: RMS current",
-     "load": 3.644,
+     "load": 3.301,
      "rating": 7.0,
      "unit": "A (ID at TC 100 C)",
-     "margin": 1.92,
+     "margin": 2.12,
      "ok": true,
      "source": "Rev 04: ID 7 A at TC 100 C",
      "note": ""
     },
     {
      "part": "TX switch: junction temperature",
-     "load": 100.784,
+     "load": 89.867,
      "rating": 150.0,
      "unit": "C (TJ max)",
-     "margin": 1.49,
+     "margin": 1.67,
      "ok": true,
      "source": "Rev 04: RthJC 2.5 C/W, RthJA 40 C/W",
-     "note": "6.08 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 101 C; on bare PCB (RthJA 40) TJ 283 C. Derated limit 125 C"
+     "note": "4.99 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 90 C; on bare PCB (RthJA 40) TJ 239 C. Derated limit 125 C"
     },
     {
      "part": "clamp diode Diodes US3M: average current",
@@ -249,13 +251,13 @@
     },
     {
      "part": "damping resistor Rd 408 ohm (across the coil)",
-     "load": 2.121,
+     "load": 2.183,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "power from V^2 / R during the clamp and the on-time",
-     "note": "needs a >= 4.2 W, >= 630 V resistor (rule 6) at 70 C; it is on the HV fin in the potted head (thermal: OPEN)"
+     "note": "needs a >= 4.4 W, >= 630 V resistor (rule 6) at 70 C; it is on the HV fin in the potted head (thermal: OPEN)"
     },
     {
      "part": "clamp absorber (TVS / zener stack or regenerative clamp)",
@@ -269,40 +271,40 @@
     },
     {
      "part": "shaft HV pair (FEP AWG18, ASSUMED)",
-     "load": 1.483,
+     "load": 5.012,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "R 0.11 ohm both conductors (rf2_wiring)",
-     "note": "AWG18 carries well over 5 A continuously in free air; at 3.67 A RMS it runs cool"
+     "note": "AWG18 carries well over 5 A continuously in free air; at 4.23 A RMS it runs cool"
     },
     {
      "part": "TXF fin buses (2.5 mm, both layers, 1 oz ASSUMED)",
-     "load": 1.211,
+     "load": 1.673,
      "rating": 10.0,
      "unit": "K rise (IPC-2221)",
-     "margin": 8.26,
+     "margin": 5.98,
      "ok": true,
      "source": "IPC-2221 external-layer formula",
-     "note": "RMS 1.84 A per layer; peak 12.7 A for under 0.5 ms"
+     "note": "RMS 2.12 A per layer; peak 12.7 A for under 0.5 ms"
     },
     {
      "part": "current shunt Vishay WSL2512 10 mohm",
-     "load": 0.133,
+     "load": 0.109,
      "rating": 1.0,
      "unit": "W at 70 C",
-     "margin": 7.53,
+     "margin": 9.18,
      "ok": true,
      "source": "WSL rev 23-Nov-2023",
      "note": "50 % derating"
     },
     {
      "part": "bulk bank: 9 x Panasonic EEHZC1H101P, ripple per capacitor",
-     "load": 0.383,
+     "load": 0.327,
      "rating": 1.6,
      "unit": "A rms (100 kHz, 105 C)",
-     "margin": 4.18,
+     "margin": 4.89,
      "ok": true,
      "source": "ZC series ZC-16",
      "note": "70 % derating; the pulse frequency is 400 Hz, where the ripple rating is lower than at 100 kHz (frequency multiplier not read: OPEN)"

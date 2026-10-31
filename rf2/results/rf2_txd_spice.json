@@ -1,0 +1,140 @@
+{
+ "status": "MODELED (ngspice): ideal gate drive; SiC as a switch with RDS(on) hot; US3M card fitted to its datasheet points (ASSUMED shape); clamp node held at 460 V (regenerative clamp ASSUMED ideal)",
+ "topology": "Q1 low-side C3M0280090J + 10 mohm shunt; freewheel US3M + Q2 C3M0280090J (floating, own UCC5350) for the flat-top; hysteretic current loop +-40 mA; turn-off into the 460 V clamp through US3M; Rd 408 ohm",
+ "loop_R_ohm": {
+  "coil": 0.601,
+  "cord_flex_tx": 0.28,
+  "q1_hot": 0.458,
+  "shunt": 0.01,
+  "total": 1.348
+ },
+ "node_C_pF": 406.1,
+ "limits": {
+  "vds_max_V": 720.0,
+  "i_peak_max_A": 22.0,
+  "d_ifsm_A": 100.0
+ },
+ "cases": {
+  "scan_long": {
+   "bus_droop_V": 0.35,
+   "bus_min_V": 24.85,
+   "e_clamp_mJ": 8.341,
+   "e_coil_mJ": 10.816,
+   "f_pwm_kHz": 254.5,
+   "fall_ideal_us": 5.83,
+   "fall_us": 6.87,
+   "flat_mean_A": 8.058,
+   "flat_ripple_pp_A": 0.08,
+   "i_peak_A": 8.1,
+   "i_set_A": 8.06,
+   "long": true,
+   "q1_rms_pulse_A": 5.361,
+   "t_off_us": 439.4,
+   "t_ramp_us": 139.4,
+   "vbus_V": 25.2,
+   "vds_q1_max_V": 462.6,
+   "vds_q2_max_V": 437.2
+  },
+  "boost_long_cutoff": {
+   "bus_droop_V": 0.64,
+   "bus_min_V": 20.36,
+   "e_clamp_mJ": 23.188,
+   "e_coil_mJ": 27.024,
+   "f_pwm_kHz": 100.4,
+   "fall_ideal_us": 9.22,
+   "fall_us": 10.07,
+   "flat_mean_A": 12.738,
+   "flat_ripple_pp_A": 0.105,
+   "i_peak_A": 12.78,
+   "i_set_A": 12.74,
+   "long": true,
+   "q1_rms_pulse_A": 10.044,
+   "t_off_us": 720.8,
+   "t_ramp_us": 420.8,
+   "vbus_V": 21.0,
+   "vds_q1_max_V": 463.9,
+   "vds_q2_max_V": 443.1
+  },
+  "scan_short": {
+   "bus_droop_V": 0.3,
+   "bus_min_V": 24.9,
+   "e_clamp_mJ": 8.271,
+   "e_coil_mJ": 10.816,
+   "f_pwm_kHz": null,
+   "fall_ideal_us": 5.83,
+   "fall_us": 6.86,
+   "flat_mean_A": null,
+   "flat_ripple_pp_A": null,
+   "i_peak_A": 8.001,
+   "i_set_A": 8.06,
+   "long": false,
+   "q1_rms_pulse_A": 4.708,
+   "t_off_us": 139.4,
+   "t_ramp_us": 139.4,
+   "vbus_V": 25.2,
+   "vds_q1_max_V": 462.6,
+   "vds_q2_max_V": 458.7
+  },
+  "boost_long_full": {
+   "bus_droop_V": 0.6,
+   "bus_min_V": 28.8,
+   "e_clamp_mJ": 23.676,
+   "e_coil_mJ": 27.024,
+   "f_pwm_kHz": 279.6,
+   "fall_ideal_us": 9.22,
+   "fall_us": 10.2,
+   "flat_mean_A": 12.736,
+   "flat_ripple_pp_A": 0.08,
+   "i_peak_A": 12.78,
+   "i_set_A": 12.74,
+   "long": true,
+   "q1_rms_pulse_A": 9.252,
+   "t_off_us": 516.8,
+   "t_ramp_us": 216.8,
+   "vbus_V": 29.4,
+   "vds_q1_max_V": 463.9,
+   "vds_q2_max_V": 446.0
+  }
+ },
+ "checks": {
+  "scan_long": {
+   "reaches_iset": true,
+   "vds_q1_ok": true,
+   "vds_q2_ok": true,
+   "peak_ok": true,
+   "fall_close_to_ideal": true,
+   "flat_regulated": true
+  },
+  "boost_long_cutoff": {
+   "reaches_iset": true,
+   "vds_q1_ok": true,
+   "vds_q2_ok": true,
+   "peak_ok": true,
+   "fall_close_to_ideal": true,
+   "flat_regulated": true
+  },
+  "scan_short": {
+   "reaches_iset": true,
+   "vds_q1_ok": true,
+   "vds_q2_ok": true,
+   "peak_ok": true,
+   "fall_close_to_ideal": true,
+   "flat_regulated": true
+  },
+  "boost_long_full": {
+   "reaches_iset": true,
+   "vds_q1_ok": true,
+   "vds_q2_ok": true,
+   "peak_ok": true,
+   "fall_close_to_ideal": true,
+   "flat_regulated": true
+  }
+ },
+ "ok": true,
+ "new_parts": [
+  "second C3M0280090J (Q2, freewheel switch)",
+  "second UCC5350 (floating at the bus, bootstrap or isolated supply)",
+  "second US3M (D_fw)",
+  "second 10 mohm WSL2512 shunt in the freewheel branch + a summing current-sense amplifier (part to choose)"
+ ]
+}

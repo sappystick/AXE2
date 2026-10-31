@@ -13,27 +13,27 @@
    "id": "runtime.boost",
    "kind": "target",
    "desc": "continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B",
-   "value": 3.5,
+   "value": 2.6,
    "limit": 6.0,
    "sense": ">=",
    "unit": "h",
    "source": "rf2_system.json runtime",
    "relaxed": "owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen",
    "status": "RELAXED",
-   "over_pct": 41.7
+   "over_pct": 56.7
   },
   {
    "id": "runtime.scan",
    "kind": "target",
    "desc": "scan runtime, 7S1P Molicel P45B",
-   "value": 5.8,
+   "value": 5.2,
    "limit": 6.0,
    "sense": ">=",
    "unit": "h",
    "source": "rf2_system.json runtime",
    "relaxed": "owner 2026-10-30: 6 h target relaxed",
    "status": "RELAXED",
-   "over_pct": 3.3
+   "over_pct": 13.3
   },
   {
    "id": "mp1.bat54_vrrm",
@@ -158,40 +158,40 @@
    "id": "runtime.boost",
    "kind": "target",
    "desc": "continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B",
-   "value": 3.5,
+   "value": 2.6,
    "limit": 6.0,
    "sense": ">=",
    "unit": "h",
    "source": "rf2_system.json runtime",
    "relaxed": "owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen",
    "status": "RELAXED",
-   "over_pct": 41.7
+   "over_pct": 56.7
   },
   {
    "id": "runtime.scan",
    "kind": "target",
    "desc": "scan runtime, 7S1P Molicel P45B",
-   "value": 5.8,
+   "value": 5.2,
    "limit": 6.0,
    "sense": ">=",
    "unit": "h",
    "source": "rf2_system.json runtime",
    "relaxed": "owner 2026-10-30: 6 h target relaxed",
    "status": "RELAXED",
-   "over_pct": 3.3
+   "over_pct": 13.3
   },
   {
    "id": "thermal.txd_tj",
    "kind": "target",
    "desc": "TXD switch junction in continuous boost (125 C design limit; 150 C abs max)",
-   "value": 100.784,
+   "value": 89.867,
    "limit": 125.0,
    "sense": "<=",
    "unit": "C",
    "source": "rf2_system.json thermal",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -19.4
+   "over_pct": -28.1
   },
   {
    "id": "thermal.chassis_rise",
@@ -236,27 +236,27 @@
    "id": "cont.scan.TX switch: RMS current",
    "kind": "target",
    "desc": "scan: TX switch: RMS current",
-   "value": 2.189,
+   "value": 1.598,
    "limit": 7.0,
    "sense": "<=",
    "unit": "A (ID at TC 100 C)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -68.7
+   "over_pct": -77.2
   },
   {
    "id": "cont.scan.TX switch: junction temperature",
    "kind": "safety",
    "desc": "scan: TX switch: junction temperature",
-   "value": 61.94,
+   "value": 51.691,
    "limit": 150.0,
    "sense": "<=",
    "unit": "C (TJ max)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -58.7
+   "over_pct": -65.5
   },
   {
    "id": "cont.scan.clamp diode Diodes US3M: average current",
@@ -288,40 +288,40 @@
    "id": "cont.scan.TXF fin buses (2.5 mm, both layers, 1 oz",
    "kind": "target",
    "desc": "scan: TXF fin buses (2.5 mm, both layers, 1 oz ASSUMED)",
-   "value": 0.378,
+   "value": 0.422,
    "limit": 10.0,
    "sense": "<=",
    "unit": "K rise (IPC-2221)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -96.2
+   "over_pct": -95.8
   },
   {
    "id": "cont.scan.current shunt Vishay WSL2512 10 mohm",
    "kind": "target",
    "desc": "scan: current shunt Vishay WSL2512 10 mohm",
-   "value": 0.048,
+   "value": 0.026,
    "limit": 1.0,
    "sense": "<=",
    "unit": "W at 70 C",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -95.2
+   "over_pct": -97.4
   },
   {
    "id": "cont.scan.bulk bank: 9 x Panasonic EEHZC1H101P, ri",
    "kind": "target",
    "desc": "scan: bulk bank: 9 x Panasonic EEHZC1H101P, ripple per capacitor",
-   "value": 0.232,
+   "value": 0.159,
    "limit": 1.6,
    "sense": "<=",
    "unit": "A rms (100 kHz, 105 C)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -85.5
+   "over_pct": -90.1
   },
   {
    "id": "cont.boost.TX switch Wolfspeed C3M0280090J: peak cu",
@@ -340,27 +340,27 @@
    "id": "cont.boost.TX switch: RMS current",
    "kind": "target",
    "desc": "boost (trigger held, continuous): TX switch: RMS current",
-   "value": 3.644,
+   "value": 3.301,
    "limit": 7.0,
    "sense": "<=",
    "unit": "A (ID at TC 100 C)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -47.9
+   "over_pct": -52.8
   },
   {
    "id": "cont.boost.TX switch: junction temperature",
    "kind": "safety",
    "desc": "boost (trigger held, continuous): TX switch: junction temperature",
-   "value": 100.784,
+   "value": 89.867,
    "limit": 150.0,
    "sense": "<=",
    "unit": "C (TJ max)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -32.8
+   "over_pct": -40.1
   },
   {
    "id": "cont.boost.clamp diode Diodes US3M: average current",
@@ -392,40 +392,40 @@
    "id": "cont.boost.TXF fin buses (2.5 mm, both layers, 1 oz",
    "kind": "target",
    "desc": "boost (trigger held, continuous): TXF fin buses (2.5 mm, both layers, 1 oz ASSUMED)",
-   "value": 1.211,
+   "value": 1.673,
    "limit": 10.0,
    "sense": "<=",
    "unit": "K rise (IPC-2221)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -87.9
+   "over_pct": -83.3
   },
   {
    "id": "cont.boost.current shunt Vishay WSL2512 10 mohm",
    "kind": "target",
    "desc": "boost (trigger held, continuous): current shunt Vishay WSL2512 10 mohm",
-   "value": 0.133,
+   "value": 0.109,
    "limit": 1.0,
    "sense": "<=",
    "unit": "W at 70 C",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -86.7
+   "over_pct": -89.1
   },
   {
    "id": "cont.boost.bulk bank: 9 x Panasonic EEHZC1H101P, ri",
    "kind": "target",
    "desc": "boost (trigger held, continuous): bulk bank: 9 x Panasonic EEHZC1H101P, ripple per capacitor",
-   "value": 0.383,
+   "value": 0.327,
    "limit": 1.6,
    "sense": "<=",
    "unit": "A rms (100 kHz, 105 C)",
    "source": "rf2_continuous.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -76.1
+   "over_pct": -79.6
   },
   {
    "id": "mp1.settle",
@@ -717,118 +717,118 @@
    "id": "dfm.wall.HEAD_LID (rf2_head)",
    "kind": "target",
    "desc": "HEAD_LID (rf2_head): wall 2nd percentile vs 0.96 mm (FDM ASSUMED)",
-   "value": 1.17,
+   "value": 1.18,
    "limit": 0.96,
    "sense": ">=",
    "unit": "mm",
    "source": "rf2_print.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -21.9
+   "over_pct": -22.9
   },
   {
    "id": "dfm.thin.HEAD_LID (rf2_head)",
    "kind": "target",
    "desc": "HEAD_LID (rf2_head): area below 1.2 mm vs 3 %",
-   "value": 2.2,
+   "value": 2.1,
    "limit": 3.0,
    "sense": "<=",
    "unit": "%",
    "source": "rf2_print.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -26.7
+   "over_pct": -30.0
   },
   {
    "id": "pack.cell_i.A",
    "kind": "safety",
    "desc": "pack option A: cell current in boost at cut-off vs its coldest-band continuous rating",
-   "value": 0.02,
+   "value": 0.03,
    "limit": 1.0,
    "sense": "<=",
    "unit": "x rating",
    "source": "rf2_pack_options.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -98.0
+   "over_pct": -97.0
   },
   {
    "id": "pack.cell_i.B",
    "kind": "safety",
    "desc": "pack option B: cell current in boost at cut-off vs its coldest-band continuous rating",
-   "value": 0.02,
+   "value": 0.03,
    "limit": 1.0,
    "sense": "<=",
    "unit": "x rating",
    "source": "rf2_pack_options.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -98.0
+   "over_pct": -97.0
   },
   {
    "id": "pack.cell_i.C1",
    "kind": "safety",
    "desc": "pack option C1: cell current in boost at cut-off vs its coldest-band continuous rating",
-   "value": 0.03,
+   "value": 0.04,
    "limit": 1.0,
    "sense": "<=",
    "unit": "x rating",
    "source": "rf2_pack_options.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -97.0
+   "over_pct": -96.0
   },
   {
    "id": "pack.cell_i.C2",
    "kind": "safety",
    "desc": "pack option C2: cell current in boost at cut-off vs its coldest-band continuous rating",
-   "value": 0.03,
+   "value": 0.04,
    "limit": 1.0,
    "sense": "<=",
    "unit": "x rating",
    "source": "rf2_pack_options.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -97.0
+   "over_pct": -96.0
   },
   {
    "id": "pack.cell_i.D1",
    "kind": "safety",
    "desc": "pack option D1: cell current in boost at cut-off vs its coldest-band continuous rating",
-   "value": 0.57,
+   "value": 0.77,
    "limit": 1.0,
    "sense": "<=",
    "unit": "x rating",
    "source": "rf2_pack_options.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -43.0
+   "over_pct": -23.0
   },
   {
    "id": "pack.cell_i.D2",
    "kind": "safety",
    "desc": "pack option D2: cell current in boost at cut-off vs its coldest-band continuous rating",
-   "value": 0.57,
+   "value": 0.77,
    "limit": 1.0,
    "sense": "<=",
    "unit": "x rating",
    "source": "rf2_pack_options.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -43.0
+   "over_pct": -23.0
   },
   {
    "id": "pack.cell_i.F",
    "kind": "safety",
    "desc": "pack option F: cell current in boost at cut-off vs its coldest-band continuous rating",
-   "value": 0.05,
+   "value": 0.06,
    "limit": 1.0,
    "sense": "<=",
    "unit": "x rating",
    "source": "rf2_pack_options.json",
    "relaxed": null,
    "status": "PASS",
-   "over_pct": -95.0
+   "over_pct": -94.0
   },
   {
    "id": "wire.coil.SXXL100/38FX-2(MWXX)",

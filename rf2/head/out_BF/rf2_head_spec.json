@@ -1,7 +1,7 @@
 {
  "envelope": {
   "R": 116.5,
-  "H": 16.35,
+  "H": 16.55,
   "note": "option B: single board tier; light plate 2.4 mm (2026-10-30, DFM)"
  },
  "shell": {
@@ -12,11 +12,11 @@
   ],
   "wall_z": [
    0.0,
-   13.95
+   14.15
   ],
   "lid_z": [
-   13.95,
-   16.35
+   14.15,
+   16.55
   ],
   "material": "PETG (printed), no metal (rule 5)"
  },
@@ -453,7 +453,7 @@
    "kind": "flex",
    "z": [
     13.1,
-    13.299999999999999
+    13.5
    ],
    "below": 0.0,
    "above": 0.65,
@@ -486,7 +486,7 @@
   "boss_d": 12.0,
   "boss_z": [
    12.6,
-   13.95
+   14.15
   ],
   "what": "shaft cable enters DOWN through the lid at the heel into the HV sector"
  },
@@ -529,7 +529,7 @@
   ],
   "z": [
    1.2,
-   13.95
+   14.15
   ],
   "slit_deg": 184.0,
   "slit_w": 2.0,

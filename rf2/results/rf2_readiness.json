@@ -106,8 +106,8 @@
     ]
    ],
    "done_means": "SPICE: current loop, turn-off, clamp, ratings in continuous boost",
-   "status": "TODO",
-   "ready_to_start": true
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P1.2",
@@ -125,7 +125,7 @@
    ],
    "done_means": "SPICE: regulation of the clamp at 460 V, efficiency, start-up, fault",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P1.3",
@@ -250,7 +250,7 @@
    ],
    "done_means": "KiCad DRC 0; fit check in chassis",
    "status": "TODO",
-   "ready_to_start": false
+   "ready_to_start": true
   },
   {
    "id": "P2.2",
@@ -530,19 +530,19 @@
   {
    "id": "P4.2",
    "phase": 4,
-   "item": "Coil-cord specification (1000 V pair + power + STP pairs, coil OD 17 mm, stretch 4.4:1)",
+   "item": "Cord-flex specification (owner 2026-10-30: the coil cord is a split long flex; TX strips, power, diff + guarded REF pairs, hipot, lengths)",
    "deps": [
     "P0.1"
    ],
    "gate": [
     "files",
     [
-     "docs/COIL_CORD_SPEC.md"
+     "docs/CORD_FLEX_SPEC.md"
     ]
    ],
    "done_means": "vendor quote-able spec",
-   "status": "TODO",
-   "ready_to_start": true
+   "status": "DONE",
+   "ready_to_start": false
   },
   {
    "id": "P4.3",

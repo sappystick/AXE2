@@ -66,15 +66,15 @@
    [
     -92.003,
     1.512,
-    13.35
+    13.55
    ],
    [
     -92.003,
     1.512,
-    18.35
+    18.55
    ]
   ],
-  "length_mm": 19.2
+  "length_mm": 19.3
  },
  "COIL_A": {
   "kind": "coil litz, start (bottom row, lifted 0.3 mm off the floor after it leaves the winding)",
@@ -143,14 +143,14 @@
    [
     -91.885,
     4.91,
-    13.35
+    13.55
    ],
    [
     -91.885,
     4.91,
-    18.35
+    18.55
    ]
   ],
-  "length_mm": 35.9
+  "length_mm": 36.1
  }
 }

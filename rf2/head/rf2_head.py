@@ -57,7 +57,7 @@ for _k in ("MP1", "TXJ"):
 def apply_option_b(S):
     """option B (owner 2026-10-30; rf2_thin, rf2_zones, HANDOFF sections 17-24): CB1D lowered to the AB1 / MP1 / TXJ tier, the coil re-shaped to 5 rows
     x 6 columns under the display, head 15.65 mm. Materials chosen by the zone and potting studies."""
-    zd = 13.1; DFLEX = 0.20; lid0 = round(zd + DFLEX + 0.65, 2)                           # owner 2026-10-30: ultra-thin display flex 0.20 mm (was 0.4; PICA), LEDs 0.65
+    zd = 13.1; DFLEX = 0.40; lid0 = round(zd + DFLEX + 0.65, 2)                           # display flex 0.40 mm (owner 2026-10-31: kept; the 0.20 mm PICA ultra-thin flex is SHELVED), LEDs 0.65
     LID_T = 2.4                                                                           # light plate 2.4 mm (was 1.5): a 0.9 mm straight land under each cone removes the feather edge
     S["envelope"].update(H=round(lid0 + LID_T, 2), note="option B: single board tier; light plate 2.4 mm (2026-10-30, DFM)")   # at each well's bottom rim (rf2_print DFM, HANDOFF 40)
     S["shell"].update(wall_z=(0.0, lid0), lid_z=(lid0, round(lid0 + LID_T, 2)))

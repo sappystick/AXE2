@@ -2,7 +2,7 @@
 
 Every owner-supplied source mapped to the areas it can touch. Status: ADOPTED (in the model now), PROPOSED (worth doing, owner / next study), FEASIBLE-NOT-ADOPTED, REJECTED (with the reason), OPEN, BLOCKED (a rule stops it: see docs/RULE_NEAR_MISSES.md).
 
-Counts: ADOPTED 9, PROPOSED 8, FEASIBLE 1, REJECTED 8, OPEN 1, BLOCKED 1
+Counts: ADOPTED 8, PROPOSED 7, FEASIBLE 1, REJECTED 8, OPEN 1, BLOCKED 1, SHELVED 2
 
 | Area | Idea | Source | Status | Numbers | Effect | Rule near-miss | Next |
 |---|---|---|---|---|---|---|---|
@@ -21,8 +21,8 @@ Counts: ADOPTED 9, PROPOSED 8, FEASIBLE 1, REJECTED 8, OPEN 1, BLOCKED 1
 | Cord: flex construction | two unbonded plies (2 oz HV / power + 1/2 oz ultra-thin signal) | PICA ultra-thin FPC | REJECTED | stacked: +542 pF/m on the TX strips (pair 28.1 pF/m); offset: 15.2 mm wide | - | - | - |
 | Head: display board (522 LEDs) | metal-core (aluminium) LED PCB | MegaPlus LED / lighting PCB | REJECTED | disc r 40 mm: drift 118485.02 x noise; disc r 100 mm: drift 745751.54 x noise | - | - | keep the flex on a non-metal light plate |
 | Control chassis: TXD current loop | heavy copper (to 17 oz) | MegaPlus PCB | PROPOSED | outside the coil field | lower I2R in the TX loop if needed | - | only if the TXD thermal budget asks |
-| Head: display flex (522 LEDs) | PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm) | PICA ultra-thin FPC | ADOPTED | flex 0.4 -> 0.2 mm; head 16.55 -> 16.35 mm | thinner head; same LEDs, same refresh | - | LED power-trace width on thin copper; LED height tolerance in the wells |
-| Head: display data | balance the 4 LED chains (48 / 101 / 158 / 215 -> about 131 each) | rf2_wiring LED stream | PROPOSED | frame 877.5 us -> about 536 us at 8 MHz (quiet slot 1162 us) | more margin per pulse; the display substrate does not change the refresh | - | re-route the chains in rf2_ledgrid |
+| Head: display flex (522 LEDs) | PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm) | PICA ultra-thin FPC | SHELVED | flex stays 0.4 mm (head 16.55 mm); option 0.2 mm -> head 16.35 mm | kept on the shelf by the owner | - | revisit with the display routing |
+| Head: display data | balance the 4 LED chains (48 / 101 / 158 / 215 -> about 131 each) | rf2_wiring LED stream | SHELVED | frame 877.5 us -> about 536 us at 8 MHz (quiet slot 1162 us) | more margin per pulse; the display substrate does not change the refresh | - | re-route the chains in rf2_ledgrid |
 | Cord: strain relief at the gland | strain-relief pin through a loop of the flex (SDC 2300 coil-cable pin 4308-0031 pattern) | Minelab SDC 2300 parts | PROPOSED | - | no pull on the soldered TX strips | - | add the pin to the gland boss |
 | Hinge pass-through (ICD I5) | single-layer reverse-bared / Minco dynamic flex plies | Tramonto, Minco guide | PROPOSED | single layer required for dynamic flexing; bend >= 10 x thickness | longer clock-spring life | - | re-check the I5 bend radius with 0.15 mm plies |
 | REF3 reference coils (X / Y faces) | Minco Flex-Coils, 3 FEP segments per face | Minco FC01 | FEASIBLE-NOT-ADOPTED | R 196.5 -> 245.5 ohm, e_ref 2.48 -> 2.64 nV/rtHz, thickness 1.1 mm | repeatable orientation; REF3T on the same flex as the cord joint | - | only if canceller balance needs it |
@@ -32,5 +32,5 @@ Counts: ADOPTED 9, PROPOSED 8, FEASIBLE 1, REJECTED 8, OPEN 1, BLOCKED 1
 | Telescope clamps (P3.4) | cam lever + elastomer pressure block through a window in the outer profile | Minelab SDC 2300 parts (8008-0061, 8008-0062); Garrett nylon cam lock | ADOPTED | P0.6 'cam clamp hardware' decided | infinite length adjustment, no spring buttons | - | print the lever / block; clamp-force test |
 | TXD + PWR | 8-layer rigid-flex second source | FPCexpress | PROPOSED | rigid-flex with PTH through rigid and flex | removes the board-to-board cable | - | - |
 | Battery dock signal contacts | photo-etched BeCu C172 fingers | Tech Etch etch & form | ADOPTED | 0.63 N at 0.8 mm, 390 MPa | replaces the unobtainable Mill-Max sheet | - | contact resistance / cycle test |
-| Battery pack | 7S1P Molicel P45B, drill-style rail | Molicel P45B datasheet | ADOPTED | drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 3.5 h continuous boost (rated case), 5.8 h scan, 2415 g sy | -188 g pack | RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (3.5 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.8 vs 6.0) | rail dock geometry in rf2_chassis |
+| Battery pack | 7S1P Molicel P45B, drill-style rail | Molicel P45B datasheet | ADOPTED | drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 2.6 h continuous boost (rated case), 5.2 h scan, 2415 g sy | -188 g pack | RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (2.6 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.2 vs 6.0) | rail dock geometry in rf2_chassis |
 | Battery pack | 7S RC LiPo in a hard shell | Gens Ace listing | REJECTED | 157 Wh/kg bare, no BMS | - | - | - |

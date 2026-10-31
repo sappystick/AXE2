@@ -249,8 +249,8 @@ def main():
     bore = min(s["tubes"]["inner"]) - 2 * s["wall"]
     import rf2_cordflex as CFX                                                                    # owner 2026-10-30: cord flex split at REF3T (HANDOFF 45)
     sg = CFX.segments(st, ext, stretch)
-    c["cord_flex"] = dict(ok=CFX.WIDTH <= bore - 2.0 and 2 * CFX.BEND_R <= bore - 4.0 and sg["seg1_dynamic_mm"] <= CFX.TE_LEN_PREF and sg["seg2_static_mm"] <= CFX.TE_LEN_PREF,
-                          width_mm=round(CFX.WIDTH, 2), inner_bore_min_mm=bore, travel_mm=round(stretch), rolling_loop_bend_r_mm=CFX.BEND_R, segments=sg, te_preferred_max_mm=round(CFX.TE_LEN_PREF),
+    c["cord_flex"] = dict(ok=abs(sg["tx_length_m"] - CFX.TX_LEN_M) <= 0.01 * CFX.TX_LEN_M and CFX.WIDTH <= bore - 2.0 and 2 * CFX.BEND_R <= bore - 4.0 and sg["seg1_dynamic_mm"] <= CFX.TE_LEN_PREF and sg["seg2_static_mm"] <= CFX.TE_LEN_PREF,
+                          width_mm=round(CFX.WIDTH, 2), tx_loop_R_ohm=round(CFX.R_TX_LOOP, 3), inner_bore_min_mm=bore, travel_mm=round(stretch), rolling_loop_bend_r_mm=CFX.BEND_R, segments=sg, te_preferred_max_mm=round(CFX.TE_LEN_PREF),
                           note="single-layer 2 oz flex; segment 1 head -> REF3T with a rolling loop storing half the travel, segment 2 REF3T -> hinge static; coverlay rating UNVERIFIED (vendor >= 630 V)")
     run = 30.0; twist = 180.0 / run
     c["hinge_pass_through"] = dict(ok=twist <= s["twist_max_deg_per_mm"] and 12.0 >= s["bend_min"], axial_run_mm=run, twist_deg_per_mm=round(twist, 1), bend_r_mm=12.0,

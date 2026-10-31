@@ -47,6 +47,7 @@
   "cord_flex": {
    "ok": true,
    "width_mm": 15.7,
+   "tx_loop_R_ohm": 0.28,
    "inner_bore_min_mm": 18.6,
    "travel_mm": 550,
    "rolling_loop_bend_r_mm": 6.0,
@@ -421,11 +422,11 @@
  },
  "ok": true,
  "timings_s": {
-  "build": 1.89,
-  "containment": 0.26,
-  "fold search (cached)": 29.01,
-  "deployed clearance": 0.66,
-  "exports and views": 7.15,
-  "total": 43.0
+  "build": 1.68,
+  "containment": 0.27,
+  "fold search (cached)": 0.01,
+  "deployed clearance": 0.6,
+  "exports and views": 5.69,
+  "total": 12.2
  }
 }

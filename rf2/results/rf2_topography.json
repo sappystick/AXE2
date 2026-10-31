@@ -37,7 +37,7 @@
    "chassis": "pass",
    "system": "pass"
   },
-  "numbers": "runtime 5.8 h scan / 3.5 h boost; cartridge [92.2, 76.2, 53.1] mm",
+  "numbers": "runtime 5.2 h scan / 2.6 h boost; cartridge [92.2, 76.2, 53.1] mm",
   "open": "cell holder, contacts, latch; BQ76952 schematic"
  },
  {
@@ -67,7 +67,7 @@
    "system": "pass",
    "study:continuous": "pass"
   },
-  "numbers": "chassis surface rise 10.5 K in continuous boost; TXD echo drift 0.003 x noise; switch TJ 100.8 C",
+  "numbers": "chassis surface rise 10.5 K in continuous boost; TXD echo drift 0.003 x noise; switch TJ 89.9 C",
   "open": "driver + buck SPICE / schematics; venting; boards"
  },
  {

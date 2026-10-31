@@ -155,17 +155,17 @@
    "area": "Head: display flex (522 LEDs)",
    "idea": "PICA ultra-thin adhesiveless flex (0.20 +- 0.08 mm)",
    "source": "PICA ultra-thin FPC",
-   "status": "ADOPTED",
-   "numbers": "flex 0.4 -> 0.2 mm; head 16.55 -> 16.35 mm",
-   "effect": "thinner head; same LEDs, same refresh",
+   "status": "SHELVED",
+   "numbers": "flex stays 0.4 mm (head 16.55 mm); option 0.2 mm -> head 16.35 mm",
+   "effect": "kept on the shelf by the owner",
    "rule": "-",
-   "next": "LED power-trace width on thin copper; LED height tolerance in the wells"
+   "next": "revisit with the display routing"
   },
   {
    "area": "Head: display data",
    "idea": "balance the 4 LED chains (48 / 101 / 158 / 215 -> about 131 each)",
    "source": "rf2_wiring LED stream",
-   "status": "PROPOSED",
+   "status": "SHELVED",
    "numbers": "frame 877.5 us -> about 536 us at 8 MHz (quiet slot 1162 us)",
    "effect": "more margin per pulse; the display substrate does not change the refresh",
    "rule": "-",
@@ -266,9 +266,9 @@
    "idea": "7S1P Molicel P45B, drill-style rail",
    "source": "Molicel P45B datasheet",
    "status": "ADOPTED",
-   "numbers": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 3.5 h continuous boost (rated case), 5.8 h scan, 2415 g sy",
+   "numbers": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 2.6 h continuous boost (rated case), 5.2 h scan, 2415 g sy",
    "effect": "-188 g pack",
-   "rule": "RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (3.5 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.8 vs 6.0)",
+   "rule": "RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (2.6 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.2 vs 6.0)",
    "next": "rail dock geometry in rf2_chassis"
   },
   {
@@ -283,12 +283,13 @@
   }
  ],
  "counts": {
-  "ADOPTED": 9,
-  "PROPOSED": 8,
+  "ADOPTED": 8,
+  "PROPOSED": 7,
   "FEASIBLE": 1,
   "REJECTED": 8,
   "OPEN": 1,
-  "BLOCKED": 1
+  "BLOCKED": 1,
+  "SHELVED": 2
  },
  "ok": true
 }

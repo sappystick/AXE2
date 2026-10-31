@@ -5,15 +5,15 @@
    "ok": true,
    "parts": {
     "SHELL_LOWER": {
-     "triangles": 3240,
+     "triangles": 3248,
      "edges_not_2": 0,
-     "volume_cm3": 69.706,
+     "volume_cm3": 69.997,
      "ok": true
     },
     "LID": {
      "triangles": 155512,
      "edges_not_2": 0,
-     "volume_cm3": 86.61,
+     "volume_cm3": 86.625,
      "ok": true
     },
     "COIL_CHANNEL": {
@@ -109,7 +109,7 @@
     "ENV_LED": {
      "triangles": 25934,
      "edges_not_2": 0,
-     "volume_cm3": 9.863,
+     "volume_cm3": 17.799,
      "ok": true
     },
     "LITZ": {
@@ -127,7 +127,7 @@
     "SHIELD_COAT": {
      "triangles": 2052,
      "edges_not_2": 0,
-     "volume_cm3": 0.457,
+     "volume_cm3": 0.464,
      "ok": true
     },
     "REF3_FORMER": {
@@ -145,14 +145,14 @@
      "r_max": 116.5,
      "z": [
       0.0,
-      13.95
+      14.15
      ]
     },
     "LID": {
      "r_max": 116.5,
      "z": [
       12.6,
-      16.35
+      16.55
      ]
     },
     "COIL_CHANNEL": {
@@ -264,7 +264,7 @@
      "r_max": 113.0,
      "z": [
       13.1,
-      13.95
+      14.15
      ]
     },
     "LITZ": {
@@ -285,7 +285,7 @@
      "r_max": 114.5,
      "z": [
       1.2,
-      13.95
+      14.15
      ]
     }
    }
@@ -356,8 +356,8 @@
    "ok": true,
    "leds": 522,
    "sites_inside_outline": true,
-   "led_top_z": 13.95,
-   "lid_underside_z": 13.95,
+   "led_top_z": 14.15,
+   "lid_underside_z": 14.15,
    "flex_to_gland_boss_mm": 1.0,
    "led_seat_gap_to_lid": 0.0,
    "lid": "opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 against 0.41 for a straight bore, liner reflectance ASSUMED 0.90); wall liner = white diffuse non-metal paint (TiO2); a metallised liner is banned (rule 5: metal near the coil); well filled flush with clear resin (seals the plate)"
@@ -379,7 +379,7 @@
   },
   "mass_g": {
    "items": {
-    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 219.3,
+    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 219.7,
     "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": 129.2,
     "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": 37.4,
     "transmit litz (26 turns, 6.9 g/m)": 123.8,
@@ -387,7 +387,7 @@
     "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": 58.5,
     "hardware, cable gland, yoke lug (ASSUMED)": 40.0
    },
-   "without_bay_potting": 726,
+   "without_bay_potting": 727,
    "bay_full_fill_potting": 185,
    "islands_only_potting": 26,
    "potting_source": "islands-only estimate",
@@ -399,7 +399,7 @@
  },
  "ok": true,
  "vertical_budget_mm": {
-  "total": 16.35,
+  "total": 16.55,
   "bay": [
    3.8,
    13.1
@@ -428,7 +428,7 @@
    ],
    "LED": [
     13.1,
-    13.95
+    14.15
    ]
   },
   "baseline_head": 47.1

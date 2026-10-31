@@ -75,7 +75,11 @@ STEPS = [
     dict(id="chassis", cmd=["rf2/rf2_chassis.py"], inputs=["rf2/rf2_cordflex.py", "rf2/rf2_chassis.py", "rf2/rf2_upper.py", "src/simcache.py", H + "out/rf2_ref3.json"], deps=["head:BF", "ref3", "timing-cord", "slim"],
          check=jcheck("rf2/chassis_out/rf2_chassis_check.json", lambda d: d["ok"]), timeout=1800),
     dict(id="audio", cmd=["rf2/rf2_audio.py"], inputs=["rf2/rf2_audio.py"], deps=[], check=jcheck("rf2/results/rf2_audio.json", lambda d: d["all_pass"])),
-    dict(id="system", cmd=["rf2/rf2_system.py"], inputs=["rf2/rf2_cordflex.py", "rf2/rf2_system.py", "rf2/rf2_continuous.py", "rf2/rf2_zones.py", "rf2/rf2_audio.py", "rf2/rf2_upper.py", "rf2/rf2_chassis.py"], deps=["audio", "chassis"],
+    dict(id="continuous", cmd=["rf2/rf2_continuous.py"], inputs=["rf2/rf2_continuous.py", "rf2/rf2_cordflex.py"], deps=[], outputs=["rf2/results/rf2_continuous.json"]),
+    dict(id="txd-spice", cmd=["rf2/rf2_txd_spice.py"], inputs=["rf2/rf2_txd_spice.py", "rf2/rf2_continuous.py", "rf2/rf2_cordflex.py", "src/simcache.py"], deps=["continuous"],
+         outputs=["rf2/results/rf2_txd_spice.json"], timeout=3600),
+    dict(id="cordflex-spec", cmd=["rf2/rf2_cordflex.py"], inputs=["rf2/rf2_cordflex.py", "rf2/rf2_chassis.py"], deps=["chassis"], outputs=["docs/CORD_FLEX_SPEC.md"]),
+    dict(id="system", cmd=["rf2/rf2_system.py"], inputs=["rf2/rf2_cordflex.py", "rf2/rf2_system.py", "rf2/rf2_continuous.py", "rf2/rf2_zones.py", "rf2/rf2_audio.py", "rf2/rf2_upper.py", "rf2/rf2_chassis.py", "rf2/results/rf2_continuous.json"], deps=["audio", "chassis", "continuous"],
          check=jcheck("rf2/results/rf2_system.json", lambda d: d["all_pass"]), timeout=1800),
     dict(id="ui", cmd=["rf2/rf2_ui.py"], inputs=["rf2/rf2_ui.py", "rf2/rf2_audio.py", H + "rf2_ledgrid.py"], deps=["audio"], check=jcheck(H + "out/rf2_ui.json")),
     dict(id="lightplate", cmd=["rf2/rf2_lightplate.py"], inputs=["rf2/rf2_lightplate.py", H + "rf2_ledgrid.py"], deps=[], check=jcheck(H + "out/rf2_lightplate.json")),
@@ -118,7 +122,7 @@ STEPS = [
          outputs=[H + "out/rf2_cutaway.png", H + "out/rf2_exploded.png"], timeout=3600),
     dict(id="display-figure", group="render", cmd=[H + "rf2_ledgrid.py"], inputs=[H + "rf2_ledgrid.py"], deps=[], outputs=[H + "out/rf2_display.png"]),
 ] + [dict(id=f"study:{n}", group="studies", cmd=[f"rf2/rf2_{n}.py"], inputs=[f"rf2/rf2_{n}.py"], deps=[], outputs=[f"rf2/results/rf2_{n}.json"], timeout=7200)
-     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin", "depth_levers", "taper", "rodin", "wave", "hood", "hood_wide", "hood_size", "zones", "mitigation", "layout", "switch", "qualify", "fluxgate", "decaylib", "continuous", "separation")]
+     for n in ("coil_search", "receiver_combo", "ground", "ground_dsp", "timing", "pinpoint", "petal_ring", "disk_rx", "emi", "thin", "depth_levers", "taper", "rodin", "wave", "hood", "hood_wide", "hood_size", "zones", "mitigation", "layout", "switch", "qualify", "fluxgate", "decaylib", "separation")]
 
 
 def finger(s):

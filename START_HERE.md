@@ -94,7 +94,11 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - MP1 v2 settling closed in SPICE: 13.66 us vs the 16.48 us first gate, using +-12 V clamp rails and a series isolation switch. Parts: TMUX7212, TPS65131, TL431 (worst case 14.58 us).
     - The DFM wall metric is now max(ray, inscribed sphere).
     - Lid light plate 2.4 mm with a 0.9 mm land: the lid passes, head 16.55 mm, optics 0.825.
-  - **1.2 mm shaft walls + 0.20 mm display flex adopted** (section 49): system 2450 g, head 16.35 mm.
+  - **1.2 mm shaft walls adopted; 0.40 mm display flex kept** (sections 49-50): system 2450 g, head 16.55 mm.
+  - **TXD in SPICE (P1.1) and cord-flex spec (P4.2)** (section 50):
+    - Freewheel switch needed for the flat-top.
+    - The R-limited ramp drops runtime to 2.6 h boost / 5.2 h scan; levers listed.
+    - Readiness 9 / 40.
   - **LED PCB / ultra-thin flex** (section 48):
     - Cord-flex selective copper adopted (producibility FAIL cleared).
     - Two-ply cord and metal-core LED board rejected.

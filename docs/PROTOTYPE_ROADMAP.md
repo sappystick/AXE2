@@ -2,7 +2,7 @@
 
 'Ready to prototype' = every gate below green in this repository. That is MODELED and tool-checked: no fabricator review, no bench test (rule 3).
 
-**Done: 7 of 40. Ready to start now: P0.2, P0.6, P1.1, P1.3, P1.7, P1.8, P4.2.**
+**Done: 9 of 40. Ready to start now: P0.2, P0.6, P1.2, P1.3, P1.7, P1.8, P2.1.**
 
 **Critical path:** P0.1 -> P1.1 -> P1.2 -> P2.2 -> P2.8 -> P3.1 -> P5.1 -> P5.2
 
@@ -23,8 +23,8 @@ Already in place: head shells / trays / coil channel (head:BF); TXJ, TXF, MP1 v1
 
 | ID | Deliverable | Needs | Gate | Done means | Status |
 |---|---|---|---|---|---|
-| P1.1 | TXD schematic: C3M0280090J + UCC5350, flat-top PWM current loop (333 uH, 8.06 / 12.74 A), US3M clamp + film cap, bulk bank, shunt + current sense, TMP117 therm -> TXSTAT | P0.1, P0.3 | files `rf2/results/rf2_txd_spice.json` | SPICE: current loop, turn-off, clamp, ratings in continuous boost | **TODO** (start now) |
-| P1.2 | PWR schematic: LMR36520 +5V_AUX, hysteretic regenerative buck 460 V -> VBAT (C3M + UCC5350 + US3M + L), cartridge contacts | P0.1, P1.1 | files `rf2/results/rf2_pwr_spice.json` | SPICE: regulation of the clamp at 460 V, efficiency, start-up, fault | **TODO** |
+| P1.1 | TXD schematic: C3M0280090J + UCC5350, flat-top PWM current loop (333 uH, 8.06 / 12.74 A), US3M clamp + film cap, bulk bank, shunt + current sense, TMP117 therm -> TXSTAT | P0.1, P0.3 | files `rf2/results/rf2_txd_spice.json` | SPICE: current loop, turn-off, clamp, ratings in continuous boost | **DONE** |
+| P1.2 | PWR schematic: LMR36520 +5V_AUX, hysteretic regenerative buck 460 V -> VBAT (C3M + UCC5350 + US3M + L), cartridge contacts | P0.1, P1.1 | files `rf2/results/rf2_pwr_spice.json` | SPICE: regulation of the clamp at 460 V, efficiency, start-up, fault | **TODO** (start now) |
 | P1.3 | MP1 v2 schematic (the closed option) | P0.5 | step `board:MP1V2` | netlist entry | **TODO** (start now) |
 | P1.4 | HB2-M schematic: RP2354A, TLV755P, piezo bridge (2 x AHCT + 680 ohm), RS-485 + TPD4E1B06, I2C to BQ76952, FFC + cord connectors | P0.1, P0.6 | step `board:HB2M` | netlist entry, logic levels checked | **TODO** |
 | P1.5 | HB2-G schematic: 4 x KSC2 TE, 3 x SK9822 + AHCT, screen FPC, FFC | P0.1, P0.6 | step `board:HB2G` | netlist entry | **TODO** |
@@ -37,7 +37,7 @@ Already in place: head shells / trays / coil channel (head:BF); TXJ, TXF, MP1 v1
 
 | ID | Deliverable | Needs | Gate | Done means | Status |
 |---|---|---|---|---|---|
-| P2.1 | TXD board in the chassis front cavity: outline from rf2_chassis, HV clearance 1.0 mm, heat-sink + vent alignment | P1.1 | step `board:TXD` | KiCad DRC 0; fit check in chassis | **TODO** |
+| P2.1 | TXD board in the chassis front cavity: outline from rf2_chassis, HV clearance 1.0 mm, heat-sink + vent alignment | P1.1 | step `board:TXD` | KiCad DRC 0; fit check in chassis | **TODO** (start now) |
 | P2.2 | PWR board in the chassis spine cavity | P1.2 | step `board:PWR` | KiCad DRC 0; fit check | **TODO** |
 | P2.3 | HB2-M board under the grip base | P1.4 | step `board:HB2M` | KiCad DRC 0; fit check | **TODO** |
 | P2.4 | HB2-G board in the grip head + FFC length from the grip core route | P1.5 | step `board:HB2G` | KiCad DRC 0; fit check | **TODO** |
@@ -65,7 +65,7 @@ Already in place: head shells / trays / coil channel (head:BF); TXJ, TXF, MP1 v1
 | ID | Deliverable | Needs | Gate | Done means | Status |
 |---|---|---|---|---|---|
 | P4.1 | Harness drawings with lengths from the 3-D routes (cord, hinge pass-through, grip FFC, head harness) | P0.2, P3.3 | files `docs/HARNESS.md` | every wire end, length, sleeve, voltage class | **TODO** |
-| P4.2 | Coil-cord specification (1000 V pair + power + STP pairs, coil OD 17 mm, stretch 4.4:1) | P0.1 | files `docs/COIL_CORD_SPEC.md` | vendor quote-able spec | **TODO** (start now) |
+| P4.2 | Cord-flex specification (owner 2026-10-30: the coil cord is a split long flex; TX strips, power, diff + guarded REF pairs, hipot, lengths) | P0.1 | files `docs/CORD_FLEX_SPEC.md` | vendor quote-able spec | **DONE** |
 | P4.3 | Winding specs: rim coil (exists), REF3 face coils + solenoid | P3.5 | files `docs/REF3_WINDING.md` | turns, layers, wire, terminations | **TODO** |
 | P4.4 | Potting and sealing process (syntactic foam / silicone / 832TC zones; O-rings; vents) | P3.1 | files `docs/POTTING_SEALING.md` | materials logged, volumes from the models | **TODO** |
 | P4.5 | BOM with sources, EOL flags (Murata piezo) and alternates | P1.1, P1.2, P1.4, P1.5, P1.6 | files `docs/BOM.csv` | every line VERIFIED or marked | **TODO** |

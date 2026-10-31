@@ -118,10 +118,10 @@ def part_g():
     """PICA ultra-thin FPC: 18 um Cu on 12.5 um PI (or 3 um on 25 um), adhesiveless / TPI, finished down to 0.20 +- 0.08 mm; dynamic and extra-long flex"""
     hs = json.load(open(os.path.join(HERE, "head", "out_BF", "rf2_head_spec.json")))
     led = hs["boards_inner"]["LED"]["z"]; t_now = round(led[1] - led[0], 2); H = hs["envelope"]["H"]
-    t_was = 0.40                                                                                  # the display flex before the owner adopted 0.20 mm (2026-10-30)
-    return dict(display_flex_was_mm=t_was, display_flex_now_mm=t_now, tol_mm=0.08, head_H_was_mm=round(H + (t_was - t_now), 2), head_H_now_mm=H,
-                verdict=f"ADOPTED: the 522-LED flex at {t_now} mm (was {t_was} mm) lowers the head {t_was - t_now:.2f} mm to {H} mm; open: the +-0.08 mm tolerance moves the LEDs in the light-plate wells, "
-                        "thin copper needs wider LED power traces, stiffeners under the LED pads add local thickness")
+    t_shelf = 0.20                                                                                # PICA ultra-thin option: SHELVED by the owner (2026-10-31), the 0.40 mm flex stays
+    return dict(display_flex_now_mm=t_now, shelved_option_mm=t_shelf, tol_mm=0.08, head_H_now_mm=H, head_H_with_option_mm=round(H - (t_now - t_shelf), 2),
+                verdict=f"SHELVED: the 522-LED flex stays at {t_now} mm (head {H} mm); the {t_shelf} mm option would lower the head {t_now - t_shelf:.2f} mm, with a +-0.08 mm LED height tolerance in the wells, "
+                        "wider LED power traces on thin copper and stiffeners under the LED pads")
 
 def part_h():
     """two-ply cord flex (2 oz HV / power ply + 1/2 oz ultra-thin signal ply, unbonded): stacking puts the signal ply's guards over the TX strips"""

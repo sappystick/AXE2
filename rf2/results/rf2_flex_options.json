@@ -254,12 +254,12 @@
   "heavy_copper": "17 oz copper is available: an option for the TXD current loop in the chassis (outside the coil field) if its I2R matters"
  },
  "G_ultra_thin": {
-  "display_flex_was_mm": 0.4,
-  "display_flex_now_mm": 0.2,
+  "display_flex_now_mm": 0.4,
+  "shelved_option_mm": 0.2,
   "tol_mm": 0.08,
-  "head_H_was_mm": 16.55,
-  "head_H_now_mm": 16.35,
-  "verdict": "ADOPTED: the 522-LED flex at 0.2 mm (was 0.4 mm) lowers the head 0.20 mm to 16.35 mm; open: the +-0.08 mm tolerance moves the LEDs in the light-plate wells, thin copper needs wider LED power traces, stiffeners under the LED pads add local thickness"
+  "head_H_now_mm": 16.55,
+  "head_H_with_option_mm": 16.35,
+  "verdict": "SHELVED: the 522-LED flex stays at 0.4 mm (head 16.55 mm); the 0.2 mm option would lower the head 0.20 mm, with a +-0.08 mm LED height tolerance in the wells, wider LED power traces on thin copper and stiffeners under the LED pads"
  },
  "H_two_ply_cord": {
   "hv_ply_mm": 9.4,
@@ -276,7 +276,7 @@
   "D: feasible as 3 FEP-laminated segments per face (polyimide too thin for 5 layers); the end runs add 25 % copper and lift e_ref 2.48 -> 2.64 nV/rtHz: packaging gain (repeatable orientation, REF3T on the same flex), not a weight or noise gain",
   "E: not adopted: 50 ohm microwave coax; as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2",
   "F: rejected in the head (a metal core inside the coil is a target); not needed in the pod (LED ring and screen dissipate well under 1 W) {'disc r 40 mm': {'echo_x_gate_noise': 5924250.8, 'drift5K_x_noise': 118485.02}, 'disc r 100 mm': {'echo_x_gate_noise': 37287576.9, 'drift5K_x_noise': 745751.54}}",
-  "G: ADOPTED: the 522-LED flex at 0.2 mm (was 0.4 mm) lowers the head 0.20 mm to 16.35 mm; open: the +-0.08 mm tolerance moves the LEDs in the light-plate wells, thin copper needs wider LED power traces, stiffeners under the LED pads add local thickness",
+  "G: SHELVED: the 522-LED flex stays at 0.4 mm (head 16.55 mm); the 0.2 mm option would lower the head 0.20 mm, with a +-0.08 mm LED height tolerance in the wells, wider LED power traces on thin copper and stiffeners under the LED pads",
   "H: rejected: stacked, a guarded pair over a TX strip adds about 542 pF/m (the whole strip pair is 28.1 pF/m); offset side by side the plies are 15.2 mm wide, no gain over one ply. Keep one ply with selective copper (2 oz TX / power, 1/2 oz signal): the 0.15 mm traces then meet the 5 x thickness guideline"
  ],
  "ok": true
