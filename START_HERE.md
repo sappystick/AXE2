@@ -95,6 +95,7 @@ python3 run.py --with-render --with-studies   # renders and physics studies too
     - The DFM wall metric is now max(ray, inscribed sphere).
     - Lid light plate 2.4 mm with a 0.9 mm land: the lid passes, head 16.55 mm, optics 0.825.
   - **1.2 mm shaft walls adopted; 0.40 mm display flex kept** (sections 49-50): system 2450 g, head 16.55 mm.
+  - **Component selection by weighted factors** (section 51, `docs/COMPONENT_SELECTION.md`): incumbents kept; the battery is flagged (P30B 7S2P scores higher on runtime).
   - **TXD in SPICE (P1.1) and cord-flex spec (P4.2)** (section 50):
     - Freewheel switch needed for the flat-top.
     - The R-limited ramp drops runtime to 2.6 h boost / 5.2 h scan; levers listed.

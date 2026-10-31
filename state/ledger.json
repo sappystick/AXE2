@@ -704,31 +704,31 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 3.1,
+   "seconds": 2.8,
    "why": "",
    "tail": "",
-   "fingerprint": "672b8fbecfbe0d54",
+   "fingerprint": "d9691911f4875a4d",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "972979000d",
+    "run.py": "718bcafc48",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-31T00:12:37",
+   "finished": "2026-10-31T00:23:04",
    "log": "state/logs/selftest.log",
    "history": [
-    3.1,
     2.8,
     2.8,
     2.7,
     2.9,
     3.1,
     3.0,
-    3.1
+    3.1,
+    2.8
    ]
   },
   "study:mp1v2_chain": {
@@ -982,26 +982,26 @@
   "readiness": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.0,
+   "seconds": 0.1,
    "why": "",
    "tail": "",
-   "fingerprint": "6a358f896b38d531",
+   "fingerprint": "c835a5ae06a05402",
    "inputs": {
     "rf2/rf2_readiness.py": "5654f874f2",
-    "state/ledger.json": "d83520acfa",
+    "state/ledger.json": "16390878a9",
     "rf2/results/rf2_icd.json": "93dd81c6b8"
    },
-   "finished": "2026-10-31T00:14:07",
+   "finished": "2026-10-31T00:23:05",
    "log": "state/logs/readiness.log",
    "history": [
+    0.0,
+    0.0,
+    0.0,
     0.1,
     0.0,
     0.0,
-    0.0,
-    0.0,
     0.1,
-    0.0,
-    0.0
+    0.1
    ]
   },
   "timing-cord": {
@@ -1344,26 +1344,33 @@
    "history": [
     2.2
    ]
+  },
+  "select": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.4,
+   "why": "",
+   "tail": "",
+   "fingerprint": "555f6b875a31847c",
+   "inputs": {
+    "rf2/rf2_select.py": "775927505c",
+    "rf2/rf2_continuous.py": "b0fac0f125",
+    "rf2/rf2_cordflex.py": "f3b8429f5b",
+    "rf2/results/rf2_system.json": "7c8742ad0b",
+    "rf2/results/rf2_switch.json": "d924e78e26",
+    "rf2/results/rf2_wire_options.json": "c8a6aa4014",
+    "rf2/results/rf2_pack_options.json": "b7d066fc13",
+    "rf2/results/rf2_shaft_options.json": "ec39eb88df",
+    "rf2/chassis_out/rf2_chassis_check.json": "aa1b188164"
+   },
+   "finished": "2026-10-31T00:23:05",
+   "log": "state/logs/select.log",
+   "history": [
+    0.4
+   ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T14:54:38",
-   "seconds": 16.6,
-   "results": {
-    "study:continuous": "pass",
-    "study:separation": "pass"
-   }
-  },
-  {
-   "finished": "2026-10-30T15:00:47",
-   "seconds": 4.8,
-   "results": {
-    "pod": "pass",
-    "selftest": "pass",
-    "display3": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T15:57:46",
    "seconds": 1.4,
@@ -1979,6 +1986,22 @@
   {
    "finished": "2026-10-31T00:14:07",
    "seconds": 0.0,
+   "results": {
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-31T00:23:05",
+   "seconds": 3.2,
+   "results": {
+    "selftest": "pass",
+    "select": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-31T00:23:05",
+   "seconds": 0.1,
    "results": {
     "readiness": "pass"
    }

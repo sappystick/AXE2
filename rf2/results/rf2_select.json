@@ -1,0 +1,970 @@
+{
+ "status": "MODELED: factor values from the study results and the datasheet log (ASSUMED where marked); weights owner-tunable",
+ "weights": {
+  "mass_g": 0.2,
+  "runtime_h": 0.2,
+  "signal": 0.2,
+  "margin": 0.15,
+  "attach": 0.1,
+  "footprint": 0.1,
+  "verify": 0.05
+ },
+ "recommend_at": 1.05,
+ "baseline_runtime": {
+  "boost": 2.6,
+  "scan": 5.2
+ },
+ "slots": {
+  "TX switch (TXD Q1 / Q2)": [
+   {
+    "name": "Wolfspeed C3M0280090J (SiC, D2PAK-7)",
+    "mass_g": 1.5,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": 14.04,
+    "margin": 1.96,
+    "attach": 0,
+    "footprint": 158,
+    "verify": 1.0,
+    "hard": {
+     "rule6": true
+    },
+    "note": "incumbent; RDS 416 mohm at 150 C (+10 %)",
+    "units": {
+     "signal": "first gate us"
+    },
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.0,
+     "signal": 1.0,
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "Infineon IPB65R095C7 (Si CoolMOS, D2PAK)",
+    "mass_g": 1.5,
+    "runtime_h": 3.13,
+    "scan_h": 5.65,
+    "signal": 17.1,
+    "margin": 1.41,
+    "attach": 0,
+    "footprint": 158,
+    "verify": 1.0,
+    "hard": {
+     "rule6": true
+    },
+    "note": "RDS 202 mohm typ at 150 C (logged); Coss about 400 pF at 26 V (cliff at the tail voltage)",
+    "units": {
+     "signal": "first gate us"
+    },
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.204,
+     "signal": 0.821,
+     "margin": 0.719,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 0.959,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "GaN Systems GS-065-011-1-L (GaN, PDFN 5x6)",
+    "mass_g": 0.2,
+    "runtime_h": 2.95,
+    "scan_h": 5.49,
+    "signal": 14.21,
+    "margin": 1.41,
+    "attach": 1,
+    "footprint": 30,
+    "verify": 0.7,
+    "hard": {
+     "rule6": true
+    },
+    "note": "RDS 150 mohm at 25 C, x2 hot ASSUMED; 0-6 V gate (driver change); no avalanche rating",
+    "units": {
+     "signal": "first gate us"
+    },
+    "factor_scores": {
+     "mass_g": 1.001,
+     "runtime_h": 1.135,
+     "signal": 0.988,
+     "margin": 0.719,
+     "attach": 0.5,
+     "footprint": 2.0,
+     "verify": 0.7
+    },
+    "score": 1.018,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "2 x C3M0280090J in parallel",
+    "mass_g": 3.0,
+    "runtime_h": 3.11,
+    "scan_h": 5.64,
+    "signal": 15.25,
+    "margin": 1.96,
+    "attach": 1,
+    "footprint": 316,
+    "verify": 1.0,
+    "hard": {
+     "rule6": true
+    },
+    "note": "half the resistance, twice the Coss",
+    "units": {
+     "signal": "first gate us"
+    },
+    "factor_scores": {
+     "mass_g": 0.999,
+     "runtime_h": 1.196,
+     "signal": 0.921,
+     "margin": 1.0,
+     "attach": 0.5,
+     "footprint": 0.5,
+     "verify": 1.0
+    },
+    "score": 0.923,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   }
+  ],
+  "Coil litz (26 turns)": [
+   {
+    "name": "Rubadue TXXL66/38FXXX-2(MWXX) (Triple FEP, OD 1.372 mm)",
+    "mass_g": 126.0,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 2.17,
+    "attach": 0,
+    "footprint": 1.882,
+    "verify": 0.9,
+    "hard": {
+     "rule6": true,
+     "fit": true
+    },
+    "note": "0.6 ohm, 50-100 khz",
+    "incumbent": true,
+    "v_rating": 1000.0,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.0,
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "Rubadue SXXL100/38FX-2(MWXX) (Single FEP, OD 1.417 mm)",
+    "mass_g": 164.7,
+    "runtime_h": 3.01,
+    "scan_h": 5.54,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 2.008,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true
+    },
+    "note": "0.396 ohm, 50-100 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 0.984,
+     "runtime_h": 1.158,
+     "margin": 0.65,
+     "footprint": 0.937,
+     "verify": 1.0
+    },
+    "score": 0.957,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   },
+   {
+    "name": "Rubadue SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm)",
+    "mass_g": 164.7,
+    "runtime_h": 3.01,
+    "scan_h": 5.54,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 2.008,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true
+    },
+    "note": "0.396 ohm, 50-100 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 0.984,
+     "runtime_h": 1.158,
+     "margin": 0.65,
+     "footprint": 0.937,
+     "verify": 1.0
+    },
+    "score": 0.957,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   },
+   {
+    "name": "Rubadue DXXL66/38FXX-2(MWXX) (Double FEP, OD 1.27 mm)",
+    "mass_g": 117.7,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.613,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true
+    },
+    "note": "0.6 ohm, 50-100 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.003,
+     "runtime_h": 1.0,
+     "margin": 0.65,
+     "footprint": 1.167,
+     "verify": 1.0
+    },
+    "score": 0.95,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   },
+   {
+    "name": "Rubadue DXXL66/38FXX-3(MWXX) (Double FEP, OD 1.372 mm)",
+    "mass_g": 126.0,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.882,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true
+    },
+    "note": "0.6 ohm, 50-100 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.0,
+     "margin": 0.65,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 0.925,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   },
+   {
+    "name": "Rubadue DXXL66/38TXX-2(MWXX) (Double ETFE, OD 1.27 mm)",
+    "mass_g": 117.7,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.613,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true
+    },
+    "note": "0.6 ohm, 50-100 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.003,
+     "runtime_h": 1.0,
+     "margin": 0.65,
+     "footprint": 1.167,
+     "verify": 1.0
+    },
+    "score": 0.95,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   },
+   {
+    "name": "Rubadue DXXL66/38TXX-3(MWXX) (Double ETFE, OD 1.372 mm)",
+    "mass_g": 126.0,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.882,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true
+    },
+    "note": "0.6 ohm, 50-100 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.0,
+     "margin": 0.65,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 0.925,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   },
+   {
+    "name": "Rubadue SXXL66/38FX-2(MWXX) (Single FEP, OD 1.168 mm)",
+    "mass_g": 110.0,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.364,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true
+    },
+    "note": "0.6 ohm, 50-100 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.007,
+     "runtime_h": 1.0,
+     "margin": 0.65,
+     "footprint": 1.38,
+     "verify": 1.0
+    },
+    "score": 0.981,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   }
+  ],
+  "Cord-flex TX strip copper": [
+   {
+    "name": "2 oz (incumbent)",
+    "mass_g": 4.1,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 4.0,
+    "attach": 0,
+    "footprint": 2.35,
+    "verify": 1.0,
+    "hard": {
+     "bend": true,
+     "ampacity": true
+    },
+    "note": "TX loop 0.280 ohm; loop bend 40 x stack (Minco >= 10 x)",
+    "units": {
+     "margin": "bend ratio / 10"
+    },
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.0,
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "3 oz selective on the TX strips",
+    "mass_g": 6.1,
+    "runtime_h": 2.78,
+    "scan_h": 5.35,
+    "signal": null,
+    "margin": 3.23,
+    "attach": 0,
+    "footprint": 2.91,
+    "verify": 0.7,
+    "hard": {
+     "bend": true,
+     "ampacity": true
+    },
+    "note": "TX loop 0.187 ohm; loop bend 32 x stack (Minco >= 10 x)",
+    "units": {
+     "margin": "bend ratio / 10"
+    },
+    "factor_scores": {
+     "mass_g": 0.999,
+     "runtime_h": 1.069,
+     "margin": 1.0,
+     "footprint": 0.808,
+     "verify": 0.7
+    },
+    "score": 0.971,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "1 oz (same width)",
+    "mass_g": 2.0,
+    "runtime_h": 2.04,
+    "scan_h": 4.77,
+    "signal": null,
+    "margin": 5.24,
+    "attach": 0,
+    "footprint": 1.8,
+    "verify": 1.0,
+    "hard": {
+     "bend": true,
+     "ampacity": false
+    },
+    "note": "TX loop 0.560 ohm; loop bend 52 x stack (Minco >= 10 x)",
+    "units": {
+     "margin": "bend ratio / 10"
+    },
+    "factor_scores": {
+     "mass_g": 1.001,
+     "runtime_h": 0.785,
+     "margin": 1.0,
+     "footprint": 1.306,
+     "verify": 1.0
+    },
+    "score": 0.983,
+    "hard_fail": [
+     "ampacity"
+    ],
+    "near_miss": [],
+    "status": "EXCLUDED"
+   }
+  ],
+  "Battery pack": [
+   {
+    "name": "C2: drill-style rail pack, 7S1P Molicel P45B, 2 row(s)",
+    "mass_g": 777,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 25.0,
+    "attach": 0,
+    "footprint": 373.1,
+    "verify": 1.0,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": true,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.0,
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "A: baseline: 7S2P P30B cartridge into an enclosed bay, rear slide",
+    "mass_g": 1000,
+    "runtime_h": 3.47,
+    "scan_h": 6.93,
+    "signal": null,
+    "margin": 33.3,
+    "attach": 0,
+    "footprint": 373.1,
+    "verify": 1.0,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 0.917,
+     "runtime_h": 1.335,
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.072,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "RECOMMEND"
+   },
+   {
+    "name": "B: drill-style rail pack, same 7S2P P30B (bay removed)",
+    "mass_g": 965,
+    "runtime_h": 3.47,
+    "scan_h": 6.93,
+    "signal": null,
+    "margin": 33.3,
+    "attach": 0,
+    "footprint": 457.7,
+    "verify": 1.0,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 0.929,
+     "runtime_h": 1.335,
+     "margin": 1.0,
+     "footprint": 0.815,
+     "verify": 1.0
+    },
+    "score": 1.049,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "C1: drill-style rail pack, 7S1P Molicel P45B, 1 row(s)",
+    "mass_g": 777,
+    "runtime_h": 2.6,
+    "scan_h": 5.2,
+    "signal": null,
+    "margin": 25.0,
+    "attach": 0,
+    "footprint": 377.6,
+    "verify": 1.0,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.0,
+     "margin": 1.0,
+     "footprint": 0.988,
+     "verify": 1.0
+    },
+    "score": 0.998,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "D1: drill-style rail pack, 7S1P LG M50T, 1 row(s)",
+    "mass_g": 777,
+    "runtime_h": 2.92,
+    "scan_h": 5.84,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 376.4,
+    "verify": 0.5,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.123,
+     "margin": 0.65,
+     "footprint": 0.991,
+     "verify": 0.5
+    },
+    "score": 0.923,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "D2: drill-style rail pack, 7S1P LG M50T, 2 row(s)",
+    "mass_g": 777,
+    "runtime_h": 2.92,
+    "scan_h": 5.84,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 373.0,
+    "verify": 0.5,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "runtime_h": 1.123,
+     "margin": 0.65,
+     "footprint": 1.0,
+     "verify": 0.5
+    },
+    "score": 0.924,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "E: drill-style hard shell round a 7S RC LiPo (Gens Ace 5000 mAh 7S 45C)",
+    "mass_g": 1096,
+    "runtime_h": 2.97,
+    "scan_h": 5.94,
+    "signal": null,
+    "margin": 1.0,
+    "attach": 2,
+    "footprint": 584.1,
+    "verify": 0.3,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 0.885,
+     "runtime_h": 1.142,
+     "margin": 0.5,
+     "attach": 0.333,
+     "footprint": 0.639,
+     "verify": 0.3
+    },
+    "score": 0.741,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "F: drill-style small 7S1P P30B, carried with a spare",
+    "mass_g": 616,
+    "runtime_h": 1.73,
+    "scan_h": 3.47,
+    "signal": null,
+    "margin": 16.7,
+    "attach": 0,
+    "footprint": 277.3,
+    "verify": 1.0,
+    "hard": {
+     "cell_current": true
+    },
+    "note": "mass = system delta + 1000 (relative)",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 1.07,
+     "runtime_h": 0.665,
+     "margin": 1.0,
+     "footprint": 1.345,
+     "verify": 1.0
+    },
+    "score": 0.974,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   }
+  ],
+  "Telescope wall": [
+   {
+    "name": "1.2 mm carbon wall",
+    "mass_g": 210,
+    "runtime_h": null,
+    "signal": null,
+    "margin": 2.93,
+    "attach": 0,
+    "footprint": null,
+    "verify": 0.6,
+    "hard": {
+     "sag": true
+    },
+    "note": "tip sag 3.41 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled",
+    "incumbent": true,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "margin": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "1.5 mm carbon wall",
+    "mass_g": 260,
+    "runtime_h": null,
+    "signal": null,
+    "margin": 3.5,
+    "attach": 0,
+    "footprint": null,
+    "verify": 0.6,
+    "hard": {
+     "sag": true
+    },
+    "note": "tip sag 2.86 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 0.98,
+     "margin": 1.0,
+     "verify": 1.0
+    },
+    "score": 0.99,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "1.0 mm carbon wall",
+    "mass_g": 177,
+    "runtime_h": null,
+    "signal": null,
+    "margin": 2.53,
+    "attach": 0,
+    "footprint": null,
+    "verify": 0.6,
+    "hard": {
+     "sag": true
+    },
+    "note": "tip sag 3.96 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 1.014,
+     "margin": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.007,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   },
+   {
+    "name": "0.8 mm carbon wall",
+    "mass_g": 142,
+    "runtime_h": null,
+    "signal": null,
+    "margin": 2.09,
+    "attach": 0,
+    "footprint": null,
+    "verify": 0.6,
+    "hard": {
+     "sag": true
+    },
+    "note": "tip sag 4.79 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled",
+    "incumbent": false,
+    "factor_scores": {
+     "mass_g": 1.029,
+     "margin": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.014,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   }
+  ],
+  "Display flex (522 LEDs)": [
+   {
+    "name": "0.40 mm flex (incumbent, kept)",
+    "mass_g": null,
+    "runtime_h": null,
+    "signal": null,
+    "margin": 1.0,
+    "attach": 0,
+    "footprint": 0.4,
+    "verify": 1.0,
+    "hard": {},
+    "note": "head 16.55 mm",
+    "factor_scores": {
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "0.20 mm PICA ultra-thin (SHELVED by owner)",
+    "mass_g": null,
+    "runtime_h": null,
+    "signal": null,
+    "margin": 0.6,
+    "attach": 1,
+    "footprint": 0.2,
+    "verify": 0.5,
+    "hard": {},
+    "note": "+-0.08 mm tolerance; stiffeners; wider power traces",
+    "shelved": true,
+    "factor_scores": {
+     "margin": 0.6,
+     "attach": 0.5,
+     "footprint": 2.0,
+     "verify": 0.5
+    },
+    "score": 0.912,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "SHELVED"
+   }
+  ],
+  "Clamp / freewheel diode": [
+   {
+    "name": "Nexperia / Diodes US3M (1000 V, SMC)",
+    "mass_g": 0.2,
+    "runtime_h": null,
+    "signal": 23,
+    "margin": 2.17,
+    "attach": 0,
+    "footprint": 56,
+    "verify": 1.0,
+    "hard": {
+     "rule6": true
+    },
+    "note": "Cd 23 pF at 4 V",
+    "factor_scores": {
+     "mass_g": 1.0,
+     "signal": 1.0,
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "Good-Ark ES3J (600 V, SMC)",
+    "mass_g": 0.2,
+    "runtime_h": null,
+    "signal": 40,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 56,
+    "verify": 1.0,
+    "hard": {
+     "rule6": false
+    },
+    "note": "CJ 40 pF",
+    "v_rating": 600,
+    "factor_scores": {
+     "mass_g": 1.0,
+     "signal": 0.575,
+     "margin": 0.65,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 0.804,
+    "hard_fail": [
+     "rule6"
+    ],
+    "near_miss": [
+     "rule 6: 600 V vs 630 V (4.8 % short)"
+    ],
+    "status": "BLOCKED"
+   }
+  ],
+  "Battery-dock signal contacts": [
+   {
+    "name": "photo-etched BeCu fingers (incumbent)",
+    "mass_g": 0.4,
+    "runtime_h": null,
+    "signal": null,
+    "margin": 2.56,
+    "attach": 0,
+    "footprint": 101.6,
+    "verify": 0.7,
+    "hard": {},
+    "note": "0.63 N, stress 39 % of ASSUMED yield",
+    "factor_scores": {
+     "mass_g": 1.0,
+     "margin": 1.0,
+     "footprint": 1.0,
+     "verify": 1.0
+    },
+    "score": 1.0,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "INCUMBENT"
+   },
+   {
+    "name": "Mill-Max 0906 spring pins",
+    "mass_g": 1.0,
+    "runtime_h": null,
+    "signal": null,
+    "margin": null,
+    "attach": 1,
+    "footprint": 40.64,
+    "verify": 0.3,
+    "hard": {},
+    "note": "sheet UNVERIFIED; needs a pin carrier",
+    "factor_scores": {
+     "mass_g": 1.0,
+     "attach": 0.5,
+     "footprint": 2.0,
+     "verify": 0.429
+    },
+    "score": 1.048,
+    "hard_fail": [],
+    "near_miss": [],
+    "status": "KEEP INCUMBENT"
+   }
+  ]
+ },
+ "best": {
+  "Battery pack": "A: baseline: 7S2P P30B cartridge into an enclosed bay, rear slide"
+ },
+ "combined": {},
+ "ok": true
+}
