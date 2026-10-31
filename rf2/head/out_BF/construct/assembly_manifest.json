@@ -3,7 +3,7 @@
   "SHELL_LOWER": {
    "role": "printed housing",
    "material": "PETG (printed)",
-   "volume_cm3": 69.997,
+   "volume_cm3": 69.998,
    "bbox_min": [
     -116.5,
     -116.5,
@@ -37,22 +37,22 @@
    "bbox_min": [
     -114.3,
     -114.3,
-    3.2
+    3.3
    ],
    "bbox_max": [
     114.3,
     114.3,
-    12.6
+    12.7
    ]
   },
   "BAY_WALLS": {
    "role": "printed housing",
    "material": "PETG (printed)",
-   "volume_cm3": 2.569,
+   "volume_cm3": 2.539,
    "bbox_min": [
     -98.71,
     -32.58,
-    3.8
+    3.9
    ],
    "bbox_max": [
     2.41,
@@ -63,16 +63,16 @@
   "BAY_FLOOR": {
    "role": "printed housing",
    "material": "PETG (printed)",
-   "volume_cm3": 20.217,
+   "volume_cm3": 20.212,
    "bbox_min": [
     -103.6,
     -103.6,
-    3.2
+    3.3
    ],
    "bbox_max": [
     103.6,
     103.6,
-    3.8
+    3.9
    ]
   },
   "FIN_RAILS": {
@@ -82,22 +82,22 @@
    "bbox_min": [
     -99.57,
     -99.57,
-    3.8
+    3.9
    ],
    "bbox_max": [
     98.95,
     98.68,
-    5.0
+    5.1
    ]
   },
   "HUB": {
    "role": "printed housing",
    "material": "PETG (printed)",
-   "volume_cm3": 8.869,
+   "volume_cm3": 8.754,
    "bbox_min": [
     -20.0,
     -20.0,
-    3.8
+    3.9
    ],
    "bbox_max": [
     20.0,
@@ -120,49 +120,64 @@
     1.6
    ]
   },
+  "BOARD_PRX": {
+   "role": "receive / shield board",
+   "material": "PETG (printed)",
+   "volume_cm3": 3.938,
+   "bbox_min": [
+    -112.0,
+    -112.0,
+    1.6
+   ],
+   "bbox_max": [
+    112.0,
+    112.0,
+    1.7
+   ]
+  },
   "BOARD_QA": {
    "role": "receive / shield board",
    "material": "PETG (printed)",
-   "volume_cm3": 32.638,
+   "volume_cm3": 32.63,
    "bbox_min": [
     -114.0,
     -114.0,
-    1.6
+    1.7
    ],
    "bbox_max": [
     114.0,
     114.0,
-    2.4
+    2.5
    ]
   },
   "BOARD_QB": {
    "role": "receive / shield board",
    "material": "PETG (printed)",
-   "volume_cm3": 32.638,
+   "volume_cm3": 32.63,
    "bbox_min": [
     -114.0,
     -114.0,
-    2.4
+    2.5
    ],
    "bbox_max": [
     114.0,
     114.0,
-    3.2
+    3.3
    ]
   },
   "COIL_COMBS": {
    "role": "printed housing",
    "material": "PETG (printed)",
-   "volume_cm3": 0.199,
+   "volume_cm3": 0.185,
    "bbox_min": [
-    -110.51,
-    -110.51,
-    3.8
+    -110.35,
+    -110.35,
+    3.9
    ],
    "bbox_max": [
-    110.51,
-    110.51,
-    12.6
+    110.35,
+    110.35,
+    12.7
    ]
   },
   "SHIELD_COAT": {
@@ -183,25 +198,25 @@
   "BOARD_FIN_HV1": {
    "role": "fin board",
    "material": "FR4 1.0 mm",
-   "volume_cm3": 0.529,
+   "volume_cm3": 0.521,
    "bbox_min": [
-    -101.52,
+    -100.54,
     6.45,
     4.0
    ],
    "bbox_max": [
     -39.31,
-    18.38,
+    18.2,
     12.4
    ]
   },
   "BOARD_FIN_HV2": {
    "role": "fin board",
    "material": "FR4 1.0 mm",
-   "volume_cm3": 0.529,
+   "volume_cm3": 0.521,
    "bbox_min": [
-    -102.49,
-    -11.26,
+    -101.49,
+    -11.16,
     4.0
    ],
    "bbox_max": [
@@ -228,14 +243,14 @@
   "BOARD_FIN_A2": {
    "role": "fin board",
    "material": "FR4 1.0 mm",
-   "volume_cm3": 0.705,
+   "volume_cm3": 0.689,
    "bbox_min": [
     -55.01,
-    15.89,
+    17.54,
     4.0
    ],
    "bbox_max": [
-    -9.67,
+    -10.7,
     87.61,
     12.4
    ]
@@ -378,26 +393,26 @@
   "LITZ": {
    "role": "transmit / receive coil",
    "material": "Rubadue TXXL66/38F-2 triple-insulated FEP litz (owner 2026-1",
-   "volume_cm3": 26.185,
+   "volume_cm3": 26.282,
    "bbox_min": [
     -114.08,
     -114.08,
-    3.81
+    3.9
    ],
    "bbox_max": [
     114.08,
     114.08,
-    12.38
+    12.48
    ]
   },
   "SADDLES": {
    "role": "molded wire saddles",
    "material": "PETG (printed with the floor)",
-   "volume_cm3": 0.047,
+   "volume_cm3": 0.045,
    "bbox_min": [
     -101.05,
     -6.06,
-    3.79
+    3.89
    ],
    "bbox_max": [
     -79.95,
@@ -417,7 +432,7 @@
    "bbox_max": [
     -98.32,
     3.06,
-    12.38
+    12.48
    ]
   },
   "WIRE_CABLE_B": {
@@ -442,7 +457,7 @@
    "bbox_min": [
     -103.02,
     -8.86,
-    4.11
+    4.2
    ],
    "bbox_max": [
     -81.91,
@@ -468,11 +483,11 @@
   "POTTING_analog": {
    "role": "potting cavity (fill volume)",
    "material": "low-permittivity silicone gel (stress-free, reworkable)",
-   "volume_cm3": 53.42,
+   "volume_cm3": 52.834,
    "bbox_min": [
     -94.64,
     0.0,
-    3.8
+    3.9
    ],
    "bbox_max": [
     1.81,
@@ -483,11 +498,11 @@
   "POTTING_hv": {
    "role": "potting cavity (fill volume)",
    "material": "MG 832TC epoxy (48 kV breakdown at 3.2 mm; kept >= 3 mm from the winding: eps 3.7, DF 0.1)",
-   "volume_cm3": 33.146,
+   "volume_cm3": 32.795,
    "bbox_min": [
     -103.6,
     -32.01,
-    3.8
+    3.9
    ],
    "bbox_max": [
     0.0,
@@ -498,11 +513,11 @@
   "POTTING_digital": {
    "role": "potting cavity (fill volume)",
    "material": "syntactic silicone",
-   "volume_cm3": 205.045,
+   "volume_cm3": 202.79,
    "bbox_min": [
     -98.52,
     -103.6,
-    3.8
+    3.9
    ],
    "bbox_max": [
     103.6,
@@ -511,5 +526,5 @@
    ]
   }
  },
- "count": 34
+ "count": 35
 }

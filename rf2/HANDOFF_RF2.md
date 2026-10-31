@@ -1516,3 +1516,19 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - EDGE: pod housing rise 14.7 vs 15 K; cord rule-6 gap exactly 1.0 mm (by construction); TX strip width exactly the IPC width (by construction).
   - The flex exit from the bore to the pod tap is OPEN (the same open question as REF3T's joint).
   - Not updated (records of the decision, not live design): rf2_cleansheet / rf2_lowL_options / rf2_head_best / rf2_integration keep the C3M "today" baseline; rf2/head/*, rf2_variant*.py and variant_plugins/* were not edited here (the wiring plugin's width_check compares its 'today' layout with rf2_cordflex.WIDTH and will now report a mismatch).
+
+## 56. Owner decisions in the head: bank winding, hybrid receive (PRX + MP2), glove housing and head map (2026-10-31; `rf2_head.py`, `rf2_prx.py`, `rf2_netlist.py` MP2, `rf2_head_glove.py` + `_check.py`; MODELED)
+- **Bank winding:** `coil_slots()` / `coil_turns()` in rf2_head; order "bank" in options B / BF. Columns 0-3 are full and column 4 has 2 floor turns. The coil top is unchanged in form, 12.475 mm (+0.1 for the PRX), against a channel top of 12.7 mm (raised 0.1 mm): gap 0.225 mm. The inner column sits 1.035 mm from the channel wall. rf2_lowL_options.SLOTS is still row order (not a head file).
+- **PRX:** a 2-layer PI flex at z 1.6-1.7.
+  - Main spiral: 40 turns, r 88.0-76.3.
+  - Bucking spiral: 16 turns, solved for M = 0 against the bank coil, r 110.93-106.43.
+  - Null sensitivity: 0.44 % for 0.1 mm in z, 0.16 % for 0.1 mm in r.
+  - Copper: 35 um (CORRECTIONS row), R 103 ohm, 1.31 nV/rtHz.
+  - QA / QB move to z 1.7-2.5 / 2.5-3.3 with 18 um copper. The floors, coil and channel are +0.1 mm.
+  - Feed hole: 3.4 mm NPTH at r 72, 135 deg, in QA / QB (rf2_sb1r_variant: copper unchanged, DRC clean; 5.69 mm to copper) and in the floor.
+- **MP2:** MP1 v1's schematic copied on a fin board at 122 deg, 82 x 8.4 x 1.0 mm. Routed: DRC 0, 0 open, HV minimum 1.001 mm (EDGE). It routes at 1.05 mm (`hv_route_clear`) because Freerouting / A* round a 1.0 mm class to 0.997 mm. The HV fins now end at r 102.0, so the HV epoxy stays at least 3 mm from the litz.
+- **Glove housing:** G_SHELL, G_TRAY, G_COMBS (resin), G_LID, G_GLAND_PIN. Potting is island-only:
+  - HV epoxy: 14.3 cm3;
+  - analog gel: 6.2 cm3;
+  - coil syntactic foam: 33.2 cm3.
+- **Checks:** interference 0. Every pocket clearance and the minimum walls pass (printed PETG). Head mass, BF islands-only: 771 g -> 759 g. The moulded variant is blocked by the 0.6 mm floor.

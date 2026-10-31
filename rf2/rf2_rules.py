@@ -114,6 +114,10 @@ def rules():
             add("flex.one_piece_minco", "target", "cord-flex in one piece vs Minco maximum length (5 ft)", a["one_piece_mm"], mi["len_max_mm"], "<=", "Minco design guide 2019", unit="mm")
         for k, v in fo["B_shield_can"]["places"].items():
             add(f"shield.slotted.{k[:20]}", "target", f"slotted etched shield can in the head, {k}: drift vs 0.5 x gate noise", v["slotted"]["drift5K_x_noise"], 0.5, "<=", "rf2_flex_options.json", unit="x noise")
+    gl = J("rf2", "head", "out_BF", "glove", "rf2_head_glove.json")                # glove housing + internal head map (rf2_head_glove_check)
+    for r in (gl or {}).get("rule_rows", []):
+        try: add(f"glove.{str(r.get('id', r.get('rule')))[:40]}", r.get("kind", "target"), f"head glove: {r.get('rule')} @ {r.get('where', '')}", float(r["value"]), float(r["limit"]), r.get("sense", "<="), "rf2_head_glove.json", unit=r.get("unit", ""))
+        except (KeyError, TypeError, ValueError): pass
     fd = J("rf2", "results", "rf2_fold_options.json")
     if fd:
         for o in fd["rows"]:

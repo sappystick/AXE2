@@ -1,0 +1,3716 @@
+{
+ "status": "MEASURED on the glove housing solids (design MODELED, not built; process rules ASSUMED)",
+ "checks": {
+  "closed_meshes": {
+   "ok": true,
+   "parts": {
+    "G_SHELL": true,
+    "G_TRAY": true,
+    "G_COMBS": true,
+    "G_LID": true,
+    "G_GLAND_PIN": true,
+    "POT_HV_EPOXY": true,
+    "POT_ANALOG_GEL": true,
+    "POT_COIL_FOAM": true
+   }
+  },
+  "interference": {
+   "ok": true,
+   "pairs": 465,
+   "pairs_touching_bbox": 196,
+   "overlaps": [],
+   "total_mm3": 0
+  },
+  "pockets": {
+   "ok": true,
+   "rows": [
+    {
+     "part": "BOARD_SH1",
+     "pocket": "shell bore (r 114.5)",
+     "design_mm": 0.5,
+     "measured_mm": 0.5,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "BOARD_PRX",
+     "pocket": "shell bore (r 114.5)",
+     "design_mm": 2.5,
+     "measured_mm": 2.5,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "BOARD_QA",
+     "pocket": "shell bore (r 114.5)",
+     "design_mm": 0.5,
+     "measured_mm": 0.5,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "BOARD_QB",
+     "pocket": "shell bore (r 114.5)",
+     "design_mm": 0.5,
+     "measured_mm": 0.5,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "BOARD_SH1",
+     "pocket": "stack pins (3.2 in 3.4 holes)",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "BOARD_QA",
+     "pocket": "stack pins (3.2 in 3.4 holes)",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "BOARD_QB",
+     "pocket": "stack pins (3.2 in 3.4 holes)",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "BOARD_SH1",
+     "pocket": "skid (seat)",
+     "design_mm": 0.0,
+     "measured_mm": 0.0,
+     "limit_mm": 0.0,
+     "seat": true,
+     "note": ""
+    },
+    {
+     "part": "LITZ",
+     "pocket": "outer wall + coat-mask rib (G_SHELL)",
+     "design_mm": null,
+     "measured_mm": 0.266,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "LITZ",
+     "pocket": "shield coat",
+     "design_mm": 0.365,
+     "measured_mm": 0.365,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "LITZ",
+     "pocket": "channel inner wall",
+     "design_mm": null,
+     "measured_mm": 1.035,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "LITZ",
+     "pocket": "floor (seat: bottom row bonded on the floor)",
+     "design_mm": 0.0,
+     "measured_mm": 0.005,
+     "limit_mm": 0.0,
+     "seat": true,
+     "note": ""
+    },
+    {
+     "part": "LITZ",
+     "pocket": "comb slots (1.47 for 1.372 litz)",
+     "design_mm": 0.049,
+     "measured_mm": 0.041,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV1",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV1",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV1",
+     "pocket": "channel inner wall",
+     "design_mm": 1.8,
+     "measured_mm": 1.792,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV1",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV1",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV1",
+     "pocket": "HV island walls (potting over HV copper / parts)",
+     "design_mm": 1.0,
+     "measured_mm": 1.084,
+     "limit_mm": 1.0,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV1",
+     "pocket": "HV island outer arc (board edge, no copper)",
+     "design_mm": null,
+     "measured_mm": 0.584,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV2",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV2",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV2",
+     "pocket": "channel inner wall",
+     "design_mm": 1.8,
+     "measured_mm": 1.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV2",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV2",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV2",
+     "pocket": "HV island walls (potting over HV copper / parts)",
+     "design_mm": 1.0,
+     "measured_mm": 1.084,
+     "limit_mm": 1.0,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_HV2",
+     "pocket": "HV island outer arc (board edge, no copper)",
+     "design_mm": null,
+     "measured_mm": 0.584,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.792,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 2.12,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "gel trough side walls (potting gap)",
+     "design_mm": 1.0,
+     "measured_mm": 1.0,
+     "limit_mm": 0.9,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A1",
+     "pocket": "gel trough end-wall fin slot (1.1 for 1.0)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A2",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A2",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A2",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A2",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A2",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A2",
+     "pocket": "gel trough side walls (potting gap)",
+     "design_mm": 1.0,
+     "measured_mm": 1.0,
+     "limit_mm": 0.9,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A2",
+     "pocket": "gel trough end-wall fin slot (1.1 for 1.0)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 2.519,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "gel trough side walls (potting gap)",
+     "design_mm": 1.0,
+     "measured_mm": 1.0,
+     "limit_mm": 0.9,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_A3",
+     "pocket": "gel trough end-wall fin slot (1.1 for 1.0)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D1",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D1",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D1",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D1",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 4.106,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D1",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D1",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D1",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D2",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D2",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D2",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D2",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D2",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D2",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D2",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D3",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D3",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D3",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D3",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D3",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D3",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D3",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D4",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D4",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D4",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D4",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D4",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D4",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D4",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D5",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D5",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D5",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D5",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D5",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D5",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D5",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D6",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D6",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D6",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.791,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D6",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D6",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D6",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D6",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D7",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D7",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D7",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.792,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D7",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D7",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D7",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D7",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D8",
+     "pocket": "fin rails (1.1 gap, 1.0 board)",
+     "design_mm": 0.05,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D8",
+     "pocket": "floor",
+     "design_mm": 0.1,
+     "measured_mm": 0.1,
+     "limit_mm": 0.05,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D8",
+     "pocket": "channel inner wall",
+     "design_mm": 0.8,
+     "measured_mm": 0.792,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D8",
+     "pocket": "sector walls",
+     "design_mm": null,
+     "measured_mm": 4.891,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D8",
+     "pocket": "stiffening ribs",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D8",
+     "pocket": "hub slot",
+     "design_mm": null,
+     "measured_mm": 0.05,
+     "limit_mm": 0.03,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_FIN_D8",
+     "pocket": "gel troughs / HV island (not its pocket)",
+     "design_mm": null,
+     "measured_mm": 6.0,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_HUB_PCB",
+     "pocket": "hub",
+     "design_mm": null,
+     "measured_mm": 0.6,
+     "limit_mm": 0.3,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_LED",
+     "pocket": "tray wall tops",
+     "design_mm": 0.5,
+     "measured_mm": 0.4,
+     "limit_mm": 0.4,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "ENV_LED",
+     "pocket": "lid (seat: hung on the bosses, LED tops at the plate)",
+     "design_mm": 0.0,
+     "measured_mm": 0.0,
+     "limit_mm": 0.0,
+     "seat": true,
+     "note": ""
+    },
+    {
+     "part": "PRX_LEADS",
+     "pocket": "feed hole in QA / QB",
+     "design_mm": 1.37,
+     "measured_mm": 0.67,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "PRX_LEADS",
+     "pocket": "lane walls",
+     "design_mm": 0.67,
+     "measured_mm": 0.67,
+     "limit_mm": 0.3,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "CORD_FLEX_CURL",
+     "pocket": "gland bore (8.0)",
+     "design_mm": 0.75,
+     "measured_mm": 0.746,
+     "limit_mm": 0.5,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "CORD_FLEX_CURL",
+     "pocket": "strain-relief pin",
+     "design_mm": null,
+     "measured_mm": 0.35,
+     "limit_mm": 0.2,
+     "seat": false,
+     "note": ""
+    },
+    {
+     "part": "SHIELD_COAT",
+     "pocket": "coat-mask rib (slit must stay open)",
+     "design_mm": null,
+     "measured_mm": 0.0,
+     "limit_mm": 0.0,
+     "seat": true,
+     "note": ""
+    }
+   ]
+  },
+  "min_wall": {
+   "ok": true,
+   "parts": {
+    "G_SHELL": {
+     "min_wall_mm": 2.148,
+     "where": {
+      "z": 2.0,
+      "at": [
+       115.5,
+       0.1
+      ]
+     },
+     "process": "PETG FDM, 0.4 mm nozzle, 0.2 mm layers",
+     "limit": 0.8
+    },
+    "G_TRAY": {
+     "min_wall_mm": 0.8,
+     "where": {
+      "z": 4.2,
+      "at": [
+       38.1,
+       -48.9
+      ]
+     },
+     "process": "PETG FDM, 0.4 mm nozzle, 0.2 mm layers",
+     "limit": 0.8
+    },
+    "G_COMBS": {
+     "min_wall_mm": 0.3,
+     "where": {
+      "z": 6.0,
+      "at": [
+       -78.3,
+       78.3
+      ]
+     },
+     "process": "resin SLA",
+     "limit": 0.3
+    },
+    "G_LID": {
+     "min_wall_mm": 4.0,
+     "where": {
+      "z": 14.65,
+      "at": [
+       -33.4,
+       0.0
+      ]
+     },
+     "process": "PETG FDM, 0.4 mm nozzle, 0.2 mm layers",
+     "limit": 0.8
+    },
+    "G_GLAND_PIN": {
+     "min_wall_mm": 1.5,
+     "where": {
+      "z": 13.4,
+      "at": [
+       -96.6,
+       3.4
+      ]
+     },
+     "process": "PETG FDM, 0.4 mm nozzle, 0.2 mm layers",
+     "limit": 0.8
+    }
+   },
+   "plates_mm": {
+    "skid": 1.2,
+    "tray_floor": 0.6,
+    "lid": 2.4,
+    "lid_land": 0.9
+   },
+   "moulded_variant": {
+    "min_wall_mm": 0.8,
+    "where": {
+     "z": 4.2,
+     "at": [
+      38.1,
+      -48.9
+     ]
+    },
+    "draft_deg": 1.0,
+    "floor_plate_mm": 0.6,
+    "wall_top_clearance_growth_mm": 0.152,
+    "pocket_gap_at_base_HV": 0.434,
+    "pocket_gap_at_base_A2": 0.05,
+    "interference_with_fins_mm3": 0.0
+   }
+  },
+  "potting": {
+   "ok": true,
+   "cavities": {
+    "POT_HV_EPOXY": {
+     "material": "epoxy (MG 832TC)",
+     "volume_cm3": 14.33,
+     "density": 1.15,
+     "mass_g": 16.5,
+     "gap_to_litz_mm": 3.042
+    },
+    "POT_ANALOG_GEL": {
+     "material": "silicone gel",
+     "volume_cm3": 6.15,
+     "density": 0.98,
+     "mass_g": 6.0
+    },
+    "POT_COIL_FOAM": {
+     "material": "syntactic foam",
+     "volume_cm3": 33.18,
+     "density": 0.7,
+     "mass_g": 23.2
+    },
+    "fill_level_z": 12.5,
+    "ports": {
+     "HV": "fill: inner arc at 178 deg (open top); vent: the weir is the 12.6 wall top; litz pass-throughs RTV-sealed",
+     "analog": "fill: funnel notch at each trough's rim end (z 12.0-12.6); vent / weir notch at the hub end at z 12.5",
+     "coil": "poured from the open channel top before the display"
+    }
+   }
+  },
+  "hv_rule5": {
+   "ok": true,
+   "hv_to_non_hv_mm": {
+    "ENV_FIN_A1": 20.0,
+    "ENV_FIN_A2": 20.0,
+    "ENV_FIN_A3": 15.184,
+    "ENV_FIN_D1": 16.517,
+    "ENV_FIN_D2": 20.0,
+    "ENV_FIN_D3": 20.0,
+    "ENV_FIN_D4": 20.0,
+    "ENV_FIN_D5": 20.0,
+    "ENV_FIN_D6": 20.0,
+    "ENV_FIN_D7": 20.0,
+    "ENV_FIN_D8": 20.0,
+    "ENV_HUB_PCB": 19.5,
+    "PRX_LEADS": 20.0
+   },
+   "hv_copper_to_led_flex_mm": 1.2,
+   "litz_pass_clearance_mm": 0.15,
+   "litz_pass_web_mm": 3.392,
+   "rule5": {
+    "coat_slit_open": true,
+    "coat_rings_at_z8": 1,
+    "coat_to_mask_rib_mm": 0.0,
+    "housing_metal": "none (PETG / resin only)",
+    "prx_spirals": "open spirals (two ends at the feed)",
+    "sector_wall_89": "carbonyl-iron loaded PETG: a radial plane, not a loop"
+   }
+  },
+  "prx": {
+   "ok": true,
+   "feed_to_qaqb_copper_mm": 5.689,
+   "feed_to_main_spiral_mm": 3.425,
+   "prx_to_litz_mm": 2.205,
+   "buck_under_tx": true,
+   "tx_span_r": [
+    105.634,
+    114.086
+   ],
+   "buck_r": [
+    110.927,
+    106.427
+   ],
+   "bore_clearance_mm": 2.5,
+   "design": {
+    "main_turns": 40,
+    "main_r_mm": [
+     88.0,
+     76.3
+    ],
+    "main_z_mm": 1.6175,
+    "buck_turns": 16,
+    "buck_r_mm": [
+     110.927,
+     106.427
+    ],
+    "buck_z_mm": 1.6775,
+    "pitch_mm": 0.3,
+    "trace_mm": 0.15,
+    "copper_um": 35.0,
+    "M_main_uH": 165.432,
+    "M_residual_uH": -0.0,
+    "null_ratio_dz_0p1mm": 0.00442,
+    "null_ratio_dr_0p1mm": 0.00163,
+    "length_m": 31.572,
+    "R_ohm": 103.4,
+    "johnson_nV": 1.31,
+    "pi_r_out_mm": 112.0,
+    "feed": {
+     "r": 72.0,
+     "deg": 135.0,
+     "hole_d": 3.4,
+     "pad_d": 1.6
+    },
+    "stack": "25 um PI + 2 x 35 um Cu = 0.095 mm (ASSUMED; vendor stack UNVERIFIED)",
+    "z": [
+     1.6,
+     1.7
+    ]
+   }
+  },
+  "coil_channel": {
+   "ok": true,
+   "order": "bank",
+   "coil_top_z": 12.475,
+   "channel_top_z": 12.7,
+   "top_gap_mm": 0.225,
+   "inner_gap_mm": 1.035,
+   "row0_z": 4.59,
+   "floor_z": [
+    3.3,
+    3.9
+   ]
+  },
+  "zone_map": {
+   "ok": true,
+   "rows": [
+    {
+     "part": "FIN_HV1",
+     "zone": "HV island",
+     "deg": 170.0,
+     "r": 71.0,
+     "metal": "IXTY08N100D2 TO-252 tab (MP1 v2 function)",
+     "echo_drift_5K_x_noise": 0.0391,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones IXTY tab x rf2_layout HV fin 1 deg tilt factor",
+     "hv": true,
+     "note": "SPEC reservation (ASSUMED)"
+    },
+    {
+     "part": "FIN_HV2",
+     "zone": "HV island",
+     "deg": 186.0,
+     "r": 71.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 2.63e-23,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones TXJ hatched slit-open x fin tilt factor",
+     "hv": true,
+     "note": "TXF built board (out/TXF/txf_check.json): tallest body 0.05 mm"
+    },
+    {
+     "part": "FIN_A1",
+     "zone": "analog",
+     "deg": 100.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.84e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones AB1A hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_A2 (MP2)",
+     "zone": "analog",
+     "deg": 122.0,
+     "r": 62.0,
+     "metal": "MP1 v1 parts (no tab; IXTY tab used as the upper bound, as the boards plugin)",
+     "echo_drift_5K_x_noise": 0.00275,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones IXTY tab x rf2_layout analog fin 1 deg tilt",
+     "hv": false,
+     "note": "MP2 built board (out/MP2/mp2_check.json): tallest body 1.6 mm",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_A3",
+     "zone": "analog",
+     "deg": 144.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.84e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones AB1A hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 15.184,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D1",
+     "zone": "digital",
+     "deg": 214.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 16.517,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D2",
+     "zone": "digital",
+     "deg": 245.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D3",
+     "zone": "digital",
+     "deg": 276.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D4",
+     "zone": "digital",
+     "deg": 307.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D5",
+     "zone": "digital",
+     "deg": 338.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D6",
+     "zone": "digital",
+     "deg": 9.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D7",
+     "zone": "digital",
+     "deg": 40.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "FIN_D8",
+     "zone": "digital",
+     "deg": 71.0,
+     "r": 61.0,
+     "metal": "slit-hatched copper (rule 5 design), MLCC only",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+     "hv": false,
+     "note": "SPEC reservation (ASSUMED)",
+     "gap_to_HV_envelopes_mm": 20.0,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "HUB_PCB",
+     "zone": "hub (centre)",
+     "deg": 0.0,
+     "r": 0.0,
+     "metal": "slit-hatched LV star, no ring traces",
+     "echo_drift_5K_x_noise": 7.26e-24,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones CB1D hatched x digital tilt (ASSUMED: flat disc at the centre, worst of the table)",
+     "hv": false,
+     "note": "",
+     "gap_to_HV_envelopes_mm": 19.5,
+     "hv_envelope_ok": true
+    },
+    {
+     "part": "LED display flex (LR1)",
+     "zone": "digital",
+     "deg": 0.0,
+     "r": 60.0,
+     "metal": "522 SK9822-EC20 PCB-holder packages",
+     "echo_drift_5K_x_noise": 3.4e-06,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones display PCB-holder package (flat)",
+     "hv": false,
+     "note": "",
+     "gap_to_HV_envelopes_mm": 0.7,
+     "hv_envelope_ok": false
+    },
+    {
+     "part": "shield coat (MG 841AR, slit at 184 deg)",
+     "zone": "coil channel",
+     "deg": 184.0,
+     "r": 114.5,
+     "metal": "25 um nickel paint",
+     "echo_drift_5K_x_noise": 0.0,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rf2_zones MG 841AR closed band (upper bound)",
+     "hv": false,
+     "note": ""
+    },
+    {
+     "part": "SH1 split-ring shield",
+     "zone": "receive stack (z 1.2-3.3, under every sector)",
+     "deg": 0.0,
+     "r": 60.0,
+     "metal": "slit rings + spine (loop-free, rf2_shield_pcb)",
+     "echo_drift_5K_x_noise": 0.0,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "rule 5 design: every ring slit (sh1_check topology loop_free)",
+     "hv": false,
+     "note": ""
+    },
+    {
+     "part": "PRX planar RX (layer)",
+     "zone": "receive stack (z 1.2-3.3, under every sector)",
+     "deg": 135.0,
+     "r": 95.0,
+     "metal": "35 um spirals: open spiral, no closed loop",
+     "echo_drift_5K_x_noise": 0.0,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "receive element itself (nulled to the TX: residual M -0 uH)",
+     "hv": false,
+     "note": ""
+    },
+    {
+     "part": "SB1R-QA (18 um)",
+     "zone": "receive stack (z 1.2-3.3, under every sector)",
+     "deg": 0.0,
+     "r": 60.0,
+     "metal": "receive spirals (unchanged copper)",
+     "echo_drift_5K_x_noise": 0.0,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "receive element itself",
+     "hv": false,
+     "note": ""
+    },
+    {
+     "part": "SB1R-QB (18 um)",
+     "zone": "receive stack (z 1.2-3.3, under every sector)",
+     "deg": 0.0,
+     "r": 60.0,
+     "metal": "receive spirals (unchanged copper)",
+     "echo_drift_5K_x_noise": 0.0,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "receive element itself",
+     "hv": false,
+     "note": ""
+    },
+    {
+     "part": "transmit litz (bank wound)",
+     "zone": "coil channel",
+     "deg": 178.0,
+     "r": 110.0,
+     "metal": "26 turns FEP litz",
+     "echo_drift_5K_x_noise": 0.0,
+     "drift_limit": 0.5,
+     "drift_ok": true,
+     "drift_source": "the transmitter",
+     "hv": false,
+     "note": ""
+    }
+   ],
+   "fin_sides": {
+    "FIN_HV1": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_HV2": {
+     "side": 1.2,
+     "board": "TXF",
+     "tallest_part_mm": 0.05,
+     "source": "TXF built board (out/TXF/txf_check.json): tallest body 0.05 mm",
+     "side_ok": true
+    },
+    "FIN_A1": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_A2": {
+     "side": 1.8,
+     "board": "MP2",
+     "tallest_part_mm": 1.6,
+     "source": "MP2 built board (out/MP2/mp2_check.json): tallest body 1.6 mm",
+     "side_ok": true
+    },
+    "FIN_A3": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D1": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D2": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D3": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D4": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D5": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D6": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D7": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    },
+    "FIN_D8": {
+     "side": 1.2,
+     "board": null,
+     "tallest_part_mm": null,
+     "source": "SPEC reservation (ASSUMED)",
+     "side_ok": true
+    }
+   },
+   "note": "LED flex: envelope gap reported; its rule is the copper-level 1.0 mm row (HV fin copper to the flex)"
+  },
+  "mass_g": {
+   "before_head_check_BF_958464f": 771,
+   "after_spec_changes_before_glove": 778,
+   "after_glove": 759,
+   "housing_parts_g": {
+    "G_SHELL": 88.9,
+    "G_TRAY": 58.1,
+    "G_COMBS": 0.2,
+    "G_LID": 110.0,
+    "G_GLAND_PIN": 0.0
+   },
+   "housing_total_g": 257.2,
+   "old_printed_parts_g": 252.1,
+   "potting_g": {
+    "POT_HV_EPOXY": 16.5,
+    "POT_ANALOG_GEL": 6.0,
+    "POT_COIL_FOAM": 23.2
+   },
+   "kept_items_g": {
+    "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 18 um each)": 125.1,
+    "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": 37.4,
+    "transmit litz (26 turns, 6.9 g/m)": 124.4,
+    "electronics islands (ASSUMED: AB1A/B 10 g each, CB1D 40 g, MP1 8 g, TXJ 10 g; LED display flex 40 g ASSUMED: 0.4 mm flex+stiffener D226 about 30 g + 522 LEDs / caps)": 118,
+    "hardware, cable gland, yoke lug (ASSUMED)": 40.0,
+    "PRX layer (25 um PI 1.42 g/cm3 + 31.6 m x 0.15 mm x 35 um Cu spirals)": 2.9,
+    "MP2 second receive channel (ASSUMED as MP1, 8 g)": 8.0
+   },
+   "note": "PETG / resin at 100 % infill (upper bound, as rf2_head_check); densities ASSUMED (gel 0.98, epoxy 1.15, syntactic foam 0.70)"
+  }
+ },
+ "rule_rows": [
+  {
+   "rule": "glove: interference volume, all parts / components / potting (mm3)",
+   "value": 0.0,
+   "limit": 0.01,
+   "sense": "<=",
+   "where": "whole head",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance BOARD_SH1 in shell bore (r 114.5)",
+   "value": 0.5,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "shell bore (r 114.5)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance BOARD_PRX in shell bore (r 114.5)",
+   "value": 2.5,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "shell bore (r 114.5)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance BOARD_QA in shell bore (r 114.5)",
+   "value": 0.5,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "shell bore (r 114.5)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance BOARD_QB in shell bore (r 114.5)",
+   "value": 0.5,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "shell bore (r 114.5)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance BOARD_SH1 in stack pins (3.2 in 3.4 holes)",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "stack pins (3.2 in 3.4 holes)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance BOARD_QA in stack pins (3.2 in 3.4 holes)",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "stack pins (3.2 in 3.4 holes)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance BOARD_QB in stack pins (3.2 in 3.4 holes)",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "stack pins (3.2 in 3.4 holes)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance LITZ in outer wall + coat-mask rib (G_SHELL)",
+   "value": 0.266,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "outer wall + coat-mask rib (G_SHELL)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.33,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance LITZ in shield coat",
+   "value": 0.365,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "shield coat",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.825,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance LITZ in channel inner wall",
+   "value": 1.035,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 4.175,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance LITZ in comb slots (1.47 for 1.372 litz)",
+   "value": 0.041,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "comb slots (1.47 for 1.372 litz)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.3667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV1 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV1 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV1 in channel inner wall",
+   "value": 1.792,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 2.584,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV1 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV1 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV1 in HV island walls (potting over HV copper / parts)",
+   "value": 1.084,
+   "limit": 1.0,
+   "sense": ">=",
+   "where": "HV island walls (potting over HV copper / parts)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.084,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV1 in HV island outer arc (board edge, no copper)",
+   "value": 0.584,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "HV island outer arc (board edge, no copper)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.168,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV2 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV2 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV2 in channel inner wall",
+   "value": 1.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 2.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV2 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV2 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV2 in HV island walls (potting over HV copper / parts)",
+   "value": 1.084,
+   "limit": 1.0,
+   "sense": ">=",
+   "where": "HV island walls (potting over HV copper / parts)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.084,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_HV2 in HV island outer arc (board edge, no copper)",
+   "value": 0.584,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "HV island outer arc (board edge, no copper)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.168,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in channel inner wall",
+   "value": 0.792,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.584,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in sector walls",
+   "value": 2.12,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 3.24,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in gel trough side walls (potting gap)",
+   "value": 1.0,
+   "limit": 0.9,
+   "sense": ">=",
+   "where": "gel trough side walls (potting gap)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.1111,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A1 in gel trough end-wall fin slot (1.1 for 1.0)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "gel trough end-wall fin slot (1.1 for 1.0)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A2 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A2 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A2 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A2 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A2 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A2 in gel trough side walls (potting gap)",
+   "value": 1.0,
+   "limit": 0.9,
+   "sense": ">=",
+   "where": "gel trough side walls (potting gap)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.1111,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A2 in gel trough end-wall fin slot (1.1 for 1.0)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "gel trough end-wall fin slot (1.1 for 1.0)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in sector walls",
+   "value": 2.519,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 4.038,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in gel trough side walls (potting gap)",
+   "value": 1.0,
+   "limit": 0.9,
+   "sense": ">=",
+   "where": "gel trough side walls (potting gap)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.1111,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_A3 in gel trough end-wall fin slot (1.1 for 1.0)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "gel trough end-wall fin slot (1.1 for 1.0)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D1 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D1 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D1 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D1 in sector walls",
+   "value": 4.106,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 7.212,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D1 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D1 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D1 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D2 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D2 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D2 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D2 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D2 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D2 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D2 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D3 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D3 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D3 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D3 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D3 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D3 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D3 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D4 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D4 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D4 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D4 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D4 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D4 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D4 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D5 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D5 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D5 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D5 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D5 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D5 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D5 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D6 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D6 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D6 in channel inner wall",
+   "value": 0.791,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.582,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D6 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D6 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D6 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D6 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D7 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D7 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D7 in channel inner wall",
+   "value": 0.792,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.584,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D7 in sector walls",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D7 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D7 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D7 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D8 in fin rails (1.1 gap, 1.0 board)",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "fin rails (1.1 gap, 1.0 board)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D8 in floor",
+   "value": 0.1,
+   "limit": 0.05,
+   "sense": ">=",
+   "where": "floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D8 in channel inner wall",
+   "value": 0.792,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "channel inner wall",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.584,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D8 in sector walls",
+   "value": 4.891,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "sector walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 8.782,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D8 in stiffening ribs",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "stiffening ribs",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D8 in hub slot",
+   "value": 0.05,
+   "limit": 0.03,
+   "sense": ">=",
+   "where": "hub slot",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_FIN_D8 in gel troughs / HV island (not its pocket)",
+   "value": 6.0,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gel troughs / HV island (not its pocket)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_HUB_PCB in hub",
+   "value": 0.6,
+   "limit": 0.3,
+   "sense": ">=",
+   "where": "hub",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance ENV_LED in tray wall tops",
+   "value": 0.4,
+   "limit": 0.4,
+   "sense": ">=",
+   "where": "tray wall tops",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.0,
+   "status": "EDGE"
+  },
+  {
+   "rule": "pocket clearance PRX_LEADS in feed hole in QA / QB",
+   "value": 0.67,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "feed hole in QA / QB",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.34,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance PRX_LEADS in lane walls",
+   "value": 0.67,
+   "limit": 0.3,
+   "sense": ">=",
+   "where": "lane walls",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.2333,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance CORD_FLEX_CURL in gland bore (8.0)",
+   "value": 0.746,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "gland bore (8.0)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.492,
+   "status": "PASS"
+  },
+  {
+   "rule": "pocket clearance CORD_FLEX_CURL in strain-relief pin",
+   "value": 0.35,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "strain-relief pin",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.75,
+   "status": "PASS"
+  },
+  {
+   "rule": "min wall G_SHELL (printed)",
+   "value": 2.148,
+   "limit": 0.8,
+   "sense": ">=",
+   "where": "G_SHELL",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.685,
+   "status": "PASS"
+  },
+  {
+   "rule": "min wall G_TRAY (printed)",
+   "value": 0.8,
+   "limit": 0.8,
+   "sense": ">=",
+   "where": "G_TRAY",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.0,
+   "status": "EDGE"
+  },
+  {
+   "rule": "min wall G_COMBS (resin)",
+   "value": 0.3,
+   "limit": 0.3,
+   "sense": ">=",
+   "where": "G_COMBS",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.0,
+   "status": "EDGE"
+  },
+  {
+   "rule": "min wall G_LID (printed)",
+   "value": 4.0,
+   "limit": 0.8,
+   "sense": ">=",
+   "where": "G_LID",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 4.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "min wall G_GLAND_PIN (printed)",
+   "value": 1.5,
+   "limit": 0.8,
+   "sense": ">=",
+   "where": "G_GLAND_PIN",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.875,
+   "status": "PASS"
+  },
+  {
+   "rule": "plate thickness skid (printed, >= 3 layers)",
+   "value": 1.2,
+   "limit": 0.6,
+   "sense": ">=",
+   "where": "skid",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "plate thickness tray_floor (printed, >= 3 layers)",
+   "value": 0.6,
+   "limit": 0.6,
+   "sense": ">=",
+   "where": "tray_floor",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.0,
+   "status": "EDGE"
+  },
+  {
+   "rule": "plate thickness lid (printed, >= 3 layers)",
+   "value": 2.4,
+   "limit": 0.6,
+   "sense": ">=",
+   "where": "lid",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 3.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "plate thickness lid_land (printed, >= 3 layers)",
+   "value": 0.9,
+   "limit": 0.6,
+   "sense": ">=",
+   "where": "lid_land",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "moulded variant: tray floor plate vs moulded min wall 0.8",
+   "value": 0.6,
+   "limit": 0.8,
+   "sense": ">=",
+   "where": "G_TRAY floor (moulded)",
+   "kind": "process option",
+   "safety": false,
+   "ok": false,
+   "headroom": -0.25,
+   "status": "FAIL"
+  },
+  {
+   "rule": "moulded variant: min wall G_TRAY",
+   "value": 0.8,
+   "limit": 0.8,
+   "sense": ">=",
+   "where": "G_TRAY (moulded)",
+   "kind": "process option",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.0,
+   "status": "EDGE"
+  },
+  {
+   "rule": "HV epoxy to the litz (MG 832TC >= 3.0 mm)",
+   "value": 3.042,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "HV island outer arc",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 0.014,
+   "status": "EDGE"
+  },
+  {
+   "rule": "rule 6: HV fin copper to the display flex (vertical)",
+   "value": 1.2,
+   "limit": 1.0,
+   "sense": ">=",
+   "where": "HV island / LR1",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 0.2,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelopes to non-HV parts (envelope margin 3.0)",
+   "value": 15.184,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "HV island",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 4.0613,
+   "status": "PASS"
+  },
+  {
+   "rule": "litz pass-through radial clearance (sealed)",
+   "value": 0.15,
+   "limit": 0.1,
+   "sense": ">=",
+   "where": "HV island outer arc 178 deg",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "rule 6: TX_A / TX_B pass-through web (litz to litz through PETG)",
+   "value": 3.3917,
+   "limit": 1.0,
+   "sense": ">=",
+   "where": "HV island outer arc",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 2.3917,
+   "status": "PASS"
+  },
+  {
+   "rule": "PRX feed hole edge to QA / QB copper",
+   "value": 5.689,
+   "limit": 1.0,
+   "sense": ">=",
+   "where": "feed (r 72, 135 deg)",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 4.689,
+   "status": "PASS"
+  },
+  {
+   "rule": "PRX feed pad to the main spiral's inner turn",
+   "value": 3.425,
+   "limit": 0.5,
+   "sense": ">=",
+   "where": "PRX layer 1",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 5.85,
+   "status": "PASS"
+  },
+  {
+   "rule": "PRX copper to the litz (through QA / QB / floor)",
+   "value": 2.205,
+   "limit": 1.0,
+   "sense": ">=",
+   "where": "PRX bucking spiral under the TX",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 1.205,
+   "status": "PASS"
+  },
+  {
+   "rule": "PRX outline in the shell bore",
+   "value": 2.5,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "PRX",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 11.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "PRX null: residual / main M at 0.1 mm z shift (sensitivity)",
+   "value": 0.0044,
+   "limit": 0.01,
+   "sense": "<=",
+   "where": "PRX",
+   "kind": "model",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.558,
+   "status": "PASS"
+  },
+  {
+   "rule": "coil top below the channel top",
+   "value": 0.225,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "coil channel",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.125,
+   "status": "PASS"
+  },
+  {
+   "rule": "coil inner column to the channel wall",
+   "value": 1.035,
+   "limit": 0.2,
+   "sense": ">=",
+   "where": "coil channel",
+   "kind": "geometry",
+   "safety": false,
+   "ok": true,
+   "headroom": 4.175,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_HV1",
+   "value": 0.0391,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "HV island",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.9218,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_HV2",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "HV island",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_A1",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "analog",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_A1",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "analog",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_A2 (MP2)",
+   "value": 0.0027,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "analog",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 0.9945,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_A2 (MP2)",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "analog",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_A3",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "analog",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_A3",
+   "value": 15.184,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "analog",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 4.0613,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D1",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D1",
+   "value": 16.517,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 4.5057,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D2",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D2",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D3",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D3",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D4",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D4",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D5",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D5",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D6",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D6",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D7",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D7",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) FIN_D8",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap FIN_D8",
+   "value": 20.0,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "digital",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.6667,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) HUB_PCB",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "hub (centre)",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "HV envelope gap HUB_PCB",
+   "value": 19.5,
+   "limit": 3.0,
+   "sense": ">=",
+   "where": "hub (centre)",
+   "kind": "geometry",
+   "safety": true,
+   "ok": true,
+   "headroom": 5.5,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) LED display flex (LR1)",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "digital",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) shield coat (MG 841AR, slit at 184 deg)",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "coil channel",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) SH1 split-ring shield",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "receive stack (z 1.2-3.3, under every sector)",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) PRX planar RX (layer)",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "receive stack (z 1.2-3.3, under every sector)",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) SB1R-QA (18 um)",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "receive stack (z 1.2-3.3, under every sector)",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) SB1R-QB (18 um)",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "receive stack (z 1.2-3.3, under every sector)",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  },
+  {
+   "rule": "echo drift (5 K) transmit litz (bank wound)",
+   "value": 0.0,
+   "limit": 0.5,
+   "sense": "<=",
+   "where": "coil channel",
+   "kind": "echo",
+   "safety": false,
+   "ok": true,
+   "headroom": 1.0,
+   "status": "PASS"
+  }
+ ],
+ "rule_summary": {
+  "FAIL": [
+   "moulded variant: tray floor plate vs moulded min wall 0.8 (0.6 vs 0.8)"
+  ],
+  "BLOCKED": [],
+  "EDGE": [
+   "pocket clearance ENV_LED in tray wall tops (0.4 vs 0.4)",
+   "min wall G_TRAY (printed) (0.8 vs 0.8)",
+   "min wall G_COMBS (resin) (0.3 vs 0.3)",
+   "plate thickness tray_floor (printed, >= 3 layers) (0.6 vs 0.6)",
+   "moulded variant: min wall G_TRAY (0.8 vs 0.8)",
+   "HV epoxy to the litz (MG 832TC >= 3.0 mm) (3.042 vs 3.0)"
+  ]
+ },
+ "ok": true,
+ "seconds": 37.0
+}

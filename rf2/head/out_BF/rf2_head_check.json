@@ -17,7 +17,7 @@
      "ok": true
     },
     "COIL_CHANNEL": {
-     "triangles": 4044,
+     "triangles": 4068,
      "edges_not_2": 0,
      "volume_cm3": 8.845,
      "ok": true
@@ -73,13 +73,13 @@
     "ENV_FIN_HV1": {
      "triangles": 44,
      "edges_not_2": 0,
-     "volume_cm3": 1.492,
+     "volume_cm3": 1.467,
      "ok": true
     },
     "ENV_FIN_HV2": {
      "triangles": 44,
      "edges_not_2": 0,
-     "volume_cm3": 1.492,
+     "volume_cm3": 1.467,
      "ok": true
     },
     "ENV_FIN_A1": {
@@ -167,9 +167,9 @@
      "ok": true
     },
     "COIL_COMBS": {
-     "triangles": 864,
+     "triangles": 768,
      "edges_not_2": 0,
-     "volume_cm3": 0.199,
+     "volume_cm3": 0.185,
      "ok": true
     },
     "SHIELD_COAT": {
@@ -267,14 +267,14 @@
      ]
     },
     "ENV_FIN_HV1": {
-     "r_max": 103.001,
+     "r_max": 102.001,
      "z": [
       4.0,
       12.4
      ]
     },
     "ENV_FIN_HV2": {
-     "r_max": 103.001,
+     "r_max": 102.001,
      "z": [
       4.0,
       12.4
@@ -379,7 +379,7 @@
      ]
     },
     "COIL_COMBS": {
-     "r_max": 114.301,
+     "r_max": 114.136,
      "z": [
       3.9,
       12.7
@@ -712,7 +712,7 @@
    "bay_full_fill_potting": 207,
    "islands_only_potting": 12,
    "potting_source": "islands-only estimate",
-   "total_islands_only": 779,
+   "total_islands_only": 778,
    "total_full_fill": 974,
    "earlier_estimate": 529,
    "note": "100 % infill PETG is an upper bound for the printed parts; the earlier 529 g estimate assumed a single 0.4 mm receive board, not the two 0.8 mm SB1R boards"

@@ -279,7 +279,8 @@ def parts():
         litz = t if litz is None else litz + t
     P["LITZ"] = litz
     if "coil_combs" in S:                                                                   # option B: winding combs in the channel (open-topped slots)
-        cb = S["coil_combs"]; r0, r1 = S["channel"]["inner_wall_r"][1], S["shell"]["wall_r"][0] - 0.2; z0, z1 = co["floor_z"][1], S["channel"]["z"][1]
+        cb = S["coil_combs"]; r0, z0, z1 = S["channel"]["inner_wall_r"][1], co["floor_z"][1], S["channel"]["z"][1]
+        r1 = min(S["shell"]["wall_r"][0] - 0.2, max(co["columns_r"]) + cb["slot"] / 2)     # 2026-10-31 (glove DFM): the outer slot is open (the old 0.165 mm lip outside column 0 was below the resin minimum)
         plate = m3.Manifold.cube([r1 - r0, cb["t"], z1 - z0], True).translate([(r0 + r1) / 2, 0, (z0 + z1) / 2])
         for rc in co["columns_r"]: plate = plate - m3.Manifold.cube([cb["slot"], cb["t"] + 1, z1 - z0 + 1], True).translate([rc, 0, (z0 + z1) / 2])
         combs = None

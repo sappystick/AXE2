@@ -7,7 +7,7 @@
     "SHELL_LOWER": {
      "triangles": 3248,
      "edges_not_2": 0,
-     "volume_cm3": 69.997,
+     "volume_cm3": 69.998,
      "ok": true
     },
     "LID": {
@@ -17,7 +17,7 @@
      "ok": true
     },
     "COIL_CHANNEL": {
-     "triangles": 4086,
+     "triangles": 4068,
      "edges_not_2": 0,
      "volume_cm3": 8.845,
      "ok": true
@@ -25,37 +25,37 @@
     "BAY_WALLS": {
      "triangles": 64,
      "edges_not_2": 0,
-     "volume_cm3": 1.903,
+     "volume_cm3": 1.881,
      "ok": true
     },
     "CRADLE_AB1A": {
      "triangles": 4748,
      "edges_not_2": 0,
-     "volume_cm3": 0.96,
+     "volume_cm3": 0.929,
      "ok": true
     },
     "CRADLE_AB1B": {
      "triangles": 4748,
      "edges_not_2": 0,
-     "volume_cm3": 0.96,
+     "volume_cm3": 0.929,
      "ok": true
     },
     "CB1D_TOWER": {
      "triangles": 4436,
      "edges_not_2": 0,
-     "volume_cm3": 2.281,
+     "volume_cm3": 2.226,
      "ok": true
     },
     "TRAY_MP1": {
      "triangles": 104,
      "edges_not_2": 0,
-     "volume_cm3": 0.862,
+     "volume_cm3": 0.833,
      "ok": true
     },
     "TRAY_TXJ": {
      "triangles": 104,
      "edges_not_2": 0,
-     "volume_cm3": 0.336,
+     "volume_cm3": 0.325,
      "ok": true
     },
     "BOARD_SH1": {
@@ -64,16 +64,22 @@
      "volume_cm3": 16.319,
      "ok": true
     },
-    "BOARD_QA": {
+    "BOARD_PRX": {
      "triangles": 1416,
      "edges_not_2": 0,
-     "volume_cm3": 32.638,
+     "volume_cm3": 3.938,
+     "ok": true
+    },
+    "BOARD_QA": {
+     "triangles": 1548,
+     "edges_not_2": 0,
+     "volume_cm3": 32.63,
      "ok": true
     },
     "BOARD_QB": {
-     "triangles": 1416,
+     "triangles": 1548,
      "edges_not_2": 0,
-     "volume_cm3": 32.638,
+     "volume_cm3": 32.63,
      "ok": true
     },
     "ENV_AB1A": {
@@ -115,13 +121,13 @@
     "LITZ": {
      "triangles": 319488,
      "edges_not_2": 0,
-     "volume_cm3": 26.185,
+     "volume_cm3": 26.282,
      "ok": true
     },
     "COIL_COMBS": {
-     "triangles": 864,
+     "triangles": 768,
      "edges_not_2": 0,
-     "volume_cm3": 0.199,
+     "volume_cm3": 0.185,
      "ok": true
     },
     "SHIELD_COAT": {
@@ -158,49 +164,49 @@
     "COIL_CHANNEL": {
      "r_max": 114.3,
      "z": [
-      3.2,
-      12.6
+      3.3,
+      12.7
      ]
     },
     "BAY_WALLS": {
      "r_max": 103.602,
      "z": [
-      3.8,
+      3.9,
       12.6
      ]
     },
     "CRADLE_AB1A": {
      "r_max": 103.499,
      "z": [
-      3.8,
+      3.9,
       8.0
      ]
     },
     "CRADLE_AB1B": {
      "r_max": 103.499,
      "z": [
-      3.8,
+      3.9,
       8.0
      ]
     },
     "CB1D_TOWER": {
      "r_max": 40.5,
      "z": [
-      3.8,
+      3.9,
       9.1
      ]
     },
     "TRAY_MP1": {
      "r_max": 89.378,
      "z": [
-      3.8,
+      3.9,
       8.0
      ]
     },
     "TRAY_TXJ": {
      "r_max": 102.441,
      "z": [
-      3.8,
+      3.9,
       8.0
      ]
     },
@@ -211,18 +217,25 @@
       1.6
      ]
     },
+    "BOARD_PRX": {
+     "r_max": 112.0,
+     "z": [
+      1.6,
+      1.7
+     ]
+    },
     "BOARD_QA": {
      "r_max": 114.0,
      "z": [
-      1.6,
-      2.4
+      1.7,
+      2.5
      ]
     },
     "BOARD_QB": {
      "r_max": 114.0,
      "z": [
-      2.4,
-      3.2
+      2.5,
+      3.3
      ]
     },
     "ENV_AB1A": {
@@ -270,15 +283,15 @@
     "LITZ": {
      "r_max": 114.085,
      "z": [
-      3.805,
-      12.375
+      3.905,
+      12.475
      ]
     },
     "COIL_COMBS": {
-     "r_max": 114.301,
+     "r_max": 114.136,
      "z": [
-      3.8,
-      12.6
+      3.9,
+      12.7
      ]
     },
     "SHIELD_COAT": {
@@ -292,8 +305,122 @@
   },
   "no_interference": {
    "ok": true,
-   "pairs_checked": 210,
+   "pairs_checked": 231,
    "overlaps": []
+  },
+  "coil_order": {
+   "order": "bank",
+   "slots": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     4,
+     1
+    ]
+   ],
+   "coil_top_z": 12.475,
+   "inner_turn_r": 106.32,
+   "turns": 26,
+   "distinct_slots": 26,
+   "ok": true
   },
   "seats": {
    "ok": true,
@@ -373,26 +500,28 @@
    "material": "opaque matt black PETG plate, one conical well over each of the 522 LEDs (rf2_lightplate.py: exit efficiency 0.97 agains"
   },
   "potting_cm3_full_fill": {
-   "analog": 35.1,
-   "hv": 23.8,
-   "digital": 190.1
+   "analog": 34.6,
+   "hv": 23.4,
+   "digital": 187.8
   },
   "mass_g": {
    "items": {
-    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 219.7,
-    "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": 129.2,
+    "printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": 219.4,
+    "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 18 um each)": 125.1,
     "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": 37.4,
-    "transmit litz (26 turns, 6.9 g/m)": 123.8,
+    "transmit litz (26 turns, 6.9 g/m)": 124.4,
     "electronics islands (ASSUMED: AB1A/B 10 g each, CB1D 40 g, MP1 8 g, TXJ 10 g; LED display flex 40 g ASSUMED: 0.4 mm flex+stiffener D226 about 30 g + 522 LEDs / caps)": 118,
-    "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": 58.5,
-    "hardware, cable gland, yoke lug (ASSUMED)": 40.0
+    "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": 58.4,
+    "hardware, cable gland, yoke lug (ASSUMED)": 40.0,
+    "PRX layer (25 um PI 1.42 g/cm3 + 31.6 m x 0.15 mm x 35 um Cu spirals)": 2.9,
+    "MP2 second receive channel (ASSUMED as MP1, 8 g)": 8.0
    },
-   "without_bay_potting": 727,
-   "bay_full_fill_potting": 185,
+   "without_bay_potting": 734,
+   "bay_full_fill_potting": 183,
    "islands_only_potting": 26,
    "potting_source": "islands-only estimate",
-   "total_islands_only": 752,
-   "total_full_fill": 912,
+   "total_islands_only": 759,
+   "total_full_fill": 917,
    "earlier_estimate": 529,
    "note": "100 % infill PETG is an upper bound for the printed parts; the earlier 529 g estimate assumed a single 0.4 mm receive board, not the two 0.8 mm SB1R boards"
   }
@@ -401,10 +530,10 @@
  "vertical_budget_mm": {
   "total": 16.55,
   "bay": [
-   3.8,
+   3.9,
    13.1
   ],
-  "bay_height": 9.3,
+  "bay_height": 9.2,
   "stack": {
    "AB1A": [
     4.6,

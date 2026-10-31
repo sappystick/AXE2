@@ -41,7 +41,7 @@
     "COIL_B": [
      21.8,
      89.9,
-     95.0
+     94.9
     ],
     "CABLE_B": [
      21.8,
@@ -77,7 +77,7 @@
     "COIL_A": 35.0,
     "CABLE_A": 36.1
    },
-   "coil_lead_pair_loop_cm2": 0.913,
+   "coil_lead_pair_loop_cm2": 0.912,
    "shaft_pair_loop_cm2": 1.189,
    "note": "the loops lie in planes through the head axis' neighbourhood (the fin gap): twist the pairs where the harness leaves the saddles; loop area is a bound, not a coupling model"
   },
@@ -108,9 +108,9 @@
   "potting_cavities": {
    "ok": true,
    "cm3": {
-    "analog": 53.4,
-    "hv": 33.1,
-    "digital": 205.0
+    "analog": 52.8,
+    "hv": 32.8,
+    "digital": 202.8
    },
    "fill": "from the 4 mm hub bore outwards; the sector walls start at r 21, so each sector fills through the open hub region",
    "open_item": "vent paths: the display flex covers the lid over the bay, so vents must go through the shell wall's high side"

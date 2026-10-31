@@ -1,7 +1,7 @@
 {
  "status": "MODELED glove housing geometry (rf2_head_glove.py); checks in rf2_head_glove_check.py",
  "info": {
-  "r_epoxy_max": 102.635,
+  "r_epoxy_max": 102.585,
   "litz_inner_edge": 105.635,
   "lane": {
    "from_xy": [
@@ -12,8 +12,8 @@
     -55.94,
     81.78
    ],
-   "length_mm": 31.3,
-   "width_mm": 1.6
+   "length_mm": 31.6,
+   "width_mm": 2.0
   },
   "troughs": {
    "FIN_A1": {
@@ -41,7 +41,7 @@
     "half_width": 2.7
    }
   },
-  "seconds": 1.7,
+  "seconds": 1.6,
   "litz_pass": {
    "d": 2.0,
    "z": 8.0,
@@ -54,7 +54,7 @@
   }
  },
  "info_moulded": {
-  "r_epoxy_max": 102.635,
+  "r_epoxy_max": 102.585,
   "litz_inner_edge": 105.635,
   "lane": {
    "from_xy": [
@@ -65,8 +65,8 @@
     -55.94,
     81.78
    ],
-   "length_mm": 31.3,
-   "width_mm": 1.6
+   "length_mm": 31.6,
+   "width_mm": 2.0
   },
   "troughs": {
    "FIN_A1": {
@@ -94,7 +94,7 @@
     "half_width": 2.7
    }
   },
-  "seconds": 2.2,
+  "seconds": 2.1,
   "litz_pass": {
    "d": 2.0,
    "z": 8.0,
@@ -108,8 +108,8 @@
  },
  "step_MB": {
   "G_SHELL": 4.28,
-  "G_TRAY": 21.95,
-  "G_COMBS": 2.4,
+  "G_TRAY": 21.94,
+  "G_COMBS": 2.13,
   "G_GLAND_PIN": 0.86,
   "G_LID": 3.79
  },
@@ -443,7 +443,7 @@
   },
   {
    "part": "SH1 split-ring shield",
-   "zone": "digital",
+   "zone": "receive stack (z 1.2-3.3, under every sector)",
    "deg": 0.0,
    "r": 60.0,
    "metal": "slit rings + spine (loop-free, rf2_shield_pcb)",
@@ -456,7 +456,7 @@
   },
   {
    "part": "PRX planar RX (layer)",
-   "zone": "analog",
+   "zone": "receive stack (z 1.2-3.3, under every sector)",
    "deg": 135.0,
    "r": 95.0,
    "metal": "35 um spirals: open spiral, no closed loop",
@@ -469,7 +469,7 @@
   },
   {
    "part": "SB1R-QA (18 um)",
-   "zone": "digital",
+   "zone": "receive stack (z 1.2-3.3, under every sector)",
    "deg": 0.0,
    "r": 60.0,
    "metal": "receive spirals (unchanged copper)",
@@ -482,7 +482,7 @@
   },
   {
    "part": "SB1R-QB (18 um)",
-   "zone": "digital",
+   "zone": "receive stack (z 1.2-3.3, under every sector)",
    "deg": 0.0,
    "r": 60.0,
    "metal": "receive spirals (unchanged copper)",
@@ -527,5 +527,5 @@
    "draft_deg": 0.0
   }
  },
- "seconds": 36.6
+ "seconds": 36.1
 }

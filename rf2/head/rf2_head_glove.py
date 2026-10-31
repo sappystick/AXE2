@@ -40,7 +40,7 @@ C_POT = 1.0                   # potting cavity: clearance from a fin's parts env
 EPOXY_LITZ_MIN = 3.0          # MG 832TC epoxy kept >= 3.0 mm from the winding (rf2_head SPEC potting: eps 3.7, DF 0.1)
 FILL_Z = 12.5                 # potting fill level (fin tops at 12.4: 0.1 mm cover over the board edge, 0.5 over the parts envelope at 12.0)
 WALL_TOP = 12.6               # cup / trough / sector wall tops (0.5 mm under the display flex at 13.1)
-HV_DEG = (166.0, 190.0)       # HV epoxy island between these radial walls (HV fins at 170 / 186, lead lane at 178)
+HV_DEG = (165.0, 191.0)       # HV epoxy island between these radial walls (HV fins at 170 / 186, lead lane at 178): 5 deg = 3.7 mm lateral at the parts' inner end (r 42)
 HV_R_IN = 37.2                # HV island inner arc (HV fins start at r 40)
 LITZ_PASS_D = 2.0             # litz pass-through holes in the HV island's outer arc (litz 1.372 + FEP sleeve, ASSUMED 1.70 OD)
 LITZ_SLEEVE_OD = 1.70
@@ -118,8 +118,8 @@ def zone_map(P, sides):
     E = echo_tables(); K = E["step_K"]; rows = []
     hv_keys = [k for k, v in S["boards_inner"].items() if v.get("hv")]
     hvm = union([P["ENV_" + k] for k in hv_keys])
-    def drift_row(name, deg, r, metal, drift, src, hv=False, solid=None, note=""):
-        z = zone_of(deg, r); row = dict(part=name, zone=z, deg=round(deg % 360, 1), r=round(r, 1), metal=metal, echo_drift_5K_x_noise=drift, drift_limit=E["limit"],
+    def drift_row(name, deg, r, metal, drift, src, hv=False, solid=None, note="", zone=None):
+        z = zone or zone_of(deg, r); row = dict(part=name, zone=z, deg=round(deg % 360, 1), r=round(r, 1), metal=metal, echo_drift_5K_x_noise=drift, drift_limit=E["limit"],
                                         drift_ok=drift <= E["limit"], drift_source=src, hv=hv, note=note)
         if solid is not None and not hv: row["gap_to_HV_envelopes_mm"] = round(float(solid.min_gap(hvm, 20.0)), 3); row["hv_envelope_ok"] = row["gap_to_HV_envelopes_mm"] >= 3.0
         rows.append(row)
@@ -141,9 +141,9 @@ def zone_map(P, sides):
         elif k == "LED":
             drift_row("LED display flex (LR1)", 0.0, 60.0, "522 SK9822-EC20 PCB-holder packages", float(f"{E['led']['drift_x_noise_per_K'] * K:.3g}"), "rf2_zones display PCB-holder package (flat)", solid=P["ENV_LED"])
     drift_row("shield coat (MG 841AR, slit at %.0f deg)" % S["shield_coat"]["slit_deg"], S["shield_coat"]["slit_deg"], 114.5, "25 um nickel paint", float(E["coat"]["drift_x_noise_per_K"] * K), "rf2_zones MG 841AR closed band (upper bound)")
-    drift_row("SH1 split-ring shield", 0.0, 60.0, "slit rings + spine (loop-free, rf2_shield_pcb)", 0.0, "rule 5 design: every ring slit (sh1_check topology loop_free)")
-    drift_row("PRX planar RX (layer)", S["prx"]["feed"]["deg"], 95.0, "35 um spirals: open spiral, no closed loop", 0.0, "receive element itself (nulled to the TX: residual M %.2g uH)" % S["prx"]["M_residual_uH"])
-    for b in ("QA", "QB"): drift_row(f"SB1R-{b} ({S['boards'][b]['copper_um']} um)", 0.0, 60.0, "receive spirals (unchanged copper)", 0.0, "receive element itself")
+    drift_row("SH1 split-ring shield", 0.0, 60.0, "slit rings + spine (loop-free, rf2_shield_pcb)", 0.0, "rule 5 design: every ring slit (sh1_check topology loop_free)", zone="receive stack (z 1.2-3.3, under every sector)")
+    drift_row("PRX planar RX (layer)", S["prx"]["feed"]["deg"], 95.0, "35 um spirals: open spiral, no closed loop", 0.0, "receive element itself (nulled to the TX: residual M %.2g uH)" % S["prx"]["M_residual_uH"], zone="receive stack (z 1.2-3.3, under every sector)")
+    for b in ("QA", "QB"): drift_row(f"SB1R-{b} ({S['boards'][b]['copper_um']} um)", 0.0, 60.0, "receive spirals (unchanged copper)", 0.0, "receive element itself", zone="receive stack (z 1.2-3.3, under every sector)")
     drift_row("transmit litz (bank wound)", HEEL, 110.0, "26 turns FEP litz", 0.0, "the transmitter")
     return rows
 # ------------------------------------------------------------------------------------------------ housing parts
@@ -185,7 +185,7 @@ def build(variant="printed"):
     F["sector_walls"] = walls
     # HV island: radial walls at 166 / 190, inner arc, outer arc 3.0 mm from the litz, two litz pass-through holes
     turns = H.coil_turns(); litz_in = min(r for r, _ in turns) - S["coil"]["litz_od"] / 2
-    r_ep = round(litz_in - EPOXY_LITZ_MIN, 3)                                                       # epoxy may reach this radius
+    r_ep = round(litz_in - EPOXY_LITZ_MIN - 0.05, 3)                                                # epoxy may reach this radius (0.05 mm for the 256-facet arc)
     hv_w = union([radial_wall(d, HV_R_IN, r_ep + T_W, T_W, zf1, WALL_TOP, dr) for d in HV_DEG] +
                  [arc_wall(HV_R_IN - T_W, HV_R_IN, HV_DEG[0], HV_DEG[1], zf1, WALL_TOP, dr), arc_wall(r_ep, r_ep + T_W, HV_DEG[0], HV_DEG[1], zf1, WALL_TOP, dr)])
     zp = 8.0; holes = [at(m3.Manifold.cylinder(4.0, LITZ_PASS_D / 2, LITZ_PASS_D / 2, 32, True).rotate([0, 90, 0]).translate([r_ep + T_W / 2, 0, zp]).rotate([0, 0, HEEL + s * 1.5]), (0, 0)) for s in (-1, 1)]
@@ -203,20 +203,26 @@ def build(variant="printed"):
             e = (WALL_TOP - zf1) * math.tan(math.radians(dr))
             side_walls = [m3.Manifold.batch_hull([fin_frame_box(v["deg"], x0, x1, s * (hw - e), s * (hw + T_W + e), zf1, zf1 + 0.01), fin_frame_box(v["deg"], x0, x1, s * hw, s * (hw + T_W), WALL_TOP - 0.01, WALL_TOP)]) for s in (1, -1)]
         tw = union(side_walls + [end]) - weir - funnel
+        F.setdefault("_trough_sides", []).extend(side_walls); F.setdefault("_trough_ends", []).append(end)
         troughs.append(tw); tr_inner[k] = (v["deg"], x0 + T_W, x1, hw)
-    F["analog_troughs"] = union(troughs)
+    F["analog_troughs"] = union(troughs); F["analog_trough_sides"] = union(F.pop("_trough_sides")); F["analog_trough_end_slots"] = union(F.pop("_trough_ends"))
     # PRX lead lane: feed hole -> the A2 fin's +side trough wall at the board's input end (r 101.5)
     f = S["prx"]["feed"]; a2 = bi["FIN_A2"]; hw2 = tr_inner["FIN_A2"][3]
     u = np.array([math.cos(math.radians(a2["deg"])), math.sin(math.radians(a2["deg"]))]); vv = np.array([-u[1], u[0]])
     A = np.array(pol(f["r"], f["deg"])); Bp = 99.0 * u + (hw2 + T_W) * vv                                            # lane joins the trough wall at r 99 (inputs J1 / J2 at r 101.5)
-    L = float(np.linalg.norm(Bp - A)); ang = math.degrees(math.atan2(*(Bp - A)[::-1])); LW = 1.6
+    L = float(np.linalg.norm(Bp - A)); ang = math.degrees(math.atan2(*(Bp - A)[::-1])); LW = 2.0
+    Bi = 99.0 * u + hw2 * vv; Li = float(np.linalg.norm(Bi - A)); angi = math.degrees(math.atan2(*(Bi - A)[::-1]))     # the lead runs on to the trough's inner face
+    L, ang = Li, angi                                                                                                   # lane and lead share one axis (A -> trough inner face)
     lane_core = m3.Manifold.cube([L + 2.5, LW, WALL_TOP - zf1 + 2], True).translate([L / 2 - 1.0, 0, (zf1 + WALL_TOP) / 2]).rotate([0, 0, ang]).translate([A[0], A[1], 0])
     lane_out = m3.Manifold.cube([L + 2.5 + 2 * T_W, LW + 2 * T_W, WALL_TOP - zf1], True).translate([L / 2 - 1.0, 0, (zf1 + WALL_TOP) / 2]).rotate([0, 0, ang]).translate([A[0], A[1], 0])
     feed_box = at(cyl(f["hole_d"] / 2 + 0.6 + T_W, zf1, WALL_TOP, 48), tuple(A)) - at(cyl(f["hole_d"] / 2 + 0.6, zf1 - 1, WALL_TOP + 1, 48), tuple(A))
     trough_core = fin_frame_box(a2["deg"], tr_inner["FIN_A2"][1], tr_inner["FIN_A2"][2], -hw2, hw2, zf1 - 1, WALL_TOP + 1)
     lane = (lane_out + feed_box) - lane_core - at(cyl(f["hole_d"] / 2 + 0.6, zf1 - 1, WALL_TOP + 1, 48), tuple(A)) - trough_core
     F["prx_lane"] = lane
-    F["analog_troughs"] = F["analog_troughs"] - lane_core                                                              # opening where the lane meets the trough
+    port = m3.Manifold.cube([4.0, LW + 1.0, WALL_TOP - zf1 + 2], True).translate([L, 0, (zf1 + WALL_TOP) / 2]).rotate([0, 0, ang]).translate([A[0], A[1], 0])   # 3.0 mm port through the oblique trough wall
+    F["prx_lane"] = lane = lane - port
+    F["analog_troughs"] = F["analog_troughs"] - lane_core - port                                                       # opening where the lane meets the trough
+    F["analog_trough_sides"] = F["analog_trough_sides"] - lane_core - port
     # stiffening ribs (digital sector, between the digital fins)
     dd = sorted(v["deg"] % 360 for v in fins.values() if v["zone"] == "digital"); ribs = []
     for a, b in zip(dd, dd[1:] + [dd[0] + 360]):
@@ -236,7 +242,7 @@ def build(variant="printed"):
     C = {k: P[k] for k in P if k.startswith(("BOARD_", "ENV_")) or k in ("LITZ", "SHIELD_COAT")}
     C["CORD_FLEX_CURL"] = at(cyl(GLAND["curl_d"] / 2, gl["boss_z"][0] - 2.0, sh["lid_z"][1] + 0.0, 48), gl["c"]) - at(cyl(GLAND["curl_d"] / 2 - 0.15, gl["boss_z"][0] - 3, sh["lid_z"][1] + 1, 48), gl["c"])
     C["CORD_FLEX_CURL"] = C["CORD_FLEX_CURL"] - box(gl["c"][0], gl["c"][1], 20, 20, GLAND["pin_z"] - GLAND["pin_d"] / 2 - 0.3, GLAND["pin_z"] + GLAND["pin_d"] / 2 + 0.3)   # the loop round the pin (not modeled): gap at the pin
-    C["PRX_LEADS"] = m3.Manifold.cylinder(L, 0.33, 0.33, 16).rotate([0, 90, 0]).translate([0, 0, zf1 + 0.4]).rotate([0, 0, ang]).translate([A[0], A[1], 0]) + \
+    C["PRX_LEADS"] = m3.Manifold.cylinder(Li, 0.33, 0.33, 16).rotate([0, 90, 0]).translate([0, 0, zf1 + 0.4]).rotate([0, 0, angi]).translate([A[0], A[1], 0]) + \
                      at(cyl(0.33, S["boards"]["PRX"]["z"][1], zf1 + 0.73, 16), tuple(A))
     # --- potting solids: cavity up to the fill level minus every solid
     solids = union(list(G.values()) + list(C.values()))

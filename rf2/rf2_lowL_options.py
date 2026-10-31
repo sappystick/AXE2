@@ -21,8 +21,8 @@ sys.path[:0] = [HERE, os.path.join(HERE, "head"), os.path.join(ROOT, "concepts")
 import clib as K
 import rf2_cordflex as CFX, rf2_continuous as CONT
 MU0 = K.MU0
-COLS = [113.4 - 1.77 * k for k in range(5)]; ROW0, ROWP = 4.49, 1.44
-SLOTS = [(COLS[j % 5] * 1e-3, (ROW0 + (j // 5) * ROWP) * 1e-3) for j in range(30)]
+COLS = [113.4 - 1.77 * k for k in range(5)]; ROW0, ROWP = 4.59, 1.44                    # owner 2026-10-31: coil 0.1 mm up (PRX layer under QA / QB), HANDOFF 56
+SLOTS = [(COLS[c] * 1e-3, (ROW0 + m * ROWP) * 1e-3) for c in range(5) for m in range(6)]      # bank fill (owner 2026-10-31): column by column, bottom to top; was row by row
 A_STRAND = math.sqrt(66 * (0.101e-3) ** 2 / 4)                 # 66 x 38 AWG copper-equivalent radius
 R_PER_M = 0.601 / 18.3                                         # rf2_wire_options: 0.601 ohm over 18.3 m (incl. leads)
 LEAD_M = 18.3 - sum(2 * math.pi * SLOTS[j][0] for j in range(26))
@@ -88,7 +88,7 @@ def c_node(sw):
 
 # ------------------------------------------------ planar nulled RX
 RX_Z = 1.65e-3                                                 # on a 0.1 mm PI layer between SH1 (z 1.2-1.6) and QA (moved up 0.1 mm: rule 12)
-RX_PITCH, RX_W, RX_T, RX_NM = 0.5e-3, 0.25e-3, 70e-6, 20
+RX_PITCH, RX_W, RX_T, RX_NM = 0.5e-3, 0.25e-3, 35e-6, 20          # 35 um per layer: 2 x 35 um is what fits the 0.1 mm PRX layer (draftsman 2026-10-31; was 70 um)
 def _m_turn_table(c, z):
     """mutual inductance (per RX turn) between the TX option and a coaxial RX circle of radius r at height z: vectorised Maxwell, on a 0.05 mm grid"""
     from scipy.special import ellipk, ellipe
