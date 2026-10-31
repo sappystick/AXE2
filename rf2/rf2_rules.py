@@ -79,6 +79,20 @@ def rules():
             add("flex.one_piece_minco", "target", "cord-flex in one piece vs Minco maximum length (5 ft)", a["one_piece_mm"], mi["len_max_mm"], "<=", "Minco design guide 2019", unit="mm")
         for k, v in fo["B_shield_can"]["places"].items():
             add(f"shield.slotted.{k[:20]}", "target", f"slotted etched shield can in the head, {k}: drift vs 0.5 x gate noise", v["slotted"]["drift5K_x_noise"], 0.5, "<=", "rf2_flex_options.json", unit="x noise")
+    for fn, tag in (("rf2_lowL_options.json", "lowL"), ("rf2_shaftlink_options.json", "shaft")):
+        d = J("rf2", "results", fn)
+        if not d: continue
+        rows = []
+        if tag == "lowL":
+            for o in d["options"]:
+                if o["N"] == 26 and not o["sep_rx"] and not o["txd_at_400mm"] and o["switch"] == "C3M0280090J": continue        # the baseline is already in rf2_continuous
+                name = f"{o['N']}x{o['p']} {o['switch'][:4]}" + ((" +RX" + str(o["sep_rx"])[:2]) if o["sep_rx"] else "") + (" TXD400" if o["txd_at_400mm"] else "") + (" TX2L" if o.get("tx_strips_2layer") else "")
+                rows += [(f"opt.lowL.{name}.{r['rule'][:24]}", f"option {name}: {r['rule']}", r) for r in o["rule_rows"]]
+        else:
+            rows = [(f"opt.shaft.{r['rule'][:30]}", r["rule"], r) for r in d["rule_rows"]]
+        for rid, desc, r in rows:
+            sense = r.get("sense", ">=" if "VDS" in r["rule"] else "<=")
+            add(rid, "safety" if ("IDM" in r["rule"] or "rule 6" in r["rule"] or "TJ" in r["rule"]) else "target", desc, r["value"], r["limit"], sense, fn, unit="")
     return R
 
 def status(r):

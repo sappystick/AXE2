@@ -72,6 +72,32 @@ def main():
     row("Battery dock signal contacts", "photo-etched BeCu C172 fingers", "Tech Etch etch & form", "ADOPTED", f"{c.get('force_N')} N at 0.8 mm, {c.get('stress_MPa')} MPa", "replaces the unobtainable Mill-Max sheet", "-", "contact resistance / cycle test")
     row("Battery pack", "7S1P Molicel P45B, drill-style rail", "Molicel P45B datasheet", "ADOPTED", f"{po.get('chosen_summary', '')[:120]}", "-188 g pack", fl("runtime"), "rail dock geometry in rf2_chassis")
     row("Battery pack", "7S RC LiPo in a hard shell", "Gens Ace listing", "REJECTED", "157 Wh/kg bare, no BMS", "-", "-", "-")
+    # ---- 2026-10-31 owner follow-ups from the concept boards: low-L TX, planar nulled RX, optical shaft link, hex shaft (rf2_lowL_options, rf2_shaftlink_options)
+    lo, sl = J("rf2", "results", "rf2_lowL_options.json"), J("rf2", "results", "rf2_shaftlink_options.json")
+    if lo:
+        def fo_(N, p, sw, rx=False, near=False, tx2=False):
+            return next((o for o in lo["options"] if o["N"] == N and o["p"] == p and o["switch"] == sw and bool(o["sep_rx"]) == rx and o["txd_at_400mm"] == near and o.get("tx_strips_2layer", False) == tx2
+                         and (not rx or str(o["sep_rx"]).startswith("40"))), None)
+        def nums(o): return (f"L {o['L_uH']} uH, boost {o['I_boost']} A, first gate {o['first_gate_us']} us, boost runtime {o['runtime_boost_h']} h, depth coin / 1 g / 0.1 g {o['depth_cm']['coin_25mm_silver']} / {o['depth_cm']['gold_1g']} / {o['depth_cm']['gold_0p1g']} cm, flex {o['flex_width_mm']} mm, switch TJ {o['Tj_switch_boost_C']} C") if o and "depth_cm" in o else "-"
+        def brk(o): return "; ".join(f"{r['rule']}: {r['value']} vs {r['limit']}" for r in o["rule_rows"] if not r["ok"]) or "-" if o else "-"
+        b, n1, n2 = fo_(26, 1, "C3M0280090J"), fo_(26, 1, "NTBG080N120SC1"), fo_(26, 1, "NTBG080N120SC1", near=True)
+        row("TXD: transmit switch", "onsemi NTBG080N120SC1 (1200 V, 80 mohm, IDM 110 A) in place of C3M0280090J", "onsemi datasheet on file", "PROPOSED", nums(n1), f"boost runtime {b['runtime_boost_h']} -> {n1['runtime_boost_h']} h; first gate +{round(n1['first_gate_us'] - b['first_gate_us'], 2)} us (Coss 79 pF)", brk(n1), "owner decision; hot RDS factor 1.6 is ASSUMED: read the datasheet curve")
+        row("TXD: position on the shaft", "TXD at s 400 mm (shorter TX strips) instead of s 857 mm", "rf2_system echoes (drift 0.147 x noise at 400 mm)", "PROPOSED", nums(n2), f"with the NTBG switch: boost runtime {n2['runtime_boost_h']} h", brk(n2), "re-run rf2_system echo / thermal with the TXD there")
+        o = fo_(15, 2, "NTBG080N120SC1", tx2=True)
+        row("Head: coil wiring (low inductance)", "15 turns x 2 strands in parallel in the same comb + NTBG switch + TX strips doubled on both flex layers", "concept board (low-L TX)", "FEASIBLE-NOT-ADOPTED" + (" - BREAKS " + brk(o) if brk(o) != "-" else ""), nums(o), "faster first gate, small gold deeper, coins shallower", brk(o), "owner decision; 2-layer cord flex construction to confirm")
+        for N, p in ((10, 3), (7, 4)):
+            o = fo_(N, p, "NTBG080N120SC1")
+            row("Head: coil wiring (low inductance)", f"{N} turns x {p} strands + NTBG switch", "concept board (low-L TX)", "FEASIBLE-NOT-ADOPTED" + (" - BREAKS " + brk(o) if brk(o) != "-" else ""), nums(o), "fastest gate, highest TX current", brk(o), "-")
+        o = fo_(7, 4, "NTBG080N120SC1", rx=True)
+        row("Head: receive coil", "planar polyimide RX (40 turns, 0.15 / 0.3 mm) nulled by counter-wound bucking turns under the TX wire, on a 0.1 mm layer above SH1", "concept board (planar RX)", "FEASIBLE-NOT-ADOPTED" + (" - BREAKS " + brk(o) if brk(o) != "-" else ""),
+            nums(o) + (f"; null residual {o['rx']['null_ratio_dz_0p1mm']} per 0.1 mm" if o else ""), "best with a very low-L TX: the RX no longer limits the gate; coins lose depth (less RX area than the 26-turn rim coil)", brk(o), "-")
+    if sl:
+        op = sl["optical"]; hx = sl["hex"]
+        row("Cord: digital lanes", "optical link up the shaft (AFBR-1624Z / 2624Z, GH-4001-P POF)", "Broadcom, Mitsubishi datasheets on file", "REJECTED - BREAKS fibre bend radius",
+            f"flex {op['flex_width_mm'][0]} -> {op['flex_width_mm'][1]} mm, +{op['power_W'][0]}-{op['power_W'][1]} W; loop radius {op['rolling_loop_radius_available_mm']} mm vs {op['fibre_bend_needed_mm']['repeated']} mm", "6 conductors removed if it fitted", f"POF bend: {op['rolling_loop_radius_available_mm']} vs {op['fibre_bend_needed_mm']['repeated']} mm", "only for a static run (handle to hinge board)")
+        row("Shaft: telescope profiles", "regular hexagon, same across-flats (31 / 26 / 21)", "concept board (hex shaft)", "REJECTED - BREAKS sag vs square", f"{hx['hex_same_af']['tubes_g']} g vs {hx['square']['tubes_g']} g; sag {hx['hex_same_af']['tip_sag_mm']} vs {hx['square']['tip_sag_mm']} mm", "lighter but softer", f"sag {hx['hex_same_af']['tip_sag_mm']} vs {hx['square']['tip_sag_mm']} mm", "-")
+        row("Shaft: telescope profiles", f"regular hexagon, equal mass ({hx['hex_equal_mass']['across_flats_mm']} mm)", "concept board (hex shaft)", "FEASIBLE-NOT-ADOPTED", f"sag {hx['hex_equal_mass']['tip_sag_mm']} vs {hx['square']['tip_sag_mm']} mm at {hx['hex_equal_mass']['tubes_g']} g; 6 inner flats of {hx['hex_equal_mass']['inner_flat_mm']} mm", "stiffer at the same mass; bigger profile; flex splits onto faces (TX-REF coupling %s -> %s pF/m)" % (hx['C_tx_to_ref_pF_per_m']['coplanar_flex'], hx['C_tx_to_ref_pF_per_m']['opposite_hex_faces']), "-", "re-draw camlocks, hinge and yoke for hex")
+        row("Shaft: long flex component boards", "TXD (and others) as long flex boards on the outside flats of the upper tube under a cover", "concept board (hex shaft)", "PROPOSED", f"{hx['long_flex_boards']['outer_tube_outside_flats']['area_cm2']} cm2 hex / {hx['long_flex_boards']['square_outside_faces_area_cm2']} cm2 square at s 410-790 mm", "frees chassis volume; past the 375 mm echo distance", "-", "thermal path of the TX switch on carbon to check")
     res = dict(status="GENERATED from the study results (MODELED)", rows=M, counts={s: sum(r["status"].startswith(s) for r in M) for s in ("ADOPTED", "PROPOSED", "FEASIBLE", "REJECTED", "OPEN", "BLOCKED", "SHELVED")}, ok=bool(M))
     json.dump(res, open(os.path.join(OUT, "rf2_integration.json"), "w"), indent=1)
     L = ["# Integration matrix (generated by rf2/rf2_integration.py; MODELED)", "",

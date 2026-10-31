@@ -1,0 +1,2492 @@
+{
+ "status": "MODELED options study (owner 2026-10-31): nothing adopted; equal field at 300 mm; regenerative clamp 75 % (ASSUMED as in rf2_continuous)",
+ "calibration": {
+  "base_L_uH": 327.5,
+  "design_L_uH": 333,
+  "base_runtime_scan_h": 5.19,
+  "rf2_continuous_scan_h": 5.18,
+  "ok": true
+ },
+ "noise_basis": "MP1 v2 2.211 nV/rtHz, 1 MHz, 1000-pulse average, SNR 5.0",
+ "options": [
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "C3M0280090J",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "R_coil": 0.601,
+   "I_scan": 8.06,
+   "I_boost": 12.74,
+   "R_flex": 0.28,
+   "W_TX_mm": 2.35,
+   "flex_width_mm": 15.7,
+   "Rd_ohm": 405,
+   "R_loop": 1.348,
+   "idm_frac": 0.579,
+   "reachable": true,
+   "ramp_us_scan": 137.1,
+   "ramp_us_boost": 278.2,
+   "first_gate_us": 16.26,
+   "fall_us": 5.74,
+   "P_tx_scan_W": 9.05,
+   "P_tx_boost_W": 28.71,
+   "runtime_scan_h": 5.19,
+   "runtime_boost_h": 2.6,
+   "P_coil_boost_W": 10.69,
+   "P_flex_boost_W": 4.97,
+   "P_switch_boost_W": 4.93,
+   "Tj_switch_boost_C": 89.3,
+   "P_Rd_boost_W": 2.17,
+   "E_pulse_mJ": 10.64,
+   "depth_cm": {
+    "coin_25mm_silver": 60.2,
+    "gold_1g": 30.2,
+    "gold_0p1g": 15.0
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": 0.0,
+    "runtime_boost_h": 0.0,
+    "depth_pct": {
+     "coin_25mm_silver": 0.0,
+     "gold_1g": 0.0,
+     "gold_0p1g": 0.0
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 17.6,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 89.3,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "R_coil": 0.601,
+   "I_scan": 8.06,
+   "I_boost": 12.74,
+   "R_flex": 0.28,
+   "W_TX_mm": 2.35,
+   "flex_width_mm": 15.7,
+   "Rd_ohm": 405,
+   "R_loop": 1.067,
+   "idm_frac": 0.116,
+   "reachable": true,
+   "ramp_us_scan": 128.1,
+   "ramp_us_boost": 238.1,
+   "first_gate_us": 16.86,
+   "fall_us": 5.74,
+   "P_tx_scan_W": 7.2,
+   "P_tx_boost_W": 21.0,
+   "runtime_scan_h": 5.73,
+   "runtime_boost_h": 3.23,
+   "P_coil_boost_W": 9.7,
+   "P_flex_boost_W": 4.52,
+   "P_switch_boost_W": 1.61,
+   "Tj_switch_boost_C": 56.1,
+   "P_Rd_boost_W": 2.14,
+   "E_pulse_mJ": 10.64,
+   "depth_cm": {
+    "coin_25mm_silver": 60.2,
+    "gold_1g": 30.1,
+    "gold_0p1g": 14.3
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": 0.6,
+    "runtime_boost_h": 0.63,
+    "depth_pct": {
+     "coin_25mm_silver": 0.0,
+     "gold_1g": -0.3,
+     "gold_0p1g": -4.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 56.1,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "C3M0280090J",
+   "sep_rx": false,
+   "txd_at_400mm": true,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "R_coil": 0.601,
+   "I_scan": 8.06,
+   "I_boost": 12.74,
+   "R_flex": 0.131,
+   "W_TX_mm": 2.35,
+   "flex_width_mm": 15.7,
+   "Rd_ohm": 405,
+   "R_loop": 1.199,
+   "idm_frac": 0.579,
+   "reachable": true,
+   "ramp_us_scan": 132.1,
+   "ramp_us_boost": 254.7,
+   "first_gate_us": 16.26,
+   "fall_us": 5.74,
+   "P_tx_scan_W": 8.16,
+   "P_tx_boost_W": 24.77,
+   "runtime_scan_h": 5.44,
+   "runtime_boost_h": 2.88,
+   "P_coil_boost_W": 10.1,
+   "P_flex_boost_W": 2.19,
+   "P_switch_boost_W": 4.48,
+   "Tj_switch_boost_C": 84.8,
+   "P_Rd_boost_W": 2.15,
+   "E_pulse_mJ": 10.64,
+   "depth_cm": {
+    "coin_25mm_silver": 60.2,
+    "gold_1g": 30.2,
+    "gold_0p1g": 15.0
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": 0.0,
+    "runtime_boost_h": 0.28,
+    "depth_pct": {
+     "coin_25mm_silver": 0.0,
+     "gold_1g": 0.0,
+     "gold_0p1g": 0.0
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 17.6,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 84.8,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": true,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "R_coil": 0.601,
+   "I_scan": 8.06,
+   "I_boost": 12.74,
+   "R_flex": 0.131,
+   "W_TX_mm": 2.35,
+   "flex_width_mm": 15.7,
+   "Rd_ohm": 405,
+   "R_loop": 0.918,
+   "idm_frac": 0.116,
+   "reachable": true,
+   "ramp_us_scan": 124.0,
+   "ramp_us_boost": 222.6,
+   "first_gate_us": 16.86,
+   "fall_us": 5.74,
+   "P_tx_scan_W": 6.38,
+   "P_tx_boost_W": 18.05,
+   "runtime_scan_h": 6.0,
+   "runtime_boost_h": 3.56,
+   "P_coil_boost_W": 9.34,
+   "P_flex_boost_W": 2.03,
+   "P_switch_boost_W": 1.5,
+   "Tj_switch_boost_C": 55.0,
+   "P_Rd_boost_W": 2.13,
+   "E_pulse_mJ": 10.64,
+   "depth_cm": {
+    "coin_25mm_silver": 60.2,
+    "gold_1g": 30.1,
+    "gold_0p1g": 14.3
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": 0.6,
+    "runtime_boost_h": 0.96,
+    "depth_pct": {
+     "coin_25mm_silver": 0.0,
+     "gold_1g": -0.3,
+     "gold_0p1g": -4.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 55.0,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "C3M0280090J",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 107.0,
+   "R_coil": 0.175,
+   "I_scan": 14.06,
+   "I_boost": 22.24,
+   "R_flex": 0.13,
+   "W_TX_mm": 5.06,
+   "flex_width_mm": 21.12,
+   "Rd_ohm": 231,
+   "R_loop": 0.773,
+   "idm_frac": 1.011,
+   "reachable": true,
+   "ramp_us_scan": 78.2,
+   "ramp_us_boost": 158.6,
+   "first_gate_us": 10.18,
+   "fall_us": 3.27,
+   "P_tx_scan_W": 13.72,
+   "P_tx_boost_W": 40.54,
+   "runtime_scan_h": 4.19,
+   "runtime_boost_h": 2.0,
+   "P_coil_boost_W": 7.65,
+   "P_flex_boost_W": 5.66,
+   "P_switch_boost_W": 10.31,
+   "Tj_switch_boost_C": 143.1,
+   "P_Rd_boost_W": 2.23,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 54.9,
+    "gold_1g": 28.2,
+    "gold_0p1g": 19.7
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -6.08,
+    "runtime_boost_h": -0.6,
+    "depth_pct": {
+     "coin_25mm_silver": -8.8,
+     "gold_1g": -6.6,
+     "gold_0p1g": 31.3
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 21.12,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 143.1,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 107.0,
+   "R_coil": 0.175,
+   "I_scan": 14.06,
+   "I_boost": 22.24,
+   "R_flex": 0.13,
+   "W_TX_mm": 5.06,
+   "flex_width_mm": 21.12,
+   "Rd_ohm": 231,
+   "R_loop": 0.491,
+   "idm_frac": 0.202,
+   "reachable": true,
+   "ramp_us_scan": 69.8,
+   "ramp_us_boost": 123.8,
+   "first_gate_us": 10.52,
+   "fall_us": 3.27,
+   "P_tx_scan_W": 9.01,
+   "P_tx_boost_W": 24.13,
+   "runtime_scan_h": 5.2,
+   "runtime_boost_h": 2.94,
+   "P_coil_boost_W": 6.91,
+   "P_flex_boost_W": 5.11,
+   "P_switch_boost_W": 3.22,
+   "Tj_switch_boost_C": 72.2,
+   "P_Rd_boost_W": 2.19,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 54.9,
+    "gold_1g": 28.2,
+    "gold_0p1g": 19.3
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -5.74,
+    "runtime_boost_h": 0.34,
+    "depth_pct": {
+     "coin_25mm_silver": -8.8,
+     "gold_1g": -6.6,
+     "gold_0p1g": 28.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 21.12,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 72.2,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "C3M0280090J",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 47.6,
+   "R_coil": 0.079,
+   "I_scan": 21.1,
+   "I_boost": 33.36,
+   "R_flex": 0.074,
+   "W_TX_mm": 8.85,
+   "flex_width_mm": 28.71,
+   "Rd_ohm": 154,
+   "R_loop": 0.621,
+   "idm_frac": 1.516,
+   "reachable": true,
+   "ramp_us_scan": 56.2,
+   "ramp_us_boost": 132.2,
+   "first_gate_us": 7.48,
+   "fall_us": 2.18,
+   "P_tx_scan_W": 22.97,
+   "P_tx_boost_W": 70.43,
+   "runtime_scan_h": 3.04,
+   "runtime_boost_h": 1.26,
+   "P_coil_boost_W": 7.59,
+   "P_flex_boost_W": 7.11,
+   "P_switch_boost_W": 22.24,
+   "Tj_switch_boost_C": 262.4,
+   "P_Rd_boost_W": 2.36,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 51.2,
+    "gold_1g": 26.5,
+    "gold_0p1g": 21.2
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -8.78,
+    "runtime_boost_h": -1.34,
+    "depth_pct": {
+     "coin_25mm_silver": -15.0,
+     "gold_1g": -12.3,
+     "gold_0p1g": 41.3
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 28.71,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 262.4,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 47.6,
+   "R_coil": 0.079,
+   "I_scan": 21.1,
+   "I_boost": 33.36,
+   "R_flex": 0.074,
+   "W_TX_mm": 8.85,
+   "flex_width_mm": 28.71,
+   "Rd_ohm": 154,
+   "R_loop": 0.339,
+   "idm_frac": 0.303,
+   "reachable": true,
+   "ramp_us_scan": 46.8,
+   "ramp_us_boost": 83.6,
+   "first_gate_us": 7.71,
+   "fall_us": 2.18,
+   "P_tx_scan_W": 12.95,
+   "P_tx_boost_W": 33.89,
+   "runtime_scan_h": 4.33,
+   "runtime_boost_h": 2.29,
+   "P_coil_boost_W": 6.46,
+   "P_flex_boost_W": 6.05,
+   "P_switch_boost_W": 6.05,
+   "Tj_switch_boost_C": 100.5,
+   "P_Rd_boost_W": 2.28,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 51.2,
+    "gold_1g": 26.5,
+    "gold_0p1g": 21.0
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -8.55,
+    "runtime_boost_h": -0.31,
+    "depth_pct": {
+     "coin_25mm_silver": -15.0,
+     "gold_1g": -12.3,
+     "gold_0p1g": 40.0
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 28.71,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 100.5,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 7,
+   "p": 4,
+   "switch": "C3M0280090J",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 23.6,
+   "R_coil": 0.042,
+   "I_scan": 29.99,
+   "I_boost": 47.42,
+   "R_flex": 0.046,
+   "W_TX_mm": 14.38,
+   "flex_width_mm": 39.76,
+   "Rd_ohm": 109,
+   "R_loop": 0.556,
+   "idm_frac": 2.155,
+   "reachable": false,
+   "why_not": "boost current 47.4 A is above VBUS / R_loop = 45.3 A",
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 47.42,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 39.76,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 7,
+   "p": 4,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 23.6,
+   "R_coil": 0.042,
+   "I_scan": 29.99,
+   "I_boost": 47.42,
+   "R_flex": 0.046,
+   "W_TX_mm": 14.38,
+   "flex_width_mm": 39.76,
+   "Rd_ohm": 109,
+   "R_loop": 0.274,
+   "idm_frac": 0.431,
+   "reachable": true,
+   "ramp_us_scan": 34.0,
+   "ramp_us_boost": 62.4,
+   "first_gate_us": 6.05,
+   "fall_us": 1.54,
+   "P_tx_scan_W": 19.85,
+   "P_tx_boost_W": 51.67,
+   "runtime_scan_h": 3.35,
+   "runtime_boost_h": 1.64,
+   "P_coil_boost_W": 6.7,
+   "P_flex_boost_W": 7.21,
+   "P_switch_boost_W": 11.04,
+   "Tj_switch_boost_C": 150.4,
+   "P_Rd_boost_W": 2.39,
+   "E_pulse_mJ": 10.6,
+   "depth_cm": {
+    "coin_25mm_silver": 48.2,
+    "gold_1g": 25.0,
+    "gold_0p1g": 21.5
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -10.21,
+    "runtime_boost_h": -0.96,
+    "depth_pct": {
+     "coin_25mm_silver": -19.9,
+     "gold_1g": -17.2,
+     "gold_0p1g": 43.3
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 47.42,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 39.76,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 150.4,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 6,
+   "p": 5,
+   "switch": "C3M0280090J",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 17.1,
+   "R_coil": 0.029,
+   "I_scan": 35.16,
+   "I_boost": 55.6,
+   "R_flex": 0.037,
+   "W_TX_mm": 17.91,
+   "flex_width_mm": 46.82,
+   "Rd_ohm": 93,
+   "R_loop": 0.534,
+   "idm_frac": 2.527,
+   "reachable": false,
+   "why_not": "boost current 55.6 A is above VBUS / R_loop = 47.2 A",
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 55.6,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 46.82,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 6,
+   "p": 5,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 17.1,
+   "R_coil": 0.029,
+   "I_scan": 35.16,
+   "I_boost": 55.6,
+   "R_flex": 0.037,
+   "W_TX_mm": 17.91,
+   "flex_width_mm": 46.82,
+   "Rd_ohm": 93,
+   "R_loop": 0.252,
+   "idm_frac": 0.505,
+   "reachable": true,
+   "ramp_us_scan": 29.4,
+   "ramp_us_boost": 55.2,
+   "first_gate_us": 5.46,
+   "fall_us": 1.31,
+   "P_tx_scan_W": 24.52,
+   "P_tx_boost_W": 63.78,
+   "runtime_scan_h": 2.91,
+   "runtime_boost_h": 1.37,
+   "P_coil_boost_W": 6.28,
+   "P_flex_boost_W": 7.84,
+   "P_switch_boost_W": 14.65,
+   "Tj_switch_boost_C": 186.5,
+   "P_Rd_boost_W": 2.46,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 46.8,
+    "gold_1g": 24.3,
+    "gold_0p1g": 21.5
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -10.8,
+    "runtime_boost_h": -1.23,
+    "depth_pct": {
+     "coin_25mm_silver": -22.3,
+     "gold_1g": -19.5,
+     "gold_0p1g": 43.3
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 55.6,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 46.82,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 186.5,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 5,
+   "p": 6,
+   "switch": "C3M0280090J",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 11.9,
+   "R_coil": 0.021,
+   "I_scan": 42.19,
+   "I_boost": 66.72,
+   "R_flex": 0.029,
+   "W_TX_mm": 23.03,
+   "flex_width_mm": 57.06,
+   "Rd_ohm": 77,
+   "R_loop": 0.517,
+   "idm_frac": 3.033,
+   "reachable": false,
+   "why_not": "boost current 66.7 A is above VBUS / R_loop = 48.8 A",
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 66.72,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 57.06,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 5,
+   "p": 6,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 11.9,
+   "R_coil": 0.021,
+   "I_scan": 42.19,
+   "I_boost": 66.72,
+   "R_flex": 0.029,
+   "W_TX_mm": 23.03,
+   "flex_width_mm": 57.06,
+   "Rd_ohm": 77,
+   "R_loop": 0.235,
+   "idm_frac": 0.607,
+   "reachable": true,
+   "ramp_us_scan": 25.3,
+   "ramp_us_boost": 49.3,
+   "first_gate_us": 4.9,
+   "fall_us": 1.09,
+   "P_tx_scan_W": 32.14,
+   "P_tx_boost_W": 83.89,
+   "runtime_scan_h": 2.39,
+   "runtime_boost_h": 1.08,
+   "P_coil_boost_W": 6.31,
+   "P_flex_boost_W": 8.69,
+   "P_switch_boost_W": 20.58,
+   "Tj_switch_boost_C": 245.8,
+   "P_Rd_boost_W": 2.55,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 45.3,
+    "gold_1g": 23.5,
+    "gold_0p1g": 21.4
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -11.36,
+    "runtime_boost_h": -1.52,
+    "depth_pct": {
+     "coin_25mm_silver": -24.8,
+     "gold_1g": -22.2,
+     "gold_0p1g": 42.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 66.72,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 57.06,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 245.8,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": true,
+   "L_uH": 107.0,
+   "R_coil": 0.175,
+   "I_scan": 14.06,
+   "I_boost": 22.24,
+   "R_flex": 0.13,
+   "W_TX_mm": 5.06,
+   "flex_width_mm": 16.06,
+   "Rd_ohm": 231,
+   "R_loop": 0.491,
+   "idm_frac": 0.202,
+   "reachable": true,
+   "ramp_us_scan": 69.8,
+   "ramp_us_boost": 123.8,
+   "first_gate_us": 10.52,
+   "fall_us": 3.27,
+   "P_tx_scan_W": 9.01,
+   "P_tx_boost_W": 24.13,
+   "runtime_scan_h": 5.2,
+   "runtime_boost_h": 2.94,
+   "P_coil_boost_W": 6.91,
+   "P_flex_boost_W": 5.11,
+   "P_switch_boost_W": 3.22,
+   "Tj_switch_boost_C": 72.2,
+   "P_Rd_boost_W": 2.19,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 54.9,
+    "gold_1g": 28.2,
+    "gold_0p1g": 19.3
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -5.74,
+    "runtime_boost_h": 0.34,
+    "depth_pct": {
+     "coin_25mm_silver": -8.8,
+     "gold_1g": -6.6,
+     "gold_0p1g": 28.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 16.06,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 72.2,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": true,
+   "tx_strips_2layer": true,
+   "L_uH": 107.0,
+   "R_coil": 0.175,
+   "I_scan": 14.06,
+   "I_boost": 22.24,
+   "R_flex": 0.061,
+   "W_TX_mm": 5.06,
+   "flex_width_mm": 16.06,
+   "Rd_ohm": 231,
+   "R_loop": 0.422,
+   "idm_frac": 0.202,
+   "reachable": true,
+   "ramp_us_scan": 68.1,
+   "ramp_us_boost": 118.1,
+   "first_gate_us": 10.52,
+   "fall_us": 3.27,
+   "P_tx_scan_W": 8.02,
+   "P_tx_boost_W": 21.12,
+   "runtime_scan_h": 5.48,
+   "runtime_boost_h": 3.22,
+   "P_coil_boost_W": 6.8,
+   "P_flex_boost_W": 2.35,
+   "P_switch_boost_W": 3.11,
+   "Tj_switch_boost_C": 71.1,
+   "P_Rd_boost_W": 2.19,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 54.9,
+    "gold_1g": 28.2,
+    "gold_0p1g": 19.3
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -5.74,
+    "runtime_boost_h": 0.62,
+    "depth_pct": {
+     "coin_25mm_silver": -8.8,
+     "gold_1g": -6.6,
+     "gold_0p1g": 28.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 16.06,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 71.1,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": false,
+   "tx_strips_2layer": true,
+   "L_uH": 47.6,
+   "R_coil": 0.079,
+   "I_scan": 21.1,
+   "I_boost": 33.36,
+   "R_flex": 0.074,
+   "W_TX_mm": 8.85,
+   "flex_width_mm": 19.85,
+   "Rd_ohm": 154,
+   "R_loop": 0.339,
+   "idm_frac": 0.303,
+   "reachable": true,
+   "ramp_us_scan": 46.8,
+   "ramp_us_boost": 83.6,
+   "first_gate_us": 7.71,
+   "fall_us": 2.18,
+   "P_tx_scan_W": 12.95,
+   "P_tx_boost_W": 33.89,
+   "runtime_scan_h": 4.33,
+   "runtime_boost_h": 2.29,
+   "P_coil_boost_W": 6.46,
+   "P_flex_boost_W": 6.05,
+   "P_switch_boost_W": 6.05,
+   "Tj_switch_boost_C": 100.5,
+   "P_Rd_boost_W": 2.28,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 51.2,
+    "gold_1g": 26.5,
+    "gold_0p1g": 21.0
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -8.55,
+    "runtime_boost_h": -0.31,
+    "depth_pct": {
+     "coin_25mm_silver": -15.0,
+     "gold_1g": -12.3,
+     "gold_0p1g": 40.0
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 19.85,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 100.5,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": false,
+   "txd_at_400mm": true,
+   "tx_strips_2layer": true,
+   "L_uH": 47.6,
+   "R_coil": 0.079,
+   "I_scan": 21.1,
+   "I_boost": 33.36,
+   "R_flex": 0.035,
+   "W_TX_mm": 8.85,
+   "flex_width_mm": 19.85,
+   "Rd_ohm": 154,
+   "R_loop": 0.3,
+   "idm_frac": 0.303,
+   "reachable": true,
+   "ramp_us_scan": 45.8,
+   "ramp_us_boost": 80.2,
+   "first_gate_us": 7.71,
+   "fall_us": 2.18,
+   "P_tx_scan_W": 11.73,
+   "P_tx_boost_W": 30.37,
+   "runtime_scan_h": 4.57,
+   "runtime_boost_h": 2.49,
+   "P_coil_boost_W": 6.39,
+   "P_flex_boost_W": 2.8,
+   "P_switch_boost_W": 5.9,
+   "Tj_switch_boost_C": 99.0,
+   "P_Rd_boost_W": 2.27,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 51.2,
+    "gold_1g": 26.5,
+    "gold_0p1g": 21.0
+   },
+   "noise_nV": 2.21,
+   "vs_base": {
+    "first_gate_us": -8.55,
+    "runtime_boost_h": -0.11,
+    "depth_pct": {
+     "coin_25mm_silver": -15.0,
+     "gold_1g": -12.3,
+     "gold_0p1g": 40.0
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 19.85,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 99.0,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "C3M0280090J",
+   "sep_rx": "20 turns, 0.50 mm pitch, 0.25 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "R_coil": 0.601,
+   "I_scan": 8.06,
+   "I_boost": 12.74,
+   "R_flex": 0.28,
+   "W_TX_mm": 2.35,
+   "flex_width_mm": 15.7,
+   "Rd_ohm": 405,
+   "R_loop": 1.348,
+   "idm_frac": 0.579,
+   "reachable": true,
+   "rx": {
+    "main_turns": 20,
+    "main_r_mm": [
+     90.0,
+     80.5
+    ],
+    "buck_turns": 9,
+    "buck_r_mm": [
+     109.45,
+     105.45
+    ],
+    "b300_vs_tx_coil_per_turn": 4.49,
+    "M_main_uH": 92.68,
+    "null_ratio_dz_0p1mm": 0.00424,
+    "null_ratio_dr_0p1mm": 0.00225,
+    "L_uH": 143.2,
+    "R_ohm": 16.5,
+    "C_pF": 21.0,
+    "tau_rx_ns": 54.8,
+    "johnson_nV": 0.52
+   },
+   "V_rx_residual_flyback_V": 0.552,
+   "ramp_us_scan": 137.1,
+   "ramp_us_boost": 278.2,
+   "first_gate_us": 12.48,
+   "fall_us": 5.74,
+   "P_tx_scan_W": 9.05,
+   "P_tx_boost_W": 28.71,
+   "runtime_scan_h": 5.19,
+   "runtime_boost_h": 2.6,
+   "P_coil_boost_W": 10.69,
+   "P_flex_boost_W": 4.97,
+   "P_switch_boost_W": 4.93,
+   "Tj_switch_boost_C": 89.3,
+   "P_Rd_boost_W": 2.17,
+   "E_pulse_mJ": 10.64,
+   "depth_cm": {
+    "coin_25mm_silver": 43.2,
+    "gold_1g": 22.3,
+    "gold_0p1g": 13.9
+   },
+   "noise_nV": 2.27,
+   "vs_base": {
+    "first_gate_us": -3.78,
+    "runtime_boost_h": 0.0,
+    "depth_pct": {
+     "coin_25mm_silver": -28.2,
+     "gold_1g": -26.2,
+     "gold_0p1g": -7.3
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 17.6,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 89.3,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "C3M0280090J",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "R_coil": 0.601,
+   "I_scan": 8.06,
+   "I_boost": 12.74,
+   "R_flex": 0.28,
+   "W_TX_mm": 2.35,
+   "flex_width_mm": 15.7,
+   "Rd_ohm": 405,
+   "R_loop": 1.348,
+   "idm_frac": 0.579,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     88.0,
+     76.3
+    ],
+    "buck_turns": 16,
+    "buck_r_mm": [
+     110.42,
+     105.92
+    ],
+    "b300_vs_tx_coil_per_turn": 9.09,
+    "M_main_uH": 167.087,
+    "null_ratio_dz_0p1mm": 0.00449,
+    "null_ratio_dr_0p1mm": 0.00178,
+    "L_uH": 525.6,
+    "R_ohm": 51.63,
+    "C_pF": 20.5,
+    "tau_rx_ns": 103.7,
+    "johnson_nV": 0.92
+   },
+   "V_rx_residual_flyback_V": 1.052,
+   "ramp_us_scan": 137.1,
+   "ramp_us_boost": 278.2,
+   "first_gate_us": 13.58,
+   "fall_us": 5.74,
+   "P_tx_scan_W": 9.05,
+   "P_tx_boost_W": 28.71,
+   "runtime_scan_h": 5.19,
+   "runtime_boost_h": 2.6,
+   "P_coil_boost_W": 10.69,
+   "P_flex_boost_W": 4.97,
+   "P_switch_boost_W": 4.93,
+   "Tj_switch_boost_C": 89.3,
+   "P_Rd_boost_W": 2.17,
+   "E_pulse_mJ": 10.64,
+   "depth_cm": {
+    "coin_25mm_silver": 48.2,
+    "gold_1g": 25.0,
+    "gold_0p1g": 15.1
+   },
+   "noise_nV": 2.39,
+   "vs_base": {
+    "first_gate_us": -2.68,
+    "runtime_boost_h": 0.0,
+    "depth_pct": {
+     "coin_25mm_silver": -19.9,
+     "gold_1g": -17.2,
+     "gold_0p1g": 0.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 17.6,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 89.3,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "C3M0280090J",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": true,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "R_coil": 0.601,
+   "I_scan": 8.06,
+   "I_boost": 12.74,
+   "R_flex": 0.131,
+   "W_TX_mm": 2.35,
+   "flex_width_mm": 15.7,
+   "Rd_ohm": 405,
+   "R_loop": 1.199,
+   "idm_frac": 0.579,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     88.0,
+     76.3
+    ],
+    "buck_turns": 16,
+    "buck_r_mm": [
+     110.42,
+     105.92
+    ],
+    "b300_vs_tx_coil_per_turn": 9.09,
+    "M_main_uH": 167.087,
+    "null_ratio_dz_0p1mm": 0.00449,
+    "null_ratio_dr_0p1mm": 0.00178,
+    "L_uH": 525.6,
+    "R_ohm": 51.63,
+    "C_pF": 20.5,
+    "tau_rx_ns": 103.7,
+    "johnson_nV": 0.92
+   },
+   "V_rx_residual_flyback_V": 1.052,
+   "ramp_us_scan": 132.1,
+   "ramp_us_boost": 254.7,
+   "first_gate_us": 13.58,
+   "fall_us": 5.74,
+   "P_tx_scan_W": 8.16,
+   "P_tx_boost_W": 24.77,
+   "runtime_scan_h": 5.44,
+   "runtime_boost_h": 2.88,
+   "P_coil_boost_W": 10.1,
+   "P_flex_boost_W": 2.19,
+   "P_switch_boost_W": 4.48,
+   "Tj_switch_boost_C": 84.8,
+   "P_Rd_boost_W": 2.15,
+   "E_pulse_mJ": 10.64,
+   "depth_cm": {
+    "coin_25mm_silver": 48.2,
+    "gold_1g": 25.0,
+    "gold_0p1g": 15.1
+   },
+   "noise_nV": 2.39,
+   "vs_base": {
+    "first_gate_us": -2.68,
+    "runtime_boost_h": 0.28,
+    "depth_pct": {
+     "coin_25mm_silver": -19.9,
+     "gold_1g": -17.2,
+     "gold_0p1g": 0.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 17.6,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 84.8,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "C3M0280090J",
+   "sep_rx": "20 turns, 0.50 mm pitch, 0.25 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 107.0,
+   "R_coil": 0.175,
+   "I_scan": 14.06,
+   "I_boost": 22.24,
+   "R_flex": 0.13,
+   "W_TX_mm": 5.06,
+   "flex_width_mm": 21.12,
+   "Rd_ohm": 231,
+   "R_loop": 0.773,
+   "idm_frac": 1.011,
+   "reachable": true,
+   "rx": {
+    "main_turns": 20,
+    "main_r_mm": [
+     86.0,
+     76.5
+    ],
+    "buck_turns": 8,
+    "buck_r_mm": [
+     109.23,
+     105.73
+    ],
+    "b300_vs_tx_coil_per_turn": 4.41,
+    "M_main_uH": 46.569,
+    "null_ratio_dz_0p1mm": 0.00421,
+    "null_ratio_dr_0p1mm": 0.00213,
+    "L_uH": 139.8,
+    "R_ohm": 15.35,
+    "C_pF": 21.0,
+    "tau_rx_ns": 54.1,
+    "johnson_nV": 0.5
+   },
+   "V_rx_residual_flyback_V": 0.843,
+   "ramp_us_scan": 78.2,
+   "ramp_us_boost": 158.6,
+   "first_gate_us": 7.61,
+   "fall_us": 3.27,
+   "P_tx_scan_W": 13.72,
+   "P_tx_boost_W": 40.54,
+   "runtime_scan_h": 4.19,
+   "runtime_boost_h": 2.0,
+   "P_coil_boost_W": 7.65,
+   "P_flex_boost_W": 5.66,
+   "P_switch_boost_W": 10.31,
+   "Tj_switch_boost_C": 143.1,
+   "P_Rd_boost_W": 2.23,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 43.1,
+    "gold_1g": 23.0,
+    "gold_0p1g": 18.6
+   },
+   "noise_nV": 2.27,
+   "vs_base": {
+    "first_gate_us": -8.65,
+    "runtime_boost_h": -0.6,
+    "depth_pct": {
+     "coin_25mm_silver": -28.4,
+     "gold_1g": -23.8,
+     "gold_0p1g": 24.0
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 21.12,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 143.1,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "C3M0280090J",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 107.0,
+   "R_coil": 0.175,
+   "I_scan": 14.06,
+   "I_boost": 22.24,
+   "R_flex": 0.13,
+   "W_TX_mm": 5.06,
+   "flex_width_mm": 21.12,
+   "Rd_ohm": 231,
+   "R_loop": 0.773,
+   "idm_frac": 1.011,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     86.0,
+     74.3
+    ],
+    "buck_turns": 15,
+    "buck_r_mm": [
+     111.58,
+     107.38
+    ],
+    "b300_vs_tx_coil_per_turn": 8.76,
+    "M_main_uH": 89.914,
+    "null_ratio_dz_0p1mm": 0.00452,
+    "null_ratio_dr_0p1mm": 0.00085,
+    "L_uH": 523.4,
+    "R_ohm": 49.9,
+    "C_pF": 20.5,
+    "tau_rx_ns": 103.5,
+    "johnson_nV": 0.91
+   },
+   "V_rx_residual_flyback_V": 1.746,
+   "ramp_us_scan": 78.2,
+   "ramp_us_boost": 158.6,
+   "first_gate_us": 8.66,
+   "fall_us": 3.27,
+   "P_tx_scan_W": 13.72,
+   "P_tx_boost_W": 40.54,
+   "runtime_scan_h": 4.19,
+   "runtime_boost_h": 2.0,
+   "P_coil_boost_W": 7.65,
+   "P_flex_boost_W": 5.66,
+   "P_switch_boost_W": 10.31,
+   "Tj_switch_boost_C": 143.1,
+   "P_Rd_boost_W": 2.23,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 47.9,
+    "gold_1g": 25.7,
+    "gold_0p1g": 19.9
+   },
+   "noise_nV": 2.39,
+   "vs_base": {
+    "first_gate_us": -7.6,
+    "runtime_boost_h": -0.6,
+    "depth_pct": {
+     "coin_25mm_silver": -20.4,
+     "gold_1g": -14.9,
+     "gold_0p1g": 32.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 21.12,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 143.1,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "C3M0280090J",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": true,
+   "tx_strips_2layer": false,
+   "L_uH": 107.0,
+   "R_coil": 0.175,
+   "I_scan": 14.06,
+   "I_boost": 22.24,
+   "R_flex": 0.061,
+   "W_TX_mm": 5.06,
+   "flex_width_mm": 21.12,
+   "Rd_ohm": 231,
+   "R_loop": 0.704,
+   "idm_frac": 1.011,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     86.0,
+     74.3
+    ],
+    "buck_turns": 15,
+    "buck_r_mm": [
+     111.58,
+     107.38
+    ],
+    "b300_vs_tx_coil_per_turn": 8.76,
+    "M_main_uH": 89.914,
+    "null_ratio_dz_0p1mm": 0.00452,
+    "null_ratio_dr_0p1mm": 0.00085,
+    "L_uH": 523.4,
+    "R_ohm": 49.9,
+    "C_pF": 20.5,
+    "tau_rx_ns": 103.5,
+    "johnson_nV": 0.91
+   },
+   "V_rx_residual_flyback_V": 1.746,
+   "ramp_us_scan": 75.8,
+   "ramp_us_boost": 147.5,
+   "first_gate_us": 8.66,
+   "fall_us": 3.27,
+   "P_tx_scan_W": 12.65,
+   "P_tx_boost_W": 36.35,
+   "runtime_scan_h": 4.39,
+   "runtime_boost_h": 2.17,
+   "P_coil_boost_W": 7.41,
+   "P_flex_boost_W": 2.56,
+   "P_switch_boost_W": 9.66,
+   "Tj_switch_boost_C": 136.6,
+   "P_Rd_boost_W": 2.22,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 47.9,
+    "gold_1g": 25.7,
+    "gold_0p1g": 19.9
+   },
+   "noise_nV": 2.39,
+   "vs_base": {
+    "first_gate_us": -7.6,
+    "runtime_boost_h": -0.43,
+    "depth_pct": {
+     "coin_25mm_silver": -20.4,
+     "gold_1g": -14.9,
+     "gold_0p1g": 32.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 17.6,
+     "ok": false
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 21.12,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 900,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 136.6,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": "20 turns, 0.50 mm pitch, 0.25 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 47.6,
+   "R_coil": 0.079,
+   "I_scan": 21.1,
+   "I_boost": 33.36,
+   "R_flex": 0.074,
+   "W_TX_mm": 8.85,
+   "flex_width_mm": 28.71,
+   "Rd_ohm": 154,
+   "R_loop": 0.339,
+   "idm_frac": 0.303,
+   "reachable": true,
+   "rx": {
+    "main_turns": 20,
+    "main_r_mm": [
+     86.0,
+     76.5
+    ],
+    "buck_turns": 8,
+    "buck_r_mm": [
+     109.23,
+     105.73
+    ],
+    "b300_vs_tx_coil_per_turn": 4.41,
+    "M_main_uH": 31.046,
+    "null_ratio_dz_0p1mm": 0.00421,
+    "null_ratio_dr_0p1mm": 0.00213,
+    "L_uH": 139.8,
+    "R_ohm": 15.35,
+    "C_pF": 21.0,
+    "tau_rx_ns": 54.1,
+    "johnson_nV": 0.5
+   },
+   "V_rx_residual_flyback_V": 1.265,
+   "ramp_us_scan": 46.8,
+   "ramp_us_boost": 83.6,
+   "first_gate_us": 5.62,
+   "fall_us": 2.18,
+   "P_tx_scan_W": 12.95,
+   "P_tx_boost_W": 33.89,
+   "runtime_scan_h": 4.33,
+   "runtime_boost_h": 2.29,
+   "P_coil_boost_W": 6.46,
+   "P_flex_boost_W": 6.05,
+   "P_switch_boost_W": 6.05,
+   "Tj_switch_boost_C": 100.5,
+   "P_Rd_boost_W": 2.28,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 43.1,
+    "gold_1g": 23.3,
+    "gold_0p1g": 20.7
+   },
+   "noise_nV": 2.27,
+   "vs_base": {
+    "first_gate_us": -10.64,
+    "runtime_boost_h": -0.31,
+    "depth_pct": {
+     "coin_25mm_silver": -28.4,
+     "gold_1g": -22.8,
+     "gold_0p1g": 38.0
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 28.71,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 100.5,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 47.6,
+   "R_coil": 0.079,
+   "I_scan": 21.1,
+   "I_boost": 33.36,
+   "R_flex": 0.074,
+   "W_TX_mm": 8.85,
+   "flex_width_mm": 28.71,
+   "Rd_ohm": 154,
+   "R_loop": 0.339,
+   "idm_frac": 0.303,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     86.0,
+     74.3
+    ],
+    "buck_turns": 15,
+    "buck_r_mm": [
+     111.58,
+     107.38
+    ],
+    "b300_vs_tx_coil_per_turn": 8.76,
+    "M_main_uH": 59.943,
+    "null_ratio_dz_0p1mm": 0.00452,
+    "null_ratio_dr_0p1mm": 0.00085,
+    "L_uH": 523.4,
+    "R_ohm": 49.9,
+    "C_pF": 20.5,
+    "tau_rx_ns": 103.5,
+    "johnson_nV": 0.91
+   },
+   "V_rx_residual_flyback_V": 2.618,
+   "ramp_us_scan": 46.8,
+   "ramp_us_boost": 83.6,
+   "first_gate_us": 6.65,
+   "fall_us": 2.18,
+   "P_tx_scan_W": 12.95,
+   "P_tx_boost_W": 33.89,
+   "runtime_scan_h": 4.33,
+   "runtime_boost_h": 2.29,
+   "P_coil_boost_W": 6.46,
+   "P_flex_boost_W": 6.05,
+   "P_switch_boost_W": 6.05,
+   "Tj_switch_boost_C": 100.5,
+   "P_Rd_boost_W": 2.28,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 48.0,
+    "gold_1g": 26.0,
+    "gold_0p1g": 22.1
+   },
+   "noise_nV": 2.39,
+   "vs_base": {
+    "first_gate_us": -9.61,
+    "runtime_boost_h": -0.31,
+    "depth_pct": {
+     "coin_25mm_silver": -20.3,
+     "gold_1g": -13.9,
+     "gold_0p1g": 47.3
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 28.71,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 100.5,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": true,
+   "tx_strips_2layer": false,
+   "L_uH": 47.6,
+   "R_coil": 0.079,
+   "I_scan": 21.1,
+   "I_boost": 33.36,
+   "R_flex": 0.035,
+   "W_TX_mm": 8.85,
+   "flex_width_mm": 28.71,
+   "Rd_ohm": 154,
+   "R_loop": 0.3,
+   "idm_frac": 0.303,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     86.0,
+     74.3
+    ],
+    "buck_turns": 15,
+    "buck_r_mm": [
+     111.58,
+     107.38
+    ],
+    "b300_vs_tx_coil_per_turn": 8.76,
+    "M_main_uH": 59.943,
+    "null_ratio_dz_0p1mm": 0.00452,
+    "null_ratio_dr_0p1mm": 0.00085,
+    "L_uH": 523.4,
+    "R_ohm": 49.9,
+    "C_pF": 20.5,
+    "tau_rx_ns": 103.5,
+    "johnson_nV": 0.91
+   },
+   "V_rx_residual_flyback_V": 2.618,
+   "ramp_us_scan": 45.8,
+   "ramp_us_boost": 80.2,
+   "first_gate_us": 6.65,
+   "fall_us": 2.18,
+   "P_tx_scan_W": 11.73,
+   "P_tx_boost_W": 30.37,
+   "runtime_scan_h": 4.57,
+   "runtime_boost_h": 2.49,
+   "P_coil_boost_W": 6.39,
+   "P_flex_boost_W": 2.8,
+   "P_switch_boost_W": 5.9,
+   "Tj_switch_boost_C": 99.0,
+   "P_Rd_boost_W": 2.27,
+   "E_pulse_mJ": 10.58,
+   "depth_cm": {
+    "coin_25mm_silver": 48.0,
+    "gold_1g": 26.0,
+    "gold_0p1g": 22.1
+   },
+   "noise_nV": 2.39,
+   "vs_base": {
+    "first_gate_us": -9.61,
+    "runtime_boost_h": -0.11,
+    "depth_pct": {
+     "coin_25mm_silver": -20.3,
+     "gold_1g": -13.9,
+     "gold_0p1g": 47.3
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 28.71,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 99.0,
+     "limit": 125.0,
+     "ok": true
+    }
+   ]
+  },
+  {
+   "N": 7,
+   "p": 4,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": "20 turns, 0.50 mm pitch, 0.25 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 23.6,
+   "R_coil": 0.042,
+   "I_scan": 29.99,
+   "I_boost": 47.42,
+   "R_flex": 0.046,
+   "W_TX_mm": 14.38,
+   "flex_width_mm": 39.76,
+   "Rd_ohm": 109,
+   "R_loop": 0.274,
+   "idm_frac": 0.431,
+   "reachable": true,
+   "rx": {
+    "main_turns": 20,
+    "main_r_mm": [
+     86.0,
+     76.5
+    ],
+    "buck_turns": 8,
+    "buck_r_mm": [
+     108.75,
+     105.25
+    ],
+    "b300_vs_tx_coil_per_turn": 4.45,
+    "M_main_uH": 21.707,
+    "null_ratio_dz_0p1mm": 0.00414,
+    "null_ratio_dr_0p1mm": 0.00251,
+    "L_uH": 139.1,
+    "R_ohm": 15.32,
+    "C_pF": 21.0,
+    "tau_rx_ns": 54.0,
+    "johnson_nV": 0.5
+   },
+   "V_rx_residual_flyback_V": 1.752,
+   "ramp_us_scan": 34.0,
+   "ramp_us_boost": 62.4,
+   "first_gate_us": 4.28,
+   "fall_us": 1.54,
+   "P_tx_scan_W": 19.85,
+   "P_tx_boost_W": 51.67,
+   "runtime_scan_h": 3.35,
+   "runtime_boost_h": 1.64,
+   "P_coil_boost_W": 6.7,
+   "P_flex_boost_W": 7.21,
+   "P_switch_boost_W": 11.04,
+   "Tj_switch_boost_C": 150.4,
+   "P_Rd_boost_W": 2.39,
+   "E_pulse_mJ": 10.6,
+   "depth_cm": {
+    "coin_25mm_silver": 43.3,
+    "gold_1g": 23.5,
+    "gold_0p1g": 22.3
+   },
+   "noise_nV": 2.27,
+   "vs_base": {
+    "first_gate_us": -11.98,
+    "runtime_boost_h": -0.96,
+    "depth_pct": {
+     "coin_25mm_silver": -28.1,
+     "gold_1g": -22.2,
+     "gold_0p1g": 48.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 47.42,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 39.76,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 150.4,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 7,
+   "p": 4,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 23.6,
+   "R_coil": 0.042,
+   "I_scan": 29.99,
+   "I_boost": 47.42,
+   "R_flex": 0.046,
+   "W_TX_mm": 14.38,
+   "flex_width_mm": 39.76,
+   "Rd_ohm": 109,
+   "R_loop": 0.274,
+   "idm_frac": 0.431,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     88.0,
+     76.3
+    ],
+    "buck_turns": 16,
+    "buck_r_mm": [
+     110.98,
+     106.48
+    ],
+    "b300_vs_tx_coil_per_turn": 8.97,
+    "M_main_uH": 44.86,
+    "null_ratio_dz_0p1mm": 0.00448,
+    "null_ratio_dr_0p1mm": 0.00141,
+    "L_uH": 528.8,
+    "R_ohm": 51.73,
+    "C_pF": 20.5,
+    "tau_rx_ns": 104.0,
+    "johnson_nV": 0.93
+   },
+   "V_rx_residual_flyback_V": 3.924,
+   "ramp_us_scan": 34.0,
+   "ramp_us_boost": 62.4,
+   "first_gate_us": 5.32,
+   "fall_us": 1.54,
+   "P_tx_scan_W": 19.85,
+   "P_tx_boost_W": 51.67,
+   "runtime_scan_h": 3.35,
+   "runtime_boost_h": 1.64,
+   "P_coil_boost_W": 6.7,
+   "P_flex_boost_W": 7.21,
+   "P_switch_boost_W": 11.04,
+   "Tj_switch_boost_C": 150.4,
+   "P_Rd_boost_W": 2.39,
+   "E_pulse_mJ": 10.6,
+   "depth_cm": {
+    "coin_25mm_silver": 48.3,
+    "gold_1g": 26.3,
+    "gold_0p1g": 23.8
+   },
+   "noise_nV": 2.4,
+   "vs_base": {
+    "first_gate_us": -10.94,
+    "runtime_boost_h": -0.96,
+    "depth_pct": {
+     "coin_25mm_silver": -19.8,
+     "gold_1g": -12.9,
+     "gold_0p1g": 58.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 47.42,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 39.76,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 150.4,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  },
+  {
+   "N": 7,
+   "p": 4,
+   "switch": "NTBG080N120SC1",
+   "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": true,
+   "tx_strips_2layer": false,
+   "L_uH": 23.6,
+   "R_coil": 0.042,
+   "I_scan": 29.99,
+   "I_boost": 47.42,
+   "R_flex": 0.021,
+   "W_TX_mm": 14.38,
+   "flex_width_mm": 39.76,
+   "Rd_ohm": 109,
+   "R_loop": 0.25,
+   "idm_frac": 0.431,
+   "reachable": true,
+   "rx": {
+    "main_turns": 40,
+    "main_r_mm": [
+     88.0,
+     76.3
+    ],
+    "buck_turns": 16,
+    "buck_r_mm": [
+     110.98,
+     106.48
+    ],
+    "b300_vs_tx_coil_per_turn": 8.97,
+    "M_main_uH": 44.86,
+    "null_ratio_dz_0p1mm": 0.00448,
+    "null_ratio_dr_0p1mm": 0.00141,
+    "L_uH": 528.8,
+    "R_ohm": 51.73,
+    "C_pF": 20.5,
+    "tau_rx_ns": 104.0,
+    "johnson_nV": 0.93
+   },
+   "V_rx_residual_flyback_V": 3.924,
+   "ramp_us_scan": 33.3,
+   "ramp_us_boost": 59.9,
+   "first_gate_us": 5.32,
+   "fall_us": 1.54,
+   "P_tx_scan_W": 18.39,
+   "P_tx_boost_W": 47.44,
+   "runtime_scan_h": 3.52,
+   "runtime_boost_h": 1.76,
+   "P_coil_boost_W": 6.65,
+   "P_flex_boost_W": 3.34,
+   "P_switch_boost_W": 10.81,
+   "Tj_switch_boost_C": 148.1,
+   "P_Rd_boost_W": 2.39,
+   "E_pulse_mJ": 10.6,
+   "depth_cm": {
+    "coin_25mm_silver": 48.3,
+    "gold_1g": 26.3,
+    "gold_0p1g": 23.8
+   },
+   "noise_nV": 2.4,
+   "vs_base": {
+    "first_gate_us": -10.94,
+    "runtime_boost_h": -0.84,
+    "depth_pct": {
+     "coin_25mm_silver": -19.8,
+     "gold_1g": -12.9,
+     "gold_0p1g": 58.7
+    }
+   },
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 47.42,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 39.76,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+     "value": 1200,
+     "limit": 630,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 148.1,
+     "limit": 125.0,
+     "ok": false
+    }
+   ]
+  }
+ ],
+ "best_passing": {
+  "N": 26,
+  "p": 1,
+  "switch": "C3M0280090J",
+  "sep_rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+  "txd_at_400mm": true,
+  "tx_strips_2layer": false,
+  "L_uH": 327.5,
+  "R_coil": 0.601,
+  "I_scan": 8.06,
+  "I_boost": 12.74,
+  "R_flex": 0.131,
+  "W_TX_mm": 2.35,
+  "flex_width_mm": 15.7,
+  "Rd_ohm": 405,
+  "R_loop": 1.199,
+  "idm_frac": 0.579,
+  "reachable": true,
+  "rx": {
+   "main_turns": 40,
+   "main_r_mm": [
+    88.0,
+    76.3
+   ],
+   "buck_turns": 16,
+   "buck_r_mm": [
+    110.42,
+    105.92
+   ],
+   "b300_vs_tx_coil_per_turn": 9.09,
+   "M_main_uH": 167.087,
+   "null_ratio_dz_0p1mm": 0.00449,
+   "null_ratio_dr_0p1mm": 0.00178,
+   "L_uH": 525.6,
+   "R_ohm": 51.63,
+   "C_pF": 20.5,
+   "tau_rx_ns": 103.7,
+   "johnson_nV": 0.92
+  },
+  "V_rx_residual_flyback_V": 1.052,
+  "ramp_us_scan": 132.1,
+  "ramp_us_boost": 254.7,
+  "first_gate_us": 13.58,
+  "fall_us": 5.74,
+  "P_tx_scan_W": 8.16,
+  "P_tx_boost_W": 24.77,
+  "runtime_scan_h": 5.44,
+  "runtime_boost_h": 2.88,
+  "P_coil_boost_W": 10.1,
+  "P_flex_boost_W": 2.19,
+  "P_switch_boost_W": 4.48,
+  "Tj_switch_boost_C": 84.8,
+  "P_Rd_boost_W": 2.15,
+  "E_pulse_mJ": 10.64,
+  "depth_cm": {
+   "coin_25mm_silver": 48.2,
+   "gold_1g": 25.0,
+   "gold_0p1g": 15.1
+  },
+  "noise_nV": 2.39,
+  "vs_base": {
+   "first_gate_us": -2.68,
+   "runtime_boost_h": 0.28,
+   "depth_pct": {
+    "coin_25mm_silver": -19.9,
+    "gold_1g": -17.2,
+    "gold_0p1g": 0.7
+   }
+  },
+  "rule_rows": [
+   {
+    "rule": "switch peak vs 80 % IDM",
+    "value": 12.74,
+    "limit": 17.6,
+    "ok": true
+   },
+   {
+    "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+    "value": 15.7,
+    "limit": 16.0,
+    "ok": true
+   },
+   {
+    "rule": "rule 6: switch VDS >= 630 V at the 460 V clamp",
+    "value": 900,
+    "limit": 630,
+    "ok": true
+   },
+   {
+    "rule": "TX switch TJ in boost vs 125 C",
+    "value": 84.8,
+    "limit": 125.0,
+    "ok": true
+   }
+  ]
+ },
+ "ok": true
+}

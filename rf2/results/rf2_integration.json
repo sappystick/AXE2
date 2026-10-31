@@ -280,13 +280,113 @@
    "effect": "-",
    "rule": "-",
    "next": "-"
+  },
+  {
+   "area": "TXD: transmit switch",
+   "idea": "onsemi NTBG080N120SC1 (1200 V, 80 mohm, IDM 110 A) in place of C3M0280090J",
+   "source": "onsemi datasheet on file",
+   "status": "PROPOSED",
+   "numbers": "L 327.5 uH, boost 12.74 A, first gate 16.86 us, boost runtime 3.23 h, depth coin / 1 g / 0.1 g 60.2 / 30.1 / 14.3 cm, flex 15.7 mm, switch TJ 56.1 C",
+   "effect": "boost runtime 2.6 -> 3.23 h; first gate +0.6 us (Coss 79 pF)",
+   "rule": "-",
+   "next": "owner decision; hot RDS factor 1.6 is ASSUMED: read the datasheet curve"
+  },
+  {
+   "area": "TXD: position on the shaft",
+   "idea": "TXD at s 400 mm (shorter TX strips) instead of s 857 mm",
+   "source": "rf2_system echoes (drift 0.147 x noise at 400 mm)",
+   "status": "PROPOSED",
+   "numbers": "L 327.5 uH, boost 12.74 A, first gate 16.86 us, boost runtime 3.56 h, depth coin / 1 g / 0.1 g 60.2 / 30.1 / 14.3 cm, flex 15.7 mm, switch TJ 55.0 C",
+   "effect": "with the NTBG switch: boost runtime 3.56 h",
+   "rule": "-",
+   "next": "re-run rf2_system echo / thermal with the TXD there"
+  },
+  {
+   "area": "Head: coil wiring (low inductance)",
+   "idea": "15 turns x 2 strands in parallel in the same comb + NTBG switch + TX strips doubled on both flex layers",
+   "source": "concept board (low-L TX)",
+   "status": "FEASIBLE-NOT-ADOPTED - BREAKS cord-flex width vs 16 mm (18 mm bore less 2): 16.06 vs 16.0",
+   "numbers": "L 107.0 uH, boost 22.24 A, first gate 10.52 us, boost runtime 2.94 h, depth coin / 1 g / 0.1 g 54.9 / 28.2 / 19.3 cm, flex 16.06 mm, switch TJ 72.2 C",
+   "effect": "faster first gate, small gold deeper, coins shallower",
+   "rule": "cord-flex width vs 16 mm (18 mm bore less 2): 16.06 vs 16.0",
+   "next": "owner decision; 2-layer cord flex construction to confirm"
+  },
+  {
+   "area": "Head: coil wiring (low inductance)",
+   "idea": "10 turns x 3 strands + NTBG switch",
+   "source": "concept board (low-L TX)",
+   "status": "FEASIBLE-NOT-ADOPTED - BREAKS cord-flex width vs 16 mm (18 mm bore less 2): 28.71 vs 16.0",
+   "numbers": "L 47.6 uH, boost 33.36 A, first gate 7.71 us, boost runtime 2.29 h, depth coin / 1 g / 0.1 g 51.2 / 26.5 / 21.0 cm, flex 28.71 mm, switch TJ 100.5 C",
+   "effect": "fastest gate, highest TX current",
+   "rule": "cord-flex width vs 16 mm (18 mm bore less 2): 28.71 vs 16.0",
+   "next": "-"
+  },
+  {
+   "area": "Head: coil wiring (low inductance)",
+   "idea": "7 turns x 4 strands + NTBG switch",
+   "source": "concept board (low-L TX)",
+   "status": "FEASIBLE-NOT-ADOPTED - BREAKS cord-flex width vs 16 mm (18 mm bore less 2): 39.76 vs 16.0; TX switch TJ in boost vs 125 C: 150.4 vs 125.0",
+   "numbers": "L 23.6 uH, boost 47.42 A, first gate 6.05 us, boost runtime 1.64 h, depth coin / 1 g / 0.1 g 48.2 / 25.0 / 21.5 cm, flex 39.76 mm, switch TJ 150.4 C",
+   "effect": "fastest gate, highest TX current",
+   "rule": "cord-flex width vs 16 mm (18 mm bore less 2): 39.76 vs 16.0; TX switch TJ in boost vs 125 C: 150.4 vs 125.0",
+   "next": "-"
+  },
+  {
+   "area": "Head: receive coil",
+   "idea": "planar polyimide RX (40 turns, 0.15 / 0.3 mm) nulled by counter-wound bucking turns under the TX wire, on a 0.1 mm layer above SH1",
+   "source": "concept board (planar RX)",
+   "status": "FEASIBLE-NOT-ADOPTED - BREAKS cord-flex width vs 16 mm (18 mm bore less 2): 39.76 vs 16.0; TX switch TJ in boost vs 125 C: 150.4 vs 125.0",
+   "numbers": "L 23.6 uH, boost 47.42 A, first gate 5.32 us, boost runtime 1.64 h, depth coin / 1 g / 0.1 g 48.3 / 26.3 / 23.8 cm, flex 39.76 mm, switch TJ 150.4 C; null residual 0.00448 per 0.1 mm",
+   "effect": "best with a very low-L TX: the RX no longer limits the gate; coins lose depth (less RX area than the 26-turn rim coil)",
+   "rule": "cord-flex width vs 16 mm (18 mm bore less 2): 39.76 vs 16.0; TX switch TJ in boost vs 125 C: 150.4 vs 125.0",
+   "next": "-"
+  },
+  {
+   "area": "Cord: digital lanes",
+   "idea": "optical link up the shaft (AFBR-1624Z / 2624Z, GH-4001-P POF)",
+   "source": "Broadcom, Mitsubishi datasheets on file",
+   "status": "REJECTED - BREAKS fibre bend radius",
+   "numbers": "flex 15.7 -> 13.75 mm, +0.41-0.6 W; loop radius 8.2 mm vs 15.0 mm",
+   "effect": "6 conductors removed if it fitted",
+   "rule": "POF bend: 8.2 vs 15.0 mm",
+   "next": "only for a static run (handle to hinge board)"
+  },
+  {
+   "area": "Shaft: telescope profiles",
+   "idea": "regular hexagon, same across-flats (31 / 26 / 21)",
+   "source": "concept board (hex shaft)",
+   "status": "REJECTED - BREAKS sag vs square",
+   "numbers": "182 g vs 210 g; sag 4.68 vs 3.52 mm",
+   "effect": "lighter but softer",
+   "rule": "sag 4.68 vs 3.52 mm",
+   "next": "-"
+  },
+  {
+   "area": "Shaft: telescope profiles",
+   "idea": "regular hexagon, equal mass ([35.6, 29.8, 24.1] mm)",
+   "source": "concept board (hex shaft)",
+   "status": "FEASIBLE-NOT-ADOPTED",
+   "numbers": "sag 3.08 vs 3.52 mm at 210 g; 6 inner flats of 12.53 mm",
+   "effect": "stiffer at the same mass; bigger profile; flex splits onto faces (TX-REF coupling 18.23 -> 8.05 pF/m)",
+   "rule": "-",
+   "next": "re-draw camlocks, hinge and yoke for hex"
+  },
+  {
+   "area": "Shaft: long flex component boards",
+   "idea": "TXD (and others) as long flex boards on the outside flats of the upper tube under a cover",
+   "source": "concept board (hex shaft)",
+   "status": "PROPOSED",
+   "numbers": "408.1 cm2 hex / 471.2 cm2 square at s 410-790 mm",
+   "effect": "frees chassis volume; past the 375 mm echo distance",
+   "rule": "-",
+   "next": "thermal path of the TX switch on carbon to check"
   }
  ],
  "counts": {
   "ADOPTED": 8,
-  "PROPOSED": 7,
-  "FEASIBLE": 1,
-  "REJECTED": 8,
+  "PROPOSED": 10,
+  "FEASIBLE": 6,
+  "REJECTED": 10,
   "OPEN": 1,
   "BLOCKED": 1,
   "SHELVED": 2

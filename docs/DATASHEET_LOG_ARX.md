@@ -445,3 +445,9 @@ The re-sent Minco design guide and Mincoflex files are byte-identical to the RF2
 | Fair-Rite 78 material | https://fair-rite.com/78-material-data-sheet/, data/datasheets/web/FairRite_78_material_2026-10-31.txt (2d70a4da8a424f8c) | MnZn; mu_i 2300; B 4800 G at 5 Oe; Br 1500 G; Hc 0.20 Oe; Tc > 200 C; rho 200 ohm cm | concept ferrite backing |
 | IXYS IXTY02N100D | no datasheet found (searched 2026-10-31); IXTY01N100D family: IXYS 2006 preliminary 1000 V, 100 mA, RDS(on) 90-110 ohm; DigiKey 400 mA (Tc), 80 ohm: UNVERIFIED | depletion-mode, normally-on | concept TX switch: cannot carry 10 A |
 | MWS LITZ-1050-48-T2, Fair-Rite 9478012002-MOD, Magnetics NC-0050-S | not found / not catalogue numbers: UNVERIFIED; litz copper from strand count (0.818 mm2); nanocrystalline modelled as FINEMET class (ASSUMED) | - | listed only |
+
+## RF2-DS-ENHANCE: optical shaft link parts (read 2026-10-31; rf2_shaftlink_options)
+| Part | Source | Values read | Use |
+|---|---|---|---|
+| Broadcom AFBR-1624Z / AFBR-2624Z | AV02-4369EN via chipdip mirror, data/datasheets/Broadcom_AFBR-1624Z_2624Z_AV02-4369EN.pdf (c1a3a9e8f48d9c65) | DC-50 MBd, 650 nm LED, 1 mm POF up to 50 m; ICCT 21-31 mA; ICCR 20-30 mA; delay <= 30 ns; PWD +-3 / +-4 ns; -40 to +85 C; housing 18.8 x 12.19 x 7.62 mm (RS listing, UNVERIFIED in the sheet) | optical data link option |
+| Mitsubishi Chemical GH-4001-P POF | data sheet 2019-11-14 via eicom mirror, data/datasheets/Mitsubishi_GH4001P_2019.pdf (d7d4db4736803869) | core 980 um, cladding 1000 um, jacket 2.2 mm; 4 g/m; <= 170 dB/km (25 C); quarter-bend radius 25 mm (<= 1 dB); 10 000 bends +-90 deg at 15 mm, 500 g | fibre for the link; SH4001 itself: 25 mm bend (L-com LCSH4001 drawing, not on file) |
