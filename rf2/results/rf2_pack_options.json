@@ -1,32 +1,32 @@
 {
  "status": "MODELED: cell values from datasheets on file (M50T from a rev 0 draft; the LiPo from a vendor listing, UNVERIFIED); shell, rail, latch, dock, seal and BMS masses ASSUMED; no bench test",
- "p_scan_W": 19.63,
- "p_boost_W": 39.27,
- "boost_current_at_21V_A": 1.87,
+ "p_scan_W": 18.91,
+ "p_boost_W": 35.21,
+ "boost_current_at_21V_A": 1.68,
  "pack_lever_mm": -161.3,
  "bay_g_from_stl": 92.6,
- "baseline_total_g": 2638.0,
- "baseline_torque_Nm": 3.922517636,
+ "baseline_total_g": 2693.0,
+ "baseline_torque_Nm": 4.432517636,
  "options": [
   {
    "key": "A",
    "desc": "baseline: 7S2P P30B cartridge into an enclosed bay, rear slide",
    "Wh_nominal": 151.2,
    "Wh_usable": 136.1,
-   "scan_h": 6.93,
-   "boost_h": 3.47,
+   "scan_h": 7.2,
+   "boost_h": 3.87,
    "meets_6h": true,
-   "boost_vs_6h_frac": 0.578,
+   "boost_vs_6h_frac": 0.644,
    "pack_g": 748,
    "system_delta_g": 0,
-   "system_total_g": 2638,
-   "torque_about_hand_Nm": 3.92,
+   "system_total_g": 2693,
+   "torque_about_hand_Nm": 4.43,
    "pack_mm": [
     92.2,
     76.2,
     53.1
    ],
-   "cell_current_boost_A": 0.93,
+   "cell_current_boost_A": 0.84,
    "notes": [
     "the cartridge already slides out rearward with blind MT60 + spring-pin contacts (ICD I6)"
    ],
@@ -39,20 +39,20 @@
    "desc": "drill-style rail pack, same 7S2P P30B (bay removed)",
    "Wh_nominal": 151.2,
    "Wh_usable": 136.1,
-   "scan_h": 6.93,
-   "boost_h": 3.47,
+   "scan_h": 7.2,
+   "boost_h": 3.87,
    "meets_6h": true,
-   "boost_vs_6h_frac": 0.578,
+   "boost_vs_6h_frac": 0.644,
    "pack_g": 770,
    "system_delta_g": -35,
-   "system_total_g": 2603,
-   "torque_about_hand_Nm": 3.89,
+   "system_total_g": 2658,
+   "torque_about_hand_Nm": 4.4,
    "pack_mm": [
     136.2,
     71.2,
     47.2
    ],
-   "cell_current_boost_A": 0.93,
+   "cell_current_boost_A": 0.84,
    "notes": [
     "removes the 93 g bay; adds rails / latch 22 g, dock 30 g, face seal 6 g (ASSUMED)"
    ],
@@ -65,20 +65,20 @@
    "desc": "drill-style rail pack, 7S1P Molicel P45B, 1 row(s)",
    "Wh_nominal": 113.4,
    "Wh_usable": 102.1,
-   "scan_h": 5.2,
-   "boost_h": 2.6,
+   "scan_h": 5.4,
+   "boost_h": 2.9,
    "meets_6h": false,
-   "boost_vs_6h_frac": 0.433,
+   "boost_vs_6h_frac": 0.483,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2415,
-   "torque_about_hand_Nm": 4.19,
+   "system_total_g": 2470,
+   "torque_about_hand_Nm": 4.7,
    "pack_mm": [
     156.8,
     76.2,
     31.6
    ],
-   "cell_current_boost_A": 1.87,
+   "cell_current_boost_A": 1.68,
    "notes": [
     "1P: no parallel group to balance; the BQ76952 still balances the 7 cells"
    ],
@@ -91,20 +91,20 @@
    "desc": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s)",
    "Wh_nominal": 113.4,
    "Wh_usable": 102.1,
-   "scan_h": 5.2,
-   "boost_h": 2.6,
+   "scan_h": 5.4,
+   "boost_h": 2.9,
    "meets_6h": false,
-   "boost_vs_6h_frac": 0.433,
+   "boost_vs_6h_frac": 0.483,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2415,
-   "torque_about_hand_Nm": 4.19,
+   "system_total_g": 2470,
+   "torque_about_hand_Nm": 4.7,
    "pack_mm": [
     92.2,
     76.2,
     53.1
    ],
-   "cell_current_boost_A": 1.87,
+   "cell_current_boost_A": 1.68,
    "notes": [
     "1P: no parallel group to balance; the BQ76952 still balances the 7 cells"
    ],
@@ -117,26 +117,26 @@
    "desc": "drill-style rail pack, 7S1P LG M50T, 1 row(s)",
    "Wh_nominal": 127.4,
    "Wh_usable": 114.7,
-   "scan_h": 5.84,
-   "boost_h": 2.92,
-   "meets_6h": false,
-   "boost_vs_6h_frac": 0.487,
+   "scan_h": 6.06,
+   "boost_h": 3.26,
+   "meets_6h": true,
+   "boost_vs_6h_frac": 0.543,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2415,
-   "torque_about_hand_Nm": 4.19,
+   "system_total_g": 2470,
+   "torque_about_hand_Nm": 4.7,
    "pack_mm": [
     156.1,
     76.8,
     31.4
    ],
-   "cell_current_boost_A": 1.87,
+   "cell_current_boost_A": 1.68,
    "notes": [
     "1P: no parallel group to balance; the BQ76952 still balances the 7 cells",
     "M50T spec is a 2018 rev 0 draft ('tentative'); get the current LG spec before buying",
-    "boost at the 21 V cut-off uses 77 % of the cell's continuous rating in its coldest band: inside the rating, little margin"
+    "boost at the 21 V cut-off uses 69 % of the cell's continuous rating in its coldest band: inside the rating, little margin"
    ],
-   "cell_current_frac_of_rating": 0.77,
+   "cell_current_frac_of_rating": 0.69,
    "cell_current_ok": true,
    "cell_source": "data/datasheets/LG_INR21700_M50T_spec_2018-07_rev0.pdf (rev 0 draft, values 'tentative'; min 17.6 Wh; 0.5 C below 10 C)"
   },
@@ -145,26 +145,26 @@
    "desc": "drill-style rail pack, 7S1P LG M50T, 2 row(s)",
    "Wh_nominal": 127.4,
    "Wh_usable": 114.7,
-   "scan_h": 5.84,
-   "boost_h": 2.92,
-   "meets_6h": false,
-   "boost_vs_6h_frac": 0.487,
+   "scan_h": 6.06,
+   "boost_h": 3.26,
+   "meets_6h": true,
+   "boost_vs_6h_frac": 0.543,
    "pack_g": 582,
    "system_delta_g": -223,
-   "system_total_g": 2415,
-   "torque_about_hand_Nm": 4.19,
+   "system_total_g": 2470,
+   "torque_about_hand_Nm": 4.7,
    "pack_mm": [
     91.8,
     76.8,
     52.9
    ],
-   "cell_current_boost_A": 1.87,
+   "cell_current_boost_A": 1.68,
    "notes": [
     "1P: no parallel group to balance; the BQ76952 still balances the 7 cells",
     "M50T spec is a 2018 rev 0 draft ('tentative'); get the current LG spec before buying",
-    "boost at the 21 V cut-off uses 77 % of the cell's continuous rating in its coldest band: inside the rating, little margin"
+    "boost at the 21 V cut-off uses 69 % of the cell's continuous rating in its coldest band: inside the rating, little margin"
    ],
-   "cell_current_frac_of_rating": 0.77,
+   "cell_current_frac_of_rating": 0.69,
    "cell_current_ok": true,
    "cell_source": "data/datasheets/LG_INR21700_M50T_spec_2018-07_rev0.pdf (rev 0 draft, values 'tentative'; min 17.6 Wh; 0.5 C below 10 C)"
   },
@@ -173,20 +173,20 @@
    "desc": "drill-style hard shell round a 7S RC LiPo (Gens Ace 5000 mAh 7S 45C)",
    "Wh_nominal": 129.5,
    "Wh_usable": 116.5,
-   "scan_h": 5.94,
-   "boost_h": 2.97,
-   "meets_6h": false,
-   "boost_vs_6h_frac": 0.495,
+   "scan_h": 6.16,
+   "boost_h": 3.31,
+   "meets_6h": true,
+   "boost_vs_6h_frac": 0.552,
    "pack_g": 901,
    "system_delta_g": 96,
-   "system_total_g": 2734,
-   "torque_about_hand_Nm": 3.68,
+   "system_total_g": 2789,
+   "torque_about_hand_Nm": 4.19,
    "pack_mm": [
     171.0,
     56.0,
     61.0
    ],
-   "cell_current_boost_A": 1.87,
+   "cell_current_boost_A": 1.68,
    "notes": [
     "vendor listing https://www.gensace.de/gens-ace-5000mah-25-9v-45c-7s1p-lipo-battery-pack-with-xt90.html (UNVERIFIED: no datasheet)",
     "157 Wh/kg bare vs 230 (P30B) / 260 (M50T) cells: heavier for the same energy",
@@ -198,20 +198,20 @@
    "desc": "drill-style small 7S1P P30B, carried with a spare",
    "Wh_nominal": 75.6,
    "Wh_usable": 68.0,
-   "scan_h": 3.47,
-   "boost_h": 1.73,
+   "scan_h": 3.6,
+   "boost_h": 1.93,
    "meets_6h": false,
-   "boost_vs_6h_frac": 0.289,
+   "boost_vs_6h_frac": 0.322,
    "pack_g": 421,
    "system_delta_g": -384,
-   "system_total_g": 2254,
-   "torque_about_hand_Nm": 4.44,
+   "system_total_g": 2309,
+   "torque_about_hand_Nm": 4.95,
    "pack_mm": [
     136.2,
     71.2,
     28.6
    ],
-   "cell_current_boost_A": 1.87,
+   "cell_current_boost_A": 1.68,
    "notes": [
     "fails 6 h per pack; two packs give the baseline runtime; a swap restarts the detector unless a hold-up is added"
    ],
@@ -220,30 +220,25 @@
    "cell_source": "data/datasheets/Molicel_INR-18650-P30B_PDS_v1.0.pdf (DATASHEET_LOG)"
   }
  ],
- "lightest_meeting_6h": "B",
+ "lightest_meeting_6h": "D1",
  "chosen": "C2",
- "chosen_summary": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 2.6 h continuous boost (rated case), 5.2 h scan, 2415 g system (-223 g vs the P30B reference)",
+ "chosen_summary": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 2.9 h continuous boost (rated case), 5.4 h scan, 2470 g system (-223 g vs the P30B reference)",
  "blocked_by_relaxed_6h_rule_within_10pct": [
   {
-   "key": "D1",
-   "scan_h": 5.84,
-   "short_pct": 2.7
+   "key": "C1",
+   "scan_h": 5.4,
+   "short_pct": 10.0
   },
   {
-   "key": "D2",
-   "scan_h": 5.84,
-   "short_pct": 2.7
-  },
-  {
-   "key": "E",
-   "scan_h": 5.94,
-   "short_pct": 1.0
+   "key": "C2",
+   "scan_h": 5.4,
+   "short_pct": 10.0
   }
  ],
  "conclusion": {
   "drill_rail_feasible": true,
   "rc_lipo_lighter": false,
-  "lightest": "B: drill-style rail pack, same 7S2P P30B (bay removed), 2603 g system (-35 g), 6.93 h scan"
+  "lightest": "D1: drill-style rail pack, 7S1P LG M50T, 1 row(s), 2470 g system (-223 g), 6.06 h scan"
  },
  "ok": true
 }

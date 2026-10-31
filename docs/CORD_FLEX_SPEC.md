@@ -5,7 +5,7 @@ Carries the coil transmit pair from the search head to the TXD pod on the shaft 
 
 ## 2. Construction
 - Single conductive layer, Kapton polyimide base, **1 mil Kapton / acrylic coverlay** both sides; about 0.15 mm per layer.
-- **Selective copper:** 2 oz (0.0028 in) on TX_A, TX_B, VIN_H, GND_H; 0.5 oz on the signal and reference areas (contoured / selective plating). Rolled-annealed copper preferred (dynamic loop).
+- **Selective copper:** 2 oz (0.0028 in) on TX_A, TX_B, VIN_H, GND_H (piece 1) and VIN_T, GND_T, VIN_H, GND_H, HV_CLAMP, GND_CLAMP (piece 2); 0.5 oz on the signal and reference areas (contoured / selective plating). Rolled-annealed copper preferred (dynamic loop).
 - Piece 1 width **18.24 mm** against the 18.6 mm inner bore less 2 mm = 16.6 mm: **does NOT fit (+1.64 mm; rule row 'cord-flex width vs bore less 2' BLOCKED / FAIL in docs/RULE_NEAR_MISSES.md: owner decision open)**.
 - Piece 2 width **7.68 mm** (no TX strips past the pod). Lanes, edge to edge, piece 1:
 

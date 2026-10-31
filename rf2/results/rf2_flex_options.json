@@ -12,9 +12,9 @@
   },
   "lengths_ok": true,
   "one_piece_mm": 1315,
-  "tx_length_m": 1.355,
+  "tx_length_m": 0.965,
   "copper_oz": 2.0,
-  "tx_trace_mm": 2.35,
+  "tx_trace_mm": 3.22,
   "pwr_trace_mm": 0.3,
   "lanes": [
    {
@@ -23,7 +23,7 @@
    },
    {
     "lane": "TX_A",
-    "mm": 2.35
+    "mm": 3.22
    },
    {
     "lane": "TX gap (rule 6)",
@@ -31,7 +31,7 @@
    },
    {
     "lane": "TX_B",
-    "mm": 2.35
+    "mm": 3.22
    },
    {
     "lane": "HV to LV gap (rule 6)",
@@ -78,6 +78,14 @@
     "mm": 0.3
    },
    {
+    "lane": "GUARD_REF ground guard (ref_guard)",
+    "mm": 0.5
+   },
+   {
+    "lane": "guard gap",
+    "mm": 0.3
+   },
+   {
     "lane": "REFX pair with ground guards (0.15 / 0.15 + 2 x 0.3)",
     "mm": 1.35
    },
@@ -94,8 +102,8 @@
     "mm": 0.75
    }
   ],
-  "width_mm": 15.7,
-  "fits_bore": true,
+  "width_mm": 18.24,
+  "fits_bore": false,
   "bore_mm": 18.6,
   "rolling_loop_bend_r_mm": 6.0,
   "loop_fits": true,
@@ -103,24 +111,24 @@
   "tx_capacitance": [
    {
     "eps_eff": 1.3,
-    "C_pF_per_m": 22.8,
-    "C_pF_total": 31.0
+    "C_pF_per_m": 24.8,
+    "C_pF_total": 24.0
    },
    {
     "eps_eff": 1.6,
-    "C_pF_per_m": 28.1,
-    "C_pF_total": 38.1
+    "C_pF_per_m": 30.6,
+    "C_pF_total": 29.5
    },
    {
     "eps_eff": 2.2,
-    "C_pF_per_m": 38.7,
-    "C_pF_total": 52.4
+    "C_pF_per_m": 42.0,
+    "C_pF_total": 40.6
    }
   ],
-  "first_gate_shift_us": 0.14,
+  "first_gate_shift_us": -0.21,
   "first_gate_shift_wire_us": 0.19,
   "mass_g": {
-   "flex": 10.6,
+   "flex": 12.4,
    "coiled_cord": 86
   },
   "open": [
@@ -235,7 +243,7 @@
  },
  "E_gore_coax": {
   "coax_pF_per_m": 82.0,
-  "flex_tx_pF_per_m": 28.1,
+  "flex_tx_pF_per_m": 30.6,
   "smallest": "5U: 1.2 mm, 5.6 g/m, bend radius 6.4 mm",
   "verdict": "not adopted: 50 ohm microwave coax; as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2"
  },
@@ -262,22 +270,22 @@
   "verdict": "SHELVED: the 522-LED flex stays at 0.4 mm (head 16.55 mm); the 0.2 mm option would lower the head 0.20 mm, with a +-0.08 mm LED height tolerance in the wells, wider LED power traces on thin copper and stiffeners under the LED pads"
  },
  "H_two_ply_cord": {
-  "hv_ply_mm": 9.4,
+  "hv_ply_mm": 11.14,
   "lv_ply_mm": 7.3,
   "stacked_extra_tx_pF_per_m": 542,
-  "flex_tx_pF_per_m": 28.1,
-  "offset_width_mm": 15.2,
-  "verdict": "rejected: stacked, a guarded pair over a TX strip adds about 542 pF/m (the whole strip pair is 28.1 pF/m); offset side by side the plies are 15.2 mm wide, no gain over one ply. Keep one ply with selective copper (2 oz TX / power, 1/2 oz signal): the 0.15 mm traces then meet the 5 x thickness guideline"
+  "flex_tx_pF_per_m": 30.6,
+  "offset_width_mm": 16.94,
+  "verdict": "rejected: stacked, a guarded pair over a TX strip adds about 542 pF/m (the whole strip pair is 30.6 pF/m); offset side by side the plies are 16.9 mm wide, no gain over one ply. Keep one ply with selective copper (2 oz TX / power, 1/2 oz signal): the 0.15 mm traces then meet the 5 x thickness guideline"
  },
  "findings": [
-  "A: the cord as a 15.7 mm single-layer 2 oz flex (TX traces 2.35 mm, 1.0 mm rule-6 gaps) fits the 18.6 mm bore; split at REF3T the pieces are 961 mm (rolling loop for 550.0 mm travel) and 394 mm, inside Tech Etch's 1016 mm preferred length; TX strips 28.1 pF/m over 1.355 m (eps_eff 1.6 ASSUMED) -> first gate +0.14 us (rf2_timing_cord; the wire pair gave +0.19 us); mass 10.6 g vs about 86 g",
+  "A: the cord as a 18.24 mm single-layer 2 oz flex (TX traces 3.22 mm, 1.0 mm rule-6 gaps) fits the 18.6 mm bore; split at REF3T the pieces are 961 mm (rolling loop for 550.0 mm travel) and 394 mm, inside Tech Etch's 1016 mm preferred length; TX strips 30.6 pF/m over 0.965 m (eps_eff 1.6 ASSUMED) -> first gate +-0.21 us (rf2_timing_cord; the wire pair gave +0.19 us); mass 12.4 g vs about 86 g",
   "B: front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12): closed can drift 60200.4099 x noise (FAILS), slotted 20.62866; head centre (r 30 mm, z 12): closed can drift 7535.6482 x noise (FAILS), slotted 2.58221; control chassis (about 0.9 m up the shaft behind the heel, 40 deg): closed can drift 0.0127 x noise (ok), slotted 0.0",
   "C: 0.254 mm BeCu fingers 10 x 1.5 mm give 0.63 N at 0.8 mm at 39 % of an ASSUMED 1000 MPa yield; Tech Etch geometry rules met: True",
   "D: feasible as 3 FEP-laminated segments per face (polyimide too thin for 5 layers); the end runs add 25 % copper and lift e_ref 2.48 -> 2.64 nV/rtHz: packaging gain (repeatable orientation, REF3T on the same flex), not a weight or noise gain",
   "E: not adopted: 50 ohm microwave coax; as the TX return it adds about 3 x the strip capacitance (first gate later), and the REF pairs are already guarded in the cord flex; no use found in AXE2",
   "F: rejected in the head (a metal core inside the coil is a target); not needed in the pod (LED ring and screen dissipate well under 1 W) {'disc r 40 mm': {'echo_x_gate_noise': 5924250.8, 'drift5K_x_noise': 118485.02}, 'disc r 100 mm': {'echo_x_gate_noise': 37287576.9, 'drift5K_x_noise': 745751.54}}",
   "G: SHELVED: the 522-LED flex stays at 0.4 mm (head 16.55 mm); the 0.2 mm option would lower the head 0.20 mm, with a +-0.08 mm LED height tolerance in the wells, wider LED power traces on thin copper and stiffeners under the LED pads",
-  "H: rejected: stacked, a guarded pair over a TX strip adds about 542 pF/m (the whole strip pair is 28.1 pF/m); offset side by side the plies are 15.2 mm wide, no gain over one ply. Keep one ply with selective copper (2 oz TX / power, 1/2 oz signal): the 0.15 mm traces then meet the 5 x thickness guideline"
+  "H: rejected: stacked, a guarded pair over a TX strip adds about 542 pF/m (the whole strip pair is 30.6 pF/m); offset side by side the plies are 16.9 mm wide, no gain over one ply. Keep one ply with selective copper (2 oz TX / power, 1/2 oz signal): the 0.15 mm traces then meet the 5 x thickness guideline"
  ],
- "ok": true
+ "ok": false
 }

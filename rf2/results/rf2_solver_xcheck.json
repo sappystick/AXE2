@@ -3,56 +3,56 @@
  "coil_fasthenry": [
   {
    "f_Hz": 1000.0,
-   "R_ohm": 0.585792,
-   "L_uH": 327.5711123223081
+   "R_ohm": 0.587886,
+   "L_uH": 328.9493941294839
   },
   {
    "f_Hz": 10000.0,
-   "R_ohm": 0.585792,
-   "L_uH": 327.57111232230807
+   "R_ohm": 0.587886,
+   "L_uH": 328.9493941294839
   },
   {
    "f_Hz": 100000.0,
-   "R_ohm": 0.585792,
-   "L_uH": 327.57111232230807
+   "R_ohm": 0.587886,
+   "L_uH": 328.9493941294839
   }
  ],
  "coil_models": {
-  "neumann_maxwell_uH": 327.5,
+  "neumann_maxwell_uH": 329.0,
   "design_uH": 333.0,
   "R_model_ohm": 0.601
  },
  "coil_check": {
-  "L_fasthenry_uH": 327.6,
-  "vs_maxwell_pct": 0.01,
-  "vs_design_pct": -1.63,
-  "R_1kHz_ohm": 0.586,
-  "R_100kHz_ohm": 0.586,
+  "L_fasthenry_uH": 328.9,
+  "vs_maxwell_pct": -0.02,
+  "vs_design_pct": -1.22,
+  "R_1kHz_ohm": 0.588,
+  "R_100kHz_ohm": 0.588,
   "ok": true
  },
  "strips_fasthenry": [
   {
    "f_Hz": 1000.0,
-   "R_ohm": 0.279805,
-   "L_uH": 0.9626470817418981
+   "R_ohm": 0.145245,
+   "L_uH": 0.6518142947845648
   },
   {
    "f_Hz": 10000.0,
-   "R_ohm": 0.280156,
-   "L_uH": 0.9623176310096979
+   "R_ohm": 0.145635,
+   "L_uH": 0.6513065905161015
   },
   {
    "f_Hz": 100000.0,
-   "R_ohm": 0.3061,
-   "L_uH": 0.9396332769708101
+   "R_ohm": 0.169514,
+   "L_uH": 0.6233796726517666
   }
  ],
  "strips_check": {
-  "R_dc_model_ohm": 0.2798,
-  "R_1kHz_fh": 0.2798,
-  "R_100kHz_fh": 0.3061,
-  "L_loop_uH": 0.963,
-  "L_per_m_nH": 710.4,
+  "R_dc_model_ohm": 0.1452,
+  "R_1kHz_fh": 0.1452,
+  "R_100kHz_fh": 0.1695,
+  "L_loop_uH": 0.652,
+  "L_per_m_nH": 675.5,
   "ok": true
  },
  "sympy": {
@@ -64,21 +64,21 @@
   "ok": true
  },
  "line": {
-  "Z0_ohm": 158.9,
-  "delay_ns": 6.06,
-  "quarter_wave_MHz": 41.3,
-  "Zin_peak_kHz": 414.9,
-  "Zin_peak_ohm": 76655,
-  "lumped_SRF_kHz": 436.4,
-  "skrf_s21_phase_at_10kHz": -0.000381,
+  "Z0_ohm": 148.7,
+  "delay_ns": 4.38,
+  "quarter_wave_MHz": 57.0,
+  "Zin_peak_kHz": 399.9,
+  "Zin_peak_ohm": 88533,
+  "lumped_SRF_kHz": 410.7,
+  "skrf_s21_phase_at_10kHz": -0.000275,
   "ok": true
  },
  "ok": true,
  "findings": [
-  "coil L: FastHenry 327.6 uH vs Maxwell 327.5 uH (+0.0 %) vs design 333 uH (-1.6 %)",
-  "coil R: 0.586 ohm at 1 kHz (FastHenry, copper only, no leads) vs 0.601 ohm (catalog over 18.3 m incl. leads)",
-  "TX strips: R 0.2798 ohm at 1 kHz, 0.3061 ohm at 100 kHz (skin / proximity) vs 0.2798 ohm DC model; loop L 0.963 uH",
-  "line: Z0 158.9 ohm, delay 6.06 ns, quarter-wave 41.3 MHz vs the coil + node self-resonance 436.4 kHz: the cord acts as a lumped element at PI frequencies",
+  "coil L: FastHenry 328.9 uH vs Maxwell 329.0 uH (-0.0 %) vs design 333 uH (-1.2 %)",
+  "coil R: 0.588 ohm at 1 kHz (FastHenry, copper only, no leads) vs 0.601 ohm (catalog over 18.3 m incl. leads)",
+  "TX strips: R 0.1452 ohm at 1 kHz, 0.1695 ohm at 100 kHz (skin / proximity) vs 0.1452 ohm DC model; loop L 0.652 uH",
+  "line: Z0 148.7 ohm, delay 4.38 ns, quarter-wave 57.0 MHz vs the coil + node self-resonance 410.7 kHz: the cord acts as a lumped element at PI frequencies",
   "SymPy: loop on-axis True, Maxwell far field rel 0.00098, critical damping True, hex I = 5*s**3*t_/2 (True)"
  ]
 }

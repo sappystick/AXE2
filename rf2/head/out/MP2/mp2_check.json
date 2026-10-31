@@ -9,32 +9,19 @@
   "tracks": 208,
   "vias": 40,
   "widened_to_floor": 0,
-  "mode": "resume + astar",
+  "mode": "resume, complete: no autorouter",
   "resume": {
-   "copied_items": 247,
+   "copied_items": 248,
    "changed_pads": 0,
    "changed_nets": [],
-   "deleted_drc_items": 3
+   "deleted_drc_items": 0
   },
   "strategies": [
    {
     "name": "template / pre-routes / resumed copper",
-    "open": 3,
+    "open": 0,
     "drc_errors": 0,
-    "used": false
-   },
-   {
-    "name": "freerouting",
-    "stalled": false,
-    "reason": null,
-    "open": 3,
-    "seconds": 20.1
-   },
-   {
-    "name": "astar fallback",
-    "open_after": [],
-    "connections": 3,
-    "seconds": 0.3
+    "used": true
    }
   ],
   "ok": true

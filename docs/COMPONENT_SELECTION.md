@@ -48,23 +48,23 @@ Weights: mass_g 0.20, runtime_h 0.20, signal 0.20, margin 0.15, attach 0.10, foo
 
 | Part | Status | Score | Rule breaks (where) | Mass g | Boost h | Signal | Margin | Extra parts | Footprint | Verify | Note |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| C2: drill-style rail pack, 7S1P Molicel P45B, 2 row(s) | **INCUMBENT** | 1.00 | - | 777 | 2.6 | -  | 25.0 | 0 | 373.1 | 1.0 | mass = system delta + 1000 (relative) |
-| A: baseline: 7S2P P30B cartridge into an enclosed bay, rear slide | **RECOMMEND** | 1.07 | - | 1000 | 3.47 | -  | 33.3 | 0 | 373.1 | 1.0 | mass = system delta + 1000 (relative) |
-| B: drill-style rail pack, same 7S2P P30B (bay removed) | **KEEP INCUMBENT** | 1.05 | - | 965 | 3.47 | -  | 33.3 | 0 | 457.7 | 1.0 | mass = system delta + 1000 (relative) |
-| C1: drill-style rail pack, 7S1P Molicel P45B, 1 row(s) | **KEEP INCUMBENT** | 1.00 | - | 777 | 2.6 | -  | 25.0 | 0 | 377.6 | 1.0 | mass = system delta + 1000 (relative) |
-| F: drill-style small 7S1P P30B, carried with a spare | **KEEP INCUMBENT** | 0.97 | - | 616 | 1.73 | -  | 16.7 | 0 | 277.3 | 1.0 | mass = system delta + 1000 (relative) |
-| D2: drill-style rail pack, 7S1P LG M50T, 2 row(s) | **KEEP INCUMBENT** | 0.92 | - | 777 | 2.92 | -  | 1.3 | 0 | 373.0 | 0.5 | mass = system delta + 1000 (relative) |
-| D1: drill-style rail pack, 7S1P LG M50T, 1 row(s) | **KEEP INCUMBENT** | 0.92 | - | 777 | 2.92 | -  | 1.3 | 0 | 376.4 | 0.5 | mass = system delta + 1000 (relative) |
-| E: drill-style hard shell round a 7S RC LiPo (Gens Ace 5000 mAh 7S 45C) | **KEEP INCUMBENT** | 0.74 | - | 1096 | 2.97 | -  | 1.0 | 2 | 584.1 | 0.3 | mass = system delta + 1000 (relative) |
+| C2: drill-style rail pack, 7S1P Molicel P45B, 2 row(s) | **INCUMBENT** | 1.00 | - | 777 | 2.9 | -  | 25.0 | 0 | 373.1 | 1.0 | mass = system delta + 1000 (relative) |
+| A: baseline: 7S2P P30B cartridge into an enclosed bay, rear slide | **RECOMMEND** | 1.07 | - | 1000 | 3.87 | -  | 33.3 | 0 | 373.1 | 1.0 | mass = system delta + 1000 (relative) |
+| B: drill-style rail pack, same 7S2P P30B (bay removed) | **KEEP INCUMBENT** | 1.05 | - | 965 | 3.87 | -  | 33.3 | 0 | 457.7 | 1.0 | mass = system delta + 1000 (relative) |
+| C1: drill-style rail pack, 7S1P Molicel P45B, 1 row(s) | **KEEP INCUMBENT** | 1.00 | - | 777 | 2.9 | -  | 25.0 | 0 | 377.6 | 1.0 | mass = system delta + 1000 (relative) |
+| F: drill-style small 7S1P P30B, carried with a spare | **KEEP INCUMBENT** | 0.97 | - | 616 | 1.93 | -  | 16.7 | 0 | 277.3 | 1.0 | mass = system delta + 1000 (relative) |
+| D2: drill-style rail pack, 7S1P LG M50T, 2 row(s) | **KEEP INCUMBENT** | 0.94 | - | 777 | 3.26 | -  | 1.4 | 0 | 373.0 | 0.5 | mass = system delta + 1000 (relative) |
+| D1: drill-style rail pack, 7S1P LG M50T, 1 row(s) | **KEEP INCUMBENT** | 0.93 | - | 777 | 3.26 | -  | 1.4 | 0 | 376.4 | 0.5 | mass = system delta + 1000 (relative) |
+| E: drill-style hard shell round a 7S RC LiPo (Gens Ace 5000 mAh 7S 45C) | **KEEP INCUMBENT** | 0.74 | - | 1096 | 3.31 | -  | 1.0 | 2 | 584.1 | 0.3 | mass = system delta + 1000 (relative) |
 
 ## Telescope wall
 
 | Part | Status | Score | Rule breaks (where) | Mass g | Boost h | Signal | Margin | Extra parts | Footprint | Verify | Note |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.2 mm carbon wall | **INCUMBENT** | 1.00 | - | 210 | None | -  | 2.93 | 0 | None | 0.6 | tip sag 3.41 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
-| 0.8 mm carbon wall | **KEEP INCUMBENT** | 1.01 | - | 142 | None | -  | 2.09 | 0 | None | 0.6 | tip sag 4.79 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
-| 1.0 mm carbon wall | **KEEP INCUMBENT** | 1.01 | - | 177 | None | -  | 2.53 | 0 | None | 0.6 | tip sag 3.96 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
-| 1.5 mm carbon wall | **KEEP INCUMBENT** | 0.99 | - | 260 | None | -  | 3.5 | 0 | None | 0.6 | tip sag 2.86 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
+| 1.2 mm carbon wall | **INCUMBENT** | 1.00 | - | 210 | None | -  | 2.92 | 0 | None | 0.6 | tip sag 3.43 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
+| 0.8 mm carbon wall | **KEEP INCUMBENT** | 1.01 | - | 142 | None | -  | 2.07 | 0 | None | 0.6 | tip sag 4.83 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
+| 1.0 mm carbon wall | **KEEP INCUMBENT** | 1.01 | - | 177 | None | -  | 2.51 | 0 | None | 0.6 | tip sag 3.99 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
+| 1.5 mm carbon wall | **KEEP INCUMBENT** | 0.99 | - | 260 | None | -  | 3.47 | 0 | None | 0.6 | tip sag 2.88 mm vs 10 mm allowed (ASSUMED); swing / impact NOT modelled |
 
 ## Display flex (522 LEDs)
 

@@ -48,36 +48,36 @@ What the numbers say:
 ## 3. Optical link up the shaft
 
 - the fibre would follow the cord flex's rolling loop inside an 18.6 mm bore: at most 8.2 mm loop radius against 15 mm for repeated bending (25 mm static): it does not fit the telescope (32 mm bore needed)
-- gain if it did: flex 15.7 -> 13.7 mm, 6 conductors and the digital-edge coupling into the REF pairs removed; cost 0.41-0.60 W (scan runtime 5.18 -> 5.02 h)
+- gain if it did: flex 18.2 -> 16.3 mm, 6 conductors and the digital-edge coupling into the REF pairs removed; cost 0.41-0.60 W (scan runtime 5.18 -> 5.02 h)
 - galvanic isolation is only partial: power, TX strips and REF pairs stay copper
 - where it fits: a straight, static run (e.g. handle to a hinge-mounted board) or a free-space IR link down a clear tube (not modeled)
 
-Numbers: {'links': 3, 'replaces': ['TXCMD', 'TXSTAT', 'DATA'], 'flex_width_mm': [15.7, 13.75], 'conductors_removed': 6, 'power_W': [0.41, 0.6], 'runtime_scan_h': [5.18, 5.07, 5.02], 'timing': 'delay <= 30 ns, pulse-width distortion <= +-4 ns: negligible against microsecond gates', 'fibre_loss_dB_1p5m': 0.26, 'rolling_loop_radius_available_mm': 8.2, 'fibre_bend_needed_mm': {'repeated': 15.0, 'static': 25.0}, 'bore_needed_mm': 32.2, 'housings': '6 Versatile Link housings (18.8, 12.19, 7.62) mm: at the neck and at the hinge / handle, not in the 18 mm bore', 'coupling_removed_pF_per_m': 14.9}
+Numbers: {'links': 3, 'replaces': ['TXCMD', 'TXSTAT', 'DATA'], 'flex_width_mm': [18.24, 16.29], 'conductors_removed': 6, 'power_W': [0.41, 0.6], 'runtime_scan_h': [5.18, 5.07, 5.02], 'timing': 'delay <= 30 ns, pulse-width distortion <= +-4 ns: negligible against microsecond gates', 'fibre_loss_dB_1p5m': 0.26, 'rolling_loop_radius_available_mm': 8.2, 'fibre_bend_needed_mm': {'repeated': 15.0, 'static': 25.0}, 'bore_needed_mm': 32.2, 'housings': '6 Versatile Link housings (18.8, 12.19, 7.62) mm: at the neck and at the hinge / handle, not in the 18 mm bore', 'coupling_removed_pF_per_m': 14.9}
 
 ## 4. Hexagonal shaft, central bore, flex on the flats, long flex boards
 
-- same across-flats: hex tubes 182 g vs square 210 g, tip sag 4.68 vs 3.52 mm (hex is lighter and slightly softer: less material in the corners)
-- equal mass: hex across-flats x1.148 (35.6, 29.8, 24.1 mm), sag 3.08 mm vs square 3.52 mm
+- same across-flats: hex tubes 182 g vs square 210 g, tip sag 4.72 vs 3.55 mm (hex is lighter and slightly softer: less material in the corners)
+- equal mass: hex across-flats x1.148 (35.6, 29.8, 24.1 mm), sag 3.11 mm vs square 3.55 mm
 - inner flats: hex 6 x 10.7 mm vs square 4 x 18.6 mm; the whole 15.7 mm cord flex fits one square face, not one hex face: on a hex it splits by group onto separate faces
-- TX strips and REF pairs on opposite hex faces: 8.05 pF/m vs 18.23 pF/m side by side on the flex (gap 4.5 mm)
+- TX strips and REF pairs on opposite hex faces: 8.86 pF/m vs 18.99 pF/m side by side on the flex (gap 5.3 mm)
 - a central bore with webs works only in the innermost tube; it would carry a fibre or a coax, but the fibre still cannot cross the rolling loop
 - long flex boards: the outside flats of the upper tube give 408 cm2 (square 471 cm2) at s 410-790 mm, past the 375 mm echo distance: room for the TXD as a long board under a cover
 - the flex groups bonded to the inner tube's faces move with it; the slack for the 550 mm travel still needs the rolling loop (or a coil cord) in the upper tubes
 
 | Profile set | across flats mm | tubes g | tip sag mm | inner flats |
 |---|---|---|---|---|
-| square | [31.0, 26.0, 21.0] | 210 | 3.52 | 4 x 18.6 mm |
-| hex_same_af | [31.0, 26.0, 21.0] | 182 | 4.68 | 6 x 10.74 mm |
-| hex_equal_mass | [35.6, 29.8, 24.1] | 210 | 3.08 | 6 x 12.53 mm |
+| square | [31.0, 26.0, 21.0] | 210 | 3.55 | 4 x 18.6 mm |
+| hex_same_af | [31.0, 26.0, 21.0] | 182 | 4.72 | 6 x 10.74 mm |
+| hex_equal_mass | [35.6, 29.8, 24.1] | 210 | 3.11 | 6 x 12.53 mm |
 
-Lane groups on faces: {'HV (TX strips)': {'width_mm': 8.1, 'fits_hex_flat': True, 'fits_square_flat': True}, 'power': {'width_mm': 2.1, 'fits_hex_flat': True, 'fits_square_flat': True}, 'digital': {'width_mm': 1.95, 'fits_hex_flat': True, 'fits_square_flat': True}, 'REF': {'width_mm': 5.55, 'fits_hex_flat': True, 'fits_square_flat': True}}
+Lane groups on faces: {'HV (TX strips)': {'width_mm': 9.84, 'fits_hex_flat': True, 'fits_square_flat': True}, 'power': {'width_mm': 2.1, 'fits_hex_flat': True, 'fits_square_flat': True}, 'digital': {'width_mm': 1.95, 'fits_hex_flat': True, 'fits_square_flat': True}, 'REF': {'width_mm': 5.55, 'fits_hex_flat': True, 'fits_square_flat': True}}
 Central bore: {'feasible_in': "the innermost (lowest) tube only: every other tube's bore must stay clear for the tube that slides in it", 'hub': {'od_mm': 5.0, 'id_mm': 4.0, 'webs': 6, 'web_t_mm': 0.6}, 'added_g_per_380mm': 18.6}
 Long flex boards: {'outer_tube_outside_flats': {'n': 6, 'width_mm': 17.9, 'length_mm': 380.0, 'area_cm2': 408.1}, 'square_outside_faces_area_cm2': 471.2, 'echo_rule': 'metal boards at s >= 375 mm from the head stay below 0.5 x gate noise for a 5 K step (rf2_system echoes, TXD-class metal); the outer tube spans s 410-790 mm', 'inside_flats': 'the inner flats of the outer and middle tubes are swept by the sliding tube (clearance 1.3 mm): only flex with parts under about 1 mm would fit, at wear risk'}
 
 ## Rule rows raised (also in docs/RULE_NEAR_MISSES.md)
 
 - POF repeated-bend radius vs the rolling-loop radius available in the inner bore: 8.2 vs 15.0 -> BREAKS
-- hex (same AF) tip sag vs the square profiles' sag: 4.68 vs 3.52 -> BREAKS
-- HV lane group (TX strips + edges) vs one hex inner flat: 8.1 vs 10.74 -> ok
+- hex (same AF) tip sag vs the square profiles' sag: 4.72 vs 3.55 -> BREAKS
+- HV lane group (TX strips + edges) vs one hex inner flat: 9.84 vs 10.74 -> ok
 
 Files: rf2/results/shaftlink_*.stl, rf2/results/shaftlink_hex.step (hex telescope section with the central bore hub, POF, flex on three faces, long boards outside).

@@ -472,11 +472,11 @@
  },
  "ok": false,
  "timings_s": {
-  "build": 2.05,
-  "containment": 0.35,
-  "fold search (cached)": 28.45,
-  "deployed clearance": 0.56,
-  "exports and views": 9.96,
-  "total": 45.6
+  "build": 1.93,
+  "containment": 0.36,
+  "fold search (cached)": 0.01,
+  "deployed clearance": 0.6,
+  "exports and views": 5.67,
+  "total": 12.7
  }
 }

@@ -14,7 +14,7 @@
    ]
   ],
   "steps": {
-   "chassis": "pass"
+   "chassis": "fail"
   },
   "numbers": "wrist-to-cuff angle to the shaft 0.0 deg; trough 7.1 mm above the chassis",
   "open": "wing spring and rail detent detail; strap"
@@ -34,10 +34,10 @@
    ]
   ],
   "steps": {
-   "chassis": "pass",
-   "system": "pass"
+   "chassis": "fail",
+   "system": "fail"
   },
-  "numbers": "runtime 5.2 h scan / 2.6 h boost; cartridge [92.2, 76.2, 53.1] mm",
+  "numbers": "runtime 5.4 h scan / 2.9 h boost; cartridge [92.2, 76.2, 53.1] mm",
   "open": "cell holder, contacts, latch; BQ76952 schematic"
  },
  {
@@ -63,11 +63,11 @@
    ]
   ],
   "steps": {
-   "chassis": "pass",
-   "system": "pass",
+   "chassis": "fail",
+   "system": "fail",
    "study:continuous": "pass"
   },
-  "numbers": "chassis surface rise 10.5 K in continuous boost; TXD echo drift 0.003 x noise; switch TJ 89.9 C",
+  "numbers": "chassis surface rise 2.2 K in continuous boost; TXD echo drift 0.147 x noise; switch TJ 58.2 C",
   "open": "driver + buck SPICE / schematics; venting; boards"
  },
  {
@@ -89,7 +89,7 @@
    ]
   ],
   "steps": {
-   "chassis": "pass",
+   "chassis": "fail",
    "audio": "pass",
    "display3": "pass"
   },
@@ -111,7 +111,7 @@
    ]
   ],
   "steps": {
-   "chassis": "pass"
+   "chassis": "fail"
   },
   "numbers": "twist 6.0 deg/mm, bend r 12.0 mm",
   "open": "hinge detail, seals"
@@ -131,7 +131,7 @@
    ]
   ],
   "steps": {
-   "chassis": "pass",
+   "chassis": "fail",
    "ref3": "pass",
    "study:emi": "not run"
   },
@@ -149,7 +149,7 @@
    ]
   ],
   "steps": {
-   "chassis": "pass"
+   "chassis": "fail"
   },
   "numbers": "pivot to hinge {'min_use': 690.0, 'nominal': 790, 'max': 980.0} mm; collapsed 430.0 mm",
   "open": "clamp mechanism detail"
@@ -169,9 +169,9 @@
    ]
   ],
   "steps": {
-   "chassis": "pass"
+   "chassis": "fail"
   },
-  "numbers": "cord stretch n/a mm (ratio n/a); TX pair 1.35 m: first gate +0.14 us (first-order)",
+  "numbers": "cord stretch n/a mm (ratio n/a); TX pair 0.965 m: first gate +-0.21 us (first-order)",
   "open": "coil-cord vendor spec (1000 V pair); re-run rf2_timing with the pair"
  },
  {
@@ -185,9 +185,9 @@
    ]
   ],
   "steps": {
-   "chassis": "pass"
+   "chassis": "fail"
   },
-  "numbers": "[494, 238, 160] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2450 g",
+  "numbers": "[494, 238, 197] mm (target [520.0, 320.0, 210.0]; SDC 2300 [400.0, 216.0] mm with a 203 mm coil); mass 2505 g",
   "open": "lighter REF3 / tubes toward the SDC's 2.3 kg"
  },
  {

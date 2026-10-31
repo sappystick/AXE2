@@ -41,7 +41,7 @@
     "half_width": 2.7
    }
   },
-  "seconds": 1.6,
+  "seconds": 2.4,
   "litz_pass": {
    "d": 2.0,
    "z": 8.0,
@@ -94,7 +94,7 @@
     "half_width": 2.7
    }
   },
-  "seconds": 2.1,
+  "seconds": 3.3,
   "litz_pass": {
    "d": 2.0,
    "z": 8.0,
@@ -527,5 +527,5 @@
    "draft_deg": 0.0
   }
  },
- "seconds": 36.1
+ "seconds": 47.8
 }

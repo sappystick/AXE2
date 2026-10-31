@@ -2,5 +2,5 @@
  "unconnected_after": 0,
  "tracks": 208,
  "vias": 40,
- "via": "astar fallback"
+ "skipped": "nothing open: template / pre-routes complete"
 }

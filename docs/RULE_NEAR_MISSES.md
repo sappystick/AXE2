@@ -2,11 +2,12 @@
 
 BLOCKED: a part fails a rule by 10 % or less (it fits right under it); the owner decides whether to relax or remove the rule. RELAXED: the owner relaxed it; shown against the old limit every run. EDGE: passes with 5 % headroom or less. FAIL: misses by more than 10 %. Safety rules (HV, eddy, absolute-maximum ratings) are never relaxed automatically.
 
-Rules checked: 260. BLOCKED 8, RELAXED 2, EDGE 23, FAIL 59, PASS 168
+Rules checked: 427. BLOCKED 9, RELAXED 2, EDGE 29, FAIL 60, PASS 327
 
 | Status | Kind | Rule | Value | Limit | Over (+) / headroom (-) | Note |
 |---|---|---|---|---|---|---|
 | **BLOCKED** | target | cord flex piece 1 width (TX strips + REF guard) vs the inner bore less 2 mm (18.6 - 2) | 18.24 mm | <= 16.6 mm | +9.9 % | rf2_chassis_check.json cord_flex |
+| **BLOCKED** | target | cord-as-flex width vs the 18 mm bore less 2 mm | 18.24 mm | <= 16.6 mm | +9.9 % | rf2_flex_options.json |
 | **BLOCKED** | safety | option 15x2 C3M0 +RX40 TXD400: TX switch TJ in boost vs 125 C | 136.6  | <= 125.0  | +9.3 % | rf2_lowL_options.json |
 | **BLOCKED** | safety | coil litz SXXL100/38FX-2(MWXX) (Single FEP, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Rubadue catalog (rf2_wire_options) |
 | **BLOCKED** | safety | coil litz SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Rubadue catalog (rf2_wire_options) |
@@ -15,21 +16,21 @@ Rules checked: 260. BLOCKED 8, RELAXED 2, EDGE 23, FAIL 59, PASS 168
 | **BLOCKED** | target | option 15x2 NTBG TX2L: cord-flex width vs 16 mm (18 mm bore less 2) | 16.06  | <= 16.0  | +0.4 % | rf2_lowL_options.json |
 | **BLOCKED** | target | option 15x2 NTBG TXD400 TX2L: cord-flex width vs 16 mm (18 mm bore less 2) | 16.06  | <= 16.0  | +0.4 % | rf2_lowL_options.json |
 | **FAIL** | target | slotted etched shield can in the head, front end near the rim (MP1 fin, r 95 mm, az 170 deg, z 12): drift vs 0.5 x gate noise | 20.62866 x noise | <= 0.5 x noise | +4025.7 % | rf2_flex_options.json |
-| **FAIL** | target | fold option fold x3 (quarters) + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 28.19  | <= 3.41  | +726.7 % | rf2_fold_options.json |
-| **FAIL** | target | fold option fold x3 (quarters) + chassis hinge, square31: tip sag vs today's telescope | 26.88  | <= 3.41  | +688.3 % | rf2_fold_options.json |
-| **FAIL** | target | fold option fold x2 (thirds) + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 18.94  | <= 3.41  | +455.4 % | rf2_fold_options.json |
-| **FAIL** | target | fold option fold x2 (thirds) + chassis hinge, square31: tip sag vs today's telescope | 17.96  | <= 3.41  | +426.7 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold x3 (quarters) + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 28.41  | <= 3.43  | +728.3 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold x3 (quarters) + chassis hinge, square31: tip sag vs today's telescope | 27.1  | <= 3.43  | +690.1 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold x2 (thirds) + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 19.08  | <= 3.43  | +456.3 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold x2 (thirds) + chassis hinge, square31: tip sag vs today's telescope | 18.1  | <= 3.43  | +427.7 % | rf2_fold_options.json |
 | **FAIL** | target | slotted etched shield can in the head, head centre (r 30 mm, z 12): drift vs 0.5 x gate noise | 2.58221 x noise | <= 0.5 x noise | +416.4 % | rf2_flex_options.json |
 | **FAIL** | safety | option 5x6 C3M0: switch peak vs 80 % IDM | 66.72  | <= 17.6  | +279.1 % | rf2_lowL_options.json |
 | **FAIL** | target | option 5x6 C3M0: cord-flex width vs 16 mm (18 mm bore less 2) | 57.06  | <= 16.0  | +256.6 % | rf2_lowL_options.json |
 | **FAIL** | target | option 5x6 NTBG: cord-flex width vs 16 mm (18 mm bore less 2) | 57.06  | <= 16.0  | +256.6 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 6x5 C3M0: switch peak vs 80 % IDM | 55.6  | <= 17.6  | +215.9 % | rf2_lowL_options.json |
-| **FAIL** | target | fold option fold neck + mid + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 10.25  | <= 3.41  | +200.6 % | rf2_fold_options.json |
-| **FAIL** | target | fold option fold x1 (mid) + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 10.15  | <= 3.41  | +197.7 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold neck + mid + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 10.33  | <= 3.43  | +201.2 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold x1 (mid) + chassis hinge, hex31 hub6_cu: tip sag vs today's telescope | 10.23  | <= 3.43  | +198.3 % | rf2_fold_options.json |
 | **FAIL** | target | option 6x5 C3M0: cord-flex width vs 16 mm (18 mm bore less 2) | 46.82  | <= 16.0  | +192.6 % | rf2_lowL_options.json |
 | **FAIL** | target | option 6x5 NTBG: cord-flex width vs 16 mm (18 mm bore less 2) | 46.82  | <= 16.0  | +192.6 % | rf2_lowL_options.json |
-| **FAIL** | target | fold option fold neck + mid + chassis hinge, square31: tip sag vs today's telescope | 9.56  | <= 3.41  | +180.4 % | rf2_fold_options.json |
-| **FAIL** | target | fold option fold x1 (mid) + chassis hinge, square31: tip sag vs today's telescope | 9.47  | <= 3.41  | +177.7 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold neck + mid + chassis hinge, square31: tip sag vs today's telescope | 9.64  | <= 3.43  | +181.0 % | rf2_fold_options.json |
+| **FAIL** | target | fold option fold x1 (mid) + chassis hinge, square31: tip sag vs today's telescope | 9.54  | <= 3.43  | +178.1 % | rf2_fold_options.json |
 | **FAIL** | safety | option 7x4 C3M0: switch peak vs 80 % IDM | 47.42  | <= 17.6  | +169.4 % | rf2_lowL_options.json |
 | **FAIL** | target | option 7x4 C3M0: cord-flex width vs 16 mm (18 mm bore less 2) | 39.76  | <= 16.0  | +148.5 % | rf2_lowL_options.json |
 | **FAIL** | target | option 7x4 NTBG: cord-flex width vs 16 mm (18 mm bore less 2) | 39.76  | <= 16.0  | +148.5 % | rf2_lowL_options.json |
@@ -46,7 +47,7 @@ Rules checked: 260. BLOCKED 8, RELAXED 2, EDGE 23, FAIL 59, PASS 168
 | **FAIL** | target | option 10x3 NTBG +RX40 TXD400: cord-flex width vs 16 mm (18 mm bore less 2) | 28.71  | <= 16.0  | +79.4 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 6x5 NTBG: TX switch TJ in boost vs 125 C | 186.5  | <= 125.0  | +49.2 % | rf2_lowL_options.json |
 | **FAIL** | target | POF repeated-bend radius vs the rolling-loop radius available in the inner bore | 8.2  | >= 15.0  | +45.3 % | rf2_shaftlink_options.json |
-| **FAIL** | target | hex (same AF) tip sag vs the square profiles' sag | 4.68  | <= 3.52  | +33.0 % | rf2_shaftlink_options.json |
+| **FAIL** | target | hex (same AF) tip sag vs the square profiles' sag | 4.72  | <= 3.55  | +33.0 % | rf2_shaftlink_options.json |
 | **FAIL** | target | option 15x2 C3M0: cord-flex width vs 16 mm (18 mm bore less 2) | 21.12  | <= 16.0  | +32.0 % | rf2_lowL_options.json |
 | **FAIL** | target | option 15x2 NTBG: cord-flex width vs 16 mm (18 mm bore less 2) | 21.12  | <= 16.0  | +32.0 % | rf2_lowL_options.json |
 | **FAIL** | target | option 15x2 C3M0 +RX20: cord-flex width vs 16 mm (18 mm bore less 2) | 21.12  | <= 16.0  | +32.0 % | rf2_lowL_options.json |
@@ -58,6 +59,7 @@ Rules checked: 260. BLOCKED 8, RELAXED 2, EDGE 23, FAIL 59, PASS 168
 | **FAIL** | safety | option 15x2 C3M0 +RX20: switch peak vs 80 % IDM | 22.24  | <= 17.6  | +26.4 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 15x2 C3M0 +RX40: switch peak vs 80 % IDM | 22.24  | <= 17.6  | +26.4 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 15x2 C3M0 +RX40 TXD400: switch peak vs 80 % IDM | 22.24  | <= 17.6  | +26.4 % | rf2_lowL_options.json |
+| **FAIL** | process option | head glove: moulded variant: tray floor plate vs moulded min wall 0.8 @ G_TRAY floor (moulded) | 0.6  | >= 0.8  | +25.0 % | rf2_head_glove.json |
 | **FAIL** | target | hybrid RX option 10x3 NTBG TXD400: cord-flex width vs 16 mm (18 mm bore less 2) | 19.85  | <= 16.0  | +24.1 % | rf2_lowL_options.json hybrid |
 | **FAIL** | target | option 10x3 NTBG TX2L: cord-flex width vs 16 mm (18 mm bore less 2) | 19.85  | <= 16.0  | +24.1 % | rf2_lowL_options.json |
 | **FAIL** | target | option 10x3 NTBG TXD400 TX2L: cord-flex width vs 16 mm (18 mm bore less 2) | 19.85  | <= 16.0  | +24.1 % | rf2_lowL_options.json |
@@ -78,6 +80,11 @@ Rules checked: 260. BLOCKED 8, RELAXED 2, EDGE 23, FAIL 59, PASS 168
 | **EDGE** | safety | rule 6: smallest gap next to an HV trace in the cord flex (pieces 1 and 2) vs 1.0 mm | 1.0 mm | >= 1.0 mm | -0.0 % | rf2_chassis_check.json cord_flex (measured from the lanes) |
 | **EDGE** | target | cord TX strip width vs the IPC-2221 width (2 oz internal, 10 K) at the rf2_continuous boost rms | 3.221 mm | >= 3.221 mm | -0.0 % | rf2_cordflex / rf2_continuous.json |
 | **EDGE** | target | TPS65131 VPOS setting vs its ROC maximum 15 V | 15.0 V | <= 15.0 V | +0.0 % | DATASHEET_LOG RF2-DS-MP1V2-SWITCH |
+| **EDGE** | geometry | head glove: pocket clearance ENV_LED in tray wall tops @ tray wall tops | 0.4  | >= 0.4  | -0.0 % | rf2_head_glove.json |
+| **EDGE** | geometry | head glove: min wall G_TRAY (printed) @ G_TRAY | 0.8  | >= 0.8  | -0.0 % | rf2_head_glove.json |
+| **EDGE** | geometry | head glove: min wall G_COMBS (resin) @ G_COMBS | 0.3  | >= 0.3  | -0.0 % | rf2_head_glove.json |
+| **EDGE** | geometry | head glove: plate thickness tray_floor (printed, >= 3 layers) @ tray_floor | 0.6  | >= 0.6  | -0.0 % | rf2_head_glove.json |
+| **EDGE** | process option | head glove: moulded variant: min wall G_TRAY @ G_TRAY (moulded) | 0.8  | >= 0.8  | -0.0 % | rf2_head_glove.json |
 | **EDGE** | target | fold option fold x1 (mid) + chassis hinge, square31: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
 | **EDGE** | target | fold option fold x1 (mid) + chassis hinge, hex31 hub6_cu: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
 | **EDGE** | target | fold option fold x2 (thirds) + chassis hinge, square31: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
@@ -86,6 +93,7 @@ Rules checked: 260. BLOCKED 8, RELAXED 2, EDGE 23, FAIL 59, PASS 168
 | **EDGE** | target | fold option fold neck + mid + chassis hinge, hex31 hub6_cu: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
 | **EDGE** | target | fold option fold x3 (quarters) + chassis hinge, square31: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
 | **EDGE** | target | fold option fold x3 (quarters) + chassis hinge, hex31 hub6_cu: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
+| **EDGE** | geometry | head glove: HV epoxy to the litz (MG 832TC >= 3.0 mm) @ HV island outer arc | 3.042  | >= 3.0  | -1.4 % | rf2_head_glove.json |
 | **EDGE** | target | hybrid RX option 26x1 C3M0: cord-flex width vs 16 mm (18 mm bore less 2) | 15.7  | <= 16.0  | -1.9 % | rf2_lowL_options.json hybrid |
 | **EDGE** | target | hybrid RX option 26x1 NTBG: cord-flex width vs 16 mm (18 mm bore less 2) | 15.7  | <= 16.0  | -1.9 % | rf2_lowL_options.json hybrid |
 | **EDGE** | target | hybrid RX option 26x1 NTBG TXD400: cord-flex width vs 16 mm (18 mm bore less 2) | 15.7  | <= 16.0  | -1.9 % | rf2_lowL_options.json hybrid |

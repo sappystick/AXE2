@@ -106,9 +106,9 @@
    "idea": "split long flex (rolling loop + static piece)",
    "source": "Tech Etch long flex, Minco guide",
    "status": "ADOPTED",
-   "numbers": "15.7 mm wide, 961 + 394 mm, 10.6 g vs 86 g; TX 28.1 pF/m",
-   "effect": "fixes the 10 mm cord FAIL; first gate +0.14 us (was +0.19)",
-   "rule": "FAIL cord-as-flex in one piece (no REF3T joint) vs Tech Etch pref (1315 vs 1016)",
+   "numbers": "18.24 mm wide, 961 + 394 mm, 12.4 g vs 86 g; TX 30.6 pF/m",
+   "effect": "fixes the 10 mm cord FAIL; first gate +-0.21 us (was +0.19)",
+   "rule": "FAIL cord-as-flex in one piece (no REF3T joint) vs Tech Etch pref (1315 vs 1016); BLOCKED cord-as-flex width vs the 18 mm bore less 2 mm (18.24 vs 16.6)",
    "next": "flex drawing with a >= 1000 VRMS net-to-net hipot; rolling-loop mock-up"
   },
   {
@@ -126,7 +126,7 @@
    "idea": "two unbonded plies (2 oz HV / power + 1/2 oz ultra-thin signal)",
    "source": "PICA ultra-thin FPC",
    "status": "REJECTED",
-   "numbers": "stacked: +542 pF/m on the TX strips (pair 28.1 pF/m); offset: 15.2 mm wide",
+   "numbers": "stacked: +542 pF/m on the TX strips (pair 30.6 pF/m); offset: 16.94 mm wide",
    "effect": "-",
    "rule": "-",
    "next": "-"
@@ -216,7 +216,7 @@
    "idea": "carbon wall 1.5 -> 1.2 mm",
    "source": "Garrett two-piece benchmark (155 g/m)",
    "status": "ADOPTED",
-   "numbers": "tubes 260 -> 210 g, static tip sag 2.86 -> 3.41 mm; bore 18.0 -> 18.6 mm",
+   "numbers": "tubes 260 -> 210 g, static tip sag 2.88 -> 3.43 mm; bore 18.0 -> 18.6 mm",
    "effect": "-50 g, torque about the hand down; swing / impact loads NOT modeled",
    "rule": "-",
    "next": "swing-load and clamp-window crush check"
@@ -266,9 +266,9 @@
    "idea": "7S1P Molicel P45B, drill-style rail",
    "source": "Molicel P45B datasheet",
    "status": "ADOPTED",
-   "numbers": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 2.6 h continuous boost (rated case), 5.2 h scan, 2415 g sy",
+   "numbers": "drill-style rail pack, 7S1P Molicel P45B, 2 row(s): 113.4 Wh, 2.9 h continuous boost (rated case), 5.4 h scan, 2470 g sy",
    "effect": "-188 g pack",
-   "rule": "RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (2.6 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.2 vs 6.0)",
+   "rule": "RELAXED continuous-boost runtime (trigger held: the rated case), 7S1 (2.9 vs 6.0); RELAXED scan runtime, 7S1P Molicel P45B (5.4 vs 6.0)",
    "next": "rail dock geometry in rf2_chassis"
   },
   {
@@ -346,7 +346,7 @@
    "idea": "optical link up the shaft (AFBR-1624Z / 2624Z, GH-4001-P POF)",
    "source": "Broadcom, Mitsubishi datasheets on file",
    "status": "REJECTED - BREAKS fibre bend radius",
-   "numbers": "flex 15.7 -> 13.75 mm, +0.41-0.6 W; loop radius 8.2 mm vs 15.0 mm",
+   "numbers": "flex 18.24 -> 16.29 mm, +0.41-0.6 W; loop radius 8.2 mm vs 15.0 mm",
    "effect": "6 conductors removed if it fitted",
    "rule": "POF bend: 8.2 vs 15.0 mm",
    "next": "only for a static run (handle to hinge board)"
@@ -356,9 +356,9 @@
    "idea": "regular hexagon, same across-flats (31 / 26 / 21)",
    "source": "concept board (hex shaft)",
    "status": "REJECTED - BREAKS sag vs square",
-   "numbers": "182 g vs 210 g; sag 4.68 vs 3.52 mm",
+   "numbers": "182 g vs 210 g; sag 4.72 vs 3.55 mm",
    "effect": "lighter but softer",
-   "rule": "sag 4.68 vs 3.52 mm",
+   "rule": "sag 4.72 vs 3.55 mm",
    "next": "-"
   },
   {
@@ -366,8 +366,8 @@
    "idea": "regular hexagon, equal mass ([35.6, 29.8, 24.1] mm)",
    "source": "concept board (hex shaft)",
    "status": "FEASIBLE-NOT-ADOPTED",
-   "numbers": "sag 3.08 vs 3.52 mm at 210 g; 6 inner flats of 12.53 mm",
-   "effect": "stiffer at the same mass; bigger profile; flex splits onto faces (TX-REF coupling 18.23 -> 8.05 pF/m)",
+   "numbers": "sag 3.11 vs 3.55 mm at 210 g; 6 inner flats of 12.53 mm",
+   "effect": "stiffer at the same mass; bigger profile; flex splits onto faces (TX-REF coupling 18.99 -> 8.86 pF/m)",
    "rule": "-",
    "next": "re-draw camlocks, hinge and yoke for hex"
   },

@@ -1,35 +1,35 @@
 {
  "status": "MODELED: E 50 GPa and density 1.55 g/cm3 ASSUMED; rectangular sections without corner radii; static sag under the head only (no swing loads)",
- "head_plus_yoke_g": 811,
+ "head_plus_yoke_g": 818,
  "current_wall_mm": 1.2,
  "walls": [
   {
    "wall_mm": 1.5,
    "tubes_g": 260,
-   "tip_sag_mm": 2.86,
+   "tip_sag_mm": 2.88,
    "delta_g": 50,
    "sag_ratio": 0.84
   },
   {
    "wall_mm": 1.2,
    "tubes_g": 210,
-   "tip_sag_mm": 3.41,
+   "tip_sag_mm": 3.43,
    "delta_g": 0,
    "sag_ratio": 1.0
   },
   {
    "wall_mm": 1.0,
    "tubes_g": 177,
-   "tip_sag_mm": 3.96,
+   "tip_sag_mm": 3.99,
    "delta_g": -33,
    "sag_ratio": 1.16
   },
   {
    "wall_mm": 0.8,
    "tubes_g": 142,
-   "tip_sag_mm": 4.79,
+   "tip_sag_mm": 4.83,
    "delta_g": -68,
-   "sag_ratio": 1.4
+   "sag_ratio": 1.41
   }
  ],
  "benchmark": {
@@ -54,7 +54,7 @@
   "adopt": "printed cam lever + elastomer pressure block through a window in the outer profile (P3.4); a strain-relief pin through a loop of the cord flex at the gland"
  },
  "findings": [
-  "walls 1.5 -> 1.2 mm: tubes 210 -> 210 g (+0 g), static tip sag 3.41 -> 3.41 mm",
+  "walls 1.5 -> 1.2 mm: tubes 210 -> 210 g (+0 g), static tip sag 3.43 -> 3.43 mm",
   "ours 184 g/m of nested profile vs the Garrett two-piece 155 g/m (with its cam lock)"
  ],
  "ok": true

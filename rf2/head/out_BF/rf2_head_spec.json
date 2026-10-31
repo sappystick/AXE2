@@ -422,7 +422,7 @@
    "hv": false,
    "below": 0.0,
    "above": 0.0,
-   "what": "CB1D function: sensors, audio / link, spare"
+   "what": "CB1D function: sensors (yaw gyro BMI270 U9, LGA-14 2.5 x 3.0 x 0.83 mm, alternate LSM6DSO 0.86 mm max: inside the 1.2 mm fin parts envelope / glove fin pocket; gyro axis set along the head normal), audio / link, spare"
   },
   "FIN_D8": {
    "kind": "fin",
@@ -445,7 +445,7 @@
    "hv": false,
    "below": 0.0,
    "above": 0.0,
-   "what": "CB1D function: sensors, audio / link, spare"
+   "what": "CB1D function: sensors (yaw gyro BMI270 U9, LGA-14 2.5 x 3.0 x 0.83 mm, alternate LSM6DSO 0.86 mm max: inside the 1.2 mm fin parts envelope / glove fin pocket; gyro axis set along the head normal), audio / link, spare"
   },
   "HUB_PCB": {
    "kind": "disc",

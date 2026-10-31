@@ -1,23 +1,23 @@
 {
  "ok": true,
- "build_s": 15.0,
- "documents_s": 7.6,
+ "build_s": 26.3,
+ "documents_s": 17.2,
  "db": "rf2/kb/axe2_kb.sqlite",
  "counts": {
-  "documents": 2906,
-  "parts": 228,
+  "documents": 2920,
+  "parts": 240,
   "params": 272,
-  "facts": 114982,
-  "formulas": 143,
-  "modules": 111,
-  "steps": 99
+  "facts": 120011,
+  "formulas": 148,
+  "modules": 115,
+  "steps": 102
  },
  "detail": {
   "pdf_files": 122,
   "pdf_pages": 2607,
   "params_matching_log": 107,
   "parts_with_pdf_link": 130,
-  "fact_files": 105,
+  "fact_files": 110,
   "fact_files_skipped": [
    "rf2/results/rf2_variants.json"
   ]
@@ -26,7 +26,7 @@
   "parts_without_pdf": 17,
   "pdfs_not_in_datasheet_log": 1,
   "unverified_rows": 17,
-  "rf2_log_rows_without_pdf_link": 13
+  "rf2_log_rows_without_pdf_link": 25
  },
  "gap_lists": {
   "parts_without_pdf": [
@@ -59,6 +59,10 @@
     "mentions": 2
    },
    {
+    "part": "AYF531035",
+    "mentions": 2
+   },
+   {
     "part": "AN-1516",
     "mentions": 2
    },
@@ -84,10 +88,6 @@
    },
    {
     "part": "BZT52C15",
-    "mentions": 1
-   },
-   {
-    "part": "AYF531035",
     "mentions": 1
    },
    {
@@ -196,6 +196,18 @@
    "IXYS IXTY02N100D",
    "MWS LITZ-1050-48-T2, Fair-Rite 9478012002-MOD, Magnetics NC-0050-S",
    "Mill-Max 0906 spring-loaded pins (cartridge signal contacts)",
+   "RF2-DS-ADOPT / Coss / Ciss / Crss",
+   "RF2-DS-ADOPT / EAS single pulse",
+   "RF2-DS-ADOPT / EON / EOFF",
+   "RF2-DS-ADOPT / ID continuous",
+   "RF2-DS-ADOPT / IDM pulsed",
+   "RF2-DS-ADOPT / Package",
+   "RF2-DS-ADOPT / QG(tot)",
+   "RF2-DS-ADOPT / RDS(on)",
+   "RF2-DS-ADOPT / RthJC / RthJA",
+   "RF2-DS-ADOPT / TJ, Tstg",
+   "RF2-DS-ADOPT / VDSS",
+   "RF2-DS-ADOPT / VSD body diode",
    "RF2-DS-SPICE / Littelfuse IXTY08N100D2 and Nexperia BAV199 SPICE models",
    "RF2-DS-SPICE / TI \"SPICE models for Precision DACs\" (Analog Applications Journal)",
    "RF2-DS-SPICE / TI AN-1516 \"SPICE Universal Test Circuits\"",
