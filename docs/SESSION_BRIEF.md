@@ -19,6 +19,9 @@
 1. **Cord flex piece-1 width 18.24 vs 16.6 mm (BLOCKED).** Options: 3 oz TX strips; drop the guard (17.44 mm); relax the 10 K rise; a wider inner tube.
 2. **TXD echo at the shortest shaft 0.605 vs 0.5 (FAIL).** Options: limit collapse by 13 mm; move REF3 and the pod up the shaft.
 
+## Pipeline state
+- Pipeline 2026-10-31: 47 pass, 7 fail. chassis / system / flex-options fail on the two open decisions (cord width BLOCKED, TXD echo FAIL; flex-options still uses the 18 mm round bore). lowL-options / variant-learn (no rule-clean option left at the new cord width) and cleansheet / head-best (chassis item renamed by the TXD move) fail because they are not rebased: see the backlog.
+
 ## Open work
 - PRX board artwork.
 - HV fin board.

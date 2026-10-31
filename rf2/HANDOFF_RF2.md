@@ -1548,3 +1548,4 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
 - **Not done (stopped by the owner):** rebase of the variant engine, plugins, clean-sheet calibration and head-best onto the adopted machine.
   - Their "today" is still the pre-adoption machine.
   - Backlog in rf2/ENHANCEMENT_PLAN_RF2.md.
+- Pipeline 2026-10-31: 47 pass, 7 fail. chassis / system / flex-options fail on the two open decisions (cord width BLOCKED, TXD echo FAIL; flex-options still uses the 18 mm round bore). lowL-options / variant-learn (no rule-clean option left at the new cord width) and cleansheet / head-best (chassis item renamed by the TXD move) fail because they are not rebased: see the backlog.
