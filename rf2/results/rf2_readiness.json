@@ -94,7 +94,7 @@
   {
    "id": "P1.1",
    "phase": 1,
-   "item": "TXD schematic: C3M0280090J + UCC5350, flat-top PWM current loop (333 uH, 8.06 / 12.74 A), US3M clamp + film cap, bulk bank, shunt + current sense, TMP117 therm -> TXSTAT",
+   "item": "TXD pod schematic (s 400 mm): Q1 / Q2 NTBG080N120SC1 + 2 x UCC5350, flat-top PWM current loop (333 uH, 8.94 / 14.14 A, 318 us), US3M clamp (477 V) + freewheel, film cap, bulk bank, 2 shunts + summing current sense, TMP117 therm -> TXSTAT",
    "deps": [
     "P0.1",
     "P0.3"
@@ -112,7 +112,7 @@
   {
    "id": "P1.2",
    "phase": 1,
-   "item": "PWR schematic: LMR36520 +5V_AUX, hysteretic regenerative buck 460 V -> VBAT (C3M + UCC5350 + US3M + L), cartridge contacts",
+   "item": "PWR schematic: LMR36520 +5V_AUX, hysteretic regenerative buck 477 V -> VBAT (NTBG080N120SC1 + UCC5350 + US3M + L; clamp node from the pod over cord piece 2), TXD pod feed, cartridge contacts",
    "deps": [
     "P0.1",
     "P1.1"
@@ -123,7 +123,7 @@
      "rf2/results/rf2_pwr_spice.json"
     ]
    ],
-   "done_means": "SPICE: regulation of the clamp at 460 V, efficiency, start-up, fault",
+   "done_means": "SPICE: regulation of the clamp at 477 V, efficiency, start-up, fault",
    "status": "TODO",
    "ready_to_start": true
   },

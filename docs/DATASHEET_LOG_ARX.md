@@ -451,3 +451,22 @@ The re-sent Minco design guide and Mincoflex files are byte-identical to the RF2
 |---|---|---|---|
 | Broadcom AFBR-1624Z / AFBR-2624Z | AV02-4369EN via chipdip mirror, data/datasheets/Broadcom_AFBR-1624Z_2624Z_AV02-4369EN.pdf (c1a3a9e8f48d9c65) | DC-50 MBd, 650 nm LED, 1 mm POF up to 50 m; ICCT 21-31 mA; ICCR 20-30 mA; delay <= 30 ns; PWD +-3 / +-4 ns; -40 to +85 C; housing 18.8 x 12.19 x 7.62 mm (RS listing, UNVERIFIED in the sheet) | optical data link option |
 | Mitsubishi Chemical GH-4001-P POF | data sheet 2019-11-14 via eicom mirror, data/datasheets/Mitsubishi_GH4001P_2019.pdf (d7d4db4736803869) | core 980 um, cladding 1000 um, jacket 2.2 mm; 4 g/m; <= 170 dB/km (25 C); quarter-bend radius 25 mm (<= 1 dB); 10 000 bends +-90 deg at 15 mm, 500 g | fibre for the link; SH4001 itself: 25 mm bend (L-com LCSH4001 drawing, not on file) |
+
+## RF2-DS-ADOPT: onsemi NTBG080N120SC1 values used by the adopted TX drive (read 2026-10-31; rf2_drive, rf2_continuous, rf2_txd_spice)
+
+Source: onsemi data sheet NTBG080N120SC1/D, Rev. 4, January 2023, data/datasheets/onsemi_NTBG080N120SC1.pdf (sha256 fdf3611472b49ea3), text read with pdftotext -layout (pages 1-3). The earlier RF2-DS-STAGE3 row logged only VDSS, RDS(on) 25 C and Coss; the rows below add every other value the generators now use.
+
+| Item | Datasheet value | Used for |
+|---|---|---|
+| VDSS | 1200 V | VDS limit 0.8 x 1200 = 960 V (rf2_txd_spice, rf2_continuous); rule 6 (>= 630 V) |
+| ID continuous | 30 A (TC 25 C), 21 A (TC 100 C) | Q1 RMS row (21 A) |
+| IDM pulsed | **110 A (TC 25 C; Note 2: repetitive rating, limited by max junction temperature)** | peak-current row, 80 % = 88 A |
+| TJ, Tstg | -55 to +175 C | TJ max in the ratings rows (125 C derated design limit kept) |
+| EAS single pulse | 171 mJ (IAS 18.5 A, L 1 mH, VDD 120 V, VGS 18 V, start TJ 25 C) | fault row: coil energy if the clamp opens (33.3 mJ at 14.14 A) |
+| RthJC / RthJA | 0.84 C/W max / 40 C/W max | Q1 TJ on the Ohmite heat sink; Q2 TJ on the PCB |
+| RDS(on) | 80 typ / 110 max mohm (VGS 20 V, ID 20 A, TJ 25 C); **121 mohm typ at TJ 150 C** | hot RDS 121 x 110/80 = 166 mohm (the max/typ scaling at 150 C is ASSUMED) |
+| Coss / Ciss / Crss | 79 / 1154 / 7.9 pF (VDS 800 V, 1 MHz) | node C: +59 pF over the C3M (ASSUMED difference, as rf2_lowL_options) |
+| EON / EOFF | 135 / 46 uJ typ (VDS 800 V, ID 20 A, RG 4.7 ohm, VGS -5/20 V, inductive) | turn-off at the clamp and the flat-top PWM edges, scaled linearly in I and V (ASSUMED) |
+| QG(tot) | 56 nC (VGS -5/20 V, VDS 600 V, ID 20 A) | UCC5350 drive (not yet a check) |
+| VSD body diode | 3.9 V typ (ISD 10 A, VGS -5 V) | not used (the freewheel path is the US3M + Q2) |
+| Package | D2PAK-7L (CASE 418BJ); Driver Source pin 2 (Kelvin) | footprint as the C3M (D2PAK-7) |

@@ -94,3 +94,12 @@ Each will get a DATASHEET_LOG entry with the exact values, and MP1 v2 will then 
   - Recovery 14.7 us, inside the 16.3 us first gate (v1: 12.9 us).
   - A low-capacitance Schottky clamp at the op-amp input would allow Rin2 of about 47 ohm (about 1.45 nV/rtHz total). That part is UNVERIFIED: a datasheet is needed first.
 - **Modeled mono depth gain over v1:** (5.0 / 1.7)^(1/5.1) = about +23 % (RF2 depth scaling SNR^(1/5.1); generic op-amp and diode models; MODELED).
+
+## TX drive and cord (owner decision 2026-10-31; HANDOFF section 56; design point in `rf2/rf2_drive.py`)
+- **TX switches Q1 (low side) and Q2 (flat-top freewheel): onsemi NTBG080N120SC1** (VERIFIED, DATASHEET_LOG RF2-DS-STAGE3 + RF2-DS-ADOPT): 1200 V, IDM 110 A, ID 21 A at TC 100 C, RDS(on) 80 / 110 mohm at 25 C and 121 mohm typ at 150 C (166 mohm hot used, ASSUMED max scaling), RthJC 0.84 C/W, EAS 171 mJ, Coss 79 pF. Replaces Wolfspeed C3M0280090J (900 V, IDM 22 A, 458 mohm hot). The regenerative buck switch Q30 on PWR uses the same part (one switch part).
+  - Continuous boost (rf2_continuous): Q1 2.18 W, TJ 58 C on the Ohmite D heat sink (was 89.9 C with the C3M); Q2 1.48 W, TJ 99 C on the PCB; peak VDS 481 V (ngspice) vs 960 V.
+- **Clamp 477 V** (was 460): US3M 1000 V (80 % = 800 V), clamp film capacitor 630 V class (part to choose; 80 % = 504 V, 5.4 % headroom), Rd 2 x Vishay PR03 806 ohm (750 V each): all rule-6 parts still pass.
+- **Coil current 8.94 A scan / 14.14 A boost, flat-top 318 us** (was 8.06 / 12.74 A, 300 us).
+- **TXD pod** at s 400 mm on the outer profile's lower end (72 x 62 x 52 mm, PC/ABS ASSUMED; 2 boards; Q1 heat sink at a vented window): was inside the control chassis.
+- **Cord flex:** TX strips **3.22 mm** (IPC-2221 at the 4.62 A boost rms; was 2.35 mm), head -> pod only (0.965 m, loop 0.145 ohm); 0.5 mm REF ground guard + 0.3 mm gap between DATA and REF; piece 2 carries VIN_T / GND_T (1.02 mm) and HV_CLAMP / GND_CLAMP.
+- **Head gland:** Panasonic Y5B 10-way ZIFs AYF531035 on CB1D (VIN_H / GND_H on 2 pins each, 0.225 A per pin vs 0.5 A; 29.4 V vs 50 V) and AB1A (VERIFIED, DATASHEET_LOG Y5B ratings); replaces JST GH 8-way + 7-way and the pigtails. TX strips stay soldered.

@@ -18,9 +18,10 @@ Writes docs/COMPONENT_SELECTION.md and rf2/results/rf2_select.json.   usage: pyt
 import os, sys, json, math
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE); OUT = os.path.join(HERE, "results"); sys.path[:0] = [HERE, os.path.join(HERE, "head")]
+import rf2_drive as DRV                                                                        # adopted TX switch (owner 2026-10-31)
 WEIGHTS = dict(mass_g=0.20, runtime_h=0.20, signal=0.20, margin=0.15, attach=0.10, footprint=0.10, verify=0.05)
 LOWER_BETTER = {"mass_g", "signal", "attach", "footprint"}
-RECOMMEND_AT = 1.05; V_FLY = 460.0
+RECOMMEND_AT = 1.05; V_FLY = DRV.V_CLAMP                                       # flyback clamp (477 V since 2026-10-31; was 460)
 def J(*p):
     f = os.path.join(ROOT, *p); return json.load(open(f)) if os.path.exists(f) else {}
 
@@ -58,7 +59,8 @@ def slots():
         return dict(name=name, mass_g=mass * n, runtime_h=rt["boost"], scan_h=rt["scan"], signal=gate_from_node(node), margin=round(v_rating / V_FLY, 2), attach=attach, footprint=fp * n,
                     verify=verify, hard=dict(rule6=v_rating >= 630), note=note, units=dict(signal="first gate us"))
     S["TX switch (TXD Q1 / Q2)"] = [
-        sw("Wolfspeed C3M0280090J (SiC, D2PAK-7)", 900, 0.416 * 1.1, 110, 158, 1.5, 0, 1.0, "incumbent; RDS 416 mohm at 150 C (+10 %)"),
+        sw("onsemi NTBG080N120SC1 (SiC, D2PAK-7L)", 1200, DRV.RDS_HOT, 110 + DRV.SWITCH["coss_extra_pF"], 158, 1.5, 0, 1.0, "ADOPTED 2026-10-31 (owner); RDS 121 mohm typ at 150 C x 110/80 = 166 mohm; Coss above the C3M's 59 pF ASSUMED (as rf2_lowL_options)"),
+        sw("Wolfspeed C3M0280090J (SiC, D2PAK-7)", 900, 0.416 * 1.1, 110, 158, 1.5, 0, 1.0, "incumbent until 2026-10-31; RDS 416 mohm at 150 C (+10 %)"),
         sw("Infineon IPB65R095C7 (Si CoolMOS, D2PAK)", 650, 0.202 * 1.1, 400, 158, 1.5, 0, 1.0, "RDS 202 mohm typ at 150 C (logged); Coss about 400 pF at 26 V (cliff at the tail voltage)"),
         sw("GaN Systems GS-065-011-1-L (GaN, PDFN 5x6)", 650, 0.150 * 2.0, 125, 30, 0.2, 1, 0.7, "RDS 150 mohm at 25 C, x2 hot ASSUMED; 0-6 V gate (driver change); no avalanche rating"),
         sw("2 x C3M0280090J in parallel", 900, 0.416 * 1.1, 110, 158, 1.5, 1, 1.0, "half the resistance, twice the Coss", n=2)]

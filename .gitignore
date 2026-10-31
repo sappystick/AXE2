@@ -12,3 +12,5 @@ rf2/head/out/*/*.kicad_prl
 *.kicad_prl
 rf2/head/out_B/*.stl
 rf2/head/out_BF/*.stl
+rf2/head/out_BF/glove/*.stl
+rf2/head/out_BF/glove/*.step

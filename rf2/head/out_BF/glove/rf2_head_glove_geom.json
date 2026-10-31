@@ -1,0 +1,531 @@
+{
+ "status": "MODELED glove housing geometry (rf2_head_glove.py); checks in rf2_head_glove_check.py",
+ "info": {
+  "r_epoxy_max": 102.635,
+  "litz_inner_edge": 105.635,
+  "lane": {
+   "from_xy": [
+    -50.91,
+    50.91
+   ],
+   "to_xy": [
+    -55.94,
+    81.78
+   ],
+   "length_mm": 31.3,
+   "width_mm": 1.6
+  },
+  "troughs": {
+   "FIN_A1": {
+    "deg": 100.0,
+    "r": [
+     22.0,
+     103.81
+    ],
+    "half_width": 2.7
+   },
+   "FIN_A2": {
+    "deg": 122.0,
+    "r": [
+     22.0,
+     103.81
+    ],
+    "half_width": 3.3
+   },
+   "FIN_A3": {
+    "deg": 144.0,
+    "r": [
+     22.0,
+     103.81
+    ],
+    "half_width": 2.7
+   }
+  },
+  "seconds": 1.7,
+  "litz_pass": {
+   "d": 2.0,
+   "z": 8.0,
+   "deg": [
+    176.5,
+    179.5
+   ],
+   "sleeve_od": 1.7,
+   "seal": "RTV drop around each sleeve before potting (stated)"
+  }
+ },
+ "info_moulded": {
+  "r_epoxy_max": 102.635,
+  "litz_inner_edge": 105.635,
+  "lane": {
+   "from_xy": [
+    -50.91,
+    50.91
+   ],
+   "to_xy": [
+    -55.94,
+    81.78
+   ],
+   "length_mm": 31.3,
+   "width_mm": 1.6
+  },
+  "troughs": {
+   "FIN_A1": {
+    "deg": 100.0,
+    "r": [
+     22.0,
+     103.81
+    ],
+    "half_width": 2.7
+   },
+   "FIN_A2": {
+    "deg": 122.0,
+    "r": [
+     22.0,
+     103.81
+    ],
+    "half_width": 3.3
+   },
+   "FIN_A3": {
+    "deg": 144.0,
+    "r": [
+     22.0,
+     103.81
+    ],
+    "half_width": 2.7
+   }
+  },
+  "seconds": 2.2,
+  "litz_pass": {
+   "d": 2.0,
+   "z": 8.0,
+   "deg": [
+    176.5,
+    179.5
+   ],
+   "sleeve_od": 1.7,
+   "seal": "RTV drop around each sleeve before potting (stated)"
+  }
+ },
+ "step_MB": {
+  "G_SHELL": 4.28,
+  "G_TRAY": 21.95,
+  "G_COMBS": 2.4,
+  "G_GLAND_PIN": 0.86,
+  "G_LID": 3.79
+ },
+ "fin_sides": {
+  "FIN_HV1": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_HV2": {
+   "side": 1.2,
+   "board": "TXF",
+   "tallest_part_mm": 0.05,
+   "source": "TXF built board (out/TXF/txf_check.json): tallest body 0.05 mm",
+   "side_ok": true
+  },
+  "FIN_A1": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_A2": {
+   "side": 1.8,
+   "board": "MP2",
+   "tallest_part_mm": 1.6,
+   "source": "MP2 built board (out/MP2/mp2_check.json): tallest body 1.6 mm",
+   "side_ok": true
+  },
+  "FIN_A3": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D1": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D2": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D3": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D4": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D5": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D6": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D7": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  },
+  "FIN_D8": {
+   "side": 1.2,
+   "board": null,
+   "tallest_part_mm": null,
+   "source": "SPEC reservation (ASSUMED)",
+   "side_ok": true
+  }
+ },
+ "zone_map": [
+  {
+   "part": "FIN_HV1",
+   "zone": "HV island",
+   "deg": 170.0,
+   "r": 71.0,
+   "metal": "IXTY08N100D2 TO-252 tab (MP1 v2 function)",
+   "echo_drift_5K_x_noise": 0.0391,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones IXTY tab x rf2_layout HV fin 1 deg tilt factor",
+   "hv": true,
+   "note": "SPEC reservation (ASSUMED)"
+  },
+  {
+   "part": "FIN_HV2",
+   "zone": "HV island",
+   "deg": 186.0,
+   "r": 71.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 2.63e-23,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones TXJ hatched slit-open x fin tilt factor",
+   "hv": true,
+   "note": "TXF built board (out/TXF/txf_check.json): tallest body 0.05 mm"
+  },
+  {
+   "part": "FIN_A1",
+   "zone": "analog",
+   "deg": 100.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.84e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones AB1A hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_A2 (MP2)",
+   "zone": "analog",
+   "deg": 122.0,
+   "r": 62.0,
+   "metal": "MP1 v1 parts (no tab; IXTY tab used as the upper bound, as the boards plugin)",
+   "echo_drift_5K_x_noise": 0.00275,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones IXTY tab x rf2_layout analog fin 1 deg tilt",
+   "hv": false,
+   "note": "MP2 built board (out/MP2/mp2_check.json): tallest body 1.6 mm",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_A3",
+   "zone": "analog",
+   "deg": 144.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.84e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones AB1A hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 15.184,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D1",
+   "zone": "digital",
+   "deg": 214.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 16.517,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D2",
+   "zone": "digital",
+   "deg": 245.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D3",
+   "zone": "digital",
+   "deg": 276.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D4",
+   "zone": "digital",
+   "deg": 307.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D5",
+   "zone": "digital",
+   "deg": 338.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D6",
+   "zone": "digital",
+   "deg": 9.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D7",
+   "zone": "digital",
+   "deg": 40.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "FIN_D8",
+   "zone": "digital",
+   "deg": 71.0,
+   "r": 61.0,
+   "metal": "slit-hatched copper (rule 5 design), MLCC only",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched slit-open x fin tilt factor",
+   "hv": false,
+   "note": "SPEC reservation (ASSUMED)",
+   "gap_to_HV_envelopes_mm": 20.0,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "HUB_PCB",
+   "zone": "hub (centre)",
+   "deg": 0.0,
+   "r": 0.0,
+   "metal": "slit-hatched LV star, no ring traces",
+   "echo_drift_5K_x_noise": 7.26e-24,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones CB1D hatched x digital tilt (ASSUMED: flat disc at the centre, worst of the table)",
+   "hv": false,
+   "note": "",
+   "gap_to_HV_envelopes_mm": 19.5,
+   "hv_envelope_ok": true
+  },
+  {
+   "part": "LED display flex (LR1)",
+   "zone": "digital",
+   "deg": 0.0,
+   "r": 60.0,
+   "metal": "522 SK9822-EC20 PCB-holder packages",
+   "echo_drift_5K_x_noise": 3.4e-06,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones display PCB-holder package (flat)",
+   "hv": false,
+   "note": "",
+   "gap_to_HV_envelopes_mm": 0.7,
+   "hv_envelope_ok": false
+  },
+  {
+   "part": "shield coat (MG 841AR, slit at 184 deg)",
+   "zone": "coil channel",
+   "deg": 184.0,
+   "r": 114.5,
+   "metal": "25 um nickel paint",
+   "echo_drift_5K_x_noise": 0.0,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rf2_zones MG 841AR closed band (upper bound)",
+   "hv": false,
+   "note": ""
+  },
+  {
+   "part": "SH1 split-ring shield",
+   "zone": "digital",
+   "deg": 0.0,
+   "r": 60.0,
+   "metal": "slit rings + spine (loop-free, rf2_shield_pcb)",
+   "echo_drift_5K_x_noise": 0.0,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "rule 5 design: every ring slit (sh1_check topology loop_free)",
+   "hv": false,
+   "note": ""
+  },
+  {
+   "part": "PRX planar RX (layer)",
+   "zone": "analog",
+   "deg": 135.0,
+   "r": 95.0,
+   "metal": "35 um spirals: open spiral, no closed loop",
+   "echo_drift_5K_x_noise": 0.0,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "receive element itself (nulled to the TX: residual M -0 uH)",
+   "hv": false,
+   "note": ""
+  },
+  {
+   "part": "SB1R-QA (18 um)",
+   "zone": "digital",
+   "deg": 0.0,
+   "r": 60.0,
+   "metal": "receive spirals (unchanged copper)",
+   "echo_drift_5K_x_noise": 0.0,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "receive element itself",
+   "hv": false,
+   "note": ""
+  },
+  {
+   "part": "SB1R-QB (18 um)",
+   "zone": "digital",
+   "deg": 0.0,
+   "r": 60.0,
+   "metal": "receive spirals (unchanged copper)",
+   "echo_drift_5K_x_noise": 0.0,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "receive element itself",
+   "hv": false,
+   "note": ""
+  },
+  {
+   "part": "transmit litz (bank wound)",
+   "zone": "coil channel",
+   "deg": 178.0,
+   "r": 110.0,
+   "metal": "26 turns FEP litz",
+   "echo_drift_5K_x_noise": 0.0,
+   "drift_limit": 0.5,
+   "drift_ok": true,
+   "drift_source": "the transmitter",
+   "hv": false,
+   "note": ""
+  }
+ ],
+ "process": {
+  "printed": {
+   "name": "PETG FDM, 0.4 mm nozzle, 0.2 mm layers",
+   "wall_min": 0.8,
+   "plate_min": 0.6,
+   "draft_deg": 0.0
+  },
+  "moulded": {
+   "name": "injection moulded PETG / PC (ASSUMED rules, no moulder review)",
+   "wall_min": 0.8,
+   "plate_min": 0.8,
+   "draft_deg": 1.0
+  },
+  "resin": {
+   "name": "resin SLA",
+   "wall_min": 0.3,
+   "plate_min": 0.3,
+   "draft_deg": 0.0
+  }
+ },
+ "seconds": 36.6
+}

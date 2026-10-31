@@ -10,7 +10,7 @@ Writes rf2/results/rf2_hvparts.json; exits 1 if a check fails.   usage: python3 
 import os, sys, json, math
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 sys.path.insert(0, os.path.join(ROOT, "rf2"))
-import rf2_continuous as CT
+import rf2_continuous as CT, rf2_drive as DRV
 OUT = os.path.join(ROOT, "rf2", "results")
 V_CLAMP, RULE6 = CT.V_CLAMP, 630.0
 I_BOOST = CT.MODES["boost (trigger held, continuous)"]
@@ -26,7 +26,8 @@ DIODES = {  # VRRM V, IF(AV) A, IFSM A (8.3 ms), trr max ns (0.5 A / 1 A / 0.25 
                                   note="Cd 13 pF at 400 V (table); Qrr 690-1788 nC at 30 A; body size ASSUMED (D2PAK class)"),
 }
 FETS = {  # mode, VDSS V, RDS(on) ohm (max at 25 C or VDS(on)/ID), ID A, IDM A, Coss pF at V
-    "Wolfspeed C3M0280090J (today)": dict(mode="enhancement", vdss=900, rds=0.36, rds_hot=0.416 * 1.1, id=11.0, idm=22.0, coss=(110, 25), hazard=None),
+    "onsemi NTBG080N120SC1 (adopted 2026-10-31)": dict(mode="enhancement", vdss=1200, rds=0.110, rds_hot=DRV.RDS_HOT, id=30.0, idm=110.0, coss=(79, 800), hazard=None),
+    "Wolfspeed C3M0280090J (until 2026-10-31)": dict(mode="enhancement", vdss=900, rds=0.36, rds_hot=0.416 * 1.1, id=11.0, idm=22.0, coss=(110, 25), hazard=None),
     "Microsemi ARF461A/B": dict(mode="enhancement", vdss=1000, rds=6.5 / 3.25, rds_hot=6.5 / 3.25 * 1.8, id=6.5, idm=None, coss=(175, 50), hazard=None),
     "Microsemi ARF1510": dict(mode="enhancement", vdss=1000, rds=7.5 / 3.25, rds_hot=7.5 / 3.25 * 1.8, id=8.0, idm=None, coss=(100, 200),
                               hazard="BeO ceramic (toxic dust; special disposal); four-switch H-bridge, flangeless 27 x 27 mm, clamped to a heat sink"),
@@ -60,9 +61,10 @@ def main():
                        hazard=f["hazard"]))
     res["tx_switch"] = fr
     res["tx_switch_note"] = "ARF RDS(on) from VDS(on) / ID at 3.25 A (typ / max); hot value x1.8 (ASSUMED, typical Si VDMOS at 125 C); no IDM in either ARF sheet: the continuous ID is used"
-    checks["ARF parts dissipate > 4x the C3M in conduction"] = all(r["conduction_W_boost"] > 4 * fr[0]["conduction_W_boost"] for r in fr[1:])
-    checks["ARF parts cannot carry the boost peak within 80 % of their rating"] = not any(r["peak_within_ID"] for r in fr[1:])
-    checks["no ARF part can serve as the depletion limiter"] = not any(r["usable_as_limiter"] for r in fr[1:])
+    arf = [r for r in fr if "ARF" in r["part"]]
+    checks["ARF parts dissipate > 4x the adopted NTBG080N120SC1 in conduction"] = all(r["conduction_W_boost"] > 4 * fr[0]["conduction_W_boost"] for r in arf)
+    checks["ARF parts cannot carry the boost peak within 80 % of their rating"] = not any(r["peak_within_ID"] for r in arf)
+    checks["no ARF part can serve as the depletion limiter"] = not any(r["usable_as_limiter"] for r in arf)
     # 3. Rd with Vishay TR
     P_rd = CT.F * (V_CLAMP ** 2 / CT.RD * p["fall_us"] * 1e-6 + CT.VBUS ** 2 / CT.RD * (p["T1_us"] * 1e-6 + 0.5 * CT.T_FLAT)); need = 2 * P_rd
     opts = []
@@ -83,7 +85,7 @@ def main():
                      "3.5 uA at 1 Hz, up to 4 per I2C bus (ADD0 to GND / V+ / SDA / SCL), ALERT with programmable limits; WSON 2 x 2 mm (small metal pad: count it in the echo budget if inside the coil)",
         "TI UCC28780": "regenerative clamp: an active-clamp flyback 460 V -> battery bus; stored coil energy %.1f W in boost (the clamp receives it less the Rd share, 8.9 W in rf2_continuous). VDD 12-34 V operating, 38 V abs max (7S pack 29.4 V full: OK); up to 1 MHz; "
                        "needs a transformer (ferrite: banned in the head, so the converter sits in the pod; 460 V DC up the shaft at about %.0f mA) and a >= 800 V primary switch "
-                       "(C3M0280090J); its control loop regulates an output, a clamp must hold its input at 460 V: OPEN design study" % (CT.F * (0.5 * CT.L * I_BOOST ** 2) - 0, CT.F * (0.5 * CT.L * I_BOOST ** 2) / V_CLAMP * 1e3)}
+                       "(NTBG080N120SC1, the TX switch part); its control loop regulates an output, a clamp must hold its input at the clamp voltage: OPEN design study" % (CT.F * (0.5 * CT.L * I_BOOST ** 2) - 0, CT.F * (0.5 * CT.L * I_BOOST ** 2) / V_CLAMP * 1e3)}
     res["checks"] = checks; res["all_pass"] = all(checks.values())
     json.dump(res, open(os.path.join(OUT, "rf2_hvparts.json"), "w"), indent=1)
     for r in rows: print(f"  diode {r['part'][:36]:<36} rule6 {r['rule6']}  x{r['margin_over_clamp']}  {r['avg_current_mA']} mA  {r['loss_W']} W  TJ {r['tj_C']}  Cd {r['cd_430_pF']} pF  {r['area_mm2']} mm2")

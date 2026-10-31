@@ -1487,3 +1487,32 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - NTBG on the TXD;
   - re-wind as bank fill;
   - Y5B gland ZIFs and a REF guard in the cord flex.
+
+## 56. Adopted drive and cord upgrades (owner decision 2026-10-31; `rf2/rf2_drive.py` + rf2_continuous / rf2_txd_spice / rf2_cordflex / rf2_chassis / rf2_system / rf2_icd; MODELED)
+- **What was adopted (from section 55 / docs/HEAD_BEST.md):**
+  1. TX switches Q1 / Q2 (and the regenerative buck Q30): onsemi NTBG080N120SC1 instead of Wolfspeed C3M0280090J. Values in DATASHEET_LOG RF2-DS-ADOPT (IDM 110 A, RthJC 0.84 C/W, RDS(on) 121 mohm typ at 150 C, EAS 171 mJ, EON / EOFF 135 / 46 uJ).
+  2. Clamp 477 V, coil current 8.94 A scan / 14.14 A boost (scan x sqrt 2.5), flat-top 318 us.
+  3. Cord-flex TX strips sized by IPC-2221 at the boost rms (now computed, not a constant) and a 0.5 mm REF guard between DATA and REF.
+  4. TXD pod on the outer profile's lower end, s 364-436 (centre 400), beside the C2 cam collar, ending at the REF3 sleeve.
+  5. Panasonic Y5B 10-way ZIFs at the head gland (CB1D, AB1A); TX strips still soldered.
+- **One source:** `rf2/rf2_drive.py` holds the design point, the switch values and the TXD position. It exists so rf2_cordflex can size the strips from the boost rms without a circular import (rf2_continuous needs the cord's resistance).
+- **Choices made here (rule 9):**
+  - the regenerative buck stays on PWR in the chassis; the clamp node (477 V DC, about 30 mA) runs pod -> hinge in cord piece 2 (HV_CLAMP, 1.0 mm gaps), so the pod stays small;
+  - the pod feed VIN_T / GND_T (1.02 mm, 2.0 A design; 1.28 A in boost at cut-off) runs hinge -> REF3T -> pod in piece 2; at the hinge it uses the soldered HV / power ply;
+  - the pod rides the outer profile, like REF3 (it cannot sit on the inner or middle profile without blocking the collapse); TX strip length = s 400 + 190 mm extension + half the 550 mm travel + 60 mm breakout + 40 mm tap = 0.965 m;
+  - Q30 uses the same NTBG part (one switch part in the BOM);
+  - L kept at the as-built 333 uH (the head-best stage used 327.6 uH for the same comb).
+- **Numbers that moved (before -> after):**
+  - boost: I 12.74 -> 14.14 A; ramp T1 283 -> 263 us; fall 9.23 -> 9.87 us; coil rms 4.23 -> 4.62 A; Q1 rms 3.30 -> 3.49 A; Q1 TJ 89.9 -> 58.2 C (2.18 W); Q2 TJ 99 C (new row);
+  - power (regenerative clamp, 75 % ASSUMED): boost 39.57 -> 35.02 W; scan 19.72 -> 19.02 W; runtime (102.1 Wh) boost 2.6 -> 2.9 h, scan 5.2 -> 5.4 h;
+  - ngspice boost at cut-off: ramp 420.8 -> 350.4 us, fall 10.07 -> 10.57 us (ideal 9.87), VDS peak 463.9 -> 481.3 V (limit 720 -> 960 V), flat-top PWM 100 -> 192 kHz (scan 255 -> 471 kHz at the +-40 mA band: widen the band in the real loop); loop R 1.348 -> 0.923 ohm; node C 406.1 -> 456.5 pF (368 + 59 Coss + 29.5 cord);
+  - first gate: cord pair 38.1 -> 29.5 pF; rf2_timing_cord worst shift 0.42 -> 0.32 us, chassis shift (Rd fixed) +0.14 -> -0.21 us;
+  - cord: W_TX 2.35 -> 3.22 mm; TX length 1.355 -> 0.965 m; R_TX_LOOP 0.280 -> 0.145 ohm; strip capacitance 28.1 -> 30.6 pF/m; piece 1 width 15.70 -> 18.24 mm; piece 2 7.68 mm;
+  - chassis: mass 2450 -> 2505 g (pod housing 55 g, ASSUMED); torque about the hand 4.22 -> 4.73 N m; folded package (chosen, grip side) 494 x 238 x 160 -> 494 x 238 x 197 mm (target 210);
+  - system: TXD B max 2.6 -> 22.4 uT; echo drift 0.003 -> 0.147 x noise (nominal); feed drop 0.007 -> 0.282 V; chassis rise 10.5 -> 2.2 K; pod housing rise 14.7 K (new, EDGE).
+- **Open / not passing (reported, not relaxed):**
+  - `cord.width_piece1` **BLOCKED**: 18.24 mm vs 16.6 mm (inner bore 18.6 - 2). Options for the owner: 3 oz TX strips (about -1.07 mm per strip, vendor quote needed), drop the REF guard (-0.8 mm, still 17.44), relax the 10 K IPC rise, or a wider inner profile.
+  - `txd.echo_min_use` **FAIL**: at the shortest use length the pod is at s 300, drift 0.605 x noise vs 0.5 (passes from s 313). Options: limit the shortening to -87 mm, a heat-sink-free Q1 (TJ on PCB would be 127 C: BLOCKED), or move REF3 up to place the pod higher.
+  - EDGE: pod housing rise 14.7 vs 15 K; cord rule-6 gap exactly 1.0 mm (by construction); TX strip width exactly the IPC width (by construction).
+  - The flex exit from the bore to the pod tap is OPEN (the same open question as REF3T's joint).
+  - Not updated (records of the decision, not live design): rf2_cleansheet / rf2_lowL_options / rf2_head_best / rf2_integration keep the C3M "today" baseline; rf2/head/*, rf2_variant*.py and variant_plugins/* were not edited here (the wiring plugin's width_check compares its 'today' layout with rf2_cordflex.WIDTH and will now report a mismatch).

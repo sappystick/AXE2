@@ -67,8 +67,8 @@ def arc_wall(r_in, r_out, d0, d1, z0, z1, draft=0.0):
     w = m3.CrossSection([prof]).revolve(256, d1 - d0)
     return w.rotate([0, 0, d0])
 def sector_prism(d0, d1, r0, r1, z0, z1, n=96):
-    pts = [(r0 * math.cos(math.radians(a)), r0 * math.sin(math.radians(a))) for a in np.linspace(d0, d1, n)] + \
-          [(r1 * math.cos(math.radians(a)), r1 * math.sin(math.radians(a))) for a in np.linspace(d1, d0, n)]
+    pts = [(r1 * math.cos(math.radians(a)), r1 * math.sin(math.radians(a))) for a in np.linspace(d0, d1, n)] + \
+          ([(0.0, 0.0)] if r0 <= 0 else [(r0 * math.cos(math.radians(a)), r0 * math.sin(math.radians(a))) for a in np.linspace(d1, d0, n)])   # CCW (outer arc first)
     return m3.CrossSection([pts]).extrude(z1 - z0).translate([0, 0, z0])
 def fin_frame_box(deg, x0, x1, y0, y1, z0, z1):
     """a box in a fin's frame (x along the radius, y across the fin), rotated to azimuth deg"""
@@ -329,8 +329,8 @@ def render(G, C, POT, path_cut, path_exp, path_map, zrows):
     pl = pv.Plotter(off_screen=True, window_size=(2600, 1800), lighting="three lights"); pl.set_background("#f6f7f9")
     allp = {**{k: v for k, v in G.items()}, **C, **POT}
     for k, m in allp.items():
-        if k in ("G_LID",): m = m - sector_prism(60.0, 240.0, 0, 130, -1, 30)
-        else: m = m - cutter if not k.startswith(("POT_",)) else m
+        if k in ("G_LID", "ENV_LED"): m = m - sector_prism(60.0, 240.0, 0, 130, -1, 30)
+        elif k in ("G_SHELL", "SHIELD_COAT", "POT_COIL_FOAM", "LITZ", "G_COMBS", "BOARD_SH1", "BOARD_PRX", "BOARD_QA", "BOARD_QB"): m = m - cutter
         if m.is_empty(): continue
         pl.add_mesh(pvm(m), color=c_of(k), opacity=0.55 if k.startswith("POT_") else 1.0, smooth_shading=False, specular=0.2, ambient=0.2)
     pl.camera.position = (-260, 300, 190); pl.camera.focal_point = (-40, 40, 6); pl.camera.up = (0, 0, 1); pl.camera.view_angle = 30
@@ -343,7 +343,8 @@ def render(G, C, POT, path_cut, path_exp, path_map, zrows):
     dz = dict(G_SHELL=0, BOARD_SH1=12, BOARD_PRX=24, BOARD_QA=36, BOARD_QB=48, G_TRAY=66, G_COMBS=86, LITZ=86, SHIELD_COAT=0, POT_COIL_FOAM=104, POT_HV_EPOXY=122, POT_ANALOG_GEL=122,
               ENV_LED=150, G_LID=172, G_GLAND_PIN=190, CORD_FLEX_CURL=190, PRX_LEADS=60, ENV_HUB_PCB=104)
     for k, m in allp.items():
-        z = dz.get(k, 104 if k.startswith("ENV_FIN") else 104)
+        z = dz.get(k, 104)
+        if m.is_empty(): continue
         pl.add_mesh(pvm(m.translate([0, 0, z])), color=c_of(k), opacity=0.7 if k.startswith("POT_") else 1.0, smooth_shading=False, specular=0.2, ambient=0.2)
     pl.camera.position = (-420, 520, 460); pl.camera.focal_point = (0, 0, 95); pl.camera.up = (0, 0, 1); pl.camera.view_angle = 30
     pl.enable_anti_aliasing("ssaa")
@@ -361,11 +362,12 @@ def render(G, C, POT, path_cut, path_exp, path_map, zrows):
     ax.add_patch(Wedge((0, 0), 114.5, 0, 360, width=114.5 - 103.8, color=zc["coil channel"])); ax.add_patch(Circle((0, 0), 21, color=zc["hub (centre)"]))
     for k, m in {**G, **C, **POT}.items():
         if k in ("G_LID", "G_SHELL", "BOARD_SH1", "BOARD_QA", "BOARD_QB", "BOARD_PRX", "ENV_LED", "SHIELD_COAT"): continue
-        for z in (8.0,):
-            for p in m.slice(z).to_polygons():
-                p = np.asarray(p)
-                if len(p) < 3: continue
-                ax.fill(p[:, 0], p[:, 1], color=c_of(k), alpha=0.35 if k.startswith("POT_") else 0.9, lw=0.2)
+        from matplotlib.path import Path
+        from matplotlib.patches import PathPatch
+        polys = [np.asarray(p) for p in m.slice(8.0).to_polygons() if len(p) >= 3]
+        if not polys: continue
+        verts = np.vstack([np.vstack([p, p[:1]]) for p in polys]); codes = np.concatenate([[Path.MOVETO] + [Path.LINETO] * (len(p) - 1) + [Path.CLOSEPOLY] for p in polys])
+        ax.add_patch(PathPatch(Path(verts, codes), fc=c_of(k), ec="none", alpha=0.45 if k.startswith("POT_") else 0.95))   # compound path: holes stay open (nonzero winding)
     f = S["prx"]["feed"]; fx, fy = pol(f["r"], f["deg"]); ax.plot(fx, fy, "o", color="#d500f9", ms=7); ax.text(fx + 3, fy, "PRX feed", fontsize=8, color="#6a1b9a")
     for r in (S["prx"]["main_r_mm"] + S["prx"]["buck_r_mm"]): ax.add_patch(Circle((0, 0), r, fill=False, ls=":", lw=0.6, color="#8e24aa"))
     for row in zrows:

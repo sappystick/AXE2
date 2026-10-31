@@ -25,10 +25,10 @@ D = [
     ("P0.6", 0, "Missing datasheets on file and logged: memory LCD (LS013B7DH03 class), RS-485 transceiver, FFC / FPC connectors, coil-cord cable, rectangular CF profiles, cam-clamp hardware, cell holder, battery contacts, Rd resistor family (630 V, >= 4.24 W total)",
      [], ("json", "rf2/results/rf2_icd.json", "p06_all_verified"), "each part VERIFIED in DATASHEET_LOG (status list in rf2_icd.json p06_parts)"),
     # ---- phase 1: schematics + SPICE (each lands in rf2_netlist, ratings checked continuous + rule 6)
-    ("P1.1", 1, "TXD schematic: C3M0280090J + UCC5350, flat-top PWM current loop (333 uH, 8.06 / 12.74 A), US3M clamp + film cap, bulk bank, shunt + current sense, TMP117 therm -> TXSTAT",
+    ("P1.1", 1, "TXD pod schematic (s 400 mm): Q1 / Q2 NTBG080N120SC1 + 2 x UCC5350, flat-top PWM current loop (333 uH, 8.94 / 14.14 A, 318 us), US3M clamp (477 V) + freewheel, film cap, bulk bank, 2 shunts + summing current sense, TMP117 therm -> TXSTAT",
      ["P0.1", "P0.3"], ("files", ["rf2/results/rf2_txd_spice.json"]), "SPICE: current loop, turn-off, clamp, ratings in continuous boost"),
-    ("P1.2", 1, "PWR schematic: LMR36520 +5V_AUX, hysteretic regenerative buck 460 V -> VBAT (C3M + UCC5350 + US3M + L), cartridge contacts", ["P0.1", "P1.1"],
-     ("files", ["rf2/results/rf2_pwr_spice.json"]), "SPICE: regulation of the clamp at 460 V, efficiency, start-up, fault"),
+    ("P1.2", 1, "PWR schematic: LMR36520 +5V_AUX, hysteretic regenerative buck 477 V -> VBAT (NTBG080N120SC1 + UCC5350 + US3M + L; clamp node from the pod over cord piece 2), TXD pod feed, cartridge contacts", ["P0.1", "P1.1"],
+     ("files", ["rf2/results/rf2_pwr_spice.json"]), "SPICE: regulation of the clamp at 477 V, efficiency, start-up, fault"),
     ("P1.3", 1, "MP1 v2 schematic (the closed option)", ["P0.5"], ("step", "board:MP1V2"), "netlist entry"),
     ("P1.4", 1, "HB2-M schematic: RP2354A, TLV755P, piezo bridge (2 x AHCT + 680 ohm), RS-485 + TPD4E1B06, I2C to BQ76952, FFC + cord connectors", ["P0.1", "P0.6"], ("step", "board:HB2M"), "netlist entry, logic levels checked"),
     ("P1.5", 1, "HB2-G schematic: 4 x KSC2 TE, 3 x SK9822 + AHCT, screen FPC, FFC", ["P0.1", "P0.6"], ("step", "board:HB2G"), "netlist entry"),
