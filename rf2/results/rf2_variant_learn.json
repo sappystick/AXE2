@@ -1,0 +1,632 @@
+{
+ "status": "MODELED learning layer over the variant engine's evaluated rows (numpy; no external ML library)",
+ "n_rows": 17280,
+ "main_effects": {
+  "coil": {
+   "26x1": {
+    "n": 5760,
+    "d_score": 0.0,
+    "no_break_rate": 0.028,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "15x2": {
+    "n": 5760,
+    "d_score": -0.0346,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -5.05,
+    "d_gold0p1g_cm": 4.92,
+    "d_boost_h": -0.43,
+    "d_mass_g": 0.0
+   },
+   "10x3": {
+    "n": 5760,
+    "d_score": -0.0885,
+    "no_break_rate": 0.0,
+    "d_coin_cm": -8.33,
+    "d_gold0p1g_cm": 6.85,
+    "d_boost_h": -1.1,
+    "d_mass_g": 0.0
+   }
+  },
+  "switch": {
+   "NTBG": {
+    "n": 8640,
+    "d_score": 0.0595,
+    "no_break_rate": 0.009,
+    "d_coin_cm": -0.02,
+    "d_gold0p1g_cm": -0.38,
+    "d_boost_h": 0.82,
+    "d_mass_g": 0.0
+   },
+   "C3M": {
+    "n": 8640,
+    "d_score": 0.0,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   }
+  },
+  "txd": {
+   "s400": {
+    "n": 8640,
+    "d_score": 0.0097,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.16,
+    "d_mass_g": 0.0
+   },
+   "s857": {
+    "n": 8640,
+    "d_score": 0.0,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   }
+  },
+  "rx": {
+   "mono": {
+    "n": 8640,
+    "d_score": 0.0,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "hybrid": {
+    "n": 8640,
+    "d_score": 0.0003,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 1.02,
+    "d_gold0p1g_cm": 1.72,
+    "d_boost_h": -0.02,
+    "d_mass_g": 8.0
+   }
+  },
+  "shaft": {
+   "tele_sq": {
+    "n": 2880,
+    "d_score": 0.0,
+    "no_break_rate": 0.056,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "f1_sq31": {
+    "n": 2880,
+    "d_score": -0.067,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.02,
+    "d_mass_g": 37.5
+   },
+   "f2_sq31": {
+    "n": 2880,
+    "d_score": -0.0703,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": -0.02,
+    "d_mass_g": 67.5
+   },
+   "f1_hex31cu": {
+    "n": 2880,
+    "d_score": -0.0772,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.02,
+    "d_mass_g": 130.0
+   },
+   "f2_hex31cu": {
+    "n": 2880,
+    "d_score": -0.0783,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": -0.02,
+    "d_mass_g": 160.0
+   },
+   "fnm_hex31cu": {
+    "n": 2880,
+    "d_score": -0.0913,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": -0.02,
+    "d_mass_g": 160.0
+   }
+  },
+  "data": {
+   "cu": {
+    "n": 8640,
+    "d_score": 0.0,
+    "no_break_rate": 0.019,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "pof": {
+    "n": 8640,
+    "d_score": -0.0381,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": -0.04,
+    "d_mass_g": 18.1
+   }
+  },
+  "pack": {
+   "B": {
+    "n": 3456,
+    "d_score": 0.0433,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.77,
+    "d_mass_g": 188.0
+   },
+   "D2": {
+    "n": 3456,
+    "d_score": 0.0193,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.28,
+    "d_mass_g": 0.0
+   },
+   "E": {
+    "n": 3456,
+    "d_score": 0.0012,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.32,
+    "d_mass_g": 319.0
+   },
+   "C2": {
+    "n": 3456,
+    "d_score": 0.0,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "F": {
+    "n": 3456,
+    "d_score": -0.0487,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": -0.77,
+    "d_mass_g": -161.0
+   }
+  },
+  "wall": {
+   "w1.2": {
+    "n": 5760,
+    "d_score": 0.0,
+    "no_break_rate": 0.014,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "w1.5": {
+    "n": 5760,
+    "d_score": -0.0051,
+    "no_break_rate": 0.014,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 65.0
+   },
+   "w1.0": {
+    "n": 5760,
+    "d_score": -0.0017,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": -43.0
+   }
+  },
+  "clamp": {
+   "regen": {
+    "n": 8640,
+    "d_score": 0.0,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   },
+   "dissip": {
+    "n": 8640,
+    "d_score": -0.0377,
+    "no_break_rate": 0.009,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": -0.46,
+    "d_mass_g": 0.0
+   }
+  },
+  "flex_cu": {
+   "3oz": {
+    "n": 8640,
+    "d_score": 0.0042,
+    "no_break_rate": 0.0,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.09,
+    "d_mass_g": 0.0
+   },
+   "2oz": {
+    "n": 8640,
+    "d_score": 0.0,
+    "no_break_rate": 0.019,
+    "d_coin_cm": 0.0,
+    "d_gold0p1g_cm": 0.0,
+    "d_boost_h": 0.0,
+    "d_mass_g": 0.0
+   }
+  }
+ },
+ "surrogate": {
+  "lambda_": 0.01,
+  "r2_cv": 0.9939,
+  "r2_in": 0.994,
+  "n_features": 173,
+  "top_interactions": [
+   {
+    "pair": "shaft=f2_hex31cu x data=pof",
+    "coef": 0.0394
+   },
+   {
+    "pair": "shaft=fnm_hex31cu x data=pof",
+    "coef": 0.0394
+   },
+   {
+    "pair": "shaft=f2_sq31 x data=pof",
+    "coef": 0.0392
+   },
+   {
+    "pair": "coil=10x3 x switch=NTBG",
+    "coef": 0.039
+   },
+   {
+    "pair": "shaft=f1_hex31cu x data=pof",
+    "coef": 0.0358
+   },
+   {
+    "pair": "shaft=f1_sq31 x data=pof",
+    "coef": 0.0357
+   },
+   {
+    "pair": "coil=10x3 x shaft=fnm_hex31cu",
+    "coef": 0.0308
+   },
+   {
+    "pair": "coil=10x3 x shaft=f2_hex31cu",
+    "coef": 0.0308
+   },
+   {
+    "pair": "coil=10x3 x shaft=f2_sq31",
+    "coef": 0.0308
+   },
+   {
+    "pair": "coil=10x3 x clamp=dissip",
+    "coef": 0.0286
+   },
+   {
+    "pair": "coil=10x3 x shaft=f1_sq31",
+    "coef": 0.0276
+   },
+   {
+    "pair": "coil=10x3 x shaft=f1_hex31cu",
+    "coef": 0.0276
+   }
+  ],
+  "main_coefs": {
+   "coil=10x3": -0.1483,
+   "coil=15x2": -0.0729,
+   "switch=NTBG": 0.0493,
+   "txd=s400": 0.0172,
+   "rx=hybrid": -0.0058,
+   "shaft=f1_hex31cu": -0.1101,
+   "shaft=f1_sq31": -0.0996,
+   "shaft=f2_hex31cu": -0.1159,
+   "shaft=f2_sq31": -0.1077,
+   "shaft=fnm_hex31cu": -0.129,
+   "data=pof": -0.0795,
+   "pack=B": 0.0481,
+   "pack=D2": 0.0215,
+   "pack=E": 0.0019,
+   "pack=F": -0.0534,
+   "wall=w1.0": -0.0047,
+   "wall=w1.5": -0.0065,
+   "clamp=dissip": -0.0365,
+   "flex_cu=3oz": 0.0056
+  },
+  "variance_share": {
+   "coil": 0.259,
+   "pack": 0.179,
+   "switch": 0.173,
+   "shaft": 0.171,
+   "data": 0.071,
+   "clamp": 0.069,
+   "txd": 0.005,
+   "wall": 0.001,
+   "flex_cu": 0.001,
+   "rx": 0.0
+  }
+ },
+ "robustness_any": [
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz",
+   "p_rank1": 1.0,
+   "score_p5": 1.1388,
+   "score_p50": 1.1465,
+   "score_p95": 1.1542
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1323,
+   "score_p50": 1.1408,
+   "score_p95": 1.148
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=3oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1328,
+   "score_p50": 1.1406,
+   "score_p95": 1.1483
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1287,
+   "score_p50": 1.1378,
+   "score_p95": 1.1447
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1264,
+   "score_p50": 1.1349,
+   "score_p95": 1.142
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.123,
+   "score_p50": 1.1313,
+   "score_p95": 1.1392
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=3oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1228,
+   "score_p50": 1.1319,
+   "score_p95": 1.1387
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.0|clamp=regen|flex_cu=3oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1198,
+   "score_p50": 1.1277,
+   "score_p95": 1.1353
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1171,
+   "score_p50": 1.1254,
+   "score_p95": 1.1333
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1178,
+   "score_p50": 1.1258,
+   "score_p95": 1.1326
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.0|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1114,
+   "score_p50": 1.1199,
+   "score_p95": 1.127
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=3oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1119,
+   "score_p50": 1.12,
+   "score_p95": 1.1266
+  }
+ ],
+ "influence_any": {
+  "hot": 0.0,
+  "rx": 0.0,
+  "pof": 0.0,
+  "noise": 0.0,
+  "hinge": 0.0
+ },
+ "robustness_no_break": [
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 1.0,
+   "score_p5": 1.1323,
+   "score_p50": 1.1408,
+   "score_p95": 1.148
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1264,
+   "score_p50": 1.1349,
+   "score_p95": 1.142
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.123,
+   "score_p50": 1.1313,
+   "score_p95": 1.1392
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1171,
+   "score_p50": 1.1254,
+   "score_p95": 1.1333
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.1013,
+   "score_p50": 1.1092,
+   "score_p95": 1.1159
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s857|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.0954,
+   "score_p50": 1.1033,
+   "score_p95": 1.1099
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s857|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.0929,
+   "score_p50": 1.101,
+   "score_p95": 1.1077
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.0904,
+   "score_p50": 1.0974,
+   "score_p95": 1.1038
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s857|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.0869,
+   "score_p50": 1.0951,
+   "score_p95": 1.1018
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=D2|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.0839,
+   "score_p50": 1.0909,
+   "score_p95": 1.0973
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.0813,
+   "score_p50": 1.0886,
+   "score_p95": 1.0949
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.5|clamp=regen|flex_cu=2oz",
+   "p_rank1": 0.0,
+   "score_p5": 1.0748,
+   "score_p50": 1.0821,
+   "score_p95": 1.0884
+  }
+ ],
+ "influence_no_break": {
+  "hot": 0.0,
+  "rx": 0.0,
+  "pof": 0.0,
+  "noise": 0.0,
+  "hinge": 0.0
+ },
+ "preferences": {
+  "n": 4,
+  "agree_default": 3,
+  "agree_learned": 4,
+  "default": {
+   "mass_g": 0.2,
+   "runtime_h": 0.2,
+   "signal": 0.2,
+   "margin": 0.15,
+   "attach": 0.1,
+   "footprint": 0.1,
+   "verify": 0.05
+  },
+  "learned": {
+   "mass_g": 0.276,
+   "runtime_h": 0.0637,
+   "signal": 0.2017,
+   "margin": 0.1401,
+   "attach": 0.117,
+   "footprint": 0.12,
+   "verify": 0.0815
+  },
+  "decisions": [
+   {
+    "prefer": {
+     "pack": "C2"
+    },
+    "over": {
+     "pack": "B"
+    },
+    "note": "owner chose 7S1P P45B (lighter) over 7S2P P30B and relaxed the 6 h target",
+    "default_agrees": false
+   },
+   {
+    "prefer": {
+     "wall": "w1.2"
+    },
+    "over": {
+     "wall": "w1.5"
+    },
+    "note": "owner chose 1.2 mm telescope walls",
+    "default_agrees": true
+   },
+   {
+    "prefer": {
+     "wall": "w1.2"
+    },
+    "over": {
+     "wall": "w1.0"
+    },
+    "note": "owner chose 1.2 mm telescope walls",
+    "default_agrees": true
+   },
+   {
+    "prefer": {
+     "clamp": "regen"
+    },
+    "over": {
+     "clamp": "dissip"
+    },
+    "note": "runtime rated on continuous boost with the regenerative clamp budget (rf2_continuous)",
+    "default_agrees": true
+   }
+  ],
+  "note": "weak signal: 4 decisions for 7 weights; the learned set is the one closest to the defaults among those agreeing with the most decisions"
+ },
+ "next_study": {
+  "axis_with_most_score_variance": "coil",
+  "assumption_that_moves_the_winner_most": "hot"
+ }
+}

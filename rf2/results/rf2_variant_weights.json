@@ -1,0 +1,21 @@
+{
+ "learned": {
+  "mass_g": 0.276,
+  "runtime_h": 0.0637,
+  "signal": 0.2017,
+  "margin": 0.1401,
+  "attach": 0.117,
+  "footprint": 0.12,
+  "verify": 0.0815
+ },
+ "default": {
+  "mass_g": 0.2,
+  "runtime_h": 0.2,
+  "signal": 0.2,
+  "margin": 0.15,
+  "attach": 0.1,
+  "footprint": 0.1,
+  "verify": 0.05
+ },
+ "source": "rf2_variant_learn.py from rf2/variant_decisions.json"
+}

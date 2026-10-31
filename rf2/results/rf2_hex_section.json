@@ -1,0 +1,6358 @@
+{
+ "status": "MODELED (no bench test): 24 sections, 18 coupled variants, coax check -1.26 %, CAD interference none; run 31 s",
+ "solver_check": {
+  "case": "coax a = 1 mm, b = 5 mm, h = 0.05 mm (staircased circles)",
+  "C_fd_pF_per_m": 34.13,
+  "C_exact_pF_per_m": 34.566,
+  "error_pct": -1.26
+ },
+ "sections": {
+  "square21|none": {
+   "A_mm2": 95.04,
+   "I_mm4": 6232.7,
+   "mass_g_per_m": 147.31,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 18.0,
+   "bore_id_mm": null,
+   "EI_Nm2": 311.64
+  },
+  "square21|hub6": {
+   "A_mm2": 127.33,
+   "I_mm4": 7124.4,
+   "mass_g_per_m": 197.36,
+   "cu_g_per_m": 0.0,
+   "chambers": 4,
+   "face_width_mm": 18.0,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 356.22
+  },
+  "square21|hub6_cu": {
+   "A_mm2": 127.33,
+   "I_mm4": 7124.4,
+   "mass_g_per_m": 215.07,
+   "cu_g_per_m": 17.712,
+   "chambers": 4,
+   "face_width_mm": 18.0,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 356.22
+  },
+  "square26|none": {
+   "A_mm2": 119.04,
+   "I_mm4": 12231.0,
+   "mass_g_per_m": 184.51,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 23.0,
+   "bore_id_mm": null,
+   "EI_Nm2": 611.55
+  },
+  "square26|hub6": {
+   "A_mm2": 159.81,
+   "I_mm4": 14052.7,
+   "mass_g_per_m": 247.71,
+   "cu_g_per_m": 0.0,
+   "chambers": 4,
+   "face_width_mm": 23.0,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 702.64
+  },
+  "square26|hub6_cu": {
+   "A_mm2": 159.81,
+   "I_mm4": 14052.7,
+   "mass_g_per_m": 269.98,
+   "cu_g_per_m": 22.274,
+   "chambers": 4,
+   "face_width_mm": 23.0,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 702.64
+  },
+  "square31|none": {
+   "A_mm2": 143.04,
+   "I_mm4": 21205.2,
+   "mass_g_per_m": 221.71,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 28.0,
+   "bore_id_mm": null,
+   "EI_Nm2": 1060.26
+  },
+  "square31|hub6": {
+   "A_mm2": 192.3,
+   "I_mm4": 24453.2,
+   "mass_g_per_m": 298.06,
+   "cu_g_per_m": 0.0,
+   "chambers": 4,
+   "face_width_mm": 28.0,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 1222.66
+  },
+  "square31|hub6_cu": {
+   "A_mm2": 192.3,
+   "I_mm4": 24453.2,
+   "mass_g_per_m": 324.9,
+   "cu_g_per_m": 26.836,
+   "chambers": 4,
+   "face_width_mm": 28.0,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 1222.66
+  },
+  "square35.6|none": {
+   "A_mm2": 165.12,
+   "I_mm4": 32605.7,
+   "mass_g_per_m": 255.94,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 32.6,
+   "bore_id_mm": null,
+   "EI_Nm2": 1630.28
+  },
+  "square35.6|hub6": {
+   "A_mm2": 222.18,
+   "I_mm4": 37695.2,
+   "mass_g_per_m": 344.39,
+   "cu_g_per_m": 0.0,
+   "chambers": 4,
+   "face_width_mm": 32.6,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 1884.76
+  },
+  "square35.6|hub6_cu": {
+   "A_mm2": 222.18,
+   "I_mm4": 37695.2,
+   "mass_g_per_m": 375.42,
+   "cu_g_per_m": 31.033,
+   "chambers": 4,
+   "face_width_mm": 32.6,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 1884.76
+  },
+  "hex21|none": {
+   "A_mm2": 82.31,
+   "I_mm4": 4498.1,
+   "mass_g_per_m": 127.58,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 10.139,
+   "bore_id_mm": null,
+   "EI_Nm2": 224.9
+  },
+  "hex21|hub6": {
+   "A_mm2": 118.74,
+   "I_mm4": 5232.6,
+   "mass_g_per_m": 184.05,
+   "cu_g_per_m": 0.0,
+   "chambers": 6,
+   "face_width_mm": 10.139,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 261.63
+  },
+  "hex21|hub6_cu": {
+   "A_mm2": 118.74,
+   "I_mm4": 5232.6,
+   "mass_g_per_m": 203.77,
+   "cu_g_per_m": 19.713,
+   "chambers": 6,
+   "face_width_mm": 10.139,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 261.63
+  },
+  "hex26|none": {
+   "A_mm2": 103.09,
+   "I_mm4": 8826.9,
+   "mass_g_per_m": 159.79,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 13.025,
+   "bore_id_mm": null,
+   "EI_Nm2": 441.35
+  },
+  "hex26|hub6": {
+   "A_mm2": 149.92,
+   "I_mm4": 10325.4,
+   "mass_g_per_m": 232.38,
+   "cu_g_per_m": 0.0,
+   "chambers": 6,
+   "face_width_mm": 13.025,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 516.27
+  },
+  "hex26|hub6_cu": {
+   "A_mm2": 149.92,
+   "I_mm4": 10325.4,
+   "mass_g_per_m": 257.68,
+   "cu_g_per_m": 25.3,
+   "chambers": 6,
+   "face_width_mm": 13.025,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 516.27
+  },
+  "hex31|none": {
+   "A_mm2": 123.88,
+   "I_mm4": 15303.5,
+   "mass_g_per_m": 192.01,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 15.912,
+   "bore_id_mm": null,
+   "EI_Nm2": 765.18
+  },
+  "hex31|hub6": {
+   "A_mm2": 181.1,
+   "I_mm4": 17972.2,
+   "mass_g_per_m": 280.7,
+   "cu_g_per_m": 0.0,
+   "chambers": 6,
+   "face_width_mm": 15.912,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 898.61
+  },
+  "hex31|hub6_cu": {
+   "A_mm2": 181.1,
+   "I_mm4": 17972.2,
+   "mass_g_per_m": 311.59,
+   "cu_g_per_m": 30.886,
+   "chambers": 6,
+   "face_width_mm": 15.912,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 898.61
+  },
+  "hex35.6|none": {
+   "A_mm2": 143.0,
+   "I_mm4": 23531.1,
+   "mass_g_per_m": 221.65,
+   "cu_g_per_m": 0.0,
+   "chambers": 1,
+   "face_width_mm": 18.568,
+   "bore_id_mm": null,
+   "EI_Nm2": 1176.56
+  },
+  "hex35.6|hub6": {
+   "A_mm2": 209.78,
+   "I_mm4": 27709.5,
+   "mass_g_per_m": 325.16,
+   "cu_g_per_m": 0.0,
+   "chambers": 6,
+   "face_width_mm": 18.568,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 1385.47
+  },
+  "hex35.6|hub6_cu": {
+   "A_mm2": 209.78,
+   "I_mm4": 27709.5,
+   "mass_g_per_m": 361.19,
+   "cu_g_per_m": 36.026,
+   "chambers": 6,
+   "face_width_mm": 18.568,
+   "bore_id_mm": 4.0,
+   "EI_Nm2": 1385.47
+  }
+ },
+ "allocation": {
+  "square21|none": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 4.95
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 6.75
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -9.0
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 19.62,
+    "DIG_REF": 23.35,
+    "PWR_REF": 21.81
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": false,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": false,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": null,
+    "note": "no central tube in this variant: nothing runs in a bore"
+   }
+  },
+  "square21|hub6": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 4.95
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 6.75
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -9.0
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 19.62,
+    "DIG_REF": 23.35,
+    "PWR_REF": 21.81
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "square21|hub6_cu": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 4.95
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 6.75
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 18.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -9.0
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 19.62,
+    "DIG_REF": 23.35,
+    "PWR_REF": 21.81
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "square26|none": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 7.45
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 9.25
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -11.5
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 25.18,
+    "DIG_REF": 30.42,
+    "PWR_REF": 28.88
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": false,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": false,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": null,
+    "note": "no central tube in this variant: nothing runs in a bore"
+   }
+  },
+  "square26|hub6": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 7.45
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 9.25
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -11.5
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 25.18,
+    "DIG_REF": 30.42,
+    "PWR_REF": 28.88
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "square26|hub6_cu": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 7.45
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 9.25
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 23.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -11.5
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 25.18,
+    "DIG_REF": 30.42,
+    "PWR_REF": 28.88
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "square31|none": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 9.95
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 11.75
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -14.0
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 30.75,
+    "DIG_REF": 37.49,
+    "PWR_REF": 35.95
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": false,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": false,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": null,
+    "note": "no central tube in this variant: nothing runs in a bore"
+   }
+  },
+  "square31|hub6": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 9.95
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 11.75
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -14.0
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 30.75,
+    "DIG_REF": 37.49,
+    "PWR_REF": 35.95
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "square31|hub6_cu": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 0.0,
+     "chamber": 0,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 9.95
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 11.75
+      }
+     ]
+    },
+    "face3": {
+     "normal_deg": 270.0,
+     "chamber": 3,
+     "usable_mm": 28.0,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -14.0
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 30.75,
+    "DIG_REF": 37.49,
+    "PWR_REF": 35.95
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "hex21|none": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 1.019
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 2.819
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -5.069
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 18.65,
+    "DIG_REF": 19.35,
+    "PWR_REF": 18.25
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": false,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": false,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": null,
+    "note": "no central tube in this variant: nothing runs in a bore"
+   }
+  },
+  "hex21|hub6": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 1.019
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 2.819
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -5.069
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 18.65,
+    "DIG_REF": 19.35,
+    "PWR_REF": 18.25
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "hex21|hub6_cu": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 1.019
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 2.819
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 10.139,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -5.069
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 18.65,
+    "DIG_REF": 19.35,
+    "PWR_REF": 18.25
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "hex26|none": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 2.463
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 4.263
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -6.513
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 23.82,
+    "DIG_REF": 25.12,
+    "PWR_REF": 24.02
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": false,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": false,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": null,
+    "note": "no central tube in this variant: nothing runs in a bore"
+   }
+  },
+  "hex26|hub6": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 2.463
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 4.263
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -6.513
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 23.82,
+    "DIG_REF": 25.12,
+    "PWR_REF": 24.02
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "hex26|hub6_cu": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 2.463
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 4.263
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 13.025,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -6.513
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 23.82,
+    "DIG_REF": 25.12,
+    "PWR_REF": 24.02
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "hex31|none": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 3.906
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 5.706
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -7.956
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 29.0,
+    "DIG_REF": 30.89,
+    "PWR_REF": 29.79
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": false,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": false,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": null,
+    "note": "no central tube in this variant: nothing runs in a bore"
+   }
+  },
+  "hex31|hub6": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 3.906
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 5.706
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -7.956
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 29.0,
+    "DIG_REF": 30.89,
+    "PWR_REF": 29.79
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  },
+  "hex31|hub6_cu": {
+   "faces": {
+    "face1": {
+     "normal_deg": 90.0,
+     "chamber": 1,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "HV",
+       "width_mm": 7.196,
+       "u_start_mm": -3.598
+      }
+     ]
+    },
+    "face0": {
+     "normal_deg": 30.0,
+     "chamber": 0,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "PWR",
+       "width_mm": 1.5,
+       "u_start_mm": 3.906
+      },
+      {
+       "group": "DIG",
+       "width_mm": 2.25,
+       "u_start_mm": 5.706
+      }
+     ]
+    },
+    "face4": {
+     "normal_deg": 270.0,
+     "chamber": 4,
+     "usable_mm": 15.912,
+     "groups": [
+      {
+       "group": "REF",
+       "width_mm": 4.65,
+       "u_start_mm": -7.956
+      }
+     ]
+    }
+   },
+   "not_fitting": [],
+   "distances_mm": {
+    "HV_REF": 29.0,
+    "DIG_REF": 30.89,
+    "PWR_REF": 29.79
+   },
+   "central_bore": {
+    "digital_wires": {
+     "count": 6,
+     "bundle_d_mm": 1.5,
+     "fits": true,
+     "member_d_mm": 0.5
+    },
+    "pof_jacketed": {
+     "count": 3,
+     "bundle_d_mm": 4.74,
+     "fits": false,
+     "member_d_mm": 2.2
+    },
+    "pof_bare": {
+     "count": 3,
+     "bundle_d_mm": 2.155,
+     "fits": true,
+     "member_d_mm": 1.0
+    },
+    "bore_id_mm": 4.0
+   }
+  }
+ },
+ "coupling": {
+  "square21|none": {
+   "C_tx_ref_pF_per_m": 0.006364,
+   "C_data_ref_pF_per_m": 0.0001009,
+   "M_tx_ref_nH_per_m": 0.4592,
+   "V_ref_per_m_8A_6us_mV": 0.6122,
+   "V_ref_per_m_47A_5us_mV": 4.316,
+   "M_by_axis_nH_per_m": {
+    "X": 0.3386,
+    "Y": 0.4003,
+    "Z": 0.4592
+   },
+   "ratio_vs_coplanar_tx_ref": 0.3602,
+   "ratio_vs_coplanar_data_ref": 0.0001496,
+   "C_TXA_self_pF_per_m": 1494.17,
+   "C_TXA_DATA_pF_per_m": 0.01959,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.2,
+     -2.4777,
+     -0.0018058,
+     -0.0022583,
+     -0.0038378,
+     -0.0042821,
+     -0.0058629,
+     -0.0063635,
+     -0.045271,
+     -0.034822,
+     -0.030025,
+     -0.024979,
+     -0.019589,
+     -0.01502
+    ],
+    [
+     -2.4777,
+     1494.2,
+     -0.0021898,
+     -0.0027325,
+     -0.0045901,
+     -0.0050991,
+     -0.0068496,
+     -0.0073862,
+     -0.014833,
+     -0.011122,
+     -0.0094006,
+     -0.0076905,
+     -0.0059497,
+     -0.004514
+    ],
+    [
+     -0.0018058,
+     -0.0021898,
+     202.39,
+     -20.596,
+     -0.11261,
+     -0.071261,
+     -0.022584,
+     -0.017672,
+     -7.3298e-05,
+     -5.356e-05,
+     -4.4393e-05,
+     -3.5735e-05,
+     -2.7295e-05,
+     -2.0506e-05
+    ],
+    [
+     -0.0022583,
+     -0.0027325,
+     -20.596,
+     202.38,
+     -0.20487,
+     -0.11683,
+     -0.031948,
+     -0.024522,
+     -9.19e-05,
+     -6.7149e-05,
+     -5.5654e-05,
+     -4.4798e-05,
+     -3.4216e-05,
+     -2.5706e-05
+    ],
+    [
+     -0.0038378,
+     -0.0045901,
+     -0.11261,
+     -0.20487,
+     202.36,
+     -20.62,
+     -0.12394,
+     -0.081057,
+     -0.00015829,
+     -0.00011563,
+     -9.5808e-05,
+     -7.7106e-05,
+     -5.8884e-05,
+     -4.4232e-05
+    ],
+    [
+     -0.0042821,
+     -0.0050991,
+     -0.071261,
+     -0.11683,
+     -20.62,
+     202.36,
+     -0.21452,
+     -0.12544,
+     -0.00017753,
+     -0.00012966,
+     -0.00010743,
+     -8.645e-05,
+     -6.6015e-05,
+     -4.9587e-05
+    ],
+    [
+     -0.0058629,
+     -0.0068496,
+     -0.022584,
+     -0.031948,
+     -0.12394,
+     -0.21452,
+     202.35,
+     -20.628,
+     -0.00024862,
+     -0.00018149,
+     -0.00015031,
+     -0.00012092,
+     -9.2313e-05,
+     -6.9328e-05
+    ],
+    [
+     -0.0063635,
+     -0.0073862,
+     -0.017672,
+     -0.024522,
+     -0.081057,
+     -0.12544,
+     -20.628,
+     202.34,
+     -0.00027196,
+     -0.00019849,
+     -0.00016437,
+     -0.00013221,
+     -0.00010093,
+     -7.5792e-05
+    ],
+    [
+     -0.045271,
+     -0.014833,
+     -7.3298e-05,
+     -9.19e-05,
+     -0.00015829,
+     -0.00017753,
+     -0.00024862,
+     -0.00027196,
+     191.45,
+     -17.144,
+     -0.76236,
+     -0.30216,
+     -0.15371,
+     -0.089193
+    ],
+    [
+     -0.034822,
+     -0.011122,
+     -5.356e-05,
+     -6.7149e-05,
+     -0.00011563,
+     -0.00012966,
+     -0.00018149,
+     -0.00019849,
+     -17.144,
+     194.63,
+     -17.019,
+     -0.70946,
+     -0.26981,
+     -0.13721
+    ],
+    [
+     -0.030025,
+     -0.0094006,
+     -4.4393e-05,
+     -5.5654e-05,
+     -9.5808e-05,
+     -0.00010743,
+     -0.00015031,
+     -0.00016437,
+     -0.76236,
+     -17.019,
+     194.64,
+     -17.008,
+     -0.6965,
+     -0.26831
+    ],
+    [
+     -0.024979,
+     -0.0076905,
+     -3.5735e-05,
+     -4.4798e-05,
+     -7.7106e-05,
+     -8.645e-05,
+     -0.00012092,
+     -0.00013221,
+     -0.30216,
+     -0.70946,
+     -17.008,
+     194.65,
+     -16.991,
+     -0.70558
+    ],
+    [
+     -0.019589,
+     -0.0059497,
+     -2.7295e-05,
+     -3.4216e-05,
+     -5.8884e-05,
+     -6.6015e-05,
+     -9.2313e-05,
+     -0.00010093,
+     -0.15371,
+     -0.26981,
+     -0.6965,
+     -16.991,
+     194.68,
+     -17.053
+    ],
+    [
+     -0.01502,
+     -0.004514,
+     -2.0506e-05,
+     -2.5706e-05,
+     -4.4232e-05,
+     -4.9587e-05,
+     -6.9328e-05,
+     -7.5792e-05,
+     -0.089193,
+     -0.13721,
+     -0.26831,
+     -0.70558,
+     -17.053,
+     191.59
+    ]
+   ]
+  },
+  "square21|hub6": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.4592,
+   "V_ref_per_m_8A_6us_mV": 0.6122,
+   "V_ref_per_m_47A_5us_mV": 4.316,
+   "M_by_axis_nH_per_m": {
+    "X": 0.3386,
+    "Y": 0.4003,
+    "Z": 0.4592
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.57,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.6,
+     -2.184,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.184,
+     1494.6,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     203.16,
+     -20.158,
+     -0.032238,
+     -0.015336,
+     -0.0021704,
+     -0.0014067,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -20.158,
+     202.71,
+     -0.11554,
+     -0.052458,
+     -0.007119,
+     -0.0045995,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.032238,
+     -0.11554,
+     202.43,
+     -20.564,
+     -0.093863,
+     -0.055571,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.015336,
+     -0.052458,
+     -20.564,
+     202.41,
+     -0.18536,
+     -0.10027,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0021704,
+     -0.007119,
+     -0.093863,
+     -0.18536,
+     202.38,
+     -20.607,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0014067,
+     -0.0045995,
+     -0.055571,
+     -0.10027,
+     -20.607,
+     202.36,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     191.57,
+     -17.018,
+     -0.62338,
+     -0.16214,
+     -0.033338,
+     -0.0020526
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -17.018,
+     194.77,
+     -16.845,
+     -0.51613,
+     -0.090095,
+     -0.0054048
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.62338,
+     -16.845,
+     194.88,
+     -16.703,
+     -0.37266,
+     -0.02023
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.16214,
+     -0.51613,
+     -16.703,
+     195.13,
+     -16.338,
+     -0.13001
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.033338,
+     -0.090095,
+     -0.37266,
+     -16.338,
+     196.08,
+     -15.051
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.0020526,
+     -0.0054048,
+     -0.02023,
+     -0.13001,
+     -15.051,
+     216.1
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent)"
+  },
+  "square21|hub6_cu": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.4592,
+   "V_ref_per_m_8A_6us_mV": 0.6122,
+   "V_ref_per_m_47A_5us_mV": 4.316,
+   "M_by_axis_nH_per_m": {
+    "X": 0.3386,
+    "Y": 0.4003,
+    "Z": 0.4592
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.57,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.6,
+     -2.184,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.184,
+     1494.6,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     203.16,
+     -20.158,
+     -0.032238,
+     -0.015336,
+     -0.0021704,
+     -0.0014067,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -20.158,
+     202.71,
+     -0.11554,
+     -0.052458,
+     -0.007119,
+     -0.0045995,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.032238,
+     -0.11554,
+     202.43,
+     -20.564,
+     -0.093863,
+     -0.055571,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.015336,
+     -0.052458,
+     -20.564,
+     202.41,
+     -0.18536,
+     -0.10027,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0021704,
+     -0.007119,
+     -0.093863,
+     -0.18536,
+     202.38,
+     -20.607,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0014067,
+     -0.0045995,
+     -0.055571,
+     -0.10027,
+     -20.607,
+     202.36,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     191.57,
+     -17.018,
+     -0.62338,
+     -0.16214,
+     -0.033338,
+     -0.0020526
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -17.018,
+     194.77,
+     -16.845,
+     -0.51613,
+     -0.090095,
+     -0.0054048
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.62338,
+     -16.845,
+     194.88,
+     -16.703,
+     -0.37266,
+     -0.02023
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.16214,
+     -0.51613,
+     -16.703,
+     195.13,
+     -16.338,
+     -0.13001
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.033338,
+     -0.090095,
+     -0.37266,
+     -16.338,
+     196.08,
+     -15.051
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.0020526,
+     -0.0054048,
+     -0.02023,
+     -0.13001,
+     -15.051,
+     216.1
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent); electrostatics identical to hub6, Cu shielding factor in shielding.separator_100kHz"
+  },
+  "square26|none": {
+   "C_tx_ref_pF_per_m": 0.003292,
+   "C_data_ref_pF_per_m": 3.927e-05,
+   "M_tx_ref_nH_per_m": 0.2624,
+   "V_ref_per_m_8A_6us_mV": 0.3499,
+   "V_ref_per_m_47A_5us_mV": 2.467,
+   "M_by_axis_nH_per_m": {
+    "X": 0.2022,
+    "Y": 0.2326,
+    "Z": 0.2624
+   },
+   "ratio_vs_coplanar_tx_ref": 0.1863,
+   "ratio_vs_coplanar_data_ref": 5.82e-05,
+   "C_TXA_self_pF_per_m": 1494.12,
+   "C_TXA_DATA_pF_per_m": 0.008242,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.1,
+     -2.514,
+     -0.00091818,
+     -0.0011491,
+     -0.0019607,
+     -0.0021913,
+     -0.0030234,
+     -0.0032916,
+     -0.020314,
+     -0.01529,
+     -0.012962,
+     -0.010632,
+     -0.0082421,
+     -0.0062634
+    ],
+    [
+     -2.514,
+     1494.1,
+     -0.0010708,
+     -0.0013387,
+     -0.002271,
+     -0.0025324,
+     -0.0034606,
+     -0.0037551,
+     -0.0083141,
+     -0.0061818,
+     -0.0051917,
+     -0.004225,
+     -0.003255,
+     -0.0024617
+    ],
+    [
+     -0.00091818,
+     -0.0010708,
+     202.39,
+     -20.596,
+     -0.11262,
+     -0.07127,
+     -0.022596,
+     -0.017685,
+     -2.8447e-05,
+     -2.0793e-05,
+     -1.7239e-05,
+     -1.3881e-05,
+     -1.0605e-05,
+     -7.9687e-06
+    ],
+    [
+     -0.0011491,
+     -0.0013387,
+     -20.596,
+     202.38,
+     -0.20488,
+     -0.11684,
+     -0.031964,
+     -0.024538,
+     -3.566e-05,
+     -2.6065e-05,
+     -2.161e-05,
+     -1.74e-05,
+     -1.3293e-05,
+     -9.9888e-06
+    ],
+    [
+     -0.0019607,
+     -0.002271,
+     -0.11262,
+     -0.20488,
+     202.36,
+     -20.62,
+     -0.12397,
+     -0.081078,
+     -6.1383e-05,
+     -4.4861e-05,
+     -3.7189e-05,
+     -2.9942e-05,
+     -2.2874e-05,
+     -1.7187e-05
+    ],
+    [
+     -0.0021913,
+     -0.0025324,
+     -0.07127,
+     -0.11684,
+     -20.62,
+     202.36,
+     -0.21455,
+     -0.12546,
+     -6.8829e-05,
+     -5.0301e-05,
+     -4.1697e-05,
+     -3.3571e-05,
+     -2.5645e-05,
+     -1.9269e-05
+    ],
+    [
+     -0.0030234,
+     -0.0034606,
+     -0.022596,
+     -0.031964,
+     -0.12397,
+     -0.21455,
+     202.35,
+     -20.628,
+     -9.6381e-05,
+     -7.0421e-05,
+     -5.8367e-05,
+     -4.6986e-05,
+     -3.589e-05,
+     -2.6965e-05
+    ],
+    [
+     -0.0032916,
+     -0.0037551,
+     -0.017685,
+     -0.024538,
+     -0.081078,
+     -0.12546,
+     -20.628,
+     202.35,
+     -0.00010547,
+     -7.7057e-05,
+     -6.3864e-05,
+     -5.1408e-05,
+     -3.9266e-05,
+     -2.9501e-05
+    ],
+    [
+     -0.020314,
+     -0.0083141,
+     -2.8447e-05,
+     -3.566e-05,
+     -6.1383e-05,
+     -6.8829e-05,
+     -9.6381e-05,
+     -0.00010547,
+     191.45,
+     -17.144,
+     -0.76239,
+     -0.30218,
+     -0.15373,
+     -0.089206
+    ],
+    [
+     -0.01529,
+     -0.0061818,
+     -2.0793e-05,
+     -2.6065e-05,
+     -4.4861e-05,
+     -5.0301e-05,
+     -7.0421e-05,
+     -7.7057e-05,
+     -17.144,
+     194.63,
+     -17.019,
+     -0.70948,
+     -0.26982,
+     -0.13722
+    ],
+    [
+     -0.012962,
+     -0.0051917,
+     -1.7239e-05,
+     -2.161e-05,
+     -3.7189e-05,
+     -4.1697e-05,
+     -5.8367e-05,
+     -6.3864e-05,
+     -0.76239,
+     -17.019,
+     194.64,
+     -17.008,
+     -0.69651,
+     -0.26832
+    ],
+    [
+     -0.010632,
+     -0.004225,
+     -1.3881e-05,
+     -1.74e-05,
+     -2.9942e-05,
+     -3.3571e-05,
+     -4.6986e-05,
+     -5.1408e-05,
+     -0.30218,
+     -0.70948,
+     -17.008,
+     194.65,
+     -16.991,
+     -0.70559
+    ],
+    [
+     -0.0082421,
+     -0.003255,
+     -1.0605e-05,
+     -1.3293e-05,
+     -2.2874e-05,
+     -2.5645e-05,
+     -3.589e-05,
+     -3.9266e-05,
+     -0.15373,
+     -0.26982,
+     -0.69651,
+     -16.991,
+     194.68,
+     -17.053
+    ],
+    [
+     -0.0062634,
+     -0.0024617,
+     -7.9687e-06,
+     -9.9888e-06,
+     -1.7187e-05,
+     -1.9269e-05,
+     -2.6965e-05,
+     -2.9501e-05,
+     -0.089206,
+     -0.13722,
+     -0.26832,
+     -0.70559,
+     -17.053,
+     191.59
+    ]
+   ]
+  },
+  "square26|hub6": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.2624,
+   "V_ref_per_m_8A_6us_mV": 0.3499,
+   "V_ref_per_m_47A_5us_mV": 2.467,
+   "M_by_axis_nH_per_m": {
+    "X": 0.2022,
+    "Y": 0.2326,
+    "Z": 0.2624
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.35,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.3,
+     -2.3306,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.3306,
+     1494.3,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     203.16,
+     -20.158,
+     -0.032238,
+     -0.015336,
+     -0.0021704,
+     -0.0014065,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -20.158,
+     202.71,
+     -0.11554,
+     -0.052458,
+     -0.007119,
+     -0.004599,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.032238,
+     -0.11554,
+     202.43,
+     -20.564,
+     -0.093863,
+     -0.055565,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.015336,
+     -0.052458,
+     -20.564,
+     202.41,
+     -0.18536,
+     -0.10026,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0021704,
+     -0.007119,
+     -0.093863,
+     -0.18536,
+     202.38,
+     -20.607,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0014065,
+     -0.004599,
+     -0.055565,
+     -0.10026,
+     -20.607,
+     202.37,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     191.57,
+     -17.018,
+     -0.62338,
+     -0.16214,
+     -0.033338,
+     -0.0020526
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -17.018,
+     194.77,
+     -16.845,
+     -0.51613,
+     -0.090095,
+     -0.0054048
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.62338,
+     -16.845,
+     194.88,
+     -16.703,
+     -0.37266,
+     -0.02023
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.16214,
+     -0.51613,
+     -16.703,
+     195.13,
+     -16.338,
+     -0.13001
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.033338,
+     -0.090095,
+     -0.37266,
+     -16.338,
+     196.08,
+     -15.051
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.0020526,
+     -0.0054048,
+     -0.02023,
+     -0.13001,
+     -15.051,
+     216.1
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent)"
+  },
+  "square26|hub6_cu": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.2624,
+   "V_ref_per_m_8A_6us_mV": 0.3499,
+   "V_ref_per_m_47A_5us_mV": 2.467,
+   "M_by_axis_nH_per_m": {
+    "X": 0.2022,
+    "Y": 0.2326,
+    "Z": 0.2624
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.35,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.3,
+     -2.3306,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.3306,
+     1494.3,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     203.16,
+     -20.158,
+     -0.032238,
+     -0.015336,
+     -0.0021704,
+     -0.0014065,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -20.158,
+     202.71,
+     -0.11554,
+     -0.052458,
+     -0.007119,
+     -0.004599,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.032238,
+     -0.11554,
+     202.43,
+     -20.564,
+     -0.093863,
+     -0.055565,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.015336,
+     -0.052458,
+     -20.564,
+     202.41,
+     -0.18536,
+     -0.10026,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0021704,
+     -0.007119,
+     -0.093863,
+     -0.18536,
+     202.38,
+     -20.607,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0014065,
+     -0.004599,
+     -0.055565,
+     -0.10026,
+     -20.607,
+     202.37,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     191.57,
+     -17.018,
+     -0.62338,
+     -0.16214,
+     -0.033338,
+     -0.0020526
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -17.018,
+     194.77,
+     -16.845,
+     -0.51613,
+     -0.090095,
+     -0.0054048
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.62338,
+     -16.845,
+     194.88,
+     -16.703,
+     -0.37266,
+     -0.02023
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.16214,
+     -0.51613,
+     -16.703,
+     195.13,
+     -16.338,
+     -0.13001
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.033338,
+     -0.090095,
+     -0.37266,
+     -16.338,
+     196.08,
+     -15.051
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.0020526,
+     -0.0054048,
+     -0.02023,
+     -0.13001,
+     -15.051,
+     216.1
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent); electrostatics identical to hub6, Cu shielding factor in shielding.separator_100kHz"
+  },
+  "square31|none": {
+   "C_tx_ref_pF_per_m": 0.00191,
+   "C_data_ref_pF_per_m": 1.827e-05,
+   "M_tx_ref_nH_per_m": 0.1681,
+   "V_ref_per_m_8A_6us_mV": 0.2242,
+   "V_ref_per_m_47A_5us_mV": 1.58,
+   "M_by_axis_nH_per_m": {
+    "X": 0.1342,
+    "Y": 0.1512,
+    "Z": 0.1681
+   },
+   "ratio_vs_coplanar_tx_ref": 0.1081,
+   "ratio_vs_coplanar_data_ref": 2.708e-05,
+   "C_TXA_self_pF_per_m": 1494.1,
+   "C_TXA_DATA_pF_per_m": 0.004213,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.1,
+     -2.5329,
+     -0.00052772,
+     -0.00066074,
+     -0.0011301,
+     -0.0012641,
+     -0.0017515,
+     -0.0019099,
+     -0.010705,
+     -0.0079746,
+     -0.0067072,
+     -0.0054647,
+     -0.004213,
+     -0.0031718
+    ],
+    [
+     -2.5329,
+     1494.1,
+     -0.0005996,
+     -0.00075026,
+     -0.001279,
+     -0.0014289,
+     -0.001969,
+     -0.0021429,
+     -0.0050945,
+     -0.0037695,
+     -0.0031541,
+     -0.0025588,
+     -0.001966,
+     -0.0014763
+    ],
+    [
+     -0.00052772,
+     -0.0005996,
+     202.39,
+     -20.596,
+     -0.11262,
+     -0.071274,
+     -0.022601,
+     -0.01769,
+     -1.3232e-05,
+     -9.6724e-06,
+     -8.0196e-06,
+     -6.4574e-06,
+     -4.9321e-06,
+     -3.6868e-06
+    ],
+    [
+     -0.00066074,
+     -0.00075026,
+     -20.596,
+     202.38,
+     -0.20489,
+     -0.11684,
+     -0.03197,
+     -0.024544,
+     -1.6586e-05,
+     -1.2124e-05,
+     -1.0053e-05,
+     -8.0942e-06,
+     -6.1823e-06,
+     -4.6213e-06
+    ],
+    [
+     -0.0011301,
+     -0.001279,
+     -0.11262,
+     -0.20489,
+     202.36,
+     -20.62,
+     -0.12398,
+     -0.081089,
+     -2.8543e-05,
+     -2.0864e-05,
+     -1.7298e-05,
+     -1.3927e-05,
+     -1.0638e-05,
+     -7.9514e-06
+    ],
+    [
+     -0.0012641,
+     -0.0014289,
+     -0.071274,
+     -0.11684,
+     -20.62,
+     202.36,
+     -0.21456,
+     -0.12547,
+     -3.2004e-05,
+     -2.3393e-05,
+     -1.9394e-05,
+     -1.5615e-05,
+     -1.1927e-05,
+     -8.9149e-06
+    ],
+    [
+     -0.0017515,
+     -0.001969,
+     -0.022601,
+     -0.03197,
+     -0.12398,
+     -0.21456,
+     202.35,
+     -20.628,
+     -4.4812e-05,
+     -3.2752e-05,
+     -2.7151e-05,
+     -2.186e-05,
+     -1.6695e-05,
+     -1.2479e-05
+    ],
+    [
+     -0.0019099,
+     -0.0021429,
+     -0.01769,
+     -0.024544,
+     -0.081089,
+     -0.12547,
+     -20.628,
+     202.35,
+     -4.9041e-05,
+     -3.5841e-05,
+     -2.9712e-05,
+     -2.3921e-05,
+     -1.8269e-05,
+     -1.3655e-05
+    ],
+    [
+     -0.010705,
+     -0.0050945,
+     -1.3232e-05,
+     -1.6586e-05,
+     -2.8543e-05,
+     -3.2004e-05,
+     -4.4812e-05,
+     -4.9041e-05,
+     191.45,
+     -17.144,
+     -0.76239,
+     -0.30217,
+     -0.15369,
+     -0.088773
+    ],
+    [
+     -0.0079746,
+     -0.0037695,
+     -9.6724e-06,
+     -1.2124e-05,
+     -2.0864e-05,
+     -2.3393e-05,
+     -3.2752e-05,
+     -3.5841e-05,
+     -17.144,
+     194.63,
+     -17.019,
+     -0.70946,
+     -0.26976,
+     -0.13659
+    ],
+    [
+     -0.0067072,
+     -0.0031541,
+     -8.0196e-06,
+     -1.0053e-05,
+     -1.7298e-05,
+     -1.9394e-05,
+     -2.7151e-05,
+     -2.9712e-05,
+     -0.76239,
+     -17.019,
+     194.64,
+     -17.008,
+     -0.69641,
+     -0.26723
+    ],
+    [
+     -0.0054647,
+     -0.0025588,
+     -6.4574e-06,
+     -8.0942e-06,
+     -1.3927e-05,
+     -1.5615e-05,
+     -2.186e-05,
+     -2.3921e-05,
+     -0.30217,
+     -0.70946,
+     -17.008,
+     194.65,
+     -16.991,
+     -0.70339
+    ],
+    [
+     -0.004213,
+     -0.001966,
+     -4.9321e-06,
+     -6.1823e-06,
+     -1.0638e-05,
+     -1.1927e-05,
+     -1.6695e-05,
+     -1.8269e-05,
+     -0.15369,
+     -0.26976,
+     -0.69641,
+     -16.991,
+     194.68,
+     -17.047
+    ],
+    [
+     -0.0031718,
+     -0.0014763,
+     -3.6868e-06,
+     -4.6213e-06,
+     -7.9514e-06,
+     -8.9149e-06,
+     -1.2479e-05,
+     -1.3655e-05,
+     -0.088773,
+     -0.13659,
+     -0.26723,
+     -0.70339,
+     -17.047,
+     191.66
+    ]
+   ]
+  },
+  "square31|hub6": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.1681,
+   "V_ref_per_m_8A_6us_mV": 0.2242,
+   "V_ref_per_m_47A_5us_mV": 1.58,
+   "M_by_axis_nH_per_m": {
+    "X": 0.1342,
+    "Y": 0.1512,
+    "Z": 0.1681
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.24,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.2,
+     -2.4077,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.4077,
+     1494.2,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     203.16,
+     -20.158,
+     -0.032238,
+     -0.015336,
+     -0.0021704,
+     -0.0014065,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -20.158,
+     202.71,
+     -0.11554,
+     -0.052458,
+     -0.007119,
+     -0.0045991,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.032238,
+     -0.11554,
+     202.43,
+     -20.564,
+     -0.093863,
+     -0.055565,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.015336,
+     -0.052458,
+     -20.564,
+     202.41,
+     -0.18536,
+     -0.10026,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0021704,
+     -0.007119,
+     -0.093863,
+     -0.18536,
+     202.38,
+     -20.607,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0014065,
+     -0.0045991,
+     -0.055565,
+     -0.10026,
+     -20.607,
+     202.37,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     191.57,
+     -17.018,
+     -0.62338,
+     -0.16214,
+     -0.033338,
+     -0.0020526
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -17.018,
+     194.77,
+     -16.845,
+     -0.51613,
+     -0.090095,
+     -0.0054048
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.62338,
+     -16.845,
+     194.88,
+     -16.703,
+     -0.37266,
+     -0.02023
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.16214,
+     -0.51613,
+     -16.703,
+     195.13,
+     -16.338,
+     -0.13001
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.033338,
+     -0.090095,
+     -0.37266,
+     -16.338,
+     196.08,
+     -15.051
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.0020526,
+     -0.0054048,
+     -0.02023,
+     -0.13001,
+     -15.051,
+     216.1
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent)"
+  },
+  "square31|hub6_cu": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.1681,
+   "V_ref_per_m_8A_6us_mV": 0.2242,
+   "V_ref_per_m_47A_5us_mV": 1.58,
+   "M_by_axis_nH_per_m": {
+    "X": 0.1342,
+    "Y": 0.1512,
+    "Z": 0.1681
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.24,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.2,
+     -2.4077,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.4077,
+     1494.2,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     203.16,
+     -20.158,
+     -0.032238,
+     -0.015336,
+     -0.0021704,
+     -0.0014065,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -20.158,
+     202.71,
+     -0.11554,
+     -0.052458,
+     -0.007119,
+     -0.0045991,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.032238,
+     -0.11554,
+     202.43,
+     -20.564,
+     -0.093863,
+     -0.055565,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.015336,
+     -0.052458,
+     -20.564,
+     202.41,
+     -0.18536,
+     -0.10026,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0021704,
+     -0.007119,
+     -0.093863,
+     -0.18536,
+     202.38,
+     -20.607,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0014065,
+     -0.0045991,
+     -0.055565,
+     -0.10026,
+     -20.607,
+     202.37,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     191.57,
+     -17.018,
+     -0.62338,
+     -0.16214,
+     -0.033338,
+     -0.0020526
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -17.018,
+     194.77,
+     -16.845,
+     -0.51613,
+     -0.090095,
+     -0.0054048
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.62338,
+     -16.845,
+     194.88,
+     -16.703,
+     -0.37266,
+     -0.02023
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.16214,
+     -0.51613,
+     -16.703,
+     195.13,
+     -16.338,
+     -0.13001
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.033338,
+     -0.090095,
+     -0.37266,
+     -16.338,
+     196.08,
+     -15.051
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.0020526,
+     -0.0054048,
+     -0.02023,
+     -0.13001,
+     -15.051,
+     216.1
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent); electrostatics identical to hub6, Cu shielding factor in shielding.separator_100kHz"
+  },
+  "hex21|none": {
+   "C_tx_ref_pF_per_m": 0.007683,
+   "C_data_ref_pF_per_m": 0.0005,
+   "M_tx_ref_nH_per_m": 0.5755,
+   "V_ref_per_m_8A_6us_mV": 0.7674,
+   "V_ref_per_m_47A_5us_mV": 5.41,
+   "M_by_axis_nH_per_m": {
+    "X": 0.5068,
+    "Y": 0.5485,
+    "Z": 0.5755
+   },
+   "ratio_vs_coplanar_tx_ref": 0.4349,
+   "ratio_vs_coplanar_data_ref": 0.0007411,
+   "C_TXA_self_pF_per_m": 1494.26,
+   "C_TXA_DATA_pF_per_m": 0.1938,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.3,
+     -2.43,
+     -0.0043732,
+     -0.0048476,
+     -0.0061856,
+     -0.0064914,
+     -0.0074116,
+     -0.0076831,
+     -0.17431,
+     -0.14998,
+     -0.15236,
+     -0.15359,
+     -0.16725,
+     -0.19382
+    ],
+    [
+     -2.43,
+     1494.2,
+     -0.0048823,
+     -0.0053833,
+     -0.0067175,
+     -0.0069992,
+     -0.0077741,
+     -0.0079916,
+     -0.047103,
+     -0.036828,
+     -0.034365,
+     -0.03176,
+     -0.031628,
+     -0.033302
+    ],
+    [
+     -0.0043732,
+     -0.0048823,
+     159.56,
+     -9.9864,
+     -0.099577,
+     -0.065021,
+     -0.022543,
+     -0.018054,
+     -0.00052057,
+     -0.00037503,
+     -0.00032784,
+     -0.00028513,
+     -0.00026824,
+     -0.00026725
+    ],
+    [
+     -0.0048476,
+     -0.0053833,
+     -9.9864,
+     159.56,
+     -0.17154,
+     -0.10089,
+     -0.029814,
+     -0.023348,
+     -0.00058029,
+     -0.00041787,
+     -0.00036518,
+     -0.00031751,
+     -0.00029863,
+     -0.00029745
+    ],
+    [
+     -0.0061856,
+     -0.0067175,
+     -0.099577,
+     -0.17154,
+     159.56,
+     -9.9929,
+     -0.10341,
+     -0.068625,
+     -0.00075844,
+     -0.00054517,
+     -0.00047576,
+     -0.00041314,
+     -0.00038812,
+     -0.00038618
+    ],
+    [
+     -0.0064914,
+     -0.0069992,
+     -0.065021,
+     -0.10089,
+     -9.9929,
+     159.56,
+     -0.17489,
+     -0.10419,
+     -0.0008022,
+     -0.00057628,
+     -0.00050267,
+     -0.00043633,
+     -0.00040976,
+     -0.00040756
+    ],
+    [
+     -0.0074116,
+     -0.0077741,
+     -0.022543,
+     -0.029814,
+     -0.10341,
+     -0.17489,
+     159.55,
+     -9.9973,
+     -0.00094435,
+     -0.00067679,
+     -0.00058928,
+     -0.00051068,
+     -0.00047888,
+     -0.00047566
+    ],
+    [
+     -0.0076831,
+     -0.0079916,
+     -0.018054,
+     -0.023348,
+     -0.068625,
+     -0.10419,
+     -9.9973,
+     159.55,
+     -0.00098829,
+     -0.00070775,
+     -0.00061589,
+     -0.00053347,
+     -0.00050002,
+     -0.00049645
+    ],
+    [
+     -0.17431,
+     -0.047103,
+     -0.00052057,
+     -0.00058029,
+     -0.00075844,
+     -0.0008022,
+     -0.00094435,
+     -0.00098829,
+     149.32,
+     -16.859,
+     -0.87693,
+     -0.3311,
+     -0.18807,
+     -0.12919
+    ],
+    [
+     -0.14998,
+     -0.036828,
+     -0.00037503,
+     -0.00041787,
+     -0.00054517,
+     -0.00057628,
+     -0.00067679,
+     -0.00070775,
+     -16.859,
+     132.58,
+     -18.178,
+     -0.76995,
+     -0.30475,
+     -0.17708
+    ],
+    [
+     -0.15236,
+     -0.034365,
+     -0.00032784,
+     -0.00036518,
+     -0.00047576,
+     -0.00050267,
+     -0.00058928,
+     -0.00061589,
+     -0.87693,
+     -18.178,
+     144.04,
+     -14.103,
+     -0.7636,
+     -0.31618
+    ],
+    [
+     -0.15359,
+     -0.03176,
+     -0.00028513,
+     -0.00031751,
+     -0.00041314,
+     -0.00043633,
+     -0.00051068,
+     -0.00053347,
+     -0.3311,
+     -0.76995,
+     -14.103,
+     122.97,
+     -13.075,
+     -0.76953
+    ],
+    [
+     -0.16725,
+     -0.031628,
+     -0.00026824,
+     -0.00029863,
+     -0.00038812,
+     -0.00040976,
+     -0.00047888,
+     -0.00050002,
+     -0.18807,
+     -0.30475,
+     -0.7636,
+     -13.075,
+     146.31,
+     -19.031
+    ],
+    [
+     -0.19382,
+     -0.033302,
+     -0.00026725,
+     -0.00029745,
+     -0.00038618,
+     -0.00040756,
+     -0.00047566,
+     -0.00049645,
+     -0.12919,
+     -0.17708,
+     -0.31618,
+     -0.76953,
+     -19.031,
+     150.06
+    ]
+   ]
+  },
+  "hex21|hub6": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.5755,
+   "V_ref_per_m_8A_6us_mV": 0.7674,
+   "V_ref_per_m_47A_5us_mV": 5.41,
+   "M_by_axis_nH_per_m": {
+    "X": 0.5068,
+    "Y": 0.5485,
+    "Z": 0.5755
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1495.31,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1495.3,
+     -1.9241,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -1.9241,
+     1495.3,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     159.8,
+     -9.8329,
+     -0.054104,
+     -0.030321,
+     -0.0066069,
+     -0.0047166,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -9.8329,
+     159.68,
+     -0.12955,
+     -0.067865,
+     -0.013646,
+     -0.0096617,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.054104,
+     -0.12955,
+     159.58,
+     -9.9704,
+     -0.089586,
+     -0.056384,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.030321,
+     -0.067865,
+     -9.9704,
+     159.58,
+     -0.16202,
+     -0.092651,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0066069,
+     -0.013646,
+     -0.089586,
+     -0.16202,
+     159.56,
+     -9.9881,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0047166,
+     -0.0096617,
+     -0.056384,
+     -0.092651,
+     -9.9881,
+     159.56,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     149.38,
+     -16.794,
+     -0.80392,
+     -0.25081,
+     -0.094759,
+     -0.022768
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -16.794,
+     132.65,
+     -18.101,
+     -0.67991,
+     -0.19328,
+     -0.042972
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.80392,
+     -18.101,
+     144.13,
+     -13.984,
+     -0.60317,
+     -0.10774
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.25081,
+     -0.67991,
+     -13.984,
+     123.13,
+     -12.828,
+     -0.40193
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.094759,
+     -0.19328,
+     -0.60317,
+     -12.828,
+     146.76,
+     -18.134
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.022768,
+     -0.042972,
+     -0.10774,
+     -0.40193,
+     -18.134,
+     155.29
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent)"
+  },
+  "hex21|hub6_cu": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.5755,
+   "V_ref_per_m_8A_6us_mV": 0.7674,
+   "V_ref_per_m_47A_5us_mV": 5.41,
+   "M_by_axis_nH_per_m": {
+    "X": 0.5068,
+    "Y": 0.5485,
+    "Z": 0.5755
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1495.31,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1495.3,
+     -1.9241,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -1.9241,
+     1495.3,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     159.8,
+     -9.8329,
+     -0.054104,
+     -0.030321,
+     -0.0066069,
+     -0.0047166,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -9.8329,
+     159.68,
+     -0.12955,
+     -0.067865,
+     -0.013646,
+     -0.0096617,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.054104,
+     -0.12955,
+     159.58,
+     -9.9704,
+     -0.089586,
+     -0.056384,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.030321,
+     -0.067865,
+     -9.9704,
+     159.58,
+     -0.16202,
+     -0.092651,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0066069,
+     -0.013646,
+     -0.089586,
+     -0.16202,
+     159.56,
+     -9.9881,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0047166,
+     -0.0096617,
+     -0.056384,
+     -0.092651,
+     -9.9881,
+     159.56,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     149.38,
+     -16.794,
+     -0.80392,
+     -0.25081,
+     -0.094759,
+     -0.022768
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -16.794,
+     132.65,
+     -18.101,
+     -0.67991,
+     -0.19328,
+     -0.042972
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.80392,
+     -18.101,
+     144.13,
+     -13.984,
+     -0.60317,
+     -0.10774
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.25081,
+     -0.67991,
+     -13.984,
+     123.13,
+     -12.828,
+     -0.40193
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.094759,
+     -0.19328,
+     -0.60317,
+     -12.828,
+     146.76,
+     -18.134
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.022768,
+     -0.042972,
+     -0.10774,
+     -0.40193,
+     -18.134,
+     155.29
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent); electrostatics identical to hub6, Cu shielding factor in shielding.separator_100kHz"
+  },
+  "hex26|none": {
+   "C_tx_ref_pF_per_m": 0.004565,
+   "C_data_ref_pF_per_m": 0.0002499,
+   "M_tx_ref_nH_per_m": 0.348,
+   "V_ref_per_m_8A_6us_mV": 0.464,
+   "V_ref_per_m_47A_5us_mV": 3.271,
+   "M_by_axis_nH_per_m": {
+    "X": 0.3084,
+    "Y": 0.3308,
+    "Z": 0.348
+   },
+   "ratio_vs_coplanar_tx_ref": 0.2584,
+   "ratio_vs_coplanar_data_ref": 0.0003704,
+   "C_TXA_self_pF_per_m": 1494.17,
+   "C_TXA_DATA_pF_per_m": 0.08287,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.2,
+     -2.4859,
+     -0.0025367,
+     -0.0028162,
+     -0.0035825,
+     -0.0037718,
+     -0.0043762,
+     -0.0045651,
+     -0.085879,
+     -0.082734,
+     -0.077309,
+     -0.07589,
+     -0.070538,
+     -0.082868
+    ],
+    [
+     -2.4859,
+     1494.2,
+     -0.0027721,
+     -0.0030684,
+     -0.0038541,
+     -0.0040411,
+     -0.0046141,
+     -0.0047895,
+     -0.02825,
+     -0.025771,
+     -0.022937,
+     -0.021479,
+     -0.019102,
+     -0.021415
+    ],
+    [
+     -0.0025367,
+     -0.0027721,
+     166.05,
+     -12.709,
+     -0.1016,
+     -0.066178,
+     -0.02294,
+     -0.018392,
+     -0.00022328,
+     -0.00019166,
+     -0.00016212,
+     -0.0001449,
+     -0.00012365,
+     -0.00013299
+    ],
+    [
+     -0.0028162,
+     -0.0030684,
+     -12.709,
+     166.05,
+     -0.17565,
+     -0.1028,
+     -0.03032,
+     -0.023767,
+     -0.00024884,
+     -0.00021355,
+     -0.00018062,
+     -0.00016141,
+     -0.00013772,
+     -0.0001481
+    ],
+    [
+     -0.0035825,
+     -0.0038541,
+     -0.1016,
+     -0.17565,
+     159.56,
+     -9.993,
+     -0.10356,
+     -0.068792,
+     -0.00032183,
+     -0.00027595,
+     -0.00023323,
+     -0.0002083,
+     -0.00017763,
+     -0.00019092
+    ],
+    [
+     -0.0037718,
+     -0.0040411,
+     -0.066178,
+     -0.1028,
+     -9.993,
+     159.56,
+     -0.17506,
+     -0.10437,
+     -0.00034068,
+     -0.00029203,
+     -0.00024676,
+     -0.00022034,
+     -0.00018787,
+     -0.00020189
+    ],
+    [
+     -0.0043762,
+     -0.0046141,
+     -0.02294,
+     -0.03032,
+     -0.10356,
+     -0.17506,
+     159.55,
+     -9.9976,
+     -0.0004038,
+     -0.00034575,
+     -0.00029189,
+     -0.00026042,
+     -0.00022188,
+     -0.00023828
+    ],
+    [
+     -0.0045651,
+     -0.0047895,
+     -0.018392,
+     -0.023767,
+     -0.068792,
+     -0.10437,
+     -9.9976,
+     159.55,
+     -0.00042405,
+     -0.00036296,
+     -0.00030633,
+     -0.00027324,
+     -0.00023275,
+     -0.0002499
+    ],
+    [
+     -0.085879,
+     -0.02825,
+     -0.00022328,
+     -0.00024884,
+     -0.00032183,
+     -0.00034068,
+     -0.0004038,
+     -0.00042405,
+     136.24,
+     -15.502,
+     -0.747,
+     -0.29356,
+     -0.15368,
+     -0.11359
+    ],
+    [
+     -0.082734,
+     -0.025771,
+     -0.00019166,
+     -0.00021355,
+     -0.00027595,
+     -0.00029203,
+     -0.00034575,
+     -0.00036296,
+     -15.502,
+     152.97,
+     -16.314,
+     -0.79234,
+     -0.29176,
+     -0.18259
+    ],
+    [
+     -0.077309,
+     -0.022937,
+     -0.00016212,
+     -0.00018062,
+     -0.00023323,
+     -0.00024676,
+     -0.00029189,
+     -0.00030633,
+     -0.747,
+     -16.314,
+     151.22,
+     -13.847,
+     -0.73276,
+     -0.32124
+    ],
+    [
+     -0.07589,
+     -0.021479,
+     -0.0001449,
+     -0.00016141,
+     -0.0002083,
+     -0.00022034,
+     -0.00026042,
+     -0.00027324,
+     -0.29356,
+     -0.79234,
+     -13.847,
+     124.57,
+     -14.383,
+     -0.83632
+    ],
+    [
+     -0.070538,
+     -0.019102,
+     -0.00012365,
+     -0.00013772,
+     -0.00017763,
+     -0.00018787,
+     -0.00022188,
+     -0.00023275,
+     -0.15368,
+     -0.29176,
+     -0.73276,
+     -14.383,
+     119.44,
+     -13.537
+    ],
+    [
+     -0.082868,
+     -0.021415,
+     -0.00013299,
+     -0.0001481,
+     -0.00019092,
+     -0.00020189,
+     -0.00023828,
+     -0.0002499,
+     -0.11359,
+     -0.18259,
+     -0.32124,
+     -0.83632,
+     -13.537,
+     141.74
+    ]
+   ]
+  },
+  "hex26|hub6": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.348,
+   "V_ref_per_m_8A_6us_mV": 0.464,
+   "V_ref_per_m_47A_5us_mV": 3.271,
+   "M_by_axis_nH_per_m": {
+    "X": 0.3084,
+    "Y": 0.3308,
+    "Z": 0.348
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.68,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.7,
+     -2.1586,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.1586,
+     1494.7,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     166.3,
+     -12.548,
+     -0.055258,
+     -0.030841,
+     -0.0066978,
+     -0.0047873,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -12.548,
+     166.17,
+     -0.13281,
+     -0.069132,
+     -0.013836,
+     -0.0098072,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.055258,
+     -0.13281,
+     159.58,
+     -9.9703,
+     -0.089681,
+     -0.056524,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.030841,
+     -0.069132,
+     -9.9703,
+     159.58,
+     -0.16218,
+     -0.092859,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0066978,
+     -0.013836,
+     -0.089681,
+     -0.16218,
+     159.56,
+     -9.9886,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0047873,
+     -0.0098072,
+     -0.056524,
+     -0.092859,
+     -9.9886,
+     159.56,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     136.3,
+     -15.443,
+     -0.68319,
+     -0.22141,
+     -0.078463,
+     -0.021049
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -15.443,
+     153.04,
+     -16.235,
+     -0.6973,
+     -0.18668,
+     -0.046299
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.68319,
+     -16.235,
+     151.31,
+     -13.724,
+     -0.58584,
+     -0.11496
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.22141,
+     -0.6973,
+     -13.724,
+     124.74,
+     -14.151,
+     -0.46104
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.078463,
+     -0.18668,
+     -0.58584,
+     -14.151,
+     119.81,
+     -12.749
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.021049,
+     -0.046299,
+     -0.11496,
+     -0.46104,
+     -12.749,
+     146.0
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent)"
+  },
+  "hex26|hub6_cu": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.348,
+   "V_ref_per_m_8A_6us_mV": 0.464,
+   "V_ref_per_m_47A_5us_mV": 3.271,
+   "M_by_axis_nH_per_m": {
+    "X": 0.3084,
+    "Y": 0.3308,
+    "Z": 0.348
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.68,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.7,
+     -2.1586,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.1586,
+     1494.7,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     166.3,
+     -12.548,
+     -0.055258,
+     -0.030841,
+     -0.0066978,
+     -0.0047873,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -12.548,
+     166.17,
+     -0.13281,
+     -0.069132,
+     -0.013836,
+     -0.0098072,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.055258,
+     -0.13281,
+     159.58,
+     -9.9703,
+     -0.089681,
+     -0.056524,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.030841,
+     -0.069132,
+     -9.9703,
+     159.58,
+     -0.16218,
+     -0.092859,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0066978,
+     -0.013836,
+     -0.089681,
+     -0.16218,
+     159.56,
+     -9.9886,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0047873,
+     -0.0098072,
+     -0.056524,
+     -0.092859,
+     -9.9886,
+     159.56,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     136.3,
+     -15.443,
+     -0.68319,
+     -0.22141,
+     -0.078463,
+     -0.021049
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -15.443,
+     153.04,
+     -16.235,
+     -0.6973,
+     -0.18668,
+     -0.046299
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.68319,
+     -16.235,
+     151.31,
+     -13.724,
+     -0.58584,
+     -0.11496
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.22141,
+     -0.6973,
+     -13.724,
+     124.74,
+     -14.151,
+     -0.46104
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.078463,
+     -0.18668,
+     -0.58584,
+     -14.151,
+     119.81,
+     -12.749
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.021049,
+     -0.046299,
+     -0.11496,
+     -0.46104,
+     -12.749,
+     146.0
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent); electrostatics identical to hub6, Cu shielding factor in shielding.separator_100kHz"
+  },
+  "hex31|none": {
+   "C_tx_ref_pF_per_m": 0.002938,
+   "C_data_ref_pF_per_m": 0.000143,
+   "M_tx_ref_nH_per_m": 0.2313,
+   "V_ref_per_m_8A_6us_mV": 0.3083,
+   "V_ref_per_m_47A_5us_mV": 2.174,
+   "M_by_axis_nH_per_m": {
+    "X": 0.2071,
+    "Y": 0.2203,
+    "Z": 0.2313
+   },
+   "ratio_vs_coplanar_tx_ref": 0.1663,
+   "ratio_vs_coplanar_data_ref": 0.0002119,
+   "C_TXA_self_pF_per_m": 1494.13,
+   "C_TXA_DATA_pF_per_m": 0.04193,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.1,
+     -2.5144,
+     -0.0016017,
+     -0.0017804,
+     -0.0023023,
+     -0.0024279,
+     -0.0028077,
+     -0.0029379,
+     -0.04919,
+     -0.047466,
+     -0.045796,
+     -0.041278,
+     -0.041928,
+     -0.036477
+    ],
+    [
+     -2.5144,
+     1494.1,
+     -0.0017251,
+     -0.001914,
+     -0.0024554,
+     -0.0025827,
+     -0.0029565,
+     -0.0030838,
+     -0.018942,
+     -0.017646,
+     -0.016507,
+     -0.014455,
+     -0.014289,
+     -0.012108
+    ],
+    [
+     -0.0016017,
+     -0.0017251,
+     166.05,
+     -12.709,
+     -0.10347,
+     -0.067308,
+     -0.022963,
+     -0.01842,
+     -0.00011718,
+     -0.00010392,
+     -9.3278e-05,
+     -7.8711e-05,
+     -7.523e-05,
+     -6.1763e-05
+    ],
+    [
+     -0.0017804,
+     -0.001914,
+     -12.709,
+     166.05,
+     -0.17992,
+     -0.10487,
+     -0.030353,
+     -0.023804,
+     -0.00013063,
+     -0.00011584,
+     -0.00010396,
+     -8.7721e-05,
+     -8.3836e-05,
+     -6.8824e-05
+    ],
+    [
+     -0.0023023,
+     -0.0024554,
+     -0.10347,
+     -0.17992,
+     166.04,
+     -12.716,
+     -0.10566,
+     -0.070011,
+     -0.00017104,
+     -0.0001516,
+     -0.00013601,
+     -0.00011472,
+     -0.0001096,
+     -8.9951e-05
+    ],
+    [
+     -0.0024279,
+     -0.0025827,
+     -0.067308,
+     -0.10487,
+     -12.716,
+     166.04,
+     -0.17929,
+     -0.10634,
+     -0.00018112,
+     -0.0001605,
+     -0.00014398,
+     -0.00012142,
+     -0.000116,
+     -9.519e-05
+    ],
+    [
+     -0.0028077,
+     -0.0029565,
+     -0.022963,
+     -0.030353,
+     -0.10566,
+     -0.17929,
+     159.55,
+     -9.9976,
+     -0.00021286,
+     -0.00018851,
+     -0.00016901,
+     -0.00014247,
+     -0.00013605,
+     -0.0001116
+    ],
+    [
+     -0.0029379,
+     -0.0030838,
+     -0.01842,
+     -0.023804,
+     -0.070011,
+     -0.10634,
+     -9.9976,
+     159.55,
+     -0.00022386,
+     -0.00019822,
+     -0.00017768,
+     -0.00014976,
+     -0.00014299,
+     -0.00011728
+    ],
+    [
+     -0.04919,
+     -0.018942,
+     -0.00011718,
+     -0.00013063,
+     -0.00017104,
+     -0.00018112,
+     -0.00021286,
+     -0.00022386,
+     110.69,
+     -10.931,
+     -0.69716,
+     -0.25817,
+     -0.15057,
+     -0.086054
+    ],
+    [
+     -0.047466,
+     -0.017646,
+     -0.00010392,
+     -0.00011584,
+     -0.0001516,
+     -0.0001605,
+     -0.00018851,
+     -0.00019822,
+     -10.931,
+     142.21,
+     -14.283,
+     -0.70134,
+     -0.29279,
+     -0.1427
+    ],
+    [
+     -0.045796,
+     -0.016507,
+     -9.3278e-05,
+     -0.00010396,
+     -0.00013601,
+     -0.00014398,
+     -0.00016901,
+     -0.00017768,
+     -0.69716,
+     -14.283,
+     118.41,
+     -12.694,
+     -0.78885,
+     -0.2695
+    ],
+    [
+     -0.041278,
+     -0.014455,
+     -7.8711e-05,
+     -8.7721e-05,
+     -0.00011472,
+     -0.00012142,
+     -0.00014247,
+     -0.00014976,
+     -0.25817,
+     -0.70134,
+     -12.694,
+     120.52,
+     -13.819,
+     -0.6599
+    ],
+    [
+     -0.041928,
+     -0.014289,
+     -7.523e-05,
+     -8.3836e-05,
+     -0.0001096,
+     -0.000116,
+     -0.00013605,
+     -0.00014299,
+     -0.15057,
+     -0.29279,
+     -0.78885,
+     -13.819,
+     123.39,
+     -11.894
+    ],
+    [
+     -0.036477,
+     -0.012108,
+     -6.1763e-05,
+     -6.8824e-05,
+     -8.9951e-05,
+     -9.519e-05,
+     -0.0001116,
+     -0.00011728,
+     -0.086054,
+     -0.1427,
+     -0.2695,
+     -0.6599,
+     -11.894,
+     111.29
+    ]
+   ]
+  },
+  "hex31|hub6": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.2313,
+   "V_ref_per_m_8A_6us_mV": 0.3083,
+   "V_ref_per_m_47A_5us_mV": 2.174,
+   "M_by_axis_nH_per_m": {
+    "X": 0.2071,
+    "Y": 0.2203,
+    "Z": 0.2313
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.43,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.4,
+     -2.288,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.288,
+     1494.4,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     166.3,
+     -12.545,
+     -0.056079,
+     -0.031201,
+     -0.006621,
+     -0.0047311,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -12.545,
+     166.17,
+     -0.13611,
+     -0.070453,
+     -0.013753,
+     -0.0097462,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.056079,
+     -0.13611,
+     166.07,
+     -12.692,
+     -0.091527,
+     -0.057519,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.031201,
+     -0.070453,
+     -12.692,
+     166.06,
+     -0.16617,
+     -0.094618,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.006621,
+     -0.013753,
+     -0.091527,
+     -0.16617,
+     159.56,
+     -9.9886,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0047311,
+     -0.0097462,
+     -0.057519,
+     -0.094618,
+     -9.9886,
+     159.56,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     110.73,
+     -10.879,
+     -0.63702,
+     -0.19407,
+     -0.075427,
+     -0.015791
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -10.879,
+     142.27,
+     -14.205,
+     -0.61407,
+     -0.18412,
+     -0.035775
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.63702,
+     -14.205,
+     118.51,
+     -12.573,
+     -0.62588,
+     -0.096083
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.19407,
+     -0.61407,
+     -12.573,
+     120.68,
+     -13.575,
+     -0.36237
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.075427,
+     -0.18412,
+     -0.62588,
+     -13.575,
+     123.84,
+     -11.16
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.015791,
+     -0.035775,
+     -0.096083,
+     -0.36237,
+     -11.16,
+     114.07
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent)"
+  },
+  "hex31|hub6_cu": {
+   "C_tx_ref_pF_per_m": 0.0,
+   "C_data_ref_pF_per_m": 0.0,
+   "M_tx_ref_nH_per_m": 0.2313,
+   "V_ref_per_m_8A_6us_mV": 0.3083,
+   "V_ref_per_m_47A_5us_mV": 2.174,
+   "M_by_axis_nH_per_m": {
+    "X": 0.2071,
+    "Y": 0.2203,
+    "Z": 0.2313
+   },
+   "ratio_vs_coplanar_tx_ref": 0.0,
+   "ratio_vs_coplanar_data_ref": 0.0,
+   "C_TXA_self_pF_per_m": 1494.43,
+   "C_TXA_DATA_pF_per_m": 0.0,
+   "C_matrix_names": [
+    "TX_A",
+    "TX_B",
+    "REFX+",
+    "REFX-",
+    "REFY+",
+    "REFY-",
+    "REFZ+",
+    "REFZ-",
+    "TXCMD+",
+    "TXCMD-",
+    "TXSTAT+",
+    "TXSTAT-",
+    "DATA+",
+    "DATA-"
+   ],
+   "C_matrix_pF_per_m": [
+    [
+     1494.4,
+     -2.288,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     -2.288,
+     1494.4,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     166.3,
+     -12.545,
+     -0.056079,
+     -0.031201,
+     -0.006621,
+     -0.0047311,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -12.545,
+     166.17,
+     -0.13611,
+     -0.070453,
+     -0.013753,
+     -0.0097462,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.056079,
+     -0.13611,
+     166.07,
+     -12.692,
+     -0.091527,
+     -0.057519,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.031201,
+     -0.070453,
+     -12.692,
+     166.06,
+     -0.16617,
+     -0.094618,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.006621,
+     -0.013753,
+     -0.091527,
+     -0.16617,
+     159.56,
+     -9.9886,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -0.0047311,
+     -0.0097462,
+     -0.057519,
+     -0.094618,
+     -9.9886,
+     159.56,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     110.73,
+     -10.879,
+     -0.63702,
+     -0.19407,
+     -0.075427,
+     -0.015791
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -10.879,
+     142.27,
+     -14.205,
+     -0.61407,
+     -0.18412,
+     -0.035775
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.63702,
+     -14.205,
+     118.51,
+     -12.573,
+     -0.62588,
+     -0.096083
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.19407,
+     -0.61407,
+     -12.573,
+     120.68,
+     -13.575,
+     -0.36237
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.075427,
+     -0.18412,
+     -0.62588,
+     -13.575,
+     123.84,
+     -11.16
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -0.015791,
+     -0.035775,
+     -0.096083,
+     -0.36237,
+     -11.16,
+     114.07
+    ]
+   ],
+   "note": "each chamber is fully enclosed by grounded wall / webs / hub in this model, so the cross-chamber C is exactly 0 (below resolution); the real value is set by web-to-wall contact, web-end gaps and the flex exits (not modelled). M is free-space (CF transparent); electrostatics identical to hub6, Cu shielding factor in shielding.separator_100kHz"
+  }
+ },
+ "coplanar_reference": {
+  "geometry": "rf2_cordflex.LANES side by side (16.00 mm incl. 2 x 0.15 inter-pair gaps), strip bottom 2.0 mm above ground plane, grounded box 10 mm clear",
+  "C_tx_ref_pF_per_m": 0.01767,
+  "C_data_ref_pF_per_m": 0.67471,
+  "M_tx_ref_nH_per_m": 3.06143,
+  "V_ref_per_m_8A_6us_mV": 4.0819,
+  "V_ref_per_m_47A_5us_mV": 28.77742,
+  "M_by_axis_nH_per_m": {
+   "X": 3.0614,
+   "Y": 2.2376,
+   "Z": 1.7084
+  },
+  "C_TXA_self_pF_per_m": 38.47,
+  "C_TXA_TXB_pF_per_m": 12.914,
+  "cps_formula_TX_pair_pF_per_m": 28.12
+ },
+ "shielding": {
+  "assumptions": "sigma_CF 1e4 S/m (ASSUMED; CF is anisotropic, 1e3-1e5 S/m typical), Cu 5.8e7 S/m; |H_in/H_out| = 1/|1 + j w mu0 sigma t d/2| at 100 kHz, d = chamber depth (inner apothem - hub radius); closed-enclosure formula, so an upper bound on what open radial webs give",
+  "skin_depth_mm": {
+   "10000Hz": {
+    "CF": 50.33,
+    "Cu": 0.6609
+   },
+   "100000Hz": {
+    "CF": 15.92,
+    "Cu": 0.209
+   },
+   "1e+06Hz": {
+    "CF": 5.03,
+    "Cu": 0.0661
+   }
+  },
+  "thin_vs_skin": "CF wall 1.2 mm and web 0.6 mm << delta_CF (>= 1.6 mm at 1 MHz, 50 mm at 10 kHz); Cu 2 x 18 um << delta_Cu (66 um at 1 MHz): thin-sheet regime",
+  "separator_100kHz": {
+   "square21": {
+    "d_mm": 6.8,
+    "CF_web_0p6": 0.9999,
+    "CF_wall_1p2": 0.9995,
+    "Cu_2x18um": 0.1756,
+    "Cu_plus_CF_web": 0.1751,
+    "Cu_dB": -15.1
+   },
+   "square26": {
+    "d_mm": 9.3,
+    "CF_web_0p6": 0.9998,
+    "CF_wall_1p2": 0.999,
+    "Cu_2x18um": 0.1293,
+    "Cu_plus_CF_web": 0.129,
+    "Cu_dB": -17.8
+   },
+   "square31": {
+    "d_mm": 11.8,
+    "CF_web_0p6": 0.9996,
+    "CF_wall_1p2": 0.9984,
+    "Cu_2x18um": 0.1023,
+    "Cu_plus_CF_web": 0.102,
+    "Cu_dB": -19.8
+   },
+   "hex21": {
+    "d_mm": 6.8,
+    "CF_web_0p6": 0.9999,
+    "CF_wall_1p2": 0.9995,
+    "Cu_2x18um": 0.1756,
+    "Cu_plus_CF_web": 0.1751,
+    "Cu_dB": -15.1
+   },
+   "hex26": {
+    "d_mm": 9.3,
+    "CF_web_0p6": 0.9998,
+    "CF_wall_1p2": 0.999,
+    "Cu_2x18um": 0.1293,
+    "Cu_plus_CF_web": 0.129,
+    "Cu_dB": -17.8
+   },
+   "hex31": {
+    "d_mm": 11.8,
+    "CF_web_0p6": 0.9996,
+    "CF_wall_1p2": 0.9984,
+    "Cu_2x18um": 0.1023,
+    "Cu_plus_CF_web": 0.102,
+    "Cu_dB": -19.8
+   }
+  }
+ },
+ "cad": {
+  "files": [
+   "hexseg_shell.stl",
+   "hexseg_hub_cu.stl",
+   "hexseg_flex_HV.stl",
+   "hexseg_flex_PWR.stl",
+   "hexseg_flex_REF.stl",
+   "hexseg_pof_bare.stl",
+   "hexseg_hinge.stl",
+   "hexseg_pin.stl",
+   "hexseg_drum.stl",
+   "hexseg_telescope_sq21.stl",
+   "hexseg.step",
+   "hexseg_view.png",
+   "hexseg_field.png"
+  ],
+  "interference_mm3": {
+   "drum^hinge_mm3": 0.0,
+   "drum^shell_mm3": 0.0,
+   "pof_bare^hub_cu_mm3": 0.0,
+   "flex_HV^hub_cu_mm3": 0.0,
+   "flex_REF^shell_mm3": 0.0,
+   "pin^drum_mm3": 0.0,
+   "camlock_window_face_normal_deg": 150.0
+  },
+  "notes": [
+   "the 3 POF in the bore are modelled BARE (1.0 mm): 3 x 2.2 mm jacketed need a bundle of 4.74 mm > hub ID 4.0 (a hub ID >= 5.1 would take them)",
+   "Cu plating (18 um) is not modelled as a separate solid: hexseg_hub_cu.stl is the plated hub + webs envelope",
+   "camlock window 20 x 12 in an empty face (normal 150.0 deg); flex exit slot 16 x 2 in the HV (top) face 15 mm from the hinge end",
+   "hinge pin axis along x at z = 318 mm; knuckles OD 34 x 10 at the hex vertices' x extent; drum OD 30 between them"
+  ]
+ },
+ "findings": [
+  "solver check: coax FD 34.13 vs exact 34.566 pF/m (-1.26 %)",
+  "coplanar single flex (LANES): TX_A->nearest REF 0.0177 pF/m, DATA->nearest REF 0.675 pF/m, M 3.06 nH/m (4.08 mV/m at 8 A / 6 us, 28.8 mV/m at 47 A / 5 us)",
+  "every group fits one face in every variant studied (HV strip 7.20 mm vs smallest usable face 10.14 mm, hex 21); not_fitting is empty",
+  "central bore (hub ID 4.0): 6 digital wires (PTFE AWG30 OD 0.5 ASSUMED) bundle 1.50 mm FIT; 3 POF bare 1.0 mm bundle 2.15 mm FIT; 3 POF jacketed 2.2 mm bundle 4.74 mm DO NOT FIT; 'none' variants have no bore",
+  "hub6 and hub6_cu are electrostatically identical once the CF wall and webs are grounded; Cu adds magnetic separation only (thin-sheet, see shielding)",
+  "magnetic coupling is set by filament geometry (free space): CF (delta >= 1.6 mm up to 1 MHz) is transparent; 2 x 18 um Cu separators give at most the 100 kHz factor in shielding (upper bound)",
+  "hub6 webs (0.6 mm CF) add 44-46 % mass for 16-17 % more I (hex 21-31); the Cu plating adds a further 19.7-30.9 g/m",
+  "allocation optimum (lexicographic HV-REF, DIG-REF, PWR-REF centroid distance; HV alone): HV on the top face, REF on the opposite face pushed to one end, digital + power share a face adjacent to HV; in hub variants each group therefore sits in its own chamber except digital + power",
+  "LANES packs the three digital pair lanes edge to edge (adjacent pairs' traces touch); a 0.15 mm inter-pair gap was added here; rf2_cordflex should be checked",
+  "square21|none: C TX_A-REF 0.00636 pF/m (x0.36 coplanar), C DATA-REF 0.000101 pF/m (x0.00015), M 0.459 nH/m, 147.31 g/m, I 6232.7 mm4",
+  "square21|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.459 nH/m, 197.36 g/m, I 7124.4 mm4",
+  "square21|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.459 nH/m, 215.07 g/m, I 7124.4 mm4",
+  "square26|none: C TX_A-REF 0.00329 pF/m (x0.19 coplanar), C DATA-REF 3.93e-05 pF/m (x5.8e-05), M 0.262 nH/m, 184.51 g/m, I 12231.0 mm4",
+  "square26|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.262 nH/m, 247.71 g/m, I 14052.7 mm4",
+  "square26|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.262 nH/m, 269.98 g/m, I 14052.7 mm4",
+  "square31|none: C TX_A-REF 0.00191 pF/m (x0.11 coplanar), C DATA-REF 1.83e-05 pF/m (x2.7e-05), M 0.168 nH/m, 221.71 g/m, I 21205.2 mm4",
+  "square31|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.168 nH/m, 298.06 g/m, I 24453.2 mm4",
+  "square31|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.168 nH/m, 324.9 g/m, I 24453.2 mm4",
+  "hex21|none: C TX_A-REF 0.00768 pF/m (x0.43 coplanar), C DATA-REF 0.0005 pF/m (x0.00074), M 0.576 nH/m, 127.58 g/m, I 4498.1 mm4",
+  "hex21|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.576 nH/m, 184.05 g/m, I 5232.6 mm4",
+  "hex21|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.576 nH/m, 203.77 g/m, I 5232.6 mm4",
+  "hex26|none: C TX_A-REF 0.00456 pF/m (x0.26 coplanar), C DATA-REF 0.00025 pF/m (x0.00037), M 0.348 nH/m, 159.79 g/m, I 8826.9 mm4",
+  "hex26|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.348 nH/m, 232.38 g/m, I 10325.4 mm4",
+  "hex26|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.348 nH/m, 257.68 g/m, I 10325.4 mm4",
+  "hex31|none: C TX_A-REF 0.00294 pF/m (x0.17 coplanar), C DATA-REF 0.000143 pF/m (x0.00021), M 0.231 nH/m, 192.01 g/m, I 15303.5 mm4",
+  "hex31|hub6: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.231 nH/m, 280.7 g/m, I 17972.2 mm4",
+  "hex31|hub6_cu: C TX_A-REF 0 pF/m (x0 coplanar), C DATA-REF 0 pF/m (x0), M 0.231 nH/m, 311.59 g/m, I 17972.2 mm4"
+ ]
+}

@@ -30,7 +30,7 @@ W_TX = ipc2221_width_mm(I_TX); W_PWR = max(ipc2221_width_mm(I_PWR), 0.3)
 TX_LEN_M = 1.355                                        # TX strip length head -> hinge incl. the rolling-loop slack (rf2_chassis cord_flex checks it equals segments())
 R_TX_LOOP = 2 * 0.017241 * TX_LEN_M / (W_TX * 0.0028 * 25.4)   # ohm, out and back on the 2 oz strips (20 C)
 LANES = [("edge", 0.75), ("TX_A", W_TX), ("TX gap (rule 6)", HV_GAP), ("TX_B", W_TX), ("HV to LV gap (rule 6)", HV_GAP), ("VIN_H", W_PWR), ("gap", 0.3), ("GND_H", W_PWR), ("gap", 0.3)] + \
-        [(f"{n} pair (2 x 0.15 / 0.15)", 0.45) for n in ("TXCMD", "TXSTAT", "DATA")] + [("gap", 0.3) for _ in range(2)] + [("guard gap", 0.3)] + \
+        [("TXCMD pair (2 x 0.15 / 0.15)", 0.45), ("gap", 0.3), ("TXSTAT pair (2 x 0.15 / 0.15)", 0.45), ("gap", 0.3), ("DATA pair (2 x 0.15 / 0.15)", 0.45)] + [("guard gap", 0.3)] + \
         [(f"REF{a} pair with ground guards (0.15 / 0.15 + 2 x 0.3)", 1.35) for a in "XYZ"] + [("edge", 0.75)]
 WIDTH = sum(w for _, w in LANES)
 

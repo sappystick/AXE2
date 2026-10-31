@@ -27,6 +27,7 @@ Everything here is **MODELED / tool-checked**: there has been no fabricator DRC,
   - `--cold`: everything;
   - `--list`: every step with its state and last result;
   - `--with-render` and `--with-studies`: include those optional groups.
+- `python3 rf2/rf2_variants.py` (variant engine, every combination of design options with broken rules at their location; plugins in `rf2/variant_plugins/`, learning in `rf2/rf2_variant_learn.py`, knowledge base `rf2/rf2_kb.py`; see `.claude/skills/variants/SKILL.md`).
 - `make route-test`: the router self-test. It rips 4 nets off MP1, reroutes them with A*, then runs KiCad DRC.
 
 ## Routing chain (per board, rf2/head/rf2_boards.py)
