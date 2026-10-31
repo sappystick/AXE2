@@ -7,8 +7,7 @@ run to run as axes are added. Extend it by editing rf2_variant_axes.py (see its 
 Models used: rf2_lowL_options (coil L/R/current, PI gate calibrated to MP1 v2 16.43 us, depth model, power and runtime, switch TJ, flex width;
 hybrid RX), rf2_fold_options (shaft mass / sag / collapsed / hinges / POF link), rf2_shaft_options (telescope walls), rf2_pack_options (packs).
 ASSUMED here: cord-flex stack 0.15 mm + 0.035 mm for 3 oz + 0.095 mm for a second TX copper layer; rolling-loop rule 2 x 40 x stack <= bore - 4
-(rf2_chassis); clock-spring drum radius 17 mm; fold walls scale mass x t / 1.2 and the tube part of the sag x 1.2 / t; POF 0.60 W, 28 g with
-transceivers; planar RX 8 g; dissipative clamp loses the 75 % the regenerative clamp recovers (rf2_continuous budget).
+(rf2_chassis); clock-spring drum radius 17 mm; fold walls scale mass x t / 1.2 and the tube part of the sag x 1.2 / t; POF 0.60 W, 31 g (3 fibres x 1.6 m x 4 g/m GH-4001-P + 6 transceivers x 2 g ASSUMED); planar RX 8 g; dissipative clamp loses the 75 % the regenerative clamp recovers (rf2_continuous budget).
 
 usage: python3 rf2/rf2_variants.py [--fix axis=id ...] [--top N] [--list] [--no-history]"""
 import os, sys, json, math, itertools, argparse, subprocess, time
@@ -19,7 +18,7 @@ from rf2_select import WEIGHTS, M_SAT, M_SYS
 from rf2_variant_axes import AXES as CORE_AXES, load_plugins
 PLUGINS = load_plugins()
 AXES = CORE_AXES + [ax for pl in PLUGINS for ax in pl.AXES]
-DIG_W = 3 * 0.45 + 2 * 0.3; POF_W, POF_G, RX_G = 0.60, 1.6 * 4.0 + 6 * 2.0, 8.0
+DIG_W = 3 * 0.45 + 2 * 0.3; POF_W, POF_G, RX_G = 0.60, 3 * 1.6 * 4.0 + 6 * 2.0, 8.0   # critic 2026-10-31: POF_G counted one 1.6 m fibre for 3 links (18.4 g; docstring said 28 g): 3 fibres x 1.6 m x 4 g/m (GH-4001-P, DATASHEET_LOG) + 6 transceivers x 2 g (ASSUMED)
 BORE = 21.0 - 2 * 1.2; DRUM_R = 17.0
 FOLD_KEY = {"fold x1": "fold x1 (mid) + chassis hinge", "fold neck+mid": "fold neck + mid + chassis hinge", "fold x2": "fold x2 (thirds) + chassis hinge"}
 J = lambda f: json.load(open(os.path.join(OUT, f)))
@@ -79,14 +78,18 @@ def evaluate_combo(ctx, P):
         rule("HV lane group on one inner face", hv, face, "<=", f"shaft inner face ({prof})")
         rule("flex clock-spring bend: 40 x stack vs drum radius", bend_r, DRUM_R, "<=", "fold hinges")
     else:
-        rule("cord-flex width vs bore less 2", fw, BORE - 2.0, "<=", "telescope inner bore")
-        rule("rolling loop: 2 x 40 x stack vs bore less 4", 2 * bend_r, BORE - 4.0, "<=", "telescope rolling loop")
+        bore = 21.0 - 2 * t                                              # critic 2026-10-31: the inner tube's bore follows the wall axis (BORE was fixed at the 1.2 mm wall: 18.6 mm)
+        rule("cord-flex width vs bore less 2", fw, bore - 2.0, "<=", "telescope inner bore")
+        rule("rolling loop: 2 x 40 x stack vs bore less 4", 2 * bend_r, bore - 4.0, "<=", "telescope rolling loop")
     for r in sr["rule_rows"]:
         if ("POF" in r["rule"] or "optical" in r["rule"]) and P["data"] != "POF": continue
         v = sag if "sag" in r["rule"] else r["value"]
         rule(r["rule"], v, r["limit"], r["sense"], f"shaft ({sr['mechanism']})")
     if pk.get("cell_current_frac_of_rating") is not None:
-        rule("pack cell current in boost vs coldest-band rating", pk["cell_current_frac_of_rating"] * Pb / ctx.pack0["Wh_usable"] * ctx.pack0["Wh_usable"] / (LO.WH / 2.6), 1.0, "<=", f"battery ({P['pack']})", "safety")
+        rule("pack cell current in boost vs coldest-band rating", pk["cell_current_frac_of_rating"] * Pb / (LO.WH / 2.6), 1.0, "<=", f"battery ({P['pack']})", "safety")
+        pack_row = R[-1]                                                 # critic 2026-10-31: re-evaluated after the plugins (they change the boost power)
+    else:                                                                # critic 2026-10-31: a pack without a cell rating had no safety row at all; report the gap
+        rule(f"pack {P['pack']}: cell continuous-current rating on file (needed for the boost cell-current check)", 0, 1, ">=", f"battery ({P['pack']})", "safety"); pack_row = None
     xt = None
     if ctx.hex:                                                          # REF-pair pickup from the TX strips inside the shaft at turn-off (rf2_hex_section, MODELED)
         if fold:
@@ -103,6 +106,7 @@ def evaluate_combo(ctx, P):
                 torque_about_hand_Nm=pk["torque_about_hand_Nm"], ref_crosstalk_mV=xt, mass_delta_g=round(mass_d), added_parts=int(added), rules=R)
     for pl in PLUGINS:
         pl.evaluate(ctx, P, m)
+    if pack_row is not None: pack_row["value"] = round(pk["cell_current_frac_of_rating"] * m["P_boost_W"] / (LO.WH / 2.6), 3)   # critic 2026-10-31: with the plugins' power changes
     for r in m["rules"]: r["ok"] = bool(r["value"] <= r["limit"] if r["sense"] == "<=" else r["value"] >= r["limit"]) if r.get("value") is not None else r.get("ok", True)
     m["breaks"] = [r for r in m["rules"] if not r["ok"]]; m.pop("_e")
     return m
@@ -116,7 +120,8 @@ def score_one(r, base, m0, weights=None):
     sig = math.prod(r["depth_cm"][k] / base["depth_cm"][k] for k in base["depth_cm"]) ** (1 / 3)
     nonstd = sum(1 for a, v in r["combo"].items() if v != TODAY[a])
     f = dict(mass_g=M_SYS / (M_SYS + r["mass_delta_g"]), runtime_h=r["runtime_boost_h"] / base["runtime_boost_h"], signal=sig, margin=_margin(r) / m0,
-             attach=1.0 / (1 + 0.1 * r["added_parts"]), footprint=base["collapsed_mm"] / r["collapsed_mm"], verify=max(0.5, 1.0 - 0.05 * nonstd))
+             attach=(1.0 / (1 + 0.1 * r["added_parts"]) if r["added_parts"] >= 0 else 1.0 + 0.1 * -r["added_parts"]),   # critic 2026-10-31: negative counts gave 1/(1-0.1n) (1.25 at -2, singular at -10); rf2_select form 1 + 0.1 n for fewer parts
+             footprint=base["collapsed_mm"] / r["collapsed_mm"], verify=max(0.5, 1.0 - 0.05 * nonstd))
     r["factors"] = {k: round(v, 3) for k, v in f.items()}; r["score"] = round(sum(w[k] * f[k] for k in w), 4)
     r["status"] = "OK" if not r["breaks"] else "BREAKS " + "; ".join(f"{b['rule']} ({b['value']} vs {b['limit']}) at {b['where']}" for b in r["breaks"])
     return r["score"]
@@ -158,11 +163,12 @@ def main(argv=None):
     if a.weights == "learned" and os.path.exists(os.path.join(OUT, "rf2_variant_weights.json")): weights = J("rf2_variant_weights.json")["learned"]
     space = [[o for o in ax["options"] if ax["name"] not in fix or o["id"] == fix[ax["name"]]] for ax in AXES]
     total = math.prod(len(sp) for sp in space)
+    origin = ["enum"]                                                    # critic 2026-10-31: how each row entered the sample (enum / ofat / random / ascent), so the learning layer can use the unbiased rows
     def run(combo):
         cid = {ax["name"]: o["id"] for ax, o in zip(AXES, combo)}; key = "|".join(f"{k}={v}" for k, v in cid.items())
         if key in memo: return memo[key]
         P = {}; [P.update(o["p"]) for o in combo]; m = evaluate_combo(ctx, P)
-        r = None if m is None else dict(id=key, combo=cid, **m)
+        r = None if m is None else dict(id=key, combo=cid, origin=origin[0], **m)
         if r is None: skipped.append(dict(combo=cid, why="TX current not reachable from the bus through the loop resistance"))
         memo[key] = r; return r
     today_c = tuple(next((o for o in sp if o["id"] == TODAY[ax["name"]]), sp[0]) for ax, sp in zip(AXES, space))
@@ -173,10 +179,12 @@ def main(argv=None):
         # search: today, one-factor-at-a-time, random sample, then coordinate ascent from the best seeds (score, and score among no-break rows)
         import random
         mode = f"search ({a.samples} random + one-factor + coordinate ascent from {a.seeds} seeds; space {total})"; rng = random.Random(a.seed)
-        run(today_c)
+        origin[0] = "ofat"; run(today_c)
         for i, sp in enumerate(space):
             for o in sp: c = list(today_c); c[i] = o; run(tuple(c))
+        origin[0] = "random"
         for _ in range(a.samples): run(tuple(rng.choice(sp) for sp in space))
+        origin[0] = "ascent"
         base0 = memo[next(iter(memo))] if memo.get("|".join(f"{ax['name']}={o['id']}" for ax, o in zip(AXES, today_c))) is None else memo["|".join(f"{ax['name']}={o['id']}" for ax, o in zip(AXES, today_c))]
         m0 = _margin(base0)
         def obj(r, nb): return -1e9 if r is None else score_one(r, base0, m0, weights) - (1.0 if nb and r["breaks"] else 0.0)
@@ -209,9 +217,9 @@ def main(argv=None):
     import csv, gzip
     with gzip.open(os.path.join(OUT, "rf2_variants_all.csv.gz"), "wt", newline="") as fh:
         w = csv.writer(fh); ax = [a["name"] for a in AXES]
-        w.writerow(ax + ["score", "pareto", "gate_us", "coin_cm", "gold1g_cm", "gold0p1g_cm", "boost_h", "scan_h", "mass_delta_g", "sag_mm", "collapsed_mm", "ref_crosstalk_mV", "n_breaks", "breaks"])
+        w.writerow(ax + ["origin", "score", "pareto", "gate_us", "coin_cm", "gold1g_cm", "gold0p1g_cm", "boost_h", "scan_h", "mass_delta_g", "sag_mm", "collapsed_mm", "ref_crosstalk_mV", "n_breaks", "breaks"])
         for r in full:
-            d = r["depth_cm"]; w.writerow([r["combo"][a] for a in ax] + [r["score"], int(r["pareto"]), r["first_gate_us"], d["coin_25mm_silver"], d["gold_1g"], d["gold_0p1g"], r["runtime_boost_h"], r["runtime_scan_h"],
+            d = r["depth_cm"]; w.writerow([r["combo"][a] for a in ax] + [r.get("origin", "enum"), r["score"], int(r["pareto"]), r["first_gate_us"], d["coin_25mm_silver"], d["gold_1g"], d["gold_0p1g"], r["runtime_boost_h"], r["runtime_scan_h"],
                                           r["mass_delta_g"], r["tip_sag_mm"], r["collapsed_mm"], r["ref_crosstalk_mV"], len(r["breaks"]), "; ".join(f"{b['rule']} at {b['where']}" for b in r["breaks"])])
     try: sha = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
     except Exception: sha = "?"

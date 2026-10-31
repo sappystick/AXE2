@@ -22,7 +22,9 @@ Models (stated, MODELED):
     R^2 = R_P^2 + R_N^2, R_P = Rin2 + Rsrc + RDS(max) = 143 ohm at +IN, R_N = Rf || Rg = 24 ohm at -IN (ASSUMED source impedances seen by the input current noise).
     An instrumentation amplifier replaces the leg pair: T = en_eff^2 + in^2 x 2 R_P^2, en_eff = hypot(en_in, en_out / G).
   * Depth: echo SNR ~ 1 / noise; the target echo falls as z^-6 in the far field (TX field z^-3 x RX coupling z^-3), so depth x (N_today / N_new)^(1/6) per target.
-    (The repo's older scaling SNR^(1/5.1), PARTS_RF2, is given as a sensitivity in extra.) In hybrid mode the same ratio is applied to the combined depth (both
+    (The repo's older scaling SNR^(1/5.1), PARTS_RF2, is given as a sensitivity in extra.) critic 2026-10-31: evaluate() now applies the
+    engine's own mono depth model (depth_ratio(): threshold x N_new / N_today at this coil, current and gate); the 1/6 power stays in extra and
+    in docs/BOARDS_COMPONENTS_MAP.md as the far-field reference. In hybrid mode the same ratio is applied to the combined depth (both
     channels use the same amplifier; the planar channel's coil Johnson noise dilutes the change, so this is an upper bound on the change there).
   * Settling: worst MP1 v2 settle 14.58 us (26-turn coil) x (gate / 16.43) (ASSUMED proportional to the coil tail) + the amplifier's overload recovery.
   * Supply: delta current x 5 V / 0.9 (the +5 V converter efficiency of rf2_continuous); parts on the TPS65131 +15 / -10 V rails: x 25 V / 0.8 (TPS65131
@@ -107,6 +109,23 @@ def noise_nV(a, n0):
     else:
         new = t(a["en"], a["inn"])
     return math.sqrt(rest + new), math.sqrt(max(rest, 0.0))
+
+def depth_ratio(S, P, e, n_new, n_ref):
+    """critic 2026-10-31: per-target depth ratio from the engine's own mono depth model (rf2_lowL_options.echo_mono / depth) with the detection
+    threshold scaled by n_new / n_ref, at this combination's coil, scan current and mono first gate. The z^-6 far-field 1/6 power under-stated the
+    change (the model's local exponent is 0.17 coin, 0.19 gold 1 g, 0.26-0.28 gold 0.1 g: the small targets sit in the coil's near field)."""
+    import rf2_lowL_options as LO
+    gate = e.get("gate_mono") or e.get("gate"); I = e.get("I_scan")
+    if not gate or not I or n_new <= 0 or n_ref <= 0: return None
+    k = (P["N"], P["p"], round(I, 4), round(gate, 4), round(n_new, 5), round(n_ref, 5)); C = S.setdefault("dcache", {})
+    if k not in C:
+        c = S.setdefault("coils", {}).get((P["N"], P["p"])) or S["coils"].setdefault((P["N"], P["p"]), LO.coil(P["N"], P["p"]))
+        vth = LO.SNR * n_ref * 1e-9 * math.sqrt(LO.BW) / math.sqrt(LO.NAVG); out = {}
+        for kk, tg in LO.TARGETS.items():
+            f = lambda z, tg=tg: LO.echo_mono(c["b"](z), I, gate * 1e-6, tg)
+            d0 = LO.depth(f, vth); d1 = LO.depth(f, vth * n_new / n_ref); out[kk] = d1 / d0 if d0 > 0 else (n_ref / n_new) ** (1 / 6)
+        C[k] = out
+    return C[k]
 
 def amp_power_W(a):
     return a["iq_mA"] * 1e-3 * (V5 / EFF5 if a["rail"] == "5V" else V_TPS / EFF_TPS)
@@ -195,12 +214,17 @@ def evaluate(ctx, P, m):
             _rule(m, f"preamp {amp}: datasheet on file in data/datasheets (UNVERIFIED part; effects not modeled)", 0, 1, ">=", where_fe)
             m["extra"]["bd_preamp_status"] = "UNVERIFIED: no datasheet on file, no numbers used"
         else:
-            m["depth_cm"] = {k: round(v * A["ratio6"], 1) for k, v in m["depth_cm"].items()}
+            dr = depth_ratio(S, P, e, A["noise"], S["n0"]) or {k: A["ratio6"] for k in m["depth_cm"]}     # critic 2026-10-31: engine depth model, not the 1/6 power
+            m["depth_cm"] = {k: round(v * dr.get(k, A["ratio6"]), 1) for k, v in m["depth_cm"].items()}
             dP = A["dP_W"] * ch
             wh = ctx.packs[P["pack"]]["Wh_usable"] if hasattr(ctx, "packs") and P.get("pack") in getattr(ctx, "packs", {}) else m["runtime_boost_h"] * m["P_boost_W"]
             Pb = m["P_boost_W"] + dP; Ps = wh / m["runtime_scan_h"] + dP
             m["P_boost_W"] = round(Pb, 2); m["runtime_boost_h"] = round(wh / Pb, 2); m["runtime_scan_h"] = round(wh / Ps, 2)
-            _rule(m, "MP1 input noise vs the 1.7 nV/rtHz target", A["noise"], 1.7, "<=", where_fe)
+            # critic 2026-10-31: the absolute 1.7 nV/rtHz row was added for alternative amplifiers only, while today's LMH6629 (2.211) fails it too and
+            # no option can meet it (resistor / FET / second-stage floor 1.911 nV/rtHz without any amplifier). It excluded every alternative from the
+            # no-break set for a target the whole machine fails. The target stays reported once for the machine (rf2_rules mp1.noise, FAIL); the
+            # option's value against it is kept here as an extra, and its depth effect is in depth_cm.
+            m["extra"]["bd_noise_vs_1p7_target_pct"] = round(100 * (A["noise"] / 1.7 - 1), 1)
             gate_mono = e.get("gate_mono") or m["first_gate_us"]
             if A["rec"] is not None:
                 settle = S["settle0"] * gate_mono / S["gate0"] + A["rec"]
@@ -216,7 +240,7 @@ def evaluate(ctx, P, m):
                 _rule(m, f"{amp}: input common-mode headroom at VBIAS 2.5 V on 5 V", A["cm_head"], 0.0, ">=", where_fe)
             if a["rail"] == "TPS":
                 m["extra"]["bd_amp_on_tps65131"] = "runs from the TPS65131 +15 / -10 V rails: its load share, output level shift to the 5 V ADC and input CM range are NOT modeled"
-            m["extra"].update(bd_noise_nV=A["noise"], bd_noise_floor_without_amp_nV=A["floor"], bd_depth_scale_1_6=round(A["ratio6"], 4), bd_depth_scale_alt_1_5p1=round(A["ratio51"], 4),
+            m["extra"].update(bd_noise_nV=A["noise"], bd_noise_floor_without_amp_nV=A["floor"], bd_depth_scale_1_6=round(A["ratio6"], 4), bd_depth_scale_model={k: round(v, 4) for k, v in dr.items()}, bd_depth_scale_alt_1_5p1=round(A["ratio51"], 4),
                               bd_amp_dP_W=round(dP, 3), bd_amp_status=a["status"])
     # ---------------- placement
     if place != TODAY_PLACE:
@@ -232,7 +256,8 @@ def evaluate(ctx, P, m):
             R = (S["R_tx_loop"] or 0.0) * m.get("L_tx_m", S["TX_LEN_M"]) / S["TX_LEN_M"] * (2.0 / P.get("oz", 2))
             jn = math.sqrt(KT4 * R) * 1e9; base = S["amps"].get(amp, {}).get("noise") or S["n0"]
             nn = math.hypot(base, jn); r6 = (base / nn) ** (1 / 6)
-            m["depth_cm"] = {k: round(v * r6, 1) for k, v in m["depth_cm"].items()}
+            dr = depth_ratio(S, P, e, nn, base) or {k: r6 for k in m["depth_cm"]}                           # critic 2026-10-31: engine depth model, not the 1/6 power
+            m["depth_cm"] = {k: round(v * dr.get(k, r6), 1) for k, v in m["depth_cm"].items()}
             m["extra"].update(bd_noise_with_cord_strips_nV=round(nn, 3),bd_cord_strip_R_ohm=round(R, 3), bd_cord_strip_johnson_nV=round(jn, 3),
                               bd_chassis_not_modeled="pickup on the 1.36 m unscreened receive path (the TX strips), flyback common-mode at the chassis, REF crosstalk into the receive signal")
         if place in ("fin_can", "centre_can"):

@@ -170,7 +170,7 @@ def evaluate(ctx, P, m):
     if part == TODAY_LITZ and wid == "row": return                      # today's litz and winding: the engine's numbers stay as they are
     if not hasattr(ctx, "coil_winding"): prepare(ctx)
     e = m["_e"]; N, p, sw = P["N"], P["p"], P["sw"]; g = _geo(ctx, N, p, part, wid); new = g["new"]; c = CAND[part]
-    ek = (N, p, part, wid, sw, e["R_loop"], e["I_scan"], e["I_boost"], e.get("gate"))
+    ek = (N, p, part, wid, sw, e["R_loop"], e["I_scan"], e["I_boost"], e.get("gate"), e.get("gate_mono"))
     E = ctx.coil_winding["elec"]
     if ek not in E:
         s = LO.SW[sw]; Cn = LO.c_node(sw); L0, L1 = g["L_core"], g["L_new"]; I0, Ib0 = e["I_scan"], e["I_boost"]; I1, Ib1 = I0 * g["I_ratio"], Ib0 * g["I_ratio"]
@@ -184,7 +184,7 @@ def evaluate(ctx, P, m):
             else:
                 out["dP_" + mode] = (p0["I_rms_coil"] if p0 else 0.2865 * Ia) ** 2 * dR; out["dE_" + mode] = 0.5 * (L1 * Ib ** 2 - L0 * Ia ** 2); out["reach"] = out["reach"] and bool(p1)
         out["I_boost_new"] = Ib1; out["I_reach_max"] = LO.VBUS / (e["R_loop"] + dR)
-        g0 = e.get("gate") or m["first_gate_us"]; vth = _vth(); dep = {}
+        g0 = e.get("gate_mono") or e.get("gate") or m["first_gate_us"]; vth = _vth(); dep = {}   # critic 2026-10-31: the mono echo at the MONO gate (hybrid rows carry the earlier planar gate in e["gate"])
         if g0:
             for kk, tg in LO.TARGETS.items():
                 d0 = LO.depth(lambda z: LO.echo_mono(g["b_core"](z), I0, g0 * 1e-6, tg), vth)
@@ -198,7 +198,7 @@ def evaluate(ctx, P, m):
     wh = ctx.packs[P["pack"]]["Wh_usable"] if hasattr(ctx, "packs") and P.get("pack") in getattr(ctx, "packs", {}) else m["runtime_boost_h"] * m["P_boost_W"]
     dPb, dPs = o["dP_boost"], o["dP_scan"]
     if P.get("clamp") == "dissip": dPb += 0.75 * LO.F * o["dE_scan"] * 2.5; dPs += 0.75 * LO.F * o["dE_scan"]
-    Pb = wh / m["runtime_boost_h"] + dPb; Ps = wh / m["runtime_scan_h"] + dPs
+    Pb = m["P_boost_W"] + dPb; Ps = wh / m["runtime_scan_h"] + dPs     # critic 2026-10-31: boost power from P_boost_W (as boards / wiring), not from the rounded runtime
     m["P_boost_W"] = round(m["P_boost_W"] + dPb, 2); m["runtime_boost_h"] = round(wh / Pb, 2); m["runtime_scan_h"] = round(wh / Ps, 2)
     m["mass_delta_g"] = int(round(m["mass_delta_g"] + new["mass_g"] - g["ref"]["mass_g"]))
     where = f"coil litz {part} / winding {wid}"
