@@ -8,11 +8,12 @@ For every slot (a component role) the incumbent and its candidates carry the sam
   margin (rating / stress, e.g. V rating / 460 V flyback, I rating / peak; higher better; credit stops at 2 x: enough margin is enough)
   attach (extra parts or offshoots the candidate needs beyond the incumbent's set; lower better)
   footprint_mm2 or volume (lower better)      verify (1 datasheet VERIFIED, 0.7 a value ASSUMED, 0.5 draft / vendor page, 0.3 UNVERIFIED)
-Hard constraints (never traded): rule 6 (>= 630 V on flyback parts), rule 5 / no metal in the head, absolute-maximum ratings, fit. A candidate that fails
-one is EXCLUDED; within 10 % it is listed as BLOCKED (docs/RULE_NEAR_MISSES.md) with the score it would have had.
+Rule checks (owner 2026-10-31: nothing is excluded because of a rule): every candidate is scored and listed; a candidate that breaks a rule (rule 6 >= 630 V
+on flyback parts, rule 5 / no metal in the head, absolute-maximum ratings, fit, ampacity, flex bend, sag) is marked BREAKS with the rule, by how much, and
+WHERE in the machine it would sit, so the owner can decide; nothing with a break is adopted automatically.
 Score per factor = candidate / incumbent (or incumbent / candidate when lower is better), clipped to 0.25-2; mass is scored on the whole machine
 (M / (M + delta), M = the chassis mass total), so a few grams on a small part cannot dominate; the slot score is the weighted mean over the
-factors the slot has. RECOMMEND when the score is >= 1.05, no hard constraint fails and verify >= 0.6. The weights are the owner's to tune (WEIGHTS).
+factors the slot has. RECOMMEND when the score is >= 1.05 and verify >= 0.6 (a rule break is shown next to it, never hidden). The weights are the owner's to tune (WEIGHTS).
 Writes docs/COMPONENT_SELECTION.md and rf2/results/rf2_select.json.   usage: python3 rf2/rf2_select.py"""
 import os, sys, json, math
 import numpy as np
@@ -64,10 +65,12 @@ def slots():
     # ---- coil litz (rf2_wire_options candidates that fit the comb and the band)
     wo = J("rf2", "results", "rf2_wire_options.json"); inc = wo.get("coil_best_rule6_ok_in_comb", {}); slot = wo.get("coil", {}).get("comb_slot_mm", 1.47)
     lit = []
-    for c in sorted([c for c in wo.get("candidates", []) if c["fits_comb"] and c["freq_ok"]], key=lambda c: c["R_coil_20C"])[:8]:
+    allc = sorted(wo.get("candidates", []), key=lambda c: c["R_coil_20C"]); r_inc = inc.get("R_coil_20C", 9)
+    pick = allc[:6] + [c for c in allc if c not in allc[:6] and (c["part"] == inc.get("part") or (c["fits_comb"] and c["R_coil_20C"] < r_inc))]
+    for c in pick:                                                                                   # the lowest-resistance constructions + every one that fits with less resistance, whatever rule they break
         rt = runtime_with(r_coil=c["R_coil_20C"])
         lit.append(dict(name=f"Rubadue {c['part']} ({c['kind']} {c['ins']}, OD {c['od_mm']} mm)", mass_g=c["coil_wire_g"], runtime_h=rt["boost"], scan_h=rt["scan"], signal=None,
-                        margin=round(c["v_rating"] / V_FLY, 2), attach=0, footprint=round(c["od_mm"] ** 2, 3), verify=0.9, hard=dict(rule6=c["rule6_ok"], fit=c["od_mm"] <= slot - 0.05),
+                        margin=round(c["v_rating"] / V_FLY, 2), attach=0, footprint=round(c["od_mm"] ** 2, 3), verify=0.9, hard=dict(rule6=c["rule6_ok"], fit=c["od_mm"] <= slot - 0.05, freq=c["freq_ok"]), od_mm=c["od_mm"], slot_mm=slot, f_band=c["f_band"],
                         note=f"{c['R_coil_20C']} ohm, {c['f_band']}", incumbent=(c["part"] == inc.get("part")), v_rating=c["v_rating"]))
     lit.sort(key=lambda r: not r.get("incumbent")); S["Coil litz (26 turns)"] = lit
     # ---- cord-flex TX copper
@@ -105,6 +108,24 @@ def slots():
 
 M_SAT = 2.0
 M_SYS = J("rf2", "chassis_out", "rf2_chassis_check.json").get("mass", {}).get("total_g", 2450)
+RULES = {"rule6": ("SAFETY rule 6", "flyback insulation >= 630 V"), "rule5": ("SAFETY rule 5", "no closed metal loop / metal target in the head"),
+         "cell_current": ("SAFETY abs-max", "cell continuous discharge rating"), "fit": ("fit", "finished OD seats in the comb slot (slot - 0.05 mm)"),
+         "ampacity": ("ampacity", "IPC-2221 width for 3.67 A at a 10 K rise"), "freq": ("frequency band", "litz band reaching >= 50 kHz (turn-off spectrum)"), "bend": ("flex life", "rolling-loop bend >= 10 x the stack (Minco)"), "sag": ("stiffness", "static tip sag <= 10 mm (ASSUMED)")}
+WHERE = {"TX switch (TXD Q1 / Q2)": "TXD board in the control chassis, on the 460 V flyback node", "Coil litz (26 turns)": "head coil channel (the flyback winding itself)",
+         "Cord-flex TX strip copper": "cord flex TX strips, rolling loop inside the telescope", "Battery pack": "battery dock under the control chassis",
+         "Telescope wall": "telescope profiles", "Display flex (522 LEDs)": "head lid / display tier", "Clamp / freewheel diode": "TXD board clamp and freewheel paths (460 V flyback node)",
+         "Battery-dock signal contacts": "battery dock contact block"}
+def breaks(slot, r):
+    out = []
+    for k, ok in r.get("hard", {}).items():
+        if ok: continue
+        rule, req = RULES.get(k, (k, ""))
+        if k == "rule6" and r.get("v_rating"): how = f"{r['v_rating']:.0f} V vs 630 V, {100 * (1 - r['v_rating'] / 630):.1f} % short"
+        elif k == "fit" and r.get("od_mm"): how = f"OD {r['od_mm']} mm vs {r['slot_mm'] - 0.05:.2f} mm max, {r['od_mm'] - (r['slot_mm'] - 0.05):.2f} mm oversize (a new comb / coil layout, rule 12)"
+        elif k == "freq" and r.get("f_band"): how = f"band {r['f_band']} (strands too thick for the turn-off spectrum)"
+        else: how = r.get("note", "")
+        out.append(dict(rule=rule, requirement=req, by=how, where=WHERE.get(slot, slot), safety=rule.startswith("SAFETY")))
+    return out
 def score(slot, rows):
     inc = rows[0]; out = []
     for r in rows:
@@ -119,17 +140,16 @@ def score(slot, rows):
             else: s = a / b if b else 2.0
             parts[k] = round(float(min(2.0, max(0.25, s))), 3)
         wsum = sum(WEIGHTS[k] for k in parts); total = round(sum(WEIGHTS[k] * v for k, v in parts.items()) / wsum, 3) if wsum else 1.0
-        hard_fail = [k for k, v in r.get("hard", {}).items() if not v]
-        near = []
-        if "rule6" in hard_fail and r.get("v_rating"): near.append(f"rule 6: {r['v_rating']:.0f} V vs 630 V ({100 * (1 - r['v_rating'] / 630):.1f} % short)")
-        status = "INCUMBENT" if r is inc else ("SHELVED" if r.get("shelved") else ("EXCLUDED" if hard_fail and not near else ("BLOCKED" if hard_fail else
-                 ("RECOMMEND" if total >= RECOMMEND_AT and r.get("verify", 0) >= 0.6 else ("BETTER, VERIFY FIRST" if total >= RECOMMEND_AT else "KEEP INCUMBENT")))))
-        out.append(dict(r, factor_scores=parts, score=total, hard_fail=hard_fail, near_miss=near, status=status))
+        br = breaks(slot, r)
+        status = "INCUMBENT" if r is inc else ("SHELVED" if r.get("shelved") else
+                 ("RECOMMEND" if total >= RECOMMEND_AT and r.get("verify", 0) >= 0.6 else ("BETTER, VERIFY FIRST" if total >= RECOMMEND_AT else "KEEP INCUMBENT")))
+        if br: status += " - BREAKS " + ", ".join(b["rule"] for b in br)
+        out.append(dict(r, factor_scores=parts, score=total, rule_breaks=br, status=status))
     return out
 
 def main():
     S = {k: score(k, v) for k, v in slots().items() if v}
-    rec = {k: [r for r in v if r["status"] == "RECOMMEND"] for k, v in S.items()}
+    rec = {k: [r for r in v if r["status"].startswith("RECOMMEND")] for k, v in S.items()}
     best = {k: max(v, key=lambda r: r["score"]) for k, v in rec.items() if v}
     # combined effect of the recommended electrical swaps on runtime (switch + litz + flex copper together)
     combo = {}
@@ -139,23 +159,24 @@ def main():
         rds = {"Infineon": 0.202 * 1.1, "GaN": 0.150 * 2.0, "2 x": 0.416 * 1.1 / 2}.get(next((k for k in ("Infineon", "GaN", "2 x") if sw and sw["name"].startswith(k)), None), None)
         rc = float(li["note"].split()[0]) if li else None
         rcab = float(cu["note"].split()[2]) if cu else None
-        combo = dict(parts=[x["name"] for x in (sw, li, cu) if x], runtime=runtime_with(rds_hot=rds, r_coil=rc, r_cable=rcab))
+        combo = dict(parts=[x["name"] for x in (sw, li, cu) if x], breaks=[b for x in (sw, li, cu) if x for b in x["rule_breaks"]], runtime=runtime_with(rds_hot=rds, r_coil=rc, r_cable=rcab))
     sy = J("rf2", "results", "rf2_system.json")["runtime"]
     res = dict(status="MODELED: factor values from the study results and the datasheet log (ASSUMED where marked); weights owner-tunable", weights=WEIGHTS, recommend_at=RECOMMEND_AT,
                baseline_runtime=dict(boost=sy["boost_continuous_h"], scan=sy["scan_h"]), slots=S, best=dict((k, v["name"]) for k, v in best.items()), combined=combo, ok=bool(S))
     json.dump(res, open(os.path.join(OUT, "rf2_select.json"), "w"), indent=1, default=float)
     L = ["# Component selection by weighted factors (generated by rf2/rf2_select.py; MODELED)", "",
          "Each slot's incumbent scores 1.00. A candidate's factor score is its ratio to the incumbent (better > 1, clipped 0.25-2); the slot score is the weighted mean of the factors the slot has. "
-         f"RECOMMEND at >= {RECOMMEND_AT:.2f} with no hard-constraint failure and verification >= 0.6. Hard constraints (rule 6, rule 5 / no metal in the head, absolute maximum, fit) are never traded: "
-         "a failure EXCLUDES the part, or BLOCKS it when it misses by 10 % or less (see docs/RULE_NEAR_MISSES.md).", "",
+         f"RECOMMEND at >= {RECOMMEND_AT:.2f} with verification >= 0.6. **Nothing is excluded because of a rule** (owner, 2026-10-31): a part that breaks a rule is listed and scored like the others, "
+         "marked **BREAKS** with the rule, by how much and where it would sit; nothing with a break is adopted automatically. Safety rules are rule 5, rule 6 and absolute-maximum ratings.", "",
          "Weights: " + ", ".join(f"{k} {v:.2f}" for k, v in WEIGHTS.items()) + f". Baseline runtime: {sy['boost_continuous_h']} h boost / {sy['scan_h']} h scan.", ""]
     for k, rows in S.items():
-        L += [f"## {k}", "", "| Part | Status | Score | Mass g | Boost h | Signal | Margin | Extra parts | Footprint | Verify | Note |", "|---|---|---|---|---|---|---|---|---|---|---|"]
+        L += [f"## {k}", "", "| Part | Status | Score | Rule breaks (where) | Mass g | Boost h | Signal | Margin | Extra parts | Footprint | Verify | Note |", "|---|---|---|---|---|---|---|---|---|---|---|---|"]
         for r in sorted(rows, key=lambda r: (r["status"] != "INCUMBENT", -r["score"])):
             sig = r.get("signal"); un = r.get("units", {}).get("signal", "")
-            L.append(f"| {r['name']} | **{r['status']}** | {r['score']:.2f} | {r.get('mass_g', '-')} | {r.get('runtime_h', '-')} | {sig if sig is not None else '-'} {un} | {r.get('margin', '-')} | {r.get('attach', '-')} | {r.get('footprint', '-')} | {r.get('verify', '-')} | {r['note']}{'; ' + '; '.join(r['near_miss']) if r['near_miss'] else ''} |")
+            brk = "; ".join(f"**{b['rule']}** ({b['requirement']}): {b['by']} - at the {b['where']}" for b in r["rule_breaks"]) or "-"
+            L.append(f"| {r['name']} | **{r['status']}** | {r['score']:.2f} | {brk} | {r.get('mass_g', '-')} | {r.get('runtime_h', '-')} | {sig if sig is not None else '-'} {un} | {r.get('margin', '-')} | {r.get('attach', '-')} | {r.get('footprint', '-')} | {r.get('verify', '-')} | {r['note']} |")
         L.append("")
-    if combo: L += ["## Recommended electrical swaps together", "", f"{', '.join(combo['parts'])}: runtime {combo['runtime']['boost']} h boost / {combo['runtime']['scan']} h scan (baseline {sy['boost_continuous_h']} / {sy['scan_h']})", ""]
+    if combo: L += ["## Recommended electrical swaps together", "", f"{', '.join(combo['parts'])}{' (includes a rule break: see the rows above)' if combo.get('breaks') else ''}: runtime {combo['runtime']['boost']} h boost / {combo['runtime']['scan']} h scan (baseline {sy['boost_continuous_h']} / {sy['scan_h']})", ""]
     open(os.path.join(ROOT, "docs", "COMPONENT_SELECTION.md"), "w").write("\n".join(L) + "\n")
     for k, v in S.items(): print(k, [(r["name"][:40], r["status"], r["score"]) for r in v])
     print("combined:", combo); return res

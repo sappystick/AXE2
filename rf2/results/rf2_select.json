@@ -42,8 +42,7 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
    },
    {
@@ -72,8 +71,7 @@
      "verify": 1.0
     },
     "score": 0.959,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -103,8 +101,7 @@
      "verify": 0.7
     },
     "score": 1.018,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -134,8 +131,7 @@
      "verify": 1.0
     },
     "score": 0.923,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    }
   ],
@@ -152,8 +148,12 @@
     "verify": 0.9,
     "hard": {
      "rule6": true,
-     "fit": true
+     "fit": true,
+     "freq": true
     },
+    "od_mm": 1.372,
+    "slot_mm": 1.47,
+    "f_band": "50-100 khz",
     "note": "0.6 ohm, 50-100 khz",
     "incumbent": true,
     "v_rating": 1000.0,
@@ -165,9 +165,262 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
+   },
+   {
+    "name": "Rubadue TXXL350/38FXXX-2(MWXX) (Triple FEP, OD 2.718 mm)",
+    "mass_g": 594.7,
+    "runtime_h": 3.63,
+    "scan_h": 6.06,
+    "signal": null,
+    "margin": 2.17,
+    "attach": 0,
+    "footprint": 7.388,
+    "verify": 0.9,
+    "hard": {
+     "rule6": true,
+     "fit": false,
+     "freq": true
+    },
+    "od_mm": 2.718,
+    "slot_mm": 1.47,
+    "f_band": "400-850 khz",
+    "note": "0.113 ohm, 400-850 khz",
+    "incumbent": false,
+    "v_rating": 1000.0,
+    "factor_scores": {
+     "mass_g": 0.839,
+     "runtime_h": 1.396,
+     "margin": 1.0,
+     "footprint": 0.255,
+     "verify": 1.0
+    },
+    "score": 0.961,
+    "rule_breaks": [
+     {
+      "rule": "fit",
+      "requirement": "finished OD seats in the comb slot (slot - 0.05 mm)",
+      "by": "OD 2.718 mm vs 1.42 mm max, 1.30 mm oversize (a new comb / coil layout, rule 12)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS fit"
+   },
+   {
+    "name": "Rubadue TXXL350/38FXXX-3(MWXX) (Triple FEP, OD 2.87 mm)",
+    "mass_g": 620.9,
+    "runtime_h": 3.63,
+    "scan_h": 6.06,
+    "signal": null,
+    "margin": 2.17,
+    "attach": 0,
+    "footprint": 8.237,
+    "verify": 0.9,
+    "hard": {
+     "rule6": true,
+     "fit": false,
+     "freq": true
+    },
+    "od_mm": 2.87,
+    "slot_mm": 1.47,
+    "f_band": "400-850 khz",
+    "note": "0.113 ohm, 400-850 khz",
+    "incumbent": false,
+    "v_rating": 1000.0,
+    "factor_scores": {
+     "mass_g": 0.832,
+     "runtime_h": 1.396,
+     "margin": 1.0,
+     "footprint": 0.25,
+     "verify": 1.0
+    },
+    "score": 0.958,
+    "rule_breaks": [
+     {
+      "rule": "fit",
+      "requirement": "finished OD seats in the comb slot (slot - 0.05 mm)",
+      "by": "OD 2.87 mm vs 1.42 mm max, 1.45 mm oversize (a new comb / coil layout, rule 12)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS fit"
+   },
+   {
+    "name": "Rubadue TXXL825/44FXXX-2(MWXX) (Triple FEP, OD 2.449 mm)",
+    "mass_g": 365.3,
+    "runtime_h": 3.44,
+    "scan_h": 5.91,
+    "signal": null,
+    "margin": 2.17,
+    "attach": 0,
+    "footprint": 5.998,
+    "verify": 0.9,
+    "hard": {
+     "rule6": true,
+     "fit": false,
+     "freq": true
+    },
+    "od_mm": 2.449,
+    "slot_mm": 1.47,
+    "f_band": "400-850 khz",
+    "note": "0.192 ohm, 400-850 khz",
+    "incumbent": false,
+    "v_rating": 1000.0,
+    "factor_scores": {
+     "mass_g": 0.911,
+     "runtime_h": 1.323,
+     "margin": 1.0,
+     "footprint": 0.314,
+     "verify": 1.0
+    },
+    "score": 0.969,
+    "rule_breaks": [
+     {
+      "rule": "fit",
+      "requirement": "finished OD seats in the comb slot (slot - 0.05 mm)",
+      "by": "OD 2.449 mm vs 1.42 mm max, 1.03 mm oversize (a new comb / coil layout, rule 12)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS fit"
+   },
+   {
+    "name": "Rubadue TXXL825/44FXXX-3(MWXX) (Triple FEP, OD 2.601 mm)",
+    "mass_g": 388.9,
+    "runtime_h": 3.44,
+    "scan_h": 5.91,
+    "signal": null,
+    "margin": 2.17,
+    "attach": 0,
+    "footprint": 6.765,
+    "verify": 0.9,
+    "hard": {
+     "rule6": true,
+     "fit": false,
+     "freq": true
+    },
+    "od_mm": 2.601,
+    "slot_mm": 1.47,
+    "f_band": "400-850 khz",
+    "note": "0.192 ohm, 400-850 khz",
+    "incumbent": false,
+    "v_rating": 1000.0,
+    "factor_scores": {
+     "mass_g": 0.903,
+     "runtime_h": 1.323,
+     "margin": 1.0,
+     "footprint": 0.278,
+     "verify": 1.0
+    },
+    "score": 0.961,
+    "rule_breaks": [
+     {
+      "rule": "fit",
+      "requirement": "finished OD seats in the comb slot (slot - 0.05 mm)",
+      "by": "OD 2.601 mm vs 1.42 mm max, 1.18 mm oversize (a new comb / coil layout, rule 12)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS fit"
+   },
+   {
+    "name": "Rubadue DXXL825/44FXX-3(MWXX) (Double FEP, OD 2.449 mm)",
+    "mass_g": 365.3,
+    "runtime_h": 3.44,
+    "scan_h": 5.91,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 5.998,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": false,
+     "freq": true
+    },
+    "od_mm": 2.449,
+    "slot_mm": 1.47,
+    "f_band": "400-850 khz",
+    "note": "0.192 ohm, 400-850 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 0.911,
+     "runtime_h": 1.323,
+     "margin": 0.65,
+     "footprint": 0.314,
+     "verify": 1.0
+    },
+    "score": 0.894,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "fit",
+      "requirement": "finished OD seats in the comb slot (slot - 0.05 mm)",
+      "by": "OD 2.449 mm vs 1.42 mm max, 1.03 mm oversize (a new comb / coil layout, rule 12)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, fit"
+   },
+   {
+    "name": "Rubadue DXXL825/44TXX-3(MWXX) (Double ETFE, OD 2.449 mm)",
+    "mass_g": 365.3,
+    "runtime_h": 3.44,
+    "scan_h": 5.91,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 5.998,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": false,
+     "freq": true
+    },
+    "od_mm": 2.449,
+    "slot_mm": 1.47,
+    "f_band": "400-850 khz",
+    "note": "0.192 ohm, 400-850 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 0.911,
+     "runtime_h": 1.323,
+     "margin": 0.65,
+     "footprint": 0.314,
+     "verify": 1.0
+    },
+    "score": 0.894,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "fit",
+      "requirement": "finished OD seats in the comb slot (slot - 0.05 mm)",
+      "by": "OD 2.449 mm vs 1.42 mm max, 1.03 mm oversize (a new comb / coil layout, rule 12)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, fit"
    },
    {
     "name": "Rubadue SXXL100/38FX-2(MWXX) (Single FEP, OD 1.417 mm)",
@@ -181,8 +434,12 @@
     "verify": 0.9,
     "hard": {
      "rule6": false,
-     "fit": true
+     "fit": true,
+     "freq": true
     },
+    "od_mm": 1.417,
+    "slot_mm": 1.47,
+    "f_band": "50-100 khz",
     "note": "0.396 ohm, 50-100 khz",
     "incumbent": false,
     "v_rating": 600.0,
@@ -194,13 +451,16 @@
      "verify": 1.0
     },
     "score": 0.957,
-    "hard_fail": [
-     "rule6"
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     }
     ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6"
    },
    {
     "name": "Rubadue SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm)",
@@ -214,8 +474,12 @@
     "verify": 0.9,
     "hard": {
      "rule6": false,
-     "fit": true
+     "fit": true,
+     "freq": true
     },
+    "od_mm": 1.417,
+    "slot_mm": 1.47,
+    "f_band": "50-100 khz",
     "note": "0.396 ohm, 50-100 khz",
     "incumbent": false,
     "v_rating": 600.0,
@@ -227,178 +491,385 @@
      "verify": 1.0
     },
     "score": 0.957,
-    "hard_fail": [
-     "rule6"
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     }
     ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6"
    },
    {
-    "name": "Rubadue DXXL66/38FXX-2(MWXX) (Double FEP, OD 1.27 mm)",
-    "mass_g": 117.7,
-    "runtime_h": 2.6,
-    "scan_h": 5.2,
+    "name": "Rubadue TXXL07/28FXXX-2(MWXX) (Triple FEP, OD 1.354 mm)",
+    "mass_g": 130.9,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
+    "signal": null,
+    "margin": 2.17,
+    "attach": 0,
+    "footprint": 1.833,
+    "verify": 0.9,
+    "hard": {
+     "rule6": true,
+     "fit": true,
+     "freq": false
+    },
+    "od_mm": 1.354,
+    "slot_mm": 1.47,
+    "f_band": "60hz-1 khz",
+    "note": "0.571 ohm, 60hz-1 khz",
+    "incumbent": false,
+    "v_rating": 1000.0,
+    "factor_scores": {
+     "mass_g": 0.998,
+     "runtime_h": 1.023,
+     "margin": 1.0,
+     "footprint": 1.027,
+     "verify": 1.0
+    },
+    "score": 1.01,
+    "rule_breaks": [
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60hz-1 khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS frequency band"
+   },
+   {
+    "name": "Rubadue DXXL07/28FXX-2(MWXX) (Double FEP, OD 1.252 mm)",
+    "mass_g": 122.7,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
     "signal": null,
     "margin": 1.3,
     "attach": 0,
-    "footprint": 1.613,
+    "footprint": 1.568,
     "verify": 0.9,
     "hard": {
      "rule6": false,
-     "fit": true
+     "fit": true,
+     "freq": false
     },
-    "note": "0.6 ohm, 50-100 khz",
+    "od_mm": 1.252,
+    "slot_mm": 1.47,
+    "f_band": "60 khz -1 khz",
+    "note": "0.571 ohm, 60 khz -1 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.001,
+     "runtime_h": 1.023,
+     "margin": 0.65,
+     "footprint": 1.2,
+     "verify": 1.0
+    },
+    "score": 0.96,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60 khz -1 khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, frequency band"
+   },
+   {
+    "name": "Rubadue DXXL07/28TXX-2(MWXX) (Double ETFE, OD 1.252 mm)",
+    "mass_g": 122.7,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.568,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true,
+     "freq": false
+    },
+    "od_mm": 1.252,
+    "slot_mm": 1.47,
+    "f_band": "60 hz-1 khz",
+    "note": "0.571 ohm, 60 hz-1 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.001,
+     "runtime_h": 1.023,
+     "margin": 0.65,
+     "footprint": 1.2,
+     "verify": 1.0
+    },
+    "score": 0.96,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60 hz-1 khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, frequency band"
+   },
+   {
+    "name": "Rubadue DXXL07/28TXX-3(MWXX) (Double ETFE, OD 1.354 mm)",
+    "mass_g": 130.9,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.833,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true,
+     "freq": false
+    },
+    "od_mm": 1.354,
+    "slot_mm": 1.47,
+    "f_band": "60 hz-1 khz",
+    "note": "0.571 ohm, 60 hz-1 khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 0.998,
+     "runtime_h": 1.023,
+     "margin": 0.65,
+     "footprint": 1.027,
+     "verify": 1.0
+    },
+    "score": 0.935,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60 hz-1 khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, frequency band"
+   },
+   {
+    "name": "Rubadue SXXL07/28FX-2(MWXX) (Single FEP, OD 1.151 mm)",
+    "mass_g": 115.2,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.325,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true,
+     "freq": false
+    },
+    "od_mm": 1.151,
+    "slot_mm": 1.47,
+    "f_band": "60 hz-1khz",
+    "note": "0.571 ohm, 60 hz-1khz",
+    "incumbent": false,
+    "v_rating": 600.0,
+    "factor_scores": {
+     "mass_g": 1.004,
+     "runtime_h": 1.023,
+     "margin": 0.65,
+     "footprint": 1.42,
+     "verify": 1.0
+    },
+    "score": 0.993,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60 hz-1khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
+    ],
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, frequency band"
+   },
+   {
+    "name": "Rubadue SXXL07/28FX-3(MWXX) (Single FEP, OD 1.201 mm)",
+    "mass_g": 118.9,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
+    "signal": null,
+    "margin": 1.3,
+    "attach": 0,
+    "footprint": 1.442,
+    "verify": 0.9,
+    "hard": {
+     "rule6": false,
+     "fit": true,
+     "freq": false
+    },
+    "od_mm": 1.201,
+    "slot_mm": 1.47,
+    "f_band": "60 hz-1khz",
+    "note": "0.571 ohm, 60 hz-1khz",
     "incumbent": false,
     "v_rating": 600.0,
     "factor_scores": {
      "mass_g": 1.003,
-     "runtime_h": 1.0,
+     "runtime_h": 1.023,
      "margin": 0.65,
-     "footprint": 1.167,
+     "footprint": 1.305,
      "verify": 1.0
     },
-    "score": 0.95,
-    "hard_fail": [
-     "rule6"
+    "score": 0.976,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60 hz-1khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
     ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, frequency band"
    },
    {
-    "name": "Rubadue DXXL66/38FXX-3(MWXX) (Double FEP, OD 1.372 mm)",
-    "mass_g": 126.0,
-    "runtime_h": 2.6,
-    "scan_h": 5.2,
+    "name": "Rubadue SXXL07/28TX-2(MWXX) (Single ETFE, OD 1.151 mm)",
+    "mass_g": 115.2,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
     "signal": null,
     "margin": 1.3,
     "attach": 0,
-    "footprint": 1.882,
+    "footprint": 1.325,
     "verify": 0.9,
     "hard": {
      "rule6": false,
-     "fit": true
+     "fit": true,
+     "freq": false
     },
-    "note": "0.6 ohm, 50-100 khz",
+    "od_mm": 1.151,
+    "slot_mm": 1.47,
+    "f_band": "60hz-1 khz",
+    "note": "0.571 ohm, 60hz-1 khz",
     "incumbent": false,
     "v_rating": 600.0,
     "factor_scores": {
-     "mass_g": 1.0,
-     "runtime_h": 1.0,
+     "mass_g": 1.004,
+     "runtime_h": 1.023,
      "margin": 0.65,
-     "footprint": 1.0,
+     "footprint": 1.42,
      "verify": 1.0
     },
-    "score": 0.925,
-    "hard_fail": [
-     "rule6"
+    "score": 0.993,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60hz-1 khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
     ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, frequency band"
    },
    {
-    "name": "Rubadue DXXL66/38TXX-2(MWXX) (Double ETFE, OD 1.27 mm)",
-    "mass_g": 117.7,
-    "runtime_h": 2.6,
-    "scan_h": 5.2,
+    "name": "Rubadue SXXL07/28TX-3(MWXX) (Single ETFE, OD 1.201 mm)",
+    "mass_g": 118.9,
+    "runtime_h": 2.66,
+    "scan_h": 5.25,
     "signal": null,
     "margin": 1.3,
     "attach": 0,
-    "footprint": 1.613,
+    "footprint": 1.442,
     "verify": 0.9,
     "hard": {
      "rule6": false,
-     "fit": true
+     "fit": true,
+     "freq": false
     },
-    "note": "0.6 ohm, 50-100 khz",
+    "od_mm": 1.201,
+    "slot_mm": 1.47,
+    "f_band": "60hz-1 khz",
+    "note": "0.571 ohm, 60hz-1 khz",
     "incumbent": false,
     "v_rating": 600.0,
     "factor_scores": {
      "mass_g": 1.003,
-     "runtime_h": 1.0,
+     "runtime_h": 1.023,
      "margin": 0.65,
-     "footprint": 1.167,
+     "footprint": 1.305,
      "verify": 1.0
     },
-    "score": 0.95,
-    "hard_fail": [
-     "rule6"
+    "score": 0.976,
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": true
+     },
+     {
+      "rule": "frequency band",
+      "requirement": "litz band reaching >= 50 kHz (turn-off spectrum)",
+      "by": "band 60hz-1 khz (strands too thick for the turn-off spectrum)",
+      "where": "head coil channel (the flyback winding itself)",
+      "safety": false
+     }
     ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
-   },
-   {
-    "name": "Rubadue DXXL66/38TXX-3(MWXX) (Double ETFE, OD 1.372 mm)",
-    "mass_g": 126.0,
-    "runtime_h": 2.6,
-    "scan_h": 5.2,
-    "signal": null,
-    "margin": 1.3,
-    "attach": 0,
-    "footprint": 1.882,
-    "verify": 0.9,
-    "hard": {
-     "rule6": false,
-     "fit": true
-    },
-    "note": "0.6 ohm, 50-100 khz",
-    "incumbent": false,
-    "v_rating": 600.0,
-    "factor_scores": {
-     "mass_g": 1.0,
-     "runtime_h": 1.0,
-     "margin": 0.65,
-     "footprint": 1.0,
-     "verify": 1.0
-    },
-    "score": 0.925,
-    "hard_fail": [
-     "rule6"
-    ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
-   },
-   {
-    "name": "Rubadue SXXL66/38FX-2(MWXX) (Single FEP, OD 1.168 mm)",
-    "mass_g": 110.0,
-    "runtime_h": 2.6,
-    "scan_h": 5.2,
-    "signal": null,
-    "margin": 1.3,
-    "attach": 0,
-    "footprint": 1.364,
-    "verify": 0.9,
-    "hard": {
-     "rule6": false,
-     "fit": true
-    },
-    "note": "0.6 ohm, 50-100 khz",
-    "incumbent": false,
-    "v_rating": 600.0,
-    "factor_scores": {
-     "mass_g": 1.007,
-     "runtime_h": 1.0,
-     "margin": 0.65,
-     "footprint": 1.38,
-     "verify": 1.0
-    },
-    "score": 0.981,
-    "hard_fail": [
-     "rule6"
-    ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6, frequency band"
    }
   ],
   "Cord-flex TX strip copper": [
@@ -428,8 +899,7 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
    },
    {
@@ -458,8 +928,7 @@
      "verify": 0.7
     },
     "score": 0.971,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -488,11 +957,16 @@
      "verify": 1.0
     },
     "score": 0.983,
-    "hard_fail": [
-     "ampacity"
+    "rule_breaks": [
+     {
+      "rule": "ampacity",
+      "requirement": "IPC-2221 width for 3.67 A at a 10 K rise",
+      "by": "TX loop 0.560 ohm; loop bend 52 x stack (Minco >= 10 x)",
+      "where": "cord flex TX strips, rolling loop inside the telescope",
+      "safety": false
+     }
     ],
-    "near_miss": [],
-    "status": "EXCLUDED"
+    "status": "KEEP INCUMBENT - BREAKS ampacity"
    }
   ],
   "Battery pack": [
@@ -519,8 +993,7 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
    },
    {
@@ -546,8 +1019,7 @@
      "verify": 1.0
     },
     "score": 1.072,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "RECOMMEND"
    },
    {
@@ -573,8 +1045,7 @@
      "verify": 1.0
     },
     "score": 1.049,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -600,8 +1071,7 @@
      "verify": 1.0
     },
     "score": 0.998,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -627,8 +1097,7 @@
      "verify": 0.5
     },
     "score": 0.923,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -654,8 +1123,7 @@
      "verify": 0.5
     },
     "score": 0.924,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -682,8 +1150,7 @@
      "verify": 0.3
     },
     "score": 0.741,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -709,8 +1176,7 @@
      "verify": 1.0
     },
     "score": 0.974,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    }
   ],
@@ -735,8 +1201,7 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
    },
    {
@@ -759,8 +1224,7 @@
      "verify": 1.0
     },
     "score": 0.99,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -783,8 +1247,7 @@
      "verify": 1.0
     },
     "score": 1.007,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    },
    {
@@ -807,8 +1270,7 @@
      "verify": 1.0
     },
     "score": 1.014,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    }
   ],
@@ -830,8 +1292,7 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
    },
    {
@@ -853,8 +1314,7 @@
      "verify": 0.5
     },
     "score": 0.912,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "SHELVED"
    }
   ],
@@ -880,8 +1340,7 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
    },
    {
@@ -906,13 +1365,16 @@
      "verify": 1.0
     },
     "score": 0.804,
-    "hard_fail": [
-     "rule6"
+    "rule_breaks": [
+     {
+      "rule": "SAFETY rule 6",
+      "requirement": "flyback insulation >= 630 V",
+      "by": "600 V vs 630 V, 4.8 % short",
+      "where": "TXD board clamp and freewheel paths (460 V flyback node)",
+      "safety": true
+     }
     ],
-    "near_miss": [
-     "rule 6: 600 V vs 630 V (4.8 % short)"
-    ],
-    "status": "BLOCKED"
+    "status": "KEEP INCUMBENT - BREAKS SAFETY rule 6"
    }
   ],
   "Battery-dock signal contacts": [
@@ -934,8 +1396,7 @@
      "verify": 1.0
     },
     "score": 1.0,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "INCUMBENT"
    },
    {
@@ -956,8 +1417,7 @@
      "verify": 0.429
     },
     "score": 1.048,
-    "hard_fail": [],
-    "near_miss": [],
+    "rule_breaks": [],
     "status": "KEEP INCUMBENT"
    }
   ]

@@ -1403,3 +1403,10 @@ About **761 g** (745 g corrected 2026-10-30 from 702 g, docs/CORRECTIONS.md; +15
   - **TX switch:** IPB65R095C7 gives 3.13 h boost but the first gate goes to 17.1 us (0.1 g depth 195 -> 179 mm). GaN gives 2.95 h at a 1.41 x voltage margin and needs a gate-drive change. 2 x C3M gives 3.11 h with the gate at 15.25 us. None reaches 1.05.
   - **Better litz options are all BLOCKED by rule 6** (600 V parts).
 - **Next:** more slots as data arrive (front-end op-amp / switch, ±12 V supply, REF3 wire, connectors, MCU). Every new datasheet adds a candidate row.
+- **Update (owner, 2026-10-31): nothing is excluded because of a rule.**
+  - Every candidate is scored and listed.
+  - A rule break is shown in its own column with the rule, the requirement, by how much, and where in the machine the part would sit, e.g. "SAFETY rule 6 (flyback insulation >= 630 V): 600 V vs 630 V, 4.8 % short - at the head coil channel".
+  - The status carries "BREAKS <rule>". Nothing with a break is adopted automatically.
+  - The litz slot now lists the lowest-resistance constructions and every one that fits with less resistance than the incumbent, whatever rule they break.
+  - Oversize wires show "OD x mm vs y mm max, z mm oversize (a new comb / coil layout, rule 12)".
+  - 19 BREAKS rows in docs/COMPONENT_SELECTION.md.
