@@ -73,7 +73,12 @@ def echo_sep(b_t, b_r, I, t, tg):
     return (b_t * tg["area"] * I / Lo) * (b_r * tg["area"]) / tau * math.exp(-t / tau)
 
 def depth(fn, vth):
-    v = np.array([fn(z) for z in DEPTHS])
+    # speed 2026-10-31: evaluate all depths in one numpy call when fn accepts an array (echo_mono / echo_sep do); else the scalar loop
+    try:
+        v = np.asarray(fn(DEPTHS), dtype=float)
+        if v.shape != DEPTHS.shape: raise TypeError
+    except (TypeError, ValueError):
+        v = np.array([fn(z) for z in DEPTHS])
     if v[0] < vth: return 0.0
     return float(np.exp(np.interp(math.log(vth), np.log(v[::-1]), np.log(DEPTHS[::-1]))))
 

@@ -49,3 +49,10 @@ Spawn one agent per role. Every agent sources its numbers from the KB and writes
 - **Cross-checks:** `rf2/rf2_solver_xcheck.py` (FastHenry coil and strips, SymPy formula checks, scikit-rf line).
 - **Elmer FEM, OpenEMS, Meep, FEniCS:** not installed; Elmer and OpenEMS need source builds. Add them through `scripts/fetch_solvers.sh` when a study needs 3D eddy currents in conductive bodies.
 - **Targets:** come from the owner and the rules (CLAUDE.md), never from concept text. The Hyperion study ruled out the 1/r² focus and the sub-0.8 µs settle (`docs/HYPERION_EVALUATION.md`), so they are not targets.
+
+## Speed and the clean-sheet model (2026-10-31)
+- **Pipeline:** `python3 run.py -j 3` runs independent steps in parallel. A step starts when its declared deps and the steps that write its inputs have finished; board / routing steps run alone.
+- **Engine timing:** 18 s for 33k variants. Depth is evaluated as one numpy call per variant, the Pareto front is built incrementally, and the random sample runs in `--jobs` fork workers. The wiring 2D coupling solve is cached on disk in `rf2/results/cache` (keyed by the source hash).
+- **Learning timing:** about 60 s. The Gram matrix is computed once per fold.
+- **Profiling:** when a step slows down, profile it first (`python3 -m cProfile -o p.prof <script>`), then cache whatever is invariant across draws or variants, vectorise the inner loops over depth / frequency, and confirm the outputs are byte-identical before and after.
+- **Clean-sheet model (`rf2/rf2_cleansheet.py`, `docs/CLEANSHEET.md`):** a continuous, first-principles design of the whole machine within loose envelopes. It is calibrated to today's AXE2 within 1.4 %, and runs NSGA-II in 4 processes plus a scipy polish in about 85 s. It answers questions the discrete axes cannot reach; feed its winners back as new axis options.

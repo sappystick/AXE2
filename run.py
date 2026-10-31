@@ -120,6 +120,8 @@ STEPS = [
     dict(id="solver-xcheck", cmd=["rf2/rf2_solver_xcheck.py"], inputs=["rf2/rf2_solver_xcheck.py", "rf2/rf2_lowL_options.py", "rf2/rf2_cordflex.py", "rf2/rf2_txd_spice.py", "concepts/clib.py"], deps=[],
          outputs=["rf2/results/rf2_solver_xcheck.json"], timeout=1800),
     dict(id="variant-optuna", cmd=["rf2/rf2_variant_optuna.py"], inputs=["rf2/rf2_variant_optuna.py", "rf2/results/rf2_variants.json"], deps=["variants"], outputs=["rf2/results/rf2_variant_optuna.json"], timeout=3600),
+    dict(id="cleansheet", cmd=["rf2/rf2_cleansheet.py"], inputs=["rf2/rf2_cleansheet.py", "rf2/rf2_lowL_options.py", "rf2/results/rf2_wire_options.json", "rf2/results/rf2_pack_options.json", "rf2/results/rf2_solver_xcheck.json"],
+         deps=["lowL-options", "pack-options", "wire-options", "solver-xcheck"], outputs=["rf2/results/rf2_cleansheet.json", "docs/CLEANSHEET.md"], timeout=1800),
     dict(id="kb", cmd=["rf2/rf2_kb.py"], inputs=["rf2/rf2_kb.py", "docs/DATASHEET_LOG_ARX.md", "rf2/PARTS_RF2.md", "rf2/HANDOFF_RF2.md"], deps=[], outputs=["docs/KNOWLEDGE_BASE.md", "rf2/results/rf2_kb.json"], timeout=1800),
     dict(id="variant-learn", cmd=["rf2/rf2_variant_learn.py"], inputs=["rf2/rf2_variant_learn.py", "rf2/variant_decisions.json", "rf2/results/rf2_variants.json"], deps=["variants"],
          outputs=["rf2/results/rf2_variant_learn.json", "docs/VARIANTS_LEARNING.md"], timeout=3600),
@@ -259,6 +261,7 @@ def main():
     ap.add_argument("--failed", action="store_true"); ap.add_argument("--plan", action="store_true"); ap.add_argument("--cold", action="store_true")
     ap.add_argument("--list", action="store_true"); ap.add_argument("--step", nargs="+"); ap.add_argument("--with-render", action="store_true"); ap.add_argument("--with-studies", action="store_true")
     ap.add_argument("--why", metavar="STEP", help="explain one step: its inputs, what changed since it last ran, its time history"); ap.add_argument("--timing", action="store_true", help="time per step (last and median of the history) and the cache")
+    ap.add_argument("-j", "--jobs", type=int, default=min(3, os.cpu_count() or 1), help="steps run in parallel when their inputs are ready (1 = one at a time)")
     args = ap.parse_args(); os.makedirs(STATE, exist_ok=True); L = load()
     if args.list:
         for s in STEPS:
@@ -274,13 +277,36 @@ def main():
         pid = int(open(LOCK).read().strip() or 0)
         if pid and os.path.exists(f"/proc/{pid}"): sys.exit(f"run.py: another run is active (pid {pid}); wait for it")
     open(LOCK, "w").write(str(os.getpid())); t0 = time.time(); results = {}
+    def record(i, s, e):
+        e["history"] = (L["steps"].get(s["id"], {}).get("history", []) + ([e["seconds"]] if e["status"] == "pass" else []))[-8:]
+        L["steps"][s["id"]] = e; results[s["id"]] = e["status"]
+        json.dump(L, open(LEDGER, "w"), indent=1)                        # saved after every step: an interrupted run keeps what it learned
+        print(f"      {s['id']}: {e['status'].upper()} {e['seconds']} s {e['why']}", flush=True)
     try:
-        for i, (s, why) in enumerate(todo, 1):
-            print(f"[{i}/{len(todo)}] {s['id']} ({why}) ...", flush=True)
-            e = run_step(s); e["history"] = (L["steps"].get(s["id"], {}).get("history", []) + ([e["seconds"]] if e["status"] == "pass" else []))[-8:]
-            L["steps"][s["id"]] = e; results[s["id"]] = e["status"]
-            json.dump(L, open(LEDGER, "w"), indent=1)                    # saved after every step: an interrupted run keeps what it learned
-            print(f"      {e['status'].upper()} {e['seconds']} s {e['why']}", flush=True)
+        if args.jobs <= 1:
+            for i, (s, why) in enumerate(todo, 1):
+                print(f"[{i}/{len(todo)}] {s['id']} ({why}) ...", flush=True); record(i, s, run_step(s))
+        else:
+            # parallel (speed 2026-10-31): a step starts when every step it depends on in this run has finished: its declared deps, and any
+            # step whose outputs are among its inputs. Steps marked exclusive (board routing / KiCad) run alone.
+            from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
+            ids = {s["id"] for s, _ in todo}; outs = {s["id"]: set(s.get("outputs", [])) for s, _ in todo}
+            pre = {s["id"]: ({d for d in s.get("deps", []) if d in ids} | {t for t in ids if t != s["id"] and outs[t] & set(s.get("inputs", []))}) for s, _ in todo}
+            order = [s["id"] for s, _ in todo]
+            for k in pre: pre[k] = {d for d in pre[k] if order.index(d) < order.index(k)}       # keep the list order acyclic
+            byid = {s["id"]: (s, why) for s, why in todo}; done, running, n = set(), {}, 0
+            excl = lambda s: s.get("exclusive") or s["id"].startswith(("board:", "route"))
+            with ThreadPoolExecutor(max_workers=args.jobs) as ex:
+                while len(done) < len(todo):
+                    for k in order:
+                        if k in done or k in running.values() or not pre[k] <= done: continue
+                        s, why = byid[k]
+                        if running and (excl(s) or any(excl(byid[r][0]) for r in running.values())): continue
+                        if len(running) >= args.jobs: break
+                        n += 1; print(f"[{n}/{len(todo)}] {k} ({why}) ...", flush=True); running[ex.submit(run_step, s)] = k
+                    fin, _ = wait(list(running), return_when=FIRST_COMPLETED)
+                    for fu in fin:
+                        k = running.pop(fu); record(0, byid[k][0], fu.result()); done.add(k)
     finally:
         if os.path.exists(LOCK): os.remove(LOCK)
     L["runs"] = (L["runs"] + [dict(finished=datetime.datetime.now().isoformat(timespec="seconds"), seconds=round(time.time() - t0, 1), results=results)])[-50:]

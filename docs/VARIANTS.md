@@ -90,5 +90,6 @@ Score: rf2_select weights {'mass_g': 0.2, 'runtime_h': 0.2, 'signal': 0.2, 'marg
 |---|---|---|---|---|---|
 | 2026-10-31T05:49:20 | d4cd3ef | 17280 | 160 | 1.1403 | None |
 | 2026-10-31T06:36:53 | 9f05995 | 33005 | 290 | 1.1633 | 0.023 |
+| 2026-10-31T07:48:50 | 5aafb49 | 33254 | 416 | 1.1583 | -0.005 |
 
 Extend: add options or axes in rf2/rf2_variant_axes.py; new parameter kinds in rf2_variants.evaluate_combo(). All rows with factors and rule rows: rf2/results/rf2_variants.json.

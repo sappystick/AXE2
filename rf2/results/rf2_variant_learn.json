@@ -862,86 +862,86 @@
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 1.0,
-   "score_p5": 1.1996,
-   "score_p50": 1.2078,
-   "score_p95": 1.2165
+   "score_p5": 1.1975,
+   "score_p50": 1.2077,
+   "score_p95": 1.2161
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.1986,
-   "score_p50": 1.2068,
-   "score_p95": 1.2155
+   "score_p5": 1.1966,
+   "score_p50": 1.2067,
+   "score_p95": 1.2151
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1982,
-   "score_p50": 1.2065,
-   "score_p95": 1.2152
+   "score_p5": 1.1961,
+   "score_p50": 1.2063,
+   "score_p95": 1.2146
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=prog|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1982,
-   "score_p50": 1.2064,
-   "score_p95": 1.2151
+   "score_p5": 1.1961,
+   "score_p50": 1.2063,
+   "score_p95": 1.2147
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=colzz|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1975,
-   "score_p50": 1.2058,
-   "score_p95": 1.2145
+   "score_p5": 1.1954,
+   "score_p50": 1.2056,
+   "score_p95": 1.214
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1974,
-   "score_p50": 1.2056,
-   "score_p95": 1.2143
+   "score_p5": 1.1953,
+   "score_p50": 1.2054,
+   "score_p95": 1.2139
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=prog|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.1972,
-   "score_p50": 1.2055,
-   "score_p95": 1.2142
+   "score_p5": 1.1952,
+   "score_p50": 1.2054,
+   "score_p95": 1.2137
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.1972,
-   "score_p50": 1.2056,
-   "score_p95": 1.2142
+   "score_p5": 1.1951,
+   "score_p50": 1.2054,
+   "score_p95": 1.2137
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=acf",
    "p_rank1": 0.0,
-   "score_p5": 1.1971,
-   "score_p50": 1.2053,
-   "score_p95": 1.214
+   "score_p5": 1.195,
+   "score_p50": 1.2052,
+   "score_p95": 1.2136
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=INA849_G100|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1971,
-   "score_p50": 1.2045,
-   "score_p95": 1.2132
+   "score_p5": 1.195,
+   "score_p50": 1.2043,
+   "score_p95": 1.2128
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=ADA4896_2|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1971,
-   "score_p50": 1.2053,
-   "score_p95": 1.214
+   "score_p5": 1.195,
+   "score_p50": 1.2052,
+   "score_p95": 1.2136
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=3oz|preamp=LT6201|head_placement=BF_fins|board_stack=as_built|litz=SXXL100/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1971,
-   "score_p50": 1.2053,
-   "score_p95": 1.214
+   "score_p5": 1.195,
+   "score_p50": 1.2052,
+   "score_p95": 1.2136
   }
  ],
  "influence_any": {
@@ -955,86 +955,86 @@
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 1.0,
-   "score_p5": 1.1527,
-   "score_p50": 1.1592,
-   "score_p95": 1.1664
-  },
-  {
-   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=today",
-   "p_rank1": 0.0,
-   "score_p5": 1.1522,
+   "score_p5": 1.1503,
    "score_p50": 1.1589,
    "score_p95": 1.166
   },
   {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=today",
+   "p_rank1": 0.0,
+   "score_p5": 1.15,
+   "score_p50": 1.1585,
+   "score_p95": 1.1656
+  },
+  {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
    "p_rank1": 0.0,
-   "score_p5": 1.1517,
-   "score_p50": 1.1583,
-   "score_p95": 1.1655
+   "score_p5": 1.1494,
+   "score_p50": 1.158,
+   "score_p95": 1.1651
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=prog|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1511,
-   "score_p50": 1.158,
-   "score_p95": 1.1652
+   "score_p5": 1.149,
+   "score_p50": 1.1578,
+   "score_p95": 1.1648
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=colzz|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1506,
-   "score_p50": 1.1572,
-   "score_p95": 1.1644
+   "score_p5": 1.1484,
+   "score_p50": 1.1568,
+   "score_p95": 1.164
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1505,
-   "score_p50": 1.157,
-   "score_p95": 1.1642
+   "score_p5": 1.1481,
+   "score_p50": 1.1567,
+   "score_p95": 1.1638
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1502,
-   "score_p50": 1.1567,
-   "score_p95": 1.1639
+   "score_p5": 1.1478,
+   "score_p50": 1.1564,
+   "score_p95": 1.1635
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1502,
-   "score_p50": 1.1567,
-   "score_p95": 1.1639
+   "score_p5": 1.1478,
+   "score_p50": 1.1564,
+   "score_p95": 1.1635
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=ref_guard|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1502,
-   "score_p50": 1.1567,
-   "score_p95": 1.1639
+   "score_p5": 1.1478,
+   "score_p50": 1.1564,
+   "score_p95": 1.1635
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1502,
-   "score_p50": 1.1567,
-   "score_p95": 1.1639
+   "score_p5": 1.1478,
+   "score_p50": 1.1564,
+   "score_p95": 1.1635
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.1502,
-   "score_p50": 1.1567,
-   "score_p95": 1.1639
+   "score_p5": 1.1478,
+   "score_p50": 1.1564,
+   "score_p95": 1.1635
   },
   {
    "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=row|cord_lanes=today|connectors=gland_fpc|splice=today",
    "p_rank1": 0.0,
-   "score_p5": 1.15,
-   "score_p50": 1.1566,
-   "score_p95": 1.1638
+   "score_p5": 1.1478,
+   "score_p50": 1.1563,
+   "score_p95": 1.1634
   }
  ],
  "influence_no_break": {

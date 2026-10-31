@@ -158,10 +158,29 @@ def prepare(ctx):
             W.geo[(o["id"], d)] = dict(width_mm=w, tx_tx_mm=tt, tx_lv_mm=lv, layers=2 if any(x[4] == 2 for x in s) else 1)
     W.cpl = {}; W.cache = {}
 
+_CPL = {}                                                         # speed 2026-10-31: process-wide + disk cache (the 2D solve is 2.5 s; it was redone for every new Ctx)
+def _cpl_key():
+    import hashlib
+    h = hashlib.sha1()
+    here = os.path.dirname(os.path.abspath(__file__)); root = os.path.dirname(here)
+    for p in (os.path.join(here, "wiring.py"), os.path.join(root, "rf2_hex_section.py"), os.path.join(root, "rf2_cordflex.py")): h.update(open(p, "rb").read())
+    return h.hexdigest()[:16]
 def coupling(W, opt, data):
     k = (opt, data)
-    if k not in W.cpl: W.cpl[k] = solve_coupling(opt, data)
-    return W.cpl[k]
+    if k in W.cpl: return W.cpl[k]
+    if not _CPL:
+        try:
+            f = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "cache", "wiring_coupling.json")
+            d = json.load(open(f)); 
+            if d.get("key") == _cpl_key(): _CPL.update({tuple(kk.split("|")): v for kk, v in d["data"].items()})
+        except Exception: pass
+    if k not in _CPL:
+        _CPL[k] = solve_coupling(opt, data)
+        try:
+            dd = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "cache"); os.makedirs(dd, exist_ok=True)
+            json.dump(dict(key=_cpl_key(), data={"|".join(kk): v for kk, v in _CPL.items()}), open(os.path.join(dd, "wiring_coupling.json"), "w"), default=float)
+        except Exception: pass
+    W.cpl[k] = _CPL[k]; return W.cpl[k]
 
 def _rule(m, name, v, lim, sense, where, kind="target"):
     m["rules"].append(dict(rule=name, value=round(float(v), 4), limit=round(float(lim), 4), sense=sense, ok=bool(v <= lim if sense == "<=" else v >= lim), where=where, kind=kind))

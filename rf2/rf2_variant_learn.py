@@ -62,13 +62,18 @@ def surrogate(rows, axes):
     levels = {ax: sorted(set(r[ax] for r in rows)) for ax in axes}; pairs = list(itertools.combinations([a for a in axes if len(levels[a]) > 1], 2))
     y = np.array([r["score"] for r in rows]); X, cols, pcols = design(rows, axes, levels, pairs)
     rng = np.random.default_rng(0); fold = rng.integers(0, 5, len(rows)); best = None
+    # speed (2026-10-31): the Gram matrix of each fold is the total minus that fold's own block: 6 matrix products instead of 25
+    X64 = X.astype(np.float64); G = X64.T @ X64; b = X64.T @ y
+    Gk = [X64[fold == k].T @ X64[fold == k] for k in range(5)]; bk = [X64[fold == k].T @ y[fold == k] for k in range(5)]
+    def solve(Gm, bm, lam):
+        A = Gm + lam * np.eye(Gm.shape[0]); A[0, 0] -= lam; return np.linalg.solve(A, bm)
     for lam in (1e-3, 1e-2, 1e-1, 1.0, 10.0):
         pred = np.zeros_like(y)
         for k in range(5):
-            tr = fold != k; w = ridge(X[tr], y[tr], lam); pred[~tr] = X[~tr] @ w
+            w = solve(G - Gk[k], b - bk[k], lam); pred[fold == k] = X64[fold == k] @ w
         r2 = 1 - np.sum((y - pred) ** 2) / np.sum((y - y.mean()) ** 2)
         if best is None or r2 > best[1]: best = (lam, r2)
-    w = ridge(X, y, best[0]); r2_in = 1 - np.sum((y - X @ w) ** 2) / np.sum((y - y.mean()) ** 2)
+    w = solve(G, b, best[0]); X = X64; r2_in = 1 - np.sum((y - X @ w) ** 2) / np.sum((y - y.mean()) ** 2)
     inter = sorted(((abs(w[1 + len(cols) + k]), pc, float(w[1 + len(cols) + k])) for k, pc in enumerate(pcols)), reverse=True)[:12]
     var_share = {}
     for ax in axes:

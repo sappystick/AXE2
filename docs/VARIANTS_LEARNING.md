@@ -122,24 +122,24 @@ Strongest interactions (joint effect beyond the two main effects):
 - shaft=fnm_hex31cu x head_placement=centre_can: +0.0409
 - shaft=f1_hex31cu x head_placement=fin_can: +0.0408
 
-## Robustness over ASSUMED inputs (60 Monte Carlo draws)
+## Robustness over ASSUMED inputs (120 Monte Carlo draws)
 
 Top variants that break no rule:
 
 | Variant (axes that differ from today) | P(rank 1) | score 5 / 50 / 95 % |
 |---|---|---|
-| switch NTBG, txd s400, pack B, winding bank, connectors gland_fpc | 1.0 | 1.1527 / 1.1592 / 1.1664 |
-| switch NTBG, txd s400, pack B, connectors gland_fpc | 0.0 | 1.1522 / 1.1589 / 1.166 |
-| switch NTBG, txd s400, pack B, winding bank, connectors gland_fpc, splice one_piece | 0.0 | 1.1517 / 1.1583 / 1.1655 |
-| switch NTBG, txd s400, pack B, winding prog, connectors gland_fpc | 0.0 | 1.1511 / 1.158 / 1.1652 |
-| switch NTBG, txd s400, pack B, winding colzz, connectors gland_fpc | 0.0 | 1.1506 / 1.1572 / 1.1644 |
-| switch NTBG, txd s400, pack B, board_stack rx_18um, winding bank, connectors gland_fpc | 0.0 | 1.1505 / 1.157 / 1.1642 |
-| switch NTBG, txd s400, pack B, head_placement chassis, winding bank, connectors gland_fpc | 0.0 | 1.1502 / 1.1567 / 1.1639 |
-| switch NTBG, txd s400, pack B, board_stack txdpwr_8L_fpcx, winding bank, connectors gland_fpc | 0.0 | 1.1502 / 1.1567 / 1.1639 |
-| switch NTBG, txd s400, pack B, winding bank, cord_lanes ref_guard, connectors gland_fpc | 0.0 | 1.1502 / 1.1567 / 1.1639 |
-| switch NTBG, txd s400, pack B, winding bank, cord_lanes pwr_guard, connectors gland_fpc | 0.0 | 1.1502 / 1.1567 / 1.1639 |
-| switch NTBG, txd s400, pack B, winding bank, cord_lanes hv_lv_guard, connectors gland_fpc | 0.0 | 1.1502 / 1.1567 / 1.1639 |
-| switch NTBG, txd s400, pack B, board_stack rx_18um, connectors gland_fpc | 0.0 | 1.15 / 1.1566 / 1.1638 |
+| switch NTBG, txd s400, pack B, winding bank, connectors gland_fpc | 1.0 | 1.1503 / 1.1589 / 1.166 |
+| switch NTBG, txd s400, pack B, connectors gland_fpc | 0.0 | 1.15 / 1.1585 / 1.1656 |
+| switch NTBG, txd s400, pack B, winding bank, connectors gland_fpc, splice one_piece | 0.0 | 1.1494 / 1.158 / 1.1651 |
+| switch NTBG, txd s400, pack B, winding prog, connectors gland_fpc | 0.0 | 1.149 / 1.1578 / 1.1648 |
+| switch NTBG, txd s400, pack B, winding colzz, connectors gland_fpc | 0.0 | 1.1484 / 1.1568 / 1.164 |
+| switch NTBG, txd s400, pack B, board_stack rx_18um, winding bank, connectors gland_fpc | 0.0 | 1.1481 / 1.1567 / 1.1638 |
+| switch NTBG, txd s400, pack B, head_placement chassis, winding bank, connectors gland_fpc | 0.0 | 1.1478 / 1.1564 / 1.1635 |
+| switch NTBG, txd s400, pack B, board_stack txdpwr_8L_fpcx, winding bank, connectors gland_fpc | 0.0 | 1.1478 / 1.1564 / 1.1635 |
+| switch NTBG, txd s400, pack B, winding bank, cord_lanes ref_guard, connectors gland_fpc | 0.0 | 1.1478 / 1.1564 / 1.1635 |
+| switch NTBG, txd s400, pack B, winding bank, cord_lanes pwr_guard, connectors gland_fpc | 0.0 | 1.1478 / 1.1564 / 1.1635 |
+| switch NTBG, txd s400, pack B, winding bank, cord_lanes hv_lv_guard, connectors gland_fpc | 0.0 | 1.1478 / 1.1564 / 1.1635 |
+| switch NTBG, txd s400, pack B, board_stack rx_18um, connectors gland_fpc | 0.0 | 1.1478 / 1.1563 / 1.1634 |
 
 Influence of each assumption on who wins (|correlation|): {'hot': 0.0, 'rx': 0.0, 'pof': 0.0, 'noise': 0.0, 'hinge': 0.0}
 
@@ -147,18 +147,18 @@ Top variants of any status:
 
 | Variant | P(rank 1) | score 5 / 50 / 95 % |
 |---|---|---|
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 1.0 | 1.1996 / 1.2078 / 1.2165 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding bank, connectors gland_fpc, splice one_piece | 0.0 | 1.1986 / 1.2068 / 1.2155 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, connectors gland_fpc | 0.0 | 1.1982 / 1.2065 / 1.2152 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding prog, connectors gland_fpc | 0.0 | 1.1982 / 1.2064 / 1.2151 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding colzz, connectors gland_fpc | 0.0 | 1.1975 / 1.2058 / 1.2145 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, board_stack rx_18um, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.1974 / 1.2056 / 1.2143 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding prog, connectors gland_fpc, splice one_piece | 0.0 | 1.1972 / 1.2055 / 1.2142 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, connectors gland_fpc, splice one_piece | 0.0 | 1.1972 / 1.2056 / 1.2142 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding bank, connectors gland_fpc, splice acf | 0.0 | 1.1971 / 1.2053 / 1.214 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, preamp INA849_G100, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.1971 / 1.2045 / 1.2132 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, preamp ADA4896_2, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.1971 / 1.2053 / 1.214 |
-| switch NTBG, txd s400, pack B, flex_cu 3oz, preamp LT6201, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.1971 / 1.2053 / 1.214 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 1.0 | 1.1975 / 1.2077 / 1.2161 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding bank, connectors gland_fpc, splice one_piece | 0.0 | 1.1966 / 1.2067 / 1.2151 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, connectors gland_fpc | 0.0 | 1.1961 / 1.2063 / 1.2146 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding prog, connectors gland_fpc | 0.0 | 1.1961 / 1.2063 / 1.2147 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding colzz, connectors gland_fpc | 0.0 | 1.1954 / 1.2056 / 1.214 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, board_stack rx_18um, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.1953 / 1.2054 / 1.2139 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding prog, connectors gland_fpc, splice one_piece | 0.0 | 1.1952 / 1.2054 / 1.2137 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, connectors gland_fpc, splice one_piece | 0.0 | 1.1951 / 1.2054 / 1.2137 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, litz SXXL100/38F-2, winding bank, connectors gland_fpc, splice acf | 0.0 | 1.195 / 1.2052 / 1.2136 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, preamp INA849_G100, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.195 / 1.2043 / 1.2128 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, preamp ADA4896_2, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.195 / 1.2052 / 1.2136 |
+| switch NTBG, txd s400, pack B, flex_cu 3oz, preamp LT6201, litz SXXL100/38F-2, winding bank, connectors gland_fpc | 0.0 | 1.195 / 1.2052 / 1.2136 |
 
 ## Owner preference calibration (rf2/variant_decisions.json)
 
