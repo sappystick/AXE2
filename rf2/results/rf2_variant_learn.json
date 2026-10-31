@@ -1,10 +1,10 @@
 {
  "status": "MODELED learning layer over the variant engine's evaluated rows (numpy; no external ML library)",
- "n_rows": 33263,
+ "n_rows": 33254,
  "sample": {
   "n_unbiased": 30000,
   "origins": {
-   "ascent": 3205,
+   "ascent": 3196,
    "ofat": 58,
    "random": 30000
   }
@@ -42,7 +42,7 @@
   "switch": {
    "NTBG": {
     "n": 15049,
-    "d_score": 0.0615,
+    "d_score": 0.0614,
     "no_break_rate": 0.0,
     "d_coin_cm": -0.04,
     "d_gold0p1g_cm": -0.34,
@@ -111,7 +111,7 @@
    },
    "f2_sq31": {
     "n": 4974,
-    "d_score": -0.0323,
+    "d_score": -0.0322,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.1,
     "d_gold0p1g_cm": 0.0,
@@ -120,7 +120,7 @@
    },
    "f2_hex31cu": {
     "n": 4942,
-    "d_score": -0.041,
+    "d_score": -0.0409,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.06,
     "d_gold0p1g_cm": 0.03,
@@ -129,7 +129,7 @@
    },
    "f1_sq31": {
     "n": 5041,
-    "d_score": -0.0431,
+    "d_score": -0.043,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.02,
     "d_gold0p1g_cm": 0.14,
@@ -138,7 +138,7 @@
    },
    "f1_hex31cu": {
     "n": 4923,
-    "d_score": -0.0507,
+    "d_score": -0.0506,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.1,
     "d_gold0p1g_cm": -0.0,
@@ -147,7 +147,7 @@
    },
    "fnm_hex31cu": {
     "n": 5180,
-    "d_score": -0.064,
+    "d_score": -0.0639,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.15,
     "d_gold0p1g_cm": 0.02,
@@ -215,7 +215,7 @@
    "F": {
     "n": 5921,
     "d_score": -0.0452,
-    "no_break_rate": 0.001,
+    "no_break_rate": 0.0,
     "d_coin_cm": -0.01,
     "d_gold0p1g_cm": -0.05,
     "d_boost_h": -0.75,
@@ -243,7 +243,7 @@
    },
    "w1.5": {
     "n": 10011,
-    "d_score": -0.0031,
+    "d_score": -0.0032,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.05,
     "d_gold0p1g_cm": -0.12,
@@ -303,7 +303,7 @@
    },
    "LT6201": {
     "n": 3748,
-    "d_score": -0.002,
+    "d_score": -0.0019,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.04,
     "d_gold0p1g_cm": -0.04,
@@ -340,7 +340,7 @@
    "INA849_G24": {
     "n": 3779,
     "d_score": -0.0109,
-    "no_break_rate": 0.001,
+    "no_break_rate": 0.0,
     "d_coin_cm": -2.41,
     "d_gold0p1g_cm": -1.25,
     "d_boost_h": 0.01,
@@ -348,7 +348,7 @@
    },
    "OP470": {
     "n": 3714,
-    "d_score": -0.034,
+    "d_score": -0.0339,
     "no_break_rate": 0.0,
     "d_coin_cm": -7.35,
     "d_gold0p1g_cm": -3.42,
@@ -387,7 +387,7 @@
    "BF_fins": {
     "n": 5101,
     "d_score": 0.0,
-    "no_break_rate": 0.001,
+    "no_break_rate": 0.0,
     "d_coin_cm": 0.0,
     "d_gold0p1g_cm": 0.0,
     "d_boost_h": 0.0,
@@ -395,7 +395,7 @@
    },
    "B_flat": {
     "n": 4971,
-    "d_score": -0.043,
+    "d_score": -0.0429,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.01,
     "d_gold0p1g_cm": 0.02,
@@ -452,7 +452,7 @@
    "rx_18um": {
     "n": 5026,
     "d_score": 0.0016,
-    "no_break_rate": 0.001,
+    "no_break_rate": 0.0,
     "d_coin_cm": -0.05,
     "d_gold0p1g_cm": 0.02,
     "d_boost_h": 0.01,
@@ -544,7 +544,7 @@
    "TXXL35/38T-2": {
     "n": 3728,
     "d_score": -0.0363,
-    "no_break_rate": 0.001,
+    "no_break_rate": 0.0,
     "d_coin_cm": -0.12,
     "d_gold0p1g_cm": 0.19,
     "d_boost_h": -0.52,
@@ -619,7 +619,7 @@
    },
    "ref_guard": {
     "n": 6084,
-    "d_score": -0.0004,
+    "d_score": -0.0005,
     "no_break_rate": 0.0,
     "d_coin_cm": 0.06,
     "d_gold0p1g_cm": 0.0,
@@ -730,27 +730,27 @@
   "top_interactions": [
    {
     "pair": "shaft=f2_hex31cu x head_placement=fin_can",
-    "coef": 0.0641
+    "coef": 0.064
    },
    {
     "pair": "shaft=f2_hex31cu x head_placement=B_flat",
-    "coef": 0.0641
+    "coef": 0.0639
    },
    {
     "pair": "shaft=f2_sq31 x head_placement=fin_can",
-    "coef": 0.0627
+    "coef": 0.0625
    },
    {
     "pair": "shaft=f2_sq31 x head_placement=B_flat",
-    "coef": 0.0627
+    "coef": 0.0625
    },
    {
     "pair": "shaft=f2_sq31 x head_placement=centre_can",
-    "coef": 0.0615
+    "coef": 0.0613
    },
    {
     "pair": "shaft=f2_hex31cu x head_placement=centre_can",
-    "coef": 0.0615
+    "coef": 0.0613
    },
    {
     "pair": "coil=10x3 x litz=TXXL35/38T-2",
@@ -758,82 +758,82 @@
    },
    {
     "pair": "coil=15x2 x litz=TXXL35/38T-2",
-    "coef": 0.0424
+    "coef": 0.0425
    },
    {
     "pair": "shaft=fnm_hex31cu x head_placement=fin_can",
-    "coef": 0.0414
+    "coef": 0.0413
    },
    {
     "pair": "shaft=f1_hex31cu x head_placement=B_flat",
-    "coef": 0.0411
+    "coef": 0.0409
    },
    {
     "pair": "shaft=fnm_hex31cu x head_placement=centre_can",
-    "coef": 0.0411
+    "coef": 0.0409
    },
    {
-    "pair": "shaft=fnm_hex31cu x head_placement=B_flat",
-    "coef": 0.041
+    "pair": "shaft=f1_hex31cu x head_placement=fin_can",
+    "coef": 0.0408
    }
   ],
   "main_coefs": {
-   "coil=10x3": -0.1245,
+   "coil=10x3": -0.1246,
    "coil=15x2": -0.0546,
-   "switch=NTBG": 0.047,
+   "switch=NTBG": 0.0468,
    "txd=s400": 0.0175,
-   "rx=hybrid": -0.0073,
-   "shaft=f1_hex31cu": -0.0862,
-   "shaft=f1_sq31": -0.0746,
-   "shaft=f2_hex31cu": -0.0911,
-   "shaft=f2_sq31": -0.0822,
-   "shaft=fnm_hex31cu": -0.1049,
-   "data=pof": -0.0587,
-   "pack=B": 0.0469,
+   "rx=hybrid": -0.0072,
+   "shaft=f1_hex31cu": -0.086,
+   "shaft=f1_sq31": -0.0744,
+   "shaft=f2_hex31cu": -0.0909,
+   "shaft=f2_sq31": -0.082,
+   "shaft=fnm_hex31cu": -0.1047,
+   "data=pof": -0.0586,
+   "pack=B": 0.0468,
    "pack=D2": 0.0211,
    "pack=E": 0.0009,
    "pack=F": -0.0541,
-   "wall=w1.0": -0.0019,
-   "wall=w1.5": -0.0069,
-   "clamp=dissip": -0.0371,
-   "flex_cu=3oz": 0.0073,
+   "wall=w1.0": -0.0016,
+   "wall=w1.5": -0.0076,
+   "clamp=dissip": -0.037,
+   "flex_cu=3oz": 0.0072,
    "preamp=ADA4896_2": -0.0045,
    "preamp=INA849_G100": -0.0036,
    "preamp=INA849_G24": -0.0165,
-   "preamp=LT6201": -0.004,
-   "preamp=OP470": -0.0439,
+   "preamp=LT6201": -0.0039,
+   "preamp=OP470": -0.0438,
    "preamp=OPA1612": -0.0096,
-   "preamp=OPA2211": -0.0078,
-   "head_placement=B_flat": -0.089,
+   "preamp=OPA2211": -0.0079,
+   "head_placement=B_flat": -0.0889,
    "head_placement=centre_can": -0.0673,
-   "head_placement=chassis": -0.0027,
-   "head_placement=fin_can": -0.0941,
-   "head_placement=hv1_lead_plane": -0.0039,
+   "head_placement=chassis": -0.0028,
+   "head_placement=fin_can": -0.094,
+   "head_placement=hv1_lead_plane": -0.004,
    "board_stack=rx_105um": -0.0042,
    "board_stack=rx_18um": -0.0036,
    "board_stack=rx_70um": -0.0034,
-   "board_stack=txdpwr_8L_fpcx": -0.0023,
+   "board_stack=txdpwr_8L_fpcx": -0.0022,
    "board_stack=txdpwr_split": -0.0103,
-   "litz=DXXL66/38F-2": -0.0044,
-   "litz=SXXL100/38F-2": 0.0208,
-   "litz=SXXL66/38F-2": -0.0022,
+   "litz=DXXL66/38F-2": -0.0043,
+   "litz=SXXL100/38F-2": 0.0209,
+   "litz=SXXL66/38F-2": -0.0021,
    "litz=TXXL108/40F-2": -0.0063,
    "litz=TXXL230/44F-2": -0.0166,
-   "litz=TXXL35/38T-2": -0.0738,
+   "litz=TXXL35/38T-2": -0.0737,
    "litz=TXXL66/38F-3": -0.0034,
    "winding=bank": -0.0009,
    "winding=colzz": -0.0024,
-   "winding=narrow1.67": -0.0095,
+   "winding=narrow1.67": -0.0094,
    "winding=prog": -0.0014,
-   "winding=wide2.0": -0.0045,
+   "winding=wide2.0": -0.0046,
    "cord_lanes=hv_lv_guard": -0.004,
    "cord_lanes=pwr_guard": -0.0035,
    "cord_lanes=ref_guard": -0.0025,
-   "cord_lanes=ref_layer2": -0.0106,
+   "cord_lanes=ref_layer2": -0.0107,
    "connectors=cord_mt60": -0.015,
    "connectors=gland_fpc": 0.014,
    "splice=acf": -0.0018,
-   "splice=one_piece": -0.0039,
+   "splice=one_piece": -0.004,
    "splice=zif_lv": -0.0167
   },
   "variance_share": {
@@ -856,7 +856,7 @@
    "rx": 0.0,
    "cord_lanes": 0.0
   },
-  "r2_cv_all_rows_incl_ascent": 0.9953
+  "r2_cv_all_rows_incl_ascent": 0.9954
  },
  "robustness_any": [
   {
@@ -1112,6 +1112,6 @@
  },
  "next_study": {
   "axis_with_most_score_variance": "coil",
-  "assumption_that_moves_the_winner_most": "hot"
+  "assumption_that_moves_the_winner_most": "none: the winner did not change in any draw"
  }
 }

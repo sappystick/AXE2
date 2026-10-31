@@ -14,7 +14,7 @@ Nothing here is a bench result. Every performance number is MODELED.
 | 2 | MED | boards.py:114-131, 217, 259 | **Depth scaling exponent.** The plugin scaled depth by (N_today/N_new)^(1/6), the far-field z^-6 law. The engine's own depth model (rf2_lowL_options.echo_mono/depth), with the threshold scaled by the noise ratio, gives local exponents of 0.174 (coin), 0.19 (1 g gold) and 0.26-0.28 (0.1 g gold, near field). OP470 example: 0.1 g depth x0.875 (1/6 law) against x0.798 (model). The 1/6 law under-stated the change for small targets by 35-60 %. Fix: new `depth_ratio()` uses the engine model at the combination's coil, scan current and mono gate, for the preamp swap and for the chassis-placement Johnson noise. The 1/6 law stays in the extras (`bd_depth_scale_1_6`) and in BOARDS_COMPONENTS_MAP.md. | y |
 | 3 | MED | rf2/rf2_variants.py:81 | **Telescope bore ignored the wall axis.** `BORE = 21 - 2 x 1.2` was fixed, so the rows "cord-flex width vs bore less 2" and "rolling loop vs bore less 4" did not change with w1.0 / w1.5 (bore 19.0 / 18.0 mm). Fix: `bore = 21 - 2 t` per row. Today's value (18.6 mm) is unchanged. | y |
 | 4 | MED | rf2_variants.py:88-92, 109 | **Pack cell-current safety row.** (a) It was computed from the core boost power before the plugins ran, so power changes from coil_winding / boards / wiring never reached this safety row. Fix: the value is re-evaluated after the plugins from `m["P_boost_W"]`. (b) Pack E (RC LiPo) has no cell rating in rf2_pack_options and silently had no safety row. Fix: a safety row "cell continuous-current rating on file" (0 vs 1, fails) names the gap, following the plugins' 'datasheet on file' pattern. Pack E rows now show this break. | y |
-| 5 | MED | rf2/rf2_variant_learn.py:141-146 | **Learning on a non-random sample.** In search mode about 3,205 of 33,263 rows come from coordinate ascent and cluster around the best seeds. Main effects, variance shares and the surrogate R2 were computed over all rows. Fix: the engine now tags each row's `origin` (enum / ofat / random / ascent; new CSV column). The learning layer uses only enum + random rows (30,000) and reports the all-rows R2 next to it: R2 out-of-fold 0.9928 unbiased against 0.9953 with the ascent rows. The ascent rows inflate R2 slightly. The surrogate stays meaningful because the score is close to additive over the options. | y |
+| 5 | MED | rf2/rf2_variant_learn.py:141-146 | **Learning on a non-random sample.** In search mode about 3,196 of 33,254 rows come from coordinate ascent and cluster around the best seeds. Main effects, variance shares and the surrogate R2 were computed over all rows. Fix: the engine now tags each row's `origin` (enum / ofat / random / ascent; new CSV column). The learning layer uses only enum + random rows (30,000) and reports the all-rows R2 next to it: R2 out-of-fold 0.9928 unbiased against 0.9954 with the ascent rows. The ascent rows inflate R2 slightly. The surrogate stays meaningful because the score is close to additive over the options. | y |
 | 6 | MED | rf2_variants.py:192 (search) | **Search mode can miss per-objective champions.** On a 69,120-combination sub-space (switch, txd, shaft, data, wall, clamp, flex_cu, board_stack, cord_lanes, connectors and splice held at today's options), full enumeration and search (300 or 3,000 random samples + ascent) found the same best score (1.077) and the same best no-break score (1.0505), and 7 of 9 no-break champions match. Search missed `small_gold` (16.7 vs 16.8 cm) and `lightest` (-161 g at 300 samples, 14.7 cm / -215 g at 3,000, against -215 g / 15.2 cm). Coordinate ascent optimises the score only. Not fixed: in search mode the per-objective champions are approximate. Adding an ascent per objective would close this. | n |
 | 7 | MED | rf2_variants.py:123 | **'Fewer parts' factor.** `attach = 1/(1+0.1 n)` with a negative n (wiring gland_fpc: n = -2) gave 1.25, and the formula is singular at n = -10. rf2_select uses 1 + 0.1·n for fewer parts. Fix: rf2_select's form, giving 1.20 at -2. Best no-break score moved 1.1633 -> 1.1583 from this alone. | y |
 | 8 | LOW | rf2_variants.py:21 | **POF mass.** POF_G counted one 1.6 m fibre for 3 links: 18.4 g, while the docstring said 28 g. GH-4001-P 4 g/m is logged in DATASHEET_LOG. Fix: 3 x 1.6 x 4 + 6 x 2 (transceivers, ASSUMED) = 31.2 g; docstring corrected. | y |
@@ -87,6 +87,19 @@ Clearly labelled ASSUMED (acceptable, listed for the owner):
 | var.conn.mt60_i | target | TX rms vs 30 A | — | PASS |
 | var.conn.b2b_rule6 | safety | TXD-PWR HV connector ≥ 630 V on file | none | FAIL (gap) |
 | var.pack.rating_on_file | safety | cell current rating on file (pack E) | none | FAIL (gap) |
+
+## Re-run after the fixes (`python3 rf2/rf2_variants.py --no-history`, `python3 rf2/rf2_variant_learn.py --mc 60`)
+
+| Number | Before (last history line, 06:36) | After |
+|---|---|---|
+| Combinations evaluated | 33,005 | 33,254 (the search path changed with the new scores) |
+| Break no rule | 290 | 416 (preamp alternatives no longer carry the 1.7 nV row; pack E now carries its rating-gap row; bore follows the wall) |
+| Pareto front | 1,726 | 1,637 |
+| Today's rank / score | 2,677 / 1.0 | 2,860 / 1.0 |
+| Best score (any) | 1.211 | 1.206 (same combination; attach factor 1.25 -> 1.20) |
+| Best no-break score | 1.1633 | 1.1583 (same combination: NTBG, TXD s400, pack B, bank winding, gland_fpc) |
+| Surrogate R2 (out-of-fold) | 0.9948 (all rows) | 0.9928 (30,000 random rows); 0.9954 with the ascent rows |
+| Monte Carlo winner | - | the same in 60 of 60 draws; next study names no assumption |
 
 ## Remaining risks
 
