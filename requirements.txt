@@ -20,3 +20,7 @@ scikit-fem==12.0.2      # finite elements (with gmsh meshes): axisymmetric eddy-
 optuna==5.0.0           # parameter search for coil / receiver geometry at fixed energy per pulse
 pymupdf>=1.24      # reads datasheets whose text poppler cannot (Japanese font packs, AES-encrypted PDFs): RF2-DS-INTERFACES
 rtree              # trimesh ray casting in the DFM checker (rf2_print.py)
+sympy==1.14.0           # symbolic checks of the model formulas (rf2_solver_xcheck.py)
+scikit-rf==2.2.0        # transmission-line / S-parameter model of the cord strips (rf2_solver_xcheck.py)
+fipy==4.0.3             # finite-volume transient diffusion (eddy-current decay studies)
+PySpice==1.5            # object netlists for ngspice (electrician agent)

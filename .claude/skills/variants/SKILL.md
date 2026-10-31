@@ -34,3 +34,18 @@ Files:
   - tests with `--plugin-test`.
 - **Afterwards:** run a critic agent that audits the plugins and the engine output for fabricated values, unit errors, missing rule rows and today-baseline drift. Then the orchestrator runs the engine and the learning layer, runs `python3 run.py`, and reports every number that moved.
 - **Record every owner choice between existing options** in `rf2/variant_decisions.json`. The learning layer re-fits the weights from it.
+
+## Agent roles and solver stack (owner 2026-10-31)
+Spawn one agent per role. Every agent sources its numbers from the KB and writes only its own files.
+
+| Role | Owns | Tools (installed by `make tools`) |
+|---|---|---|
+| Architect | Axes, weights, decisions. Runs `rf2_variants.py`, `rf2_variant_learn.py` and `rf2_variant_optuna.py` (NSGA-II, an independent second search). | numpy, scipy, optuna |
+| Draftsman | Parametric geometry and meshes. | cadquery (STEP / STL), gmsh, pyvista, sympy, shapely, manifold3d, KiCad / Freerouting / A* for boards |
+| Solver | Fields and parasitics. | magpylib, `concepts/clib.py` (Neumann / Maxwell), FastHenry / FastCap (`/opt/solvers`), scikit-fem, fipy, the 2D section solver `rf2_hex_section.py` |
+| Electrician | Drive, receive, power. | ngspice (+ PySpice / spicelib), scikit-rf, `rf2_txd_spice.py`, `rf2_continuous.py`, `rf2_mp1v2_*` |
+| Critic | Audits every plugin and run. | The KB, plus re-running checks. Writes `docs/VARIANTS_AUDIT.md`. |
+
+- **Cross-checks:** `rf2/rf2_solver_xcheck.py` (FastHenry coil and strips, SymPy formula checks, scikit-rf line).
+- **Elmer FEM, OpenEMS, Meep, FEniCS:** not installed; Elmer and OpenEMS need source builds. Add them through `scripts/fetch_solvers.sh` when a study needs 3D eddy currents in conductive bodies.
+- **Targets:** come from the owner and the rules (CLAUDE.md), never from concept text. The Hyperion study ruled out the 1/r² focus and the sub-0.8 µs settle (`docs/HYPERION_EVALUATION.md`), so they are not targets.

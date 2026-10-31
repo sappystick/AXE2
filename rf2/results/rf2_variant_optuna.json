@@ -1,0 +1,703 @@
+{
+ "status": "MODELED Optuna NSGA-II search (independent of the engine's own search); broken rules are constraints",
+ "trials": 2500,
+ "run_s": 27.7,
+ "n_distinct": 2279,
+ "n_feasible_front": 39,
+ "n_new_vs_engine": 39,
+ "engine_best_no_break": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=today",
+ "dominating_engine_best": [
+  "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+  "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=today|splice=one_piece"
+ ],
+ "front": [
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 3.83,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": 200.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=today|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "splice": "one_piece"
+   },
+   "boost_h": 3.83,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": 200.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=C2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=zif_lv",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "connectors": "gland_fpc",
+    "splice": "zif_lv"
+   },
+   "boost_h": 2.86,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": 15.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=C2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=ref_guard|connectors=gland_fpc|splice=zif_lv",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "bank",
+    "cord_lanes": "ref_guard",
+    "connectors": "gland_fpc",
+    "splice": "zif_lv"
+   },
+   "boost_h": 2.86,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": 15.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=C2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=zif_lv",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "connectors": "gland_fpc",
+    "splice": "zif_lv"
+   },
+   "boost_h": 2.86,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": 15.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "connectors": "gland_fpc",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.91,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": -151.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "connectors": "gland_fpc",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.91,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": -151.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "head_placement": "chassis",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.22,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": -199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=bank|cord_lanes=today|connectors=today|splice=zif_lv",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "head_placement": "chassis",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "splice": "zif_lv"
+   },
+   "boost_h": 1.22,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": -199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s857|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=bank|cord_lanes=hv_lv_guard|connectors=gland_fpc|splice=zif_lv",
+   "differs": {
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "connectors": "gland_fpc",
+    "splice": "zif_lv"
+   },
+   "boost_h": 0.95,
+   "coin": 60.7,
+   "g01": 16.7,
+   "mass": -200.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=wide2.0|cord_lanes=hv_lv_guard|connectors=today|splice=zif_lv",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "D2",
+    "head_placement": "chassis",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "wide2.0",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "zif_lv"
+   },
+   "boost_h": 3.19,
+   "coin": 60.5,
+   "g01": 16.5,
+   "mass": 16.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=as_built|litz=TXXL35/38T-2|winding=row|cord_lanes=ref_guard|connectors=gland_fpc|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "head_placement": "chassis",
+    "litz": "TXXL35/38T-2",
+    "cord_lanes": "ref_guard",
+    "connectors": "gland_fpc",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.22,
+   "coin": 60.6,
+   "g01": 16.5,
+   "mass": -201.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=row|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "D2",
+    "board_stack": "rx_18um",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 3.21,
+   "coin": 60.6,
+   "g01": 16.3,
+   "mass": 12.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 4.72,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": 200.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 4.72,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": 200.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 4.72,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": 200.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=zif_lv",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "connectors": "gland_fpc",
+    "splice": "zif_lv"
+   },
+   "boost_h": 4.7,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": 199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=zif_lv",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "connectors": "gland_fpc",
+    "splice": "zif_lv"
+   },
+   "boost_h": 4.7,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": 199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "D2",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 3.98,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": 12.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "bank",
+    "splice": "one_piece"
+   },
+   "boost_h": 2.36,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -145.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 2.36,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -145.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 2.36,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -145.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=today|splice=zif_lv",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "splice": "zif_lv"
+   },
+   "boost_h": 2.35,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -149.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL35/38T-2|winding=bank|cord_lanes=pwr_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.64,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL35/38T-2|winding=bank|cord_lanes=pwr_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.64,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL35/38T-2|winding=bank|cord_lanes=pwr_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.64,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=bank|cord_lanes=today|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.64,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=bank|cord_lanes=ref_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "F",
+    "head_placement": "chassis",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "ref_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.64,
+   "coin": 60.7,
+   "g01": 16.2,
+   "mass": -199.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=row|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "D2",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 2.76,
+   "coin": 60.6,
+   "g01": 16.0,
+   "mass": -38.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=hybrid|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=row|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "rx": "hybrid",
+    "pack": "D2",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 2.76,
+   "coin": 60.6,
+   "g01": 16.0,
+   "mass": -38.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=txdpwr_8L_fpcx|litz=TXXL35/38T-2|winding=bank|cord_lanes=pwr_guard|connectors=gland_fpc|splice=today",
+   "differs": {
+    "txd": "s400",
+    "pack": "F",
+    "board_stack": "txdpwr_8L_fpcx",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "connectors": "gland_fpc"
+   },
+   "boost_h": 1.23,
+   "coin": 60.3,
+   "g01": 15.5,
+   "mass": -217.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "txd": "s400",
+    "pack": "D2",
+    "head_placement": "chassis",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 3.26,
+   "coin": 60.3,
+   "g01": 15.4,
+   "mass": -4.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=C3M|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=gland_fpc|splice=zif_lv",
+   "differs": {
+    "txd": "s400",
+    "pack": "F",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "connectors": "gland_fpc",
+    "splice": "zif_lv"
+   },
+   "boost_h": 1.93,
+   "coin": 60.3,
+   "g01": 15.4,
+   "mass": -166.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 4.78,
+   "coin": 60.3,
+   "g01": 14.7,
+   "mass": 184.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=B|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=pwr_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "pack": "B",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "cord_lanes": "pwr_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 4.78,
+   "coin": 60.3,
+   "g01": 14.7,
+   "mass": 184.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=D2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=as_built|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=today|splice=zif_lv",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "pack": "D2",
+    "winding": "bank",
+    "splice": "zif_lv"
+   },
+   "boost_h": 4.01,
+   "coin": 60.3,
+   "g01": 14.7,
+   "mass": 0.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL66/38F-2|winding=bank|cord_lanes=today|connectors=gland_fpc|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "pack": "F",
+    "board_stack": "rx_18um",
+    "winding": "bank",
+    "connectors": "gland_fpc",
+    "splice": "one_piece"
+   },
+   "boost_h": 2.39,
+   "coin": 60.3,
+   "g01": 14.7,
+   "mass": -167.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=F|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=BF_fins|board_stack=rx_18um|litz=TXXL35/38T-2|winding=bank|cord_lanes=hv_lv_guard|connectors=today|splice=one_piece",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "pack": "F",
+    "board_stack": "rx_18um",
+    "litz": "TXXL35/38T-2",
+    "winding": "bank",
+    "cord_lanes": "hv_lv_guard",
+    "splice": "one_piece"
+   },
+   "boost_h": 1.65,
+   "coin": 60.3,
+   "g01": 14.7,
+   "mass": -219.0,
+   "new_vs_engine": true
+  },
+  {
+   "id": "coil=26x1|switch=NTBG|txd=s400|rx=mono|shaft=tele_sq|data=cu|pack=C2|wall=w1.2|clamp=regen|flex_cu=2oz|preamp=LMH6629|head_placement=chassis|board_stack=txdpwr_8L_fpcx|litz=TXXL66/38F-2|winding=prog|cord_lanes=hv_lv_guard|connectors=gland_fpc|splice=today",
+   "differs": {
+    "switch": "NTBG",
+    "txd": "s400",
+    "head_placement": "chassis",
+    "board_stack": "txdpwr_8L_fpcx",
+    "winding": "prog",
+    "cord_lanes": "hv_lv_guard",
+    "connectors": "gland_fpc"
+   },
+   "boost_h": 3.57,
+   "coin": 60.3,
+   "g01": 14.4,
+   "mass": -2.0,
+   "new_vs_engine": true
+  }
+ ]
+}

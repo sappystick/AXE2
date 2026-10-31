@@ -42,11 +42,14 @@ pipi -r requirements.txt
 # 4. Freerouting (pinned jar from Maven Central, SHA-256 checked)
 scripts/fetch_freerouting.sh >/dev/null 2>&1 || say "WARNING: Freerouting jar not fetched (the A* router still works)"
 
+# 4b. Field solvers FastHenry / FastCap (built from source into /opt/solvers; rf2_solver_xcheck.py)
+scripts/fetch_solvers.sh >/dev/null 2>&1 || say "WARNING: FastHenry / FastCap not built (rf2_solver_xcheck will fail)"
+
 # 5. self-test: every tool the runner needs must answer
 fail=0
 chk() { if "$@" >/dev/null 2>&1; then :; else echo "[bootstrap] SELF-TEST FAILED: $*"; fail=1; fi; }
 chk python3 -c "import numpy, scipy, matplotlib, PIL, gerbonara, shapely, manifold3d"
-chk python3 -c "import kiutils, magpylib, trimesh, pyvista, cadquery, spicelib, meshio, skfem, optuna, pymupdf, rtree"
+chk python3 -c "import kiutils, magpylib, trimesh, pyvista, cadquery, spicelib, meshio, skfem, optuna, pymupdf, rtree, sympy, skrf, fipy"
 chk kicad-cli version
 chk /usr/bin/python3 -c "import pcbnew"
 chk ngspice --version
@@ -56,5 +59,6 @@ chk test -d /usr/share/kicad/3dmodels
 say "python      $(python3 --version 2>&1) | numpy $(python3 -c 'import numpy;print(numpy.__version__)') scipy $(python3 -c 'import scipy;print(scipy.__version__)') shapely $(python3 -c 'import shapely;print(shapely.__version__)')"
 say "kicad       $(kicad-cli version 2>&1 | head -1) | pcbnew $(/usr/bin/python3 -c 'import pcbnew;print(pcbnew.Version())' 2>&1 | tail -1)"
 say "freerouting $(python3 -c 'import sys; sys.path.insert(0,"src/pcb"); import freeroute as F, os; print(F.VERSION, "jar ok" if os.path.exists(F.JAR) else "jar MISSING")' 2>/dev/null)"
+say "solvers     fasthenry $([ -x /opt/solvers/FastHenry2/bin/fasthenry ] && echo ok || echo MISSING) | fastcap $([ -x /opt/solvers/FastCap2/bin/fastcap ] && echo ok || echo MISSING) | sympy $(python3 -c 'import sympy;print(sympy.__version__)' 2>/dev/null) skrf $(python3 -c 'import skrf;print(skrf.__version__)' 2>/dev/null) fipy $(python3 -c 'import fipy;print(fipy.__version__)' 2>/dev/null)"
 say "tools       ngspice $(ngspice --version 2>/dev/null | grep -o 'ngspice-[0-9]*' | head -1) | gmsh $(gmsh --version 2>&1 | tail -1) | magpylib $(python3 -c 'import magpylib;print(magpylib.__version__)' 2>/dev/null) pyvista $(python3 -c 'import pyvista;print(pyvista.__version__)' 2>/dev/null) cadquery $(python3 -c 'import cadquery;print(cadquery.__version__)' 2>/dev/null)"
 [ "$fail" -eq 0 ] && say "environment OK" || { say "environment INCOMPLETE"; exit 1; }

@@ -1,0 +1,84 @@
+{
+ "status": "MODELED cross-checks with independent solvers (FastHenry 3D PEEC, SymPy, scikit-rf)",
+ "coil_fasthenry": [
+  {
+   "f_Hz": 1000.0,
+   "R_ohm": 0.585792,
+   "L_uH": 327.5711123223081
+  },
+  {
+   "f_Hz": 10000.0,
+   "R_ohm": 0.585792,
+   "L_uH": 327.57111232230807
+  },
+  {
+   "f_Hz": 100000.0,
+   "R_ohm": 0.585792,
+   "L_uH": 327.57111232230807
+  }
+ ],
+ "coil_models": {
+  "neumann_maxwell_uH": 327.5,
+  "design_uH": 333.0,
+  "R_model_ohm": 0.601
+ },
+ "coil_check": {
+  "L_fasthenry_uH": 327.6,
+  "vs_maxwell_pct": 0.01,
+  "vs_design_pct": -1.63,
+  "R_1kHz_ohm": 0.586,
+  "R_100kHz_ohm": 0.586,
+  "ok": true
+ },
+ "strips_fasthenry": [
+  {
+   "f_Hz": 1000.0,
+   "R_ohm": 0.279805,
+   "L_uH": 0.9626470817418981
+  },
+  {
+   "f_Hz": 10000.0,
+   "R_ohm": 0.280156,
+   "L_uH": 0.9623176310096979
+  },
+  {
+   "f_Hz": 100000.0,
+   "R_ohm": 0.3061,
+   "L_uH": 0.9396332769708101
+  }
+ ],
+ "strips_check": {
+  "R_dc_model_ohm": 0.2798,
+  "R_1kHz_fh": 0.2798,
+  "R_100kHz_fh": 0.3061,
+  "L_loop_uH": 0.963,
+  "L_per_m_nH": 710.4,
+  "ok": true
+ },
+ "sympy": {
+  "loop_on_axis": true,
+  "maxwell_far_field_rel": 0.00098,
+  "critical_damping": true,
+  "hex_thin_wall_I": "5*s**3*t_/2",
+  "hex_thin_wall_ok": true,
+  "ok": true
+ },
+ "line": {
+  "Z0_ohm": 158.9,
+  "delay_ns": 6.06,
+  "quarter_wave_MHz": 41.3,
+  "Zin_peak_kHz": 414.9,
+  "Zin_peak_ohm": 76655,
+  "lumped_SRF_kHz": 436.4,
+  "skrf_s21_phase_at_10kHz": -0.000381,
+  "ok": true
+ },
+ "ok": true,
+ "findings": [
+  "coil L: FastHenry 327.6 uH vs Maxwell 327.5 uH (+0.0 %) vs design 333 uH (-1.6 %)",
+  "coil R: 0.586 ohm at 1 kHz (FastHenry, copper only, no leads) vs 0.601 ohm (catalog over 18.3 m incl. leads)",
+  "TX strips: R 0.2798 ohm at 1 kHz, 0.3061 ohm at 100 kHz (skin / proximity) vs 0.2798 ohm DC model; loop L 0.963 uH",
+  "line: Z0 158.9 ohm, delay 6.06 ns, quarter-wave 41.3 MHz vs the coil + node self-resonance 436.4 kHz: the cord acts as a lumped element at PI frequencies",
+  "SymPy: loop on-axis True, Maxwell far field rel 0.00098, critical damping True, hex I = 5*s**3*t_/2 (True)"
+ ]
+}
