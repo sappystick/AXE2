@@ -131,11 +131,11 @@ def rx_design(c, nm=None, pitch=None, w=None):
                 L_uH=round(Lrx * 1e6, 1), R_ohm=round(Rrx, 2), C_pF=round(Crx * 1e12, 1), tau_rx_ns=round(math.sqrt(Lrx * Crx) * 1e9, 1),
                 johnson_nV=round(K.johnson_noise_nV(Rrx), 2), _b=b, _Mres=max(d_z, d_r), _Mm=Mm, _tau=math.sqrt(Lrx * Crx))
 
-def evaluate(N, p, sw, sep_rx=False, txd_near=False, rx_cfg=(20, 0.5e-3, 0.25e-3), tx2=False):
+def evaluate(N, p, sw, sep_rx=False, txd_near=False, rx_cfg=(20, 0.5e-3, 0.25e-3), tx2=False, flex_scale=None):
     c = coil(N, p); b300 = c["b"](0.30); base_b300 = coil(26, 1)["b"](0.30)
     I = I_SCAN0 * base_b300 / b300; Ib = I * BOOST; s = SW[sw]
     w_tx = max(CFX.W_TX, CFX.ipc2221_width_mm(CFX.I_TX * Ib / (I_SCAN0 * BOOST)))
-    r_flex = CFX.R_TX_LOOP * CFX.W_TX / w_tx * (400.0 / 857.0 if txd_near else 1.0)
+    r_flex = CFX.R_TX_LOOP * CFX.W_TX / w_tx * (flex_scale if flex_scale is not None else (400.0 / 857.0 if txd_near else 1.0))
     width = CFX.WIDTH + 2 * ((w_tx / 2 if tx2 else w_tx) - CFX.W_TX)            # tx2: each TX strip doubled on both copper layers (2-layer cord flex)
     Rd = 408.0 * math.sqrt(c["L"] / 333e-6)
     R_loop = c["R"] + r_flex + s["rds"] + 0.010
@@ -168,6 +168,27 @@ def evaluate(N, p, sw, sep_rx=False, txd_near=False, rx_cfg=(20, 0.5e-3, 0.25e-3
                P_Rd_boost_W=round(pb["P_rd"], 2), E_pulse_mJ=round(ps["E_mJ"], 2), depth_cm=dep, noise_nV=round(vn, 2))
     return out, c
 
+P_RX2_W = 0.35                                                  # second MP1-class receive channel for the planar RX (ASSUMED budget)
+def hybrid(N, p, sw, txd_near=False, tx2=False, rx_cfg=(40, 0.3e-3, 0.15e-3), flex_scale=None):
+    """the rim coil keeps receiving (mono channel, its own first gate) AND the planar nulled RX feeds a second preamp from its earlier gate;
+    independent noise, so the two SNRs add in quadrature (optimal weighting): SNR = sqrt(SNR_mono^2 + SNR_planar^2); detection at SNR 5"""
+    mo, c = evaluate(N, p, sw, False, txd_near, tx2=tx2, flex_scale=flex_scale); ro, _ = evaluate(N, p, sw, True, txd_near, rx_cfg, tx2, flex_scale)
+    if "depth_cm" not in mo or "depth_cm" not in ro: return dict(N=N, p=p, switch=sw, mode="hybrid", reachable=False)
+    rx = rx_design(c, *rx_cfg); I = mo["I_scan"]
+    sm = NOISE_nV * 1e-9 * math.sqrt(BW) / math.sqrt(NAVG); sr = ro["noise_nV"] * 1e-9 * math.sqrt(BW) / math.sqrt(NAVG)
+    tm, tr = mo["first_gate_us"] * 1e-6, ro["first_gate_us"] * 1e-6
+    dep = {}
+    for k, tg in TARGETS.items():
+        snr = lambda z: math.hypot(echo_mono(c["b"](z), I, tm, tg) / sm, echo_sep(c["b"](z), rx["_b"](z), I, tr, tg) / sr)
+        dep[k] = round(depth(snr, SNR) * 100, 1)
+    P_s = WH / mo["runtime_scan_h"] + P_RX2_W; P_b = WH / mo["runtime_boost_h"] + P_RX2_W
+    out = dict(N=N, p=p, switch=sw, mode="hybrid (rim coil + planar nulled RX)", rx=ro["sep_rx"], txd_at_400mm=txd_near, tx_strips_2layer=tx2, L_uH=mo["L_uH"], I_boost=mo["I_boost"],
+               gate_mono_us=mo["first_gate_us"], gate_planar_us=ro["first_gate_us"], depth_cm=dep, depth_mono_only_cm=mo["depth_cm"], depth_planar_only_cm=ro["depth_cm"],
+               runtime_scan_h=round(WH / P_s, 2), runtime_boost_h=round(WH / P_b, 2), flex_width_mm=mo["flex_width_mm"], Tj_switch_boost_C=mo["Tj_switch_boost_C"],
+               extra=f"second receive channel ({P_RX2_W} W ASSUMED), 0.1 mm PI layer above SH1 (QA / QB move up 0.1 mm)", reachable=True)
+    out["rule_rows"] = [r for r in mo.get("rule_rows", [])]
+    return out
+
 def main():
     base, _ = evaluate(26, 1, "C3M0280090J")
     opts = [base, evaluate(26, 1, "NTBG080N120SC1")[0], evaluate(26, 1, "C3M0280090J", txd_near=True)[0], evaluate(26, 1, "NTBG080N120SC1", txd_near=True)[0]]
@@ -189,12 +210,21 @@ def main():
                           dict(rule="cord-flex width vs 16 mm (18 mm bore less 2)", value=o["flex_width_mm"], limit=16.0, ok=o["flex_width_mm"] <= 16.0),
                           dict(rule="rule 6: switch VDS >= 630 V at the 460 V clamp", value=SW[o["switch"]]["vds"], limit=630, ok=SW[o["switch"]]["vds"] >= 630)]
         if "Tj_switch_boost_C" in o: o["rule_rows"].append(dict(rule="TX switch TJ in boost vs 125 C", value=o["Tj_switch_boost_C"], limit=125.0, ok=o["Tj_switch_boost_C"] <= 125.0))
+    hyb = []
+    for args in ((26, 1, "C3M0280090J"), (26, 1, "NTBG080N120SC1"), (26, 1, "NTBG080N120SC1", True), (15, 2, "NTBG080N120SC1", False, True), (15, 2, "NTBG080N120SC1", True, True), (10, 3, "NTBG080N120SC1", True, True)):
+        h = hybrid(*args)
+        if h.get("reachable"):
+            h["rule_rows"] = [dict(rule="switch peak vs 80 % IDM", value=h["I_boost"], limit=round(0.8 * SW[h["switch"]]["idm"], 1), ok=h["I_boost"] <= 0.8 * SW[h["switch"]]["idm"]),
+                              dict(rule="cord-flex width vs 16 mm (18 mm bore less 2)", value=h["flex_width_mm"], limit=16.0, ok=h["flex_width_mm"] <= 16.0),
+                              dict(rule="TX switch TJ in boost vs 125 C", value=h["Tj_switch_boost_C"], limit=125.0, ok=h["Tj_switch_boost_C"] <= 125.0)]
+            h["vs_base"] = {k: round(100 * (h["depth_cm"][k] / base["depth_cm"][k] - 1), 1) for k in TARGETS}
+        hyb.append(h); print("hybrid", args, h.get("gate_planar_us"), h.get("depth_cm"), h.get("runtime_boost_h"))
     ok_cal = abs(base["runtime_scan_h"] - 5.18) < 0.3 and abs(base["L_uH"] - 333) / 333 < 0.05
     good = [o for o in opts if "depth_cm" in o and all(r["ok"] for r in o["rule_rows"])]
     best = max(good, key=lambda o: (o["depth_cm"]["gold_0p1g"], o["runtime_boost_h"]))
     res = dict(status="MODELED options study (owner 2026-10-31): nothing adopted; equal field at 300 mm; regenerative clamp 75 % (ASSUMED as in rf2_continuous)",
                calibration=dict(base_L_uH=base["L_uH"], design_L_uH=333, base_runtime_scan_h=base["runtime_scan_h"], rf2_continuous_scan_h=5.18, ok=ok_cal),
-               noise_basis=f"MP1 v2 {NOISE_nV} nV/rtHz, {BW / 1e6:.0f} MHz, {NAVG}-pulse average, SNR {SNR}", options=opts, best_passing=best,
+               noise_basis=f"MP1 v2 {NOISE_nV} nV/rtHz, {BW / 1e6:.0f} MHz, {NAVG}-pulse average, SNR {SNR}", options=opts, hybrid=hyb, best_passing=best,
                ok=bool(ok_cal))
     json.dump(res, open(os.path.join(OUT, "rf2_lowL_options.json"), "w"), indent=1, default=float)
     for o in opts:

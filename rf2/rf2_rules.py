@@ -79,6 +79,18 @@ def rules():
             add("flex.one_piece_minco", "target", "cord-flex in one piece vs Minco maximum length (5 ft)", a["one_piece_mm"], mi["len_max_mm"], "<=", "Minco design guide 2019", unit="mm")
         for k, v in fo["B_shield_can"]["places"].items():
             add(f"shield.slotted.{k[:20]}", "target", f"slotted etched shield can in the head, {k}: drift vs 0.5 x gate noise", v["slotted"]["drift5K_x_noise"], 0.5, "<=", "rf2_flex_options.json", unit="x noise")
+    fd = J("rf2", "results", "rf2_fold_options.json")
+    if fd:
+        for o in fd["rows"]:
+            if o["mechanism"].startswith("telescope") or o["profile"] not in ("square31", "hex31 hub6_cu"): continue
+            for r in o["rule_rows"]:
+                add(f"opt.fold.{o['mechanism'][:14]}.{o['profile']}.{r['rule'][:20]}", "target", f"fold option {o['mechanism']}, {o['profile']}: {r['rule']}", r["value"], r["limit"], r["sense"], "rf2_fold_options.json")
+    lh = J("rf2", "results", "rf2_lowL_options.json")
+    for h in (lh or {}).get("hybrid", []):
+        for r in h.get("rule_rows", []):
+            if r["ok"] and "width" not in r["rule"]: pass
+            add(f"opt.hybrid.{h['N']}x{h['p']}.{h['switch'][:4]}{'.TXD400' if h['txd_at_400mm'] else ''}.{r['rule'][:20]}", "safety" if ("IDM" in r["rule"] or "TJ" in r["rule"]) else "target",
+                f"hybrid RX option {h['N']}x{h['p']} {h['switch'][:4]}{' TXD400' if h['txd_at_400mm'] else ''}: {r['rule']}", r["value"], r["limit"], "<=", "rf2_lowL_options.json hybrid")
     for fn, tag in (("rf2_lowL_options.json", "lowL"), ("rf2_shaftlink_options.json", "shaft")):
         d = J("rf2", "results", fn)
         if not d: continue

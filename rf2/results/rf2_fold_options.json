@@ -1,0 +1,1561 @@
+{
+ "status": "MODELED options study (owner 2026-10-31): hinge stiffness, hinge mass, connector and wrap losses ASSUMED; nothing adopted",
+ "rows": [
+  {
+   "mechanism": "telescope (today)",
+   "profile": "square31",
+   "hinges_s_mm": [],
+   "n_fibre_hinges": null,
+   "tubes_and_hinges_g": 210,
+   "tip_sag_mm": 3.41,
+   "tip_sag_rigid_latch_mm": null,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 430,
+   "folded_stack_mm": 31.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": false,
+    "bend_r_mm": 8.2,
+    "takeup_mm": null,
+    "link_loss_dB": null,
+    "margin_dB": null,
+    "cycle_life_years_at_2_folds_per_day": null
+   },
+   "flex_clock_spring_extra_m": 0.0,
+   "metal_free_hinges": [],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 8.2,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": false
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 3.41,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 430,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x1 (mid) + chassis hinge",
+   "profile": "square31",
+   "hinges_s_mm": [
+    490.0
+   ],
+   "n_fibre_hinges": 2,
+   "tubes_and_hinges_g": 247,
+   "tip_sag_mm": 9.47,
+   "tip_sag_rigid_latch_mm": 2.67,
+   "hinge_k_to_match_telescope_Nm_per_rad": 2750,
+   "collapsed_mm": 510,
+   "folded_stack_mm": 62.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 94.2,
+    "link_loss_dB": 7.27,
+    "margin_dB": 9.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.427,
+   "metal_free_hinges": [],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 9.47,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 510,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 9.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x1 (mid) + chassis hinge",
+   "profile": "hex31",
+   "hinges_s_mm": [
+    490.0
+   ],
+   "n_fibre_hinges": 2,
+   "tubes_and_hinges_g": 218,
+   "tip_sag_mm": 10.29,
+   "tip_sag_rigid_latch_mm": 3.55,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 510,
+   "folded_stack_mm": 62.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 94.2,
+    "link_loss_dB": 7.27,
+    "margin_dB": 9.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.427,
+   "metal_free_hinges": [],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 10.29,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 510,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 9.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x1 (mid) + chassis hinge",
+   "profile": "hex31 hub6",
+   "hinges_s_mm": [
+    490.0
+   ],
+   "n_fibre_hinges": 2,
+   "tubes_and_hinges_g": 305,
+   "tip_sag_mm": 10.05,
+   "tip_sag_rigid_latch_mm": 3.14,
+   "hinge_k_to_match_telescope_Nm_per_rad": 7560,
+   "collapsed_mm": 510,
+   "folded_stack_mm": 62.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 94.2,
+    "link_loss_dB": 7.27,
+    "margin_dB": 9.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.427,
+   "metal_free_hinges": [],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 10.05,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 510,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 9.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x1 (mid) + chassis hinge",
+   "profile": "hex31 hub6_cu",
+   "hinges_s_mm": [
+    490.0
+   ],
+   "n_fibre_hinges": 2,
+   "tubes_and_hinges_g": 337,
+   "tip_sag_mm": 10.15,
+   "tip_sag_rigid_latch_mm": 3.18,
+   "hinge_k_to_match_telescope_Nm_per_rad": 8990,
+   "collapsed_mm": 510,
+   "folded_stack_mm": 62.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 94.2,
+    "link_loss_dB": 7.27,
+    "margin_dB": 9.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.427,
+   "metal_free_hinges": [],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 10.15,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 510,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 9.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x1 (mid) + chassis hinge",
+   "profile": "hex26 hub6_cu",
+   "hinges_s_mm": [
+    490.0
+   ],
+   "n_fibre_hinges": 2,
+   "tubes_and_hinges_g": 285,
+   "tip_sag_mm": 12.23,
+   "tip_sag_rigid_latch_mm": 5.36,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 510,
+   "folded_stack_mm": 52.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 94.2,
+    "link_loss_dB": 7.27,
+    "margin_dB": 9.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.427,
+   "metal_free_hinges": [],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 12.23,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 510,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 9.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x1 (mid) + chassis hinge",
+   "profile": "square26",
+   "hinges_s_mm": [
+    490.0
+   ],
+   "n_fibre_hinges": 2,
+   "tubes_and_hinges_g": 211,
+   "tip_sag_mm": 11.15,
+   "tip_sag_rigid_latch_mm": 4.42,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 510,
+   "folded_stack_mm": 52.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 94.2,
+    "link_loss_dB": 7.27,
+    "margin_dB": 9.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.427,
+   "metal_free_hinges": [],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 11.15,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 510,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 9.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x2 (thirds) + chassis hinge",
+   "profile": "square31",
+   "hinges_s_mm": [
+    327.0,
+    653.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 277,
+   "tip_sag_mm": 17.96,
+   "tip_sag_rigid_latch_mm": 2.67,
+   "hinge_k_to_match_telescope_Nm_per_rad": 6186,
+   "collapsed_mm": 367,
+   "folded_stack_mm": 93.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    327.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 17.96,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 367,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x2 (thirds) + chassis hinge",
+   "profile": "hex31",
+   "hinges_s_mm": [
+    327.0,
+    653.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 248,
+   "tip_sag_mm": 18.69,
+   "tip_sag_rigid_latch_mm": 3.55,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 367,
+   "folded_stack_mm": 93.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    327.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 18.69,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 367,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x2 (thirds) + chassis hinge",
+   "profile": "hex31 hub6",
+   "hinges_s_mm": [
+    327.0,
+    653.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 335,
+   "tip_sag_mm": 18.73,
+   "tip_sag_rigid_latch_mm": 3.14,
+   "hinge_k_to_match_telescope_Nm_per_rad": 17053,
+   "collapsed_mm": 367,
+   "folded_stack_mm": 93.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    327.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 18.73,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 367,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x2 (thirds) + chassis hinge",
+   "profile": "hex31 hub6_cu",
+   "hinges_s_mm": [
+    327.0,
+    653.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 367,
+   "tip_sag_mm": 18.94,
+   "tip_sag_rigid_latch_mm": 3.18,
+   "hinge_k_to_match_telescope_Nm_per_rad": 20313,
+   "collapsed_mm": 367,
+   "folded_stack_mm": 93.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    327.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 18.94,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 367,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x2 (thirds) + chassis hinge",
+   "profile": "hex26 hub6_cu",
+   "hinges_s_mm": [
+    327.0,
+    653.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 315,
+   "tip_sag_mm": 20.84,
+   "tip_sag_rigid_latch_mm": 5.36,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 367,
+   "folded_stack_mm": 78.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    327.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 20.84,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 367,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x2 (thirds) + chassis hinge",
+   "profile": "square26",
+   "hinges_s_mm": [
+    327.0,
+    653.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 241,
+   "tip_sag_mm": 19.52,
+   "tip_sag_rigid_latch_mm": 4.42,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 367,
+   "folded_stack_mm": 78.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    327.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 19.52,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 367,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold neck + mid + chassis hinge",
+   "profile": "square31",
+   "hinges_s_mm": [
+    60.0,
+    490.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 277,
+   "tip_sag_mm": 9.56,
+   "tip_sag_rigid_latch_mm": 2.67,
+   "hinge_k_to_match_telescope_Nm_per_rad": 2790,
+   "collapsed_mm": 530,
+   "folded_stack_mm": 93.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    60.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 9.56,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 530,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold neck + mid + chassis hinge",
+   "profile": "hex31",
+   "hinges_s_mm": [
+    60.0,
+    490.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 248,
+   "tip_sag_mm": 10.39,
+   "tip_sag_rigid_latch_mm": 3.55,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 530,
+   "folded_stack_mm": 93.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    60.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 10.39,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 530,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold neck + mid + chassis hinge",
+   "profile": "hex31 hub6",
+   "hinges_s_mm": [
+    60.0,
+    490.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 335,
+   "tip_sag_mm": 10.14,
+   "tip_sag_rigid_latch_mm": 3.14,
+   "hinge_k_to_match_telescope_Nm_per_rad": 7666,
+   "collapsed_mm": 530,
+   "folded_stack_mm": 93.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    60.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 10.14,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 530,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold neck + mid + chassis hinge",
+   "profile": "hex31 hub6_cu",
+   "hinges_s_mm": [
+    60.0,
+    490.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 367,
+   "tip_sag_mm": 10.25,
+   "tip_sag_rigid_latch_mm": 3.18,
+   "hinge_k_to_match_telescope_Nm_per_rad": 9115,
+   "collapsed_mm": 530,
+   "folded_stack_mm": 93.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    60.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 10.25,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 530,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold neck + mid + chassis hinge",
+   "profile": "hex26 hub6_cu",
+   "hinges_s_mm": [
+    60.0,
+    490.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 315,
+   "tip_sag_mm": 12.32,
+   "tip_sag_rigid_latch_mm": 5.36,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 530,
+   "folded_stack_mm": 78.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    60.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 12.32,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 530,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold neck + mid + chassis hinge",
+   "profile": "square26",
+   "hinges_s_mm": [
+    60.0,
+    490.0
+   ],
+   "n_fibre_hinges": 3,
+   "tubes_and_hinges_g": 241,
+   "tip_sag_mm": 11.24,
+   "tip_sag_rigid_latch_mm": 4.42,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 530,
+   "folded_stack_mm": 78.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 141.4,
+    "link_loss_dB": 9.27,
+    "margin_dB": 7.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.641,
+   "metal_free_hinges": [
+    60.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 11.24,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 530,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 7.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x3 (quarters) + chassis hinge",
+   "profile": "square31",
+   "hinges_s_mm": [
+    245.0,
+    490.0,
+    735.0
+   ],
+   "n_fibre_hinges": 4,
+   "tubes_and_hinges_g": 307,
+   "tip_sag_mm": 26.88,
+   "tip_sag_rigid_latch_mm": 2.67,
+   "hinge_k_to_match_telescope_Nm_per_rad": 9798,
+   "collapsed_mm": 305,
+   "folded_stack_mm": 124.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 188.5,
+    "link_loss_dB": 11.27,
+    "margin_dB": 5.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.855,
+   "metal_free_hinges": [
+    245.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 26.88,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 305,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 5.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x3 (quarters) + chassis hinge",
+   "profile": "hex31",
+   "hinges_s_mm": [
+    245.0,
+    490.0,
+    735.0
+   ],
+   "n_fibre_hinges": 4,
+   "tubes_and_hinges_g": 278,
+   "tip_sag_mm": 27.51,
+   "tip_sag_rigid_latch_mm": 3.55,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 305,
+   "folded_stack_mm": 124.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 188.5,
+    "link_loss_dB": 11.27,
+    "margin_dB": 5.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.855,
+   "metal_free_hinges": [
+    245.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 27.51,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 305,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 5.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x3 (quarters) + chassis hinge",
+   "profile": "hex31 hub6",
+   "hinges_s_mm": [
+    245.0,
+    490.0,
+    735.0
+   ],
+   "n_fibre_hinges": 4,
+   "tubes_and_hinges_g": 365,
+   "tip_sag_mm": 27.86,
+   "tip_sag_rigid_latch_mm": 3.14,
+   "hinge_k_to_match_telescope_Nm_per_rad": 27048,
+   "collapsed_mm": 305,
+   "folded_stack_mm": 124.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 188.5,
+    "link_loss_dB": 11.27,
+    "margin_dB": 5.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.855,
+   "metal_free_hinges": [
+    245.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 27.86,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 305,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 5.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x3 (quarters) + chassis hinge",
+   "profile": "hex31 hub6_cu",
+   "hinges_s_mm": [
+    245.0,
+    490.0,
+    735.0
+   ],
+   "n_fibre_hinges": 4,
+   "tubes_and_hinges_g": 397,
+   "tip_sag_mm": 28.19,
+   "tip_sag_rigid_latch_mm": 3.18,
+   "hinge_k_to_match_telescope_Nm_per_rad": 32241,
+   "collapsed_mm": 305,
+   "folded_stack_mm": 124.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 188.5,
+    "link_loss_dB": 11.27,
+    "margin_dB": 5.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.855,
+   "metal_free_hinges": [
+    245.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 28.19,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 305,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 5.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x3 (quarters) + chassis hinge",
+   "profile": "hex26 hub6_cu",
+   "hinges_s_mm": [
+    245.0,
+    490.0,
+    735.0
+   ],
+   "n_fibre_hinges": 4,
+   "tubes_and_hinges_g": 345,
+   "tip_sag_mm": 29.9,
+   "tip_sag_rigid_latch_mm": 5.36,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 305,
+   "folded_stack_mm": 104.0,
+   "chambers": 6,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 188.5,
+    "link_loss_dB": 11.27,
+    "margin_dB": 5.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.855,
+   "metal_free_hinges": [
+    245.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 29.9,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 305,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 5.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "mechanism": "fold x3 (quarters) + chassis hinge",
+   "profile": "square26",
+   "hinges_s_mm": [
+    245.0,
+    490.0,
+    735.0
+   ],
+   "n_fibre_hinges": 4,
+   "tubes_and_hinges_g": 271,
+   "tip_sag_mm": 28.31,
+   "tip_sag_rigid_latch_mm": 4.42,
+   "hinge_k_to_match_telescope_Nm_per_rad": null,
+   "collapsed_mm": 305,
+   "folded_stack_mm": 104.0,
+   "chambers": 1,
+   "fibre": {
+    "fits": true,
+    "bend_r_mm": 15.0,
+    "takeup_mm": 188.5,
+    "link_loss_dB": 11.27,
+    "margin_dB": 5.23,
+    "cycle_life_years_at_2_folds_per_day": 13.7
+   },
+   "flex_clock_spring_extra_m": 0.855,
+   "metal_free_hinges": [
+    245.0
+   ],
+   "tele_ref": {
+    "tubes_g": 210,
+    "sag_mm": 3.41,
+    "collapsed_mm": 430.0
+   },
+   "rule_rows": [
+    {
+     "rule": "POF bend radius available vs 15 mm repeated",
+     "value": 15.0,
+     "limit": 15.0,
+     "sense": ">=",
+     "ok": true
+    },
+    {
+     "rule": "tip sag vs today's telescope",
+     "value": 28.31,
+     "limit": 3.41,
+     "sense": "<=",
+     "ok": false
+    },
+    {
+     "rule": "collapsed length vs today's 430 mm",
+     "value": 305,
+     "limit": 430.0,
+     "sense": "<=",
+     "ok": true
+    },
+    {
+     "rule": "optical link margin vs 3 dB",
+     "value": 5.23,
+     "limit": 3.0,
+     "sense": ">=",
+     "ok": true
+    }
+   ]
+  }
+ ],
+ "notes": [
+  "a fold lets every segment keep a full internal structure (hub, separators, central bore): nothing slides inside it",
+  "each fold is one more latch to set and one more joint to wear; the telescope stays adjustable in length, a fixed shaft does not (a length adjuster would be a short telescope at the handle, below the last fibre hinge)",
+  "the fibre slides in a PTFE conduit; take-up for all hinges is stored once at the chassis"
+ ]
+}

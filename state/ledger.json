@@ -704,31 +704,31 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.8,
+   "seconds": 2.9,
    "why": "",
    "tail": "",
-   "fingerprint": "6aa645ed627a3e7f",
+   "fingerprint": "b5c5540d9c7bed18",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "5b7e13c335",
+    "run.py": "649fdb4da2",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-31T02:45:25",
+   "finished": "2026-10-31T05:42:56",
    "log": "state/logs/selftest.log",
    "history": [
-    2.9,
     3.1,
     3.0,
     3.1,
     2.8,
     2.8,
     2.8,
-    2.8
+    2.8,
+    2.9
    ]
   },
   "study:mp1v2_chain": {
@@ -985,18 +985,18 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "40c09ff259643f20",
+   "fingerprint": "0654b5b0b0e3c5ed",
    "inputs": {
     "rf2/rf2_readiness.py": "5654f874f2",
-    "state/ledger.json": "1c3573fe46",
+    "state/ledger.json": "d0f0885af2",
     "rf2/results/rf2_icd.json": "93dd81c6b8"
    },
-   "finished": "2026-10-31T02:46:13",
+   "finished": "2026-10-31T05:43:00",
    "log": "state/logs/readiness.log",
    "history": [
+    0.1,
+    0.1,
     0.0,
-    0.1,
-    0.1,
     0.0,
     0.0,
     0.0,
@@ -1163,9 +1163,9 @@
    "seconds": 0.1,
    "why": "",
    "tail": "",
-   "fingerprint": "643751996a1f110d",
+   "fingerprint": "660b820c89f0fb6d",
    "inputs": {
-    "rf2/rf2_rules.py": "fed328691d",
+    "rf2/rf2_rules.py": "15b28ae006",
     "rf2/results/rf2_system.json": "7c8742ad0b",
     "rf2/results/rf2_continuous.json": "78f92ed624",
     "rf2/head/out/rf2_mp1v2_close.json": "cba1fcb3d1",
@@ -1173,19 +1173,20 @@
     "rf2/results/rf2_pack_options.json": "b7d066fc13",
     "rf2/results/rf2_wire_options.json": "c8a6aa4014",
     "rf2/results/rf2_flex_options.json": "40bdeba07d",
-    "rf2/results/rf2_lowL_options.json": "df59dfab26",
-    "rf2/results/rf2_shaftlink_options.json": "7a380d07e7"
+    "rf2/results/rf2_lowL_options.json": "794bd412bb",
+    "rf2/results/rf2_shaftlink_options.json": "7a380d07e7",
+    "rf2/results/rf2_fold_options.json": "ac929a7092"
    },
-   "finished": "2026-10-31T02:46:13",
+   "finished": "2026-10-31T05:43:00",
    "log": "state/logs/rules.log",
    "history": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
     0.1,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
     0.1
    ]
   },
@@ -1273,21 +1274,21 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "c3612df653d441d2",
+   "fingerprint": "0a905002080f921d",
    "inputs": {
     "rf2/rf2_integration.py": "30cb8b8b5e",
     "rf2/results/rf2_wire_options.json": "c8a6aa4014",
     "rf2/results/rf2_flex_options.json": "40bdeba07d",
     "rf2/results/rf2_shaft_options.json": "ec39eb88df",
     "rf2/results/rf2_pack_options.json": "b7d066fc13",
-    "rf2/results/rf2_rules.json": "de83b1aee6",
-    "rf2/results/rf2_lowL_options.json": "df59dfab26",
+    "rf2/results/rf2_rules.json": "e0ce94fbbd",
+    "rf2/results/rf2_lowL_options.json": "794bd412bb",
     "rf2/results/rf2_shaftlink_options.json": "7a380d07e7"
    },
-   "finished": "2026-10-31T02:46:13",
+   "finished": "2026-10-31T05:43:00",
    "log": "state/logs/integration.log",
    "history": [
-    0.1,
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -1465,21 +1466,22 @@
   "lowL-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.8,
+   "seconds": 1.2,
    "why": "",
    "tail": "",
-   "fingerprint": "9fbbd7621887b67a",
+   "fingerprint": "c137817ecb7c5b39",
    "inputs": {
-    "rf2/rf2_lowL_options.py": "c02a0d419b",
+    "rf2/rf2_lowL_options.py": "14141d4528",
     "rf2/rf2_cordflex.py": "f3b8429f5b",
     "rf2/rf2_continuous.py": "b0fac0f125",
     "rf2/rf2_txd_spice.py": "1a46f19129",
     "concepts/clib.py": "4cc9b59087"
    },
-   "finished": "2026-10-31T02:45:28",
+   "finished": "2026-10-31T05:42:57",
    "log": "state/logs/lowL-options.log",
    "history": [
-    0.8
+    0.8,
+    1.2
    ]
   },
   "shaftlink-options": {
@@ -1507,28 +1509,59 @@
    "seconds": 0.0,
    "why": "",
    "tail": "",
-   "fingerprint": "b04548dff2ac2c7d",
+   "fingerprint": "d6f2588ac58d95fe",
    "inputs": {
     "rf2/rf2_enhance_report.py": "e0127c7abf",
-    "rf2/results/rf2_lowL_options.json": "df59dfab26",
+    "rf2/results/rf2_lowL_options.json": "794bd412bb",
     "rf2/results/rf2_shaftlink_options.json": "7a380d07e7"
    },
-   "finished": "2026-10-31T02:45:35",
+   "finished": "2026-10-31T05:43:00",
    "log": "state/logs/enhance-report.log",
    "history": [
+    0.0,
     0.0
+   ]
+  },
+  "fold-options": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 0.7,
+   "why": "",
+   "tail": "",
+   "fingerprint": "c47f64bfa745a9df",
+   "inputs": {
+    "rf2/rf2_fold_options.py": "edadc47a25",
+    "rf2/results/rf2_shaft_options.json": "ec39eb88df",
+    "rf2/head/out_BF/rf2_head_check.json": "90e46da8a7"
+   },
+   "finished": "2026-10-31T05:42:58",
+   "log": "state/logs/fold-options.log",
+   "history": [
+    0.7
+   ]
+  },
+  "variants": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.9,
+   "why": "",
+   "tail": "",
+   "fingerprint": "05af17e3af57844d",
+   "inputs": {
+    "rf2/rf2_variants.py": "9447456a39",
+    "rf2/rf2_lowL_options.py": "14141d4528",
+    "rf2/results/rf2_fold_options.json": "ac929a7092",
+    "rf2/rf2_select.py": "ea18491898",
+    "rf2/rf2_cordflex.py": "f3b8429f5b"
+   },
+   "finished": "2026-10-31T05:43:00",
+   "log": "state/logs/variants.log",
+   "history": [
+    1.9
    ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T17:47:49",
-   "seconds": 3.0,
-   "results": {
-    "selftest": "pass",
-    "readiness": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T18:06:39",
    "seconds": 54.0,
@@ -2152,6 +2185,20 @@
    "seconds": 2.9,
    "results": {
     "icd": "pass",
+    "rules": "pass",
+    "integration": "pass",
+    "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-31T05:43:00",
+   "seconds": 6.9,
+   "results": {
+    "selftest": "pass",
+    "lowL-options": "pass",
+    "fold-options": "pass",
+    "variants": "pass",
+    "enhance-report": "pass",
     "rules": "pass",
     "integration": "pass",
     "readiness": "pass"

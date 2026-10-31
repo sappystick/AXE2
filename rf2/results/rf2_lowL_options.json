@@ -2392,6 +2392,362 @@
    ]
   }
  ],
+ "hybrid": [
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "C3M0280090J",
+   "mode": "hybrid (rim coil + planar nulled RX)",
+   "rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "I_boost": 12.74,
+   "gate_mono_us": 16.26,
+   "gate_planar_us": 13.58,
+   "depth_cm": {
+    "coin_25mm_silver": 60.6,
+    "gold_1g": 30.6,
+    "gold_0p1g": 16.3
+   },
+   "depth_mono_only_cm": {
+    "coin_25mm_silver": 60.2,
+    "gold_1g": 30.2,
+    "gold_0p1g": 15.0
+   },
+   "depth_planar_only_cm": {
+    "coin_25mm_silver": 48.2,
+    "gold_1g": 25.0,
+    "gold_0p1g": 15.1
+   },
+   "runtime_scan_h": 5.1,
+   "runtime_boost_h": 2.58,
+   "flex_width_mm": 15.7,
+   "Tj_switch_boost_C": 89.3,
+   "extra": "second receive channel (0.35 W ASSUMED), 0.1 mm PI layer above SH1 (QA / QB move up 0.1 mm)",
+   "reachable": true,
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 17.6,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 89.3,
+     "limit": 125.0,
+     "ok": true
+    }
+   ],
+   "vs_base": {
+    "coin_25mm_silver": 0.7,
+    "gold_1g": 1.3,
+    "gold_0p1g": 8.7
+   }
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "NTBG080N120SC1",
+   "mode": "hybrid (rim coil + planar nulled RX)",
+   "rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "I_boost": 12.74,
+   "gate_mono_us": 16.86,
+   "gate_planar_us": 14.01,
+   "depth_cm": {
+    "coin_25mm_silver": 60.6,
+    "gold_1g": 30.4,
+    "gold_0p1g": 15.8
+   },
+   "depth_mono_only_cm": {
+    "coin_25mm_silver": 60.2,
+    "gold_1g": 30.1,
+    "gold_0p1g": 14.3
+   },
+   "depth_planar_only_cm": {
+    "coin_25mm_silver": 48.2,
+    "gold_1g": 25.0,
+    "gold_0p1g": 14.7
+   },
+   "runtime_scan_h": 5.62,
+   "runtime_boost_h": 3.19,
+   "flex_width_mm": 15.7,
+   "Tj_switch_boost_C": 56.1,
+   "extra": "second receive channel (0.35 W ASSUMED), 0.1 mm PI layer above SH1 (QA / QB move up 0.1 mm)",
+   "reachable": true,
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 56.1,
+     "limit": 125.0,
+     "ok": true
+    }
+   ],
+   "vs_base": {
+    "coin_25mm_silver": 0.7,
+    "gold_1g": 0.7,
+    "gold_0p1g": 5.3
+   }
+  },
+  {
+   "N": 26,
+   "p": 1,
+   "switch": "NTBG080N120SC1",
+   "mode": "hybrid (rim coil + planar nulled RX)",
+   "rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": true,
+   "tx_strips_2layer": false,
+   "L_uH": 327.5,
+   "I_boost": 12.74,
+   "gate_mono_us": 16.86,
+   "gate_planar_us": 14.01,
+   "depth_cm": {
+    "coin_25mm_silver": 60.6,
+    "gold_1g": 30.4,
+    "gold_0p1g": 15.8
+   },
+   "depth_mono_only_cm": {
+    "coin_25mm_silver": 60.2,
+    "gold_1g": 30.1,
+    "gold_0p1g": 14.3
+   },
+   "depth_planar_only_cm": {
+    "coin_25mm_silver": 48.2,
+    "gold_1g": 25.0,
+    "gold_0p1g": 14.7
+   },
+   "runtime_scan_h": 5.88,
+   "runtime_boost_h": 3.52,
+   "flex_width_mm": 15.7,
+   "Tj_switch_boost_C": 55.0,
+   "extra": "second receive channel (0.35 W ASSUMED), 0.1 mm PI layer above SH1 (QA / QB move up 0.1 mm)",
+   "reachable": true,
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 12.74,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 15.7,
+     "limit": 16.0,
+     "ok": true
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 55.0,
+     "limit": 125.0,
+     "ok": true
+    }
+   ],
+   "vs_base": {
+    "coin_25mm_silver": 0.7,
+    "gold_1g": 0.7,
+    "gold_0p1g": 5.3
+   }
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "NTBG080N120SC1",
+   "mode": "hybrid (rim coil + planar nulled RX)",
+   "rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": false,
+   "tx_strips_2layer": true,
+   "L_uH": 107.0,
+   "I_boost": 22.24,
+   "gate_mono_us": 10.52,
+   "gate_planar_us": 8.91,
+   "depth_cm": {
+    "coin_25mm_silver": 55.8,
+    "gold_1g": 29.0,
+    "gold_0p1g": 20.9
+   },
+   "depth_mono_only_cm": {
+    "coin_25mm_silver": 54.9,
+    "gold_1g": 28.2,
+    "gold_0p1g": 19.3
+   },
+   "depth_planar_only_cm": {
+    "coin_25mm_silver": 47.9,
+    "gold_1g": 25.6,
+    "gold_0p1g": 19.6
+   },
+   "runtime_scan_h": 5.11,
+   "runtime_boost_h": 2.91,
+   "flex_width_mm": 16.06,
+   "Tj_switch_boost_C": 72.2,
+   "extra": "second receive channel (0.35 W ASSUMED), 0.1 mm PI layer above SH1 (QA / QB move up 0.1 mm)",
+   "reachable": true,
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 16.06,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 72.2,
+     "limit": 125.0,
+     "ok": true
+    }
+   ],
+   "vs_base": {
+    "coin_25mm_silver": -7.3,
+    "gold_1g": -4.0,
+    "gold_0p1g": 39.3
+   }
+  },
+  {
+   "N": 15,
+   "p": 2,
+   "switch": "NTBG080N120SC1",
+   "mode": "hybrid (rim coil + planar nulled RX)",
+   "rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": true,
+   "tx_strips_2layer": true,
+   "L_uH": 107.0,
+   "I_boost": 22.24,
+   "gate_mono_us": 10.52,
+   "gate_planar_us": 8.91,
+   "depth_cm": {
+    "coin_25mm_silver": 55.8,
+    "gold_1g": 29.0,
+    "gold_0p1g": 20.9
+   },
+   "depth_mono_only_cm": {
+    "coin_25mm_silver": 54.9,
+    "gold_1g": 28.2,
+    "gold_0p1g": 19.3
+   },
+   "depth_planar_only_cm": {
+    "coin_25mm_silver": 47.9,
+    "gold_1g": 25.6,
+    "gold_0p1g": 19.6
+   },
+   "runtime_scan_h": 5.38,
+   "runtime_boost_h": 3.18,
+   "flex_width_mm": 16.06,
+   "Tj_switch_boost_C": 71.1,
+   "extra": "second receive channel (0.35 W ASSUMED), 0.1 mm PI layer above SH1 (QA / QB move up 0.1 mm)",
+   "reachable": true,
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 22.24,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 16.06,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 71.1,
+     "limit": 125.0,
+     "ok": true
+    }
+   ],
+   "vs_base": {
+    "coin_25mm_silver": -7.3,
+    "gold_1g": -4.0,
+    "gold_0p1g": 39.3
+   }
+  },
+  {
+   "N": 10,
+   "p": 3,
+   "switch": "NTBG080N120SC1",
+   "mode": "hybrid (rim coil + planar nulled RX)",
+   "rx": "40 turns, 0.30 mm pitch, 0.15 mm traces",
+   "txd_at_400mm": true,
+   "tx_strips_2layer": true,
+   "L_uH": 47.6,
+   "I_boost": 33.36,
+   "gate_mono_us": 7.71,
+   "gate_planar_us": 6.65,
+   "depth_cm": {
+    "coin_25mm_silver": 52.9,
+    "gold_1g": 28.0,
+    "gold_0p1g": 23.2
+   },
+   "depth_mono_only_cm": {
+    "coin_25mm_silver": 51.2,
+    "gold_1g": 26.5,
+    "gold_0p1g": 21.0
+   },
+   "depth_planar_only_cm": {
+    "coin_25mm_silver": 48.0,
+    "gold_1g": 26.0,
+    "gold_0p1g": 22.1
+   },
+   "runtime_scan_h": 4.5,
+   "runtime_boost_h": 2.47,
+   "flex_width_mm": 19.85,
+   "Tj_switch_boost_C": 99.0,
+   "extra": "second receive channel (0.35 W ASSUMED), 0.1 mm PI layer above SH1 (QA / QB move up 0.1 mm)",
+   "reachable": true,
+   "rule_rows": [
+    {
+     "rule": "switch peak vs 80 % IDM",
+     "value": 33.36,
+     "limit": 88.0,
+     "ok": true
+    },
+    {
+     "rule": "cord-flex width vs 16 mm (18 mm bore less 2)",
+     "value": 19.85,
+     "limit": 16.0,
+     "ok": false
+    },
+    {
+     "rule": "TX switch TJ in boost vs 125 C",
+     "value": 99.0,
+     "limit": 125.0,
+     "ok": true
+    }
+   ],
+   "vs_base": {
+    "coin_25mm_silver": -12.1,
+    "gold_1g": -7.3,
+    "gold_0p1g": 54.7
+   }
+  }
+ ],
  "best_passing": {
   "N": 26,
   "p": 1,
