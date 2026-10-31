@@ -2,7 +2,7 @@
 
 Status: MODELED clean-sheet study (owner 2026-10-31): nothing adopted, nothing excluded (every evaluated design's broken rules are counted; safety rules reported, never relaxed)
 
-Run: 84.8 s in all (70.5 s NSGA-II in 4 processes, 43385 designs evaluated, 21971 with no broken rule; 5.2 s polish; 3.0 s CAD). One evaluation: 0.87 ms.
+Run: 88.6 s in all (71.1 s NSGA-II in 4 processes, 59527 designs evaluated, 30532 with no broken rule; 4.1 s polish; 5.0 s CAD). One evaluation: 1.45 ms.
 
 ## 1. Calibration: today's AXE2 through the clean-sheet model
 
@@ -38,9 +38,9 @@ The first-gate offset fitted to today's 16.43 us is +2.254 us (rf2_lowL_options'
 | Design | D x H mm | N x p, bundle | litz | I scan A / clamp V / T_flat us | switch | pack | shaft | RX | gate us | coin / 1 g / 0.1 g cm | boost h | head g | total g | torque Nm | sag mm | score |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | today (AXE2) | 233.0 x 25.4 | 26 x 1, 6x5 | TXXL66/38FXXX-2(MWXX) | 8.06 / 460 / 300 | C3M0280090J | Molicel P45B 7S1P | square 31.0 mm / 1.20 wall, 0.980 m | mono | 16.43 | 60.2 / 30.2 / 14.8 | 2.6 | 771 | 2537 | 5.023 | 3.41 | 1.0 |
-| best depth_gm_cm | 300.0 x 35.0 | 13 x 4, 6x9 | TXXL19/40TXXX-2(MWXX) | 17.01 / 566 / 210 | NTBG080N120SC1 | LG M50T 9S1P | square 33.6 mm / 1.08 wall, 0.945 m | hybrid | 11.22 | 63.8 / 34.2 / 23.8 | 2.29 | 1023 | 2929 | 6.119 | 3.18 | 1.0465 |
+| best depth_gm_cm | 300.0 x 35.0 | 11 x 1, 2x6 | TXXL230/44TXXX-2(MWXX) | 18.72 / 565 / 300 | NTBG080N120SC1 | Molicel P30B 11S1P | square 33.7 mm / 1.08 wall, 0.945 m | hybrid | 10.0 | 64.3 / 33.4 / 24.8 | 1.71 | 992 | 2792 | 6.091 | 3.08 | 1.0077 |
 | best gold_0p1g | 300.0 x 35.0 | 6 x 1, 1x6 | TXXL35/38TXXX-2(MWXX) | 29.46 / 565 / 62 | NTBG080N120SC1 | LG M50T 11S1P | square 33.0 mm / 1.08 wall, 0.945 m | hybrid | 6.2 | 48.6 / 31.1 / 28.1 | 3.47 | 929 | 2977 | 5.26 | 3.1 | 1.1924 |
-| best boost_h | 300.0 x 35.0 | 4 x 5, 3x7 | TXXL35/38TXXX-2(MWXX) | 2.02 / 100 / 50 | NTBG080N120SC1 | LG M50T 11S3P | hex 35.6 mm / 1.26 wall, 0.945 m | mono | 3.73 | 17.7 / 9.0 / 9.1 | 50.46 | 982 | 4649 | 3.113 | 3.14 | 0.9078 |
+| best boost_h | 211.0 x 35.0 | 6 x 4, 4x6 | TXXL35/38TXXX-2(MWXX) | 2.02 / 100 / 50 | NTBG080N120SC1 | LG M50T 11S3P | square 35.5 mm / 1.08 wall, 0.945 m | mono | 3.66 | 14.9 / 9.0 / 9.1 | 50.46 | 589 | 4258 | 0.532 | 1.62 | 1.0341 |
 | best total_g | 180.0 x 17.5 | 3 x 1, 1x7 | TXXL40/40TXXX-1.5(MWXX) | 7.56 / 368 / 390 | NTBG080N120SC1 | Molicel P30B 4S1P | round 32.1 mm / 0.80 wall, 0.945 m | mono | 2.83 | 15.1 / 7.5 / 7.6 | 2.11 | 403 | 1763 | 2.513 | 3.41 | 0.8254 |
 | best balanced | 268.0 x 35.0 | 11 x 1, 2x6 | TXXL19/36TXXX-2(MWXX) | 10.14 / 531 / 380 | NTBG080N120SC1 | LG M50T 6S1P | hex 33.3 mm / 1.20 wall, 0.945 m | hybrid | 8.19 | 54.8 / 28.0 / 22.7 | 2.6 | 800 | 2474 | 4.962 | 3.38 | 1.1164 |
 
@@ -52,7 +52,7 @@ The first-gate offset fitted to today's 16.43 us is +2.254 us (rf2_lowL_options'
 | 2 | 268.6 x 30.3 | 11 x 1, 2x6 | TXXL19/36TXXX-2(MWXX) (ETFE 1000 V, 0.241 mm2, OD 1.019) | 9.35 A / 520 V / 297 us | GS-065-011-1-L | Molicel P45B 6S1P | hex 33.9 mm / 1.08 wall, 0.945 m | hybrid | 4.94 mm 3 oz | 53.0 / 27.7 / 22.7 | 2.6 | 2451 | 4.858 | 1.1196 |
 | 3 | 258.0 x 28.6 | 11 x 1, 2x6 | TXXL19/36TXXX-2(MWXX) (ETFE 1000 V, 0.241 mm2, OD 1.019) | 8.78 A / 490 V / 295 us | GS-065-011-1-L | Molicel P45B 6S1P | hex 34.3 mm / 1.17 wall, 0.961 m | hybrid | 5.03 mm 3 oz | 50.5 / 26.5 / 22.0 | 3.0 | 2418 | 4.713 | 1.1465 |
 | 4 | 258.0 x 28.9 | 11 x 1, 2x6 | TXXL19/36TXXX-2(MWXX) (ETFE 1000 V, 0.241 mm2, OD 1.019) | 8.78 A / 518 V / 379 us | NTBG080N120SC1 | LG M50T 6S1P | hex 35.0 mm / 1.17 wall, 0.961 m | hybrid | 3.33 mm 3 oz | 51.6 / 26.4 / 21.9 | 3.36 | 2424 | 4.732 | 1.1709 |
-| 5 | 261.5 x 18.2 | 6 x 1, 1x6 | TXXL230/44TXXX-3(MWXX) (ETFE 1000 V, 0.466 mm2, OD 1.587) | 30.35 A / 565 V / 63 us | NTBG080N120SC1 | LG M50T 11S3P | hex 33.7 mm / 0.99 wall, 0.945 m | hybrid | 2.98 mm 3 oz | 44.3 / 28.5 / 26.7 | 14.05 | 4343 | 1.302 | 1.5919 |
+| 5 | 239.6 x 26.9 | 17 x 1, 3x6 | TXXL35/38TXXX-2(MWXX) (ETFE 1000 V, 0.284 mm2, OD 1.082) | 8.01 A / 557 V / 149 us | NTBG080N120SC1 | LG M50T 5S1P | hex 35.3 mm / 1.41 wall, 0.964 m | hybrid | 3.36 mm 3 oz | 49.6 / 27.8 / 20.2 | 3.33 | 2339 | 4.637 | 1.1577 |
 
 ### The variant engine's best (rf2/results/rf2_variants.json, no broken rule; its torque uses the chassis model's 650 g head)
 
@@ -67,53 +67,53 @@ The first-gate offset fitted to today's 16.43 us is +2.254 us (rf2_lowL_options'
 
 - balanced champion: D 268.0 x H 35.0 mm, 11 x 1 turns of TXXL19/36TXXX-2(MWXX) (2x6), 10.14 A at a 531 V clamp on NTBG080N120SC1, LG M50T 6S1P, hex 33.3 mm / 1.20 wall, 0.945 m, hybrid: depth gm 32.66 cm (+9 %), 0.1 g 22.7 cm (+53 %), boost 2.6 h (+0 %), torque 4.962 Nm (-1 %), mass 2474 g (-2 %).
 - lower inductance wins the small targets: the 0.1 g champion runs 28.4 uH (6 x 1) and a 565 V clamp, first gate 6.2 us vs today's 16.43 us; the short-tau gold echo grows faster than the field per amp falls.
-- coin / geometric-mean depth wants a big head and amp-turns: the depth champion is D 300.0 mm, 13 x 4, 17.01 A, depth gm 37.3 cm, but costs 6.119 Nm and 2.29 h.
-- runtime is bought with pack cells, low loop resistance and a short flat-top: the runtime champion LG M50T 11S3P, R_coil 0.039 ohm, T_flat 50 us gives 50.46 h.
+- coin / geometric-mean depth wants a big head and amp-turns: the depth champion is D 300.0 mm, 11 x 1, 18.72 A, depth gm 37.61 cm, but costs 6.091 Nm and 1.71 h.
+- runtime is bought with pack cells, low loop resistance and a short flat-top: the runtime champion LG M50T 11S3P, R_coil 0.042 ohm, T_flat 50 us gives 50.46 h.
 - the lightest machine: 1763 g (-31 %) with D 180.0 mm, Molicel P30B 4S1P, round 32.1 mm / 0.80 wall, 0.945 m; torque 2.513 Nm (a pack behind the hand counterbalances the head, so a heavier pack lowers the torque: mass and torque pull in opposite directions).
 - clamp voltage is the strongest free lever on the first gate (fall = L I / V_clamp); it is held by 0.8 x VDS of the switch and by the litz rating, and above 500 V the IPC-2221 B4 clearance exceeds rule 6's 1.0 mm (reported as a safety row, never relaxed).
-- 21971 unique feasible designs out of 43385; the most-broken rules: tip sag vs today's telescope 3.41 mm (7745); cord-flex width vs bore chord less 2 (4204); coil bundle top vs head height less today's 12.8 mm stack (3893); planar RX null found inside the TX (3823); cord TX strip width vs IPC-2221 width at the boost rms (10 K) (3608).
+- 30532 unique feasible designs out of 59527; the most-broken rules: tip sag vs today's telescope 3.41 mm (10032); cord-flex width vs bore chord less 2 (5455); planar RX null found inside the TX (5402); coil bundle top vs head height less today's 12.8 mm stack (5385); cord TX strip width vs IPC-2221 width at the boost rms (10 K) (4891).
 
 ## 4. Rules: every broken or EDGE row of the champions and the top 5, at its location
 
 - **today:** EDGE: coil bundle top vs head height less today's 12.8 mm stack @ coil channel (12.376 vs 12.6); EDGE: cord TX strip width vs IPC-2221 width at the boost rms (10 K) @ cord flex TX strips 2 oz (2.348 vs 2.348); EDGE: tip sag vs today's telescope 3.41 mm @ shaft (square 31.0/1.20) (3.4083 vs 3.41); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (430.0 vs 430.0)
-- **best depth_gm_cm:** EDGE: IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) @ cord flex / TXD HV lanes (0.9999 vs 1.0); EDGE: pack cell current in boost vs coldest-band rating @ battery LG M50T 9S1P (2.388 vs 2.425); EDGE: cord TX strip width vs IPC-2221 width at the boost rms (10 K) @ cord flex TX strips 3 oz (3.3297 vs 3.328); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.0578 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3346 vs 430.0)
+- **best depth_gm_cm:** EDGE: IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) @ cord flex / TXD HV lanes (0.9993 vs 1.0); EDGE: cord TX strip width vs IPC-2221 width at the boost rms (10 K) @ cord flex TX strips 3 oz (3.857 vs 3.8564); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.2089 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3932 vs 430.0)
 - **best gold_0p1g:** EDGE: IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) @ cord flex / TXD HV lanes (0.9994 vs 1.0); EDGE: boost current reachable at the cut-off bus (S x 3.0 V / R_loop) @ TXD / pack (46.5752 vs 48.4728); EDGE: cord TX strip width vs IPC-2221 width at the boost rms (10 K) @ cord flex TX strips 3 oz (3.3517 vs 3.3509); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.0559 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3339 vs 430.0)
-- **best boost_h:** EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.2028 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3909 vs 430.0)
+- **best boost_h:** EDGE: cord-flex width vs bore chord less 2 @ telescope inner bore (square) (21.8233 vs 21.8243); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.0002 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3123 vs 430.0)
 - **best total_g:** EDGE: coil bundle top vs head height less today's 12.8 mm stack @ coil channel (4.678 vs 4.6856); EDGE: coil inner edge radius vs 40 mm (centre electronics, ASSUMED) @ coil channel (40.0283 vs 40.0); EDGE: tip sag vs today's telescope 3.41 mm @ shaft (round 32.1/0.80) (3.4084 vs 3.41); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (670.9863 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3069 vs 430.0)
 - **best balanced:** EDGE: tip sag vs today's telescope 3.41 mm @ shaft (hex 33.3/1.20) (3.3783 vs 3.41); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.0184 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3194 vs 430.0)
 - **top 1:** EDGE: tip sag vs today's telescope 3.41 mm @ shaft (hex 33.3/1.20) (3.3783 vs 3.41); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.0184 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3194 vs 430.0)
 - **top 2:** EDGE: TX switch peak (boost) vs 80 % IDM @ TXD switch GS-065-011-1-L (14.7813 vs 15.2); EDGE: clamp voltage vs 0.8 x switch VDS @ TXD switch GS-065-011-1-L (519.8974 vs 520.0); EDGE: rule 6: switch VDS rating vs 630 V (flyback net) @ TXD switch GS-065-011-1-L (650.0 vs 630.0); EDGE: boost current reachable at the cut-off bus (S x 3.0 V / R_loop) @ TXD / pack (14.7813 vs 15.3816); EDGE: tip sag vs today's telescope 3.41 mm @ shaft (hex 33.9/1.08) (3.3667 vs 3.41); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.0516 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3323 vs 430.0)
 - **top 3:** EDGE: rule 6: switch VDS rating vs 630 V (flyback net) @ TXD switch GS-065-011-1-L (650.0 vs 630.0); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (687.6937 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (422.7853 vs 430.0)
 - **top 4:** EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (687.6937 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (422.7853 vs 430.0)
-- **top 5:** EDGE: IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) @ cord flex / TXD HV lanes (0.9996 vs 1.0); EDGE: coil bundle top vs head height less today's 12.8 mm stack @ coil channel (5.391 vs 5.3915); EDGE: cord TX strip width vs IPC-2221 width at the boost rms (10 K) @ cord flex TX strips 3 oz (2.9753 vs 2.9746); EDGE: tip sag vs today's telescope 3.41 mm @ shaft (hex 33.7/0.99) (3.409 vs 3.41); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (671.0228 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (416.3211 vs 430.0)
+- **top 5:** EDGE: IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) @ cord flex / TXD HV lanes (0.9735 vs 1.0); EDGE: hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) @ shaft length (690.163 vs 670.985); EDGE: collapsed length vs today's 430 mm @ shaft (telescope) (423.7428 vs 430.0)
 
 Rule counts over every evaluated design (a design can break several):
 
 | Rule @ location class | kind | designs breaking it |
 |---|---|---|
-| tip sag vs today's telescope 3.41 mm | target | 7745 |
-| cord-flex width vs bore chord less 2 | target | 4204 |
-| coil bundle top vs head height less today's 12.8 mm stack | target | 3893 |
-| planar RX null found inside the TX | target | 3823 |
-| cord TX strip width vs IPC-2221 width at the boost rms (10 K) | target | 3608 |
-| boost current reachable at the cut-off bus (S x 3.0 V / R_loop) | target | 2985 |
-| collapsed length vs today's 430 mm | target | 2923 |
-| rule 6: coil litz insulation rating vs 630 V (flyback net) | safety | 2453 |
-| rolling loop: 2 x 40 x stack vs bore less 4 | target | 2205 |
-| pack cell current in boost vs coldest-band rating | safety | 2182 |
-| boost current reachable at the nominal bus | target | 2023 |
-| TX switch peak (boost) vs 80 % IDM | safety | 1537 |
-| IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) | safety | 1079 |
-| hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) | target | 981 |
-| scan current reachable at the nominal bus | target | 904 |
-| coil channel width vs 16 mm (ASSUMED) | target | 901 |
-| coil inner edge radius vs 40 mm (centre electronics, ASSUMED) | target | 834 |
-| torque about the hand >= 0 (not tail-heavy, ASSUMED) | target | 729 |
-| clamp voltage vs 0.8 x switch VDS | safety | 624 |
-| TX switch TJ in boost vs 125 C | safety | 591 |
-| pack full-charge voltage vs Y5B 50 V (VIN_H) | safety | 578 |
-| coil litz insulation rating vs the clamp voltage | safety | 233 |
-| coil max turn-to-turn voltage at the clamp vs litz rating | safety | 6 |
+| tip sag vs today's telescope 3.41 mm | target | 10032 |
+| cord-flex width vs bore chord less 2 | target | 5455 |
+| planar RX null found inside the TX | target | 5402 |
+| coil bundle top vs head height less today's 12.8 mm stack | target | 5385 |
+| cord TX strip width vs IPC-2221 width at the boost rms (10 K) | target | 4891 |
+| boost current reachable at the cut-off bus (S x 3.0 V / R_loop) | target | 4065 |
+| collapsed length vs today's 430 mm | target | 3537 |
+| pack cell current in boost vs coldest-band rating | safety | 2972 |
+| rule 6: coil litz insulation rating vs 630 V (flyback net) | safety | 2911 |
+| rolling loop: 2 x 40 x stack vs bore less 4 | target | 2865 |
+| boost current reachable at the nominal bus | target | 2743 |
+| TX switch peak (boost) vs 80 % IDM | safety | 1979 |
+| IPC-2221 B4 clearance at the clamp voltage vs the rule-6 1.0 mm gap (UNVERIFIED table) | safety | 1315 |
+| scan current reachable at the nominal bus | target | 1197 |
+| torque about the hand >= 0 (not tail-heavy, ASSUMED) | target | 1151 |
+| coil channel width vs 16 mm (ASSUMED) | target | 1069 |
+| hand-to-head lever vs 95 % of today's 706 mm (operator stance, ASSUMED) | target | 1047 |
+| coil inner edge radius vs 40 mm (centre electronics, ASSUMED) | target | 1004 |
+| TX switch TJ in boost vs 125 C | safety | 832 |
+| clamp voltage vs 0.8 x switch VDS | safety | 695 |
+| pack full-charge voltage vs Y5B 50 V (VIN_H) | safety | 650 |
+| coil litz insulation rating vs the clamp voltage | safety | 242 |
+| coil max turn-to-turn voltage at the clamp vs litz rating | safety | 7 |
 
 ## 5. Sensitivity of the balanced champion (one variable at a time: continuous +-5 % of the range, integers +-1, every other category)
 

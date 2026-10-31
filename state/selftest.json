@@ -28,7 +28,7 @@
   {
    "name": "simcache: file CONTENT (not name, not time) keys the entry",
    "ok": true,
-   "seconds": 0.01,
+   "seconds": 0.0,
    "detail": ""
   },
   {
@@ -40,19 +40,19 @@
   {
    "name": "simcache: key_args drops an argument that is already covered by a file hash",
    "ok": true,
-   "seconds": 0.0,
+   "seconds": 0.01,
    "detail": ""
   },
   {
    "name": "simcache: a source edit of the function invalidates",
    "ok": true,
-   "seconds": 0.01,
+   "seconds": 0.0,
    "detail": ""
   },
   {
    "name": "simcache: a corrupt entry is recomputed and repaired",
    "ok": true,
-   "seconds": 0.01,
+   "seconds": 0.1,
    "detail": ""
   },
   {
@@ -82,25 +82,25 @@
   {
    "name": "qualify bench: PASSES the TI LMH6629 model",
    "ok": true,
-   "seconds": 2.69,
+   "seconds": 5.83,
    "detail": ""
   },
   {
    "name": "qualify bench: FAILS a wrong model (80 MHz behavioral op-amp in the LMH6629's place)",
    "ok": true,
-   "seconds": 0.84,
+   "seconds": 0.59,
    "detail": "12 rows fail: bw_3dB_MHz, aol_dc_dB, f_at_20dB_MHz, phase_at_1GHz_deg, en_1MHz_nV"
   },
   {
    "name": "MP1 v2 chain netlist: the DC operating point is physical (reverse-biased clamp diodes carry < 1 nA; the stand-in stage's nodes agree)",
    "ok": true,
-   "seconds": 0.06,
+   "seconds": 0.03,
    "detail": ""
   },
   {
    "name": "runner: skips an unchanged step, names the changed input, sees a missing output and a re-run dependency",
    "ok": true,
-   "seconds": 0.27,
+   "seconds": 0.13,
    "detail": ""
   }
  ],

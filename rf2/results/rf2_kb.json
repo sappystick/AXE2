@@ -1,23 +1,23 @@
 {
  "ok": true,
- "build_s": 9.2,
- "documents_s": 4.1,
+ "build_s": 15.0,
+ "documents_s": 7.6,
  "db": "rf2/kb/axe2_kb.sqlite",
  "counts": {
-  "documents": 2868,
+  "documents": 2906,
   "parts": 228,
   "params": 272,
-  "facts": 53210,
-  "formulas": 130,
-  "modules": 107,
-  "steps": 95
+  "facts": 114982,
+  "formulas": 143,
+  "modules": 111,
+  "steps": 99
  },
  "detail": {
   "pdf_files": 122,
   "pdf_pages": 2607,
   "params_matching_log": 107,
   "parts_with_pdf_link": 130,
-  "fact_files": 98,
+  "fact_files": 105,
   "fact_files_skipped": [
    "rf2/results/rf2_variants.json"
   ]

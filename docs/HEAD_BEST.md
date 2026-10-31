@@ -34,4 +34,4 @@ Free improvements on top (targets unchanged; lower mass, part count or REF picku
 | head233 | 327.6 | 14.14 | 477 | 405 | 343.1 | 166.1 | 0.122 | 14.18 | 10.55 (9.71) | 481.3 (720.0) |
 | headfree | 437.1 | 10.94 | 562 | 467 | 348.0 | 131.5 | 0.08 | 10.98 | 9.51 (8.51) | 565.4 (720.0) |
 
-Run time 1.0 s. Absolute depths are optimistic (no ground / EMI / motion noise); the ratios against today are the result.
+Run time 103.8 s. Absolute depths are optimistic (no ground / EMI / motion noise); the ratios against today are the result.
