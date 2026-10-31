@@ -1,6 +1,6 @@
 {
- "status": "MODELED; TX strips in the cord flex 28.1 pF/m over 1.355 m (coplanar strips, eps_eff ASSUMED; rf2_cordflex)",
- "pair_pF": 38.1,
+ "status": "MODELED; TX strips in the cord flex 30.6 pF/m over 0.965 m (coplanar strips, eps_eff ASSUMED; rf2_cordflex)",
+ "pair_pF": 29.5,
  "cases": {
   "node 500 pF": {
    "no_cord": {
@@ -10,19 +10,19 @@
     "last_diode_us": 3.98
    },
    "cord_Rd_fixed": {
-    "node_pF": 538.1,
+    "node_pF": 529.5,
     "Rd_ohm": 401,
-    "first_gate_us": 15.2,
+    "first_gate_us": 15.76,
     "last_diode_us": 3.98
    },
    "cord_Rd_retuned": {
-    "node_pF": 538.1,
-    "Rd_ohm": 386,
-    "first_gate_us": 16.64,
+    "node_pF": 529.5,
+    "Rd_ohm": 390,
+    "first_gate_us": 16.56,
     "last_diode_us": 3.96
    },
-   "shift_fixed_us": -1.09,
-   "shift_retuned_us": 0.35
+   "shift_fixed_us": -0.53,
+   "shift_retuned_us": 0.27
   },
   "node 368 pF": {
    "no_cord": {
@@ -32,22 +32,22 @@
     "last_diode_us": 4.05
    },
    "cord_Rd_fixed": {
-    "node_pF": 406.1,
+    "node_pF": 397.5,
     "Rd_ohm": 467,
-    "first_gate_us": 15.04,
+    "first_gate_us": 14.69,
     "last_diode_us": 4.06
    },
    "cord_Rd_retuned": {
-    "node_pF": 406.1,
-    "Rd_ohm": 445,
-    "first_gate_us": 15.32,
-    "last_diode_us": 4.03
+    "node_pF": 397.5,
+    "Rd_ohm": 450,
+    "first_gate_us": 15.22,
+    "last_diode_us": 4.04
    },
-   "shift_fixed_us": 0.14,
-   "shift_retuned_us": 0.42
+   "shift_fixed_us": -0.21,
+   "shift_retuned_us": 0.32
   }
  },
  "first_order_estimate_us": 0.562,
- "worst_shift_us": 0.42,
+ "worst_shift_us": 0.32,
  "recommendation": "keep Rd at the no-cord value"
 }

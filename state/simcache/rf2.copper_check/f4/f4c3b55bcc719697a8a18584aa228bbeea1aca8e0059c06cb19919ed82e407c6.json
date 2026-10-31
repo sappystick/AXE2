@@ -1,0 +1,1 @@
+{"key": "f4c3b55bcc719697a8a18584aa228bbeea1aca8e0059c06cb19919ed82e407c6", "kind": "rf2.copper_check", "seconds": 0.094, "created": "2026-10-31T08:40:00", "value": {"loops_around_axis": [], "min_clearance_mm": 0.201, "min_hv_clearance_mm": 0.997, "ok": false, "worst_hv_pair": ["F", "PRX_B", "HA1"], "worst_pair": ["F", "AGND", "+5VA"]}}

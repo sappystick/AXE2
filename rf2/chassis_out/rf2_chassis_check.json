@@ -45,20 +45,68 @@
    "REF3_from_pivot_at_min_use_mm": 511.0
   },
   "cord_flex": {
-   "ok": true,
-   "width_mm": 15.7,
-   "tx_loop_R_ohm": 0.28,
+   "ok": false,
+   "sub_checks": {
+    "tx_length_to_pod": true,
+    "width_vs_inner_bore_less_2": false,
+    "piece2_width_vs_mid_bore_less_2": true,
+    "rolling_loop_2R_vs_bore_less_4": true,
+    "rule6_gaps_piece1": true,
+    "rule6_gaps_piece2": true,
+    "seg1_vs_te_preferred": true,
+    "seg2_vs_te_preferred": true
+   },
+   "width_mm": 18.24,
+   "width_limit_mm": 16.6,
+   "piece2_width_mm": 7.68,
+   "piece2_limit_mm": 21.6,
+   "w_tx_mm": 3.221,
+   "i_tx_rms_A": 4.616,
+   "tx_loop_R_ohm": 0.145,
+   "rule6_min_gap_mm": [
+    1.0,
+    1.0
+   ],
    "inner_bore_min_mm": 18.6,
+   "mid_bore_mm": 23.6,
    "travel_mm": 550,
    "rolling_loop_bend_r_mm": 6.0,
+   "rolling_loop_2R_mm": 12.0,
+   "rolling_loop_limit_mm": 14.600000000000001,
    "segments": {
     "seg1_dynamic_mm": 961,
     "seg2_static_mm": 394,
-    "tx_length_m": 1.355,
-    "one_piece_mm": 1315
+    "tx_length_m": 0.965,
+    "one_piece_mm": 1315,
+    "txd_s_mm": 400.0
    },
    "te_preferred_max_mm": 1016,
-   "note": "single-layer 2 oz flex; segment 1 head -> REF3T with a rolling loop storing half the travel, segment 2 REF3T -> hinge static; coverlay rating UNVERIFIED (vendor >= 630 V)"
+   "note": "single-layer 2 oz flex; segment 1 head -> REF3T with a rolling loop storing half the travel (TX strips tap off at the TXD pod, s 400), segment 2 REF3T -> hinge static (pod feed, clamp return, head power, DATA); coverlay rating UNVERIFIED (vendor >= 630 V)"
+  },
+  "txd_pod": {
+   "ok": true,
+   "s_mm": [
+    364.0,
+    436.0
+   ],
+   "centre_s_mm": 400.0,
+   "ends_before_REF3_mm": 0.0,
+   "clear_of_C1_mm": 42.0,
+   "lateral_centre_mm": 52.0,
+   "box_mm": [
+    72.0,
+    62.0,
+    52.0
+   ],
+   "surface_m2": 0.02286,
+   "housing_g": 55,
+   "parts_g": 82.0,
+   "centre_s_in_use_mm": {
+    "min_use": 300.0,
+    "nominal": 400.0,
+    "max": 590.0
+   },
+   "note": "rides the outer profile with REF3 (moves with the telescope); the TX strips and the pod feed reach it through a tap at the outer profile's lower end, as REF3T's joint (exit path OPEN, shared with REF3T)"
   },
   "hinge_pass_through": {
    "ok": true,
@@ -69,11 +117,11 @@
   },
   "tx_pair_in_cord": {
    "ok": true,
-   "length_m": 1.35,
-   "C_pF": 38.1,
-   "first_gate_shift_us": 0.14,
+   "length_m": 0.965,
+   "C_pF": 29.5,
+   "first_gate_shift_us": -0.21,
    "source": "rf2_timing_cord (nonlinear turn-off, Rd kept at the no-cord value)",
-   "note": "TX in the chassis: the TX strips run the whole cord flex (28.1 pF/m, coplanar strips, eps_eff 1.6 ASSUMED)"
+   "note": "TXD pod at s 400: the TX strips run head -> pod only (30.6 pF/m, coplanar strips, eps_eff 1.6 ASSUMED)"
   },
   "battery_slide": {
    "ok": true,
@@ -93,19 +141,19 @@
   "folds_to_backpack": {
    "ok": true,
    "grip_fixed_mm": [
-    497,
+    494,
     284,
-    195
+    205
    ],
    "grip_forward_mm": [
-    550,
+    706,
     259,
-    142
+    129
    ],
    "grip_side_mm": [
     494,
     238,
-    160
+    197
    ],
    "target_mm": [
     520.0,
@@ -120,7 +168,7 @@
   "deployed_clear": {
    "ok": true,
    "min_gaps_mm": {
-    "HEAD-UPT": 393.7,
+    "HEAD-UPT": 348.4,
     "HEAD-CH": 779.6,
     "LOW-CH": 376.0
    }
@@ -130,50 +178,20 @@
   "grip_fixed": {
    "evaluations": 567,
    "fits_backpack": true,
-   "head_pitch": 90,
+   "head_pitch": 120,
    "head_roll": 90,
    "hinge": {
     "axis": "N",
     "offset_mm": 31.1,
-    "side": -1
+    "side": 1
    },
    "package_mm": [
-    497,
+    494,
     284,
-    195
+    205
    ],
-   "search_s": 4.4,
+   "search_s": 4.5,
    "top3": [
-    {
-     "fits_backpack": true,
-     "head_pitch": 90,
-     "head_roll": 90,
-     "hinge": {
-      "axis": "N",
-      "offset_mm": 31.1,
-      "side": -1
-     },
-     "package_mm": [
-      497,
-      284,
-      195
-     ]
-    },
-    {
-     "fits_backpack": true,
-     "head_pitch": 90,
-     "head_roll": -90,
-     "hinge": {
-      "axis": "N",
-      "offset_mm": 31.1,
-      "side": 1
-     },
-     "package_mm": [
-      497,
-      284,
-      195
-     ]
-    },
     {
      "fits_backpack": true,
      "head_pitch": 120,
@@ -188,6 +206,36 @@
       284,
       205
      ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": -15,
+     "head_roll": -90,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 31.1,
+      "side": 1
+     },
+     "package_mm": [
+      650,
+      284,
+      148
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 0,
+     "head_roll": -90,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 31.1,
+      "side": 1
+     },
+     "package_mm": [
+      628,
+      284,
+      163
+     ]
     }
    ],
    "grip_mode": null
@@ -195,38 +243,23 @@
   "grip_folded_forward": {
    "evaluations": 561,
    "fits_backpack": false,
-   "head_pitch": 120,
-   "head_roll": 90,
+   "head_pitch": -15,
+   "head_roll": -90,
    "hinge": {
     "axis": "Y",
     "offset_mm": 49.8,
     "side": 1
    },
    "package_mm": [
-    550,
+    706,
     259,
-    142
+    129
    ],
-   "search_s": 4.4,
+   "search_s": 4.7,
    "top3": [
     {
      "fits_backpack": false,
-     "head_pitch": 120,
-     "head_roll": 90,
-     "hinge": {
-      "axis": "Y",
-      "offset_mm": 49.8,
-      "side": 1
-     },
-     "package_mm": [
-      550,
-      259,
-      142
-     ]
-    },
-    {
-     "fits_backpack": false,
-     "head_pitch": 120,
+     "head_pitch": -15,
      "head_roll": -90,
      "hinge": {
       "axis": "Y",
@@ -234,14 +267,29 @@
       "side": 1
      },
      "package_mm": [
-      550,
+      706,
       259,
-      142
+      129
      ]
     },
     {
      "fits_backpack": false,
      "head_pitch": -15,
+     "head_roll": -90,
+     "hinge": {
+      "axis": "N",
+      "offset_mm": 31.1,
+      "side": 1
+     },
+     "package_mm": [
+      706,
+      233,
+      148
+     ]
+    },
+    {
+     "fits_backpack": false,
+     "head_pitch": 120,
      "head_roll": 90,
      "hinge": {
       "axis": "Y",
@@ -249,9 +297,9 @@
       "side": 1
      },
      "package_mm": [
-      705,
+      550,
       259,
-      120
+      179
      ]
     }
    ],
@@ -270,9 +318,9 @@
    "package_mm": [
     494,
     238,
-    160
+    197
    ],
-   "search_s": 4.3,
+   "search_s": 4.4,
    "top3": [
     {
      "fits_backpack": true,
@@ -286,26 +334,26 @@
      "package_mm": [
       494,
       238,
-      160
+      197
      ]
     },
     {
      "fits_backpack": true,
-     "head_pitch": 105,
-     "head_roll": 0,
+     "head_pitch": 120,
+     "head_roll": 90,
      "hinge": {
       "axis": "Y",
-      "offset_mm": 39.3,
-      "side": 1
+      "offset_mm": 32.3,
+      "side": -1
      },
      "package_mm": [
-      497,
-      233,
-      187
+      494,
+      308,
+      197
      ]
     },
     {
-     "fits_backpack": true,
+     "fits_backpack": false,
      "head_pitch": 105,
      "head_roll": 90,
      "hinge": {
@@ -316,7 +364,7 @@
      "package_mm": [
       497,
       238,
-      185
+      222
      ]
     }
    ],
@@ -344,9 +392,9 @@
    "package_mm": [
     494,
     238,
-    160
+    197
    ],
-   "search_s": 4.3,
+   "search_s": 4.4,
    "top3": [
     {
      "fits_backpack": true,
@@ -360,26 +408,26 @@
      "package_mm": [
       494,
       238,
-      160
+      197
      ]
     },
     {
      "fits_backpack": true,
-     "head_pitch": 105,
-     "head_roll": 0,
+     "head_pitch": 120,
+     "head_roll": 90,
      "hinge": {
       "axis": "Y",
-      "offset_mm": 39.3,
-      "side": 1
+      "offset_mm": 32.3,
+      "side": -1
      },
      "package_mm": [
-      497,
-      233,
-      187
+      494,
+      308,
+      197
      ]
     },
     {
-     "fits_backpack": true,
+     "fits_backpack": false,
      "head_pitch": 105,
      "head_roll": 90,
      "hinge": {
@@ -390,7 +438,7 @@
      "package_mm": [
       497,
       238,
-      185
+      222
      ]
     }
    ],
@@ -402,7 +450,8 @@
    "head (ASSUMED 650 g)": 650,
    "rect profiles (210 g at 1.2 mm wall, CF 1.55 g/cm3 ASSUMED) + yoke + clamps (70 g ASSUMED)": 280,
    "REF3 rect coils (280.3 g Cu + 30 g)": 310,
-   "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": 420,
+   "chassis shell + hinge + PWR + HB2 (ASSUMED 420 g less the TXD parts 82 g)": 338,
+   "TXD pod at s 400 (housing 55 g + parts 82 g, ASSUMED)": 137,
    "grip + head + screen (ASSUMED 120 g)": 120,
    "cuff + rails (ASSUMED 110 g)": 110,
    "battery cartridge (7 x 70 g + 70 g shell / BMS / MT60, ASSUMED)": 560
@@ -411,22 +460,23 @@
    "head (ASSUMED 650 g)": 706.3,
    "rect profiles (210 g at 1.2 mm wall, CF 1.55 g/cm3 ASSUMED) + yoke + clamps (70 g ASSUMED)": 299.5,
    "REF3 rect coils (280.3 g Cu + 30 g)": 153.2,
-   "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": -114.1,
+   "chassis shell + hinge + PWR + HB2 (ASSUMED 420 g less the TXD parts 82 g)": -114.1,
+   "TXD pod at s 400 (housing 55 g + parts 82 g, ASSUMED)": 314.9,
    "grip + head + screen (ASSUMED 120 g)": 8.5,
    "cuff + rails (ASSUMED 110 g)": -213.4,
    "battery cartridge (7 x 70 g + 70 g shell / BMS / MT60, ASSUMED)": -161.3
   },
-  "total_g": 2450,
-  "torque_about_hand_Nm": 4.22,
+  "total_g": 2505,
+  "torque_about_hand_Nm": 4.73,
   "sdc2300_reference_g": 2300
  },
- "ok": true,
+ "ok": false,
  "timings_s": {
-  "build": 1.81,
-  "containment": 0.29,
-  "fold search (cached)": 0.01,
-  "deployed clearance": 0.6,
-  "exports and views": 9.82,
-  "total": 16.3
+  "build": 2.05,
+  "containment": 0.35,
+  "fold search (cached)": 28.45,
+  "deployed clearance": 0.56,
+  "exports and views": 9.96,
+  "total": 45.6
  }
 }

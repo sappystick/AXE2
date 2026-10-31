@@ -1,0 +1,35 @@
+{
+ "tool": "astar_route",
+ "grid_mm": 0.05,
+ "track_mm": 0.2,
+ "clear_mm": 0.2,
+ "via_mm": [
+  0.6,
+  0.3
+ ],
+ "connections": [
+  {
+   "net": "PRX_B",
+   "ok": true,
+   "cells": 4,
+   "runs": 1,
+   "vias": 0
+  },
+  {
+   "net": "PRX_B",
+   "ok": true,
+   "cells": 6,
+   "runs": 1,
+   "vias": 0
+  },
+  {
+   "net": "PRX_B",
+   "ok": true,
+   "cells": 6,
+   "runs": 1,
+   "vias": 0
+  }
+ ],
+ "open_after": [],
+ "seconds": 0.3
+}

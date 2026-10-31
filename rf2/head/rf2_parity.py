@@ -7,7 +7,7 @@ import os, sys, json
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import rf2_netlist as NL
 OUT = os.path.join(HERE, "out")
-FILES = {"MP1": "MP1/PF233-RF2-MP1.kicad_pcb", "TXJ": "TXJ/PF233-RF2-TXJ.kicad_pcb", "LR1": "LR1/PF233-RF2-LR1.kicad_pcb", "SH1": "SH1/PF233-RF2-SH1.kicad_pcb",
+FILES = {"MP1": "MP1/PF233-RF2-MP1.kicad_pcb", "TXJ": "TXJ/PF233-RF2-TXJ.kicad_pcb", "LR1": "LR1/PF233-RF2-LR1.kicad_pcb", "MP2": "MP2/PF233-RF2-MP2.kicad_pcb", "SH1": "SH1/PF233-RF2-SH1.kicad_pcb",
          "QA": "SB1R_RF2/SB1R-QA-RF2.kicad_pcb", "QB": "SB1R_RF2/SB1R-QB-RF2.kicad_pcb"}
 def board_pads(path):
     import pcbnew

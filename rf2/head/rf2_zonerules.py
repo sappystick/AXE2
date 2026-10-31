@@ -16,7 +16,7 @@ import rf2_head as H
 OUT = os.path.join(HERE, "out"); os.makedirs(OUT, exist_ok=True)
 BANNED = ("electrolytic", "aluminium", "aluminum", "alu cap", "elko", "metal can", "ferrite", "inductor")   # lower-case substrings of type, value and note
 LOOP_LIMIT_CM2 = 0.1                                                    # analog / HV zones (rf2_zones: edge-on or < 0.1 cm2)
-ZONES_ANALOG_HV = {"MP1", "TXJ", "TXF"}
+ZONES_ANALOG_HV = {"MP1", "TXJ", "TXF", "MP2"}                                   # MP2: the PRX channel on analog fin A2 (2026-10-31)
 def bom(boards):
     bad = []
     for b, B in boards.items():
@@ -98,7 +98,7 @@ def selftest():
 if __name__ == "__main__":
     res = dict(status="MODELED / tool-checked (no fabricator DRC, no bench)", checks={})
     res["checks"]["bom"] = bom(NL.BOARDS); res["checks"]["fins"] = fins(); res["checks"]["spec_BF"] = spec(); res["checks"]["selftest"] = selftest()
-    res["checks"]["copper"] = {b: board_copper(b) for b in ("MP1", "TXJ", "TXF")}
+    res["checks"]["copper"] = {b: board_copper(b) for b in ("MP1", "TXJ", "TXF", "MP2")}
     lr = board_copper("LR1"); res["display_LR1_reported_only"] = dict(solid_zones=lr.get("solid_zones"), hatched_without_slit=lr.get("hatched_without_slit"), largest_closed_loop_cm2=max(lr.get("closed_copper_loops_cm2", {}).values() or [0]))
     res["ok"] = res["checks"]["bom"]["ok"] and res["checks"]["fins"]["ok"] and res["checks"]["spec_BF"]["ok"] and res["checks"]["selftest"]["ok"] and all(v["ok"] for v in res["checks"]["copper"].values()) \
                 and lr.get("solid_zones", 0) == 0

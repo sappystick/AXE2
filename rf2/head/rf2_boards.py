@@ -298,7 +298,7 @@ def run(name):
     inp, why = resume_input(name, raw, pcb, B, od); mode = "resume" if inp else "full"
     cmd = [sys.executable, os.path.join(ROOT, "src/pcb/freeroute.py"), inp or raw, pcb] + ([] if (inp or B.get("preroute")) else ["--strip"]) + (["--no-fanout"] if inp else []) + ["--no-neckdown", "--rules", B.get("rules", RULES), "--passes", "150", "--report", os.path.join(od, "freeroute.json")]
     hv = [n for n in B.get("hv_nets", []) if n not in B.get("wide", {})]
-    if hv: cmd += ["--hv", ",".join(hv)]
+    if hv: cmd += ["--hv", ",".join(hv)] + (["--hv-clear", str(B["hv_route_clear"])] if B.get("hv_route_clear") else [])   # router-side margin (Freerouting grid rounding: 0.998 vs 1.0); DRC keeps 1.0
     if B.get("wide"): cmd += ["--class", "PULSE:2.5:1.0:" + ",".join(B["wide"])]
     done = False
     pre = kicad_drc(inp or raw, B)                                         # nothing open after the pre-routes / template / resumed copper: no autorouter run at all
@@ -321,7 +321,7 @@ def run(name):
             base = pcb if os.path.exists(pcb) and not frr.get("stalled") else (inp or raw)
             tw, cl, vd, vh = (float(x) for x in B.get("rules", RULES).split(","))
             acmd = [sys.executable, os.path.join(ROOT, "src/pcb/astar_route.py"), base, pcb, "--track", str(tw), "--clear", str(cl), "--via", f"{vd},{vh}",
-                    "--edge", str(EDGE), "--report", os.path.join(od, "astar.json")] + (["--hv", ",".join(B.get("hv_nets", []))] if B.get("hv_nets") else [])
+                    "--edge", str(EDGE), "--report", os.path.join(od, "astar.json")] + (["--hv", ",".join(B.get("hv_nets", []))] if B.get("hv_nets") else []) + (["--hv-clear", str(B["hv_route_clear"])] if B.get("hv_nets") and B.get("hv_route_clear") else [])
             ra = subprocess.run(acmd, capture_output=True, text=True, timeout=3600)
             ar = json.load(open(os.path.join(od, "astar.json"))) if os.path.exists(os.path.join(od, "astar.json")) else dict(open_after=["?"], err=ra.stderr[-200:])
             strategies.append(dict(name="astar fallback", open_after=ar.get("open_after"), connections=len(ar.get("connections", [])), seconds=ar.get("seconds")))

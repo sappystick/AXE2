@@ -2,6 +2,7 @@
  "status": "MODELED: positions, boxes, cable ODs and the shaft geometry ASSUMED; ratings from logged datasheets",
  "checks": {
   "TXD metal echo drift (5 K) <= 0.5 x gate noise at its placed position": true,
+  "TXD pod echo drift (5 K) <= 0.5 x gate noise at the shortest use length (pod rides the telescope, -100 mm)": false,
   "at the baseline neck (s 90) the same parts would fail (> 1 x noise)": true,
   "pack cells echo drift negligible (< 0.01 x noise)": true,
   "TX pair adds <= 0.6 us to the first gate (first-order)": true,
@@ -9,22 +10,23 @@
   "every HV conductor insulated >= 630 V (rule 6)": true,
   "every conductor inside its bundle ampacity": true,
   "tube fill <= 40 % per segment": true,
-  "VIN drop under 2 % of 25.2 V in boost": true,
+  "VIN drop (pack -> TXD pod) under 2 % of 25.2 V in boost": true,
   "+5V_AUX loaded under 50 %": true,
   "every VBAT / VIN part rated for 21.0-29.4 V": true,
   "logic levels compatible (3.3 V MCU -> AHCT VIH 2.0 V; I2C pull-ups 3.3 V within BQ76952 5.5 V)": true,
   "I2C addresses unique per bus": true,
   "every HV-rail part >= 630 V (rule 6)": true,
   "TXD switch TJ under 125 C": true,
-  "chassis surface rise <= 15 K in continuous boost (TXD + PWR together)": true,
+  "TXD pod housing surface rise <= 15 K in continuous boost (natural convection, ASSUMED)": true,
+  "chassis surface rise <= 15 K in continuous boost (PWR + pack)": true,
   "pack dissipation under 3 W in continuous boost": true,
   "runtime rated on continuous boost, from the chosen cell's datasheet energy": true
  },
  "decisions": [
   "Audio: magnet-free SMD piezo in bridge drive on HB2 (rf2_audio.py); tones 3.0-7.6 kHz, equalised; AU1 class-D + speaker removed",
   "Power switching: BQ76952 DSG high-side switch is the main switch; the power button wakes it on TS2 (falling edge, datasheet 7.x 'Wake on TS2'), the pod MCU turns it off over I2C after a 2 s hold; PM2 soft latch and LTC4365 removed (keyed MT60 prevents reverse charge)",
-  "TX driver placement: inside the control chassis (chassis v2, SDC pattern); the echo search along the shaft is kept as the record of why the shaft base fails",
-  "Continuous boost thermal: the clamp energy (8.9 W boost) returns to the battery through a hysteretic buck on the PWR board in the chassis, beside the TXD (no HV pair up the shaft any more); the TXD keeps only the switch's 6.1 W on its heat sink (TJ 101 C, rf2_continuous); 460 V DC runs up the shaft in one FEP twisted pair at about 23 mA",
+  "TX driver placement (owner 2026-10-31): a pod on the outer profile's lower end at s 400 (past the 375 mm echo distance); it was inside the control chassis (s 857). The echo is checked at the pod's nominal, min-use and max-use positions (it rides the telescope with REF3)",
+  "Continuous boost thermal: the clamp energy (11.1 W boost) returns to the battery through the hysteretic buck on the PWR board in the chassis; the clamp node (477 V DC, about 30 mA) runs pod -> hinge in cord piece 2 (HV_CLAMP, rule-6 gaps). The pod keeps Q1 (2.18 W, vented heat sink, TJ 58 C) and Q2 / diodes / shunts / drivers in its housing (rf2_continuous)",
   "Pack: 7S1P Molicel P45B (113 Wh) under the forearm as the head's counterweight",
   "Inputs: one switch part (C&K KSC2 TE, IP67) for power, trigger and the two selector cams; no magnet in the pod (no offset at REF3 / the upper fluxgate)",
   "TXD temperature: TMP117 in therm mode with EEPROM-stored limits drives the TXSTAT fault line; the head backs the boost off (no I2C to the TXD)",
@@ -33,18 +35,18 @@
  "modules": {
   "TXD": {
    "centre_mm": [
-    -741.0,
-    25.9,
-    579.4
+    -393.0,
+    -38.3,
+    285.7
    ],
-   "B_centre_uT_boost": 2.23,
-   "B_max_uT_boost": 2.58,
+   "B_centre_uT_boost": 17.79,
+   "B_max_uT_boost": 22.38,
    "box_mm": [
-    90,
-    72,
-    47
+    72.0,
+    62.0,
+    52.0
    ],
-   "note": "TX driver INSIDE the control chassis front (chassis v2, SDC pattern: electronics in the box)"
+   "note": "TX driver POD on the outer profile's lower end, beside the C2 cam collar (owner 2026-10-31; was inside the control chassis at s 812-902)"
   },
   "REF3": {
    "centre_mm": [
@@ -52,8 +54,8 @@
     19.3,
     421.3
    ],
-   "B_centre_uT_boost": 5.53,
-   "B_max_uT_boost": 13.19,
+   "B_centre_uT_boost": 6.13,
+   "B_max_uT_boost": 14.63,
    "box_mm": [
     350,
     42,
@@ -67,8 +69,8 @@
     29.2,
     658.5
    ],
-   "B_centre_uT_boost": 1.54,
-   "B_max_uT_boost": 2.69,
+   "B_centre_uT_boost": 1.71,
+   "B_max_uT_boost": 2.98,
    "box_mm": [
     360,
     72,
@@ -82,8 +84,8 @@
     30.4,
     623.4
    ],
-   "B_centre_uT_boost": 1.46,
-   "B_max_uT_boost": 1.84,
+   "B_centre_uT_boost": 1.62,
+   "B_max_uT_boost": 2.04,
    "box_mm": [
     160,
     77,
@@ -94,7 +96,7 @@
  },
  "harness": {
   "segments": {
-   "S1 head - REF3T (cord flex segment 1, rolling loop; rf2_cordflex)": [
+   "S1 head - TXD pod (cord flex piece 1, rolling loop; TX strips tap off at the pod)": [
     "TX_A",
     "TX_B",
     "VIN_H",
@@ -102,36 +104,49 @@
     "TXCMD+-",
     "TXSTAT+-",
     "DATA+-",
+    "GUARD_REF",
     "REFX+-",
     "REFY+-",
     "REFZ+-"
    ],
-   "S2 REF3T - hinge (cord flex segment 2, static)": [
-    "TX_A",
-    "TX_B",
+   "S1b TXD pod - REF3T (cord flex piece 1, no TX)": [
     "VIN_H",
     "GND_H",
-    "TXCMD+-",
-    "TXSTAT+-",
+    "DATA+-",
+    "GUARD_REF",
+    "REFX+-",
+    "REFY+-",
+    "REFZ+-"
+   ],
+   "S2 REF3T - hinge (cord flex piece 2, static: pod feed, clamp return)": [
+    "HV_CLAMP",
+    "GND_CLAMP",
+    "VIN_T",
+    "GND_T",
+    "VIN_H",
+    "GND_H",
     "DATA+-"
    ],
    "S3 hinge pass-through into the chassis": [
-    "TX_A",
-    "TX_B",
+    "HV_CLAMP",
+    "GND_CLAMP",
+    "VIN_T",
+    "GND_T",
     "VIN_H",
     "GND_H",
-    "TXCMD+-",
-    "TXSTAT+-",
     "DATA+-"
    ]
   },
   "fill_fraction": {
-   "S1 head - REF3T (cord flex segment 1, rolling loop; rf2_cordflex)": 0.006,
-   "S2 REF3T - hinge (cord flex segment 2, static)": 0.004,
-   "S3 hinge pass-through into the chassis": 0.064
+   "S1 head - TXD pod (cord flex piece 1, rolling loop; TX strips tap off at the pod)": 0.008,
+   "S1b TXD pod - REF3T (cord flex piece 1, no TX)": 0.003,
+   "S2 REF3T - hinge (cord flex piece 2, static: pod feed, clamp return)": 0.002,
+   "S3 hinge pass-through into the chassis": 0.049
   },
-  "vin_drop_V_boost": 0.007,
-  "vin_loss_W_boost": 0.008,
+  "vin_drop_V_boost": 0.282,
+  "feed_loop_R_ohm": 0.221,
+  "feed_I_A": 1.278,
+  "vin_loss_W_boost": 0.392,
   "tube": {
    "od": 21.0,
    "id": 18.0,
@@ -143,53 +158,79 @@
   "txd_search": [
    {
     "s_mm": 90,
-    "B_uT_boost": 375.5,
-    "echo_x_noise": 5054.42,
-    "drift5K_x_noise": 101.088
+    "B_uT_boost": 336.4,
+    "echo_x_noise": 4898.45,
+    "drift5K_x_noise": 97.969
    },
    {
     "s_mm": 200,
-    "B_uT_boost": 81.0,
-    "echo_x_noise": 199.24,
-    "drift5K_x_noise": 3.985
+    "B_uT_boost": 82.3,
+    "echo_x_noise": 197.56,
+    "drift5K_x_noise": 3.951
    },
    {
     "s_mm": 300,
-    "B_uT_boost": 32.5,
-    "echo_x_noise": 30.33,
-    "drift5K_x_noise": 0.607
+    "B_uT_boost": 34.3,
+    "echo_x_noise": 30.24,
+    "drift5K_x_noise": 0.605
+   },
+   {
+    "s_mm": 330,
+    "B_uT_boost": 27.6,
+    "echo_x_noise": 19.06,
+    "drift5K_x_noise": 0.381
    },
    {
     "s_mm": 350,
-    "B_uT_boost": 22.5,
-    "echo_x_noise": 14.3,
+    "B_uT_boost": 24.0,
+    "echo_x_noise": 14.28,
     "drift5K_x_noise": 0.286
    },
    {
     "s_mm": 375,
-    "B_uT_boost": 19.1,
-    "echo_x_noise": 10.15,
+    "B_uT_boost": 20.4,
+    "echo_x_noise": 10.14,
     "drift5K_x_noise": 0.203
    },
    {
     "s_mm": 400,
-    "B_uT_boost": 16.3,
-    "echo_x_noise": 7.35,
+    "B_uT_boost": 17.5,
+    "echo_x_noise": 7.34,
     "drift5K_x_noise": 0.147
+   },
+   {
+    "s_mm": 590,
+    "B_uT_boost": 6.6,
+    "echo_x_noise": 0.99,
+    "drift5K_x_noise": 0.02
    }
   ],
-  "txd_at_s_mm": 857.0,
-  "txd_echo_x_gate_noise": 0.13,
-  "txd_drift5K_x_noise": 0.003,
+  "txd_at_s_mm": 400.0,
+  "txd_lateral_mm": {
+   "heat_sink": 72.0,
+   "bulk_cans": 42.0
+  },
+  "txd_echo_x_gate_noise": 7.34,
+  "txd_drift5K_x_noise": 0.147,
+  "txd_min_use": {
+   "s_mm": 300.0,
+   "drift5K_x_noise": 0.605
+  },
+  "txd_max_use": {
+   "s_mm": 590.0,
+   "drift5K_x_noise": 0.02
+  },
+  "txd_nearest_s_passing_mm": 313.0,
   "pack_cells_x_gate_noise": 0.0,
   "criterion": "drift for a 5 K step <= 0.5 x the gate noise; heat sink at worst-case orientation, cans with lateral axes"
  },
  "tx_pair": {
-  "length_m": 1.1,
-  "C_pF_ASSUMED_50pF_per_m": 55.0,
-  "first_gate_shift_us": 0.14,
-  "vs_baseline_neck_us": 0.093,
-  "note": "first-order: tail 10.5 us (16.3 - 5.8 us clamp) x (sqrt(1 + dC / 500 pF) - 1); pair capacitance ASSUMED (FEP twisted pair)"
+  "length_m": 0.965,
+  "C_pF": 29.5,
+  "C_pF_per_m": 30.56,
+  "first_gate_shift_us": -0.21,
+  "vs_baseline_neck_us": -0.239,
+  "note": "rf2_timing_cord (nonlinear) when its result is on file, else first-order: tail 10.5 us x (sqrt(1 + dC / 500 pF) - 1); strip capacitance from rf2_cordflex (eps_eff ASSUMED)"
  },
  "ref3_coupling": {
   "distance_pod_to_REF3_mm": 361,
@@ -252,23 +293,35 @@
   ]
  },
  "thermal": {
-  "txd_switch_TJ_C": 89.867,
-  "txd_W": 6.3,
-  "pack_W_boost": 1.44,
-  "note": "TXD: switch 6.1 W + driver / shunt about 0.2 W; pack: regenerative buck losses at 90 % (ASSUMED), LMR36520 and cell I2R",
-  "chassis_W_boost": 7.74,
-  "chassis_surface_rise_K": 10.5,
-  "note2": "chassis 360 x 72 x 47 mm, natural convection 8 W/m2K (ASSUMED); the TXD heat sink vents through the chassis sides"
+  "txd_switch_TJ_C": 58.166,
+  "txd_q2_TJ_C": 99.2,
+  "txd_W": 4.87,
+  "txd_pod_housing_W": 2.69,
+  "txd_pod_surface_m2": 0.02286,
+  "txd_pod_surface_rise_K": 14.7,
+  "pack_W_boost": 1.66,
+  "split_W": {
+   "Q1_on_vented_heat_sink": 2.178,
+   "Q2": 1.48,
+   "D_freewheel": 0.755,
+   "D_clamp": 0.042,
+   "shunts": 0.21,
+   "drivers_misc_ASSUMED": 0.2
+  },
+  "note": "TXD pod: Q1 on the Ohmite heat sink at a vented window (free air, as its 7 C/W rating); the rest heats the sealed pod housing (natural convection 8 W/m2K, ASSUMED); pack: regenerative buck losses at 90 % (ASSUMED), LMR36520 and cell I2R",
+  "chassis_W_boost": 1.66,
+  "chassis_surface_rise_K": 2.2,
+  "note2": "chassis 360 x 72 x 47 mm, natural convection 8 W/m2K (ASSUMED); PWR (regenerative buck) and pack only: the TXD is in the pod"
  },
  "runtime": {
   "pack": "7S1P Molicel P45B",
   "rated_case": "continuous boost (trigger held the whole time): the maximum use case (owner 2026-10-30)",
   "usable_Wh": 102.1,
-  "scan_h": 5.2,
-  "boost_continuous_h": 2.6,
+  "scan_h": 5.4,
+  "boost_continuous_h": 2.9,
   "cells_g": 490,
   "note": "powers from rf2_continuous (regenerative clamp, 75 % recovery ASSUMED)",
   "target_h": null
  },
- "all_pass": true
+ "all_pass": false
 }

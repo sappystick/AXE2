@@ -1,155 +1,240 @@
 {
  "status": "MODELED: loads from the pulse timing; ratings from logged datasheets; heat sinks, the clamp absorber, the head's internal thermal path and the battery pack are OPEN",
+ "design_point": {
+  "I_scan_A": 8.94,
+  "I_boost_A": 14.135,
+  "T_flat_us": 318,
+  "V_clamp_V": 477.0,
+  "switch": "onsemi NTBG080N120SC1",
+  "RDS_hot_ohm": 0.1664,
+  "R_tx_loop_ohm": 0.1452,
+  "txd_s_mm": 400.0,
+  "source": "rf2/rf2_drive.py (owner decision 2026-10-31)"
+ },
  "ambient_C": 40.0,
  "modes": [
   {
    "mode": "scan",
-   "I_pk": 8.06,
-   "T1_us": 139.373,
-   "ramp_i2_As": 0.0035,
-   "fall_us": 5.8347,
-   "I_rms_coil": 2.309,
-   "I_avg_coil": 0.7387,
-   "I_rms_switch": 1.5976,
-   "on_fraction": 0.1157,
+   "I_pk": 8.94,
+   "T1_us": 143.0976,
+   "ramp_i2_As": 0.0042,
+   "fall_us": 6.2411,
+   "I_rms_coil": 2.6133,
+   "I_avg_coil": 0.8525,
+   "I_rms_switch": 1.7901,
+   "I_rms_q2": 1.8863,
+   "on_fraction": 0.1208,
+   "P_switch_W": 0.633,
+   "P_q2_W": 0.592,
    "battery": {
     "dissipative clamp": {
-     "P_tx_W": 12.34,
+     "P_tx_W": 12.39,
      "P_head_W": 10.62,
-     "P_total_W": 22.97,
+     "P_total_W": 23.01,
      "I_battery_A": 0.91,
      "Wh_per_hour": 23.0,
      "runtime_h_per_100Wh": 4.35
     },
     "regenerative clamp (75 % recovery ASSUMED)": {
-     "P_tx_W": 9.1,
+     "P_tx_W": 8.4,
      "P_head_W": 10.62,
-     "P_total_W": 19.72,
-     "I_battery_A": 0.78,
-     "Wh_per_hour": 19.7,
-     "runtime_h_per_100Wh": 5.07
+     "P_total_W": 19.02,
+     "I_battery_A": 0.75,
+     "Wh_per_hour": 19.0,
+     "runtime_h_per_100Wh": 5.26
     }
    },
+   "I_feed_A": 0.44,
    "rows": [
     {
      "part": "coil, 26 turns FEP litz (I^2 R)",
-     "load": 3.204,
+     "load": 4.104,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "R 0.601 ohm (rf2_wire_options: Rubadue 66/38 litz)",
-     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 4.1 K; the rise inside the foam-potted channel is NOT modeled"
+     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 5.3 K; the rise inside the foam-potted channel is NOT modeled"
     },
     {
-     "part": "TX switch Wolfspeed C3M0280090J: peak current",
-     "load": 8.06,
-     "rating": 22.0,
+     "part": "TX switch Q1 onsemi NTBG080N120SC1: peak current",
+     "load": 8.94,
+     "rating": 110.0,
      "unit": "A (IDM)",
-     "margin": 2.73,
+     "margin": 12.3,
      "ok": true,
-     "source": "Rev 04: IDM 22 A",
+     "source": "Rev. 4, January 2023: IDM 110 A (TC 25 C, repetitive)",
      "note": "80 % of the pulsed rating"
     },
     {
-     "part": "TX switch: RMS current",
-     "load": 1.598,
-     "rating": 7.0,
+     "part": "TX switch Q1: RMS current",
+     "load": 1.79,
+     "rating": 21.0,
      "unit": "A (ID at TC 100 C)",
-     "margin": 4.38,
+     "margin": 11.73,
      "ok": true,
-     "source": "Rev 04: ID 7 A at TC 100 C",
+     "source": "Rev. 4, January 2023: ID 21 A at TC 100 C",
      "note": ""
     },
     {
-     "part": "TX switch: junction temperature",
-     "load": 51.691,
-     "rating": 150.0,
+     "part": "TX switch Q1: junction temperature",
+     "load": 45.276,
+     "rating": 175.0,
      "unit": "C (TJ max)",
-     "margin": 2.9,
+     "margin": 3.87,
      "ok": true,
-     "source": "Rev 04: RthJC 2.5 C/W, RthJA 40 C/W",
-     "note": "1.17 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 52 C; on bare PCB (RthJA 40) TJ 87 C. Derated limit 125 C"
+     "source": "Rev. 4, January 2023: RthJC 0.84 C/W, RthJA 40 C/W, TJ max 175 C",
+     "note": "0.63 W (conduction 0.53 at RDS 166 mohm hot, turn-off 0.005, flat-top PWM 0.095); with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ) TJ 45 C; on bare PCB (RthJA 40) TJ 65 C. Derated limit 125 C"
     },
     {
-     "part": "clamp diode Diodes US3M: average current",
-     "load": 0.009,
+     "part": "TX switches Q1 / Q2: peak VDS (clamp + diode drop)",
+     "load": 478.7,
+     "rating": 960.0,
+     "unit": "V (80 % of VDSS 1200 V)",
+     "margin": 2.01,
+     "ok": true,
+     "source": "Rev. 4, January 2023: VDSS 1200 V",
+     "note": "rule 6: >= 630 V part"
+    },
+    {
+     "part": "TX switch Q1: stored energy if the clamp opens (single avalanche)",
+     "load": 13.307,
+     "rating": 171.0,
+     "unit": "mJ (EAS, start TJ 25 C)",
+     "margin": 12.85,
+     "ok": true,
+     "source": "Rev. 4, January 2023: EAS 171 mJ (IAS 18.5 A, L 1 mH)",
+     "note": "fault case only (a clamp diode open); not a repetitive rating"
+    },
+    {
+     "part": "freewheel switch Q2 (NTBG080N120SC1, PCB, no heat sink): junction temperature",
+     "load": 63.68,
+     "rating": 175.0,
+     "unit": "C (TJ max)",
+     "margin": 2.75,
+     "ok": true,
+     "source": "Rev. 4, January 2023: RthJA 40 C/W",
+     "note": "0.59 W conduction (RMS 1.89 A over the freewheel share of the flat-top); derated limit 125 C"
+    },
+    {
+     "part": "clamp diode US3M: average current",
+     "load": 0.011,
      "rating": 3.0,
      "unit": "A (IO at TT 75 C)",
-     "margin": 318.96,
+     "margin": 268.84,
      "ok": true,
      "source": "DS37228 rev 5: IO 3 A, IFSM 120 A, 1000 V",
      "note": ""
     },
     {
      "part": "clamp diode US3M: peak current",
-     "load": 8.06,
+     "load": 8.94,
      "rating": 120.0,
      "unit": "A (IFSM, 8.3 ms)",
-     "margin": 14.89,
+     "margin": 13.42,
      "ok": true,
      "source": "DS37228",
-     "note": "each pulse is about 6 us long at up to 8.1 A; repetitive peak not given (ADVANCED INFORMATION sheet)"
+     "note": "each pulse is about 6 us long at up to 8.9 A; repetitive peak not given (ADVANCED INFORMATION sheet)"
+    },
+    {
+     "part": "clamp diode US3M: reverse voltage at the clamp",
+     "load": 477.0,
+     "rating": 800.0,
+     "unit": "V (80 % of VRRM 1000 V)",
+     "margin": 1.68,
+     "ok": true,
+     "source": "Nexperia US3M 2025-01-20: VRRM 1000 V",
+     "note": "rule 6: >= 630 V part"
+    },
+    {
+     "part": "clamp film capacitor (630 V class, part to choose): clamp voltage",
+     "load": 477.0,
+     "rating": 504.0,
+     "unit": "V (80 % of 630 V, ASSUMED derating)",
+     "margin": 1.06,
+     "ok": true,
+     "source": "630 V class (part to choose; rule 6)",
+     "note": "ASSUMED rating until a part is chosen"
+    },
+    {
+     "part": "Rd: 2 x Vishay PR03 806 ohm in parallel, voltage per part",
+     "load": 477.0,
+     "rating": 750.0,
+     "unit": "V (Umax AC/DC)",
+     "margin": 1.57,
+     "ok": true,
+     "source": "Vishay PR01/02/03 doc 28729 (2025-07-08): Umax 750 V",
+     "note": "each part sees the full clamp voltage; rule 6: >= 630 V"
     },
     {
      "part": "damping resistor Rd 408 ohm (across the coil)",
-     "load": 1.391,
+     "load": 1.58,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "power from V^2 / R during the clamp and the on-time",
-     "note": "needs a >= 2.8 W, >= 630 V resistor (rule 6) at 70 C; it is on the HV fin in the potted head (thermal: OPEN)"
+     "note": "needs a >= 3.2 W, >= 630 V resistor (rule 6) at 70 C; it is on the HV fin in the potted head (thermal: OPEN)"
     },
     {
      "part": "clamp absorber (TVS / zener stack or regenerative clamp)",
-     "load": 3.116,
+     "load": 3.931,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "0.5 L I^2 per pulse less the share Rd takes",
-     "note": "a dissipative 460 V clamp must sink 3.1 W continuously; a regenerative clamp returns most of it to the bulk bank (recommended for continuous boost)"
+     "note": "a dissipative 477 V clamp must sink 3.9 W continuously; a regenerative clamp returns most of it to the bulk bank (recommended for continuous boost)"
     },
     {
-     "part": "shaft HV pair (FEP AWG18, ASSUMED)",
-     "load": 1.492,
+     "part": "cord flex TX strips head -> TXD pod (I^2 R)",
+     "load": 0.992,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
-     "source": "R 0.11 ohm both conductors (rf2_wiring)",
-     "note": "AWG18 carries well over 5 A continuously in free air; at 2.31 A RMS it runs cool"
+     "source": "R 0.145 ohm both strips (rf2_cordflex: 3.22 mm x 0.965 m, 2 oz)",
+     "note": "spread over 0.96 m of strip pair; width set by IPC-2221 at this rms (rf2_cordflex)"
     },
     {
      "part": "TXF fin buses (2.5 mm, both layers, 1 oz ASSUMED)",
-     "load": 0.422,
+     "load": 0.559,
      "rating": 10.0,
      "unit": "K rise (IPC-2221)",
-     "margin": 23.69,
+     "margin": 17.88,
      "ok": true,
      "source": "IPC-2221 external-layer formula",
-     "note": "RMS 1.15 A per layer; peak 8.1 A for under 0.5 ms"
+     "note": "RMS 1.31 A per layer; peak 8.9 A for under 0.5 ms"
     },
     {
      "part": "current shunt Vishay WSL2512 10 mohm",
-     "load": 0.026,
+     "load": 0.032,
      "rating": 1.0,
      "unit": "W at 70 C",
-     "margin": 39.18,
+     "margin": 31.21,
      "ok": true,
      "source": "WSL rev 23-Nov-2023",
      "note": "50 % derating"
     },
     {
      "part": "bulk bank: 9 x Panasonic EEHZC1H101P, ripple per capacitor",
-     "load": 0.159,
+     "load": 0.177,
      "rating": 1.6,
      "unit": "A rms (100 kHz, 105 C)",
-     "margin": 10.06,
+     "margin": 9.06,
      "ok": true,
      "source": "ZC series ZC-16",
      "note": "70 % derating; the pulse frequency is 400 Hz, where the ripple rating is lower than at 100 kHz (frequency multiplier not read: OPEN)"
+    },
+    {
+     "part": "cord flex VIN_T / GND_T (TXD pod feed) vs its design current",
+     "load": 0.44,
+     "rating": 2.0,
+     "unit": "A rms (IPC-2221 width basis)",
+     "margin": 4.55,
+     "ok": true,
+     "source": "rf2_cordflex I_FEED (W 1.02 mm, 2 oz)",
+     "note": "P_tx 8.4 W (regenerative clamp) at 21.0 V cut-off, x 1.1 ripple (ASSUMED)"
     }
    ],
    "fails": [],
@@ -157,157 +242,231 @@
     "coil, 26 turns FEP litz (I^2 R)",
     "damping resistor Rd 408 ohm (across the coil)",
     "clamp absorber (TVS / zener stack or regenerative clamp)",
-    "shaft HV pair (FEP AWG18, ASSUMED)"
+    "cord flex TX strips head -> TXD pod (I^2 R)"
    ]
   },
   {
    "mode": "boost (trigger held, continuous)",
-   "I_pk": 12.744,
-   "T1_us": 282.867,
-   "ramp_i2_As": 0.0199,
-   "fall_us": 9.2255,
-   "I_rms_coil": 4.2325,
-   "I_avg_coil": 1.6438,
-   "I_rms_switch": 3.3005,
-   "on_fraction": 0.1731,
+   "I_pk": 14.1354,
+   "T1_us": 263.0519,
+   "ramp_i2_As": 0.0208,
+   "fall_us": 9.8681,
+   "I_rms_coil": 4.6158,
+   "I_avg_coil": 1.7601,
+   "I_rms_switch": 3.4853,
+   "I_rms_q2": 2.9825,
+   "on_fraction": 0.1688,
+   "P_switch_W": 2.178,
+   "P_q2_W": 1.48,
    "battery": {
     "dissipative clamp": {
-     "P_tx_W": 37.06,
+     "P_tx_W": 34.38,
      "P_head_W": 10.62,
-     "P_total_W": 47.68,
-     "I_battery_A": 1.89,
-     "Wh_per_hour": 47.7,
-     "runtime_h_per_100Wh": 2.1
+     "P_total_W": 45.0,
+     "I_battery_A": 1.79,
+     "Wh_per_hour": 45.0,
+     "runtime_h_per_100Wh": 2.22
     },
     "regenerative clamp (75 % recovery ASSUMED)": {
-     "P_tx_W": 28.95,
+     "P_tx_W": 24.4,
      "P_head_W": 10.62,
-     "P_total_W": 39.57,
-     "I_battery_A": 1.57,
-     "Wh_per_hour": 39.6,
-     "runtime_h_per_100Wh": 2.53
+     "P_total_W": 35.02,
+     "I_battery_A": 1.39,
+     "Wh_per_hour": 35.0,
+     "runtime_h_per_100Wh": 2.86
     }
    },
+   "I_feed_A": 1.278,
    "rows": [
     {
      "part": "coil, 26 turns FEP litz (I^2 R)",
-     "load": 10.767,
+     "load": 12.805,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "R 0.601 ohm (rf2_wire_options: Rubadue 66/38 litz)",
-     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 13.9 K; the rise inside the foam-potted channel is NOT modeled"
+     "note": "no rating: a thermal limit. Surface rise of the whole head at h = 8 W/m2K over 0.097 m2 (natural convection, ASSUMED): 16.5 K; the rise inside the foam-potted channel is NOT modeled"
     },
     {
-     "part": "TX switch Wolfspeed C3M0280090J: peak current",
-     "load": 12.744,
-     "rating": 22.0,
+     "part": "TX switch Q1 onsemi NTBG080N120SC1: peak current",
+     "load": 14.135,
+     "rating": 110.0,
      "unit": "A (IDM)",
-     "margin": 1.73,
+     "margin": 7.78,
      "ok": true,
-     "source": "Rev 04: IDM 22 A",
+     "source": "Rev. 4, January 2023: IDM 110 A (TC 25 C, repetitive)",
      "note": "80 % of the pulsed rating"
     },
     {
-     "part": "TX switch: RMS current",
-     "load": 3.301,
-     "rating": 7.0,
+     "part": "TX switch Q1: RMS current",
+     "load": 3.485,
+     "rating": 21.0,
      "unit": "A (ID at TC 100 C)",
-     "margin": 2.12,
+     "margin": 6.03,
      "ok": true,
-     "source": "Rev 04: ID 7 A at TC 100 C",
+     "source": "Rev. 4, January 2023: ID 21 A at TC 100 C",
      "note": ""
     },
     {
-     "part": "TX switch: junction temperature",
-     "load": 89.867,
-     "rating": 150.0,
+     "part": "TX switch Q1: junction temperature",
+     "load": 58.166,
+     "rating": 175.0,
      "unit": "C (TJ max)",
-     "margin": 1.67,
+     "margin": 3.01,
      "ok": true,
-     "source": "Rev 04: RthJC 2.5 C/W, RthJA 40 C/W",
-     "note": "4.99 W; with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ; aluminium: a fixed target at the neck, OPEN) TJ 90 C; on bare PCB (RthJA 40) TJ 239 C. Derated limit 125 C"
+     "source": "Rev. 4, January 2023: RthJC 0.84 C/W, RthJA 40 C/W, TJ max 175 C",
+     "note": "2.18 W (conduction 2.02 at RDS 166 mohm hot, turn-off 0.008, flat-top PWM 0.149); with the Ohmite D Series TO-263 heat sink (7 C/W natural convection, READ) TJ 58 C; on bare PCB (RthJA 40) TJ 127 C. Derated limit 125 C"
     },
     {
-     "part": "clamp diode Diodes US3M: average current",
-     "load": 0.024,
+     "part": "TX switches Q1 / Q2: peak VDS (clamp + diode drop)",
+     "load": 478.7,
+     "rating": 960.0,
+     "unit": "V (80 % of VDSS 1200 V)",
+     "margin": 2.01,
+     "ok": true,
+     "source": "Rev. 4, January 2023: VDSS 1200 V",
+     "note": "rule 6: >= 630 V part"
+    },
+    {
+     "part": "TX switch Q1: stored energy if the clamp opens (single avalanche)",
+     "load": 33.268,
+     "rating": 171.0,
+     "unit": "mJ (EAS, start TJ 25 C)",
+     "margin": 5.14,
+     "ok": true,
+     "source": "Rev. 4, January 2023: EAS 171 mJ (IAS 18.5 A, L 1 mH)",
+     "note": "fault case only (a clamp diode open); not a repetitive rating"
+    },
+    {
+     "part": "freewheel switch Q2 (NTBG080N120SC1, PCB, no heat sink): junction temperature",
+     "load": 99.2,
+     "rating": 175.0,
+     "unit": "C (TJ max)",
+     "margin": 1.76,
+     "ok": true,
+     "source": "Rev. 4, January 2023: RthJA 40 C/W",
+     "note": "1.48 W conduction (RMS 2.98 A over the freewheel share of the flat-top); derated limit 125 C"
+    },
+    {
+     "part": "clamp diode US3M: average current",
+     "load": 0.028,
      "rating": 3.0,
      "unit": "A (IO at TT 75 C)",
-     "margin": 127.58,
+     "margin": 107.54,
      "ok": true,
      "source": "DS37228 rev 5: IO 3 A, IFSM 120 A, 1000 V",
      "note": ""
     },
     {
      "part": "clamp diode US3M: peak current",
-     "load": 12.744,
+     "load": 14.135,
      "rating": 120.0,
      "unit": "A (IFSM, 8.3 ms)",
-     "margin": 9.42,
+     "margin": 8.49,
      "ok": true,
      "source": "DS37228",
-     "note": "each pulse is about 9 us long at up to 12.7 A; repetitive peak not given (ADVANCED INFORMATION sheet)"
+     "note": "each pulse is about 10 us long at up to 14.1 A; repetitive peak not given (ADVANCED INFORMATION sheet)"
+    },
+    {
+     "part": "clamp diode US3M: reverse voltage at the clamp",
+     "load": 477.0,
+     "rating": 800.0,
+     "unit": "V (80 % of VRRM 1000 V)",
+     "margin": 1.68,
+     "ok": true,
+     "source": "Nexperia US3M 2025-01-20: VRRM 1000 V",
+     "note": "rule 6: >= 630 V part"
+    },
+    {
+     "part": "clamp film capacitor (630 V class, part to choose): clamp voltage",
+     "load": 477.0,
+     "rating": 504.0,
+     "unit": "V (80 % of 630 V, ASSUMED derating)",
+     "margin": 1.06,
+     "ok": true,
+     "source": "630 V class (part to choose; rule 6)",
+     "note": "ASSUMED rating until a part is chosen"
+    },
+    {
+     "part": "Rd: 2 x Vishay PR03 806 ohm in parallel, voltage per part",
+     "load": 477.0,
+     "rating": 750.0,
+     "unit": "V (Umax AC/DC)",
+     "margin": 1.57,
+     "ok": true,
+     "source": "Vishay PR01/02/03 doc 28729 (2025-07-08): Umax 750 V",
+     "note": "each part sees the full clamp voltage; rule 6: >= 630 V"
     },
     {
      "part": "damping resistor Rd 408 ohm (across the coil)",
-     "load": 2.183,
+     "load": 2.464,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "power from V^2 / R during the clamp and the on-time",
-     "note": "needs a >= 4.4 W, >= 630 V resistor (rule 6) at 70 C; it is on the HV fin in the potted head (thermal: OPEN)"
+     "note": "needs a >= 4.9 W, >= 630 V resistor (rule 6) at 70 C; it is on the HV fin in the potted head (thermal: OPEN)"
     },
     {
      "part": "clamp absorber (TVS / zener stack or regenerative clamp)",
-     "load": 8.903,
+     "load": 11.106,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
      "source": "0.5 L I^2 per pulse less the share Rd takes",
-     "note": "a dissipative 460 V clamp must sink 8.9 W continuously; a regenerative clamp returns most of it to the bulk bank (recommended for continuous boost)"
+     "note": "a dissipative 477 V clamp must sink 11.1 W continuously; a regenerative clamp returns most of it to the bulk bank (recommended for continuous boost)"
     },
     {
-     "part": "shaft HV pair (FEP AWG18, ASSUMED)",
-     "load": 5.012,
+     "part": "cord flex TX strips head -> TXD pod (I^2 R)",
+     "load": 3.094,
      "rating": null,
      "unit": "W",
      "margin": null,
      "ok": null,
-     "source": "R 0.11 ohm both conductors (rf2_wiring)",
-     "note": "AWG18 carries well over 5 A continuously in free air; at 4.23 A RMS it runs cool"
+     "source": "R 0.145 ohm both strips (rf2_cordflex: 3.22 mm x 0.965 m, 2 oz)",
+     "note": "spread over 0.96 m of strip pair; width set by IPC-2221 at this rms (rf2_cordflex)"
     },
     {
      "part": "TXF fin buses (2.5 mm, both layers, 1 oz ASSUMED)",
-     "load": 1.673,
+     "load": 2.038,
      "rating": 10.0,
      "unit": "K rise (IPC-2221)",
-     "margin": 5.98,
+     "margin": 4.91,
      "ok": true,
      "source": "IPC-2221 external-layer formula",
-     "note": "RMS 2.12 A per layer; peak 12.7 A for under 0.5 ms"
+     "note": "RMS 2.31 A per layer; peak 14.1 A for under 0.5 ms"
     },
     {
      "part": "current shunt Vishay WSL2512 10 mohm",
-     "load": 0.109,
+     "load": 0.121,
      "rating": 1.0,
      "unit": "W at 70 C",
-     "margin": 9.18,
+     "margin": 8.23,
      "ok": true,
      "source": "WSL rev 23-Nov-2023",
      "note": "50 % derating"
     },
     {
      "part": "bulk bank: 9 x Panasonic EEHZC1H101P, ripple per capacitor",
-     "load": 0.327,
+     "load": 0.342,
      "rating": 1.6,
      "unit": "A rms (100 kHz, 105 C)",
-     "margin": 4.89,
+     "margin": 4.68,
      "ok": true,
      "source": "ZC series ZC-16",
      "note": "70 % derating; the pulse frequency is 400 Hz, where the ripple rating is lower than at 100 kHz (frequency multiplier not read: OPEN)"
+    },
+    {
+     "part": "cord flex VIN_T / GND_T (TXD pod feed) vs its design current",
+     "load": 1.278,
+     "rating": 2.0,
+     "unit": "A rms (IPC-2221 width basis)",
+     "margin": 1.57,
+     "ok": true,
+     "source": "rf2_cordflex I_FEED (W 1.02 mm, 2 oz)",
+     "note": "P_tx 24.4 W (regenerative clamp) at 21.0 V cut-off, x 1.1 ripple (ASSUMED)"
     }
    ],
    "fails": [],
@@ -315,17 +474,18 @@
     "coil, 26 turns FEP litz (I^2 R)",
     "damping resistor Rd 408 ohm (across the coil)",
     "clamp absorber (TVS / zener stack or regenerative clamp)",
-    "shaft HV pair (FEP AWG18, ASSUMED)"
+    "cord flex TX strips head -> TXD pod (I^2 R)"
    ]
   }
  ],
+ "cordflex_consistent": true,
  "verdict": {
   "boost_fails": [],
   "boost_unrated": [
    "coil, 26 turns FEP litz (I^2 R)",
    "damping resistor Rd 408 ohm (across the coil)",
    "clamp absorber (TVS / zener stack or regenerative clamp)",
-   "shaft HV pair (FEP AWG18, ASSUMED)"
+   "cord flex TX strips head -> TXD pod (I^2 R)"
   ],
   "note": "continuous boost is feasible for the rated parts listed as ok; the unrated items need a thermal design (heat sink, regenerative clamp, Rd power rating) before 'indefinite' can be claimed"
  }

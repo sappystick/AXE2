@@ -15,19 +15,25 @@ What maps over from the SDC pattern, and what changes in ours:
     forward at the top, the pilot trigger under the grip head (index finger), the thumb button on top with its light ring, the flip-up screen behind the button,
     the dial on the thumb side; an FFC runs down the hollow grip to HB2-M. The forearm then lies on one straight line from the wrist to the cuff, above the
     chassis, and the battery is on the opposite (lower) side of the shaft.
+  - TXD POD (owner decision 2026-10-31, HANDOFF section 56; supersedes 'TX driver in the chassis'): the TX driver moves out of the chassis into a pod on the
+    lower end of the outer profile, s 364-436 (centre rf2_drive.TXD_S_MM = 400, past the 375 mm echo distance of rf2_system), beside the C2 cam collar and
+    ending at the REF3 sleeve. The cord's TX strips run head -> pod only; the regenerative buck stays on the PWR board in the chassis (clamp return HV_CLAMP in
+    cord piece 2). The pod rides the outer profile with REF3, so its distance from the head changes with the telescope (min use -100 mm, max +190 mm):
+    rf2_system checks the metal echo there. Pod housing and parts mass ASSUMED.
 Writes rf2/chassis_out/*.stl, rf2_chassis.step, rf2_chassis_check.json, rf2_chassis_views.png.   usage: python3 rf2/rf2_chassis.py"""
 import os, sys, json, math, itertools, time
 import numpy as np
 import cadquery as cq
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import rf2_upper as U                                                          # frame, placement, sampling, timing and cache helpers (one source)
+import rf2_drive as DRV                                                        # TXD position (owner 2026-10-31)
 from rf2_upper import at, shaft_frame, place, rot_about, compose, apply, rbox, trsf, I3, P0, D, N, Y, LID_TOP, phase, TIMINGS, memo, samples
 OUT = os.path.join(HERE, "chassis_out"); os.makedirs(OUT, exist_ok=True)
 REF3 = json.load(open(os.path.join(HERE, "head", "out", "rf2_ref3.json")))["rect_sleeve"]            # rectangular profile layout (owner 2026-10-30)
 SPEC = dict(tubes=dict(outer=(31.0, 31.0), mid=(26.0, 26.0), inner=(21.0, 21.0)), wall=1.2,   # owner 2026-10-30: 1.2 mm carbon walls (was 1.5; rf2_shaft_options)
             corner_r=4.0, key=(3.0, 1.5),   # slim set (rf2_slim option A)                       # nested rectangular carbon profiles W x H (keyed telescope)
             st=dict(yoke=(0, 40), inner=(40, 420), C1=(300, 322), mid=(300, 680), C2=(410, 432), outer=(410, 790), REF3=(436, 786), hinge=(790, 816),
-                    chassis=(800, 1160), TXD=(812, 902), bay=(905, 1065), rails=(1000, 1165)),
+                    chassis=(800, 1160), TXD=(DRV.TXD_S_MM - DRV.TXD_POD_LEN_MM / 2, DRV.TXD_S_MM + DRV.TXD_POD_LEN_MM / 2), bay=(905, 1065), rails=(1000, 1165)),   # TXD pod 364-436 (was 812-902 in the chassis)
             collapse=dict(inner=255.0, mid=105.0), extend_max=dict(inner=20.0, mid=170.0), overlap_min=100.0,
             chassis=dict(n=(-15.0, 16.0), w=62.0, fillet=9.0),                                                          # slim chassis, boards on one level (rf2_slim)
             grip=dict(base_s=884.0, base_n=21.0, rake_deg=18.0, length=112.0, sections=[(0, 27, 21), (8, 22, 18.5), (40, 23.5, 19.5), (75, 23, 19.5), (112, 21, 18)],
@@ -36,7 +42,9 @@ SPEC = dict(tubes=dict(outer=(31.0, 31.0), mid=(26.0, 26.0), inner=(21.0, 21.0))
             dial=dict(d=15.0, t=6.0), cuff=dict(r_in=42.0, t=4.0, len=62.0, centre_s=1150.0, wing_deg=55.0, slide=70.0), forearm_r=40.0,
             rails=dict(d=8.0, y=35.0, n=0.0), cells=dict(d=21.55, l=70.15, n_s=7, n_p=1, rows=2, g=70.0, model="Molicel INR-21700-P45B"), cart_wall=3.0, bay_wall=2.5, bay_clear=0.6,
             ref3_outer=tuple(REF3["outer_mm"]), ref3_len=REF3["length_mm"], C_pair_pF_per_m=None, bend_min=10.0, twist_max_deg_per_mm=10.0, cord=dict(od=7.0, coil_od=17.0, stretch_max=4.0),
-            eye=dict(above=600.0, behind=250.0), backpack=(520.0, 320.0, 210.0), sdc_folded=(400.0, 216.0), fold_gap=2.0)
+            eye=dict(above=600.0, behind=250.0), backpack=(520.0, 320.0, 210.0), sdc_folded=(400.0, 216.0), fold_gap=2.0,
+            txd_pod=dict(w=62.0, h=52.0, wall=2.0, fillet=6.0, rho_g_cm3=1.2, parts_g=82.0, side_gap=1.0,   # pod housing (PC/ABS, ASSUMED) beside the C2 collar on +Y; parts mass ASSUMED:
+                         note="2 boards 66 x 56 (22 g), Ohmite D heat sink (6 g), 9 x EEHZC1H101P (13.5 g), clamp film cap (12 g), switches / diodes / drivers / shunts (8 g), potting + clamp (20 g), ASSUMED"))
 def rrect(W, H, r): return cq.Workplane("XY").rect(H, W).extrude(1.0).edges("|Z").fillet(min(r, W / 2 - 0.1, H / 2 - 0.1)).faces(">Z").wires().toPending()
 def rprof(W, H, s0, s1, wall=None, r=None, n=0.0, keys=False):
     """rectangular profile along the shaft: W lateral (Y), H along N; rounded corners; hollow by `wall`; keys=True cuts the keyway track (3 x 1.5 mm) along
@@ -74,7 +82,10 @@ def build():
     P["HINGE_SHAFT_KNUCKLE"] = ("UPT", shaft_frame(rbox(30, 44, h1 - h0 - 1, 6).translate((-4, 0, (h1 - h0 - 1) / 2)), h0), "hinge knuckle on the outer tube (hollow axis carries the bundle)")
     c = s["chassis"]; c0, c1 = st["chassis"]
     body = rbox(c["n"][1] - c["n"][0], c["w"], c1 - c0, c["fillet"]).translate(((c["n"][0] + c["n"][1]) / 2, 0, (c1 - c0) / 2))
-    P["CHASSIS"] = ("CH", shaft_frame(body, c0), "control chassis: TXD (front, vented), PWR board, HB2-M; battery bay below; rails and cuff above")
+    P["CHASSIS"] = ("CH", shaft_frame(body, c0), "control chassis: PWR board (regenerative buck), HB2-M; battery bay below; rails and cuff above (the TXD moved to the shaft pod, 2026-10-31)")
+    pd = s["txd_pod"]; t0_, t1_ = st["TXD"]
+    P["TXD_POD"] = ("UPT", shaft_frame(rbox(pd["h"], pd["w"], t1_ - t0_, pd["fillet"]).translate((0, 0, (t1_ - t0_) / 2)), t0_, 0.0, pod_y()),
+                    "TXD pod on the outer profile's lower end (+Y beside the C2 cam collar, s 364-436): Q1 / Q2 NTBG080N120SC1, 2 x UCC5350, US3M clamp + freewheel, clamp film cap, 9 x EEHZC1H101P; Q1 heat sink fins at a vented window")
     P["HINGE_CHASSIS_LUGS"] = ("CH", shaft_frame(rbox(26, c["w"] - 6, 22, 5).translate((c["n"][0] - 8, 0, 11)), c0 - 4), "hinge lugs under the chassis front")
     # battery bay + cartridge under the chassis
     ce = s["cells"]; cw = s["cart_wall"]; per_row = -(-ce["n_s"] * ce["n_p"] // ce.get("rows", ce["n_p"])); Lc = per_row * ce["d"] + 2 * cw; Wc = ce["l"] + 2 * cw; Hc = ce.get("rows", ce["n_p"]) * ce["d"] + 4.0 + 2 * cw
@@ -120,6 +131,9 @@ def build():
     P["CUFF_SLIDER"] = ("CH", shaft_frame(sl.val(), cs - 20), "U-slider riding the side rails, carrying the cuff over the chassis top")
     geo = dict(grip_solid=grip_solid, up=up, front=front, base=base, top=top, hinge_pt=hinge_pt, cart=(Lc, Wc, Hc), n_bay=n_bay, b1=b1, cuff_n=cn)
     return P, geo
+def pod_y():
+    """lateral centre of the TXD pod: beside the C2 cam collar (REF3 outer + 4 mm square) with a side gap"""
+    s = SPEC; return (s["ref3_outer"][1] + 4.0) / 2 + s["txd_pod"]["side_gap"] + s["txd_pod"]["w"] / 2
 def wrist_point():
     """the wrist when the hand holds the grip: about 34 mm up the grip axis and 38 mm behind its back face (ASSUMED)"""
     up, front = g_axis(); g = SPEC["grip"]; return at(g["base_s"], g["base_n"]) + up * 34.0 - front * 38.0
@@ -129,10 +143,15 @@ def electronics(geo):
     s = SPEC; st = s["st"]; E = {}; c = s["chassis"]
     def box(lx_n, ly, lz, s0, n, y=0.0): return shaft_frame(cq.Workplane("XY").box(lx_n, ly, lz).translate((0, 0, lz / 2)).val(), s0, n, y)
     nf = c["n"][0] + 3.0
-    for nm, (s0, l, w, h, y) in dict(TXD_BOARD=(st["TXD"][0], 86.0, 56.0, 1.6, 0.0)).items(): E[nm] = ("CHASSIS", box(h, w, l, s0, nf + h / 2, y))
-    for nm, (s0, l, w, h, y) in dict(HS1_OHMITE_D2=(818.0, 30.9, 14.2, 12.7, -18.0), CB_BULK_3x3=(818.0, 31.0, 31.0, 10.2, 12.0), C1_CLAMP_FILM=(855.0, 26.0, 11.0, 18.0, 16.0),
-                                     U1_UCC5350=(855.0, 5.0, 6.0, 1.75, -18.0), Q1_C3M=(853.0, 15.0, 10.2, 4.4, -6.0)).items():
-        E[nm] = ("CHASSIS", box(h, w, l, s0, nf + 1.6 + h / 2, y))
+    pd = s["txd_pod"]; t0 = st["TXD"][0]; yc = pod_y(); nb = -pd["h"] / 2 + pd["wall"] + 0.5; nt = pd["h"] / 2 - pd["wall"] - 0.5 - 1.6      # pod: bottom board up, top board down
+    E["TXD_BOARD"] = ("TXD_POD", box(1.6, pd["w"] - 6.0, 66.0, t0 + 3.0, nb + 0.8, yc))
+    E["TXD_BOARD_2"] = ("TXD_POD", box(1.6, pd["w"] - 6.0, 66.0, t0 + 3.0, nt + 0.8, yc))
+    for nm, (s0, l, w, h, y) in dict(HS1_OHMITE_D2=(t0 + 5.0, 30.9, 14.2, 12.7, yc + pd["w"] / 2 - 11.0), CB_BULK_3x3=(t0 + 37.0, 31.0, 31.0, 10.2, yc - 10.0), C1_CLAMP_FILM=(t0 + 5.0, 26.0, 11.0, 18.0, yc - 16.0),
+                                     U1_UCC5350=(t0 + 40.0, 5.0, 6.0, 1.75, yc + 20.0), Q1_NTBG=(t0 + 13.0, 15.0, 10.2, 4.4, yc + 6.0)).items():
+        E[nm] = ("TXD_POD", box(h, w, l, s0, nb + 1.6 + h / 2, y))
+    for nm, (s0, l, w, h, y) in dict(Q2_NTBG=(t0 + 8.0, 15.0, 10.2, 4.4, yc + 10.0), U1B_UCC5350=(t0 + 30.0, 5.0, 6.0, 1.75, yc + 10.0), D_FW_US3M=(t0 + 8.0, 7.0, 6.1, 2.3, yc - 10.0),
+                                     D_CL_US3M=(t0 + 20.0, 7.0, 6.1, 2.3, yc - 10.0), RS1_RS2_WSL2512=(t0 + 40.0, 6.4, 3.2, 0.6, yc - 10.0), U2_TMP117=(t0 + 52.0, 2.0, 2.0, 0.8, yc)).items():
+        E[nm] = ("TXD_POD", box(h, w, l, s0, nt - h / 2, y))
     E["PWR_BOARD"] = ("CHASSIS", box(1.6, 56.0, 120.0, 1000.0, nf + 0.8))
     for nm, (s0, l, w, h, y) in dict(Q30_C3M=(1005.0, 15.0, 10.2, 4.4, -16.0), L30_IND=(1025.0, 12.0, 12.0, 8.0, -14.0), C30_FILM=(1045.0, 26.0, 11.0, 17.0, 14.0), U31_LMR36520=(1080.0, 4.0, 4.0, 1.0, 0.0)).items():
         E[nm] = ("CHASSIS", box(h, w, l, s0, nf + 1.6 + h / 2, y))
@@ -249,9 +268,21 @@ def main():
     bore = min(s["tubes"]["inner"]) - 2 * s["wall"]
     import rf2_cordflex as CFX                                                                    # owner 2026-10-30: cord flex split at REF3T (HANDOFF 45)
     sg = CFX.segments(st, ext, stretch)
-    c["cord_flex"] = dict(ok=abs(sg["tx_length_m"] - CFX.TX_LEN_M) <= 0.01 * CFX.TX_LEN_M and CFX.WIDTH <= bore - 2.0 and 2 * CFX.BEND_R <= bore - 4.0 and sg["seg1_dynamic_mm"] <= CFX.TE_LEN_PREF and sg["seg2_static_mm"] <= CFX.TE_LEN_PREF,
-                          width_mm=round(CFX.WIDTH, 2), tx_loop_R_ohm=round(CFX.R_TX_LOOP, 3), inner_bore_min_mm=bore, travel_mm=round(stretch), rolling_loop_bend_r_mm=CFX.BEND_R, segments=sg, te_preferred_max_mm=round(CFX.TE_LEN_PREF),
-                          note="single-layer 2 oz flex; segment 1 head -> REF3T with a rolling loop storing half the travel, segment 2 REF3T -> hinge static; coverlay rating UNVERIFIED (vendor >= 630 V)")
+    bore_mid = min(s["tubes"]["mid"]) - 2 * s["wall"]; g1, g2 = CFX.lane_gaps(CFX.LANES), CFX.lane_gaps(CFX.LANES_PIECE2)
+    tx_len_ok = abs(sg["tx_length_m"] - CFX.TX_LEN_M) <= 0.01 * CFX.TX_LEN_M and abs(CFX.tx_length_m(st["TXD"][0] / 2 + st["TXD"][1] / 2, ext["inner"], ext["mid"], stretch) - CFX.TX_LEN_M) < 1e-9
+    sub = dict(tx_length_to_pod=tx_len_ok, width_vs_inner_bore_less_2=CFX.WIDTH <= bore - 2.0, piece2_width_vs_mid_bore_less_2=CFX.WIDTH_PIECE2 <= bore_mid - 2.0,
+               rolling_loop_2R_vs_bore_less_4=2 * CFX.BEND_R <= bore - 4.0, rule6_gaps_piece1=g1["min_hv_gap_mm"] >= CFX.HV_GAP, rule6_gaps_piece2=g2["min_hv_gap_mm"] >= CFX.HV_GAP,
+               seg1_vs_te_preferred=sg["seg1_dynamic_mm"] <= CFX.TE_LEN_PREF, seg2_vs_te_preferred=sg["seg2_static_mm"] <= CFX.TE_LEN_PREF)
+    c["cord_flex"] = dict(ok=all(sub.values()), sub_checks=sub, width_mm=round(CFX.WIDTH, 2), width_limit_mm=round(bore - 2.0, 2), piece2_width_mm=round(CFX.WIDTH_PIECE2, 2), piece2_limit_mm=round(bore_mid - 2.0, 2),
+                          w_tx_mm=round(CFX.W_TX, 3), i_tx_rms_A=round(CFX.I_TX, 3), tx_loop_R_ohm=round(CFX.R_TX_LOOP, 3), rule6_min_gap_mm=[g1["min_hv_gap_mm"], g2["min_hv_gap_mm"]],
+                          inner_bore_min_mm=bore, mid_bore_mm=bore_mid, travel_mm=round(stretch), rolling_loop_bend_r_mm=CFX.BEND_R, rolling_loop_2R_mm=2 * CFX.BEND_R, rolling_loop_limit_mm=bore - 4.0, segments=sg, te_preferred_max_mm=round(CFX.TE_LEN_PREF),
+                          note="single-layer 2 oz flex; segment 1 head -> REF3T with a rolling loop storing half the travel (TX strips tap off at the TXD pod, s %.0f), segment 2 REF3T -> hinge static (pod feed, clamp return, head power, DATA); coverlay rating UNVERIFIED (vendor >= 630 V)" % DRV.TXD_S_MM)
+    pd = s["txd_pod"]; t0_, t1_ = st["TXD"]; Lp = (t1_ - t0_) / 1000.0; Wp, Hp = pd["w"] / 1000.0, pd["h"] / 1000.0
+    area = 2 * (Lp * Wp + Lp * Hp + Wp * Hp); g_h = area * pd["wall"] * 1e-3 * pd["rho_g_cm3"] * 1e6
+    c["txd_pod"] = dict(ok=t1_ <= st["REF3"][0] and t0_ >= st["C1"][1] and abs((t0_ + t1_) / 2 - DRV.TXD_S_MM) < 1e-9, s_mm=[t0_, t1_], centre_s_mm=DRV.TXD_S_MM, ends_before_REF3_mm=round(st["REF3"][0] - t1_, 1),
+                        clear_of_C1_mm=round(t0_ - st["C1"][1], 1), lateral_centre_mm=round(pod_y(), 1), box_mm=[t1_ - t0_, pd["w"], pd["h"]], surface_m2=round(area, 5), housing_g=round(g_h), parts_g=pd["parts_g"],
+                        centre_s_in_use_mm=dict(min_use=DRV.TXD_S_MM - 100.0, nominal=DRV.TXD_S_MM, max=DRV.TXD_S_MM + ext["inner"] + ext["mid"]),
+                        note="rides the outer profile with REF3 (moves with the telescope); the TX strips and the pod feed reach it through a tap at the outer profile's lower end, as REF3T's joint (exit path OPEN, shared with REF3T)")
     run = 30.0; twist = 180.0 / run
     c["hinge_pass_through"] = dict(ok=twist <= s["twist_max_deg_per_mm"] and 12.0 >= s["bend_min"], axial_run_mm=run, twist_deg_per_mm=round(twist, 1), bend_r_mm=12.0,
                                    note="the bundle enters the hollow hinge axis with a 12 mm-radius 90 deg bend, twists 180 deg along a 30 mm axial run, leaves with a second 90 deg bend")
@@ -259,7 +290,7 @@ def main():
     try:
         tc = json.load(open(os.path.join(HERE, "results", "rf2_timing_cord.json"))); dg = max(v["shift_fixed_us"] for v in tc["cases"].values()); src = "rf2_timing_cord (nonlinear turn-off, Rd kept at the no-cord value)"
     except Exception: dg = (16.3 - 5.8) * (math.sqrt(1 + dC / 500e-12) - 1); src = "first-order (rf2_timing_cord not run)"
-    c["tx_pair_in_cord"] = dict(ok=dg <= 0.6, length_m=round(L_pair, 2), C_pF=round(dC * 1e12, 1), first_gate_shift_us=round(dg, 3), source=src, note=f"TX in the chassis: the TX strips run the whole cord flex ({CFX.cps_c_pf_per_m():.1f} pF/m, coplanar strips, eps_eff {CFX.EPS_EFF} ASSUMED)")
+    c["tx_pair_in_cord"] = dict(ok=dg <= 0.6, length_m=round(L_pair, 3), C_pF=round(dC * 1e12, 1), first_gate_shift_us=round(dg, 3), source=src, note=f"TXD pod at s {DRV.TXD_S_MM:.0f}: the TX strips run head -> pod only ({CFX.cps_c_pf_per_m():.1f} pF/m, coplanar strips, eps_eff {CFX.EPS_EFF} ASSUMED)")
     Lc, Wc, Hc = geo["cart"]; cart = P["BATTERY_CARTRIDGE"][1]; hits = set()
     for dz in np.linspace(10, Lc + 10, 8):
         mv = cart.moved(trsf(np.eye(3), D * dz)); hits |= {k for k, p in P.items() if p[0] == "CH" and k not in ("BATTERY_CARTRIDGE", "BATTERY_BAY", "CHASSIS") and mv.distance(p[1]) < 0.3}
@@ -284,7 +315,8 @@ def main():
     tubes_g = sum(1.55e-3 * (w * w - (w - 2 * s["wall"]) ** 2) * 380.0 for w in (s["tubes"]["outer"][0], s["tubes"]["mid"][0], s["tubes"]["inner"][0]))   # three 380 mm profiles
     n_cell = s["cells"]["n_s"] * s["cells"]["n_p"]; cart_oh = 90.0 * (0.55 + 0.45 * n_cell / 14.0)       # 90 g for 14 cells (ASSUMED); shell + strip scale with cell count
     masses = {"head (ASSUMED 650 g)": (650.0, np.array([0, 0, 8.0])), f"rect profiles ({tubes_g:.0f} g at {s['wall']} mm wall, CF 1.55 g/cm3 ASSUMED) + yoke + clamps (70 g ASSUMED)": (tubes_g + 70.0, at(420)), f"REF3 rect coils ({ref_cu} g Cu + 30 g)": (ref_cu + 30.0, at(ref_c)),
-              "chassis shell + hinge + TXD + PWR + HB2 (ASSUMED 420 g)": (420.0, at(960)), "grip + head + screen (ASSUMED 120 g)": (120.0, geo["base"] + up * 60), "cuff + rails (ASSUMED 110 g)": (110.0, at(1140, 60)),
+              f"chassis shell + hinge + PWR + HB2 (ASSUMED 420 g less the TXD parts {s['txd_pod']['parts_g']:.0f} g)": (420.0 - s["txd_pod"]["parts_g"], at(960)),
+              f"TXD pod at s {DRV.TXD_S_MM:.0f} (housing {g_h:.0f} g + parts {s['txd_pod']['parts_g']:.0f} g, ASSUMED)": (g_h + s["txd_pod"]["parts_g"], at(DRV.TXD_S_MM, 0.0, pod_y())), "grip + head + screen (ASSUMED 120 g)": (120.0, geo["base"] + up * 60), "cuff + rails (ASSUMED 110 g)": (110.0, at(1140, 60)),
               f"battery cartridge ({n_cell} x {s['cells']['g']:.0f} g + {cart_oh:.0f} g shell / BMS / MT60, ASSUMED)": (n_cell * s["cells"]["g"] + cart_oh, at(985, geo["n_bay"]))}
     hand = geo["base"] + up * 50.0
     tq = sum(m * 9.81e-3 * (hand[0] - p[0]) * 1e-3 for m, p in masses.values()); tot = sum(m for m, _ in masses.values())

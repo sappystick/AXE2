@@ -29,21 +29,32 @@
    "r": 114.0,
    "what": "split-ring electrostatic shield (rf2_shield_pcb.py): open rings + one radial spine, single-point ground"
   },
-  "QA": {
+  "PRX": {
    "z": [
     1.6,
-    2.4
+    1.7
+   ],
+   "r": 112.0,
+   "kind": "prx",
+   "what": "planar nulled receive layer (rf2_prx.py): 2-layer PI flex, main spiral (layer 1) inside the coil, bucking spiral (layer 2) under the TX litz, solved for zero M to the bank-wound coil; leads at the feed (r 72, 135 deg) to MP2 on fin A2"
+  },
+  "QA": {
+   "z": [
+    1.7,
+    2.5
    ],
    "r": 114.0,
-   "what": "SB1R-QA quadrupole receive board, copper unchanged; outline variant without the r 116 tab (does not fit a 2 mm wall)"
+   "what": "SB1R-QA quadrupole receive board, copper unchanged; outline variant without the r 116 tab (does not fit a 2 mm wall); 2026-10-31: z +0.1 (PRX below), 18 um copper (rx_18um), NPTH feed hole at (r 72, 135 deg) for the PRX leads",
+   "copper_um": 18
   },
   "QB": {
    "z": [
-    2.4,
-    3.2
+    2.5,
+    3.3
    ],
    "r": 114.0,
-   "what": "SB1R-QB (QA turned 45 deg), copper unchanged; same outline variant"
+   "what": "SB1R-QB (QA turned 45 deg), copper unchanged; same outline variant; 2026-10-31: z +0.1, 18 um copper, the same feed hole",
+   "copper_um": 18
   }
  },
  "stack_pins": {
@@ -61,7 +72,7 @@
   "hole_d": 3.4,
   "z": [
    1.2,
-   3.8
+   3.9
   ],
   "what": "2 PETG pins from the skid through SH1 / QA / QB (the SB1R NPTH holes); the 22.5 deg hole carries the shield's ground wire up (SH1 plated pad there)"
  },
@@ -77,16 +88,17 @@
   "litz_od": 1.37,
   "pitch": 1.77,
   "floor_z": [
-   3.2,
-   3.8
+   3.3000000000000003,
+   3.9
   ],
-  "row0_z": 4.49,
+  "row0_z": 4.59,
   "rows": 6,
   "L_uH": 333,
   "I_A": 8.06,
   "energy_mJ": 10.8,
-  "what": "rim mono, 6 rows x 5 columns (option B; was 5 x 6 at 1.6 mm), wound column by column down-and-up (owner's progressive order; about 195 V max between neighbours, 1000 V litz)",
-  "row_pitch": 1.44
+  "what": "rim mono, 6 rows x 5 columns (option B; was 5 x 6 at 1.6 mm), BANK wound (owner 2026-10-31): column by column from the outermost, bottom to top in each column, a crossover down to the next column's floor; 26 turns = columns 0-3 full (24) + 2 turns on the floor of column 4 (coil_slots())",
+  "row_pitch": 1.44,
+  "order": "bank"
  },
  "channel": {
   "inner_wall_r": [
@@ -94,8 +106,8 @@
    104.6
   ],
   "z": [
-   3.2,
-   12.6
+   3.3000000000000003,
+   12.7
   ],
   "lead_exit_deg": 178.0,
   "lead_slot_w": 6.0
@@ -103,14 +115,14 @@
  "bay": {
   "r_max": 103.6,
   "z": [
-   3.8,
+   3.9,
    13.1
   ]
  },
  "walls": {
   "t": 1.2,
   "z": [
-   3.8,
+   3.9,
    12.6
   ],
   "r": [
@@ -208,7 +220,7 @@
    "kind": "fin",
    "deg": 122.0,
    "r": [
-    19.05,
+    21.0,
     103.0
    ],
    "z": [
@@ -216,7 +228,7 @@
     12.4
    ],
    "t": 1.0,
-   "side": 1.2,
+   "side": 1.8,
    "notch": [
     21.0,
     11.0
@@ -225,7 +237,8 @@
    "hv": false,
    "below": 0.0,
    "above": 0.0,
-   "what": "AB1 function: receive channels (mono, QA, QB, REF3), gates / integrators, ADC"
+   "what": "MP2: second MP1-class receive channel (MP1 v1 schematic: 3 x 470R CRCW2512 per leg, BAV199 clamps, OPA2211 difference amp) for the planar nulled RX; inputs at the rim end (lead from the PRX feed), output by flex tail to the LV hub",
+   "board": "MP2"
   },
   "FIN_A3": {
    "kind": "fin",
@@ -506,6 +519,42 @@
   "noise": "2.0 nV/rtHz, depth cost 1.4 %, copper 104 g (rf2_ref3.py; the earlier 620 x 0.15 mm on 80 mm gave 2.32 nV/rtHz and 1.8 %)"
  },
  "netlist_variant_note": "rf2_netlist.BOARDS MP1 / TXJ 'head' positions are option A's; the option-B board builds take MP1 (-72, 3) and TXJ (-94.5, 0) (stage 4)",
+ "prx": {
+  "main_turns": 40,
+  "main_r_mm": [
+   88.0,
+   76.3
+  ],
+  "main_z_mm": 1.6175,
+  "buck_turns": 16,
+  "buck_r_mm": [
+   110.927,
+   106.427
+  ],
+  "buck_z_mm": 1.6775,
+  "pitch_mm": 0.3,
+  "trace_mm": 0.15,
+  "copper_um": 35.0,
+  "M_main_uH": 165.432,
+  "M_residual_uH": -0.0,
+  "null_ratio_dz_0p1mm": 0.00442,
+  "null_ratio_dr_0p1mm": 0.00163,
+  "length_m": 31.572,
+  "R_ohm": 103.4,
+  "johnson_nV": 1.31,
+  "pi_r_out_mm": 112.0,
+  "feed": {
+   "r": 72.0,
+   "deg": 135.0,
+   "hole_d": 3.4,
+   "pad_d": 1.6
+  },
+  "stack": "25 um PI + 2 x 35 um Cu = 0.095 mm (ASSUMED; vendor stack UNVERIFIED)",
+  "z": [
+   1.6,
+   1.7
+  ]
+ },
  "materials": {
   "coil_wire": "Rubadue TXXL66/38F-2 triple-insulated FEP litz (owner 2026-10-30; DATASHEET_LOG RF2-DS-WIRE): 66 x AWG38, 1056 CM, finished OD 1.372 mm nominal, FEP 155 C / 1000 V (catalog rating), 50-100 kHz; 0.601 ohm over 18.3 m (rf2_wire_options). Breakdown and exact OD: request the vendor specification sheet",
   "coil_wire_od_mm": 1.37,
@@ -547,7 +596,7 @@
  "hub": {
   "r": 20.0,
   "z": [
-   3.8,
+   3.9,
    11.0
   ],
   "slot_depth": 1.0,
@@ -568,9 +617,32 @@
  "bay_floor": {
   "r": 103.6,
   "z": [
-   3.2,
-   3.8
+   3.3000000000000003,
+   3.9
   ],
-  "what": "printed floor over QB carrying the fin rails"
+  "what": "printed floor over QB carrying the fin rails (2026-10-31: +0.1 mm, PRX below)"
+ },
+ "prx_leads": {
+  "feed": {
+   "r": 72.0,
+   "deg": 135.0,
+   "hole_d": 3.4,
+   "pad_d": 1.6
+  },
+  "to": "MP2 J1 / J2 (board x 39.5 = r 101.5, z 6.2 / 10.2)",
+  "wire": "2 x FEP hookup 0.30 mm OD, twisted (UNVERIFIED part), potted in the analog gel",
+  "path": [
+   [
+    -50.91,
+    50.91,
+    3.9
+   ],
+   [
+    -57.05,
+    83.95,
+    4.4
+   ]
+  ],
+  "what": "up through the 3.4 mm feed hole in QA / QB / the bay floor, then on the floor in a ribbed lane to the A2 fin's 135-deg face at its rim end"
  }
 }

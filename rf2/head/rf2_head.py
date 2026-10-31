@@ -61,17 +61,27 @@ def apply_option_b(S):
     LID_T = 2.4                                                                           # light plate 2.4 mm (was 1.5): a 0.9 mm straight land under each cone removes the feather edge
     S["envelope"].update(H=round(lid0 + LID_T, 2), note="option B: single board tier; light plate 2.4 mm (2026-10-30, DFM)")   # at each well's bottom rim (rf2_print DFM, HANDOFF 40)
     S["shell"].update(wall_z=(0.0, lid0), lid_z=(lid0, round(lid0 + LID_T, 2)))
-    S["coil"].update(columns_r=tuple(round(113.4 - 1.77 * k, 2) for k in range(5)), rows=6, row0_z=4.49, litz_od=1.37, pitch=1.77, row_pitch=1.44,   # owner 2026-10-30: Rubadue TXXL66/38F-2 triple FEP 1000 V; 5 columns (comb pitch 1.77) x 6 rows (stacked, 1.44) (HANDOFF 45)
-                     what="rim mono, 6 rows x 5 columns (option B; was 5 x 6 at 1.6 mm), wound column by column down-and-up (owner's progressive order; about 195 V max between neighbours, 1000 V litz)")
-    S["channel"].update(inner_wall_r=(103.8, 104.6), z=(3.2, 12.6))
-    S["bay"].update(r_max=103.6, z=(3.8, zd))
-    S["walls"].update(z=(3.8, 12.6), r=(42.0, 103.6))
+    S["coil"].update(columns_r=tuple(round(113.4 - 1.77 * k, 2) for k in range(5)), rows=6, row0_z=round(4.49 + DZ_PRX, 2), floor_z=(round(3.2 + DZ_PRX, 2), round(round(3.8 + DZ_PRX, 2), 2)), litz_od=1.37, pitch=1.77, row_pitch=1.44,   # owner 2026-10-30: Rubadue TXXL66/38F-2 triple FEP 1000 V; 5 columns (comb pitch 1.77) x 6 rows (stacked, 1.44) (HANDOFF 45)
+                     order="bank",                                                                                 # owner 2026-10-31: bank fill (coil_winding plugin 'bank': C_self 198.6 -> 160.9 pF)
+                     what="rim mono, 6 rows x 5 columns (option B; was 5 x 6 at 1.6 mm), BANK wound (owner 2026-10-31): column by column from the outermost, bottom to top in each column, "
+                          "a crossover down to the next column's floor; 26 turns = columns 0-3 full (24) + 2 turns on the floor of column 4 (coil_slots())")
+    S["channel"].update(inner_wall_r=(103.8, 104.6), z=(round(3.2 + DZ_PRX, 2), round(12.6 + DZ_PRX, 2)))           # 2026-10-31: everything over SH1 is 0.1 mm higher (PRX); the channel top follows the coil (+0.1, rule 12)
+    S["bay"].update(r_max=103.6, z=(round(3.8 + DZ_PRX, 2), zd))
+    S["walls"].update(z=(round(3.8 + DZ_PRX, 2), 12.6), r=(42.0, 103.6))
+    # hybrid receive (owner 2026-10-31): the planar nulled RX layer PRX in a 0.1 mm slot over SH1; QA / QB move up 0.1 mm and change to 18 um copper (option rx_18um)
+    S["boards"] = dict(SH1=S["boards"]["SH1"],
+                       PRX=dict(z=(1.6, 1.7), r=PRX_MOD.R_OUT_PI, kind="prx", what="planar nulled receive layer (rf2_prx.py): 2-layer PI flex, main spiral (layer 1) inside the coil, bucking spiral "
+                                "(layer 2) under the TX litz, solved for zero M to the bank-wound coil; leads at the feed (r 72, 135 deg) to MP2 on fin A2"),
+                       QA=dict(S["boards"]["QA"], z=(1.7, 2.5), copper_um=18, what=S["boards"]["QA"]["what"] + "; 2026-10-31: z +0.1 (PRX below), 18 um copper (rx_18um), NPTH feed hole at (r 72, 135 deg) for the PRX leads"),
+                       QB=dict(S["boards"]["QB"], z=(2.5, 3.3), copper_um=18, what=S["boards"]["QB"]["what"] + "; 2026-10-31: z +0.1, 18 um copper, the same feed hole"))
+    S["stack_pins"].update(z=(1.2, round(round(3.8 + DZ_PRX, 2), 2)))
     S["boards_inner"]["CB1D"].update(z=(6.6, 8.2), what=S["boards_inner"]["CB1D"]["what"] + "; option B: on the AB1 tier, parts below 2.0 / above 4.4")
     S["boards_inner"]["LED"].update(z=(zd, zd + DFLEX))
     S["boards_inner"]["MP1"].update(c=(-72.0, 3.0), what=S["boards_inner"]["MP1"]["what"] + "; option B: 3 mm inward (the 6-column channel wall is at r 103.8)")
     S["boards_inner"]["TXJ"].update(c=(-94.5, 0.0), what=S["boards_inner"]["TXJ"]["what"] + "; option B: at (-94.5, 0), between MP1 and the channel wall (r 103.8)")
     S["netlist_variant_note"] = "rf2_netlist.BOARDS MP1 / TXJ 'head' positions are option A's; the option-B board builds take MP1 (-72, 3) and TXJ (-94.5, 0) (stage 4)"
     S["gland"].update(boss_z=(12.6, lid0))
+    S["prx"] = PRX_MOD.design(coil_turns(S))
     S["materials"] = dict(
         coil_wire="Rubadue TXXL66/38F-2 triple-insulated FEP litz (owner 2026-10-30; DATASHEET_LOG RF2-DS-WIRE): 66 x AWG38, 1056 CM, finished OD 1.372 mm nominal, "
                   "FEP 155 C / 1000 V (catalog rating), 50-100 kHz; 0.601 ohm over 18.3 m (rf2_wire_options). Breakdown and exact OD: request the vendor specification sheet",
@@ -95,6 +105,24 @@ def apply_option_b(S):
                        "no aluminium electrolytic or other metal-can parts in the head: MLCC only (can echo 2e4-7.5e4 x noise)",
                        "nothing switches in the receive window; analog / TXJ loops < 0.1 cm2, edge-on where the field is vertical",
                        "IXTY08N100D2 tab edge-on to the field or a tab-less package (tab echo 2700 x noise, tau 19.8 us)"]
+DZ_PRX = 0.1                                                                             # 2026-10-31: PRX slot (z 1.6-1.7) lifts QA, QB, floors, coil and channel by 0.1 mm
+import rf2_prx as PRX_MOD
+def coil_slots(S=None):
+    """the turns in winding order as (column, row); column 0 outermost, row 0 on the floor. order 'row' (option A builder, rf2_lowL_options.SLOTS):
+    turn k in column k % ncol; 'bank' (owner 2026-10-31): each column bottom -> top, columns outermost first (coil_winding plugin sequence('bank'))"""
+    S = S or SPEC; co = S["coil"]; nc = len(co["columns_r"]); nr = co["rows"]; n = co["turns"]
+    if co.get("order", "row") == "row": return [(k % nc, k // nc) for k in range(n)]
+    assert co["order"] == "bank", co["order"]
+    seq = []
+    for c in range(nc):
+        seq += [(c, m) for m in range(min(nr, n - len(seq)))]
+        if len(seq) >= n: break
+    return seq
+def coil_turns(S=None):
+    """(r, z) mm of every turn centre, in winding order"""
+    S = S or SPEC; co = S["coil"]; rp = co.get("row_pitch", co["pitch"])
+    return [(co["columns_r"][c], round(co["row0_z"] + m * rp, 4)) for c, m in coil_slots(S)]
+HV_FIN_R1 = 102.0          # 2026-10-31 (glove housing, rule 12): HV fins end at r 102.0 (TXF's board edge) so the HV epoxy island stops at r 102.6, 3.0 mm from the litz (MG 832TC rule)
 FIN_SEP = 3.0                                                                            # HV fins end this far from the LV hub board (rule 6 envelope margin)
 def apply_option_bf(S):
     """option B, clean sheet (owner 2026-10-30: design the housing around the new boards): every electronics board is a RADIAL FIN standing in a plane
@@ -103,20 +131,28 @@ def apply_option_bf(S):
     Fins are held in floor guide rails and hub slots (tilt < 1 deg). HV fins sit 8 deg either side of the coil-lead path (178 deg): the lead pair's own
     field drops to the background 4 deg away. Option B's coil, channel, combs, shield, receive boards, display and lid are kept."""
     apply_option_b(S)
-    fin = lambda deg, zone, what, hv=False, r0=19.05: dict(kind="fin", deg=deg, r=(r0, 103.0), z=(4.0, 12.4), t=1.0, side=1.2, notch=(21.0, 11.0), zone=zone, hv=hv,
+    fin = lambda deg, zone, what, hv=False, r0=19.05, r1=103.0: dict(kind="fin", deg=deg, r=(r0, r1), z=(4.0, 12.4), t=1.0, side=1.2, notch=(21.0, 11.0), zone=zone, hv=hv,
                                                           below=0.0, above=0.0, what=what)
     bi = {}
-    bi["FIN_HV1"] = fin(170.0, "hv", "MP1 v2 function: HV limiter (IXTY08N100D2), clamps, LMH6629 preamp; LV output by flex through the 156 deg wall", True, 40.0)
-    bi["FIN_HV2"] = fin(186.0, "hv", "TXJ function: coil-lead and shaft TX-pair termination (wire-hole pads), damping network", True, 40.0)
+    bi["FIN_HV1"] = fin(170.0, "hv", "MP1 v2 function: HV limiter (IXTY08N100D2), clamps, LMH6629 preamp; LV output by flex through the 156 deg wall", True, 40.0, HV_FIN_R1)
+    bi["FIN_HV2"] = fin(186.0, "hv", "TXJ function: coil-lead and shaft TX-pair termination (wire-hole pads), damping network", True, 40.0, HV_FIN_R1)
     for k, d in enumerate((100.0, 122.0, 144.0)): bi[f"FIN_A{k + 1}"] = fin(d, "analog", "AB1 function: receive channels (mono, QA, QB, REF3), gates / integrators, ADC")
+    # owner 2026-10-31: the second MP1-class receive channel (for the PRX) is the MP2 fin board on analog fin A2 (rf2_netlist BOARDS['MP2']: MP1's schematic re-placed
+    # on the 8.4 mm fin, built and routed by rf2_boards.py). Board r 21.0-103.0 (clear of the hub PCB r 20.5, so no hub slot); SOIC-8 1.6 mm tall: parts side 1.8
+    bi["FIN_A2"] = dict(fin(122.0, "analog", "MP2: second MP1-class receive channel (MP1 v1 schematic: 3 x 470R CRCW2512 per leg, BAV199 clamps, OPA2211 difference amp) "
+                                          "for the planar nulled RX; inputs at the rim end (lead from the PRX feed), output by flex tail to the LV hub", False, 21.0), side=1.8, board="MP2")
     for k, d in enumerate((214.0, 245.0, 276.0, 307.0, 338.0, 9.0, 40.0, 71.0)):
         bi[f"FIN_D{k + 1}"] = fin(d, "digital", "CB1D function: RP2354A, clocks, LMR36520 + TPS22918 LED rail, LED data, power entry" if k < 6 else "CB1D function: sensors, audio / link, spare")
     bi["HUB_PCB"] = dict(kind="disc", c=(0.0, 0.0), r=20.5, z=(11.6, 12.4), below=0.0, above=0.5, what="LV hub: star (radial) interconnect of the LV fins by soldered flex tails; no ring traces (rule 5); 4 mm fill bore")
     bi["LED"] = S["boards_inner"]["LED"]; S["boards_inner"] = bi
-    S["hub"] = dict(r=20.0, z=(3.8, 11.0), slot_depth=1.0, slot_w=1.1, bore_d=4.0, what="printed hub: radial slots for the LV fins' inner edges, a 4 mm bore to inject potting from the centre")
+    S["hub"] = dict(r=20.0, z=(round(3.8 + DZ_PRX, 2), 11.0), slot_depth=1.0, slot_w=1.1, bore_d=4.0, what="printed hub: radial slots for the LV fins' inner edges, a 4 mm bore to inject potting from the centre")
     S["fin_guides"] = dict(t=0.6, h=1.2, r=(24.0, 100.0), gap=1.1, what="paired floor rails either side of every fin (1.1 mm gap for a 1.0 mm board): tilt < 1 deg")
-    S["bay_floor"] = dict(r=103.6, z=(3.2, 3.8), what="printed floor over QB carrying the fin rails")
+    S["bay_floor"] = dict(r=103.6, z=(round(3.2 + DZ_PRX, 2), round(round(3.8 + DZ_PRX, 2), 2)), what="printed floor over QB carrying the fin rails (2026-10-31: +0.1 mm, PRX below)")
     S["walls"].update(r=(21.0, 103.6), note="radial sector walls 89 / 156 / 198 deg (themselves radial planes); the 156 deg wall keeps the LV slot for the HV1 output flex")
+    f = S["prx"]["feed"]; fx, fy = pol(f["r"], f["deg"]); a2 = bi["FIN_A2"]
+    S["prx_leads"] = dict(feed=f, to="MP2 J1 / J2 (board x 39.5 = r 101.5, z 6.2 / 10.2)", wire="2 x FEP hookup 0.30 mm OD, twisted (UNVERIFIED part), potted in the analog gel",
+                          path=[[round(fx, 2), round(fy, 2), 3.9], list(map(lambda v: round(v, 2), pol(101.5, a2["deg"] + 2.2))) + [3.9 + 0.5]],
+                          what="up through the 3.4 mm feed hole in QA / QB / the bay floor, then on the floor in a ribbed lane to the A2 fin's 135-deg face at its rim end")
     S["zone_rules"] = S["zone_rules"] + ["every board is a radial fin (field-free orientation); fins located by rails and hub slots to < 1 deg",
                                          "HV fins at 170 / 186 deg, >= 4 deg from the coil-lead path (178 deg); lead pair twisted / tight"]
 if VARIANT == "B": apply_option_b(SPEC)
@@ -130,6 +166,8 @@ def radial_wall(deg, r0, r1, t, z0, z1): return m3.Manifold.cube([r1 - r0, t, z1
 def slot_towards(c, deg, w, z0, z1, L=12.0):
     """a slot of width w cut from the point c outward along direction deg (for hinge / lead exits)"""
     return m3.Manifold.cube([L, w, z1 - z0], True).translate([L / 2, 0, (z0 + z1) / 2]).rotate([0, 0, deg]).translate([c[0], c[1], 0])
+def feed_hole(z0, z1):
+    f = SPEC["prx"]["feed"]; return at(cyl(f["hole_d"] / 2, z0, z1, 32), pol(f["r"], f["deg"]))
 def led_positions():
     import rf2_ledgrid as LG
     return [(e["x"], e["y"]) for e in LG.layout()["leds"]]
@@ -198,6 +236,7 @@ def parts():
     if fins:                                                                                # clean-sheet seats: floor, rails, hub
         fl = cyl(S["bay_floor"]["r"], *S["bay_floor"]["z"])
         for d in sp["deg"]: fl = fl - at(cyl(sp["d"] / 2 + 0.2, sp["z"][0] - 1, sp["z"][1] + 1, 32), pol(sp["r"], d))
+        if "prx" in S: fl = fl - feed_hole(S["bay_floor"]["z"][0] - 1, S["bay_floor"]["z"][1] + 1)
         P["BAY_FLOOR"] = fl; g = S["fin_guides"]; hb = S["hub"]; rails = None; hub = cyl(hb["r"], *hb["z"]) - cyl(hb["bore_d"] / 2, hb["z"][0] - 1, hb["z"][1] + 1, 32)
         for k, v in fins.items():
             ra = (max(g["r"][0], v["r"][0] + 2.0), g["r"][1])
@@ -230,12 +269,13 @@ def parts():
     for k, b in S["boards"].items():
         s = cyl(b["r"], *b["z"])
         for d in sp["holes_deg"]: s = s - at(cyl(sp["hole_d"] / 2, b["z"][0] - 1, b["z"][1] + 1, 32), pol(sp["r"], d))
+        if k in ("QA", "QB") and "prx" in S: s = s - feed_hole(b["z"][0] - 1, b["z"][1] + 1)               # PRX lead feed (NPTH 3.4, rf2_sb1r_variant)
         P["BOARD_" + k] = s
     for k in bi: P["ENV_" + k] = envelope(k)
     # litz (26 turns) for fit and mass
-    litz = None; nc = len(co["columns_r"])
-    for j in range(co["turns"]):
-        t = m3.CrossSection.circle(co["litz_od"] / 2, 24).translate([co["columns_r"][j % nc], co["row0_z"] + (j // nc) * co.get("row_pitch", co["pitch"])]).revolve(SEG)
+    litz = None
+    for rc, zc in coil_turns(S):                                                           # in winding order (coil_slots: 'row' for option A, 'bank' for B / BF)
+        t = m3.CrossSection.circle(co["litz_od"] / 2, 24).translate([rc, zc]).revolve(SEG)
         litz = t if litz is None else litz + t
     P["LITZ"] = litz
     if "coil_combs" in S:                                                                   # option B: winding combs in the channel (open-topped slots)

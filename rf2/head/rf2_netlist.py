@@ -78,6 +78,27 @@ board("TXF", w=32.0, h=8.4, layers=2, thickness=1.0, kind="rect", hv_nets=["TX_A
 for col, nm, xs in (("A", "TX_A", (-3.0, -8.0, -13.5)), ("B", "TX_B", (13.5, 8.0, 3.0))):
     part("TXF", f"JC{col}", "WIRE_LITZ", f"coil {col}", xs[0], 0.0); part("TXF", f"JK{col}", "WIRE_AWG18", f"cable {col}", xs[1], 0.0); part("TXF", f"JS{col}", "WIRE_SENSE", f"sense {col}", xs[2], 0.0)
     net("TXF", nm, (f"JC{col}", "1"), (f"JK{col}", "1"), (f"JS{col}", "1"))
+# ---- MP2: the second MP1-class receive channel for the planar nulled RX (owner decision 2026-10-31: hybrid receive; HANDOFF 56). MP1 v1's SCHEMATIC (the same parts,
+#      values and pin-to-net map, copied from BOARDS['MP1'] below, so the two can never drift) re-placed on a RADIAL FIN at analog fin A2 (122 deg): 82 x 8.4 mm,
+#      1.0 mm, 2 layers, r 21.0-103.0 (clear of the hub PCB at r 20.5). Inputs PRX_A / PRX_B (the PRX spiral ends; nulled residual about 1 V, a broken bucking
+#      trace would leave M_main / L x the clamp, so the input chain keeps MP1's protection and the >= 1.0 mm class: conservative, the PRX is not a coil
+#      flyback net). Layout along the fin, rim end first: input wire pads, the six CRCW2512 interleaved A / B on the centre line (1.2 mm gaps, rule-6 class
+#      between legs; A links route above, B links below), the BAV199 clamps, R4 / R6, the OPA2211 turned 90 deg, the passives in three columns, the
+#      flex lands (output tail to the LV hub) at the hub end.
+_MP2_POS = {"J1": (39.5, 2.0, 0), "J2": (39.5, -2.0, 0), "RA1": (33.5, 0.0, 180), "RB1": (24.5, 0.0, 180), "RA2": (15.5, 0.0, 180), "RB2": (6.5, 0.0, 180),
+            "RA3": (-2.5, 0.0, 180), "RB3": (-11.5, 0.0, 180), "D1": (-17.9, 2.3, 0), "D2": (-17.9, -2.3, 0), "R4": (-21.8, 2.8, 0), "R6": (-21.8, -2.8, 0),
+            "U1": (-26.1, 0.0, 90), "R5": (-30.4, 2.6, 0), "R8": (-30.4, 0.0, 0), "R7": (-30.4, -2.6, 0), "R9": (-33.9, 2.6, 0), "C1": (-33.9, 0.0, 0),
+            "R10": (-33.9, -2.6, 0), "C2": (-37.4, 2.6, 0), "C3": (-37.4, -2.6, 0), "J5": (-39.9, 2.6, 0), "J4": (-39.9, 0.0, 0), "J3": (-39.9, -2.6, 0)}
+_MP2_REN = {"COIL_A": "PRX_A", "COIL_B": "PRX_B", "MONO_OUT": "PRX_OUT"}
+def _derive_mp2():
+    board("MP2", w=82.0, h=8.4, layers=2, thickness=1.0, kind="rect", hv_nets=["PRX_A", "PRX_B", "HA1", "HA2", "HB1", "HB2"],
+          head=dict(c=(0.0, -1000.0), z_bottom=4.0, fin=dict(deg=122.0, r_center=62.0, z0=4.0)), derived_from="MP1", hv_route_clear=1.05,   # routed at 1.05 (Freerouting rounds a 1.0 class to 0.997-0.998 on this 8.4 mm fin); KiCad DRC checks 1.0
+          note="fin board on analog fin A2: MP1 v1 schematic for the planar nulled RX (second receive channel); inputs from the PRX feed (r 72, 135 deg)")
+    for p in BOARDS["MP1"]["parts"]:
+        x, y, r = _MP2_POS[p["ref"]]
+        part("MP2", p["ref"], p["type"], _MP2_REN.get(p["value"], p["value"]), x, y, r, note="copied from MP1 (same schematic)")
+        BOARDS["MP2"]["parts"][-1]["pins"] = {k: _MP2_REN.get(n, n) for k, n in p["pins"].items()}
+_derive_mp2()
 # ---- LR1: dense LED display flex (owner 2026-10-30: rings from the rim to the centre + a centre cluster, about 540 LEDs on an 8 mm grid; built: see
 #      rf2_ledgrid.py, the single source of its layout, nets and copper). 2-layer polyimide flex (0.2 mm with coverlay) on a 0.2 mm FR4 stiffener, vendor
 #      rules 0.10 / 0.10 mm; SK9822-EC20 + 100 nF 0402 per LED; 4 serial chains; open B.Cu buses and spokes (rule 5); hinge flap above CB1D (12 lands);
@@ -104,8 +125,12 @@ HARNESS = [
     ("C04a", "MP1.J3.1", "AB1B.MONO_IN", "MONO_OUT|MONO_IN", "flex jumper"), ("C04b", "MP1.J4.1", "AB1B.+5VA", "+5VA", "flex jumper"), ("C04c", "MP1.J5.1", "AB1B.AGND", "AGND", "flex jumper"),
     *[(f"C10{chr(97 + k)}", f"CB1D.LED{k + 1}", f"LR1.{ref}.1", nm, "hinge flap") for k, (ref, nm, _, _) in enumerate(LG.nets_and_lands()[1])],
     ("C07", "SH1.H1.1", "AB1A.AGND", "SHIELD|AGND", "0.5 mm wire, single-point shield ground"),
+    ("C20a", "PRX.A", "MP2.J1.1", "PRX_A", "FEP twisted pair up the PRX feed hole (r 72, 135 deg), ribbed floor lane to the A2 fin"),
+    ("C20b", "PRX.B", "MP2.J2.1", "PRX_B", "FEP twisted pair (second wire)"),
+    ("C21a", "MP2.J3.1", "HUB.PRX_IN", "PRX_OUT", "MP2 output flex tail to the LV hub (star) -> the ADC fin"), ("C21b", "MP2.J4.1", "HUB.+5VA", "+5VA", "flex tail"),
+    ("C21c", "MP2.J5.1", "HUB.AGND", "AGND", "flex tail"),
 ]
-PENDING = {"AB1A", "AB1B", "CB1D", "NECK", "COIL"}                       # boards not yet in this netlist (Phase C) or not boards (COIL, NECK)
+PENDING = {"AB1A", "AB1B", "CB1D", "NECK", "COIL", "PRX", "HUB"}                     # boards not yet in this netlist (Phase C) or not boards (COIL, NECK)
 def pad_net(spec):
     """'BOARD.REF.PIN' -> net name on that board (None if the board is PENDING / external)"""
     b, ref, pin = (spec.split(".") + [None, None])[:3]

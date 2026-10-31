@@ -14,7 +14,7 @@
     "inductor"
    ],
    "violations": [],
-   "parts": 1092
+   "parts": 1116
   },
   "fins": {
    "ok": true,
@@ -35,6 +35,24 @@
      ],
      "rail_len": 58.0,
      "tilt_deg": 0.099,
+     "ok": true
+    },
+    "MP2": {
+     "deg": 122.0,
+     "slot_h": 8.4,
+     "board_h": 8.4,
+     "slot_t": 1.0,
+     "board_t": 1.0,
+     "radial_span": [
+      21.0,
+      103.0
+     ],
+     "fin_r": [
+      21.0,
+      103.0
+     ],
+     "rail_len": 76.0,
+     "tilt_deg": 0.075,
      "ok": true
     }
    }
@@ -85,6 +103,25 @@
     "solid_zones": 0,
     "hatched_without_slit": 0,
     "closed_copper_loops_cm2": {},
+    "loop_limit_cm2": 0.1,
+    "loops_over_limit": {},
+    "ok": true
+   },
+   "MP2": {
+    "board": "MP2",
+    "zones": 0,
+    "solid_zones": 0,
+    "hatched_without_slit": 0,
+    "closed_copper_loops_cm2": {
+     "HA1": 0.0051,
+     "HB1": 0.0055,
+     "HA2": 0.0051,
+     "INP": 0.0003,
+     "AGND": 0.0283,
+     "+5VA": 0.0595,
+     "OUT_A": 0.0744,
+     "VDIV": 0.0004
+    },
     "loop_limit_cm2": 0.1,
     "loops_over_limit": {},
     "ok": true

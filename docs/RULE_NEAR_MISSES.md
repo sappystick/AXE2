@@ -2,10 +2,11 @@
 
 BLOCKED: a part fails a rule by 10 % or less (it fits right under it); the owner decides whether to relax or remove the rule. RELAXED: the owner relaxed it; shown against the old limit every run. EDGE: passes with 5 % headroom or less. FAIL: misses by more than 10 %. Safety rules (HV, eddy, absolute-maximum ratings) are never relaxed automatically.
 
-Rules checked: 231. BLOCKED 7, RELAXED 2, EDGE 20, FAIL 58, PASS 144
+Rules checked: 260. BLOCKED 8, RELAXED 2, EDGE 23, FAIL 59, PASS 168
 
 | Status | Kind | Rule | Value | Limit | Over (+) / headroom (-) | Note |
 |---|---|---|---|---|---|---|
+| **BLOCKED** | target | cord flex piece 1 width (TX strips + REF guard) vs the inner bore less 2 mm (18.6 - 2) | 18.24 mm | <= 16.6 mm | +9.9 % | rf2_chassis_check.json cord_flex |
 | **BLOCKED** | safety | option 15x2 C3M0 +RX40 TXD400: TX switch TJ in boost vs 125 C | 136.6  | <= 125.0  | +9.3 % | rf2_lowL_options.json |
 | **BLOCKED** | safety | coil litz SXXL100/38FX-2(MWXX) (Single FEP, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Rubadue catalog (rf2_wire_options) |
 | **BLOCKED** | safety | coil litz SXXL100/38TX-2(MWXX) (Single ETFE, OD 1.417 mm, 0.396 ohm: fits the current comb) insulation rating vs rule 6 | 600.0 V | >= 630.0 V | +4.8 % | Rubadue catalog (rf2_wire_options) |
@@ -62,6 +63,7 @@ Rules checked: 231. BLOCKED 7, RELAXED 2, EDGE 20, FAIL 58, PASS 144
 | **FAIL** | target | option 10x3 NTBG TXD400 TX2L: cord-flex width vs 16 mm (18 mm bore less 2) | 19.85  | <= 16.0  | +24.1 % | rf2_lowL_options.json |
 | **FAIL** | target | fold option fold neck + mid + chassis hinge, square31: collapsed length vs today's 430 mm | 530  | <= 430.0  | +23.3 % | rf2_fold_options.json |
 | **FAIL** | target | fold option fold neck + mid + chassis hinge, hex31 hub6_cu: collapsed length vs today's 430 mm | 530  | <= 430.0  | +23.3 % | rf2_fold_options.json |
+| **FAIL** | target | TXD pod metal echo drift (5 K) at s 300 (shortest use length, pod rides the telescope) vs 0.5 x gate noise | 0.605 x noise | <= 0.5 x noise | +21.0 % | rf2_system.json echoes |
 | **FAIL** | safety | option 7x4 NTBG: TX switch TJ in boost vs 125 C | 150.4  | <= 125.0  | +20.3 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 7x4 NTBG +RX20: TX switch TJ in boost vs 125 C | 150.4  | <= 125.0  | +20.3 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 7x4 NTBG +RX40: TX switch TJ in boost vs 125 C | 150.4  | <= 125.0  | +20.3 % | rf2_lowL_options.json |
@@ -71,8 +73,10 @@ Rules checked: 231. BLOCKED 7, RELAXED 2, EDGE 20, FAIL 58, PASS 144
 | **FAIL** | safety | option 15x2 C3M0: TX switch TJ in boost vs 125 C | 143.1  | <= 125.0  | +14.5 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 15x2 C3M0 +RX20: TX switch TJ in boost vs 125 C | 143.1  | <= 125.0  | +14.5 % | rf2_lowL_options.json |
 | **FAIL** | safety | option 15x2 C3M0 +RX40: TX switch TJ in boost vs 125 C | 143.1  | <= 125.0  | +14.5 % | rf2_lowL_options.json |
-| **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 2.6 h | >= 6.0 h | +56.7 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |
-| **RELAXED** | target | scan runtime, 7S1P Molicel P45B | 5.2 h | >= 6.0 h | +13.3 % | owner 2026-10-30: 6 h target relaxed |
+| **RELAXED** | target | continuous-boost runtime (trigger held: the rated case), 7S1P Molicel P45B | 2.9 h | >= 6.0 h | +51.7 % | owner 2026-10-30: 6 h target relaxed; P45B 7S1P chosen |
+| **RELAXED** | target | scan runtime, 7S1P Molicel P45B | 5.4 h | >= 6.0 h | +10.0 % | owner 2026-10-30: 6 h target relaxed |
+| **EDGE** | safety | rule 6: smallest gap next to an HV trace in the cord flex (pieces 1 and 2) vs 1.0 mm | 1.0 mm | >= 1.0 mm | -0.0 % | rf2_chassis_check.json cord_flex (measured from the lanes) |
+| **EDGE** | target | cord TX strip width vs the IPC-2221 width (2 oz internal, 10 K) at the rf2_continuous boost rms | 3.221 mm | >= 3.221 mm | -0.0 % | rf2_cordflex / rf2_continuous.json |
 | **EDGE** | target | TPS65131 VPOS setting vs its ROC maximum 15 V | 15.0 V | <= 15.0 V | +0.0 % | DATASHEET_LOG RF2-DS-MP1V2-SWITCH |
 | **EDGE** | target | fold option fold x1 (mid) + chassis hinge, square31: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
 | **EDGE** | target | fold option fold x1 (mid) + chassis hinge, hex31 hub6_cu: POF bend radius available vs 15 mm repeated | 15.0  | >= 15.0  | -0.0 % | rf2_fold_options.json |
@@ -91,5 +95,6 @@ Rules checked: 231. BLOCKED 7, RELAXED 2, EDGE 20, FAIL 58, PASS 144
 | **EDGE** | target | option 26x1 C3M0 +RX20: cord-flex width vs 16 mm (18 mm bore less 2) | 15.7  | <= 16.0  | -1.9 % | rf2_lowL_options.json |
 | **EDGE** | target | option 26x1 C3M0 +RX40: cord-flex width vs 16 mm (18 mm bore less 2) | 15.7  | <= 16.0  | -1.9 % | rf2_lowL_options.json |
 | **EDGE** | target | option 26x1 C3M0 +RX40 TXD400: cord-flex width vs 16 mm (18 mm bore less 2) | 15.7  | <= 16.0  | -1.9 % | rf2_lowL_options.json |
+| **EDGE** | target | TXD pod housing surface rise in continuous boost (Q1 heat sink vented; natural convection 8 W/m2K ASSUMED) | 14.7 K | <= 15.0 K | -2.0 % | rf2_system.json thermal |
 | **EDGE** | safety | TMUX7212 pin voltage vs VDD (keep inside the supply; abs max VDD + 0.5 V) | 14.5 V | <= 15.0 V | -3.3 % | rf2_mp1v2_close.json |
 | **EDGE** | target | BAT54 reverse voltage (clamp-rail span) vs 80 % of VRRM 30 V | 23.0 V | <= 24.0 V | -4.2 % | rf2_mp1v2_close.json |

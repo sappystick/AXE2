@@ -3,10 +3,10 @@
  "board_key": "SB1R-QB",
  "kicad": "9.0.9",
  "zones_filled": true,
- "violations": 5,
+ "violations": 6,
  "unconnected": 0,
  "errors": {},
  "warnings": {},
- "lib_footprint_warnings": 5,
+ "lib_footprint_warnings": 6,
  "examples": []
 }

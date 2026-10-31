@@ -20,6 +20,7 @@
   (footprint "SB1R:MH_M3" (layer "F.Cu") (at 175.869 109.285) (property "Reference" "H1" (at 0 -3) (layer "F.SilkS")) (pad "" np_thru_hole circle (at 0 0) (size 3.4 3.4) (drill 3.4) (layers "*.Cu" "*.Mask")))
   (footprint "SB1R:MH_M3" (layer "F.Cu") (at 124.131 109.285) (property "Reference" "H2" (at 0 -3) (layer "F.SilkS")) (pad "" np_thru_hole circle (at 0 0) (size 3.4 3.4) (drill 3.4) (layers "*.Cu" "*.Mask")))
   (footprint "SB1R:MH_M3" (layer "F.Cu") (at 139.285 145.869) (property "Reference" "H3" (at 0 -3) (layer "F.SilkS")) (pad "" np_thru_hole circle (at 0 0) (size 3.4 3.4) (drill 3.4) (layers "*.Cu" "*.Mask")))
+  (footprint "SB1R:MH_M3" (layer "F.Cu") (at 99.088 69.088) (property "Reference" "H4" (at 0 -3) (layer "F.SilkS")) (pad "" np_thru_hole circle (at 0 0) (size 3.4 3.4) (drill 3.4) (layers "*.Cu" "*.Mask")))
   (segment (start 177.0569 102.7661) (end 179.9562 104.6157) (width 0.8) (layer "F.Cu") (net 1))
   (segment (start 179.9562 104.6157) (end 183.0036 106.2094) (width 0.8) (layer "F.Cu") (net 1))
   (segment (start 183.0036 106.2094) (end 186.1767 107.5355) (width 0.8) (layer "F.Cu") (net 1))

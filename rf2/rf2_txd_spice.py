@@ -2,26 +2,31 @@
 """RF2 TXD schematic in SPICE (roadmap P1.1, 2026-10-31). MODELED (ngspice; ideal gate drive, switch models with the datasheet on-resistance).
 
 Topology (chosen 2026-10-31, HANDOFF section 50): the coil (333 uH, R_coil from rf2_continuous) hangs from the bulk bus through the cord flex's TX strips
-(round-trip resistance from rf2_cordflex). Q1 (Wolfspeed C3M0280090J, low side, 10 mohm Vishay WSL2512 shunt in its source) ramps the current. For the
-flat-top a freewheel branch D_fw (US3M) + Q2 (a second C3M0280090J on its own UCC5350, floating at the bus) returns the coil current to the bus while Q1
+(round-trip resistance from rf2_cordflex, head -> TXD pod at s 400). Q1 (onsemi NTBG080N120SC1, low side, 10 mohm Vishay WSL2512 shunt in its source) ramps the current. For the
+flat-top a freewheel branch D_fw (US3M) + Q2 (a second NTBG080N120SC1 on its own UCC5350, floating at the bus) returns the coil current to the bus while Q1
 is off, and Q1 holds the current with a hysteretic (bang-bang) loop on the COIL current (band +-dI/2), sensed as the sum of the Q1 shunt and a second 10 mohm
 shunt in the freewheel branch (sensing at the bus would include Rd's current, which steps 64 mA at every Q1 edge and makes the loop chatter): a one-switch driver cannot hold a flat-top, because every
-off-time would fly back to the clamp. At turn-off Q1 and Q2 open together: the coil flies back through D_cl (US3M) into the 460 V clamp node (the
-regenerative clamp holds it; modelled as 460 V behind 0.2 ohm and 10 uF, ASSUMED); Rd 408 ohm and the node capacitance (368 pF + the cord flex) damp the tail.
-Part values: C3M0280090J RDS(on) 416 mohm at 150 C + 10 % (rf2_continuous), 900 V, IDM 22 A; US3M VRRM 1000 V, IFSM 100 A (Nexperia), VF about 1.5-1.7 V at
+off-time would fly back to the clamp. At turn-off Q1 and Q2 open together: the coil flies back through D_cl (US3M) into the 477 V clamp node (the
+regenerative clamp holds it; modelled as 477 V behind 0.2 ohm and 10 uF, ASSUMED); Rd 408 ohm and the node capacitance (368 pF + the NTBG's Coss above the
+C3M's, 59 pF ASSUMED as rf2_lowL_options + the cord flex TX strips head -> pod) damp the tail.
+Design point and part values from rf2/rf2_drive.py (owner decision 2026-10-31): NTBG080N120SC1 RDS(on) 121 mohm typ at 150 C x 110/80 = 166 mohm, 1200 V, IDM 110 A
+(onsemi Rev. 4); US3M VRRM 1000 V, IFSM 100 A (Nexperia), VF about 1.5-1.7 V at
 3 A, trr 52-75 ns, Cd 23 pF (diode card fitted to those, ASSUMED shape); bulk 9 x Panasonic EEHZC1H101P (100 uF, 28 mohm, 1.6 A rms each); source 0.05 ohm
-(pack + chassis wiring, ASSUMED). Cases: scan long pulse (8.06 A, 25.2 V nominal), boost long pulse (12.74 A, 21.0 V cut-off), scan short pulse.
+(pack + chassis wiring + cord feed, ASSUMED). Cases: scan long pulse (8.94 A, 25.2 V nominal), boost long pulse (14.14 A, 21.0 V cut-off), scan short pulse,
+boost long pulse at 29.4 V (was 8.06 / 12.74 A until 2026-10-31).
 Writes rf2/results/rf2_txd_spice.json.   usage: python3 rf2/rf2_txd_spice.py"""
 import os, sys, json, math
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "results"); sys.path[:0] = [HERE, os.path.join(HERE, "head")]
-import rf2_mp1v2_chain as CH, rf2_cordflex as CFX, rf2_continuous as CONT
+import rf2_mp1v2_chain as CH, rf2_cordflex as CFX, rf2_continuous as CONT, rf2_drive as DRV
 from simcache import memo
-L, RC, RD, VCL = 333e-6, CONT.R_COIL, 408.0, 460.0
-RDS = 0.416 * 1.1; RSH = 0.010; RSRC = 0.05; CBULK, ESR = 9 * 100e-6, 0.028 / 9
-C_NODE = 368e-12 + CFX.cps_c_pf_per_m() * CFX.segments({"REF3": (436, 786), "hinge": (790, 816)}, {"inner": 20.0, "mid": 170.0}, 550.0)["tx_length_m"] * 1e-12
+L, RC, RD, VCL = DRV.L_COIL, CONT.R_COIL, DRV.RD, DRV.V_CLAMP
+RDS = DRV.RDS_HOT; RSH = DRV.R_SHUNT; RSRC = 0.05; CBULK, ESR = 9 * 100e-6, 0.028 / 9
+C_SWITCH_EXTRA = DRV.SWITCH["coss_extra_pF"] * 1e-12                     # NTBG Coss above the C3M's (the 368 pF was set with the C3M)
+C_CORD = CFX.cps_c_pf_per_m() * CFX.TX_LEN_M * 1e-12                     # TX strips head -> TXD pod (rf2_cordflex.TX_LEN_M; rf2_chassis checks it equals segments())
+C_NODE = 368e-12 + C_SWITCH_EXTRA + C_CORD
 DI = 0.08                                          # hysteresis band, A (sets the flat-top switching frequency)
-T_FLAT = 300e-6
+T_FLAT = DRV.T_FLAT
 R_LOOP = RC + CFX.R_TX_LOOP + RDS + RSH
 
 def t_ramp(i_set, vbus):
@@ -71,7 +76,7 @@ def run(i_set, vbus, long_pulse):
     after = t >= t_en; i_off = i[after]; t_off = t[after]
     fall = float(t_off[np.argmax(i_off < 0.01 * i_set)] - t_en) if np.any(i_off < 0.01 * i_set) else None
     pre = t < t_en
-    e_clamp = float(np.trapezoid(col["i(Vcl)"] * VCL, t))                                   # energy delivered into the 460 V clamp node
+    e_clamp = float(np.trapezoid(col["i(Vcl)"] * VCL, t))                                   # energy delivered into the clamp node
     q1_i = np.where(on, i, 0.0)
     return dict(i_set_A=i_set, vbus_V=vbus, long=long_pulse, t_ramp_us=round(tr * 1e6, 1), t_off_us=round(t_en * 1e6, 1),
                 i_peak_A=round(float(i[pre].max()), 3), flat_mean_A=round(float(i[flat].mean()), 3) if flat.any() else None,
@@ -84,18 +89,21 @@ def run(i_set, vbus, long_pulse):
                 q1_rms_pulse_A=round(float(np.sqrt(np.trapezoid(q1_i[pre] ** 2, t[pre]) / t_en)), 3))
 
 def main():
-    cases = dict(scan_long=run(8.06, 25.2, True), boost_long_cutoff=run(12.74, 21.0, True), scan_short=run(8.06, 25.2, False), boost_long_full=run(12.74, 29.4, True))
-    lim = dict(vds_max_V=0.8 * 900, i_peak_max_A=22.0, d_ifsm_A=100.0)
+    IS, IB = DRV.I_SCAN, round(DRV.I_BOOST, 2)
+    cases = dict(scan_long=run(IS, DRV.VBUS, True), boost_long_cutoff=run(IB, DRV.V_CUTOFF, True), scan_short=run(IS, DRV.VBUS, False), boost_long_full=run(IB, DRV.V_FULL, True))
+    lim = dict(vds_max_V=0.8 * DRV.SWITCH["vdss"], i_peak_max_A=0.8 * DRV.SWITCH["idm"], d_ifsm_A=100.0)
     chk = {}
     for k, c in cases.items():
         chk[k] = dict(reaches_iset=c["i_peak_A"] >= 0.98 * c["i_set_A"], vds_q1_ok=c["vds_q1_max_V"] <= lim["vds_max_V"], vds_q2_ok=c["vds_q2_max_V"] <= lim["vds_max_V"],
                       peak_ok=c["i_peak_A"] <= lim["i_peak_max_A"], fall_close_to_ideal=c["fall_us"] is not None and c["fall_us"] <= 1.3 * c["fall_ideal_us"],
                       flat_regulated=(c["flat_mean_A"] is None) or abs(c["flat_mean_A"] - c["i_set_A"]) <= 0.02 * c["i_set_A"])
-    res = dict(status="MODELED (ngspice): ideal gate drive; SiC as a switch with RDS(on) hot; US3M card fitted to its datasheet points (ASSUMED shape); clamp node held at 460 V (regenerative clamp ASSUMED ideal)",
-               topology="Q1 low-side C3M0280090J + 10 mohm shunt; freewheel US3M + Q2 C3M0280090J (floating, own UCC5350) for the flat-top; hysteretic current loop +-%.0f mA; turn-off into the 460 V clamp through US3M; Rd 408 ohm" % (DI / 2 * 1e3),
+    res = dict(status=f"MODELED (ngspice): ideal gate drive; SiC as a switch with RDS(on) hot; US3M card fitted to its datasheet points (ASSUMED shape); clamp node held at {VCL:.0f} V (regenerative clamp ASSUMED ideal)",
+               topology="Q1 low-side %s + 10 mohm shunt; freewheel US3M + Q2 %s (floating, own UCC5350) for the flat-top; hysteretic current loop +-%.0f mA; turn-off into the %.0f V clamp through US3M; Rd %.0f ohm" % (DRV.SWITCH["part"], DRV.SWITCH["part"], DI / 2 * 1e3, VCL, RD),
                loop_R_ohm=dict(coil=RC, cord_flex_tx=round(CFX.R_TX_LOOP, 3), q1_hot=round(RDS, 3), shunt=RSH, total=round(R_LOOP, 3)), node_C_pF=round(C_NODE * 1e12, 1),
+               node_C_parts_pF=dict(front_end_layout=368.0, switch_coss_extra=round(C_SWITCH_EXTRA * 1e12, 1), cord_tx_strips=round(C_CORD * 1e12, 1), cord_length_m=CFX.TX_LEN_M),
+               design_point=dict(I_scan_A=DRV.I_SCAN, I_boost_A=IB, T_flat_us=round(T_FLAT * 1e6), V_clamp_V=VCL, switch=DRV.SWITCH["part"]),
                limits=lim, cases=cases, checks=chk, ok=bool(all(all(v.values()) for v in chk.values())),
-               new_parts=["second C3M0280090J (Q2, freewheel switch)", "second UCC5350 (floating at the bus, bootstrap or isolated supply)", "second US3M (D_fw)", "second 10 mohm WSL2512 shunt in the freewheel branch + a summing current-sense amplifier (part to choose)"])
+               new_parts=["second NTBG080N120SC1 (Q2, freewheel switch)", "second UCC5350 (floating at the bus, bootstrap or isolated supply)", "second US3M (D_fw)", "second 10 mohm WSL2512 shunt in the freewheel branch + a summing current-sense amplifier (part to choose)"])
     json.dump(res, open(os.path.join(OUT, "rf2_txd_spice.json"), "w"), indent=1)
     for k, c in cases.items(): print(k, json.dumps(c)); print("   ", chk[k])
     return res

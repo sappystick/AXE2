@@ -13,8 +13,8 @@
      "net": "TX_A",
      "cls": "HV",
      "awg": null,
-     "i_rms": 3.67,
-     "v_max": 463,
+     "i_rms": 4.62,
+     "v_max": 482.0,
      "ins_V": 1000,
      "note": "FEP litz"
     },
@@ -22,8 +22,8 @@
      "net": "TX_B",
      "cls": "HV",
      "awg": null,
-     "i_rms": 3.67,
-     "v_max": 463,
+     "i_rms": 4.62,
+     "v_max": 482.0,
      "ins_V": 1000,
      "note": "FEP litz"
     }
@@ -33,52 +33,52 @@
   {
    "id": "I2",
    "name": "Cord head end -> TXJ / CB1D / AB1A (head gland)",
-   "a": "coil cord",
+   "a": "cord flex piece 1",
    "b": "TXJ (TX pair), CB1D (power, link, TX command), AB1A (REF pairs)",
-   "medium": "cord breakout inside the gland, potted strain relief",
-   "connector": "TXJ: solder pads (existing); CB1D: JST GH 8-way (1.0 A / pin, 50 V, datasheet on file); AB1A: JST GH 7-way (3 REF pairs + drain)",
+   "medium": "flex ends straight into the boards inside the gland (no pigtails), potted strain relief",
+   "connector": "TXJ: TX strips soldered to the existing pads (no connector on HV); CB1D: Panasonic Y5B 10-way ZIF AYF531035 (VIN_H / GND_H on 2 pins each; 0.5 A / pin, 50 V, datasheet on file); AB1A: Panasonic Y5B 10-way ZIF AYF531035 (3 REF pairs + drain + REF guard); flex ends stiffened to the 0.30 mm applicable FPC thickness (owner 2026-10-31, option 'gland_fpc'; was JST GH 8-way + 7-way with flex-to-wire pigtails)",
    "conds": [
     {
      "net": "TX_A",
      "cls": "HV",
-     "awg": 18,
-     "i_rms": 3.67,
-     "v_max": 463,
+     "awg": null,
+     "i_rms": 4.62,
+     "v_max": 482.0,
      "ins_V": 1000,
-     "note": ""
+     "note": "flex strip, soldered"
     },
     {
      "net": "TX_B",
      "cls": "HV",
-     "awg": 18,
-     "i_rms": 3.67,
-     "v_max": 463,
+     "awg": null,
+     "i_rms": 4.62,
+     "v_max": 482.0,
      "ins_V": 1000,
-     "note": ""
+     "note": "flex strip, soldered"
     },
     {
      "net": "VIN_H",
      "cls": "power",
-     "awg": 20,
+     "awg": null,
      "i_rms": 0.45,
      "v_max": 29.4,
-     "ins_V": 300,
-     "note": ""
+     "ins_V": null,
+     "note": "Y5B, 2 pins"
     },
     {
      "net": "GND_H",
      "cls": "power",
-     "awg": 20,
+     "awg": null,
      "i_rms": 0.45,
      "v_max": 0,
-     "ins_V": 300,
-     "note": ""
+     "ins_V": null,
+     "note": "Y5B, 2 pins"
     },
     {
      "net": "TXCMD+",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -86,8 +86,8 @@
     {
      "net": "TXCMD-",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -95,8 +95,8 @@
     {
      "net": "TXSTAT+",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -104,8 +104,8 @@
     {
      "net": "TXSTAT-",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -113,8 +113,8 @@
     {
      "net": "DATA+",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -122,8 +122,8 @@
     {
      "net": "DATA-",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -131,7 +131,7 @@
     {
      "net": "REFX+",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -140,7 +140,7 @@
     {
      "net": "REFX-",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -149,7 +149,7 @@
     {
      "net": "REFY+",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -158,7 +158,7 @@
     {
      "net": "REFY-",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -167,7 +167,7 @@
     {
      "net": "REFZ+",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -176,7 +176,7 @@
     {
      "net": "REFZ-",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -185,64 +185,73 @@
     {
      "net": "REF_DRAIN",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
+    },
+    {
+     "net": "GUARD_REF",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 0,
+     "ins_V": null,
+     "note": "ground guard (ref_guard)"
     }
    ],
    "status": "design"
   },
   {
    "id": "I3",
-   "name": "Cord flex through the telescope (head -> REF3T -> hinge cord board; owner 2026-10-30, HANDOFF 45)",
+   "name": "Cord flex through the telescope (head -> TXD pod tap -> REF3T -> hinge cord board; owner 2026-10-30 / 2026-10-31, HANDOFF 45 / 56)",
    "a": "head gland",
-   "b": "cord board in the hinge knuckle",
-   "medium": "single-layer 2 oz long flex, 15.1 mm wide (rf2_cordflex): TX strips 2.35 mm with 1.0 mm rule-6 gaps, VIN_H / GND_H, 3 diff pairs (TXCMD, TXSTAT, DATA), 3 guarded REF pairs; split at REF3T: segment 1 with a rolling loop for the 550 mm travel, segment 2 static",
-   "connector": "none on the TX strips (soldered at the gland board, REF3T and the cord board); vendor: Tech Etch long flex (40 in preferred) or Minco (to 5 ft), capability on file; insulation: Kapton / acrylic coverlay 3500 V/mil and 1000 VRMS typical withstand (Minco design guide 2019, on file), the drawing calls a net-to-net hipot >= 1000 VRMS (rule 6: 630 V)",
+   "b": "TXD pod (TX), cord board in the hinge knuckle",
+   "medium": "single-layer 2 oz long flex (rf2_cordflex): piece 1 18.24 mm wide: TX strips 3.22 mm with 1.0 mm rule-6 gaps (head -> pod tap only), VIN_H / GND_H, 3 diff pairs (TXCMD, TXSTAT, DATA), a 0.5 mm REF guard, 3 guarded REF pairs, a rolling loop for the 550 mm travel; piece 2 (REF3T -> hinge, static) 7.68 mm: HV_CLAMP / GND_CLAMP (rule-6 gap), VIN_T / GND_T, VIN_H / GND_H, DATA",
+   "connector": "none on the TX strips (soldered at the gland board and the pod tap); REF3T and the cord board soldered; vendor: Tech Etch long flex (40 in preferred) or Minco (to 5 ft), capability on file; insulation: Kapton / acrylic coverlay 3500 V/mil and 1000 VRMS typical withstand (Minco design guide 2019, on file), the drawing calls a net-to-net hipot >= 1000 VRMS (rule 6: 630 V)",
    "conds": [
     {
      "net": "TX_A",
      "cls": "HV",
-     "awg": 18,
-     "i_rms": 3.67,
-     "v_max": 463,
+     "awg": null,
+     "i_rms": 4.62,
+     "v_max": 482.0,
      "ins_V": 1000,
-     "note": ""
+     "note": "flex strip, soldered"
     },
     {
      "net": "TX_B",
      "cls": "HV",
-     "awg": 18,
-     "i_rms": 3.67,
-     "v_max": 463,
+     "awg": null,
+     "i_rms": 4.62,
+     "v_max": 482.0,
      "ins_V": 1000,
-     "note": ""
+     "note": "flex strip, soldered"
     },
     {
      "net": "VIN_H",
      "cls": "power",
-     "awg": 20,
+     "awg": null,
      "i_rms": 0.45,
      "v_max": 29.4,
-     "ins_V": 300,
-     "note": ""
+     "ins_V": null,
+     "note": "Y5B, 2 pins"
     },
     {
      "net": "GND_H",
      "cls": "power",
-     "awg": 20,
+     "awg": null,
      "i_rms": 0.45,
      "v_max": 0,
-     "ins_V": 300,
-     "note": ""
+     "ins_V": null,
+     "note": "Y5B, 2 pins"
     },
     {
      "net": "TXCMD+",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -250,8 +259,8 @@
     {
      "net": "TXCMD-",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -259,8 +268,8 @@
     {
      "net": "TXSTAT+",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -268,8 +277,8 @@
     {
      "net": "TXSTAT-",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -277,8 +286,8 @@
     {
      "net": "DATA+",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -286,8 +295,8 @@
     {
      "net": "DATA-",
      "cls": "diff",
-     "awg": 26,
-     "i_rms": 0.01,
+     "awg": null,
+     "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
@@ -295,7 +304,7 @@
     {
      "net": "REFX+",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -304,7 +313,7 @@
     {
      "net": "REFX-",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -313,7 +322,7 @@
     {
      "net": "REFY+",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -322,7 +331,7 @@
     {
      "net": "REFY-",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -331,7 +340,7 @@
     {
      "net": "REFZ+",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -340,7 +349,7 @@
     {
      "net": "REFZ-",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
@@ -349,14 +358,124 @@
     {
      "net": "REF_DRAIN",
      "cls": "analog",
-     "awg": 26,
+     "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
      "note": ""
+    },
+    {
+     "net": "GUARD_REF",
+     "cls": "analog",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 0,
+     "ins_V": null,
+     "note": "ground guard (ref_guard)"
     }
    ],
    "status": "spec (roadmap P4.2: flex drawing + rolling-loop mock-up)"
+  },
+  {
+   "id": "I3b",
+   "name": "Cord tap -> TXD pod (s 400 mm, outer profile lower end; owner 2026-10-31)",
+   "a": "cord flex piece 1 (TX, TXCMD / TXSTAT) and piece 2 via REF3T (feed, clamp return)",
+   "b": "TXD pod boards",
+   "medium": "flex tails lap-soldered to the pod's lower board; HV lands >= 1.0 mm from everything (rule 6), potted",
+   "connector": "none (soldered: no >= 630 V pluggable part on file)",
+   "conds": [
+    {
+     "net": "TX_A",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 4.62,
+     "v_max": 482.0,
+     "ins_V": 1000,
+     "note": "flex strip"
+    },
+    {
+     "net": "TX_B",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 4.62,
+     "v_max": 482.0,
+     "ins_V": 1000,
+     "note": "flex strip"
+    },
+    {
+     "net": "TXCMD+",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXCMD-",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT+",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "TXSTAT-",
+     "cls": "diff",
+     "awg": null,
+     "i_rms": 0.0,
+     "v_max": 5.0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "VIN_T",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.28,
+     "v_max": 29.4,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "GND_T",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.28,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "HV_CLAMP",
+     "cls": "HV",
+     "awg": null,
+     "i_rms": 0.03,
+     "v_max": 482.0,
+     "ins_V": 1000,
+     "note": "clamp node -> regenerative buck (PWR)"
+    },
+    {
+     "net": "GND_CLAMP",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 0.03,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    }
+   ],
+   "status": "design (new 2026-10-31)"
   },
   {
    "id": "I4",
@@ -436,27 +555,45 @@
    "id": "I5",
    "name": "Hinge pass-through (cord board -> chassis)",
    "a": "cord board (hinge knuckle)",
-   "b": "TXD (TX pair, TXCMD / TXSTAT) and HB2-M (DATA, VIN_H return)",
-   "medium": "clock-spring flex in the hollow hinge axis: unbonded single-sided plies (air-gap), 2 oz copper; TX traces 3 mm wide, >= 1.0 mm spacing (rule 6); 180 deg fold",
-   "connector": "Panasonic Y5B FPC ends (50 V, 0.5 A / pin, datasheet on file) on the LV plies; the HV ply soldered to TXD and the cord board",
+   "b": "PWR (pod feed, clamp return) and HB2-M (DATA, VIN_H)",
+   "medium": "clock-spring flex in the hollow hinge axis: unbonded single-sided plies (air-gap), 2 oz copper; HV_CLAMP >= 1.0 mm from everything (rule 6); 180 deg fold (no TX pair here since the TXD moved to the pod, 2026-10-31)",
+   "connector": "Panasonic Y5B FPC ends (50 V, 0.5 A / pin, datasheet on file) on the LV ply (VIN_H, GND_H, DATA); the HV / power ply (HV_CLAMP, GND_CLAMP, VIN_T, GND_T) soldered to PWR and the cord board",
    "conds": [
     {
-     "net": "TX_A",
+     "net": "HV_CLAMP",
      "cls": "HV",
      "awg": null,
-     "i_rms": 3.67,
-     "v_max": 463,
+     "i_rms": 0.03,
+     "v_max": 482.0,
      "ins_V": 1000,
      "note": "flex, 1.0 mm spacing"
     },
     {
-     "net": "TX_B",
-     "cls": "HV",
+     "net": "GND_CLAMP",
+     "cls": "power",
      "awg": null,
-     "i_rms": 3.67,
-     "v_max": 463,
-     "ins_V": 1000,
-     "note": "flex, 1.0 mm spacing"
+     "i_rms": 0.03,
+     "v_max": 0,
+     "ins_V": null,
+     "note": ""
+    },
+    {
+     "net": "VIN_T",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.28,
+     "v_max": 29.4,
+     "ins_V": null,
+     "note": "soldered ply"
+    },
+    {
+     "net": "GND_T",
+     "cls": "power",
+     "awg": null,
+     "i_rms": 1.28,
+     "v_max": 0,
+     "ins_V": null,
+     "note": "soldered ply"
     },
     {
      "net": "VIN_H",
@@ -473,42 +610,6 @@
      "awg": null,
      "i_rms": 0.45,
      "v_max": 0,
-     "ins_V": null,
-     "note": ""
-    },
-    {
-     "net": "TXCMD+",
-     "cls": "diff",
-     "awg": null,
-     "i_rms": 0.0,
-     "v_max": 5.0,
-     "ins_V": null,
-     "note": ""
-    },
-    {
-     "net": "TXCMD-",
-     "cls": "diff",
-     "awg": null,
-     "i_rms": 0.0,
-     "v_max": 5.0,
-     "ins_V": null,
-     "note": ""
-    },
-    {
-     "net": "TXSTAT+",
-     "cls": "diff",
-     "awg": null,
-     "i_rms": 0.0,
-     "v_max": 5.0,
-     "ins_V": null,
-     "note": ""
-    },
-    {
-     "net": "TXSTAT-",
-     "cls": "diff",
-     "awg": null,
-     "i_rms": 0.0,
-     "v_max": 5.0,
      "ins_V": null,
      "note": ""
     },
@@ -545,7 +646,7 @@
      "net": "VBAT+",
      "cls": "power",
      "awg": null,
-     "i_rms": 1.6949999999999998,
+     "i_rms": 1.92,
      "v_max": 29.4,
      "ins_V": null,
      "note": ""
@@ -554,7 +655,7 @@
      "net": "VBAT-",
      "cls": "power",
      "awg": null,
-     "i_rms": 1.6949999999999998,
+     "i_rms": 1.92,
      "v_max": 0,
      "ins_V": null,
      "note": ""
@@ -638,26 +739,26 @@
   },
   {
    "id": "I8",
-   "name": "PWR <-> TXD (chassis internal)",
+   "name": "PWR -> hinge cord board (chassis internal; TXD pod feed and clamp return)",
    "a": "PWR",
-   "b": "TXD",
-   "medium": "TXD and PWR built as ONE rigid-flex: the flex joint carries HV_CLAMP with >= 1.0 mm spacing (rule 6) - no HV connector",
-   "connector": "none (rigid-flex integral)",
+   "b": "hinge cord board (-> I5 -> cord piece 2 -> TXD pod)",
+   "medium": "PWR rigid-flex tail to the hinge HV / power ply: HV_CLAMP with >= 1.0 mm spacing (rule 6) - no HV connector (was the TXD-PWR rigid-flex inside the chassis until 2026-10-31)",
+   "connector": "none (rigid-flex tail, soldered)",
    "conds": [
     {
-     "net": "VBAT_TX",
+     "net": "VIN_T",
      "cls": "power",
      "awg": null,
-     "i_rms": 1.13,
+     "i_rms": 1.28,
      "v_max": 29.4,
      "ins_V": null,
      "note": ""
     },
     {
-     "net": "GND",
+     "net": "GND_T",
      "cls": "power",
      "awg": null,
-     "i_rms": 1.13,
+     "i_rms": 1.28,
      "v_max": 0,
      "ins_V": null,
      "note": ""
@@ -667,9 +768,9 @@
      "cls": "HV",
      "awg": null,
      "i_rms": 0.03,
-     "v_max": 463,
+     "v_max": 482.0,
      "ins_V": 1000,
-     "note": "460 V clamp -> regenerative buck"
+     "note": "477 V clamp -> regenerative buck"
     },
     {
      "net": "GND_CLAMP",
@@ -679,24 +780,15 @@
      "v_max": 0,
      "ins_V": 1000,
      "note": ""
-    },
-    {
-     "net": "+5V_AUX",
-     "cls": "power",
-     "awg": null,
-     "i_rms": 0.05,
-     "v_max": 5,
-     "ins_V": null,
-     "note": ""
     }
    ],
    "status": "design"
   },
   {
    "id": "I9",
-   "name": "HB2-M <-> PWR / TXD",
+   "name": "HB2-M <-> PWR",
    "a": "HB2-M",
-   "b": "PWR, TXD",
+   "b": "PWR",
    "medium": "short harness",
    "connector": "JST GH 8-way (datasheet on file)",
    "conds": [
@@ -737,13 +829,13 @@
      "note": ""
     },
     {
-     "net": "TXSTAT_THERM",
+     "net": "SPARE1",
      "cls": "digital",
      "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
-     "note": ""
+     "note": "was TXSTAT_THERM: the pod's TMP117 drives TXSTAT to the head (2026-10-31)"
     },
     {
      "net": "BTN_TS2",
@@ -755,13 +847,13 @@
      "note": ""
     },
     {
-     "net": "TXCMD_LOCAL",
+     "net": "SPARE2",
      "cls": "digital",
      "awg": null,
      "i_rms": 0.0,
      "v_max": 5.0,
      "ins_V": null,
-     "note": ""
+     "note": "was TXCMD_LOCAL: the head commands the pod over TXCMD"
     },
     {
      "net": "BOOST_EN",
@@ -1081,9 +1173,33 @@
    "ok": true,
    "offenders": []
   },
-  "harness nets in rf2_system all defined at the cord's head end (I2)": {
+  "harness nets in rf2_system all defined at an ICD joint (I2 head gland, I3b TXD pod tap, I5 hinge)": {
    "ok": true,
    "missing": []
+  },
+  "head gland Y5B ZIFs: every LV net of I2 on a pin; VIN_H per pin and 29.4 V within the Y5B ratings (0.5 A, 50 V)": {
+   "ok": true,
+   "rows": [
+    {
+     "connector": "CB1D (10-way AYF531035)",
+     "pins": 10,
+     "i_per_pin_A": 0.225,
+     "i_rating_A": 0.5,
+     "v_max_V": 29.4,
+     "v_rating_V": 50.0,
+     "ok": true
+    },
+    {
+     "connector": "AB1A (10-way AYF531035)",
+     "pins": 10,
+     "i_per_pin_A": 0.0,
+     "i_rating_A": 0.5,
+     "v_max_V": 3.3,
+     "v_rating_V": 50.0,
+     "ok": true
+    }
+   ],
+   "unplaced": []
   },
   "screen FPC bend limit (3 bends) handled by a dynamic hinge flex (I11) and a static panel FPC (I12)": {
    "ok": true
@@ -1093,6 +1209,26 @@
    "tbd_or_unverified": []
   }
  },
+ "gland_y5b": [
+  {
+   "connector": "CB1D (10-way AYF531035)",
+   "pins": 10,
+   "i_per_pin_A": 0.225,
+   "i_rating_A": 0.5,
+   "v_max_V": 29.4,
+   "v_rating_V": 50.0,
+   "ok": true
+  },
+  {
+   "connector": "AB1A (10-way AYF531035)",
+   "pins": 10,
+   "i_per_pin_A": 0.0,
+   "i_rating_A": 0.5,
+   "v_max_V": 3.3,
+   "v_rating_V": 50.0,
+   "ok": true
+  }
+ ],
  "p06_parts": {
   "screen LS013B7DH03": "VERIFIED (Sharp LD-26X06A)",
   "RS-485 THVD1410": "VERIFIED (TI SLLSEY3E)",

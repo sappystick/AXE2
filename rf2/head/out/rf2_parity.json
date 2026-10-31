@@ -27,18 +27,25 @@
    "C10j",
    "C10k",
    "C10l",
-   "C07"
+   "C07",
+   "C20a",
+   "C20b",
+   "C21a",
+   "C21b",
+   "C21c"
   ],
   "parts": {
    "MP1": 24,
    "TXJ": 6,
    "TXF": 6,
+   "MP2": 24,
    "LR1": 1056
   },
   "nets": {
    "MP1": 16,
    "TXJ": 2,
    "TXF": 2,
+   "MP2": 16,
    "LR1": 1054
   }
  },
@@ -57,6 +64,12 @@
   },
   "LR1": {
    "pads": 4188,
+   "mismatches": [],
+   "unconnected": 0,
+   "ok": true
+  },
+  "MP2": {
+   "pads": 51,
    "mismatches": [],
    "unconnected": 0,
    "ok": true
@@ -252,6 +265,46 @@
     "z": "AB1A.AGND",
     "built_end_net": [
      "SHIELD"
+    ]
+   },
+   {
+    "id": "C20a",
+    "a": "PRX.A",
+    "z": "MP2.J1.1",
+    "built_end_net": [
+     "PRX_A"
+    ]
+   },
+   {
+    "id": "C20b",
+    "a": "PRX.B",
+    "z": "MP2.J2.1",
+    "built_end_net": [
+     "PRX_B"
+    ]
+   },
+   {
+    "id": "C21a",
+    "a": "MP2.J3.1",
+    "z": "HUB.PRX_IN",
+    "built_end_net": [
+     "PRX_OUT"
+    ]
+   },
+   {
+    "id": "C21b",
+    "a": "MP2.J4.1",
+    "z": "HUB.+5VA",
+    "built_end_net": [
+     "+5VA"
+    ]
+   },
+   {
+    "id": "C21c",
+    "a": "MP2.J5.1",
+    "z": "HUB.AGND",
+    "built_end_net": [
+     "AGND"
     ]
    }
   ],

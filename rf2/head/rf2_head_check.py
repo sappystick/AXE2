@@ -48,7 +48,12 @@ def main():
     seat_ok = all(v >= -1e-6 for v in seats.values())                       # seats touch their board at the ledge (0) and nowhere intersect (interference check)
     co = S["coil"]; inner_wall_gap = round(min(co["columns_r"]) - co["litz_od"] / 2 - S["channel"]["inner_wall_r"][1], 3)
     seated = round(co["row0_z"] - co["litz_od"] / 2 - co["floor_z"][1], 3)                 # bottom row rests on the printed floor (bonded seat): 0 by design
-    g_litz = dict(shell=gap("LITZ", "SHELL_LOWER"), channel_inner_wall=inner_wall_gap, top_row_below_channel_top=round(S["channel"]["z"][1] - (co["row0_z"] + (min(co["rows"], -(-co["turns"] // len(co["columns_r"]))) - 1) * co.get("row_pitch", co["pitch"]) + co["litz_od"] / 2), 3))
+    g_litz = dict(shell=gap("LITZ", "SHELL_LOWER"), channel_inner_wall=inner_wall_gap, top_row_below_channel_top=round(S["channel"]["z"][1] - (max(z for _, z in H.coil_turns()) + co["litz_od"] / 2), 3))
+    turns = H.coil_turns(); slots = H.coil_slots()
+    res["checks"]["coil_order"] = dict(order=co.get("order", "row"), slots=[list(x) for x in slots], coil_top_z=round(max(z for _, z in turns) + co["litz_od"] / 2, 3),
+                                       inner_turn_r=round(min(r for r, _ in turns), 3), turns=len(turns), distinct_slots=len(set(slots)),
+                                       ok=len(turns) == co["turns"] and len(set(slots)) == len(slots) and (co.get("order", "row") != "bank" or all(
+                                           slots[i + 1][0] > slots[i][0] or (slots[i + 1][0] == slots[i][0] and slots[i + 1][1] == slots[i][1] + 1) for i in range(len(slots) - 1))))
     litz_seat = dict(floor_contact_mm=seated, channel_min_gap=gap("LITZ", "COIL_CHANNEL"), note="the bottom row is seated on the floor (0 by design); nothing else touches")
     g_walls = {k: gap(k, "BAY_WALLS") for k in isl}
     g_seat_walls = {k: gap(k, "BAY_WALLS") for k in head if k.startswith(("CRADLE_", "TRAY_", "CB1D_TOWER", "FIN_RAILS"))}
@@ -97,13 +102,18 @@ def main():
     PETG, FR4 = 1.27, 1.85; dens = dict(analog=0.98, hv=1.15, digital=0.65)        # gel / epoxy / syntactic: ASSUMED densities
     vol = lambda k: P[k].volume() / 1000
     printed = ["SHELL_LOWER", "LID", "COIL_CHANNEL", "BAY_WALLS"] + [k for k in ("CB1D_TOWER", "COIL_COMBS", "HUB", "FIN_RAILS", "BAY_FLOOR") if k in P] + [k for k in P if k.startswith(("CRADLE_", "TRAY_"))]
+    cu_rx = S["boards"]["QA"].get("copper_um", 35) / 1000.0
     m = {"printed parts (shell, lid, channel, walls, seats; PETG 100 % infill)": sum(vol(k) for k in printed) * PETG,
-         "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x 35 um each)": (vol("BOARD_QA") + vol("BOARD_QB")) * FR4 + 2 * 16.9e3 * 0.8 * 0.035 / 1000 * 8.96,
+         "receive boards QA + QB (FR4) + copper (16.9 m x 0.8 mm x %d um each)" % round(cu_rx * 1000): (vol("BOARD_QA") + vol("BOARD_QB")) * FR4 + 2 * 16.9e3 * 0.8 * cu_rx / 1000 * 8.96,
          "shield SH1 (FR4) + its copper (area from sh1_check.json) x 35 um": vol("BOARD_SH1") * FR4 + SH1_CU * 0.0035 * 8.96,
-         "transmit litz (26 turns, %.1f g/m)" % S.get("materials", {}).get("litz_g_per_m", 6.0): 26 * 2 * math.pi * np.mean(S["coil"]["columns_r"]) / 1000 * S.get("materials", {}).get("litz_g_per_m", 6.0),
+         "transmit litz (26 turns, %.1f g/m)" % S.get("materials", {}).get("litz_g_per_m", 6.0): sum(2 * math.pi * r for r, _ in turns) / 1000 * S.get("materials", {}).get("litz_g_per_m", 6.0),
          "electronics islands (ASSUMED: AB1A/B 10 g each, CB1D 40 g, MP1 8 g, TXJ 10 g; LED display flex 40 g ASSUMED: 0.4 mm flex+stiffener D226 about 30 g + 522 LEDs / caps)": 10 + 10 + 40 + 8 + 10 + 40,
          "coil channel epoxy (fill around the litz, 1.15 g/cm3 ASSUMED)": max(0.0, (H.ring(S["channel"]["inner_wall_r"][1], S["shell"]["wall_r"][0], S["coil"]["floor_z"][1], S["coil"]["row0_z"] + S["coil"]["rows"] * S["coil"]["pitch"]).volume() - vol("LITZ") * 1000) / 1000 * 1.15),
          "hardware, cable gland, yoke lug (ASSUMED)": 40.0}
+    if "PRX" in S["boards"]:                                                   # hybrid receive (owner 2026-10-31): PRX layer + the MP2 board (as MP1, ASSUMED)
+        px = S["prx"]; pi_cm2 = vol("BOARD_PRX") / 0.01                        # area from the solid (0.1 mm slot)
+        m["PRX layer (25 um PI 1.42 g/cm3 + %.1f m x %.2f mm x %d um Cu spirals)" % (px["length_m"], px["trace_mm"], px["copper_um"])] = pi_cm2 * 0.0025 * 1.42 + px["length_m"] * 100 * px["trace_mm"] / 10 * px["copper_um"] * 1e-4 * 8.96
+        m["MP2 second receive channel (ASSUMED as MP1, 8 g)"] = 8.0
     base = sum(m.values()); pot_full = sum(pv[k] * dens[k] for k in pv); pot_isl = 0.5 * sum(vol(k) for k in isl) * 0.9
     lp = os.path.join(OUT, "rf2_ledger.json")
     if os.path.exists(lp):                                                 # the ledger's stated fill levels replace the islands-only estimate (coil epoxy is counted there too)

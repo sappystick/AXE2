@@ -38,7 +38,42 @@ def rules():
         for m in co["modes"]:
             for r in m["rows"]:
                 if r.get("rating") and r.get("margin"):
-                    add(f"cont.{m['mode'][:5]}.{r['part'][:40]}", "safety" if "peak" in r["part"] or "junction" in r["part"] else "target", f"{m['mode']}: {r['part']}", r["load"], r["rating"], "<=", "rf2_continuous.json", unit=r["unit"])
+                    safe = "peak" in r["part"] or "junction" in r["part"] or "avalanche" in r["part"] or "rule 6" in (r.get("note") or "")
+                    add(f"cont.{m['mode'][:5]}.{r['part'][:40]}", "safety" if safe else "target", f"{m['mode']}: {r['part']}", r["load"], r["rating"], "<=", "rf2_continuous.json", unit=r["unit"])
+    # ---- adopted drive and cord upgrades (owner 2026-10-31, HANDOFF section 56)
+    ts = J("rf2", "results", "rf2_txd_spice.json")
+    if ts:
+        lim = ts["limits"]
+        add("txd.vds_q1", "safety", "TXD ngspice: Q1 peak VDS (worst case) vs 80 % of VDSS (NTBG080N120SC1 1200 V)", max(c["vds_q1_max_V"] for c in ts["cases"].values()), lim["vds_max_V"], "<=", "rf2_txd_spice.json", unit="V")
+        add("txd.vds_q2", "safety", "TXD ngspice: Q2 (freewheel) peak VDS vs 80 % of VDSS", max(c["vds_q2_max_V"] for c in ts["cases"].values()), lim["vds_max_V"], "<=", "rf2_txd_spice.json", unit="V")
+        add("txd.i_peak", "safety", "TXD ngspice: peak coil / switch current vs 80 % of IDM 110 A", max(c["i_peak_A"] for c in ts["cases"].values()), lim["i_peak_max_A"], "<=", "rf2_txd_spice.json", unit="A")
+        add("txd.fall", "target", "TXD ngspice: boost fall time vs 1.3 x ideal L I / V", ts["cases"]["boost_long_cutoff"]["fall_us"], 1.3 * ts["cases"]["boost_long_cutoff"]["fall_ideal_us"], "<=", "rf2_txd_spice.json", unit="us")
+    ch = J("rf2", "chassis_out", "rf2_chassis_check.json")
+    if ch and "cord_flex" in ch["checks"]:
+        cf = ch["checks"]["cord_flex"]
+        if "width_limit_mm" in cf:
+            add("cord.width_piece1", "target", "cord flex piece 1 width (TX strips + REF guard) vs the inner bore less 2 mm (18.6 - 2)", cf["width_mm"], cf["width_limit_mm"], "<=", "rf2_chassis_check.json cord_flex", unit="mm")
+            add("cord.width_piece2", "target", "cord flex piece 2 width vs the middle bore less 2 mm", cf["piece2_width_mm"], cf["piece2_limit_mm"], "<=", "rf2_chassis_check.json cord_flex", unit="mm")
+            add("cord.rolling_loop", "target", "cord flex rolling loop 2 x bend radius vs the inner bore less 4 mm", cf["rolling_loop_2R_mm"], cf["rolling_loop_limit_mm"], "<=", "rf2_chassis_check.json cord_flex", unit="mm")
+            add("cord.rule6_gap", "safety", "rule 6: smallest gap next to an HV trace in the cord flex (pieces 1 and 2) vs 1.0 mm", min(cf["rule6_min_gap_mm"]), 1.0, ">=", "rf2_chassis_check.json cord_flex (measured from the lanes)", unit="mm")
+    co2 = J("rf2", "results", "rf2_continuous.json")
+    if co2:
+        sys.path.insert(0, HERE); import rf2_cordflex as CFX
+        b_ = next(m for m in co2["modes"] if m["mode"].startswith("boost"))
+        add("cord.tx_width_ipc", "target", "cord TX strip width vs the IPC-2221 width (2 oz internal, 10 K) at the rf2_continuous boost rms", round(CFX.W_TX, 3), round(CFX.ipc2221_width_mm(b_["I_rms_coil"]), 3), ">=", "rf2_cordflex / rf2_continuous.json", unit="mm")
+    if sy and "txd_min_use" in sy.get("echoes", {}):
+        e = sy["echoes"]
+        add("txd.echo_nominal", "target", f"TXD pod metal echo drift (5 K) at s {e['txd_at_s_mm']:.0f} (nominal length) vs 0.5 x gate noise", e["txd_drift5K_x_noise"], 0.5, "<=", "rf2_system.json echoes", unit="x noise")
+        add("txd.echo_min_use", "target", f"TXD pod metal echo drift (5 K) at s {e['txd_min_use']['s_mm']:.0f} (shortest use length, pod rides the telescope) vs 0.5 x gate noise", e["txd_min_use"]["drift5K_x_noise"], 0.5, "<=", "rf2_system.json echoes", unit="x noise")
+        th = sy["thermal"]
+        add("thermal.txd_pod_rise", "target", "TXD pod housing surface rise in continuous boost (Q1 heat sink vented; natural convection 8 W/m2K ASSUMED)", th["txd_pod_surface_rise_K"], 15.0, "<=", "rf2_system.json thermal", unit="K")
+        add("harness.feed_drop", "target", "pack -> TXD pod feed drop in boost vs 2 % of 25.2 V", sy["harness"]["vin_drop_V_boost"], 0.02 * 25.2, "<=", "rf2_system.json harness", unit="V")
+    ic = J("rf2", "results", "rf2_icd.json")
+    for r_ in (ic or {}).get("gland_y5b", []):
+        tag = r_["connector"].split(" ")[0]
+        if r_["i_per_pin_A"]:
+            add(f"icd.y5b_i.{tag}", "target", f"head gland Y5B ZIF {r_['connector']}: VIN_H current per pin vs 0.5 A", r_["i_per_pin_A"], r_["i_rating_A"], "<=", "rf2_icd.json gland_y5b (Panasonic ACCTB1E)", unit="A")
+            add(f"icd.y5b_v.{tag}", "safety", f"head gland Y5B ZIF {r_['connector']}: VIN_H 29.4 V vs 50 V rated", r_["v_max_V"], r_["v_rating_V"], "<=", "rf2_icd.json gland_y5b (Panasonic ACCTB1E)", unit="V")
     mc = J("rf2", "head", "out", "rf2_mp1v2_close.json")
     if mc and mc.get("parts_closure"):
         pc = mc["parts_closure"]
