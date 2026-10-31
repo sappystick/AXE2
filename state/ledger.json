@@ -704,31 +704,31 @@
   "selftest": {
    "status": "pass",
    "rc": 0,
-   "seconds": 2.8,
+   "seconds": 4.2,
    "why": "",
    "tail": "",
-   "fingerprint": "ecc1b1f95ce312ea",
+   "fingerprint": "9047597ebca875d8",
    "inputs": {
     "tests/selftest.py": "d63c83c7e6",
     "src/simcache.py": "7a842c96b9",
-    "run.py": "5938a11762",
+    "run.py": "0e73f27c67",
     "rf2/head/spice_compat.py": "d04b7efad7",
     "rf2/head/rf2_opamp_qualify.py": "01dcee8188",
     "data/spice/SHA256SUMS": "77ca6c7e5a",
     "data/spice/LMH6629/LMH6629_TINA-TI_snom339.lib": "47a735594c",
     "data/spice/OPAx211/OPAx211_TINA-TI_sbombw9.lib": "74a58f7793"
    },
-   "finished": "2026-10-31T06:33:22",
+   "finished": "2026-10-31T07:48:19",
    "log": "state/logs/selftest.log",
    "history": [
-    3.0,
     3.1,
     2.8,
     2.8,
     2.8,
     2.8,
     2.9,
-    2.8
+    2.8,
+    4.2
    ]
   },
   "study:mp1v2_chain": {
@@ -982,26 +982,26 @@
   "readiness": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.0,
+   "seconds": 0.1,
    "why": "",
    "tail": "",
-   "fingerprint": "3299c22a2a7e3dd0",
+   "fingerprint": "b360aa72c5819c6e",
    "inputs": {
     "rf2/rf2_readiness.py": "5654f874f2",
-    "state/ledger.json": "14f9886820",
+    "state/ledger.json": "eb518a7f0c",
     "rf2/results/rf2_icd.json": "93dd81c6b8"
    },
-   "finished": "2026-10-31T06:48:56",
+   "finished": "2026-10-31T07:48:19",
    "log": "state/logs/readiness.log",
    "history": [
-    0.1,
     0.0,
     0.0,
     0.0,
     0.0,
     0.0,
     0.0,
-    0.0
+    0.0,
+    0.1
    ]
   },
   "timing-cord": {
@@ -1178,14 +1178,14 @@
     "rf2/results/rf2_shaftlink_options.json": "7a380d07e7",
     "rf2/results/rf2_fold_options.json": "ac929a7092"
    },
-   "finished": "2026-10-31T06:48:56",
+   "finished": "2026-10-31T07:48:19",
    "log": "state/logs/rules.log",
    "history": [
     0.0,
     0.0,
     0.0,
     0.0,
-    0.0,
+    0.1,
     0.1,
     0.1,
     0.1
@@ -1273,7 +1273,7 @@
   "integration": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.0,
+   "seconds": 0.1,
    "why": "",
    "tail": "",
    "fingerprint": "47d182fa8600a323",
@@ -1287,7 +1287,7 @@
     "rf2/results/rf2_lowL_options.json": "794bd412bb",
     "rf2/results/rf2_shaftlink_options.json": "7a380d07e7"
    },
-   "finished": "2026-10-31T06:48:56",
+   "finished": "2026-10-31T07:48:19",
    "log": "state/logs/integration.log",
    "history": [
     0.0,
@@ -1297,7 +1297,7 @@
     0.0,
     0.0,
     0.0,
-    0.0
+    0.1
    ]
   },
   "continuous": {
@@ -1472,23 +1472,24 @@
   "lowL-options": {
    "status": "pass",
    "rc": 0,
-   "seconds": 1.0,
+   "seconds": 1.1,
    "why": "",
    "tail": "",
-   "fingerprint": "272c1039593f88a8",
+   "fingerprint": "eacb8626fee979b8",
    "inputs": {
-    "rf2/rf2_lowL_options.py": "14141d4528",
+    "rf2/rf2_lowL_options.py": "995b468e03",
     "rf2/rf2_cordflex.py": "7545764c63",
     "rf2/rf2_continuous.py": "b0fac0f125",
     "rf2/rf2_txd_spice.py": "1a46f19129",
     "concepts/clib.py": "4cc9b59087"
    },
-   "finished": "2026-10-31T06:34:04",
+   "finished": "2026-10-31T07:48:16",
    "log": "state/logs/lowL-options.log",
    "history": [
     0.8,
     1.2,
-    1.0
+    1.0,
+    1.1
    ]
   },
   "shaftlink-options": {
@@ -1514,7 +1515,7 @@
   "enhance-report": {
    "status": "pass",
    "rc": 0,
-   "seconds": 0.0,
+   "seconds": 0.1,
    "why": "",
    "tail": "",
    "fingerprint": "d6f2588ac58d95fe",
@@ -1523,12 +1524,13 @@
     "rf2/results/rf2_lowL_options.json": "794bd412bb",
     "rf2/results/rf2_shaftlink_options.json": "7a380d07e7"
    },
-   "finished": "2026-10-31T06:48:56",
+   "finished": "2026-10-31T07:48:19",
    "log": "state/logs/enhance-report.log",
    "history": [
     0.0,
     0.0,
-    0.0
+    0.0,
+    0.1
    ]
   },
   "fold-options": {
@@ -1553,14 +1555,14 @@
   "variants": {
    "status": "pass",
    "rc": 0,
-   "seconds": 127.6,
+   "seconds": 35.0,
    "why": "",
    "tail": "",
-   "fingerprint": "169dbb546a1f3aa0",
+   "fingerprint": "579dc8db620d2ffb",
    "inputs": {
-    "rf2/rf2_variants.py": "22f74c5b86",
+    "rf2/rf2_variants.py": "ef67d078bf",
     "rf2/rf2_variant_axes.py": "86b3e7f57d",
-    "rf2/rf2_lowL_options.py": "14141d4528",
+    "rf2/rf2_lowL_options.py": "995b468e03",
     "rf2/results/rf2_fold_options.json": "ac929a7092",
     "rf2/results/rf2_hex_section.json": "cb24a61475",
     "rf2/results/rf2_pack_options.json": "b7d066fc13",
@@ -1568,15 +1570,16 @@
     "rf2/rf2_select.py": "ea18491898",
     "rf2/rf2_cordflex.py": "7545764c63",
     "rf2/variant_plugins/README.md": "a5b0f1d07b",
-    "rf2/variant_plugins/coil_winding.py": "ab658f62a3",
-    "rf2/variant_plugins/boards.py": "87828f8923",
-    "rf2/variant_plugins/wiring.py": "efdf49f7cb"
+    "rf2/variant_plugins/coil_winding.py": "662218122f",
+    "rf2/variant_plugins/boards.py": "1469254abc",
+    "rf2/variant_plugins/wiring.py": "1168c84f24"
    },
-   "finished": "2026-10-31T06:36:53",
+   "finished": "2026-10-31T07:48:51",
    "log": "state/logs/variants.log",
    "history": [
     1.9,
-    127.6
+    127.6,
+    35.0
    ]
   },
   "hex-section": {
@@ -1620,37 +1623,81 @@
   "variant-learn": {
    "status": "pass",
    "rc": 0,
-   "seconds": 713.5,
+   "seconds": 57.8,
    "why": "",
    "tail": "",
-   "fingerprint": "360f39fc37b9c5b7",
+   "fingerprint": "a6957d8795e7fddf",
    "inputs": {
-    "rf2/rf2_variant_learn.py": "be4b71e446",
+    "rf2/rf2_variant_learn.py": "94815c04e4",
     "rf2/variant_decisions.json": "87a67e9676",
-    "rf2/results/rf2_variants.json": "765637e1b4"
+    "rf2/results/rf2_variants.json": "1bc00cfcd5"
    },
-   "finished": "2026-10-31T06:48:56",
+   "finished": "2026-10-31T07:49:48",
    "log": "state/logs/variant-learn.log",
    "history": [
-    713.5
+    713.5,
+    57.8
+   ]
+  },
+  "solver-xcheck": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 1.5,
+   "why": "",
+   "tail": "",
+   "fingerprint": "57708c08b961c2e3",
+   "inputs": {
+    "rf2/rf2_solver_xcheck.py": "8059c217b3",
+    "rf2/rf2_lowL_options.py": "995b468e03",
+    "rf2/rf2_cordflex.py": "7545764c63",
+    "rf2/rf2_txd_spice.py": "1a46f19129",
+    "concepts/clib.py": "4cc9b59087"
+   },
+   "finished": "2026-10-31T07:48:16",
+   "log": "state/logs/solver-xcheck.log",
+   "history": [
+    1.5
+   ]
+  },
+  "variant-optuna": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 18.2,
+   "why": "",
+   "tail": "",
+   "fingerprint": "2d689039202e0c20",
+   "inputs": {
+    "rf2/rf2_variant_optuna.py": "0fa2d7bf5f",
+    "rf2/results/rf2_variants.json": "1bc00cfcd5"
+   },
+   "finished": "2026-10-31T07:49:09",
+   "log": "state/logs/variant-optuna.log",
+   "history": [
+    18.2
+   ]
+  },
+  "cleansheet": {
+   "status": "pass",
+   "rc": 0,
+   "seconds": 87.1,
+   "why": "",
+   "tail": "",
+   "fingerprint": "838105cf05e3ed74",
+   "inputs": {
+    "rf2/rf2_cleansheet.py": "60205b044c",
+    "rf2/rf2_lowL_options.py": "995b468e03",
+    "rf2/results/rf2_wire_options.json": "c8a6aa4014",
+    "rf2/results/rf2_pack_options.json": "b7d066fc13",
+    "rf2/results/rf2_solver_xcheck.json": "c88bc1dc26"
+   },
+   "finished": "2026-10-31T07:49:43",
+   "log": "state/logs/cleansheet.log",
+   "history": [
+    87.1
    ]
   }
  },
  "runs": [
-  {
-   "finished": "2026-10-30T20:22:56",
-   "seconds": 80.8,
-   "results": {
-    "chassis": "pass",
-    "system": "pass",
-    "selftest": "pass",
-    "emi-rect": "pass",
-    "print": "pass",
-    "icd": "pass",
-    "topography": "pass",
-    "readiness": "pass"
-   }
-  },
   {
    "finished": "2026-10-30T20:45:38",
    "seconds": 165.7,
@@ -2294,6 +2341,23 @@
     "select": "pass",
     "topography": "pass",
     "readiness": "pass"
+   }
+  },
+  {
+   "finished": "2026-10-31T07:49:48",
+   "seconds": 93.9,
+   "results": {
+    "lowL-options": "pass",
+    "solver-xcheck": "pass",
+    "selftest": "pass",
+    "enhance-report": "pass",
+    "rules": "pass",
+    "integration": "pass",
+    "readiness": "pass",
+    "variants": "pass",
+    "variant-optuna": "pass",
+    "cleansheet": "pass",
+    "variant-learn": "pass"
    }
   }
  ]
